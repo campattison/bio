@@ -293,8 +293,8 @@ tr:hover {
 }
 
 .profile-photo {
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
+    width: 60px; /* Adjust size as needed */
+    height: 60px; /* Adjust size as needed */
     object-fit: cover;
     border-radius: 50%; /* Makes the image circular */
     margin-left: 20px; /* Space between text and image */
