@@ -1,195 +1,170 @@
 :root {
-    --primary-color: #1d1d1d;
-    --secondary-color: #gold;
-    --background-color: #ffffff;
-    --text-color: #333333;
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --background-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --card-bg: #ffffff;
+    --hover-color: #2980b9;
+    --gradient-start: #2c3e50;
+    --gradient-end: #3498db;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    line-height: 1.8;
     color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, var(--background-color) 0%, #ffffff 100%);
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 2rem auto;
     padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
 }
 
+/* Enhanced Header Styles */
 header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    margin: -2rem -2rem 3rem -2rem;
+    border-radius: 20px 20px 0 0;
+    color: white;
+}
+
+.main-nav {
+    margin-bottom: 2rem;
+}
+
+.main-nav a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    background: rgba(255,255,255,0.2);
+    color: white;
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
+    font-size: 2.8rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
+    color: white;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: #666;
-}
-
+/* Enhanced Section Styles */
 section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 h2 {
     color: var(--primary-color);
-    border-bottom: 2px solid #eee;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.project {
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
 }
 
-h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-li {
-    margin-bottom: 0.5rem;
-}
-
-.contact {
-    text-align: center;
-}
-
-.contact a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.contact a:hover {
-    text-decoration: underline;
-}
-
-.fas {
-    margin-right: 0.5rem;
-}
-
-@media (max-width: 600px) {
-    .container {
-        padding: 1rem;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-}
-
-.contact-info {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1rem;
-}
-
-.contact-info a {
-    color: var(--primary-color);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
+/* Enhanced Card Styles */
 .specialization-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 1.5rem;
 }
 
 .specialization-item {
-    background-color: #f5f5f5;
-    padding: 0.8rem;
-    border-radius: 4px;
-    text-align: center;
-    font-weight: 500;
+    background: var(--card-bg);
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.experience-item {
-    margin-bottom: 2rem;
+.specialization-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-color);
 }
 
-.experience-item h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.8rem;
-}
-
-.experience-item ul {
-    padding-left: 1.2rem;
-    list-style-type: disc;
-}
-
-strong {
-    color: var(--primary-color);
-}
-
-/* Add animated timeline */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background: var(--accent-color);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1px;
-    opacity: 0.3;
-}
-
-.timeline-item {
-    padding: 2rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin: 2rem 0;
-    position: relative;
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Add hover effects to project cards */
 .project {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 1.5rem;
-    border-radius: 10px;
-    background: white;
-    margin-bottom: 2rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .project:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-} 
+    box-shadow: var(--shadow-lg);
+}
+
+/* Enhanced Typography */
+p {
+    color: #4a5568;
+    line-height: 1.8;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+}
+
+/* Enhanced List Styles */
+ul {
+    padding-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+/* Enhanced Contact Info */
+.contact-info a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.1);
+}
+
+.contact-info a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* Add this to your HTML head */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+ 
