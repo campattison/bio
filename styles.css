@@ -16,7 +16,9 @@ body {
     font-family: 'Inter', 'Segoe UI', sans-serif;
     line-height: 1.8;
     color: var(--text-color);
-    background: linear-gradient(135deg, var(--background-color) 0%, #ffffff 100%);
+    background: linear-gradient(135deg, var(--background-color) 0%, #ffffff 100%), url('images/pattern.png');
+    background-size: cover;
+    background-attachment: fixed;
     min-height: 100vh;
 }
 
@@ -68,6 +70,7 @@ h1 {
 section {
     margin-bottom: 3rem;
     animation: fadeIn 0.5s ease-out;
+    transition: all 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -167,4 +170,53 @@ li {
 
 /* Add this to your HTML head */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 600px) {
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
  
