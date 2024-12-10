@@ -282,4 +282,21 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #ddd;
 }
+
+.about-content {
+    display: flex;
+    align-items: center;
+}
+
+.about-content p {
+    flex: 1;
+}
+
+.profile-photo {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    object-fit: cover;
+    border-radius: 50%; /* Makes the image circular */
+    margin-left: 20px; /* Space between text and image */
+}
  
