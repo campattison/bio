@@ -190,8 +190,8 @@ ul li i {
 }
 
 .profile-image {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     object-position: 50% 30%;
@@ -201,8 +201,8 @@ ul li i {
 
 @media (max-width: 600px) {
     .profile-image {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
     }
 }
 
