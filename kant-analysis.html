@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kantian Ethical Analysis Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .analysis-container {
+            margin-top: 20px;
+        }
+
+        #situation-input {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+
+        #analyze-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #analyze-button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kantian Ethical Analysis Tool</h1>
+    
+    <p>This tool helps analyze ethical situations using Kantian principles. Enter your situation below, and the AI will:</p>
+    <ul>
+        <li>Extract the underlying maxim of your action</li>
+        <li>Test for contradictions in conception</li>
+        <li>Test for contradictions in will</li>
+        <li>Evaluate the universalizability of the maxim</li>
+    </ul>
+
+    <div class="analysis-container">
+        <textarea id="situation-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
+        <button id="analyze-button">Analyze</button>
+        <div class="loading">Analyzing...</div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const API_KEY = 'your-api-key-here'; // Replace with your actual API key
+        
+        async function analyzeKantian() {
+            const situation = document.getElementById('situation-input').value;
+            const loading = document.querySelector('.loading');
+            const result = document.getElementById('result');
+            
+            if (!situation.trim()) {
+                alert('Please enter a situation to analyze.');
+                return;
+            }
+
+            loading.style.display = 'block';
+            result.style.display = 'none';
+
+            const prompt = `You are a Kantian ethics expert. Analyze the following ethical situation using Kantian principles. 
+            First, let me show you two example analyses:
+
+            EXAMPLE 1:
+            Situation: "I want to lie on my resume to get a better job."
+
+            Analysis:
+            1. Maxim Formulation:
+            "I will make false claims about my qualifications whenever doing so would benefit my career prospects."
+
+            2. Contradiction in Conception:
+            Yes - If everyone lied on their resumes, the practice of resume-based hiring would become meaningless. The very concept of a resume as a tool for evaluating candidates would be destroyed.
+
+            3. Contradiction in Will:
+            Yes - As a rational being, I cannot will a world where all credentials are falsified, as I myself depend on truthful credentials in countless situations (doctors, engineers, etc.).
+
+            4. Universal Law Evaluation:
+            This maxim fails both tests. We cannot coherently conceive of a world where everyone lies on resumes, nor can we rationally will such a world. The action is therefore morally impermissible.
+
+            EXAMPLE 2:
+            Situation: "I want to help a stranger who has fallen on the street."
+
+            Analysis:
+            1. Maxim Formulation:
+            "I will offer assistance to people in immediate physical distress when I am capable of helping."
+
+            2. Contradiction in Conception:
+            No - A world where everyone helps others in immediate distress is perfectly conceivable. The practice of mutual aid strengthens rather than undermines itself.
+
+            3. Contradiction in Will:
+            No - As a rational being, I can consistently will a world where everyone helps others in distress, as I too would want to be helped if I were in distress.
+
+            4. Universal Law Evaluation:
+            This maxim passes both tests. We can coherently conceive of and rationally will a world where everyone helps others in immediate distress. The action is therefore morally permissible and indeed praiseworthy.
+
+            NOW ANALYZE THIS SITUATION:
+            "${situation}"
+
+            Follow the same format as the examples above, with clear sections for:
+            1. Maxim Formulation
+            2. Contradiction in Conception analysis
+            3. Contradiction in Will analysis
+            4. Universal Law Evaluation
+
+            Be thorough but concise. Format your response with clear headings and line breaks.`;
+
+            try {
+                const response = await fetch('http://localhost:3000/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        messages: [{
+                            role: 'user',
+                            content: prompt
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.choices && data.choices[0]) {
+                    result.innerHTML = data.choices[0].message.content.replace(/\n/g, '<br>');
+                    result.style.display = 'block';
+                } else {
+                    throw new Error('Invalid API response');
+                }
+            } catch (error) {
+                result.innerHTML = 'Error: Unable to perform analysis. Please try again later.';
+                result.style.display = 'block';
+                console.error('Error:', error);
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        document.getElementById('analyze-button').addEventListener('click', analyzeKantian);
+    </script>
+</body>
+</html> 
