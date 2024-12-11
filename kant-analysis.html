@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kantian Ethical Analysis Tool</title>
+    <title>Cameron Pattison - Philosophy & AI </title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -120,37 +121,46 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="main-nav">
-            <a href="index.html">Home</a>
-            <a href="research.html">Research</a>
-            <a href="teaching.html">Teaching</a>
-            <a href="ai-tools.html">AI Tools</a>
-            <a href="https://philosophyofcomputing.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a>
-        </nav>
-    </header>
-    
-    <h1><a href="kant-analysis.html" style="text-decoration: none; color: inherit;">Kantian Ethical Analysis Tool</a></h1>
-    
-    <div class="intro">
-        <p>This tool helps analyze ethical situations using Kantian principles. Enter your situation below, and the AI will:</p>
-        <ul>
-            <li>Extract the underlying maxim of your action</li>
-            <li>Test for contradictions in conception</li>
-            <li>Test for contradictions in will</li>
-            <li>Evaluate the universalizability of the maxim</li>
-        </ul>
-    </div>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+                <a href="teaching.html">Teaching</a>
+                <a href="ai-tools.html">AI Tools</a>
+                <a href="https://philosophyofcomputing.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a>
+            </nav>
+            <div class="profile-header">
+                <h1>Cameron Pattison</h1>
+                <p class="subtitle">Philosophy & AI | Vanderbilt University</p>
+                <p class="contact-info">
+                    <a href="mailto:cameron.pattison@vanderbilt.edu"><i class="fas fa-envelope"></i> cameron.pattison@vanderbilt.edu</a>
+                </p>
+            </div>
+        </header>
 
-    <div class="analysis-container">
-        <div class="api-key-section">
-            <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key" />
-            <small class="api-note">Your API key is used only in your browser and never stored. You can get an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI</a>.</small>
+        <h1><a href="kant-analysis.html" style="text-decoration: none; color: inherit;">Kantian Ethical Analysis Tool</a></h1>
+        
+        <div class="intro">
+            <p>This tool helps analyze ethical situations using Kantian principles. Enter your situation below, and the AI will:</p>
+            <ul>
+                <li>Extract the underlying maxim of your action</li>
+                <li>Test for contradictions in conception</li>
+                <li>Test for contradictions in will</li>
+                <li>Evaluate the universalizability of the maxim</li>
+            </ul>
         </div>
-        <textarea id="situation-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
-        <button id="analyze-button">Analyze Using Kantian Ethics</button>
-        <div class="loading">Analyzing your situation...</div>
-        <div id="result"></div>
+
+        <div class="analysis-container">
+            <div class="api-key-section">
+                <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key" />
+                <small class="api-note">Your API key is used only in your browser and never stored. You can get an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI</a>.</small>
+            </div>
+            <textarea id="situation-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
+            <button id="analyze-button">Analyze Using Kantian Ethics</button>
+            <div class="loading">Analyzing your situation...</div>
+            <div id="result"></div>
+        </div>
     </div>
 
     <script>
