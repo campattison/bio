@@ -97,7 +97,7 @@
         <section id="fun-ai-tools">
             <h2>🎉 Fun AI Tools</h2>
             <div class="tool-card">
-                <h3><a href="kant-analysis.html" style="text-decoration: none; color: inherit;">Kantian Ethical Analysis Tool</a></h3>
+                <h3><a href="kant-analysis.html" class="tool-link">Kantian Ethical Analysis Tool <i class="fas fa-external-link-alt"></i></a></h3>
                 <p>Analyze ethical situations using Kantian principles. Enter your situation and get a detailed analysis!</p>
                 <iframe src="kant-analysis.html" width="100%" height="1000" style="border: none; border-radius: 5px;"></iframe>
             </div>
@@ -118,6 +118,22 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fff;
+        }
+
+        .tool-link {
+            color: #2962ff !important;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .tool-link:hover {
+            color: #0039cb !important;
+            text-decoration: underline;
+        }
+        
+        .tool-link i {
+            font-size: 0.8em;
+            margin-left: 5px;
         }
     </style>
 </body>
