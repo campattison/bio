@@ -164,6 +164,14 @@
     </div>
 
     <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('embedded') === 'true') {
+                document.querySelector('header').style.display = 'none';
+                document.querySelector('main').style.marginTop = '0';
+            }
+        }
+
         async function analyzeKantian() {
             const apiKey = document.getElementById('api-key-input').value;
             const situation = document.getElementById('situation-input').value;
