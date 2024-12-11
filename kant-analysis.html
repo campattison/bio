@@ -11,80 +11,134 @@
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        .intro {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
 
         .analysis-container {
-            margin-top: 20px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .api-key-section {
+            margin-bottom: 20px;
+        }
+
+        #api-key-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .api-note {
+            color: #666;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 15px;
         }
 
         #situation-input {
             width: 100%;
             height: 150px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
             margin-bottom: 15px;
-            padding: 10px;
+            font-size: 14px;
+            resize: vertical;
         }
 
         #analyze-button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #2c3e50;
             color: white;
+            padding: 12px 24px;
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
         }
 
         #analyze-button:hover {
-            background-color: #45a049;
+            background-color: #34495e;
+        }
+
+        .loading {
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+            color: #666;
         }
 
         #result {
             margin-top: 20px;
-            padding: 15px;
+            padding: 20px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 6px;
+            background-color: #f8f9fa;
             display: none;
+            line-height: 1.6;
         }
 
-        .loading {
-            display: none;
-            text-align: center;
-            margin: 20px 0;
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
         }
 
-        .api-key-section {
-            margin-bottom: 15px;
+        li {
+            margin-bottom: 8px;
         }
-        
-        #api-key-input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 5px;
-        }
-        
-        .api-note {
-            color: #666;
-            font-size: 0.8em;
+
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #2c3e50;
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
     <h1>Kantian Ethical Analysis Tool</h1>
     
-    <p>This tool helps analyze ethical situations using Kantian principles. Enter your situation below, and the AI will:</p>
-    <ul>
-        <li>Extract the underlying maxim of your action</li>
-        <li>Test for contradictions in conception</li>
-        <li>Test for contradictions in will</li>
-        <li>Evaluate the universalizability of the maxim</li>
-    </ul>
+    <div class="intro">
+        <p>This tool helps analyze ethical situations using Kantian principles. Enter your situation below, and the AI will:</p>
+        <ul>
+            <li>Extract the underlying maxim of your action</li>
+            <li>Test for contradictions in conception</li>
+            <li>Test for contradictions in will</li>
+            <li>Evaluate the universalizability of the maxim</li>
+        </ul>
+    </div>
 
     <div class="analysis-container">
         <div class="api-key-section">
             <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key" />
-            <small class="api-note">Your API key is used only in your browser and never stored.</small>
+            <small class="api-note">Your API key is used only in your browser and never stored. You can get an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI</a>.</small>
         </div>
         <textarea id="situation-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
-        <button id="analyze-button">Analyze</button>
-        <div class="loading">Analyzing...</div>
+        <button id="analyze-button">Analyze Using Kantian Ethics</button>
+        <div class="loading">Analyzing your situation...</div>
         <div id="result"></div>
     </div>
 
