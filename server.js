@@ -1,36 +1,29 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
-const fetch = require('node-fetch');
-
-dotenv.config();
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// API endpoint
 app.post('/analyze', async (req, res) => {
     try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
-            },
-            body: JSON.stringify({
-                model: 'gpt-4o',
-                messages: req.body.messages,
-                temperature: 0.7
-            })
+        // Here you would typically make the call to your AI service
+        // For now, sending a mock response
+        res.json({
+            choices: [{
+                message: {
+                    content: "This is a test analysis response..."
+                }
+            }]
         });
-        
-        const data = await response.json();
-        res.json(data);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to process request' });
+        res.status(500).json({ error: 'Analysis failed' });
     }
 });
 
-app.listen(3000, () => {
-    console.log('Server running on port 3000');
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 }); 
