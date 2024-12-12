@@ -124,42 +124,61 @@
             color: white;
             padding: var(--spacing);
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .bibliography-header h2 {
             margin: 0;
+            color: white;
         }
 
         .bibliography-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
+            width: 100%;
         }
 
         .bibliography-card.expanded .bibliography-content {
-            max-height: 10000px;
+            max-height: 10000px; /* Large enough to show all content */
         }
 
+        .bibliography-card.expanded .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Styles for the embedded bibliography content */
         .bibliography-content .report {
             padding: var(--spacing);
             overflow-x: auto;
+            width: 100%;
         }
 
         .bibliography-content table {
             width: 100%;
             border-collapse: collapse;
+            margin: 10px 0;
+            min-width: 800px;
+            table-layout: fixed;
         }
 
         .bibliography-content th,
         .bibliography-content td {
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
+            vertical-align: top;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .bibliography-content th {
             background-color: #f5f5f5;
             font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
         }
 
         #globeViz {
@@ -220,6 +239,13 @@
 
         .marker {
             animation: pulse 2s infinite;
+        }
+
+        /* Add responsive container */
+        .bibliography-container {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
     </style>
 </head>
@@ -651,111 +677,68 @@
             
             const points = [];
             
-            // Add conferences
+            // Process conferences
             data.conferences.forEach(conf => {
                 if (conf.lat && conf.lng) {
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 0.8,
-                        color: '#ff6b6b',
-                        label: `<div class="globe-tooltip" style="
-                            background: rgba(0, 0, 0, 0.85);
-                            color: white;
-                            padding: 15px;
-                            border-radius: 8px;
-                            min-width: 220px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                            backdrop-filter: blur(5px);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            font-family: 'Roboto', sans-serif;
-                            pointer-events: auto;
-                            position: absolute;
-                            z-index: 1000;
-                        ">
-                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
-                                ${conf.title}
+                        size: 1,
+                        color: '#ff4444',
+                        name: conf.title,
+                        url: conf.url,
+                        type: 'conference',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${conf.title}</strong><br>
+                                <span>${conf.date}<br>${conf.location}</span><br>
+                                <span style="color: #ff4444; cursor: pointer;">Click to learn more</span>
                             </div>
-                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> ${conf.date}
-                            </div>
-                            <div style="font-size: 0.9em; margin-bottom: 8px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${conf.location}
-                            </div>
-                            <div style="
-                                font-size: 0.8em;
-                                color: #ff6b6b;
-                                margin-top: 5px;
-                                display: inline-block;
-                                cursor: pointer;
-                            ">Click to learn more →</div>
-                        </div>`,
-                        url: conf.url
+                        `
                     });
                 }
             });
             
-            // Add jobs
+            // Process job postings
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
                     const color = job.type === 'Academic' ? '#ce93d8' : '#81c784';
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 0.8,
+                        size: 1,
                         color: color,
-                        label: `<div style="
-                            background: rgba(0, 0, 0, 0.85);
-                            color: white;
-                            padding: 15px;
-                            border-radius: 8px;
-                            min-width: 220px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                            backdrop-filter: blur(5px);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            font-family: 'Roboto', sans-serif;
-                            pointer-events: auto;
-                            position: absolute;
-                            z-index: 1000;
-                        ">
-                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
-                                ${job.title}
+                        name: job.title,
+                        url: job.url,
+                        type: 'job',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${job.title}</strong><br>
+                                <span>${job.organization}<br>${job.location}</span><br>
+                                <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
+                                <span style="color: ${color}; cursor: pointer;">Click to apply</span>
                             </div>
-                            <div style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9); margin-bottom: 4px;">
-                                ${job.organization}
-                            </div>
-                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${job.location}
-                            </div>
-                            <div style="
-                                font-size: 0.85em;
-                                color: rgba(255, 255, 255, 0.8);
-                                margin: 8px 0;
-                                line-height: 1.4;
-                            ">${job.description}</div>
-                            <div style="
-                                font-size: 0.8em;
-                                color: ${color};
-                                margin-top: 5px;
-                                display: inline-block;
-                                cursor: pointer;
-                            ">Click to apply →</div>
-                        </div>`,
-                        url: job.url
+                        `
                     });
                 }
             });
             
-            // Update globe with points
+            // Update globe data with improved tooltip handling
             globe
                 .pointsData(points)
                 .pointColor('color')
                 .pointAltitude(0.01)
                 .pointRadius('size')
-                .pointResolution(32)
-                .labelText('label')
-                .labelLat(d => d.lat)
-                .labelLng(d => d.lng);
+                .pointsMerge(true)
+                .pointLabel('tooltip')
+                .onPointClick(point => {
+                    if (point.url) {
+                        window.open(point.url, '_blank');
+                    }
+                })
+                .onPointHover(point => {
+                    document.body.style.cursor = point ? 'pointer' : 'default';
+                });
         }
 
         // Add initialization error handling
