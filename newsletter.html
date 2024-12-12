@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Hub: Normative Philosophy of Computing</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.28.5/dist/globe.gl.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         :root {
@@ -173,22 +173,31 @@
         }
 
         #globeViz {
-            width: 100%;
-            height: 500px;
-            background-color: #000011;
             position: relative;
-            z-index: 10;
-            margin-bottom: 30px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            min-height: 500px;
         }
-
-        #globeViz canvas {
-            width: 100% !important;
-            height: 100% !important;
+        
+        .globe-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        .globe-error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 1000;
         }
 
         .month-button {
@@ -537,67 +546,81 @@
         // Load bibliography when page loads
         document.addEventListener('DOMContentLoaded', loadBibliography);
 
-        let globe;
+        let globe = null;
         let selectedMonths = ['all'];
 
         function createGlobe() {
+            const globeContainer = document.getElementById('globeViz');
+            
+            // Show loading state
+            globeContainer.innerHTML = '<div class="globe-loading">Loading globe visualization...</div>';
+            
+            // Ensure clean state
+            if (globe) {
+                globe._destructor();
+                globe = null;
+            }
+
             try {
-                const globeContainer = document.getElementById('globeViz');
-                if (!globeContainer) {
-                    throw new Error('Globe container not found');
-                }
-
-                const width = globeContainer.clientWidth;
-                const height = 500;
-
-                // Clear any existing content
-                globeContainer.innerHTML = '';
-
+                // Check dependencies
+                if (typeof Globe === 'undefined') throw new Error('Globe.gl library not loaded');
+                if (typeof THREE === 'undefined') throw new Error('Three.js library not loaded');
+                
+                // Create new globe instance
                 globe = Globe()
-                    .backgroundColor('rgba(0,0,0,0)')  // Make background transparent
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')  // Use HTTPS
+                    .backgroundColor('rgba(0,0,0,0)')
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
                     .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-                    .width(width)
-                    .height(height)
+                    .width(globeContainer.clientWidth)
+                    .height(500)
                     .showGlobe(true)
                     .showAtmosphere(true)
                     .atmosphereColor('lightskyblue')
                     .atmosphereAltitude(0.1)
-                    .pointOfView({ lat: 39.6, lng: -98.5, altitude: 2.5 })  // Center on a good starting point
-                    (globeContainer);
+                    .pointOfView({ lat: 39.6, lng: -98.5, altitude: 2.5 });
 
-                // Add error handling for texture loading
-                globe.onError(error => {
-                    console.error('Globe error:', error);
-                    globeContainer.innerHTML = 'Error loading globe visualization';
-                });
+                // Mount globe
+                globe(globeContainer);
+                
+                // Remove loading message
+                const loadingEl = globeContainer.querySelector('.globe-loading');
+                if (loadingEl) loadingEl.remove();
 
-                // Wait for globe to initialize
+                // Setup controls after small delay to ensure initialization
                 setTimeout(() => {
-                    globe.controls().autoRotate = true;
-                    globe.controls().autoRotateSpeed = 0.5;
-                    globe.controls().enableZoom = true;
-                    globe.controls().enablePan = true;
-                    globe.controls().update();
-                    
-                    updateMonthButtons();
-                    updateMarkers();
-                }, 1000);
+                    if (globe && globe.controls()) {
+                        globe.controls().autoRotate = true;
+                        globe.controls().autoRotateSpeed = 0.5;
+                        globe.controls().enableZoom = true;
+                        globe.controls().enablePan = true;
+                        globe.controls().update();
+                        
+                        updateMonthButtons();
+                        updateMarkers();
+                    }
+                }, 100);
 
-                // Add window resize handler
-                window.addEventListener('resize', () => {
-                    const newWidth = globeContainer.clientWidth;
-                    globe.width(newWidth);
-                });
+                // Handle window resizing
+                const handleResize = () => {
+                    if (globe) {
+                        const newWidth = globeContainer.clientWidth;
+                        globe.width(newWidth);
+                    }
+                };
+                window.removeEventListener('resize', handleResize);
+                window.addEventListener('resize', handleResize);
 
-                // Debug logging
-                console.log('Globe initialized:', globe);
+                return globe;
             } catch (error) {
-                console.error('Error creating globe:', error);
-                const container = document.getElementById('globeViz');
-                if (container) {
-                    container.innerHTML = 'Error initializing globe visualization';
-                }
+                console.error('Globe initialization error:', error);
+                globeContainer.innerHTML = `
+                    <div class="globe-error">
+                        Failed to initialize globe visualization.<br>
+                        Error: ${error.message}<br>
+                        <button onclick="location.reload()" style="margin-top: 10px;">Retry</button>
+                    </div>
+                `;
+                throw error;
             }
         }
 
@@ -756,27 +779,30 @@
 
         // Add initialization error handling
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing with Globe:', typeof Globe, 'THREE:', typeof THREE);
+            
+            // Add error boundary
+            window.onerror = function(msg, url, lineNo, columnNo, error) {
+                console.error('Global error:', { msg, url, lineNo, columnNo, error });
+                const globeContainer = document.getElementById('globeViz');
+                if (globeContainer) {
+                    globeContainer.innerHTML = `
+                        <div class="globe-error">
+                            An error occurred.<br>
+                            Please refresh the page or check console for details.<br>
+                            <button onclick="location.reload()" style="margin-top: 10px;">Refresh Page</button>
+                        </div>
+                    `;
+                }
+                return false;
+            };
+
             try {
-                if (typeof Globe === 'undefined') {
-                    throw new Error('Globe.gl not loaded');
-                }
-                if (typeof THREE === 'undefined') {
-                    throw new Error('Three.js not loaded');
-                }
-                
                 createGlobe();
                 loadBibliography();
                 updateLists();
             } catch (error) {
                 console.error('Initialization error:', error);
-                const globeContainer = document.getElementById('globeViz');
-                if (globeContainer) {
-                    globeContainer.innerHTML = `
-                        <div style="color: white; text-align: center; padding: 20px;">
-                            Failed to load globe visualization. Please refresh the page.
-                        </div>
-                    `;
-                }
             }
         });
     </script>
