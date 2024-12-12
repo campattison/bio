@@ -138,6 +138,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
+            width: 100%;
         }
 
         .bibliography-card.expanded .bibliography-content {
@@ -151,24 +152,33 @@
         /* Styles for the embedded bibliography content */
         .bibliography-content .report {
             padding: var(--spacing);
+            overflow-x: auto;
+            width: 100%;
         }
 
         .bibliography-content table {
             width: 100%;
             border-collapse: collapse;
             margin: 10px 0;
+            min-width: 800px;
+            table-layout: fixed;
         }
 
         .bibliography-content th,
         .bibliography-content td {
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: top;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .bibliography-content th {
             background-color: #f5f5f5;
             font-weight: 600;
             text-align: left;
+            white-space: nowrap;
         }
 
         #globeViz {
@@ -229,6 +239,13 @@
 
         .marker {
             animation: pulse 2s infinite;
+        }
+
+        /* Add responsive container */
+        .bibliography-container {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
     </style>
 </head>
