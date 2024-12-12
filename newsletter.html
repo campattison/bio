@@ -1,0 +1,445 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Hub: Normative Philosophy of Computing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #f5f7fa;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --spacing: 1rem;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .section {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            padding: var(--spacing);
+            margin-bottom: 30px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing);
+            padding: var(--spacing);
+        }
+        .card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px var(--shadow-color);
+            padding: var(--spacing);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+        .card-header {
+            margin-bottom: 0.5rem;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0.25rem 0;
+        }
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .card.expanded .card-content {
+            max-height: 500px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .tag.academic {
+            background-color: #e1f5fe;
+            color: #0288d1;
+        }
+        .tag.alt-ac {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        .tag.deadline {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+        .tag.location {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .bibliography-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .bibliography-header {
+            background: var(--secondary-color);
+            color: white;
+            padding: var(--spacing);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bibliography-header h2 {
+            margin: 0;
+            color: white;
+        }
+
+        .bibliography-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .bibliography-card.expanded .bibliography-content {
+            max-height: 10000px; /* Large enough to show all content */
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .bibliography-card.expanded .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Styles for the embedded bibliography content */
+        .bibliography-content .report {
+            padding: var(--spacing);
+        }
+
+        .bibliography-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        .bibliography-content th,
+        .bibliography-content td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .bibliography-content th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Research Hub: Normative Philosophy of Computing</h1>
+        <div class="section" id="cfps-section">
+            <h2>Call for Papers</h2>
+            <ul id="cfps-list"></ul>
+        </div>
+        <div class="section" id="conferences-section">
+            <h2>Upcoming Conferences and Events</h2>
+            <ul id="conferences-list"></ul>
+        </div>
+        <div class="section" id="jobs-section">
+            <h2>Job Opportunities</h2>
+            <ul id="jobs-list"></ul>
+        </div>
+        <div class="section" id="bibliography-section">
+            <div class="bibliography-card" onclick="toggleBibliography(this)">
+                <div class="bibliography-header">
+                    <h2>December Philosophy Papers</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="bibliography-content">
+                    <!-- dec_phil_papers.html content will be loaded here -->
+                    <div id="papers-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            cfps: [
+                {
+                    title: "IASEAI '25: International Association for Safe and Ethical AI Inaugural Conference",
+                    deadline: "2024-11-24",
+                    url: "https://www.iaseai.org/conference"
+                },
+                {
+                    title: "First International Conference on the Philosophy of Content Moderation",
+                    deadline: "2024-12-15",
+                    url: "https://www.philmod.org/conference"
+                },
+                {
+                    title: "ACM FAccT 2025",
+                    deadline: "2025-01-15",
+                    url: "https://facctconference.org/2025/cfp"
+                }
+            ],
+            conferences: [
+                {
+                    title: "TeXne Conference",
+                    date: "2025-02-01",
+                    location: "Massachusetts Institute of Technology (MIT), Cambridge, MA, USA",
+                    url: "https://philevents.org/event/show/126054"
+                },
+                {
+                    title: "IASEAI '25: International Association for Safe and Ethical AI Inaugural Conference",
+                    date: "2025-02-06",
+                    location: "OECD La Muette Headquarters, Paris, France",
+                    url: "https://www.iaseai.org/conference"
+                },
+                {
+                    title: "First International Conference on the Philosophy of Content Moderation",
+                    date: "2025-04-12",
+                    location: "Asilomar Conference Grounds, California, USA",
+                    url: "https://www.philmod.org/conference"
+                },
+                {
+                    title: "ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)",
+                    date: "2025-06-23",
+                    location: "Athens, Greece",
+                    url: "https://facctconference.org/2025/cfp"
+                }
+            ],
+            jobs: [
+                {
+                    title: "Postdoctoral Fellowships, Digital Life Initiative",
+                    location: "New York, NY",
+                    organization: "Cornell Tech",
+                    type: "Alt-Ac",
+                    url: "https://www.dli.tech.cornell.edu/postdocs",
+                    description: "Postdoctoral research in ethics, politics, and quality of life in digital societies, covering privacy, AI ethics, and platform governance."
+                },
+                {
+                    title: "Policy Positions",
+                    location: "Remote",
+                    organization: "Apollo Research",
+                    type: "Alt-Ac",
+                    url: "https://jobs.lever.co/apolloresearch/f66ef22f-f96a-42cb-ada9-fd48ce0d5fda",
+                    description: "Research scientists, engineers, and software developers for AI safety evaluations and technical governance challenges."
+                },
+                {
+                    title: "Technology Policy Roles",
+                    location: "National (US)",
+                    organization: "ACLU",
+                    type: "Alt-Ac",
+                    url: "https://www.aclu.org/careers/apply/?job=7742482002&type=national",
+                    description: "Roles focused on advancing civil liberties and addressing challenges posed by emerging technologies, including AI."
+                },
+                {
+                    title: "Research Opportunities",
+                    location: "Remote/US",
+                    organization: "RAND Corporation",
+                    type: "Alt-Ac",
+                    url: "https://x.com/ohlennart/status/1864368808091373696?s=12",
+                    description: "Roles in compute governance and technical AI policy, including positions on their Compute Team."
+                },
+                {
+                    title: "Assistant/Associate/Full Professor, AI Governance",
+                    location: "Boston, MA",
+                    organization: "Northeastern University",
+                    type: "Academic",
+                    url: "https://x.com/ohlennart/status/1864368808091373696?s=12",
+                    description: "Tenure-track faculty in AI governance, focusing on ethical, legal, and societal implications of AI technologies."
+                },
+                {
+                    title: "Lecturer in Philosophy",
+                    location: "Edinburgh, UK",
+                    organization: "University of Edinburgh",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/27970",
+                    description: "Tenure-track position for philosophers specializing in ethics, political philosophy, or epistemology, with relevance to computing."
+                },
+                {
+                    title: "Faculty Positions in AI",
+                    location: "College Park, MD",
+                    organization: "University of Maryland",
+                    type: "Academic",
+                    url: "https://ejobs.umd.edu/postings/124144",
+                    description: "30 tenure-track faculty positions in AI, with opportunities for interdisciplinary research."
+                },
+                {
+                    title: "Assistant Professor of Philosophy",
+                    location: "Chapel Hill, NC",
+                    organization: "University of North Carolina",
+                    type: "Academic",
+                    url: "https://unc.peopleadmin.com/postings/288557",
+                    description: "Tenure-Track position in Philosophy of Artificial Intelligence. Start date: July 1, 2025."
+                },
+                {
+                    title: "AI Ethics Faculty Positions",
+                    location: "Hong Kong",
+                    organization: "Hong Kong Universities",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/28230",
+                    description: "One tenure track and one lecturer position in AI ethics, policy, and governance."
+                }
+            ]
+        };
+
+        function isWithinSixMonths(dateString) {
+            const itemDate = new Date(dateString);
+            const currentDate = new Date();
+            const sixMonthsAgo = new Date(currentDate.setMonth(currentDate.getMonth() - 6));
+            return itemDate >= sixMonthsAgo;
+        }
+
+        function isDeadlineFuture(dateString) {
+            const deadline = new Date(dateString);
+            const currentDate = new Date();
+            return deadline > currentDate;
+        }
+
+        function isConferenceFuture(dateString) {
+            const conferenceDate = new Date(dateString);
+            const currentDate = new Date();
+            return conferenceDate >= currentDate;
+        }
+
+        // Sorting functions
+        function sortByDateDescending(items) {
+            return items.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        function sortByDateAscending(items) {
+            return items.sort((a, b) => new Date(a.date || a.deadline) - new Date(b.date || b.deadline));
+        }
+
+        function updateList(items, listId, filterFunction, formatter) {
+            const list = document.getElementById(listId);
+            list.className = 'card-grid';
+            list.innerHTML = '';
+            items.forEach(item => {
+                if (filterFunction(item.date || item.deadline)) {
+                    list.innerHTML += formatter(item);
+                }
+            });
+        }
+
+        function formatCFP(cfp) {
+            return `
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <h3 class="card-title">${cfp.title}</h3>
+                        <span class="tag deadline">Deadline: ${cfp.deadline}</span>
+                    </div>
+                    <div class="card-content">
+                        <a href="${cfp.url}" target="_blank" class="button">Submit</a>
+                    </div>
+                </div>`;
+        }
+
+        function formatConference(conference) {
+            return `
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <h3 class="card-title">${conference.title}</h3>
+                        <span class="tag deadline">${conference.date}</span>
+                        <span class="tag location">${conference.location}</span>
+                    </div>
+                    <div class="card-content">
+                        <a href="${conference.url}" target="_blank" class="button">Learn More</a>
+                    </div>
+                </div>`;
+        }
+
+        function formatJob(job) {
+            return `
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <h3 class="card-title">${job.title}</h3>
+                        <p class="card-subtitle">${job.organization}</p>
+                        <span class="tag ${job.type.toLowerCase()}">${job.type}</span>
+                        <span class="tag location">${job.location}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>${job.description}</p>
+                        <a href="${job.url}" target="_blank" class="button">Apply Now</a>
+                    </div>
+                </div>`;
+        }
+
+        function toggleCard(card) {
+            card.classList.toggle('expanded');
+        }
+
+        function updateLists() {
+            const sortedCFPs = sortByDateAscending(data.cfps);
+            const sortedConferences = sortByDateAscending(data.conferences);
+            const sortedJobs = data.jobs.sort((a, b) => a.type.localeCompare(b.type));
+
+            updateList(sortedCFPs, 'cfps-list', isDeadlineFuture, formatCFP);
+            updateList(sortedConferences, 'conferences-list', isConferenceFuture, formatConference);
+            updateList(sortedJobs, 'jobs-list', () => true, formatJob);
+        }
+
+        // Initial update
+        updateLists();
+
+        // Update every day (86400000 milliseconds = 24 hours)
+        setInterval(updateLists, 86400000);
+
+        function toggleBibliography(card) {
+            card.classList.toggle('expanded');
+        }
+
+        // Function to load the bibliography content
+        async function loadBibliography() {
+            try {
+                const response = await fetch('newsletters/dec_phil_papers.html');
+                const text = await response.text();
+                const container = document.getElementById('papers-container');
+                container.innerHTML = text;
+            } catch (error) {
+                console.error('Error loading bibliography:', error);
+            }
+        }
+
+        // Load bibliography when page loads
+        document.addEventListener('DOMContentLoaded', loadBibliography);
+    </script>
+</body>
+</html>
