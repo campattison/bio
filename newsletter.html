@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Hub: Normative Philosophy of Computing</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/three"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --primary-color: #3498db;
@@ -168,23 +171,77 @@
             font-weight: 600;
             text-align: left;
         }
+
+        #globeViz {
+            width: 100%;
+            height: 500px;
+            background-color: #000011;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .month-button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px 10px;
+        }
+
+        .month-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .month-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #month-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Research Hub: Normative Philosophy of Computing</h1>
+        
+        <!-- Globe Section -->
+        <div class="section">
+            <h2>Conference Map</h2>
+            <div id="month-selector">
+                <button class="month-button active" data-month="all">All Conferences</button>
+            </div>
+            <div id="globeViz"></div>
+        </div>
+
+        <!-- CFPs Section -->
         <div class="section" id="cfps-section">
             <h2>Call for Papers</h2>
             <ul id="cfps-list"></ul>
         </div>
+
+        <!-- Conferences Section -->
         <div class="section" id="conferences-section">
             <h2>Upcoming Conferences and Events</h2>
             <ul id="conferences-list"></ul>
         </div>
+
+        <!-- Jobs Section -->
         <div class="section" id="jobs-section">
             <h2>Job Opportunities</h2>
             <ul id="jobs-list"></ul>
         </div>
+
+        <!-- Bibliography Section (Last) -->
         <div class="section" id="bibliography-section">
             <div class="bibliography-card" onclick="toggleBibliography(this)">
                 <div class="bibliography-header">
@@ -192,7 +249,6 @@
                     <span class="arrow">▼</span>
                 </div>
                 <div class="bibliography-content">
-                    <!-- dec_phil_papers.html content will be loaded here -->
                     <div id="papers-container"></div>
                 </div>
             </div>
@@ -200,6 +256,12 @@
     </div>
 
     <script>
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e);
+            // Prevent complete page failure
+            return false;
+        });
+
         const data = {
             cfps: [
                 {
@@ -223,43 +285,45 @@
                     title: "TeXne Conference",
                     date: "2025-02-01",
                     location: "Massachusetts Institute of Technology (MIT), Cambridge, MA, USA",
-                    url: "https://philevents.org/event/show/126054"
+                    url: "https://philevents.org/event/show/126054",
+                    lat: 42.3601,
+                    lng: -71.0942
                 },
                 {
                     title: "IASEAI '25: International Association for Safe and Ethical AI Inaugural Conference",
                     date: "2025-02-06",
                     location: "OECD La Muette Headquarters, Paris, France",
-                    url: "https://www.iaseai.org/conference"
+                    url: "https://www.iaseai.org/conference",
+                    lat: 48.8566,
+                    lng: 2.3522
                 },
                 {
                     title: "First International Conference on the Philosophy of Content Moderation",
                     date: "2025-04-12",
                     location: "Asilomar Conference Grounds, California, USA",
-                    url: "https://www.philmod.org/conference"
+                    url: "https://www.philmod.org/conference",
+                    lat: 36.6177,
+                    lng: -121.9166
                 },
                 {
                     title: "ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)",
                     date: "2025-06-23",
                     location: "Athens, Greece",
-                    url: "https://facctconference.org/2025/cfp"
+                    url: "https://facctconference.org/2025/cfp",
+                    lat: 37.9838,
+                    lng: 23.7275
                 }
             ],
             jobs: [
-                {
-                    title: "Postdoctoral Fellowships, Digital Life Initiative",
-                    location: "New York, NY",
-                    organization: "Cornell Tech",
-                    type: "Alt-Ac",
-                    url: "https://www.dli.tech.cornell.edu/postdocs",
-                    description: "Postdoctoral research in ethics, politics, and quality of life in digital societies, covering privacy, AI ethics, and platform governance."
-                },
                 {
                     title: "Policy Positions",
                     location: "Remote",
                     organization: "Apollo Research",
                     type: "Alt-Ac",
                     url: "https://jobs.lever.co/apolloresearch/f66ef22f-f96a-42cb-ada9-fd48ce0d5fda",
-                    description: "Research scientists, engineers, and software developers for AI safety evaluations and technical governance challenges."
+                    description: "Research scientists, engineers, and software developers for AI safety evaluations and technical governance challenges.",
+                    lat: null,
+                    lng: null
                 },
                 {
                     title: "Technology Policy Roles",
@@ -267,15 +331,9 @@
                     organization: "ACLU",
                     type: "Alt-Ac",
                     url: "https://www.aclu.org/careers/apply/?job=7742482002&type=national",
-                    description: "Roles focused on advancing civil liberties and addressing challenges posed by emerging technologies, including AI."
-                },
-                {
-                    title: "Research Opportunities",
-                    location: "Remote/US",
-                    organization: "RAND Corporation",
-                    type: "Alt-Ac",
-                    url: "https://x.com/ohlennart/status/1864368808091373696?s=12",
-                    description: "Roles in compute governance and technical AI policy, including positions on their Compute Team."
+                    description: "Roles focused on advancing civil liberties and addressing challenges posed by emerging technologies, including AI.",
+                    lat: 38.8977,
+                    lng: -77.0365
                 },
                 {
                     title: "Assistant/Associate/Full Professor, AI Governance",
@@ -283,7 +341,9 @@
                     organization: "Northeastern University",
                     type: "Academic",
                     url: "https://x.com/ohlennart/status/1864368808091373696?s=12",
-                    description: "Tenure-track faculty in AI governance, focusing on ethical, legal, and societal implications of AI technologies."
+                    description: "Tenure-track faculty in AI governance, focusing on ethical, legal, and societal implications of AI technologies.",
+                    lat: 42.3398,
+                    lng: -71.0892
                 },
                 {
                     title: "Lecturer in Philosophy",
@@ -291,7 +351,9 @@
                     organization: "University of Edinburgh",
                     type: "Academic",
                     url: "https://philjobs.org/job/show/27970",
-                    description: "Tenure-track position for philosophers specializing in ethics, political philosophy, or epistemology, with relevance to computing."
+                    description: "Tenure-track position for philosophers specializing in ethics, political philosophy, or epistemology, with relevance to computing.",
+                    lat: 55.9533,
+                    lng: -3.1883
                 },
                 {
                     title: "Faculty Positions in AI",
@@ -299,7 +361,9 @@
                     organization: "University of Maryland",
                     type: "Academic",
                     url: "https://ejobs.umd.edu/postings/124144",
-                    description: "30 tenure-track faculty positions in AI, with opportunities for interdisciplinary research."
+                    description: "30 tenure-track faculty positions in AI, with opportunities for interdisciplinary research.",
+                    lat: 38.9869,
+                    lng: -76.9426
                 },
                 {
                     title: "Assistant Professor of Philosophy",
@@ -307,7 +371,9 @@
                     organization: "University of North Carolina",
                     type: "Academic",
                     url: "https://unc.peopleadmin.com/postings/288557",
-                    description: "Tenure-Track position in Philosophy of Artificial Intelligence. Start date: July 1, 2025."
+                    description: "Tenure-Track position in Philosophy of Artificial Intelligence. Start date: July 1, 2025.",
+                    lat: 35.9132,
+                    lng: -79.0558
                 },
                 {
                     title: "AI Ethics Faculty Positions",
@@ -315,7 +381,9 @@
                     organization: "Hong Kong Universities",
                     type: "Academic",
                     url: "https://philjobs.org/job/show/28230",
-                    description: "One tenure track and one lecturer position in AI ethics, policy, and governance."
+                    description: "One tenure track and one lecturer position in AI ethics, policy, and governance.",
+                    lat: 22.3193,
+                    lng: 114.1694
                 }
             ]
         };
@@ -428,18 +496,249 @@
 
         // Function to load the bibliography content
         async function loadBibliography() {
+            const container = document.getElementById('papers-container');
+            if (!container) return;
+
             try {
                 const response = await fetch('newsletters/dec_phil_papers.html');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const text = await response.text();
-                const container = document.getElementById('papers-container');
                 container.innerHTML = text;
             } catch (error) {
                 console.error('Error loading bibliography:', error);
+                container.innerHTML = `
+                    <div style="padding: 20px; text-align: center;">
+                        <p>Error loading bibliography. Please try again later.</p>
+                        <button onclick="loadBibliography()">Retry</button>
+                    </div>
+                `;
             }
         }
 
         // Load bibliography when page loads
         document.addEventListener('DOMContentLoaded', loadBibliography);
+
+        let globe;
+        let selectedMonths = ['all'];
+
+        function createGlobe() {
+            try {
+                const globeContainer = document.getElementById('globeViz');
+                if (!globeContainer) {
+                    throw new Error('Globe container not found');
+                }
+
+                const width = globeContainer.clientWidth;
+                const height = 500;
+
+                globe = Globe()
+                    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                    .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+                    .width(width)
+                    .height(height)
+                    .showAtmosphere(true)
+                    .atmosphereColor('lightskyblue')
+                    .atmosphereAltitude(0.1)
+                    (globeContainer);
+
+                // Add error handling for texture loading
+                globe.onError(error => {
+                    console.error('Globe error:', error);
+                    globeContainer.innerHTML = 'Error loading globe visualization';
+                });
+
+                globe.controls().autoRotate = true;
+                globe.controls().autoRotateSpeed = 0.5;
+                
+                updateMonthButtons();
+                updateMarkers();
+
+                // Add window resize handler
+                window.addEventListener('resize', () => {
+                    globe.width(globeContainer.clientWidth);
+                });
+            } catch (error) {
+                console.error('Error creating globe:', error);
+                const container = document.getElementById('globeViz');
+                if (container) {
+                    container.innerHTML = 'Error initializing globe visualization';
+                }
+            }
+        }
+
+        function updateMonthButtons() {
+            const monthSelector = document.getElementById('month-selector');
+            if (!monthSelector) return;
+
+            monthSelector.innerHTML = ''; // Clear existing buttons
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            // Add "All" button first
+            const allButton = document.createElement('button');
+            allButton.className = 'month-button active';
+            allButton.setAttribute('data-month', 'all');
+            allButton.textContent = 'All';
+            monthSelector.appendChild(allButton);
+
+            const currentMonth = new Date().getMonth();
+            
+            // Add month buttons
+            for (let i = 0; i < 12; i++) {
+                const monthIndex = (currentMonth + i) % 12;
+                const button = document.createElement('button');
+                button.className = 'month-button';
+                button.setAttribute('data-month', monthIndex);
+                button.textContent = months[monthIndex];
+                monthSelector.appendChild(button);
+            }
+
+            // Add event listeners
+            document.querySelectorAll('.month-button').forEach(button => {
+                button.addEventListener('click', handleMonthButtonClick);
+            });
+        }
+
+        function handleMonthButtonClick() {
+            const month = this.dataset.month;
+            if (month === 'all') {
+                selectedMonths = ['all'];
+                document.querySelectorAll('.month-button').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            } else {
+                if (selectedMonths.includes('all')) {
+                    selectedMonths = [];
+                    document.querySelector('[data-month="all"]').classList.remove('active');
+                }
+                this.classList.toggle('active');
+                if (this.classList.contains('active')) {
+                    selectedMonths.push(month);
+                } else {
+                    selectedMonths = selectedMonths.filter(m => m !== month);
+                }
+                if (selectedMonths.length === 0) {
+                    selectedMonths = ['all'];
+                    document.querySelector('[data-month="all"]').classList.add('active');
+                }
+            }
+            updateMarkers();
+        }
+
+        function validateCoordinates(lat, lng) {
+            return !isNaN(lat) && !isNaN(lng) && 
+                   lat >= -90 && lat <= 90 && 
+                   lng >= -180 && lng <= 180;
+        }
+
+        function updateMarkers() {
+            const conferenceMarkers = data.conferences
+                .filter(conf => {
+                    if (!validateCoordinates(conf.lat, conf.lng)) {
+                        console.warn(`Invalid coordinates for conference: ${conf.title}`);
+                        return false;
+                    }
+                    const date = new Date(conf.date);
+                    if (isNaN(date.getTime())) {
+                        console.warn(`Invalid date for conference: ${conf.title}`);
+                        return false;
+                    }
+                    return selectedMonths.includes('all') || 
+                           selectedMonths.includes(date.getMonth().toString());
+                })
+                .map(conf => ({
+                    lat: conf.lat,
+                    lng: conf.lng,
+                    size: 0.5,
+                    color: '#00ff00',
+                    type: 'conference',
+                    label: `
+                        <div style="text-align: center; background-color: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px;">
+                            <strong>${conf.title}</strong><br>
+                            <span>${conf.date}<br>${conf.location}</span><br>
+                            <a href="${conf.url}" target="_blank">More information</a>
+                        </div>
+                    `,
+                    url: conf.url
+                }));
+
+            // Job markers (purple arrows)
+            const jobMarkers = data.jobs
+                .filter(job => job.lat && job.lng)  // Filter out remote positions
+                .map(job => ({
+                    lat: job.lat,
+                    lng: job.lng,
+                    size: 0.7,  // Slightly larger than conference markers
+                    color: job.type === 'Academic' ? '#9c27b0' : '#e91e63',  // Purple for academic, pink for alt-ac
+                    type: 'job',
+                    label: `
+                        <div style="text-align: center; background-color: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px;">
+                            <strong>${job.title}</strong><br>
+                            <span>${job.organization}<br>${job.location}</span><br>
+                            <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
+                            <a href="${job.url}" target="_blank">Apply Now</a>
+                        </div>
+                    `,
+                    url: job.url
+                }));
+
+            const allMarkers = [...conferenceMarkers, ...jobMarkers];
+
+            // Custom marker objects for different types
+            globe
+                .pointsData(allMarkers)
+                .pointAltitude(0.01)
+                .pointColor('color')
+                .pointLabel('label')
+                .pointRadius('size')
+                .customThreeObject(d => {
+                    if (d.type === 'job') {
+                        // Create arrow shape for jobs
+                        const cone = new THREE.Mesh(
+                            new THREE.ConeGeometry(0.3, 1, 8),
+                            new THREE.MeshLambertMaterial({ color: d.color })
+                        );
+                        cone.rotation.x = Math.PI;
+                        return cone;
+                    } else {
+                        // Create sphere for conferences
+                        return new THREE.Mesh(
+                            new THREE.SphereGeometry(0.3),
+                            new THREE.MeshLambertMaterial({ color: d.color })
+                        );
+                    }
+                })
+                .customThreeObjectUpdate((obj, d) => {
+                    Object.assign(obj.position, globe.getCoords(d.lat, d.lng, 0.1));
+                    if (d.type === 'job') {
+                        obj.lookAt(globe.getCoords(d.lat, d.lng, 0));
+                    }
+                })
+                .onPointClick(point => {
+                    if (point && point.url) {
+                        window.open(point.url, '_blank');
+                    }
+                });
+        }
+
+        // Add initialization error handling
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                createGlobe();
+                loadBibliography();
+                updateLists();
+            } catch (error) {
+                console.error('Initialization error:', error);
+                // Show user-friendly error message
+                document.body.innerHTML += `
+                    <div style="position: fixed; bottom: 20px; right: 20px; 
+                                background: #ff5252; color: white; padding: 10px; 
+                                border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        An error occurred. Please refresh the page.
+                    </div>
+                `;
+            }
+        });
     </script>
 </body>
 </html>
