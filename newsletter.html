@@ -598,27 +598,18 @@
                     .width(globeContainer.clientWidth)
                     .height(500)
                     .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
-                    .htmlElementsData(points => points)
-                    .htmlElement(d => {
-                        const el = document.createElement('div');
-                        el.innerHTML = d.label;
-                        el.style.display = 'none'; // Initially hidden
-                        el.style.position = 'absolute';
-                        el.style.pointerEvents = 'auto';
-                        el.style.whiteSpace = 'nowrap';
-                        return el;
-                    })
+                    .labelLabel(d => d.label)
+                    .labelAltitude(0.01)
+                    .labelDotRadius(0.3)
+                    .labelDotOrientation(() => 'right')
+                    .labelColor(() => 'white')
+                    .labelSize(1.5)
+                    .labelResolution(2)
                     .onPointHover(point => {
-                        // Show/hide tooltip
-                        const tooltips = document.querySelectorAll('.globe-tooltip');
-                        tooltips.forEach(tooltip => {
-                            if (tooltip.__data__ === point) {
-                                tooltip.style.display = 'block';
-                            } else {
-                                tooltip.style.display = 'none';
-                            }
-                        });
                         document.body.style.cursor = point ? 'pointer' : 'default';
+                    })
+                    .onPointClick(point => {
+                        if (point && point.url) window.open(point.url, '_blank');
                     });
 
                 // Mount globe
@@ -750,7 +741,10 @@
                 .pointColor('color')
                 .pointAltitude(0.01)
                 .pointRadius('size')
-                .pointResolution(32);
+                .pointResolution(32)
+                .labelText('label')
+                .labelLat(d => d.lat)
+                .labelLng(d => d.lng);
         }
 
         // Add initialization error handling
