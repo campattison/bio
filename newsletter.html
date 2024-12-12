@@ -63,10 +63,13 @@
 
         /* Header Styles */
         header {
-            background-color: var(--secondary-color);
-            padding: 2rem 1rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px var(--shadow-color);
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            margin: -2rem -2rem 3rem -2rem;
+            border-radius: 20px 20px 0 0;
+            color: white;
         }
 
         header .main-nav {
@@ -116,9 +119,12 @@
 
         /* Container and Section Styles */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .section {
@@ -127,6 +133,7 @@
             box-shadow: 0 4px 6px var(--shadow-color);
             padding: var(--spacing);
             margin-bottom: 30px;
+            overflow: hidden;
         }
 
         /* Card Grid and Card Styles */
@@ -682,20 +689,112 @@
                 // Mount the globe
                 globe(globeContainer);
 
-                // Force a resize event after mounting
-                window.dispatchEvent(new Event('resize'));
+                // Initialize markers after globe is mounted
+                const markers = [];
+                
+                // Add conferences (using blue for better colorblind accessibility)
+                data.conferences.forEach(conf => {
+                    if (conf.lat && conf.lng) {
+                        markers.push({
+                            lat: conf.lat,
+                            lng: conf.lng,
+                            size: 0.8,
+                            color: '#2196F3',  // Accessible blue
+                            type: 'conference',
+                            data: conf
+                        });
+                    }
+                });
 
-                // Ensure controls are set immediately after mounting
-                if (globe.controls()) {
-                    globe.controls().enableZoom = true;
-                    globe.controls().autoRotate = false;
-                    globe.controls().enablePan = true;
-                    globe.controls().update();
-                }
+                // Add jobs (using orange for better colorblind accessibility)
+                data.jobs.forEach(job => {
+                    if (job.lat && job.lng) {
+                        markers.push({
+                            lat: job.lat,
+                            lng: job.lng,
+                            size: 0.8,
+                            color: '#FF9800',  // Accessible orange
+                            type: 'job',
+                            data: job
+                        });
+                    }
+                });
 
-                // Rest of your code remains the same...
+                // Add markers to globe
+                globe
+                    .pointsData(markers)
+                    .pointColor('color')
+                    .pointAltitude(0.01)
+                    .pointRadius('size')
+                    .pointResolution(32);
 
-                // Update resize handler to be more robust
+                // Create tooltip element
+                const tooltip = document.createElement('div');
+                tooltip.className = 'globe-tooltip';
+                tooltip.style.display = 'none';
+                globeContainer.appendChild(tooltip);
+
+                // Handle hover events
+                globe.onPointHover(point => {
+                    if (point === null) {
+                        tooltip.style.display = 'none';
+                        document.body.style.cursor = 'default';
+                        return;
+                    }
+
+                    document.body.style.cursor = 'pointer';
+                    const { data, type } = point;
+                    
+                    const tooltipContent = type === 'conference' 
+                        ? `
+                            <strong>${data.title}</strong>
+                            <br>
+                            <span class="tooltip-date">${data.date}</span>
+                            <br>
+                            <span class="tooltip-location">${data.location}</span>
+                        `
+                        : `
+                            <strong>${data.title}</strong>
+                            <br>
+                            <span class="tooltip-org">${data.organization}</span>
+                            <br>
+                            <span class="tooltip-location">${data.location}</span>
+                            <br>
+                            <span class="tooltip-type">${data.type}</span>
+                        `;
+
+                    tooltip.innerHTML = tooltipContent;
+                    tooltip.style.display = 'block';
+
+                    // Update tooltip position on mousemove
+                    globeContainer.onmousemove = (e) => {
+                        const rect = globeContainer.getBoundingClientRect();
+                        tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
+                        tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+                    };
+                });
+
+                // Handle click events
+                globe.onPointClick(point => {
+                    if (point && point.data.url) {
+                        window.open(point.data.url, '_blank');
+                    }
+                });
+
+                // Add legend
+                const legend = document.createElement('div');
+                legend.className = 'globe-legend';
+                legend.innerHTML = `
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #2196F3;"></span> Conferences
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #FF9800;"></span> Jobs
+                    </div>
+                `;
+                globeContainer.appendChild(legend);
+
+                // Handle window resize
                 window.addEventListener('resize', () => {
                     const width = globeContainer.clientWidth;
                     globe.width(width);
