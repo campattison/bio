@@ -638,17 +638,35 @@
                     .backgroundColor('#ffffff')  // White background for better contrast
                     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
                     .width(globeContainer.clientWidth)
-                    .height(500);
+                    .height(500)
+                    // Set initial position during initialization
+                    .pointOfView({
+                        lat: 20,  // Slightly adjusted for better view
+                        lng: 0,
+                        altitude: 2.0  // Closer view
+                    });
 
                 // Mount the globe
                 globe(globeContainer);
 
+                // Ensure controls are set immediately after mounting
+                if (globe.controls()) {
+                    globe.controls().enableZoom = true;
+                    globe.controls().autoRotate = false;
+                    globe.controls().enablePan = true;
+                    globe.controls().update();
+                }
+
                 // Initialize markers only after globe is ready
                 globe.onGlobeReady(() => {
-                    // Set initial view
-                    globe.pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
-                    
-                    // Add markers for conferences and jobs
+                    // Ensure position is set again after globe is fully ready
+                    globe.pointOfView({
+                        lat: 20,
+                        lng: 0,
+                        altitude: 2.0
+                    });
+
+                    // Rest of your marker code remains the same...
                     const markers = [];
                     
                     // Add conferences (using blue for better colorblind accessibility)
@@ -755,10 +773,24 @@
                     globeContainer.appendChild(legend);
                 });
 
+                // Add a final position check after a short delay
+                setTimeout(() => {
+                    if (globe && globe.controls()) {
+                        globe.pointOfView({
+                            lat: 20,
+                            lng: 0,
+                            altitude: 2.0
+                        });
+                        globe.controls().update();
+                    }
+                }, 100);
+
                 // Handle window resize
                 window.addEventListener('resize', () => {
                     globe.width(globeContainer.clientWidth);
                 });
+
+                return globe;
 
             } catch (error) {
                 console.error('Globe initialization error:', error);
