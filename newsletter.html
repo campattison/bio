@@ -174,10 +174,16 @@
 
         #globeViz {
             position: relative;
-            min-height: 500px;
+            height: 500px;
             width: 100%;
-            background-color: #000011;
+            background-color: white;
             border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        #globeViz canvas {
+            width: 100% !important;
+            height: 100% !important;
         }
         
         .globe-loading {
@@ -544,10 +550,10 @@
             try {
                 // Create new globe instance
                 globe = Globe()
-                    .backgroundColor('#000011')
+                    .backgroundColor('white')
                     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
                     .width(globeContainer.clientWidth)
-                    .height(500)
+                    .height(globeContainer.clientHeight)
                     .pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
 
                 // Mount globe
@@ -586,7 +592,11 @@
                         lng: conf.lng,
                         size: 0.5,
                         color: '#ff4444',
-                        label: `${conf.title}<br>${conf.date}<br>${conf.location}`,
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
+                            <strong>${conf.title}</strong><br>
+                            ${conf.date}<br>
+                            ${conf.location}
+                        </div>`,
                         url: conf.url
                     });
                 }
@@ -600,7 +610,11 @@
                         lng: job.lng,
                         size: 0.5,
                         color: job.type === 'Academic' ? '#9c27b0' : '#4CAF50',
-                        label: `${job.title}<br>${job.organization}<br>${job.location}`,
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
+                            <strong>${job.title}</strong><br>
+                            ${job.organization}<br>
+                            ${job.location}
+                        </div>`,
                         url: job.url
                     });
                 }
