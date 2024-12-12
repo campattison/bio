@@ -598,17 +598,28 @@
                     .width(globeContainer.clientWidth)
                     .height(500)
                     .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
-                    .pointLabel('label')  // Enable labels
-                    .labelLat(d => d.lat)
-                    .labelLng(d => d.lng)
-                    .labelAltitude(0.01)
-                    .labelDotRadius(0.3)
-                    .labelDotOrientation(() => 'right')
-                    .labelColor(() => 'color')
-                    .labelText('label')
-                    .labelSize(1)
-                    .labelResolution(0)
-                    .labelLabel(d => d.label);
+                    .htmlElementsData(points => points)
+                    .htmlElement(d => {
+                        const el = document.createElement('div');
+                        el.innerHTML = d.label;
+                        el.style.display = 'none'; // Initially hidden
+                        el.style.position = 'absolute';
+                        el.style.pointerEvents = 'auto';
+                        el.style.whiteSpace = 'nowrap';
+                        return el;
+                    })
+                    .onPointHover(point => {
+                        // Show/hide tooltip
+                        const tooltips = document.querySelectorAll('.globe-tooltip');
+                        tooltips.forEach(tooltip => {
+                            if (tooltip.__data__ === point) {
+                                tooltip.style.display = 'block';
+                            } else {
+                                tooltip.style.display = 'none';
+                            }
+                        });
+                        document.body.style.cursor = point ? 'pointer' : 'default';
+                    });
 
                 // Mount globe
                 globe(globeContainer);
@@ -646,7 +657,7 @@
                         lng: conf.lng,
                         size: 0.8,
                         color: '#ff6b6b',
-                        label: `<div style="
+                        label: `<div class="globe-tooltip" style="
                             background: rgba(0, 0, 0, 0.85);
                             color: white;
                             padding: 15px;
@@ -739,14 +750,7 @@
                 .pointColor('color')
                 .pointAltitude(0.01)
                 .pointRadius('size')
-                .pointLabel('label')
-                .pointResolution(32)
-                .onPointHover(point => {
-                    document.body.style.cursor = point ? 'pointer' : 'default';
-                })
-                .onPointClick(point => {
-                    if (point.url) window.open(point.url, '_blank');
-                });
+                .pointResolution(32);
         }
 
         // Add initialization error handling
