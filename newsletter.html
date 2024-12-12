@@ -176,9 +176,12 @@
             position: relative;
             min-height: 500px;
             width: 100%;
-            background-color: #1a1a1a;
+            background-color: #000011;
             border-radius: var(--border-radius);
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .globe-loading {
@@ -235,6 +238,16 @@
             text-align: center;
             padding: 20px;
             font-size: 1.2em;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+        .marker {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
@@ -572,8 +585,8 @@
                 
                 // Create new globe instance
                 globe = Globe()
-                    .backgroundColor('#1a1a1a')
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                    .backgroundColor('#000011')
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
                     .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
                     .width(globeContainer.clientWidth)
                     .height(500)
@@ -581,19 +594,18 @@
                     .showAtmosphere(true)
                     .atmosphereColor('#ffffff')
                     .atmosphereAltitude(0.15)
-                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
-                    .arcsData([])
-                    .arcColor((d) => d.color)
-                    .arcAltitude((d) => d.arcAlt)
-                    .arcStroke((d) => d.stroke)
-                    .arcDashLength(0.9)
-                    .arcDashGap(4)
-                    .arcDashAnimateTime(1000)
-                    .pointsData([])
-                    .pointColor((d) => d.color)
-                    .pointAltitude(0.01)
-                    .pointRadius((d) => d.size)
-                    .pointsMerge(true);
+                    .pointOfView({ lat: 30, lng: 0, altitude: 2 })
+                    .customLayerData([{}])
+                    .customThreeObject(() => {
+                        return new THREE.Mesh(
+                            new THREE.SphereGeometry(100, 75, 75),
+                            new THREE.MeshPhongMaterial({
+                                color: 'white',
+                                transparent: true,
+                                opacity: 0.05
+                            })
+                        );
+                    });
 
                 // Mount globe
                 globe(globeContainer);
@@ -605,9 +617,11 @@
                 // Setup controls
                 setTimeout(() => {
                     if (globe && globe.controls()) {
-                        globe.controls().autoRotate = false;  // Disable auto-rotation
+                        globe.controls().autoRotate = false;
                         globe.controls().enableZoom = true;
                         globe.controls().enablePan = true;
+                        globe.controls().minDistance = 200;
+                        globe.controls().maxDistance = 400;
                         globe.controls().update();
                         
                         updateMonthButtons();
@@ -715,38 +729,81 @@
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 0.5,
-                        color: '#ff0000'
+                        size: 1,
+                        color: '#ff4444',
+                        name: conf.title,
+                        url: conf.url,
+                        type: 'conference',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${conf.title}</strong><br>
+                                <span>${conf.date}<br>${conf.location}</span><br>
+                                <span style="color: #ff4444; cursor: pointer;">Click to learn more</span>
+                            </div>
+                        `
                     });
                 }
             });
             
             // Process job postings with valid coordinates
             data.jobs.forEach(job => {
-                if (job.lat && job.lng) {  // Only process jobs with coordinates
+                if (job.lat && job.lng) {
+                    const color = job.type === 'Academic' ? '#9c27b0' : '#4CAF50';
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 0.5,
-                        color: job.type === 'Academic' ? '#9c27b0' : '#00ff00'
+                        size: 1,
+                        color: color,
+                        name: job.title,
+                        url: job.url,
+                        type: 'job',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${job.title}</strong><br>
+                                <span>${job.organization}<br>${job.location}</span><br>
+                                <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
+                                <span style="color: ${color}; cursor: pointer;">Click to apply</span>
+                            </div>
+                        `
                     });
                     
-                    // Add arc from job location to a point slightly above it
+                    // Add pulsing arc
                     arcs.push({
                         startLat: job.lat,
                         startLng: job.lng,
                         endLat: job.lat + 0.5,
                         endLng: job.lng,
-                        color: job.type === 'Academic' ? '#9c27b0' : '#00ff00',
-                        arcAlt: 0.2,
-                        stroke: 2
+                        color: color,
+                        arcAlt: 0.3,
+                        stroke: 3
                     });
                 }
             });
             
             // Update globe data
-            globe.pointsData(points);
-            globe.arcsData(arcs);
+            globe
+                .pointsData(points)
+                .pointColor('color')
+                .pointAltitude(0.01)
+                .pointRadius('size')
+                .pointsMerge(true)
+                .pointLabel('tooltip')
+                .onPointClick(point => {
+                    if (point.url) {
+                        window.open(point.url, '_blank');
+                    }
+                })
+                .onPointHover(point => {
+                    document.body.style.cursor = point ? 'pointer' : 'default';
+                })
+                .arcsData(arcs)
+                .arcColor('color')
+                .arcAltitude('arcAlt')
+                .arcStroke('stroke')
+                .arcDashLength(0.5)
+                .arcDashGap(0.1)
+                .arcDashInitialGap(() => Math.random())
+                .arcDashAnimateTime(2000);
         }
 
         function shouldShowMarker(month) {
