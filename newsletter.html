@@ -702,11 +702,36 @@
                         lng: conf.lng,
                         size: 0.8,
                         color: '#ff4444',
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px; pointer-events: auto;">
-                            <strong>${conf.title}</strong><br>
-                            ${conf.date}<br>
-                            ${conf.location}<br>
-                            <span style="color: #ff4444; font-size: 0.9em; margin-top: 5px; display: inline-block;">Click to learn more</span>
+                        label: `<div style="
+                            background: rgba(0, 0, 0, 0.85);
+                            color: white;
+                            padding: 15px;
+                            border-radius: 8px;
+                            min-width: 220px;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                            backdrop-filter: blur(5px);
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            font-family: 'Roboto', sans-serif;
+                            pointer-events: auto;
+                            position: absolute;
+                            z-index: 1000;
+                        ">
+                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
+                                ${conf.title}
+                            </div>
+                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
+                                <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> ${conf.date}
+                            </div>
+                            <div style="font-size: 0.9em; margin-bottom: 8px; color: rgba(255, 255, 255, 0.9);">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${conf.location}
+                            </div>
+                            <div style="
+                                font-size: 0.8em;
+                                color: #ff6b6b;
+                                margin-top: 5px;
+                                display: inline-block;
+                                cursor: pointer;
+                            ">Click to learn more →</div>
                         </div>`,
                         url: conf.url
                     });
@@ -716,18 +741,48 @@
             // Add jobs
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
-                    const color = job.type === 'Academic' ? '#9c27b0' : '#4CAF50';
+                    const color = job.type === 'Academic' ? '#ce93d8' : '#81c784';
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
                         size: 0.8,
                         color: color,
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px; pointer-events: auto;">
-                            <strong>${job.title}</strong><br>
-                            ${job.organization}<br>
-                            ${job.location}<br>
-                            <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
-                            <span style="color: ${color}; font-size: 0.9em; display: inline-block;">Click to apply</span>
+                        label: `<div style="
+                            background: rgba(0, 0, 0, 0.85);
+                            color: white;
+                            padding: 15px;
+                            border-radius: 8px;
+                            min-width: 220px;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                            backdrop-filter: blur(5px);
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            font-family: 'Roboto', sans-serif;
+                            pointer-events: auto;
+                            position: absolute;
+                            z-index: 1000;
+                        ">
+                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
+                                ${job.title}
+                            </div>
+                            <div style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9); margin-bottom: 4px;">
+                                ${job.organization}
+                            </div>
+                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${job.location}
+                            </div>
+                            <div style="
+                                font-size: 0.85em;
+                                color: rgba(255, 255, 255, 0.8);
+                                margin: 8px 0;
+                                line-height: 1.4;
+                            ">${job.description}</div>
+                            <div style="
+                                font-size: 0.8em;
+                                color: ${color};
+                                margin-top: 5px;
+                                display: inline-block;
+                                cursor: pointer;
+                            ">Click to apply →</div>
                         </div>`,
                         url: job.url
                     });
@@ -741,7 +796,7 @@
                 .pointAltitude(0.01)
                 .pointRadius('size')
                 .pointLabel('label')
-                .pointResolution(32)  // Increase point resolution
+                .pointResolution(32)
                 .onPointHover(point => {
                     document.body.style.cursor = point ? 'pointer' : 'default';
                 })
