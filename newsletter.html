@@ -22,7 +22,7 @@
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
             --background-color: #f5f7fa;
-            --text-color: #ffffff;
+            --text-color: #333333;
             --card-background: #ffffff;
             --shadow-color: rgba(0, 0, 0, 0.1);
             --border-radius: 12px;
@@ -59,31 +59,55 @@
         }
 
         /* Header Styles */
-        .profile-header {
-            text-align: center;
-            padding: 2rem 1rem;
+        header {
             background-color: var(--secondary-color);
+            padding: 2rem 1rem;
             margin-bottom: 2rem;
             box-shadow: 0 2px 4px var(--shadow-color);
         }
 
-        .profile-header h1 {
+        header .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        header .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        header .main-nav a:hover,
+        header .main-nav a.active {
+            background-color: var(--primary-color);
+        }
+
+        header .profile-header {
+            text-align: center;
+            color: white;  /* This ensures header text is white regardless of global text color */
+        }
+
+        header .profile-header h1 {
             color: white;
             margin-bottom: 0.5rem;
         }
 
-        .subtitle {
+        header .profile-header .subtitle {
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 1rem;
         }
 
-        .contact-info a {
+        header .profile-header .contact-info a {
             color: white;
             text-decoration: none;
             transition: opacity 0.3s;
         }
 
-        .contact-info a:hover {
+        header .profile-header .contact-info a:hover {
             opacity: 0.8;
         }
 
@@ -248,7 +272,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .main-nav {
+            header .main-nav {
                 flex-direction: column;
                 align-items: center;
                 gap: 1rem;
