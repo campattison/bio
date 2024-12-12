@@ -187,40 +187,56 @@
             position: relative;
             height: 500px;
             width: 100%;
-            background-color: #000011;
-            border-radius: var(--border-radius);
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
         }
 
-        .globe-loading,
-        .globe-error {
+        .globe-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 200px;
+        }
+
+        .globe-legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .globe-loading, .globe-error {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
             text-align: center;
-            background: rgba(0,0,0,0.7);
-            padding: 20px;
-            border-radius: 8px;
-            z-index: 1000;
-        }
-
-        /* Globe Tooltip Styles */
-        .globe-tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             padding: 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            line-height: 1.4;
-            pointer-events: none;
-            transition: all 0.2s ease;
-            z-index: 1000;
-            max-width: 300px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
+            border-radius: 4px;
         }
 
         /* Responsive Design */
@@ -610,145 +626,148 @@
         // Load bibliography when page loads
         document.addEventListener('DOMContentLoaded', loadBibliography);
 
-        let globe = null;
-
         function createGlobe() {
             const globeContainer = document.getElementById('globeViz');
             
+            // Clear any existing content
+            globeContainer.innerHTML = '<div class="globe-loading">Loading visualization...</div>';
+            
             try {
-                // Create new globe instance
-                globe = Globe()
-                    .backgroundColor('white')
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+                // Initialize globe with minimal settings
+                const globe = Globe()
+                    .backgroundColor('#ffffff')  // White background for better contrast
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
                     .width(globeContainer.clientWidth)
-                    .height(500)
-                    .showGlobe(true)
-                    .showAtmosphere(true)
-                    .atmosphereColor('#ffffff')
-                    .atmosphereAltitude(0.15);
+                    .height(500);
 
-                // Mount globe
+                // Mount the globe
                 globe(globeContainer);
 
-                // Wait for globe to initialize before setting position
-                setTimeout(() => {
-                    if (globe && globe.controls()) {
-                        globe.pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
-                        globe.controls().autoRotate = false;
-                        globe.controls().enableZoom = true;
-                        globe.controls().update();
-                    }
-                }, 1000);
+                // Initialize markers only after globe is ready
+                globe.onGlobeReady(() => {
+                    // Set initial view
+                    globe.pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
+                    
+                    // Add markers for conferences and jobs
+                    const markers = [];
+                    
+                    // Add conferences (using blue for better colorblind accessibility)
+                    data.conferences.forEach(conf => {
+                        if (conf.lat && conf.lng) {
+                            markers.push({
+                                lat: conf.lat,
+                                lng: conf.lng,
+                                size: 0.8,
+                                color: '#2196F3',  // Accessible blue
+                                type: 'conference',
+                                data: conf
+                            });
+                        }
+                    });
 
-                // Handle window resizing
+                    // Add jobs (using orange for better colorblind accessibility)
+                    data.jobs.forEach(job => {
+                        if (job.lat && job.lng) {
+                            markers.push({
+                                lat: job.lat,
+                                lng: job.lng,
+                                size: 0.8,
+                                color: '#FF9800',  // Accessible orange
+                                type: 'job',
+                                data: job
+                            });
+                        }
+                    });
+
+                    // Add markers to globe
+                    globe
+                        .pointsData(markers)
+                        .pointColor('color')
+                        .pointAltitude(0.01)
+                        .pointRadius('size')
+                        .pointResolution(32);
+
+                    // Create tooltip element
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'globe-tooltip';
+                    tooltip.style.display = 'none';
+                    globeContainer.appendChild(tooltip);
+
+                    // Handle hover events
+                    globe.onPointHover(point => {
+                        if (point === null) {
+                            tooltip.style.display = 'none';
+                            document.body.style.cursor = 'default';
+                            return;
+                        }
+
+                        document.body.style.cursor = 'pointer';
+                        const { data, type } = point;
+                        
+                        // Position tooltip near mouse
+                        const tooltipContent = type === 'conference' 
+                            ? `
+                                <strong>${data.title}</strong>
+                                <br>
+                                <span class="tooltip-date">${data.date}</span>
+                                <br>
+                                <span class="tooltip-location">${data.location}</span>
+                            `
+                            : `
+                                <strong>${data.title}</strong>
+                                <br>
+                                <span class="tooltip-org">${data.organization}</span>
+                                <br>
+                                <span class="tooltip-location">${data.location}</span>
+                                <br>
+                                <span class="tooltip-type">${data.type}</span>
+                            `;
+
+                        tooltip.innerHTML = tooltipContent;
+                        tooltip.style.display = 'block';
+
+                        // Update tooltip position on mousemove
+                        globeContainer.onmousemove = (e) => {
+                            const rect = globeContainer.getBoundingClientRect();
+                            tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
+                            tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+                        };
+                    });
+
+                    // Handle click events
+                    globe.onPointClick(point => {
+                        if (point && point.data.url) {
+                            window.open(point.data.url, '_blank');
+                        }
+                    });
+
+                    // Add legend
+                    const legend = document.createElement('div');
+                    legend.className = 'globe-legend';
+                    legend.innerHTML = `
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background: #2196F3;"></span> Conferences
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background: #FF9800;"></span> Jobs
+                        </div>
+                    `;
+                    globeContainer.appendChild(legend);
+                });
+
+                // Handle window resize
                 window.addEventListener('resize', () => {
                     globe.width(globeContainer.clientWidth);
                 });
 
-                updateMarkers();
-                return globe;
             } catch (error) {
                 console.error('Globe initialization error:', error);
                 globeContainer.innerHTML = `
                     <div class="globe-error">
-                        Failed to load globe visualization.<br>
-                        <button onclick="location.reload()" style="margin-top: 10px;">Retry</button>
+                        Unable to load visualization. Please try refreshing the page.
                     </div>
                 `;
             }
-        }
-
-        function updateMarkers() {
-            if (!globe) return;
-            
-            const points = [];
-            
-            // Process conferences
-            data.conferences.forEach(conf => {
-                if (conf.lat && conf.lng) {
-                    points.push({
-                        lat: conf.lat,
-                        lng: conf.lng,
-                        size: 1.2,
-                        color: '#ff4444',
-                        name: conf.title,
-                        url: conf.url,
-                        type: 'conference',
-                        label: `
-                            <div class="globe-tooltip">
-                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
-                                    ${conf.title}
-                                </div>
-                                <div style="margin-bottom: 5px;">
-                                    <i class="fas fa-calendar-alt"></i> ${conf.date}
-                                </div>
-                                <div style="margin-bottom: 8px;">
-                                    <i class="fas fa-map-marker-alt"></i> ${conf.location}
-                                </div>
-                                <div style="color: #ff4444; font-size: 0.9em;">
-                                    Click to learn more →
-                                </div>
-                            </div>
-                        `
-                    });
-                }
-            });
-            
-            // Process job postings
-            data.jobs.forEach(job => {
-                if (job.lat && job.lng) {
-                    const color = job.type === 'Academic' ? '#ce93d8' : '#81c784';
-                    points.push({
-                        lat: job.lat,
-                        lng: job.lng,
-                        size: 1.2,
-                        color: color,
-                        name: job.title,
-                        url: job.url,
-                        type: 'job',
-                        label: `
-                            <div class="globe-tooltip">
-                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
-                                    ${job.title}
-                                </div>
-                                <div style="margin-bottom: 5px;">
-                                    <i class="fas fa-building"></i> ${job.organization}
-                                </div>
-                                <div style="margin-bottom: 5px;">
-                                    <i class="fas fa-map-marker-alt"></i> ${job.location}
-                                </div>
-                                <div style="margin-bottom: 8px; font-size: 0.9em;">
-                                    ${job.description}
-                                </div>
-                                <div style="color: ${color}; font-size: 0.9em;">
-                                    Click to apply →
-                                </div>
-                            </div>
-                        `
-                    });
-                }
-            });
-            
-            // Update globe with enhanced tooltips
-            globe
-                .pointsData(points)
-                .pointColor('color')
-                .pointAltitude(0.01)
-                .pointRadius('size')
-                .pointsMerge(true)
-                .labelText('label')
-                .labelSize(1)
-                .labelDotRadius(0.5)
-                .labelDotOrientation(() => 'right')
-                .labelColor(() => 'white')
-                .onPointHover(point => {
-                    document.body.style.cursor = point ? 'pointer' : 'default';
-                })
-                .onPointClick(point => {
-                    if (point && point.url) {
-                        window.open(point.url, '_blank');
-                    }
-                });
         }
 
         // Add initialization error handling
