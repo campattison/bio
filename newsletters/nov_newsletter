@@ -1,0 +1,213 @@
+Subscribed
+
+Welcome (back) 
+
+RIP the old listserv. Time to try this. A quick word about what I’m trying to do.
+
+There’s a lot of demand for ~analytic philosophers of computing, working on normative questions. Not many places are training philosophers to meet that demand though. And the (growing) community of practice is a bit disconnected.
+
+There’s a lot of self-assembly going on, folks disparately facing very similar challenges (and successes). Lots of us asking questions like: how can I stay on top of the technical literature? Is it possible for (slow) philosophy to keep up with such a fast-moving field as AI? How do I square disciplinary incentives with the desire to actually affect what’s happening in AI? How big are the changes we’re really likely to see? Has deep learning hit a wall?1 &c
+
+These questions are all easier to answer together.
+
+I love this field. I like helping people do well in it. I like it when philosophers are at the table with the other disciplines, and with government and industry (and I like helping people from other fields get into philosophy). So helping all that happen is the point of this newsletter.
+
+What can you expect?
+
+I’ve got help now! (Thanks Cameron!) So there’s going to be more content. Events will alert you to upcoming events and CFPs. Opportunities is for jobs (especially alt-ac ones unlikely to be on philjobs), doctoral fellowships, training opportunities. Links is stuff we’ve found interesting in the MINT lab. Papers, will now include *pre-prints*. Onboarding will stay roughly the same each newsletter, it’s a list of resources that my lab has found helpful in getting started working on normative philosophy of computing, or choosing e.g. thesis topics.
+
+How can you help?
+
+MINT is a big group, a lot crosses our radar. Not everything, though. If you want to share your work with this group, send it to us. Same for anything else you’d like to get out to our subscribers. That’s ~500 folks as of now—you can help out by sending people to https://mintresearch.org/list to sign up.
+
+Meanwhile find me on Bluesky or Twitter.
+
+November Highlights 
+
+Check out the new Safe and Ethical AI conference, as well as the inaugural PhilMod conference in Asilomar. FAccT deadline is coming up in January—the best interdisciplinary venue for philosophers working in AI ethics and safety by far. Excellent fellowships for grad students in AI ethics and safety, postdocs/alt-ac roles outside of philosophy, a raft of new papers and research project ideas across AI governance, ethics and safety.
+
+And sneak preview: we’re going to be putting out a CFA soon for a normative philosophy of computing workshop at the ANU beach campus in early 2025, with a special focus on aesthetics…
+
+Events:
+
+TeXne Conference
+
+Date: February 1, 2025
+
+Location: Massachusetts Institute of Technology (MIT), Cambridge, MA, USA
+
+Link: https://philevents.org/event/show/126054
+
+TeXne explores interdisciplinary insights into technology ethics, with a focus on both theoretical and applied questions about AI, robotics, and digital governance.
+
+IASEAI ’25: International Association for Safe and Ethical AI Inaugural Conference
+
+Date: February 6, 2025
+
+Submission deadline: Nov 24, 2024
+
+Location: OECD La Muette Headquarters, Paris, France
+
+Link: https://www.iaseai.org/conference
+
+The inaugural IASEAI conference aims to set standards for the safe and ethical development of AI, with discussions on regulatory frameworks, best practices, and international collaboration in AI ethics.
+
+First International Conference on the Philosophy of Content Moderation
+
+Date: April 12-15, 2025
+
+Submission Deadline: December 15th, 2024
+
+Location: Asilomar Conference Grounds, California, USA
+
+Link: https://www.philmod.org/conference
+
+To celebrate its second anniversary, PhilMod is hosting its first international conference, inviting abstracts on the normative aspects of content moderation and platform policy. Topics include freedom of expression, harmful speech, algorithmic power, and the ethics of automated moderation. Abstracts from philosophers, Trust & Safety practitioners, and scholars in related fields are welcome.
+
+ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)
+
+Date: c. June 23-6 2025
+
+Submission Deadlines: Abstracts January 15, 2025; Full papers due January 22, 2025
+
+Location: Athens, Greece
+
+Link: https://facctconference.org/2025/cfp
+
+Submissions are invited for the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT). FAccT is an interdisciplinary conference dedicated to bringing together a diverse community of scholars advancing research in responsible, safe, ethical, and trustworthy computing. Research from all fields is welcome, including algorithmic, statistical, human-centered, theoretical, critical, legal, and philosophical research.
+
+Opportunities
+
+AIDE Summer Program: Ethics of Artificial Intelligence and Data Ethics
+
+Date: Summer 2025
+
+Deadline: January 15th, 2025
+
+Location: Northeastern University, Boston, MA, USA
+
+Link: https://cssh.northeastern.edu/ethics/aide-summer/
+
+The AIDE Summer Program at Northeastern University’s Ethics Institute is an immersive, in-person summer school designed for graduate students with a background in applied ethics, ethical theory, or philosophy of science. The program aims to strengthen participants’ research skills in AI ethics, data ethics, and the philosophy of technology. Focusing on creating AI and machine learning systems that foster human flourishing, AIDE provides the ethical and technical training needed to build a robust, interdisciplinary AI ethics research community. Participants will benefit from the expertise of core faculty and gain hands-on experience in a collaborative environment.
+
+Global AI Safety Fellowship 2025
+
+Date: March 2025 onward
+
+Link: https://aisafetyfellowship.org
+
+Submission Deadline: Rolling applications until December 31, 2024
+
+Impact Academy’s Global AI Safety Fellowship is a 3–6 month fully-funded program for exceptional STEM talent to work with leading AI safety organizations such as CHAI (UC Berkeley), Conjecture, FAR.AI, and Mila. Fellows receive financial support, mentorship, and hands-on opportunities to contribute to critical research areas like adversarial robustness, scalable oversight, cognitive emulation, and mechanistic interpretability. This program aims to foster the next generation of AI safety researchers, with placements offering long-term career opportunities for outstanding participants.
+
+DLI Postdoctoral Fellowships 2025-26
+
+Location: Cornell Tech, New York City, USA
+
+Link: https://www.dli.tech.cornell.edu/postdocs
+
+Deadline: December 16, 2024
+
+The Digital Life Initiative (DLI) at Cornell Tech offers postdoctoral research fellowships for 2025-26, supporting work on ethics, politics, and quality of life in digital societies. Topics include privacy, bias, discrimination, AI ethics, and governance. Applications are welcome from diverse disciplines, including computer science, philosophy, law, and public policy.
+
+Research Scholar, Technology and International Affairs, Carnegie Endowment for International Peace
+
+Location: Carnegie Endowment for International Peace, Washington DC
+
+Link: https://carnegieendowment.applicantpro.com/jobs/3561710
+
+Deadline: December 14, 2024
+
+The Carnegie Endowment for International Peace, a unique global network of policy research centers, seeks a research scholar for its Washington, D.C.-based Technology and International Affairs program. Candidates for this position will be considered at the Fellow or Senior Fellow levels.
+
+Links
+
+If you’re on BlueSky, you can find good AI starter packs here, and FAccT researchers here (someone should do one for philosophy of computing).
+
+I wrote about the wild story of the first AI Agent millionaire on Tech Policy Press: AI agents will be raptors testing the fences of our economic and social institutions.
+
+What will a world look like with 100 billion digital human beings? Altera shared their tech report on Project Sid – a glimpse at the first AI agent civilization (powered by their new PIANO architecture). https://github.com/altera-al/project-sid
+
+What would AI agents need to do to establish resilient rogue populations? METR published a report on how likely rogue AI populations are to reach a large scale (not very as yet): https://metr.org/blog/2024-11-12-rogue-replication-threat-model/
+
+Y1 (self) report card for UK AI Safety Institute: impressive! https://www.aisi.gov.uk/work/our-first-year
+
+Some recent cool AI papers: Targeted Manipulation and Deception Emerge When Optimizing LLMs for User Feedback; What Features in Prompts Jailbreak LLMs? Investigating the Mechanisms Behind Attacks; Conscious Artificial Intelligence and Biological Naturalism; Biased AI Can Influence Political Decision-Making; How Transformers Solve Propositional Logic Problems: A Mechanistic Analysis; Imagining and Building Wise Machines: The Centrality of AI Metacognition
+
+To keep up with the latest in jailbreaking follow https://x.com/elder_plinius, https://x.com/AITechnoPagan, https://x.com/repligate, https://x.com/amplifiedamp
+
+Papers
+
+Taking AI Welfare Seriously
+
+Authors: Robert Long, Jeff Sebo, et al. | arXiv Preprint
+
+Long, Sebo and co-authors argue that AI systems may soon have morally relevant interests or agency, emphasizing the need to consider policies that address AI welfare.
+
+Can LLMs Advance Democratic Values?
+
+Authors: Seth Lazar, Lorenzo Manuali | arXiv Preprint
+
+This paper explores whether LLMs can support democratic deliberation by summarizing content, aggregating opinions, and representing voter preferences. The authors caution against their use in formal democratic decision-making but argue for their potential in strengthening the informal public sphere.
+
+Promotionalism, Orthogonality, and Instrumental Convergence
+
+Author: Nathaniel Sharadin | Philosophical Studies
+
+Sharadin critiques instrumental convergence arguments, arguing that existing theories of goal promotion fail to support the claim that intelligent agents will pursue harmful convergent goals. He concludes that such fears are overstated.
+
+Disagreement, AI Alignment, and Bargaining
+
+Author: Harry R. Lloyd | Philosophical Studies
+
+Lloyd evaluates AI alignment frameworks designed to handle normative disagreement, highlighting flaws in voting-theoretic and decision-theoretic models. He proposes a bargaining-theoretic alternative to better address stakeholder diversity and ensure fair outcomes.
+
+Take Caution in Using LLMs as Human Surrogates: Scylla Ex Machina
+
+Authors: Yuan Gao, Dokyun Lee, Gordon Burtch, Sina Fazelpour | arXiv Preprint
+
+This paper explores how large language models (LLMs) fall short in emulating human behavior in economic games, highlighting issues in reasoning depth and cautioning against using LLMs as human substitutes in social science.
+
+Beyond Preferences in AI Alignment
+
+Authors: Tan Zhi-Xuan, Micah Carroll, Matija Franklin, Hal Ashton | Philosophical Studies
+
+The authors challenge the preferentist approach to AI alignment, arguing that preferences fail to capture the full complexity of human values. They propose aligning AI systems with negotiated normative standards tied to their social roles to balance diverse values.
+
+Can LLMs Make Trade-Offs Involving Stipulated Pain and Pleasure States?
+
+Authors: Geoff Keeling, Winnie Street, Martyna Stachaczyk, et al. | arXiv Preprint
+
+The authors examine LLMs’ ability to make decisions based on simulated pain or pleasure, with implications for debates about AI sentience. Results indicate some models prioritize avoiding pain or maximizing pleasure, depending on intensity.
+
+The Code That Binds Us: Navigating the Appropriateness of Human-AI Assistant Relationships
+
+Authors: Arianna Manzini, Geoff Keeling, Lize Alberts, et al. | AAAI/ACM Conference on AI, Ethics, and Society Proceedings
+
+This paper proposes a framework for evaluating user–AI assistant relationships, identifying risks from dependence on AI and offering ethical guidelines for appropriate interactions.
+
+Guidelines for Ethical Use and Acknowledgement of Large Language Models in Academic Writing
+
+Authors: Sebastian Porsdam Mann, Anuraag A. Vazirani, Mateo Aboy, et al. | Nature Machine Intelligence
+
+The authors propose ethical guidelines for using LLMs in academic writing, including transparency and adherence criteria for LLM-assisted manuscripts.
+
+Onboarding
+
+Iason Gabriel of DeepMind led a spectacular project (including philosophers Arianna Mancini, Geoff Keeling, Shannon Vallor among others) to lay out the ethical challenges raised by Advanced AI Assistants. You can basically use this as a textbook for an AI ethics and safety course, or a springboard for a PhD:
+https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/ethics-of-advanced-ai-assistants/the-ethics-of-advanced-ai-assistants-2024-i.pdf
+
+Want to get into AI governance research but don’t know what idea to pursue? Check out this list of 78 ideas from AI gov researchers, from Markus Anderljung: https://www.markusanderljung.com/blog/a-collection-of-ai-governance-research-ideas-2024
+
+Usman Anwar led a stellar group to come up with many ‘Foundational Challenges in Assuring Alignment and Safety of LLMs’ https://arxiv.org/abs/2404.09932
+
+Anka Reuel steered a similarly ambitious and fruitful effort in technical AI governance, check it out here: https://arxiv.org/abs/2407.14981
+
+Here’s Neel Nanda’s Quickstart guide to mechanistic interpretability: https://www.neelnanda.io/mechanistic-interpretability/quickstart
+
+Need a philosophical introduction to LLMs? Cameron Buckner and Raphaël Millière have you covered, parts I and II: https://arxiv.org/abs/2401.03910 and https://arxiv.org/abs/2405.03207. Or if you want to go back a step and learn about deep learning, Melissa Dell introduces the field to economists: https://arxiv.org/pdf/2407.15339. And if you just want an explainer for LLMs, CSET have done a good one: https://cset.georgetown.edu/article/the-surprising-power-of-next-word-prediction-large-language-models-explained-part-1/
+
+Curated by Cameron Pattison and Seth Lazar with contributions from the MINT Lab team.
+
+
+Thanks for reading Normative Philosophy of Computing Newsletter! Subscribe for free to stay up to date.

@@ -3,37 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cameron Pattison - Philosophy & AI</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Philosophy & AI Newsletter</title>
+    <!-- Keep only the essential external resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
     <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
-            --background-color: #ffffff;
+            --background-color: #f5f7fa;
             --text-color: #333333;
             --card-background: #ffffff;
             --shadow-color: rgba(0, 0, 0, 0.1);
             --border-radius: 12px;
             --spacing: 1rem;
         }
+
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             background-color: var(--background-color);
             color: var(--text-color);
         }
+
+        /* Navigation Styles */
+        .main-nav {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Header Styles */
+        .profile-header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: var(--secondary-color);
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        .profile-header h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        /* Container and Section Styles */
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 0 auto;
             padding: 20px;
         }
+
         .section {
             background-color: var(--card-background);
             border-radius: var(--border-radius);
@@ -41,12 +101,15 @@
             padding: var(--spacing);
             margin-bottom: 30px;
         }
+
+        /* Card Grid and Card Styles */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: var(--spacing);
             padding: var(--spacing);
         }
+
         .card {
             background: var(--card-background);
             border-radius: var(--border-radius);
@@ -54,35 +117,14 @@
             padding: var(--spacing);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
+
         .card:hover {
             transform: translateY(-4px);
             box-shadow: 0 4px 8px var(--shadow-color);
         }
-        .card-header {
-            margin-bottom: 0.5rem;
-        }
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--secondary-color);
-            margin: 0;
-        }
-        .card-subtitle {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 0.25rem 0;
-        }
-        .card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .card.expanded .card-content {
-            max-height: 500px;
-        }
+
+        /* Tag Styles */
         .tag {
             display: inline-block;
             padding: 0.25rem 0.5rem;
@@ -91,27 +133,28 @@
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
         }
+
         .tag.academic {
             background-color: #ce93d8;
             color: white;
         }
+
         .tag.alt-ac {
             background-color: #81c784;
             color: white;
         }
+
         .tag.deadline {
             background-color: #ff6b6b;
             color: white;
         }
+
         .tag.location {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #e8f5e9;
             color: var(--text-color);
         }
-        @media (max-width: 768px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+
+        /* Bibliography Styles */
         .bibliography-card {
             background: var(--card-background);
             border-radius: var(--border-radius);
@@ -129,88 +172,27 @@
             align-items: center;
         }
 
-        .bibliography-header h2 {
-            margin: 0;
-            color: white;
-        }
-
         .bibliography-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
-            width: 100%;
         }
 
         .bibliography-card.expanded .bibliography-content {
-            max-height: 10000px; /* Large enough to show all content */
+            max-height: 10000px;
         }
 
-        .bibliography-card.expanded .arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Styles for the embedded bibliography content */
-        .bibliography-content .report {
-            padding: var(--spacing);
-            overflow-x: auto;
-            width: 100%;
-        }
-
-        .bibliography-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 10px 0;
-            min-width: 800px;
-            table-layout: fixed;
-        }
-
-        .bibliography-content th,
-        .bibliography-content td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-            vertical-align: top;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .bibliography-content th {
-            background-color: #f5f5f5;
-            font-weight: 600;
-            text-align: left;
-            white-space: nowrap;
-        }
-
+        /* Globe Visualization Styles */
         #globeViz {
             position: relative;
             height: 500px;
             width: 100%;
-            background-color: white;
+            background-color: #000011;
             border-radius: var(--border-radius);
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-        
-        #globeViz canvas {
-            width: 100% !important;
-            height: 100% !important;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        
-        .globe-loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            z-index: 1000;
-        }
-        
+
+        .globe-loading,
         .globe-error {
             position: absolute;
             top: 50%;
@@ -224,28 +206,34 @@
             z-index: 1000;
         }
 
-        .globe-loading {
+        /* Globe Tooltip Styles */
+        .globe-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.85);
             color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 1.2em;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 1000;
+            max-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0.3; transform: scale(1); }
-        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
 
-        .marker {
-            animation: pulse 2s infinite;
-        }
-
-        /* Add responsive container */
-        .bibliography-container {
-            width: 100%;
-            overflow-x: auto;
-            padding-bottom: 10px;
+            .main-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -634,30 +622,23 @@
                     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
                     .width(globeContainer.clientWidth)
                     .height(500)
-                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
-                    .labelLabel(d => d.label)
-                    .labelAltitude(0.01)
-                    .labelDotRadius(0.3)
-                    .labelDotOrientation(() => 'right')
-                    .labelColor(() => 'white')
-                    .labelSize(1.5)
-                    .labelResolution(2)
-                    .onPointHover(point => {
-                        document.body.style.cursor = point ? 'pointer' : 'default';
-                    })
-                    .onPointClick(point => {
-                        if (point && point.url) window.open(point.url, '_blank');
-                    });
+                    .showGlobe(true)
+                    .showAtmosphere(true)
+                    .atmosphereColor('#ffffff')
+                    .atmosphereAltitude(0.15);
 
                 // Mount globe
                 globe(globeContainer);
 
-                // Basic controls setup
-                if (globe.controls()) {
-                    globe.controls().autoRotate = false;
-                    globe.controls().enableZoom = true;
-                    globe.controls().update();
-                }
+                // Wait for globe to initialize before setting position
+                setTimeout(() => {
+                    if (globe && globe.controls()) {
+                        globe.pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
+                        globe.controls().autoRotate = false;
+                        globe.controls().enableZoom = true;
+                        globe.controls().update();
+                    }
+                }, 1000);
 
                 // Handle window resizing
                 window.addEventListener('resize', () => {
@@ -668,7 +649,12 @@
                 return globe;
             } catch (error) {
                 console.error('Globe initialization error:', error);
-                globeContainer.innerHTML = 'Failed to load globe visualization.';
+                globeContainer.innerHTML = `
+                    <div class="globe-error">
+                        Failed to load globe visualization.<br>
+                        <button onclick="location.reload()" style="margin-top: 10px;">Retry</button>
+                    </div>
+                `;
             }
         }
 
@@ -677,111 +663,92 @@
             
             const points = [];
             
-            // Add conferences
+            // Process conferences
             data.conferences.forEach(conf => {
                 if (conf.lat && conf.lng) {
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 0.8,
-                        color: '#ff6b6b',
-                        label: `<div class="globe-tooltip" style="
-                            background: rgba(0, 0, 0, 0.85);
-                            color: white;
-                            padding: 15px;
-                            border-radius: 8px;
-                            min-width: 220px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                            backdrop-filter: blur(5px);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            font-family: 'Roboto', sans-serif;
-                            pointer-events: auto;
-                            position: absolute;
-                            z-index: 1000;
-                        ">
-                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
-                                ${conf.title}
+                        size: 1.2,
+                        color: '#ff4444',
+                        name: conf.title,
+                        url: conf.url,
+                        type: 'conference',
+                        label: `
+                            <div class="globe-tooltip">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
+                                    ${conf.title}
+                                </div>
+                                <div style="margin-bottom: 5px;">
+                                    <i class="fas fa-calendar-alt"></i> ${conf.date}
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <i class="fas fa-map-marker-alt"></i> ${conf.location}
+                                </div>
+                                <div style="color: #ff4444; font-size: 0.9em;">
+                                    Click to learn more →
+                                </div>
                             </div>
-                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> ${conf.date}
-                            </div>
-                            <div style="font-size: 0.9em; margin-bottom: 8px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${conf.location}
-                            </div>
-                            <div style="
-                                font-size: 0.8em;
-                                color: #ff6b6b;
-                                margin-top: 5px;
-                                display: inline-block;
-                                cursor: pointer;
-                            ">Click to learn more →</div>
-                        </div>`,
-                        url: conf.url
+                        `
                     });
                 }
             });
             
-            // Add jobs
+            // Process job postings
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
                     const color = job.type === 'Academic' ? '#ce93d8' : '#81c784';
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 0.8,
+                        size: 1.2,
                         color: color,
-                        label: `<div style="
-                            background: rgba(0, 0, 0, 0.85);
-                            color: white;
-                            padding: 15px;
-                            border-radius: 8px;
-                            min-width: 220px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                            backdrop-filter: blur(5px);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            font-family: 'Roboto', sans-serif;
-                            pointer-events: auto;
-                            position: absolute;
-                            z-index: 1000;
-                        ">
-                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
-                                ${job.title}
+                        name: job.title,
+                        url: job.url,
+                        type: 'job',
+                        label: `
+                            <div class="globe-tooltip">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
+                                    ${job.title}
+                                </div>
+                                <div style="margin-bottom: 5px;">
+                                    <i class="fas fa-building"></i> ${job.organization}
+                                </div>
+                                <div style="margin-bottom: 5px;">
+                                    <i class="fas fa-map-marker-alt"></i> ${job.location}
+                                </div>
+                                <div style="margin-bottom: 8px; font-size: 0.9em;">
+                                    ${job.description}
+                                </div>
+                                <div style="color: ${color}; font-size: 0.9em;">
+                                    Click to apply →
+                                </div>
                             </div>
-                            <div style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9); margin-bottom: 4px;">
-                                ${job.organization}
-                            </div>
-                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${job.location}
-                            </div>
-                            <div style="
-                                font-size: 0.85em;
-                                color: rgba(255, 255, 255, 0.8);
-                                margin: 8px 0;
-                                line-height: 1.4;
-                            ">${job.description}</div>
-                            <div style="
-                                font-size: 0.8em;
-                                color: ${color};
-                                margin-top: 5px;
-                                display: inline-block;
-                                cursor: pointer;
-                            ">Click to apply →</div>
-                        </div>`,
-                        url: job.url
+                        `
                     });
                 }
             });
             
-            // Update globe with points
+            // Update globe with enhanced tooltips
             globe
                 .pointsData(points)
                 .pointColor('color')
                 .pointAltitude(0.01)
                 .pointRadius('size')
-                .pointResolution(32)
+                .pointsMerge(true)
                 .labelText('label')
-                .labelLat(d => d.lat)
-                .labelLng(d => d.lng);
+                .labelSize(1)
+                .labelDotRadius(0.5)
+                .labelDotOrientation(() => 'right')
+                .labelColor(() => 'white')
+                .onPointHover(point => {
+                    document.body.style.cursor = point ? 'pointer' : 'default';
+                })
+                .onPointClick(point => {
+                    if (point && point.url) {
+                        window.open(point.url, '_blank');
+                    }
+                });
         }
 
         // Add initialization error handling

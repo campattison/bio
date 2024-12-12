@@ -1,0 +1,354 @@
+Happy Holidays!
+
+Welcome back to the latest edition of the newsletter. Over the past month, the momentum in AI ethics, philosophy, and governance has only grown stronger. Philosophers, ethicists, political theorists, and technically trained scholars are increasingly finding common ground and forging connections, whether through interdisciplinary conferences, fellowships, or accessible resources like AI ethics starter packs. This emerging community is shaping the normative landscape of AI, carving out paths for deeper analysis and practical engagement.
+
+This edition reflects that expansion. Inside, you’ll find a wealth of new events spanning AI ethics, the philosophy of content moderation, and fairness in machine learning. There are opportunities for researchers at every stage, from graduate students to seasoned scholars, to contribute meaningfully to this rapidly developing field. We’ve also curated some of the most interesting recent papers, tackling key questions about aligning AI with human values, addressing normative disagreements, and exploring the foundational mechanisms behind AI decision-making.
+
+As always, our goal is to help you connect with the people, resources, and conversations that matter most in this space. Whether you’re just beginning your journey or deeply embedded in these discussions, we hope this newsletter serves as a useful guide and a portal to a growing community of researchers and practitioners.
+
+Thank you for being part of this effort—and as always, feel free to share your work, events, or opportunities with us. Let’s keep building together.
+
+
+
+December Highlights
+
+• FAccT Reminder: Don’t forget, the FAccT submission deadline is in January. This remains one of the premier interdisciplinary venues for exploring AI ethics and safety.
+
+• Opportunities: A rich lineup of fellowships, alt-ac roles, and early-career grants is available this month. Be sure to check out programs like the Cooperative AI Research Grants and the Global AI Safety Fellowship.
+
+• New Papers: We’ve highlighted some of the most exciting new work in AI ethics and philosophy, from political polarization and generative agents to the infrastructural role of data and export control challenges.
+
+This edition is packed with avenues for involvement and insights into the latest research. Dive in and see where your work might contribute!
+
+
+
+Events:
+
+TeXne Conference
+
+Date: February 1, 2025
+
+Location: Massachusetts Institute of Technology (MIT), Cambridge, MA, USA
+
+Link: https://philevents.org/event/show/126054
+
+TeXne explores interdisciplinary insights into technology ethics, with a focus on both theoretical and applied questions about AI, robotics, and digital governance.
+
+IASEAI ’25: International Association for Safe and Ethical AI Inaugural Conference
+
+Date: February 6, 2025
+
+Location: OECD La Muette Headquarters, Paris, France
+
+Link: https://www.iaseai.org/conference
+
+The inaugural IASEAI conference aims to set standards for the safe and ethical development of AI, with discussions on regulatory frameworks, best practices, and international collaboration in AI ethics.
+
+First International Conference on the Philosophy of Content Moderation
+
+Date: April 12-15, 2025
+
+Submission Deadline: December 15th, 2024
+
+Location: Asilomar Conference Grounds, California, USA
+
+Link: https://www.philmod.org/conference
+
+To celebrate its second anniversary, PhilMod is hosting its first international conference, inviting abstracts on the normative aspects of content moderation and platform policy. Topics include freedom of expression, harmful speech, algorithmic power, and the ethics of automated moderation. Abstracts from philosophers, Trust & Safety practitioners, and scholars in related fields are welcome.
+
+ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)
+
+Date: c. June 23-6 2025
+
+Submission Deadlines: Abstracts January 15, 2025; Full papers due January 22, 2025
+
+Location: Athens, Greece
+
+Link: https://facctconference.org/2025/cfp
+
+Submissions are invited for the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT). FAccT is an interdisciplinary conference dedicated to bringing together a diverse community of scholars advancing research in responsible, safe, ethical, and trustworthy computing. Research from all fields is welcome, including algorithmic, statistical, human-centered, theoretical, critical, legal, and philosophical research.
+
+
+
+Opportunities
+
+
+
+Global AI Safety Fellowship 2025
+
+Date: March 2025 onward
+
+Deadline: Final Deadline: December 31, 2024
+
+Location: Flexible (In-person preferred; hybrid/remote possible)
+
+Link: 
+
+https://globalaisafetyfellowship.com/
+
+The Global AI Safety Fellowship, hosted by Impact Academy, is a fully funded program offering up to 6 months of research and training for exceptional STEM talent to advance AI safety. Fellows will collaborate with leading organizations like CHAI, Conjecture, FAR.AI, and AISI, working on research areas such as adversarial robustness, scalable oversight, and mechanistic interpretability. The program provides financial support, mentorship, and career pathways into full-time AI safety research, with opportunities for training through a paid Bootcamp for candidates needing foundational upskilling. Apply by December 15, 2024, for priority consideration!
+
+AIDE Summer Program: Ethics of Artificial Intelligence and Data Ethics
+
+Date: Summer 2025
+
+Deadline: January 15th, 2025
+
+Location: Northeastern University, Boston, MA, USA
+
+Link: https://cssh.northeastern.edu/ethics/aide-summer/
+
+The AIDE Summer Program at Northeastern University’s Ethics Institute is an immersive, in-person summer school designed for graduate students with a background in applied ethics, ethical theory, or philosophy of science. The program aims to strengthen participants’ research skills in AI ethics, data ethics, and the philosophy of technology. Focusing on creating AI and machine learning systems that foster human flourishing, AIDE provides the ethical and technical training needed to build a robust, interdisciplinary AI ethics research community. Participants will benefit from the expertise of core faculty and gain hands-on experience in a collaborative environment.
+
+Cooperative AI Research Grants 2025 [NEW]
+
+Date: Projects to begin within 12 months of acceptance
+
+Deadline: January 18, 2025 (23:59 AoE)
+
+Location: Global
+
+Link: https://www.cooperativeai.com/grants/2025
+
+The Cooperative AI Foundation invites proposals for research projects advancing cooperative AI, with funding available for up to two years. High-priority areas include cooperation-relevant capabilities and propensities, incentivizing cooperation among AI agents, and AI for enhancing human collaboration. A newly introduced early-career track offers up to £100,000 for researchers within 2–3 years of completing their PhD or at a similar stage. Applications follow a two-step process: a pre-proposal (due January 18, 2025) and, for selected candidates, a full proposal with opportunities for feedback and refinement. This program provides funding for personnel, materials, travel, and publication costs, supporting impactful research in this rapidly growing field.
+
+Cooperative AI PhD Fellowships [NEW]
+
+Date: Rolling applications open annually
+
+Deadline: October 14, 2025 (next cycle)
+
+Location: Remote
+
+Link: https://www.cooperativeai.com/phd-fellowship/2025
+
+The Cooperative AI PhD Fellowship offers financial support to current and future PhD students in the emerging field of cooperative AI. This program aims to empower researchers working to improve the cooperative intelligence of advanced AI systems, addressing challenges like multi-agent interactions and enhancing human cooperation. Fellows receive funding to pursue transformative research projects and contribute to the development of this vital field. Applications reopen annually, with the next deadline on October 14, 2025.
+
+Jobs
+
+Alt-Ac Jobs
+
+• Postdoctoral Fellowships, Digital Life Initiative (Cornell Tech)
+
+Location: New York, NY
+
+Link: https://www.dli.tech.cornell.edu/postdocs
+
+The Digital Life Initiative invites applications for postdoctoral research in ethics, politics, and the quality of life in digital societies, covering topics such as privacy, AI ethics, and platform governance. A focus on contextual integrity is a plus.
+
+• Policy Positions, Apollo Research
+
+Location: Remote
+
+Link: https://jobs.lever.co/apolloresearch/f66ef22f-f96a-42cb-ada9-fd48ce0d5fda
+
+Apollo Research is hiring research scientists, engineers, and software developers to work on AI safety evaluations and other technical governance challenges.
+
+• Careers at ACLU
+
+Location: National (US)
+
+Link: https://www.aclu.org/careers/apply/?job=7742482002&type=national
+
+The ACLU is hiring for roles focused on advancing civil liberties and addressing challenges posed by emerging technologies, including AI.
+
+• Research Opportunities, RAND Corporation
+
+Location: Remote/US
+
+Link: https://x.com/ohlennart/status/1864368808091373696?s=12
+
+RAND’s Technology and Security Policy Center is hiring for roles in compute governance and technical AI policy, including positions on their Compute Team.
+
+Academic Jobs
+
+• Assistant/Associate/Full Professor, AI Governance (Northeastern University)
+
+Location: Boston, MA
+
+Link: https://x.com/ohlennart/status/1864368808091373696?s=12
+
+Northeastern University is hiring tenure-track faculty in AI governance, focusing on ethical, legal, and societal implications of AI technologies.
+
+• Lecturer in Philosophy, University of Edinburgh
+
+Location: Edinburgh, UK
+
+Link: https://philjobs.org/job/show/27970
+
+A tenure-track position at the University of Edinburgh is open for philosophers specializing in ethics, political philosophy, or epistemology, with relevance to computing.
+
+• Faculty Positions in AI (University of Maryland)
+
+Location: College Park, MD
+
+Link: https://ejobs.umd.edu/postings/124144
+
+The Artificial Intelligence Interdisciplinary Institute at Maryland (AIM) invites applications for 30 tenure-track faculty positions in AI, with opportunities for interdisciplinary research.
+
+• Assistant Professor of Philosophy (University of North Carolina at Chapel Hill)
+
+Location: Chapel Hill, NC
+
+Link: https://unc.peopleadmin.com/postings/288557
+
+The Department of Philosophy at UNC Chapel Hill seeks applications for a Tenure-Track Assistant Professor position in Philosophy of Artificial Intelligence, broadly construed. Candidates should demonstrate significant promise in research, teaching excellence, and have a solid background in AI. Start date: July 1, 2025.
+
+• Opportunities at Hong Kong Universities
+
+Location: Hong Kong
+
+Link: https://philjobs.org/job/show/28230
+
+TT Link: https://philjobs.org/job/show/28302
+
+Hong Kong universities has one tenure track and one lecturer position in AI ethics, policy, and governance. 
+
+Workshops and Collaborations
+
+• Alignment Workshop Positions
+
+Location: Varies
+
+Open positions include roles with Yoshua Bengio, Vincent Conitzer, and Gillian Hadfield, focusing on AI alignment and governance. 
+
+
+
+Links
+
+Here are your AI BlueSky starter packs in case you missed them last month. FAccT researchers here (someone should do one for philosophy of computing)!
+
+Michael Osborne also suggests:AI: go.bsky.app/SipA7it RL: go.bsky.app/3WPHcHg Women in AI: go.bsky.app/LaGDpqg NLP: go.bsky.app/SngwGeS AI and news: go.bsky.app/5sFqVNS
+
+Curious about how Large Language Models are shaping the next wave of AI agents? The LLM-Brained GUI Agents Survey is a goldmine for cutting-edge research.
+
+Major news from Google on their new quantum computer. Read their Nature article here. According to Bloomberg Tech, their new computer can crunch in five minutes what would take a current supercomputer a 10,000,000,000,000,000,000,000,000 years to compute. 
+
+New posts from Anthropic’s alignment blog here. New Grok Image generation model here.
+
+Trouble at intel… and an excellent explainer of some of the political economy issues around chip design and manufacture.
+
+In news from the Twitter-sphere: SimpleAI releases app that will call businesses for you. The LLMail-Inject competition challenges you to participate! Nathan Lambert explains some post-training AI applications at NeurIPS. Bug-squasher Devin released Dec 11. Google launches model updates. 
+
+
+
+More recent cool, scary, and or useful AI papers: Troubling Taxonomies in GenAI Evaluation, Training Large Language Models to Reason in a Continuous Latent Space, Unleashing GHOST: An LLM-Powered Framework for Automated Hardware Trojan Design, Can foundation models actively gather information in interactive environments to test hypotheses?, Measuring Instrumental Self-Reasoning in Frontier Models, Reinforcement Learning: An Overview, AI models work together faster when they speak their own language; OpenAI’s Approach to External Red Teaming for AI Models and Systems; Do I Know This Entity? Knowledge Awareness and Hallucinations in Language Models; Is Your LLM Secretly a World Model of the Internet?; Secret Collusion among Generative AI Agents; Procedural Knowledge in Pretraining Drives Reasoning in Large Language Models; Sparse Autoencoders Reveal Universal Feature Spaces Across Large Language Models; Diverse and Effective Red Teaming with Auto-generated Rewards and Multi-step Reinforcement Learning; LLM Agent Honeypot: Monitoring AI Hacking Agents in the Wild; Controllable Safety Alignment: Inference-Time Adaptation to Diverse Safety Requirements; Arithmetic Without Algorithms: Language Models Solve Math With a Bag of Heuristics.
+
+
+
+Philosophy Papers
+
+AI and the Future of IR: Disentangling Flesh-and-Blood, Institutional, and Synthetic Moral Agency in World Politics
+
+Author: Toni Erskine | Review of International Studies
+
+Erskine examines how artificial intelligence challenges traditional notions of moral agency in International Relations, emphasizing the need to distinguish synthetic agency from human and institutional actors to preserve accountability in global politics.
+
+The linguistic dead zone of value-aligned agency, natural and artificial
+
+Author: Travis LaCroix | Philosophical Studies
+
+LaCroix argues that linguistic communication is a necessary condition for robust value alignment between human and artificial agents, showing that complex cooperation and moral coordination cannot be achieved solely through technical optimization or behavioral cues without meaningful language-based information exchange.
+
+On the Ethical Considerations of Generative Agents
+
+Authors: N’yoma Diamond, Soumya Banerjee | arXiv Preprint
+
+This position paper evaluates the ethical challenges posed by generative agents, identifying systemic risks and proposing guidelines to mitigate concerns associated with this emerging technology.
+
+Are Large Language Models Consistent over Value-laden Questions?
+
+Authors: Jared Moore, Tanvi Deshpande, Diyi Yang | arXiv Preprint
+
+Examines the consistency of LLMs across paraphrases, translations, and related questions, revealing a relative stability in responses to uncontroversial topics and highlighting inconsistencies in controversial areas.
+
+The Method of Critical AI Studies, A Propaedeutic
+
+Authors: Fabian Offert, Ranjodh Singh Dhaliwal | arXiv Preprint
+
+Highlights methodological issues in critical AI studies, such as over-reliance on benchmarks and outdated theoretical frameworks, and calls for humanistic methodologies to address algorithmic harm.
+
+Hidden Persuaders: LLMs’ Political Leaning and Their Influence on Voters
+
+Authors: Yujin Potter, Shiyang Lai, Junsol Kim, James Evans, Dawn Song | arXiv Preprint
+
+Investigates the political leanings of LLMs and their potential influence on voters, showing shifts in voter preferences after interactions with LLMs in a simulated U.S. presidential election context.
+
+
+
+Politics
+
+
+
+1. Democracy and the Epistemic Problems of Political Polarization
+
+Author: Jonathan Benson | American Political Science Review
+
+Benson explores how political polarization undermines the epistemic diversity of democratic systems, reducing their ability to address public concerns effectively.
+
+2. Data is Infrastructure
+
+Author: Elettra Bietti | SSRN Preprint
+
+This paper argues for understanding data as infrastructure, highlighting its collective functions and advocating for public-interest regulation in the AI-driven digital economy.
+
+3. Shaping AI’s Impact on Billions of Lives
+
+Authors: Mariano-Florentino Cuéllar et al. | arXiv Preprint
+
+Offers a blueprint for leveraging AI responsibly for public good, featuring insights from key figures like John Jumper, Barack Obama, and Neal Stephenson.
+
+4. Whack-a-Chip: The Futility of Hardware-Centric Export Controls
+
+Authors: Ritwik Gupta, Leah Walker, Andrew W. Reddie | arXiv Preprint
+
+Investigates how Chinese firms circumvent U.S. semiconductor export controls and implications for U.S. AI strategy.
+
+5. The End Of The Beginning For AI Policy
+
+Author: Anton Leicht | Tech Policy Press
+
+Critiques early AI policy efforts, arguing for institution-building and measured strategies to address emerging AI risks effectively.
+
+6. What is Digital Public Infrastructure? Towards More Specificity
+
+Authors: Mila Samdub, Chand Rajendra-Nicolucci | Tech Policy Press
+
+Explores competing visions of digital public infrastructure, comparing its role to roads and radio in modern societies.
+
+7. Insuring Emerging Risks from AI
+
+Authors: Gabriel Weil et al. | Oxford Martin School
+
+Examines the challenges of insuring against risks associated with emerging AI technologies and proposes solutions for better preparedness.
+
+8. Why ‘open’ AI systems are actually closed, and why this matters
+
+Authors: David Gray Widder, Meredith Whittaker, Sarah Myers West | Nature
+
+Analyzes how claims of openness in AI are often misleading, emphasizing the concentration of power in the sector and the need for clearer definitions.
+
+9. Crypto anarchy, cyberstates, and pirate utopias
+
+Editor: Peter Ludlow | MIT Press
+
+A foundational work exploring the intersection of cyberspace, political philosophy, and emergent forms of governance.
+
+10. Cruz Calls Out Potentially Illegal Foreign Influence on U.S. AI Policy
+
+Source: U.S. Senate Committee on Commerce, Science, & Transportation | Press Release
+
+Highlights concerns about foreign influence on U.S. AI policy and calls for greater transparency and accountability.
+
+10. New Australian Research Center Supporting Safe and Responsible AI
+
+Source: The Hon Ed Husic MP Minister for Industry and Science | Press Release
+
+Australia has launched the Responsible AI Research Centre (RAIR) in Adelaide, with a $20 million investment to advance safe and responsible AI by addressing misinformation, ensuring AI reliability, promoting diverse perspectives, and enhancing explainability in AI systems.
+
+Need a philosophical introduction to LLMs? Cameron Buckner and Raphaël Millière have you covered, parts I and II: https://arxiv.org/abs/2401.03910 and https://arxiv.org/abs/2405.03207. Or if you want to go back a step and learn about deep learning, Melissa Dell introduces the field to economists: https://arxiv.org/pdf/2407.15339. And if you just want an explainer for LLMs, CSET have done a good one: https://cset.georgetown.edu/article/the-surprising-power-of-next-word-prediction-large-language-models-explained-part-1/
+
+Curated by Cameron Pattison and Seth Lazar with contributions from the MINT Lab team.
+
+Thanks for reading Normative Philosophy of Computing Newsletter! Subscribe for free to stay up to date.
+
