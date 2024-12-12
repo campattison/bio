@@ -22,7 +22,7 @@
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
             --background-color: #f5f7fa;
-            --text-color: #333333;
+            --text-color: #ffffff;
             --card-background: #ffffff;
             --shadow-color: rgba(0, 0, 0, 0.1);
             --border-radius: 12px;
@@ -190,6 +190,9 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .globe-tooltip {
@@ -633,21 +636,27 @@
             globeContainer.innerHTML = '<div class="globe-loading">Loading visualization...</div>';
             
             try {
-                // Initialize globe with minimal settings
+                // Force container size calculation before creating globe
+                const containerWidth = globeContainer.clientWidth;
+                const containerHeight = 500;
+
+                // Initialize globe with explicit dimensions
                 const globe = Globe()
-                    .backgroundColor('#ffffff')  // White background for better contrast
+                    .backgroundColor('#ffffff')
                     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-                    .width(globeContainer.clientWidth)
-                    .height(500)
-                    // Set initial position during initialization
+                    .width(containerWidth)
+                    .height(containerHeight)
                     .pointOfView({
-                        lat: 20,  // Slightly adjusted for better view
+                        lat: 20,
                         lng: 0,
-                        altitude: 2.0  // Closer view
+                        altitude: 2.0
                     });
 
                 // Mount the globe
                 globe(globeContainer);
+
+                // Force a resize event after mounting
+                window.dispatchEvent(new Event('resize'));
 
                 // Ensure controls are set immediately after mounting
                 if (globe.controls()) {
@@ -657,137 +666,13 @@
                     globe.controls().update();
                 }
 
-                // Initialize markers only after globe is ready
-                globe.onGlobeReady(() => {
-                    // Ensure position is set again after globe is fully ready
-                    globe.pointOfView({
-                        lat: 20,
-                        lng: 0,
-                        altitude: 2.0
-                    });
+                // Rest of your code remains the same...
 
-                    // Rest of your marker code remains the same...
-                    const markers = [];
-                    
-                    // Add conferences (using blue for better colorblind accessibility)
-                    data.conferences.forEach(conf => {
-                        if (conf.lat && conf.lng) {
-                            markers.push({
-                                lat: conf.lat,
-                                lng: conf.lng,
-                                size: 0.8,
-                                color: '#2196F3',  // Accessible blue
-                                type: 'conference',
-                                data: conf
-                            });
-                        }
-                    });
-
-                    // Add jobs (using orange for better colorblind accessibility)
-                    data.jobs.forEach(job => {
-                        if (job.lat && job.lng) {
-                            markers.push({
-                                lat: job.lat,
-                                lng: job.lng,
-                                size: 0.8,
-                                color: '#FF9800',  // Accessible orange
-                                type: 'job',
-                                data: job
-                            });
-                        }
-                    });
-
-                    // Add markers to globe
-                    globe
-                        .pointsData(markers)
-                        .pointColor('color')
-                        .pointAltitude(0.01)
-                        .pointRadius('size')
-                        .pointResolution(32);
-
-                    // Create tooltip element
-                    const tooltip = document.createElement('div');
-                    tooltip.className = 'globe-tooltip';
-                    tooltip.style.display = 'none';
-                    globeContainer.appendChild(tooltip);
-
-                    // Handle hover events
-                    globe.onPointHover(point => {
-                        if (point === null) {
-                            tooltip.style.display = 'none';
-                            document.body.style.cursor = 'default';
-                            return;
-                        }
-
-                        document.body.style.cursor = 'pointer';
-                        const { data, type } = point;
-                        
-                        // Position tooltip near mouse
-                        const tooltipContent = type === 'conference' 
-                            ? `
-                                <strong>${data.title}</strong>
-                                <br>
-                                <span class="tooltip-date">${data.date}</span>
-                                <br>
-                                <span class="tooltip-location">${data.location}</span>
-                            `
-                            : `
-                                <strong>${data.title}</strong>
-                                <br>
-                                <span class="tooltip-org">${data.organization}</span>
-                                <br>
-                                <span class="tooltip-location">${data.location}</span>
-                                <br>
-                                <span class="tooltip-type">${data.type}</span>
-                            `;
-
-                        tooltip.innerHTML = tooltipContent;
-                        tooltip.style.display = 'block';
-
-                        // Update tooltip position on mousemove
-                        globeContainer.onmousemove = (e) => {
-                            const rect = globeContainer.getBoundingClientRect();
-                            tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
-                            tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
-                        };
-                    });
-
-                    // Handle click events
-                    globe.onPointClick(point => {
-                        if (point && point.data.url) {
-                            window.open(point.data.url, '_blank');
-                        }
-                    });
-
-                    // Add legend
-                    const legend = document.createElement('div');
-                    legend.className = 'globe-legend';
-                    legend.innerHTML = `
-                        <div class="legend-item">
-                            <span class="legend-dot" style="background: #2196F3;"></span> Conferences
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot" style="background: #FF9800;"></span> Jobs
-                        </div>
-                    `;
-                    globeContainer.appendChild(legend);
-                });
-
-                // Add a final position check after a short delay
-                setTimeout(() => {
-                    if (globe && globe.controls()) {
-                        globe.pointOfView({
-                            lat: 20,
-                            lng: 0,
-                            altitude: 2.0
-                        });
-                        globe.controls().update();
-                    }
-                }, 100);
-
-                // Handle window resize
+                // Update resize handler to be more robust
                 window.addEventListener('resize', () => {
-                    globe.width(globeContainer.clientWidth);
+                    const width = globeContainer.clientWidth;
+                    globe.width(width);
+                    globe.controls().update();
                 });
 
                 return globe;
