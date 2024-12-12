@@ -178,6 +178,10 @@
             width: 100%;
             background-color: #000011;
             border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .globe-loading {
@@ -204,11 +208,29 @@
         }
 
         .month-button {
-            display: none;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px 10px;
+        }
+
+        .month-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .month-button.active {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         #month-selector {
-            display: none;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .globe-loading {
@@ -254,7 +276,12 @@
         <!-- Globe Section -->
         <div class="section">
             <h2>Job and Conference Globe</h2>
-            <div id="globeViz"></div>
+            <div id="month-selector">
+                <button class="month-button active" data-month="all">All Conferences</button>
+            </div>
+            <div id="globeViz">
+                <div class="globe-loading">Loading globe visualization...</div>
+            </div>
         </div>
         
         <!-- Bibliography Section (Last) -->
@@ -537,85 +564,250 @@
         document.addEventListener('DOMContentLoaded', loadBibliography);
 
         let globe = null;
+        let selectedMonths = ['all'];
 
         function createGlobe() {
             const globeContainer = document.getElementById('globeViz');
             
+            // Show loading state
+            globeContainer.innerHTML = '<div class="globe-loading">Loading globe visualization...</div>';
+            
+            // Ensure clean state
+            if (globe) {
+                globe._destructor();
+                globe = null;
+            }
+
             try {
+                // Check dependencies
+                if (typeof Globe === 'undefined') throw new Error('Globe.gl library not loaded');
+                if (typeof THREE === 'undefined') throw new Error('Three.js library not loaded');
+                
                 // Create new globe instance
                 globe = Globe()
                     .backgroundColor('#000011')
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                    .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
                     .width(globeContainer.clientWidth)
                     .height(500)
-                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
+                    .showGlobe(true)
+                    .showAtmosphere(true)
+                    .atmosphereColor('#ffffff')
+                    .atmosphereAltitude(0.15)
+                    .pointOfView({ lat: 30, lng: 0, altitude: 2 })
+                    .customLayerData([{}])
+                    .customThreeObject(() => {
+                        return new THREE.Mesh(
+                            new THREE.SphereGeometry(100, 75, 75),
+                            new THREE.MeshPhongMaterial({
+                                color: 'white',
+                                transparent: true,
+                                opacity: 0.05
+                            })
+                        );
+                    });
 
                 // Mount globe
                 globe(globeContainer);
+                
+                // Remove loading message
+                const loadingEl = globeContainer.querySelector('.globe-loading');
+                if (loadingEl) loadingEl.remove();
 
-                // Basic controls setup
-                if (globe.controls()) {
-                    globe.controls().autoRotate = false;
-                    globe.controls().enableZoom = true;
-                    globe.controls().update();
-                }
+                // Setup controls
+                setTimeout(() => {
+                    if (globe && globe.controls()) {
+                        globe.controls().autoRotate = false;
+                        globe.controls().enableZoom = true;
+                        globe.controls().enablePan = true;
+                        globe.controls().minDistance = 200;
+                        globe.controls().maxDistance = 400;
+                        globe.controls().update();
+                        
+                        updateMonthButtons();
+                        updateMarkers();
+                    }
+                }, 100);
 
                 // Handle window resizing
-                window.addEventListener('resize', () => {
-                    globe.width(globeContainer.clientWidth);
-                });
+                const handleResize = () => {
+                    if (globe) {
+                        const newWidth = globeContainer.clientWidth;
+                        globe.width(newWidth);
+                    }
+                };
+                window.removeEventListener('resize', handleResize);
+                window.addEventListener('resize', handleResize);
 
-                updateMarkers();
                 return globe;
             } catch (error) {
                 console.error('Globe initialization error:', error);
-                globeContainer.innerHTML = 'Failed to load globe visualization.';
+                globeContainer.innerHTML = `
+                    <div class="globe-error">
+                        Failed to initialize globe visualization.<br>
+                        Error: ${error.message}<br>
+                        <button onclick="location.reload()" style="margin-top: 10px;">Retry</button>
+                    </div>
+                `;
+                throw error;
             }
+        }
+
+        function updateMonthButtons() {
+            const monthSelector = document.getElementById('month-selector');
+            if (!monthSelector) return;
+
+            monthSelector.innerHTML = ''; // Clear existing buttons
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            // Add "All" button first
+            const allButton = document.createElement('button');
+            allButton.className = 'month-button active';
+            allButton.setAttribute('data-month', 'all');
+            allButton.textContent = 'All';
+            monthSelector.appendChild(allButton);
+
+            const currentMonth = new Date().getMonth();
+            
+            // Add month buttons
+            for (let i = 0; i < 12; i++) {
+                const monthIndex = (currentMonth + i) % 12;
+                const button = document.createElement('button');
+                button.className = 'month-button';
+                button.setAttribute('data-month', monthIndex);
+                button.textContent = months[monthIndex];
+                monthSelector.appendChild(button);
+            }
+
+            // Add event listeners
+            document.querySelectorAll('.month-button').forEach(button => {
+                button.addEventListener('click', handleMonthButtonClick);
+            });
+        }
+
+        function handleMonthButtonClick() {
+            const month = this.dataset.month;
+            if (month === 'all') {
+                selectedMonths = ['all'];
+                document.querySelectorAll('.month-button').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            } else {
+                if (selectedMonths.includes('all')) {
+                    selectedMonths = [];
+                    document.querySelector('[data-month="all"]').classList.remove('active');
+                }
+                this.classList.toggle('active');
+                if (this.classList.contains('active')) {
+                    selectedMonths.push(month);
+                } else {
+                    selectedMonths = selectedMonths.filter(m => m !== month);
+                }
+                if (selectedMonths.length === 0) {
+                    selectedMonths = ['all'];
+                    document.querySelector('[data-month="all"]').classList.add('active');
+                }
+            }
+            updateMarkers();
+        }
+
+        function validateCoordinates(lat, lng) {
+            return !isNaN(lat) && !isNaN(lng) && 
+                   lat >= -90 && lat <= 90 && 
+                   lng >= -180 && lng <= 180;
         }
 
         function updateMarkers() {
             if (!globe) return;
             
             const points = [];
+            const arcs = [];
             
-            // Add conferences
+            // Process conferences
             data.conferences.forEach(conf => {
-                if (conf.lat && conf.lng) {
+                const date = new Date(conf.date);
+                if (shouldShowMarker(date.getMonth().toString())) {
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 0.5,
+                        size: 1,
                         color: '#ff4444',
-                        label: `${conf.title}<br>${conf.date}<br>${conf.location}`,
-                        url: conf.url
+                        name: conf.title,
+                        url: conf.url,
+                        type: 'conference',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${conf.title}</strong><br>
+                                <span>${conf.date}<br>${conf.location}</span><br>
+                                <span style="color: #ff4444; cursor: pointer;">Click to learn more</span>
+                            </div>
+                        `
                     });
                 }
             });
             
-            // Add jobs
+            // Process job postings with valid coordinates
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
+                    const color = job.type === 'Academic' ? '#9c27b0' : '#4CAF50';
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 0.5,
-                        color: job.type === 'Academic' ? '#9c27b0' : '#4CAF50',
-                        label: `${job.title}<br>${job.organization}<br>${job.location}`,
-                        url: job.url
+                        size: 1,
+                        color: color,
+                        name: job.title,
+                        url: job.url,
+                        type: 'job',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${job.title}</strong><br>
+                                <span>${job.organization}<br>${job.location}</span><br>
+                                <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
+                                <span style="color: ${color}; cursor: pointer;">Click to apply</span>
+                            </div>
+                        `
+                    });
+                    
+                    // Add pulsing arc
+                    arcs.push({
+                        startLat: job.lat,
+                        startLng: job.lng,
+                        endLat: job.lat + 0.5,
+                        endLng: job.lng,
+                        color: color,
+                        arcAlt: 0.3,
+                        stroke: 3
                     });
                 }
             });
             
-            // Update globe with points
+            // Update globe data
             globe
                 .pointsData(points)
                 .pointColor('color')
                 .pointAltitude(0.01)
                 .pointRadius('size')
-                .pointLabel('label')
+                .pointsMerge(true)
+                .pointLabel('tooltip')
                 .onPointClick(point => {
-                    if (point.url) window.open(point.url, '_blank');
-                });
+                    if (point.url) {
+                        window.open(point.url, '_blank');
+                    }
+                })
+                .onPointHover(point => {
+                    document.body.style.cursor = point ? 'pointer' : 'default';
+                })
+                .arcsData(arcs)
+                .arcColor('color')
+                .arcAltitude('arcAlt')
+                .arcStroke('stroke')
+                .arcDashLength(0.5)
+                .arcDashGap(0.1)
+                .arcDashInitialGap(() => Math.random())
+                .arcDashAnimateTime(2000);
+        }
+
+        function shouldShowMarker(month) {
+            return selectedMonths.includes('all') || selectedMonths.includes(month);
         }
 
         // Add initialization error handling
