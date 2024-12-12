@@ -271,7 +271,17 @@
                     <span class="arrow">▼</span>
                 </div>
                 <div class="bibliography-content">
-                    <div id="papers-container"></div>
+                    <div id="dec-papers-container"></div>
+                </div>
+            </div>
+            
+            <div class="bibliography-card" onclick="toggleBibliography(this)">
+                <div class="bibliography-header">
+                    <h2>November Philosophy Papers</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="bibliography-content">
+                    <div id="nov-papers-container"></div>
                 </div>
             </div>
         </div>
@@ -518,24 +528,46 @@
 
         // Function to load the bibliography content
         async function loadBibliography() {
-            const container = document.getElementById('papers-container');
-            if (!container) return;
-
-            try {
-                const response = await fetch('newsletters/dec_phil_papers.html');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+            // Load December papers
+            const decContainer = document.getElementById('dec-papers-container');
+            if (decContainer) {
+                try {
+                    const decResponse = await fetch('newsletters/dec_phil_papers.html');
+                    if (!decResponse.ok) {
+                        throw new Error(`HTTP error! status: ${decResponse.status}`);
+                    }
+                    const decText = await decResponse.text();
+                    decContainer.innerHTML = decText;
+                } catch (error) {
+                    console.error('Error loading December bibliography:', error);
+                    decContainer.innerHTML = `
+                        <div style="padding: 20px; text-align: center;">
+                            <p>Error loading December bibliography. Please try again later.</p>
+                            <button onclick="loadBibliography()">Retry</button>
+                        </div>
+                    `;
                 }
-                const text = await response.text();
-                container.innerHTML = text;
-            } catch (error) {
-                console.error('Error loading bibliography:', error);
-                container.innerHTML = `
-                    <div style="padding: 20px; text-align: center;">
-                        <p>Error loading bibliography. Please try again later.</p>
-                        <button onclick="loadBibliography()">Retry</button>
-                    </div>
-                `;
+            }
+
+            // Load November papers
+            const novContainer = document.getElementById('nov-papers-container');
+            if (novContainer) {
+                try {
+                    const novResponse = await fetch('newsletters/nov_phil_papers.html');
+                    if (!novResponse.ok) {
+                        throw new Error(`HTTP error! status: ${novResponse.status}`);
+                    }
+                    const novText = await novResponse.text();
+                    novContainer.innerHTML = novText;
+                } catch (error) {
+                    console.error('Error loading November bibliography:', error);
+                    novContainer.innerHTML = `
+                        <div style="padding: 20px; text-align: center;">
+                            <p>Error loading November bibliography. Please try again later.</p>
+                            <button onclick="loadBibliography()">Retry</button>
+                        </div>
+                    `;
+                }
             }
         }
 
@@ -582,42 +614,80 @@
         function updateMarkers() {
             if (!globe) return;
             
-            const points = [];
+            // First, group items by location
+            const locationGroups = new Map();
             
-            // Add conferences
+            // Group conferences
             data.conferences.forEach(conf => {
                 if (conf.lat && conf.lng) {
-                    points.push({
-                        lat: conf.lat,
-                        lng: conf.lng,
-                        size: 0.5,
+                    const key = `${conf.lat},${conf.lng}`;
+                    if (!locationGroups.has(key)) {
+                        locationGroups.set(key, { 
+                            lat: conf.lat, 
+                            lng: conf.lng,
+                            items: []
+                        });
+                    }
+                    locationGroups.get(key).items.push({
+                        type: 'conference',
                         color: '#ff4444',
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
-                            <strong>${conf.title}</strong><br>
-                            ${conf.date}<br>
-                            ${conf.location}
-                        </div>`,
-                        url: conf.url
+                        data: conf
                     });
                 }
             });
             
-            // Add jobs
+            // Group jobs
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
-                    points.push({
-                        lat: job.lat,
-                        lng: job.lng,
-                        size: 0.5,
+                    const key = `${job.lat},${job.lng}`;
+                    if (!locationGroups.has(key)) {
+                        locationGroups.set(key, {
+                            lat: job.lat,
+                            lng: job.lng,
+                            items: []
+                        });
+                    }
+                    locationGroups.get(key).items.push({
+                        type: 'job',
                         color: job.type === 'Academic' ? '#9c27b0' : '#4CAF50',
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
-                            <strong>${job.title}</strong><br>
-                            ${job.organization}<br>
-                            ${job.location}
-                        </div>`,
-                        url: job.url
+                        data: job
                     });
                 }
+            });
+            
+            // Convert groups to points
+            const points = Array.from(locationGroups.values()).map(group => {
+                const items = group.items;
+                const size = Math.min(1 + (items.length * 0.2), 2); // Increase size based on number of items
+                
+                // Create combined label for all items at this location
+                const label = `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
+                    <strong>${items.length} items at this location:</strong><br><br>
+                    ${items.map(item => {
+                        if (item.type === 'conference') {
+                            return `<div style="margin-bottom: 8px; padding-left: 5px; border-left: 3px solid ${item.color}">
+                                <strong>${item.data.title}</strong><br>
+                                ${item.data.date}<br>
+                                ${item.data.location}
+                            </div>`;
+                        } else {
+                            return `<div style="margin-bottom: 8px; padding-left: 5px; border-left: 3px solid ${item.color}">
+                                <strong>${item.data.title}</strong><br>
+                                ${item.data.organization}<br>
+                                ${item.data.location}
+                            </div>`;
+                        }
+                    }).join('')}
+                </div>`;
+
+                return {
+                    lat: group.lat,
+                    lng: group.lng,
+                    size: size,
+                    color: items.length > 1 ? '#FFA500' : items[0].color, // Orange for multiple items
+                    label: label,
+                    items: items
+                };
             });
             
             // Update globe with points
@@ -628,7 +698,9 @@
                 .pointRadius('size')
                 .pointLabel('label')
                 .onPointClick(point => {
-                    if (point.url) window.open(point.url, '_blank');
+                    if (point.items && point.items.length === 1) {
+                        window.open(point.items[0].data.url, '_blank');
+                    }
                 });
         }
 
