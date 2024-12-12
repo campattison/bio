@@ -641,12 +641,13 @@
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 0.5,  //
+                        size: 0.8,  // Increased from 0.375
                         color: '#ff4444',
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px;">
                             <strong>${conf.title}</strong><br>
                             ${conf.date}<br>
-                            ${conf.location}
+                            ${conf.location}<br>
+                            <span style="color: #ff4444; font-size: 0.9em;">Click to learn more</span>
                         </div>`,
                         url: conf.url
                     });
@@ -656,15 +657,18 @@
             // Add jobs
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
+                    const color = job.type === 'Academic' ? '#9c27b0' : '#4CAF50';
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 0.5,  // 
-                        color: job.type === 'Academic' ? '#9c27b0' : '#4CAF50',
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
+                        size: 0.8,  // Increased from 0.375
+                        color: color,
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px;">
                             <strong>${job.title}</strong><br>
                             ${job.organization}<br>
-                            ${job.location}
+                            ${job.location}<br>
+                            <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
+                            <span style="color: ${color}; font-size: 0.9em;">Click to apply</span>
                         </div>`,
                         url: job.url
                     });
@@ -678,6 +682,9 @@
                 .pointAltitude(0.01)
                 .pointRadius('size')
                 .pointLabel('label')
+                .onPointHover(point => {
+                    document.body.style.cursor = point ? 'pointer' : 'default';
+                })
                 .onPointClick(point => {
                     if (point.url) window.open(point.url, '_blank');
                 });
