@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
     <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --primary-color: #3498db;
@@ -144,10 +143,6 @@
             max-height: 10000px; /* Large enough to show all content */
         }
 
-        .arrow {
-            transition: transform 0.3s ease;
-        }
-
         .bibliography-card.expanded .arrow {
             transform: rotate(180deg);
         }
@@ -216,14 +211,6 @@
             padding: 20px;
             border-radius: 8px;
             z-index: 1000;
-        }
-
-        .month-button {
-            display: none;
-        }
-
-        #month-selector {
-            display: none;
         }
 
         .globe-loading {
