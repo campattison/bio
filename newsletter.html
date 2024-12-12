@@ -710,7 +710,8 @@
             
             // Process conferences
             data.conferences.forEach(conf => {
-                if (shouldShowMarker(conf.month)) {
+                const date = new Date(conf.date);
+                if (shouldShowMarker(date.getMonth().toString())) {
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
@@ -720,14 +721,14 @@
                 }
             });
             
-            // Process job postings
+            // Process job postings with valid coordinates
             data.jobs.forEach(job => {
-                if (shouldShowMarker(job.month)) {
+                if (job.lat && job.lng) {  // Only process jobs with coordinates
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
                         size: 0.5,
-                        color: '#00ff00'
+                        color: job.type === 'Academic' ? '#9c27b0' : '#00ff00'
                     });
                     
                     // Add arc from job location to a point slightly above it
@@ -736,7 +737,7 @@
                         startLng: job.lng,
                         endLat: job.lat + 0.5,
                         endLng: job.lng,
-                        color: '#00ff00',
+                        color: job.type === 'Academic' ? '#9c27b0' : '#00ff00',
                         arcAlt: 0.2,
                         stroke: 2
                     });
@@ -746,6 +747,10 @@
             // Update globe data
             globe.pointsData(points);
             globe.arcsData(arcs);
+        }
+
+        function shouldShowMarker(month) {
+            return selectedMonths.includes('all') || selectedMonths.includes(month);
         }
 
         // Add initialization error handling
