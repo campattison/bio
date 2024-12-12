@@ -1,22 +1,19 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cameron Pattison - Philosophy & AI</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Research Hub: Normative Philosophy of Computing</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.28.5/dist/globe.gl.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
-            --background-color: #ffffff;
-            --text-color: #333333;
+            --background-color: #f5f7fa;
             --card-background: #ffffff;
+            --text-color: #333333;
             --shadow-color: rgba(0, 0, 0, 0.1);
             --border-radius: 12px;
             --spacing: 1rem;
@@ -92,20 +89,20 @@
             margin-bottom: 0.5rem;
         }
         .tag.academic {
-            background-color: #ce93d8;
-            color: white;
+            background-color: #e1f5fe;
+            color: #0288d1;
         }
         .tag.alt-ac {
-            background-color: #81c784;
-            color: white;
+            background-color: #f3e5f5;
+            color: #7b1fa2;
         }
         .tag.deadline {
-            background-color: #ff6b6b;
-            color: white;
+            background-color: #fff3e0;
+            color: #ef6c00;
         }
         .tag.location {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: var(--text-color);
+            background-color: #e8f5e9;
+            color: #2e7d32;
         }
         @media (max-width: 768px) {
             .card-grid {
@@ -124,10 +121,14 @@
             color: white;
             padding: var(--spacing);
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .bibliography-header h2 {
             margin: 0;
+            color: white;
         }
 
         .bibliography-content {
@@ -137,49 +138,50 @@
         }
 
         .bibliography-card.expanded .bibliography-content {
-            max-height: 10000px;
+            max-height: 10000px; /* Large enough to show all content */
         }
 
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .bibliography-card.expanded .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Styles for the embedded bibliography content */
         .bibliography-content .report {
             padding: var(--spacing);
-            overflow-x: auto;
         }
 
         .bibliography-content table {
             width: 100%;
             border-collapse: collapse;
+            margin: 10px 0;
         }
 
         .bibliography-content th,
         .bibliography-content td {
             padding: 8px;
             border: 1px solid #ddd;
-            text-align: left;
         }
 
         .bibliography-content th {
             background-color: #f5f5f5;
             font-weight: 600;
+            text-align: left;
         }
 
         #globeViz {
             position: relative;
-            height: 500px;
+            min-height: 500px;
             width: 100%;
-            background-color: white;
+            background-color: #000011;
             border-radius: var(--border-radius);
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        
-        #globeViz canvas {
-            width: 100% !important;
-            height: 100% !important;
-            position: absolute;
-            top: 0;
-            left: 0;
         }
         
         .globe-loading {
@@ -205,6 +207,32 @@
             z-index: 1000;
         }
 
+        .month-button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px 10px;
+        }
+
+        .month-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .month-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #month-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .globe-loading {
             color: white;
             text-align: center;
@@ -225,22 +253,8 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="research.html">Research</a>
-                <a href="teaching.html">Teaching</a>
-                <a href="ai-tools.html">AI Tools</a>
-                <a href="newsletter.html" class="active">Newsletter</a>
-            </nav>
-            <div class="profile-header">
-                <h1>Newsletter</h1>
-                <p class="subtitle">Cameron Pattison & Seth Lazar | MINT Lab</p>
-                <p class="contact-info">
-                    <a href="https://philosophyofcomputing.substack.com"><i class="fas fa-envelope"></i> Philosophy of Computing Newsletter</a>
-                </p>
-            </div>
-        </header>
+        <h1>Research Hub: Normative Philosophy of Computing</h1>
+        
         <!-- CFPs Section -->
         <div class="section" id="cfps-section">
             <h2>Call for Papers</h2>
@@ -262,7 +276,12 @@
         <!-- Globe Section -->
         <div class="section">
             <h2>Job and Conference Globe</h2>
-            <div id="globeViz"></div>
+            <div id="month-selector">
+                <button class="month-button active" data-month="all">All Conferences</button>
+            </div>
+            <div id="globeViz">
+                <div class="globe-loading">Loading globe visualization...</div>
+            </div>
         </div>
         
         <!-- Bibliography Section (Last) -->
@@ -273,17 +292,7 @@
                     <span class="arrow">▼</span>
                 </div>
                 <div class="bibliography-content">
-                    <div id="dec-papers-container"></div>
-                </div>
-            </div>
-            
-            <div class="bibliography-card" onclick="toggleBibliography(this)">
-                <div class="bibliography-header">
-                    <h2>November Philosophy Papers</h2>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="bibliography-content">
-                    <div id="nov-papers-container"></div>
+                    <div id="papers-container"></div>
                 </div>
             </div>
         </div>
@@ -418,26 +427,6 @@
                     description: "One tenure track and one lecturer position in AI ethics, policy, and governance.",
                     lat: 22.3193,
                     lng: 114.1694
-                },
-                {
-                    title: "Postdoctoral Fellowships",
-                    location: "New York, NY",
-                    organization: "Digital Life Initiative (Cornell Tech)",
-                    type: "Alt-Ac",
-                    url: "https://www.dli.tech.cornell.edu/postdocs",
-                    description: "Postdoctoral research in ethics, politics, and quality of life in digital societies, covering privacy, AI ethics, and platform governance.",
-                    lat: 40.7128,
-                    lng: -74.0060
-                },
-                {
-                    title: "Research Opportunities",
-                    location: "Remote/US",
-                    organization: "RAND Corporation",
-                    type: "Alt-Ac",
-                    url: "https://x.com/ohlennart/status/1864368808091373696?s=12",
-                    description: "Roles in compute governance and technical AI policy, including positions on their Compute Team.",
-                    lat: 38.9072,  // Washington DC coordinates since RAND has major presence there
-                    lng: -77.0369
                 }
             ]
         };
@@ -550,46 +539,24 @@
 
         // Function to load the bibliography content
         async function loadBibliography() {
-            // Load December papers
-            const decContainer = document.getElementById('dec-papers-container');
-            if (decContainer) {
-                try {
-                    const decResponse = await fetch('newsletters/dec_phil_papers.html');
-                    if (!decResponse.ok) {
-                        throw new Error(`HTTP error! status: ${decResponse.status}`);
-                    }
-                    const decText = await decResponse.text();
-                    decContainer.innerHTML = decText;
-                } catch (error) {
-                    console.error('Error loading December bibliography:', error);
-                    decContainer.innerHTML = `
-                        <div style="padding: 20px; text-align: center;">
-                            <p>Error loading December bibliography. Please try again later.</p>
-                            <button onclick="loadBibliography()">Retry</button>
-                        </div>
-                    `;
-                }
-            }
+            const container = document.getElementById('papers-container');
+            if (!container) return;
 
-            // Load November papers
-            const novContainer = document.getElementById('nov-papers-container');
-            if (novContainer) {
-                try {
-                    const novResponse = await fetch('newsletters/nov_phil_papers.html');
-                    if (!novResponse.ok) {
-                        throw new Error(`HTTP error! status: ${novResponse.status}`);
-                    }
-                    const novText = await novResponse.text();
-                    novContainer.innerHTML = novText;
-                } catch (error) {
-                    console.error('Error loading November bibliography:', error);
-                    novContainer.innerHTML = `
-                        <div style="padding: 20px; text-align: center;">
-                            <p>Error loading November bibliography. Please try again later.</p>
-                            <button onclick="loadBibliography()">Retry</button>
-                        </div>
-                    `;
+            try {
+                const response = await fetch('newsletters/dec_phil_papers.html');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
+                const text = await response.text();
+                container.innerHTML = text;
+            } catch (error) {
+                console.error('Error loading bibliography:', error);
+                container.innerHTML = `
+                    <div style="padding: 20px; text-align: center;">
+                        <p>Error loading bibliography. Please try again later.</p>
+                        <button onclick="loadBibliography()">Retry</button>
+                    </div>
+                `;
             }
         }
 
@@ -597,165 +564,250 @@
         document.addEventListener('DOMContentLoaded', loadBibliography);
 
         let globe = null;
+        let selectedMonths = ['all'];
 
         function createGlobe() {
             const globeContainer = document.getElementById('globeViz');
             
+            // Show loading state
+            globeContainer.innerHTML = '<div class="globe-loading">Loading globe visualization...</div>';
+            
+            // Ensure clean state
+            if (globe) {
+                globe._destructor();
+                globe = null;
+            }
+
             try {
+                // Check dependencies
+                if (typeof Globe === 'undefined') throw new Error('Globe.gl library not loaded');
+                if (typeof THREE === 'undefined') throw new Error('Three.js library not loaded');
+                
                 // Create new globe instance
                 globe = Globe()
-                    .backgroundColor('white')
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+                    .backgroundColor('#000011')
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                    .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
                     .width(globeContainer.clientWidth)
                     .height(500)
-                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
-                    .labelLabel(d => d.label)
-                    .labelAltitude(0.01)
-                    .labelDotRadius(0.3)
-                    .labelDotOrientation(() => 'right')
-                    .labelColor(() => 'white')
-                    .labelSize(1.5)
-                    .labelResolution(2)
-                    .onPointHover(point => {
-                        document.body.style.cursor = point ? 'pointer' : 'default';
-                    })
-                    .onPointClick(point => {
-                        if (point && point.url) window.open(point.url, '_blank');
+                    .showGlobe(true)
+                    .showAtmosphere(true)
+                    .atmosphereColor('#ffffff')
+                    .atmosphereAltitude(0.15)
+                    .pointOfView({ lat: 30, lng: 0, altitude: 2 })
+                    .customLayerData([{}])
+                    .customThreeObject(() => {
+                        return new THREE.Mesh(
+                            new THREE.SphereGeometry(100, 75, 75),
+                            new THREE.MeshPhongMaterial({
+                                color: 'white',
+                                transparent: true,
+                                opacity: 0.05
+                            })
+                        );
                     });
 
                 // Mount globe
                 globe(globeContainer);
+                
+                // Remove loading message
+                const loadingEl = globeContainer.querySelector('.globe-loading');
+                if (loadingEl) loadingEl.remove();
 
-                // Basic controls setup
-                if (globe.controls()) {
-                    globe.controls().autoRotate = false;
-                    globe.controls().enableZoom = true;
-                    globe.controls().update();
-                }
+                // Setup controls
+                setTimeout(() => {
+                    if (globe && globe.controls()) {
+                        globe.controls().autoRotate = false;
+                        globe.controls().enableZoom = true;
+                        globe.controls().enablePan = true;
+                        globe.controls().minDistance = 200;
+                        globe.controls().maxDistance = 400;
+                        globe.controls().update();
+                        
+                        updateMonthButtons();
+                        updateMarkers();
+                    }
+                }, 100);
 
                 // Handle window resizing
-                window.addEventListener('resize', () => {
-                    globe.width(globeContainer.clientWidth);
-                });
+                const handleResize = () => {
+                    if (globe) {
+                        const newWidth = globeContainer.clientWidth;
+                        globe.width(newWidth);
+                    }
+                };
+                window.removeEventListener('resize', handleResize);
+                window.addEventListener('resize', handleResize);
 
-                updateMarkers();
                 return globe;
             } catch (error) {
                 console.error('Globe initialization error:', error);
-                globeContainer.innerHTML = 'Failed to load globe visualization.';
+                globeContainer.innerHTML = `
+                    <div class="globe-error">
+                        Failed to initialize globe visualization.<br>
+                        Error: ${error.message}<br>
+                        <button onclick="location.reload()" style="margin-top: 10px;">Retry</button>
+                    </div>
+                `;
+                throw error;
             }
+        }
+
+        function updateMonthButtons() {
+            const monthSelector = document.getElementById('month-selector');
+            if (!monthSelector) return;
+
+            monthSelector.innerHTML = ''; // Clear existing buttons
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            // Add "All" button first
+            const allButton = document.createElement('button');
+            allButton.className = 'month-button active';
+            allButton.setAttribute('data-month', 'all');
+            allButton.textContent = 'All';
+            monthSelector.appendChild(allButton);
+
+            const currentMonth = new Date().getMonth();
+            
+            // Add month buttons
+            for (let i = 0; i < 12; i++) {
+                const monthIndex = (currentMonth + i) % 12;
+                const button = document.createElement('button');
+                button.className = 'month-button';
+                button.setAttribute('data-month', monthIndex);
+                button.textContent = months[monthIndex];
+                monthSelector.appendChild(button);
+            }
+
+            // Add event listeners
+            document.querySelectorAll('.month-button').forEach(button => {
+                button.addEventListener('click', handleMonthButtonClick);
+            });
+        }
+
+        function handleMonthButtonClick() {
+            const month = this.dataset.month;
+            if (month === 'all') {
+                selectedMonths = ['all'];
+                document.querySelectorAll('.month-button').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            } else {
+                if (selectedMonths.includes('all')) {
+                    selectedMonths = [];
+                    document.querySelector('[data-month="all"]').classList.remove('active');
+                }
+                this.classList.toggle('active');
+                if (this.classList.contains('active')) {
+                    selectedMonths.push(month);
+                } else {
+                    selectedMonths = selectedMonths.filter(m => m !== month);
+                }
+                if (selectedMonths.length === 0) {
+                    selectedMonths = ['all'];
+                    document.querySelector('[data-month="all"]').classList.add('active');
+                }
+            }
+            updateMarkers();
+        }
+
+        function validateCoordinates(lat, lng) {
+            return !isNaN(lat) && !isNaN(lng) && 
+                   lat >= -90 && lat <= 90 && 
+                   lng >= -180 && lng <= 180;
         }
 
         function updateMarkers() {
             if (!globe) return;
             
             const points = [];
+            const arcs = [];
             
-            // Add conferences
+            // Process conferences
             data.conferences.forEach(conf => {
-                if (conf.lat && conf.lng) {
+                const date = new Date(conf.date);
+                if (shouldShowMarker(date.getMonth().toString())) {
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 0.8,
-                        color: '#ff6b6b',
-                        label: `<div class="globe-tooltip" style="
-                            background: rgba(0, 0, 0, 0.85);
-                            color: white;
-                            padding: 15px;
-                            border-radius: 8px;
-                            min-width: 220px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                            backdrop-filter: blur(5px);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            font-family: 'Roboto', sans-serif;
-                            pointer-events: auto;
-                            position: absolute;
-                            z-index: 1000;
-                        ">
-                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
-                                ${conf.title}
+                        size: 1,
+                        color: '#ff4444',
+                        name: conf.title,
+                        url: conf.url,
+                        type: 'conference',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${conf.title}</strong><br>
+                                <span>${conf.date}<br>${conf.location}</span><br>
+                                <span style="color: #ff4444; cursor: pointer;">Click to learn more</span>
                             </div>
-                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> ${conf.date}
-                            </div>
-                            <div style="font-size: 0.9em; margin-bottom: 8px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${conf.location}
-                            </div>
-                            <div style="
-                                font-size: 0.8em;
-                                color: #ff6b6b;
-                                margin-top: 5px;
-                                display: inline-block;
-                                cursor: pointer;
-                            ">Click to learn more →</div>
-                        </div>`,
-                        url: conf.url
+                        `
                     });
                 }
             });
             
-            // Add jobs
+            // Process job postings with valid coordinates
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
-                    const color = job.type === 'Academic' ? '#ce93d8' : '#81c784';
+                    const color = job.type === 'Academic' ? '#9c27b0' : '#4CAF50';
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 0.8,
+                        size: 1,
                         color: color,
-                        label: `<div style="
-                            background: rgba(0, 0, 0, 0.85);
-                            color: white;
-                            padding: 15px;
-                            border-radius: 8px;
-                            min-width: 220px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                            backdrop-filter: blur(5px);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            font-family: 'Roboto', sans-serif;
-                            pointer-events: auto;
-                            position: absolute;
-                            z-index: 1000;
-                        ">
-                            <div style="font-weight: 500; font-size: 1.1em; color: white; margin-bottom: 8px;">
-                                ${job.title}
+                        name: job.title,
+                        url: job.url,
+                        type: 'job',
+                        tooltip: `
+                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
+                                <strong>${job.title}</strong><br>
+                                <span>${job.organization}<br>${job.location}</span><br>
+                                <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
+                                <span style="color: ${color}; cursor: pointer;">Click to apply</span>
                             </div>
-                            <div style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9); margin-bottom: 4px;">
-                                ${job.organization}
-                            </div>
-                            <div style="font-size: 0.9em; margin-bottom: 4px; color: rgba(255, 255, 255, 0.9);">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${job.location}
-                            </div>
-                            <div style="
-                                font-size: 0.85em;
-                                color: rgba(255, 255, 255, 0.8);
-                                margin: 8px 0;
-                                line-height: 1.4;
-                            ">${job.description}</div>
-                            <div style="
-                                font-size: 0.8em;
-                                color: ${color};
-                                margin-top: 5px;
-                                display: inline-block;
-                                cursor: pointer;
-                            ">Click to apply →</div>
-                        </div>`,
-                        url: job.url
+                        `
+                    });
+                    
+                    // Add pulsing arc
+                    arcs.push({
+                        startLat: job.lat,
+                        startLng: job.lng,
+                        endLat: job.lat + 0.5,
+                        endLng: job.lng,
+                        color: color,
+                        arcAlt: 0.3,
+                        stroke: 3
                     });
                 }
             });
             
-            // Update globe with points
+            // Update globe data
             globe
                 .pointsData(points)
                 .pointColor('color')
                 .pointAltitude(0.01)
                 .pointRadius('size')
-                .pointResolution(32)
-                .labelText('label')
-                .labelLat(d => d.lat)
-                .labelLng(d => d.lng);
+                .pointsMerge(true)
+                .pointLabel('tooltip')
+                .onPointClick(point => {
+                    if (point.url) {
+                        window.open(point.url, '_blank');
+                    }
+                })
+                .onPointHover(point => {
+                    document.body.style.cursor = point ? 'pointer' : 'default';
+                })
+                .arcsData(arcs)
+                .arcColor('color')
+                .arcAltitude('arcAlt')
+                .arcStroke('stroke')
+                .arcDashLength(0.5)
+                .arcDashGap(0.1)
+                .arcDashInitialGap(() => Math.random())
+                .arcDashAnimateTime(2000);
+        }
+
+        function shouldShowMarker(month) {
+            return selectedMonths.includes('all') || selectedMonths.includes(month);
         }
 
         // Add initialization error handling
