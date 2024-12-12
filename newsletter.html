@@ -62,24 +62,29 @@
         .profile-header {
             text-align: center;
             padding: 2rem 1rem;
-            background-color: var(--card-background);
+            background-color: var(--secondary-color);
             margin-bottom: 2rem;
             box-shadow: 0 2px 4px var(--shadow-color);
         }
 
         .profile-header h1 {
-            color: var(--secondary-color);
+            color: white;
             margin-bottom: 0.5rem;
         }
 
         .subtitle {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 1rem;
         }
 
         .contact-info a {
-            color: var(--primary-color);
+            color: white;
             text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
         }
 
         /* Container and Section Styles */
@@ -199,6 +204,23 @@
             padding: 20px;
             border-radius: 8px;
             z-index: 1000;
+        }
+
+        /* Globe Tooltip Styles */
+        .globe-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 1000;
+            max-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         /* Responsive Design */
@@ -649,16 +671,25 @@
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 1,
+                        size: 1.2,
                         color: '#ff4444',
                         name: conf.title,
                         url: conf.url,
                         type: 'conference',
-                        tooltip: `
-                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
-                                <strong>${conf.title}</strong><br>
-                                <span>${conf.date}<br>${conf.location}</span><br>
-                                <span style="color: #ff4444; cursor: pointer;">Click to learn more</span>
+                        label: `
+                            <div class="globe-tooltip">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
+                                    ${conf.title}
+                                </div>
+                                <div style="margin-bottom: 5px;">
+                                    <i class="fas fa-calendar-alt"></i> ${conf.date}
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <i class="fas fa-map-marker-alt"></i> ${conf.location}
+                                </div>
+                                <div style="color: #ff4444; font-size: 0.9em;">
+                                    Click to learn more →
+                                </div>
                             </div>
                         `
                     });
@@ -672,38 +703,53 @@
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 1,
+                        size: 1.2,
                         color: color,
                         name: job.title,
                         url: job.url,
                         type: 'job',
-                        tooltip: `
-                            <div style="text-align: center; background-color: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; min-width: 150px;">
-                                <strong>${job.title}</strong><br>
-                                <span>${job.organization}<br>${job.location}</span><br>
-                                <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
-                                <span style="color: ${color}; cursor: pointer;">Click to apply</span>
+                        label: `
+                            <div class="globe-tooltip">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
+                                    ${job.title}
+                                </div>
+                                <div style="margin-bottom: 5px;">
+                                    <i class="fas fa-building"></i> ${job.organization}
+                                </div>
+                                <div style="margin-bottom: 5px;">
+                                    <i class="fas fa-map-marker-alt"></i> ${job.location}
+                                </div>
+                                <div style="margin-bottom: 8px; font-size: 0.9em;">
+                                    ${job.description}
+                                </div>
+                                <div style="color: ${color}; font-size: 0.9em;">
+                                    Click to apply →
+                                </div>
                             </div>
                         `
                     });
                 }
             });
             
-            // Update globe data with improved tooltip handling
+            // Update globe with enhanced tooltips
             globe
                 .pointsData(points)
                 .pointColor('color')
                 .pointAltitude(0.01)
                 .pointRadius('size')
                 .pointsMerge(true)
-                .pointLabel('tooltip')
-                .onPointClick(point => {
-                    if (point.url) {
-                        window.open(point.url, '_blank');
-                    }
-                })
+                .labelText('label')
+                .labelSize(1)
+                .labelDotRadius(0.5)
+                .labelDotOrientation(() => 'right')
+                .labelColor(() => 'white')
                 .onPointHover(point => {
                     document.body.style.cursor = point ? 'pointer' : 'default';
+                })
+                .onPointClick(point => {
+                    if (point && point.url) {
+                        window.open(point.url, '_blank');
+                    }
                 });
         }
 
