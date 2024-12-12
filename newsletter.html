@@ -179,11 +179,17 @@
             background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         #globeViz canvas {
             width: 100% !important;
             height: 100% !important;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         
         .globe-loading {
@@ -580,31 +586,40 @@
             const globeContainer = document.getElementById('globeViz');
             
             try {
-                // Create new globe instance
-                globe = Globe()
-                    .backgroundColor('white')
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
-                    .width(globeContainer.clientWidth)
-                    .height(globeContainer.clientHeight)
-                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
+                // Wait for container to be properly sized
+                setTimeout(() => {
+                    // Create new globe instance
+                    globe = Globe()
+                        .backgroundColor('white')
+                        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+                        .width(globeContainer.offsetWidth)
+                        .height(globeContainer.offsetHeight)
+                        .pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
 
-                // Mount globe
-                globe(globeContainer);
+                    // Mount globe
+                    globe(globeContainer);
 
-                // Basic controls setup
-                if (globe.controls()) {
-                    globe.controls().autoRotate = false;
-                    globe.controls().enableZoom = true;
-                    globe.controls().update();
-                }
+                    // Basic controls setup
+                    if (globe.controls()) {
+                        globe.controls().autoRotate = false;
+                        globe.controls().enableZoom = true;
+                        globe.controls().update();
+                    }
 
-                // Handle window resizing
-                window.addEventListener('resize', () => {
-                    globe.width(globeContainer.clientWidth);
-                });
+                    // Handle window resizing
+                    const handleResize = () => {
+                        const width = globeContainer.offsetWidth;
+                        const height = globeContainer.offsetHeight;
+                        globe
+                            .width(width)
+                            .height(height);
+                    };
+                    window.removeEventListener('resize', handleResize);
+                    window.addEventListener('resize', handleResize);
 
-                updateMarkers();
-                return globe;
+                    updateMarkers();
+                }, 100);  // Small delay to ensure container is ready
+
             } catch (error) {
                 console.error('Globe initialization error:', error);
                 globeContainer.innerHTML = 'Failed to load globe visualization.';
@@ -614,80 +629,42 @@
         function updateMarkers() {
             if (!globe) return;
             
-            // First, group items by location
-            const locationGroups = new Map();
+            const points = [];
             
-            // Group conferences
+            // Add conferences
             data.conferences.forEach(conf => {
                 if (conf.lat && conf.lng) {
-                    const key = `${conf.lat},${conf.lng}`;
-                    if (!locationGroups.has(key)) {
-                        locationGroups.set(key, { 
-                            lat: conf.lat, 
-                            lng: conf.lng,
-                            items: []
-                        });
-                    }
-                    locationGroups.get(key).items.push({
-                        type: 'conference',
+                    points.push({
+                        lat: conf.lat,
+                        lng: conf.lng,
+                        size: 0.375,  // 25% smaller than original 0.5
                         color: '#ff4444',
-                        data: conf
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
+                            <strong>${conf.title}</strong><br>
+                            ${conf.date}<br>
+                            ${conf.location}
+                        </div>`,
+                        url: conf.url
                     });
                 }
             });
             
-            // Group jobs
+            // Add jobs
             data.jobs.forEach(job => {
                 if (job.lat && job.lng) {
-                    const key = `${job.lat},${job.lng}`;
-                    if (!locationGroups.has(key)) {
-                        locationGroups.set(key, {
-                            lat: job.lat,
-                            lng: job.lng,
-                            items: []
-                        });
-                    }
-                    locationGroups.get(key).items.push({
-                        type: 'job',
+                    points.push({
+                        lat: job.lat,
+                        lng: job.lng,
+                        size: 0.375,  // 25% smaller than original 0.5
                         color: job.type === 'Academic' ? '#9c27b0' : '#4CAF50',
-                        data: job
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
+                            <strong>${job.title}</strong><br>
+                            ${job.organization}<br>
+                            ${job.location}
+                        </div>`,
+                        url: job.url
                     });
                 }
-            });
-            
-            // Convert groups to points
-            const points = Array.from(locationGroups.values()).map(group => {
-                const items = group.items;
-                const size = Math.min(1 + (items.length * 0.2), 2); // Increase size based on number of items
-                
-                // Create combined label for all items at this location
-                const label = `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px;">
-                    <strong>${items.length} items at this location:</strong><br><br>
-                    ${items.map(item => {
-                        if (item.type === 'conference') {
-                            return `<div style="margin-bottom: 8px; padding-left: 5px; border-left: 3px solid ${item.color}">
-                                <strong>${item.data.title}</strong><br>
-                                ${item.data.date}<br>
-                                ${item.data.location}
-                            </div>`;
-                        } else {
-                            return `<div style="margin-bottom: 8px; padding-left: 5px; border-left: 3px solid ${item.color}">
-                                <strong>${item.data.title}</strong><br>
-                                ${item.data.organization}<br>
-                                ${item.data.location}
-                            </div>`;
-                        }
-                    }).join('')}
-                </div>`;
-
-                return {
-                    lat: group.lat,
-                    lng: group.lng,
-                    size: size,
-                    color: items.length > 1 ? '#FFA500' : items[0].color, // Orange for multiple items
-                    label: label,
-                    items: items
-                };
             });
             
             // Update globe with points
@@ -698,9 +675,7 @@
                 .pointRadius('size')
                 .pointLabel('label')
                 .onPointClick(point => {
-                    if (point.items && point.items.length === 1) {
-                        window.open(point.items[0].data.url, '_blank');
-                    }
+                    if (point.url) window.open(point.url, '_blank');
                 });
         }
 
