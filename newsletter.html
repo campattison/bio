@@ -175,6 +175,10 @@
         #globeViz {
             position: relative;
             min-height: 500px;
+            width: 100%;
+            background-color: #1a1a1a;
+            border-radius: var(--border-radius);
+            overflow: hidden;
         }
         
         .globe-loading {
@@ -568,16 +572,28 @@
                 
                 // Create new globe instance
                 globe = Globe()
-                    .backgroundColor('rgba(0,0,0,0)')
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+                    .backgroundColor('#1a1a1a')
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
                     .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
                     .width(globeContainer.clientWidth)
                     .height(500)
                     .showGlobe(true)
                     .showAtmosphere(true)
-                    .atmosphereColor('lightskyblue')
-                    .atmosphereAltitude(0.1)
-                    .pointOfView({ lat: 39.6, lng: -98.5, altitude: 2.5 });
+                    .atmosphereColor('#ffffff')
+                    .atmosphereAltitude(0.15)
+                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
+                    .arcsData([])
+                    .arcColor((d) => d.color)
+                    .arcAltitude((d) => d.arcAlt)
+                    .arcStroke((d) => d.stroke)
+                    .arcDashLength(0.9)
+                    .arcDashGap(4)
+                    .arcDashAnimateTime(1000)
+                    .pointsData([])
+                    .pointColor((d) => d.color)
+                    .pointAltitude(0.01)
+                    .pointRadius((d) => d.size)
+                    .pointsMerge(true);
 
                 // Mount globe
                 globe(globeContainer);
@@ -586,11 +602,10 @@
                 const loadingEl = globeContainer.querySelector('.globe-loading');
                 if (loadingEl) loadingEl.remove();
 
-                // Setup controls after small delay to ensure initialization
+                // Setup controls
                 setTimeout(() => {
                     if (globe && globe.controls()) {
-                        globe.controls().autoRotate = true;
-                        globe.controls().autoRotateSpeed = 0.5;
+                        globe.controls().autoRotate = false;  // Disable auto-rotation
                         globe.controls().enableZoom = true;
                         globe.controls().enablePan = true;
                         globe.controls().update();
@@ -688,93 +703,49 @@
         }
 
         function updateMarkers() {
-            const conferenceMarkers = data.conferences
-                .filter(conf => {
-                    if (!validateCoordinates(conf.lat, conf.lng)) {
-                        console.warn(`Invalid coordinates for conference: ${conf.title}`);
-                        return false;
-                    }
-                    const date = new Date(conf.date);
-                    if (isNaN(date.getTime())) {
-                        console.warn(`Invalid date for conference: ${conf.title}`);
-                        return false;
-                    }
-                    return selectedMonths.includes('all') || 
-                           selectedMonths.includes(date.getMonth().toString());
-                })
-                .map(conf => ({
-                    lat: conf.lat,
-                    lng: conf.lng,
-                    size: 0.5,
-                    color: '#00ff00',
-                    type: 'conference',
-                    label: `
-                        <div style="text-align: center; background-color: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px;">
-                            <strong>${conf.title}</strong><br>
-                            <span>${conf.date}<br>${conf.location}</span><br>
-                            <a href="${conf.url}" target="_blank">More information</a>
-                        </div>
-                    `,
-                    url: conf.url
-                }));
-
-            // Job markers (purple arrows)
-            const jobMarkers = data.jobs
-                .filter(job => job.lat && job.lng)  // Filter out remote positions
-                .map(job => ({
-                    lat: job.lat,
-                    lng: job.lng,
-                    size: 0.7,  // Slightly larger than conference markers
-                    color: job.type === 'Academic' ? '#9c27b0' : '#e91e63',  // Purple for academic, pink for alt-ac
-                    type: 'job',
-                    label: `
-                        <div style="text-align: center; background-color: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px;">
-                            <strong>${job.title}</strong><br>
-                            <span>${job.organization}<br>${job.location}</span><br>
-                            <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
-                            <a href="${job.url}" target="_blank">Apply Now</a>
-                        </div>
-                    `,
-                    url: job.url
-                }));
-
-            const allMarkers = [...conferenceMarkers, ...jobMarkers];
-
-            // Custom marker objects for different types
-            globe
-                .pointsData(allMarkers)
-                .pointAltitude(0.01)
-                .pointColor('color')
-                .pointLabel('label')
-                .pointRadius('size')
-                .customThreeObject(d => {
-                    if (d.type === 'job') {
-                        // Create arrow shape for jobs
-                        const cone = new THREE.Mesh(
-                            new THREE.ConeGeometry(0.3, 1, 8),
-                            new THREE.MeshLambertMaterial({ color: d.color })
-                        );
-                        cone.rotation.x = Math.PI;
-                        return cone;
-                    } else {
-                        // Create sphere for conferences
-                        return new THREE.Mesh(
-                            new THREE.SphereGeometry(0.3),
-                            new THREE.MeshLambertMaterial({ color: d.color })
-                        );
-                    }
-                })
-                .customThreeObjectUpdate((obj, d) => {
-                    Object.assign(obj.position, globe.getCoords(d.lat, d.lng, 0.1));
-                    if (d.type === 'job') {
-                        obj.lookAt(globe.getCoords(d.lat, d.lng, 0));
-                    }
-                })
-                .onPointClick(point => {
-                    if (point && point.url) {
-                        window.open(point.url, '_blank');
-                    }
-                });
+            if (!globe) return;
+            
+            const points = [];
+            const arcs = [];
+            
+            // Process conferences
+            data.conferences.forEach(conf => {
+                if (shouldShowMarker(conf.month)) {
+                    points.push({
+                        lat: conf.lat,
+                        lng: conf.lng,
+                        size: 0.5,
+                        color: '#ff0000'
+                    });
+                }
+            });
+            
+            // Process job postings
+            data.jobs.forEach(job => {
+                if (shouldShowMarker(job.month)) {
+                    points.push({
+                        lat: job.lat,
+                        lng: job.lng,
+                        size: 0.5,
+                        color: '#00ff00'
+                    });
+                    
+                    // Add arc from job location to a point slightly above it
+                    arcs.push({
+                        startLat: job.lat,
+                        startLng: job.lng,
+                        endLat: job.lat + 0.5,
+                        endLng: job.lng,
+                        color: '#00ff00',
+                        arcAlt: 0.2,
+                        stroke: 2
+                    });
+                }
+            });
+            
+            // Update globe data
+            globe.pointsData(points);
+            globe.arcsData(arcs);
         }
 
         // Add initialization error handling
