@@ -622,30 +622,23 @@
                     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
                     .width(globeContainer.clientWidth)
                     .height(500)
-                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
-                    .labelLabel(d => d.label)
-                    .labelAltitude(0.01)
-                    .labelDotRadius(0.3)
-                    .labelDotOrientation(() => 'right')
-                    .labelColor(() => 'white')
-                    .labelSize(1.5)
-                    .labelResolution(2)
-                    .onPointHover(point => {
-                        document.body.style.cursor = point ? 'pointer' : 'default';
-                    })
-                    .onPointClick(point => {
-                        if (point && point.url) window.open(point.url, '_blank');
-                    });
+                    .showGlobe(true)
+                    .showAtmosphere(true)
+                    .atmosphereColor('#ffffff')
+                    .atmosphereAltitude(0.15);
 
                 // Mount globe
                 globe(globeContainer);
 
-                // Basic controls setup
-                if (globe.controls()) {
-                    globe.controls().autoRotate = false;
-                    globe.controls().enableZoom = true;
-                    globe.controls().update();
-                }
+                // Wait for globe to initialize before setting position
+                setTimeout(() => {
+                    if (globe && globe.controls()) {
+                        globe.pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
+                        globe.controls().autoRotate = false;
+                        globe.controls().enableZoom = true;
+                        globe.controls().update();
+                    }
+                }, 1000);
 
                 // Handle window resizing
                 window.addEventListener('resize', () => {
@@ -656,7 +649,12 @@
                 return globe;
             } catch (error) {
                 console.error('Globe initialization error:', error);
-                globeContainer.innerHTML = 'Failed to load globe visualization.';
+                globeContainer.innerHTML = `
+                    <div class="globe-error">
+                        Failed to load globe visualization.<br>
+                        <button onclick="location.reload()" style="margin-top: 10px;">Retry</button>
+                    </div>
+                `;
             }
         }
 
