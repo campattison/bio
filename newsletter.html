@@ -590,40 +590,42 @@
             const globeContainer = document.getElementById('globeViz');
             
             try {
-                // Wait for container to be properly sized
-                setTimeout(() => {
-                    // Create new globe instance
-                    globe = Globe()
-                        .backgroundColor('white')
-                        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
-                        .width(globeContainer.offsetWidth)
-                        .height(globeContainer.offsetHeight)
-                        .pointOfView({ lat: 30, lng: 0, altitude: 2.5 });
+                // Create new globe instance
+                globe = Globe()
+                    .backgroundColor('white')
+                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+                    .width(globeContainer.clientWidth)
+                    .height(500)
+                    .pointOfView({ lat: 30, lng: 0, altitude: 2.5 })
+                    .pointLabel('label')  // Enable labels
+                    .labelLat(d => d.lat)
+                    .labelLng(d => d.lng)
+                    .labelAltitude(0.01)
+                    .labelDotRadius(0.3)
+                    .labelDotOrientation(() => 'right')
+                    .labelColor(() => 'color')
+                    .labelText('label')
+                    .labelSize(1)
+                    .labelResolution(0)
+                    .labelLabel(d => d.label);
 
-                    // Mount globe
-                    globe(globeContainer);
+                // Mount globe
+                globe(globeContainer);
 
-                    // Basic controls setup
-                    if (globe.controls()) {
-                        globe.controls().autoRotate = false;
-                        globe.controls().enableZoom = true;
-                        globe.controls().update();
-                    }
+                // Basic controls setup
+                if (globe.controls()) {
+                    globe.controls().autoRotate = false;
+                    globe.controls().enableZoom = true;
+                    globe.controls().update();
+                }
 
-                    // Handle window resizing
-                    const handleResize = () => {
-                        const width = globeContainer.offsetWidth;
-                        const height = globeContainer.offsetHeight;
-                        globe
-                            .width(width)
-                            .height(height);
-                    };
-                    window.removeEventListener('resize', handleResize);
-                    window.addEventListener('resize', handleResize);
+                // Handle window resizing
+                window.addEventListener('resize', () => {
+                    globe.width(globeContainer.clientWidth);
+                });
 
-                    updateMarkers();
-                }, 100);  // Small delay to ensure container is ready
-
+                updateMarkers();
+                return globe;
             } catch (error) {
                 console.error('Globe initialization error:', error);
                 globeContainer.innerHTML = 'Failed to load globe visualization.';
@@ -641,13 +643,13 @@
                     points.push({
                         lat: conf.lat,
                         lng: conf.lng,
-                        size: 0.8,  // Increased from 0.375
+                        size: 0.8,
                         color: '#ff4444',
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px;">
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px; pointer-events: auto;">
                             <strong>${conf.title}</strong><br>
                             ${conf.date}<br>
                             ${conf.location}<br>
-                            <span style="color: #ff4444; font-size: 0.9em;">Click to learn more</span>
+                            <span style="color: #ff4444; font-size: 0.9em; margin-top: 5px; display: inline-block;">Click to learn more</span>
                         </div>`,
                         url: conf.url
                     });
@@ -661,14 +663,14 @@
                     points.push({
                         lat: job.lat,
                         lng: job.lng,
-                        size: 0.8,  // Increased from 0.375
+                        size: 0.8,
                         color: color,
-                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px;">
+                        label: `<div style="background: rgba(0,0,0,0.75); color: white; padding: 10px; border-radius: 5px; min-width: 200px; pointer-events: auto;">
                             <strong>${job.title}</strong><br>
                             ${job.organization}<br>
                             ${job.location}<br>
                             <p style="font-size: 0.9em; margin: 5px 0;">${job.description}</p>
-                            <span style="color: ${color}; font-size: 0.9em;">Click to apply</span>
+                            <span style="color: ${color}; font-size: 0.9em; display: inline-block;">Click to apply</span>
                         </div>`,
                         url: job.url
                     });
@@ -682,6 +684,7 @@
                 .pointAltitude(0.01)
                 .pointRadius('size')
                 .pointLabel('label')
+                .pointResolution(32)  // Increase point resolution
                 .onPointHover(point => {
                     document.body.style.cursor = point ? 'pointer' : 'default';
                 })
