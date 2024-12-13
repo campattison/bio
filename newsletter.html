@@ -70,6 +70,7 @@
             margin: -2rem -2rem 3rem -2rem;
             border-radius: 20px 20px 0 0;
             color: white;
+            font-family: "EB Garamond", serif;
         }
 
         header .main-nav {
@@ -83,13 +84,16 @@
             color: white;
             text-decoration: none;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            border-radius: 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+            background-color: transparent;
         }
 
         header .main-nav a:hover,
         header .main-nav a.active {
-            background-color: var(--primary-color);
+            background-color: transparent;
+            border-bottom: 2px solid white;
         }
 
         header .profile-header {
