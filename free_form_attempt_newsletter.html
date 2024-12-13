@@ -13,6 +13,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            margin-top: 60px;
         }
 
         .tab-container {
@@ -54,7 +55,8 @@
             height: 400px;
             width: 100%;
             border-radius: 5px;
-            margin-bottom: 20px;
+            margin: 40px 0;
+            background: #000;
         }
 
         .paper-card {
@@ -214,10 +216,140 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: white;
+        }
+
+        .month-section {
+            margin-bottom: 40px;
+        }
+
+        .month-header {
+            color: #2962ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .paper-card {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .timeline-view {
+            position: relative;
+            padding: 40px 0 40px 60px;
+            margin: 40px 0;
+        }
+
+        .timeline-view::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #2962ff;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2962ff;
+            border: 2px solid white;
+        }
+
+        .timeline-item.conference::before {
+            background: #4CAF50;
+        }
+
+        .timeline-item.job::before {
+            background: #FF5722;
+        }
+
+        .timeline-item.cfp::before {
+            background: #FFC107;
+        }
+
+        .timeline-date {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .globe-tooltip {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-content {
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-content {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .globe-tooltip {
+            transition: opacity 0.2s ease-in-out;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="newsletter-container">
         <header>
             <nav class="main-nav">
                 <a href="index.html">Home</a>
@@ -228,69 +360,186 @@
             </nav>
         </header>
 
-        <div class="newsletter-container">
-            <h1>Philosophy & AI Newsletter</h1>
-            
-            <div id="map"></div>
-
-            <div class="tab-container">
-                <div class="tab-buttons">
-                    <button class="tab-button active" data-tab="papers">Latest Papers</button>
-                    <button class="tab-button" data-tab="conferences">Conferences</button>
-                    <button class="tab-button" data-tab="cfp">Call for Papers</button>
-                    <button class="tab-button" data-tab="jobs">Job Opportunities</button>
-                </div>
-
-                <div class="search-filter">
-                    <input type="text" id="searchInput" placeholder="Search in current tab...">
-                </div>
-
-                <div class="filter-controls">
-                    <select id="typeFilter">
-                        <option value="all">All Types</option>
-                        <option value="academic">Academic</option>
-                        <option value="alt-ac">Alt-Ac</option>
-                    </select>
-                    <select id="sortBy">
-                        <option value="date">Sort by Date</option>
-                        <option value="location">Sort by Location</option>
-                        <option value="title">Sort by Title</option>
-                    </select>
-                </div>
-
-                <div id="papers" class="tab-content active">
-                    <!-- Papers will be dynamically inserted here -->
-                </div>
-
-                <div id="conferences" class="tab-content">
-                    <!-- Conferences will be dynamically inserted here -->
-                </div>
-
-                <div id="cfp" class="tab-content">
-                    <!-- CFPs will be dynamically inserted here -->
-                </div>
-
-                <div id="jobs" class="tab-content">
-                    <!-- Jobs will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <div class="view-controls">
-                <button class="view-button active" data-view="grid">Grid View</button>
-                <button class="view-button" data-view="timeline">Timeline View</button>
-            </div>
-
-            <div class="timeline-view" style="display: none;">
-                <!-- Timeline will be dynamically generated -->
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Search in current tab...">
+            <div class="filter-controls">
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="academic">Academic</option>
+                    <option value="alt-ac">Alt-Ac</option>
+                </select>
+                <select id="sortBy">
+                    <option value="date">Sort by Date</option>
+                    <option value="location">Sort by Location</option>
+                    <option value="title">Sort by Title</option>
+                </select>
             </div>
         </div>
+
+        <div class="view-controls">
+            <button class="view-button active" data-view="grid">Grid View</button>
+            <button class="view-button" data-view="timeline">Timeline View</button>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="papers">Papers</button>
+                <button class="tab-button" data-tab="conferences">Conferences</button>
+                <button class="tab-button" data-tab="cfp">Call for Papers</button>
+                <button class="tab-button" data-tab="jobs">Jobs</button>
+            </div>
+
+            <div id="papers" class="tab-content active"></div>
+            <div id="conferences" class="tab-content"></div>
+            <div id="cfp" class="tab-content"></div>
+            <div id="jobs" class="tab-content"></div>
+        </div>
+
+        <div class="timeline-view" style="display: none;"></div>
+        <div id="map"></div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/three-globe@2.1.0/dist/three-globe.min.js"></script>
     <script>
-        // Your existing data
+        // Update the data structure to include monthly organization
         const data = {
+            papers: {
+                december: [
+                    {
+                        title: "Hidden Persuaders: LLMs' Political Leaning and Their Influence on Voters",
+                        authors: ["Yujin Potter", "Shiyang Lai", "Junsol Kim", "James Evans", "Dawn Song"],
+                        abstract: "How could LLMs influence our democracy? We investigate LLMs' political leanings and the potential influence of LLMs on voters by conducting multiple experiments in a U.S. presidential election context. Through a voting simulation, we first demonstrate 18 open- and closed-weight LLMs' political preference for a Democratic nominee over a Republican nominee...",
+                        date: "2024-11-11",
+                        url: "http://arxiv.org/abs/2410.24190",
+                        tags: ["Computer Science - Computation and Language", "Computer Science - Computers and Society"]
+                    },
+                    {
+                        title: "On the Ethical Considerations of Generative Agents",
+                        authors: ["N'yoma Diamond", "Soumya Banerjee"],
+                        abstract: "The Generative Agents framework recently developed by Park et al. represents a significant advancement in artificial social intelligence, enabling autonomous agents to exhibit human-like behaviors through memory, reflection, and planning. However, the ethical implications of deploying such agents at scale remain underexplored...",
+                        date: "2024-11-28",
+                        url: "http://arxiv.org/abs/2411.19211",
+                        tags: ["Computer Science - Artificial Intelligence", "Computer Science - Computers and Society"]
+                    }
+                ],
+                november: [
+                    {
+                        title: "The linguistic dead zone of value-aligned agency, natural and artificial",
+                        authors: ["Travis LaCroix"],
+                        abstract: "The value alignment problem for artificial intelligence (AI) asks how we can ensure that increasingly capable AI systems behave in accordance with human values...",
+                        date: "2024-12-04",
+                        url: "https://doi.org/10.1007/s11098-024-02257-w",
+                        tags: ["AI", "Language", "Value Alignment"]
+                    }
+                ]
+            },
+            conferences: [
+                {
+                    title: "TeXne Conference",
+                    date: "2025-02-01",
+                    location: "Massachusetts Institute of Technology (MIT), Cambridge, MA, USA",
+                    url: "https://philevents.org/event/show/126054",
+                    lat: 42.3601,
+                    lng: -71.0942
+                },
+                {
+                    title: "IASEAI '25: International Association for Safe and Ethical AI Inaugural Conference",
+                    date: "2025-02-06",
+                    location: "OECD La Muette Headquarters, Paris, France",
+                    url: "https://www.iaseai.org/conference",
+                    lat: 48.8566,
+                    lng: 2.3522
+                },
+                {
+                    title: "First International Conference on the Philosophy of Content Moderation",
+                    date: "2025-04-12",
+                    location: "Asilomar Conference Grounds, California, USA",
+                    url: "https://www.philmod.org/conference",
+                    lat: 36.6177,
+                    lng: -121.9166
+                },
+                {
+                    title: "ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)",
+                    date: "2025-06-23",
+                    location: "Athens, Greece",
+                    url: "https://facctconference.org/2025/cfp",
+                    lat: 37.9838,
+                    lng: 23.7275
+                }
+            ],
+            jobs: [
+                {
+                    title: "Policy Positions",
+                    location: "Remote",
+                    organization: "Apollo Research",
+                    type: "Alt-Ac",
+                    url: "https://jobs.lever.co/apolloresearch/f66ef22f-f96a-42cb-ada9-fd48ce0d5fda",
+                    description: "Research scientists, engineers, and software developers for AI safety evaluations and technical governance challenges.",
+                    lat: null,
+                    lng: null
+                },
+                {
+                    title: "Technology Policy Roles",
+                    location: "National (US)",
+                    organization: "ACLU",
+                    type: "Alt-Ac",
+                    url: "https://www.aclu.org/careers/apply/?job=7742482002&type=national",
+                    description: "Roles focused on advancing civil liberties and addressing challenges posed by emerging technologies, including AI.",
+                    lat: 38.8977,
+                    lng: -77.0365
+                },
+                {
+                    title: "Assistant/Associate/Full Professor, AI Governance",
+                    location: "Boston, MA",
+                    organization: "Northeastern University",
+                    type: "Academic",
+                    url: "https://x.com/ohlennart/status/1864368808091373696?s=12",
+                    description: "Tenure-track faculty in AI governance, focusing on ethical, legal, and societal implications of AI technologies.",
+                    lat: 42.3398,
+                    lng: -71.0892
+                },
+                {
+                    title: "Lecturer in Philosophy",
+                    location: "Edinburgh, UK",
+                    organization: "University of Edinburgh",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/27970",
+                    description: "Tenure-track position for philosophers specializing in ethics, political philosophy, or epistemology, with relevance to computing.",
+                    lat: 55.9533,
+                    lng: -3.1883
+                },
+                {
+                    title: "Faculty Positions in AI",
+                    location: "College Park, MD",
+                    organization: "University of Maryland",
+                    type: "Academic",
+                    url: "https://ejobs.umd.edu/postings/124144",
+                    description: "30 tenure-track faculty positions in AI, with opportunities for interdisciplinary research.",
+                    lat: 38.9869,
+                    lng: -76.9426
+                },
+                {
+                    title: "Assistant Professor of Philosophy",
+                    location: "Chapel Hill, NC",
+                    organization: "University of North Carolina",
+                    type: "Academic",
+                    url: "https://unc.peopleadmin.com/postings/288557",
+                    description: "Tenure-Track position in Philosophy of Artificial Intelligence. Start date: July 1, 2025.",
+                    lat: 35.9132,
+                    lng: -79.0558
+                },
+                {
+                    title: "AI Ethics Faculty Positions",
+                    location: "Hong Kong",
+                    organization: "Hong Kong Universities",
+                    type: "Academic",
+                    url: "https://academicpositions.hku.hk/",
+                    description: "Multiple positions in AI ethics and governance across Hong Kong universities.",
+                    lat: 22.3964,
+                    lng: 114.1095
+                }
+            ],
             cfps: [
                 {
                     title: "IASEAI '25: International Association for Safe and Ethical AI Inaugural Conference",
@@ -307,96 +556,122 @@
                     deadline: "2025-01-15",
                     url: "https://facctconference.org/2025/cfp"
                 }
-            ],
-            conferences: [
-                // ... your existing conference data ...
-            ],
-            jobs: [
-                // ... your existing jobs data ...
             ]
         };
 
-        // Function to render papers
+        // Update the papers rendering function to handle monthly organization
         function renderPapers() {
             const papersContainer = document.getElementById('papers');
-            const papers = [
-                {
-                    title: "On the Ethical Considerations of Generative Agents",
-                    authors: ["N'yoma Diamond", "Soumya Banerjee"],
-                    abstract: "The Generative Agents framework recently developed by Park et al...",
-                    date: "2024-11-28",
-                    url: "http://arxiv.org/abs/2411.19211"
-                },
-                // Add other papers here
-            ];
+            papersContainer.innerHTML = '';
 
-            papers.forEach(paper => {
-                const paperElement = document.createElement('div');
-                paperElement.className = 'paper-card';
-                paperElement.innerHTML = `
-                    <h3>${paper.title}</h3>
-                    <div class="paper-meta">
-                        ${paper.authors.join(', ')} | ${paper.date}
-                    </div>
-                    <div class="paper-abstract">
-                        ${paper.abstract}
-                    </div>
-                    <a href="${paper.url}" target="_blank" class="read-more">Read Paper →</a>
-                `;
-                papersContainer.appendChild(paperElement);
+            // Create month sections
+            const months = ['december', 'november'];
+            
+            months.forEach(month => {
+                const monthSection = document.createElement('div');
+                monthSection.className = 'month-section';
+                monthSection.innerHTML = `<h2 class="month-header">${month.charAt(0).toUpperCase() + month.slice(1)} 2024</h2>`;
+                
+                data.papers[month].forEach(paper => {
+                    const paperCard = document.createElement('div');
+                    paperCard.className = 'card paper-card';
+                    paperCard.innerHTML = `
+                        <div class="card-header">
+                            <h3>${paper.title}</h3>
+                            <div class="paper-meta">
+                                ${paper.authors.join(', ')} | ${formatDate(paper.date)}
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="paper-abstract">
+                                ${paper.abstract}
+                            </div>
+                            <div class="paper-tags">
+                                ${paper.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                            <div class="paper-links">
+                                <a href="${paper.url}" target="_blank" class="read-more">Read Paper →</a>
+                                ${paper.pdf ? `<a href="${paper.pdf}" target="_blank" class="download-pdf">Download PDF</a>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    monthSection.appendChild(paperCard);
+                });
+                
+                papersContainer.appendChild(monthSection);
             });
         }
 
         // Initialize map
-        const map = L.map('map').setView([20, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+        function initGlobe() {
+            const globeContainer = document.getElementById('map'); // Rename this div to 'globe' in HTML
+            const globe = Globe()
+                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
+                .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+                .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+                .width(globeContainer.clientWidth)
+                .height(400)
+                .pointsData(getGlobePoints())
+                .pointColor(d => d.type === 'conference' ? '#4CAF50' : '#FF5722')
+                .pointLabel('title')
+                .pointRadius(0.5)
+                .pointAltitude(0.1)
+                .atmosphereColor('lightskyblue')
+                .atmosphereAltitude(0.25)(globeContainer);
 
-        // Add markers for conferences and jobs
-        function addMarkersToMap() {
-            data.conferences.forEach(conf => {
-                if (conf.lat && conf.lng) {
-                    L.marker([conf.lat, conf.lng])
-                        .bindPopup(`
-                            <strong>${conf.title}</strong><br>
-                            ${conf.location}<br>
-                            Date: ${conf.date}<br>
-                            <a href="${conf.url}" target="_blank">More Info</a>
-                        `)
-                        .addTo(map);
-                }
-            });
+            return globe;
+        }
 
-            data.jobs.forEach(job => {
-                if (job.lat && job.lng) {
-                    L.marker([job.lat, job.lng])
-                        .bindPopup(`
-                            <strong>${job.title}</strong><br>
-                            ${job.organization} - ${job.location}<br>
-                            ${job.description}<br>
-                            <a href="${job.url}" target="_blank">Apply</a>
-                        `)
-                        .addTo(map);
-                }
-            });
+        function getGlobePoints() {
+            const conferencePoints = data.conferences.map(conf => ({
+                ...conf,
+                type: 'conference'
+            }));
+            
+            const jobPoints = data.jobs.map(job => ({
+                ...job,
+                type: 'job'
+            }));
+
+            return [...conferencePoints, ...jobPoints].filter(point => point.lat && point.lng);
         }
 
         // Initialize everything when the page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize all components
+            if (checkDependencies()) {
+                createGlobe();
+            } else {
+                initializeMap();
+            }
+
+            // Render all content sections
             renderPapers();
             renderConferences();
             renderJobs();
             renderCFPs();
-            addMarkersToMap();
+
+            // Initialize search and filters
             implementSearch();
-            createGlobe();
-            
-            // Add view switching logic
+            implementFilters();
+
+            // Add event listeners for tab switching
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    button.classList.add('active');
+                    document.getElementById(button.dataset.tab).classList.add('active');
+                });
+            });
+
+            // Add event listeners for view switching
             document.querySelectorAll('.view-button').forEach(button => {
                 button.addEventListener('click', () => {
-                    const view = button.dataset.view;
-                    if (view === 'timeline') {
+                    document.querySelectorAll('.view-button').forEach(b => b.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    if (button.dataset.view === 'timeline') {
                         createTimeline();
                         document.querySelector('.timeline-view').style.display = 'block';
                         document.querySelector('.tab-container').style.display = 'none';
@@ -407,74 +682,163 @@
                 });
             });
 
-            // Tab switching logic
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.addEventListener('click', () => {
-                    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    button.classList.add('active');
-                    document.getElementById(button.dataset.tab).classList.add('active');
-                });
-            });
-
-            // Search functionality
-            document.getElementById('searchInput').addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                const activeTab = document.querySelector('.tab-content.active');
-                
-                // Implement search filtering based on active tab
+            // Add card expansion listeners
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.card')) {
+                    const card = e.target.closest('.card');
+                    card.classList.toggle('expanded');
+                }
             });
         });
 
         // Update the globe visualization code
         function createGlobe() {
-            const globe = Globe()
-                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
-                .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
-                .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
-                .pointLabel('title')
-                .pointColor(d => d.type === 'conference' ? '#4CAF50' : '#FF5722')
-                .pointAltitude(0.1)
-                .pointRadius(0.5)
-                .pointsMerge(true)
-                .atmosphereColor('lightskyblue')
-                .atmosphereAltitude(0.25);
-
-            // Add arcs between related events (e.g., CFP to Conference)
-            const arcs = [];
-            data.cfps.forEach(cfp => {
-                const relatedConf = data.conferences.find(conf => conf.title === cfp.title);
-                if (relatedConf) {
-                    arcs.push({
-                        startLat: relatedConf.lat,
-                        startLng: relatedConf.lng,
-                        endLat: relatedConf.lat + 20, // Arc height
-                        endLng: relatedConf.lng,
-                        color: '#2196F3'
+            try {
+                const globeContainer = document.getElementById('map');
+                const globe = Globe()
+                    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
+                    .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+                    .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+                    .width(globeContainer.clientWidth)
+                    .height(400)
+                    .pointsData(getGlobePoints())
+                    .pointColor(d => d.type === 'conference' ? '#4CAF50' : '#FF5722')
+                    .pointLabel(d => `
+                        <div class="globe-tooltip">
+                            <strong>${d.title}</strong><br>
+                            ${d.location || d.organization}<br>
+                            ${d.date ? formatDate(d.date) : ''}
+                            ${d.description ? `<br>${d.description}` : ''}
+                        </div>
+                    `)
+                    .pointRadius(0.5)
+                    .pointAltitude(0.1)
+                    .atmosphereColor('lightskyblue')
+                    .atmosphereAltitude(0.25)
+                    .onPointClick(point => {
+                        if (point && point.url) {
+                            window.open(point.url, '_blank');
+                        }
                     });
-                }
-            });
 
-            globe.arcsData(arcs)
-                .arcColor('color')
-                .arcDashLength(0.4)
-                .arcDashGap(0.2)
-                .arcDashAnimateTime(1500);
+                // Add controls
+                globe.controls().enableZoom = true;
+                globe.controls().autoRotate = true;
+                globe.controls().autoRotateSpeed = 0.5;
+
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    globe
+                        .width(globeContainer.clientWidth)
+                        .height(400);
+                });
+
+                return globe(globeContainer);
+            } catch (error) {
+                console.error('Globe initialization failed:', error);
+                handleGlobeError();
+            }
+        }
+
+        function getGlobePoints() {
+            const conferencePoints = data.conferences.map(conf => ({
+                ...conf,
+                type: 'conference'
+            }));
+            
+            const jobPoints = data.jobs.map(job => ({
+                ...job,
+                type: 'job'
+            }));
+
+            return [...conferencePoints, jobPoints]
+                .filter(point => point.lat && point.lng)
+                .map(point => ({
+                    ...point,
+                    size: point.type === 'conference' ? 1.5 : 1
+                }));
+        }
+
+        function handleGlobeError() {
+            const container = document.getElementById('map');
+            container.innerHTML = `
+                <div class="error-message">
+                    <p>Failed to load globe visualization.</p>
+                    <button onclick="retryGlobeInitialization()" class="retry-button">
+                        <i class="fas fa-sync-alt"></i> Retry
+                    </button>
+                </div>
+            `;
         }
 
         function implementSearch() {
             const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
+            const typeFilter = document.getElementById('typeFilter');
+            const sortBy = document.getElementById('sortBy');
+
+            const performSearch = () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                const type = typeFilter.value;
+                const sort = sortBy.value;
                 const activeTab = document.querySelector('.tab-content.active');
-                const items = activeTab.querySelectorAll('.card');
-                
+                const items = Array.from(activeTab.querySelectorAll('.card'));
+
                 items.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    const match = text.includes(searchTerm);
-                    item.style.display = match ? 'block' : 'none';
+                    const searchableContent = [
+                        item.querySelector('h3')?.textContent,
+                        item.querySelector('.card-content')?.textContent,
+                        ...Array.from(item.querySelectorAll('.tag')).map(tag => tag.textContent)
+                    ].filter(Boolean).join(' ').toLowerCase();
+
+                    const typeMatch = type === 'all' || item.querySelector(`.tag.${type.toLowerCase()}`);
+                    const searchMatch = searchableContent.includes(searchTerm);
+                    
+                    item.style.display = (typeMatch && searchMatch) ? 'block' : 'none';
                 });
-            });
+
+                // Sort visible items
+                const sortedItems = items
+                    .filter(item => item.style.display !== 'none')
+                    .sort((a, b) => {
+                        switch(sort) {
+                            case 'date':
+                                return compareDates(a, b);
+                            case 'location':
+                                return compareLocations(a, b);
+                            case 'title':
+                                return compareTitles(a, b);
+                            default:
+                                return 0;
+                        }
+                    });
+
+                // Reappend sorted items
+                sortedItems.forEach(item => activeTab.appendChild(item));
+            };
+
+            // Add event listeners
+            searchInput.addEventListener('input', performSearch);
+            typeFilter.addEventListener('change', performSearch);
+            sortBy.addEventListener('change', performSearch);
+        }
+
+        // Helper functions for sorting
+        function compareDates(a, b) {
+            const dateA = new Date(a.querySelector('.tag.date')?.textContent || '');
+            const dateB = new Date(b.querySelector('.tag.date')?.textContent || '');
+            return dateA - dateB;
+        }
+
+        function compareLocations(a, b) {
+            const locA = a.querySelector('.tag.location')?.textContent || '';
+            const locB = b.querySelector('.tag.location')?.textContent || '';
+            return locA.localeCompare(locB);
+        }
+
+        function compareTitles(a, b) {
+            const titleA = a.querySelector('h3')?.textContent || '';
+            const titleB = b.querySelector('h3')?.textContent || '';
+            return titleA.localeCompare(titleB);
         }
 
         function createTimeline() {
@@ -510,7 +874,27 @@
         }
 
         function createCalendarEvent(event) {
-            // Implementation of iCal format generation
+            const startDate = new Date(event.date || event.deadline);
+            const endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + 1); // Default to 1-day event
+            
+            const formatICSDate = (date) => {
+                return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            };
+            
+            return `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:${Math.random().toString(36).substring(2)}@philosophyai.com
+DTSTAMP:${formatICSDate(new Date())}
+DTSTART:${formatICSDate(startDate)}
+DTEND:${formatICSDate(endDate)}
+SUMMARY:${event.title}
+LOCATION:${event.location || 'Online'}
+DESCRIPTION:${event.description || event.url}
+URL:${event.url}
+END:VEVENT
+END:VCALENDAR`;
         }
 
         // Add these essential functions
@@ -519,44 +903,113 @@
             return new Date(dateString).toLocaleDateString(undefined, options);
         }
 
-        function renderConferences() {
-            const conferencesContainer = document.getElementById('conferences');
-            conferencesContainer.innerHTML = '';
-            data.conferences.forEach(conf => {
-                // Create conference cards
-            });
-        }
-
         function renderJobs() {
             const jobsContainer = document.getElementById('jobs');
             jobsContainer.innerHTML = '';
+            
             data.jobs.forEach(job => {
-                // Create job cards
+                const jobCard = document.createElement('div');
+                jobCard.className = 'card job-card';
+                jobCard.innerHTML = `
+                    <div class="card-header">
+                        <h3>${job.title}</h3>
+                        <div class="job-meta">
+                            <span class="tag ${job.type.toLowerCase()}">${job.type}</span>
+                            <span class="tag location">${job.location}</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p><strong>${job.organization}</strong></p>
+                        <p>${job.description}</p>
+                        <a href="${job.url}" target="_blank" class="apply-button">Apply Now</a>
+                    </div>
+                `;
+                jobsContainer.appendChild(jobCard);
+            });
+        }
+
+        function renderConferences() {
+            const conferencesContainer = document.getElementById('conferences');
+            conferencesContainer.innerHTML = '';
+            
+            data.conferences.forEach(conf => {
+                const confCard = document.createElement('div');
+                confCard.className = 'card conference-card';
+                confCard.innerHTML = `
+                    <div class="card-header">
+                        <h3>${conf.title}</h3>
+                        <div class="conference-meta">
+                            <span class="tag date">${formatDate(conf.date)}</span>
+                            <span class="tag location">${conf.location}</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <a href="${conf.url}" target="_blank" class="more-info-button">More Info</a>
+                    </div>
+                `;
+                conferencesContainer.appendChild(confCard);
             });
         }
 
         function renderCFPs() {
             const cfpsContainer = document.getElementById('cfp');
             cfpsContainer.innerHTML = '';
-            data.cfps.forEach(cfp => {
-                // Create CFP cards
-            });
-        }
-
-        function implementFilters() {
-            const typeFilter = document.getElementById('typeFilter');
-            const sortBy = document.getElementById('sortBy');
             
-            typeFilter.addEventListener('change', filterContent);
-            sortBy.addEventListener('change', filterContent);
+            data.cfps.forEach(cfp => {
+                const cfpCard = document.createElement('div');
+                cfpCard.className = 'card cfp-card';
+                cfpCard.innerHTML = `
+                    <div class="card-header">
+                        <h3>${cfp.title}</h3>
+                        <div class="cfp-meta">
+                            <span class="tag deadline">Deadline: ${formatDate(cfp.deadline)}</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <a href="${cfp.url}" target="_blank" class="submit-button">Submit Paper</a>
+                    </div>
+                `;
+                cfpsContainer.appendChild(cfpCard);
+            });
         }
 
         function filterContent() {
             const type = document.getElementById('typeFilter').value;
             const sort = document.getElementById('sortBy').value;
             const activeTab = document.querySelector('.tab-content.active');
+            const items = Array.from(activeTab.children);
             
-            // Implementation of filtering and sorting logic
+            // Filter items
+            items.forEach(item => {
+                if (type === 'all' || item.querySelector(`.tag.${type.toLowerCase()}`)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Sort items
+            const sortedItems = items.sort((a, b) => {
+                switch(sort) {
+                    case 'date':
+                        const dateA = new Date(a.querySelector('.tag.date')?.textContent || '');
+                        const dateB = new Date(b.querySelector('.tag.date')?.textContent || '');
+                        return dateA - dateB;
+                    case 'location':
+                        const locA = a.querySelector('.tag.location')?.textContent || '';
+                        const locB = b.querySelector('.tag.location')?.textContent || '';
+                        return locA.localeCompare(locB);
+                    case 'title':
+                        const titleA = a.querySelector('h3')?.textContent || '';
+                        const titleB = b.querySelector('h3')?.textContent || '';
+                        return titleA.localeCompare(titleB);
+                    default:
+                        return 0;
+                }
+            });
+            
+            // Reappend sorted items
+            sortedItems.forEach(item => activeTab.appendChild(item));
         }
 
         // Add error handling for map and globe initialization
