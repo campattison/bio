@@ -220,20 +220,13 @@ Please provide a detailed analysis following the same structure:
 Please be thorough in your reasoning and specific in your conclusions.`;
 
             try {
-                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                const response = await fetch('http://localhost:3000/analyze', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${apiKey}`
                     },
-                    body: JSON.stringify({
-                        model: "gpt-4o",
-                        messages: [{
-                            role: "user",
-                            content: prompt
-                        }],
-                        temperature: 0.7
-                    })
+                    body: JSON.stringify({ situation: prompt })
                 });
 
                 const data = await response.json();
