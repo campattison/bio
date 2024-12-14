@@ -247,6 +247,11 @@
         </div>
 
         <div class="tools-container">
+            <div class="api-key-section">
+                <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key" />
+                <small class="api-note">Your API key is used only in your browser and never stored. You can get an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI</a>.</small>
+            </div>
+
             <div class="tool-section">
                 <div class="tool-header">
                     <h2>Kantian Analysis</h2>
@@ -315,10 +320,16 @@
         }
 
         async function analyze(type) {
+            const apiKey = document.getElementById('api-key-input').value;
             const situation = document.getElementById(`${type}-input`).value;
             const loading = document.querySelector(`.${type}-loading`);
             const result = document.getElementById(`${type}-result`);
             
+            if (!apiKey.trim()) {
+                alert('Please enter your OpenAI API key.');
+                return;
+            }
+
             if (!situation.trim()) {
                 alert('Please enter a situation to analyze.');
                 return;
@@ -332,7 +343,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Bearer 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'
+                        'Authorization': `Bearer ${apiKey}`
                     },
                     body: JSON.stringify({
                         model: "gpt-4o",
