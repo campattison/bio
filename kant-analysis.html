@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cameron Pattison - Philosophy & AI </title>
+    <title>Ethical Analysis Tools</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -118,6 +118,32 @@
             border-left: 4px solid #2c3e50;
             margin: 15px 0;
         }
+
+        .tools-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .tools-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tool-section {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tool-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
     </style>
 </head>
 <body>
@@ -132,27 +158,44 @@
             </nav>
         </header>
 
-        <h1><a href="kant-analysis.html" style="text-decoration: none; color: inherit;">Kantian Ethical Analysis Tool</a></h1>
+        <h1><a href="kant-analysis.html" style="text-decoration: none; color: inherit;">Ethical Analysis Tools</a></h1>
         
         <div class="intro">
-            <p>This tool helps analyze ethical situations using Kantian principles. Enter your situation below, and the AI will:</p>
-            <ul>
-                <li>Extract the underlying maxim of your action</li>
-                <li>Test for contradictions in conception</li>
-                <li>Test for contradictions in will</li>
-                <li>Evaluate the universalizability of the maxim</li>
-            </ul>
+            <p>These tools help analyze ethical situations using different ethical frameworks. Choose a framework and enter your situation for analysis.</p>
         </div>
 
-        <div class="analysis-container">
-            <div class="api-key-section">
-                <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key" />
-                <small class="api-note">Your API key is used only in your browser and never stored. You can get an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI</a>.</small>
+        <div class="tools-container">
+            <div class="tool-section">
+                <div class="tool-header">
+                    <h2>Kantian Analysis</h2>
+                    <ul>
+                        <li>Extract the underlying maxim of your action</li>
+                        <li>Test for contradictions in conception</li>
+                        <li>Test for contradictions in will</li>
+                        <li>Evaluate the universalizability of the maxim</li>
+                    </ul>
+                </div>
+                <textarea id="kantian-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
+                <button id="kantian-button">Analyze Using Kantian Ethics</button>
+                <div class="loading kantian-loading">Analyzing your situation...</div>
+                <div id="kantian-result" class="result"></div>
             </div>
-            <textarea id="situation-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
-            <button id="analyze-button">Analyze Using Kantian Ethics</button>
-            <div class="loading">Analyzing your situation...</div>
-            <div id="result"></div>
+
+            <div class="tool-section">
+                <div class="tool-header">
+                    <h2>Consequentialist Analysis</h2>
+                    <ul>
+                        <li>Identify stakeholders and impacts</li>
+                        <li>Analyze immediate consequences</li>
+                        <li>Evaluate long-term effects</li>
+                        <li>Assess aggregate welfare impact</li>
+                    </ul>
+                </div>
+                <textarea id="consequentialist-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
+                <button id="consequentialist-button">Analyze Using Consequentialism</button>
+                <div class="loading consequentialist-loading">Analyzing your situation...</div>
+                <div id="consequentialist-result" class="result"></div>
+            </div>
         </div>
     </div>
 
@@ -165,16 +208,10 @@
             }
         }
 
-        async function analyzeKantian() {
-            const apiKey = document.getElementById('api-key-input').value;
-            const situation = document.getElementById('situation-input').value;
-            const loading = document.querySelector('.loading');
-            const result = document.getElementById('result');
-            
-            if (!apiKey.trim()) {
-                alert('Please enter your OpenAI API key.');
-                return;
-            }
+        async function analyze(type) {
+            const situation = document.getElementById(`${type}-input`).value;
+            const loading = document.querySelector(`.${type}-loading`);
+            const result = document.getElementById(`${type}-result`);
             
             if (!situation.trim()) {
                 alert('Please enter a situation to analyze.');
@@ -184,49 +221,16 @@
             loading.style.display = 'block';
             result.style.display = 'none';
 
-            const prompt = `You are a Kantian ethics expert. Please analyze the following situation using Kantian ethical principles. 
-Follow this structured approach, as shown in these examples:
-
-Example 1:
-Situation: Lying on a job application to get hired
-Analysis:
-1. Maxim: "When seeking employment, I will deceive others about my qualifications to achieve my goals"
-2. Universalization Test: Fails - If everyone lied on job applications, the entire system of hiring would break down as trust would be impossible
-3. Humanity Formula: Fails - Treats both employer and other candidates as mere means, denying their rational autonomy
-4. Conclusion: This action is not morally permissible under Kantian ethics
-
-Example 2:
-Situation: Donating to charity anonymously
-Analysis:
-1. Maxim: "I will give resources to help others in need without seeking recognition"
-2. Universalization Test: Passes - A world where everyone helps others in need would be coherent and desirable
-3. Humanity Formula: Passes - Treats recipients as ends in themselves, respecting their dignity and autonomy
-4. Conclusion: This action is morally permissible and arguably dutiful under Kantian ethics
-
-Now, please analyze the following situation:
-${situation}
-
-Please provide a detailed analysis following the same structure:
-1. Clearly state the maxim (the underlying principle of action)
-2. Apply the Universalization Test (Formula of Universal Law)
-   - Can this maxim be universalized without contradiction?
-   - What would a world look like where everyone acted on this maxim?
-3. Apply the Humanity Formula
-   - Does this action treat humanity as an end in itself?
-   - Does it respect the rational autonomy of all involved?
-4. Provide a clear conclusion about the moral permissibility of the action
-5. Optional: Suggest any relevant modifications that would make the action more aligned with Kantian ethics
-
-Please be thorough in your reasoning and specific in your conclusions.`;
-
             try {
                 const response = await fetch('http://localhost:3000/analyze', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ situation: prompt })
+                    body: JSON.stringify({ 
+                        situation: situation,
+                        analysisType: type 
+                    })
                 });
 
                 const data = await response.json();
@@ -250,7 +254,8 @@ Please be thorough in your reasoning and specific in your conclusions.`;
             }
         }
 
-        document.getElementById('analyze-button').addEventListener('click', analyzeKantian);
+        document.getElementById('kantian-button').addEventListener('click', () => analyze('kantian'));
+        document.getElementById('consequentialist-button').addEventListener('click', () => analyze('consequentialist'));
     </script>
 </body>
 </html> 
