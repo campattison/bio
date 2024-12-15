@@ -351,27 +351,27 @@
                         messages: [{
                             role: "user",
                             content: type === 'kantian' ? 
-                                `You are a Kantian ethics expert. Please analyze the following situation using Kantian ethical principles and format your response using HTML tags for headers, lists, and emphasis. 
+                                `You are a Kantian ethics expert. Please analyze the following situation using Kantian ethical principles and format your response using HTML tags for headers, lists, emphasis, and bold text. 
                                 Follow this structured approach, as shown in these examples:
                                 
-                                Example 1:
-                                Situation: Lying on a job application to get hired
-                                Analysis:
+                                <strong>Example 1:</strong>
+                                <em>Situation:</em> Lying on a job application to get hired
+                                <em>Analysis:</em>
                                 <ol>
-                                    <li>Maxim: "When seeking employment, I will deceive others about my qualifications to achieve my goals"</li>
-                                    <li>Universalization Test: Fails - If everyone lied on job applications, the entire system of hiring would break down as trust would be impossible</li>
-                                    <li>Humanity Formula: Fails - Treats both employer and other candidates as mere means, denying their rational autonomy</li>
-                                    <li>Conclusion: This action is not morally permissible under Kantian ethics</li>
+                                    <li><strong>Maxim:</strong> "When seeking employment, I will deceive others about my qualifications to achieve my goals"</li>
+                                    <li><strong>Universalization Test:</strong> Fails - If everyone lied on job applications, the entire system of hiring would break down as trust would be impossible</li>
+                                    <li><strong>Humanity Formula:</strong> Fails - Treats both employer and other candidates as mere means, denying their rational autonomy</li>
+                                    <li><strong>Conclusion:</strong> This action is not morally permissible under Kantian ethics</li>
                                 </ol>
                                 
-                                Example 2:
-                                Situation: Donating to charity anonymously
-                                Analysis:
+                                <strong>Example 2:</strong>
+                                <em>Situation:</em> Donating to charity anonymously
+                                <em>Analysis:</em>
                                 <ol>
-                                    <li>Maxim: "I will give resources to help others in need without seeking recognition"</li>
-                                    <li>Universalization Test: Passes - A world where everyone helps others in need would be coherent and desirable</li>
-                                    <li>Humanity Formula: Passes - Treats recipients as ends in themselves, respecting their dignity and autonomy</li>
-                                    <li>Conclusion: This action is morally permissible and arguably dutiful under Kantian ethics</li>
+                                    <li><strong>Maxim:</strong> "I will give resources to help others in need without seeking recognition"</li>
+                                    <li><strong>Universalization Test:</strong> Passes - A world where everyone helps others in need would be coherent and desirable</li>
+                                    <li><strong>Humanity Formula:</strong> Passes - Treats recipients as ends in themselves, respecting their dignity and autonomy</li>
+                                    <li><strong>Conclusion:</strong> This action is morally permissible and arguably dutiful under Kantian ethics</li>
                                 </ol>
                                 
                                 Now, please analyze the following situation:
@@ -379,129 +379,189 @@
                                 
                                 Please provide a detailed analysis following the same structure using HTML tags:
                                 <ol>
-                                    <li>Clearly state the maxim (the underlying principle of action)</li>
-                                    <li>Apply the Universalization Test (Formula of Universal Law)
+                                    <li><strong>Clearly state the maxim</strong> (the underlying principle of action)</li>
+                                    <li><strong>Apply the Universalization Test</strong> (Formula of Universal Law)
                                        - Can this maxim be universalized without contradiction?
                                        - What would a world look like where everyone acted on this maxim?</li>
-                                    <li>Apply the Humanity Formula
+                                    <li><strong>Apply the Humanity Formula</strong>
                                        - Does this action treat humanity as an end in itself?
                                        - Does it respect the rational autonomy of all involved?</li>
-                                    <li>Provide a clear conclusion about the moral permissibility of the action</li>
-                                    <li>Optional: Suggest any relevant modifications that would make the action more aligned with Kantian ethics</li>
+                                    <li><strong>Provide a clear conclusion</strong> about the moral permissibility of the action</li>
+                                    <li><strong>Optional:</strong> Suggest any relevant modifications that would make the action more aligned with Kantian ethics</li>
                                 </ol>
                                 
                                 Please be thorough in your reasoning and specific in your conclusions.` :
                                 type === 'consequentialist' ?
-                                `You are a consequentialist ethics expert. Please analyze the following situation using consequentialist ethical principles.
+                                `You are a consequentialist ethics expert. Please analyze the following situation using consequentialist ethical principles and format your response using HTML tags for headers, lists, emphasis, and bold text.
                                 
                                 Follow this structured approach, as shown in these examples:
                                 
-                                Example 1:
-                                Situation: Lying on a job application to get hired
-                                Analysis:
-                                1. Stakeholders: Job applicant, employer, other candidates, workplace community
-                                2. Immediate Consequences:
-                                   - Personal gain for the applicant
-                                   - Potential harm to employer (incompetent hire)
-                                   - Unfair disadvantage to honest candidates
-                                3. Long-term Consequences:
-                                   - Decreased workplace efficiency
-                                   - Erosion of trust in hiring systems
-                                   - Potential cascading effects of dishonesty
-                                4. Aggregate Welfare Analysis:
-                                   - Net negative impact on overall welfare
-                                   - Creates systemic inefficiencies
-                                5. Conclusion: Action not justified under consequentialist ethics
+                                <strong>Example 1:</strong>
+                                <em>Situation:</em> Lying on a job application to get hired
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Stakeholders:</strong> Job applicant, employer, other candidates, workplace community</li>
+                                    <li><strong>Immediate Consequences:</strong>
+                                        <ul>
+                                            <li>Personal gain for the applicant</li>
+                                            <li>Potential harm to employer (incompetent hire)</li>
+                                            <li>Unfair disadvantage to honest candidates</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Long-term Consequences:</strong>
+                                        <ul>
+                                            <li>Decreased workplace efficiency</li>
+                                            <li>Erosion of trust in hiring systems</li>
+                                            <li>Potential cascading effects of dishonesty</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Aggregate Welfare Analysis:</strong>
+                                        <ul>
+                                            <li>Net negative impact on overall welfare</li>
+                                            <li>Creates systemic inefficiencies</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action not justified under consequentialist ethics</li>
+                                </ol>
                                 
-                                Example 2:
-                                Situation: Donating to charity anonymously
-                                Analysis:
-                                1. Stakeholders: Donor, charity recipients, charity organization
-                                2. Immediate Consequences:
-                                   - Direct aid to beneficiaries
-                                   - Resource transfer to effective causes
-                                   - No social recognition benefits
-                                3. Long-term Consequences:
-                                   - Sustained improvement in recipients' lives
-                                   - Potential inspiration for others
-                                   - Enhanced charitable efficiency
-                                4. Aggregate Welfare Analysis:
-                                   - Significant positive impact on overall welfare
-                                   - Efficient allocation of resources
-                                5. Conclusion: Action strongly justified under consequentialist ethics
+                                <strong>Example 2:</strong>
+                                <em>Situation:</em> Donating to charity anonymously
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Stakeholders:</strong> Donor, charity recipients, charity organization</li>
+                                    <li><strong>Immediate Consequences:</strong>
+                                        <ul>
+                                            <li>Direct aid to beneficiaries</li>
+                                            <li>Resource transfer to effective causes</li>
+                                            <li>No social recognition benefits</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Long-term Consequences:</strong>
+                                        <ul>
+                                            <li>Sustained improvement in recipients' lives</li>
+                                            <li>Potential inspiration for others</li>
+                                            <li>Enhanced charitable efficiency</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Aggregate Welfare Analysis:</strong>
+                                        <ul>
+                                            <li>Significant positive impact on overall welfare</li>
+                                            <li>Efficient allocation of resources</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action strongly justified under consequentialist ethics</li>
+                                </ol>
                                 
                                 Now, please analyze the following situation:
                                 ${situation}
                                 
-                                Please provide a detailed analysis following the same structure:
-                                1. Identify all relevant stakeholders
-                                2. Analyze immediate consequences for each stakeholder
-                                3. Consider long-term and systemic consequences
-                                4. Evaluate aggregate welfare impact
-                                   - Consider both quantitative and qualitative factors
-                                   - Assess distribution of benefits and harms
-                                5. Provide a clear conclusion about the ethical justifiability of the action
-                                6. Optional: Suggest modifications to maximize positive consequences
+                                Please provide a detailed analysis following the same structure using HTML tags:
+                                <ol>
+                                    <li><strong>Identify all relevant stakeholders</strong></li>
+                                    <li><strong>Analyze immediate consequences</strong> for each stakeholder</li>
+                                    <li><strong>Consider long-term and systemic consequences</strong></li>
+                                    <li><strong>Evaluate aggregate welfare impact</strong>
+                                        <ul>
+                                            <li>Consider both quantitative and qualitative factors</li>
+                                            <li>Assess distribution of benefits and harms</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Provide a clear conclusion</strong> about the ethical justifiability of the action</li>
+                                    <li><strong>Optional:</strong> Suggest modifications to maximize positive consequences</li>
+                                </ol>
                                 
                                 Please be thorough in your reasoning and specific in your conclusions.` :
-                                `You are a virtue ethics expert. Please analyze the following situation using virtue ethics principles.
+                                `You are a virtue ethics expert. Please analyze the following situation using virtue ethics principles and format your response using HTML tags for headers, lists, emphasis, and bold text.
                                 
                                 Follow this structured approach, as shown in these examples:
                                 
-                                Example 1:
-                                Situation: Lying on a job application to get hired
-                                Analysis:
-                                1. Relevant Virtues/Vices:
-                                   - Honesty vs Deception
-                                   - Integrity vs Opportunism
-                                   - Justice vs Unfairness
-                                2. Character Assessment:
-                                   - Action stems from and reinforces dishonesty
-                                   - Demonstrates lack of integrity
-                                   - Shows disregard for fairness
-                                3. Practical Wisdom (Phronesis):
-                                   - Fails to balance competing goods
-                                   - Short-term gain vs long-term character development
-                                   - Ignores alternative virtuous approaches
-                                4. Impact on Flourishing (Eudaimonia):
-                                   - Undermines personal excellence
-                                   - Damages professional character
-                                   - Hinders genuine achievement
-                                5. Conclusion: Action fails to align with virtuous character development
+                                <strong>Example 1:</strong>
+                                <em>Situation:</em> Lying on a job application to get hired
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Relevant Virtues/Vices:</strong>
+                                        <ul>
+                                            <li>Honesty vs Deception</li>
+                                            <li>Integrity vs Opportunism</li>
+                                            <li>Justice vs Unfairness</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Character Assessment:</strong>
+                                        <ul>
+                                            <li>Action stems from and reinforces dishonesty</li>
+                                            <li>Demonstrates lack of integrity</li>
+                                            <li>Shows disregard for fairness</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Practical Wisdom (Phronesis):</strong>
+                                        <ul>
+                                            <li>Fails to balance competing goods</li>
+                                            <li>Short-term gain vs long-term character development</li>
+                                            <li>Ignores alternative virtuous approaches</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Impact on Flourishing (Eudaimonia):</strong>
+                                        <ul>
+                                            <li>Undermines personal excellence</li>
+                                            <li>Damages professional character</li>
+                                            <li>Hinders genuine achievement</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action fails to align with virtuous character development</li>
+                                </ol>
                                 
-                                Example 2:
-                                Situation: Donating to charity anonymously
-                                Analysis:
-                                1. Relevant Virtues/Vices:
-                                   - Generosity vs Greed
-                                   - Humility vs Vanity
-                                   - Compassion vs Indifference
-                                2. Character Assessment:
-                                   - Demonstrates genuine generosity
-                                   - Shows authentic humility
-                                   - Expresses true compassion
-                                3. Practical Wisdom (Phronesis):
-                                   - Balances helping others with personal resources
-                                   - Avoids pride while doing good
-                                   - Shows good judgment in method of giving
-                                4. Impact on Flourishing (Eudaimonia):
-                                   - Develops virtuous character
-                                   - Contributes to community good
-                                   - Cultivates excellence in giving
-                                5. Conclusion: Action exemplifies virtuous character and promotes flourishing
+                                <strong>Example 2:</strong>
+                                <em>Situation:</em> Donating to charity anonymously
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Relevant Virtues/Vices:</strong>
+                                        <ul>
+                                            <li>Generosity vs Greed</li>
+                                            <li>Humility vs Vanity</li>
+                                            <li>Compassion vs Indifference</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Character Assessment:</strong>
+                                        <ul>
+                                            <li>Demonstrates genuine generosity</li>
+                                            <li>Shows authentic humility</li>
+                                            <li>Expresses true compassion</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Practical Wisdom (Phronesis):</strong>
+                                        <ul>
+                                            <li>Balances helping others with personal resources</li>
+                                            <li>Avoids pride while doing good</li>
+                                            <li>Shows good judgment in method of giving</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Impact on Flourishing (Eudaimonia):</strong>
+                                        <ul>
+                                            <li>Develops virtuous character</li>
+                                            <li>Contributes to community good</li>
+                                            <li>Cultivates excellence in giving</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action exemplifies virtuous character and promotes flourishing</li>
+                                </ol>
                                 
                                 Now, please analyze the following situation:
                                 ${situation}
                                 
-                                Please provide a detailed analysis following the same structure:
-                                1. Identify relevant virtues and vices at play
-                                2. Assess how the action reflects and impacts character
-                                3. Evaluate the role of practical wisdom
-                                   - Consider balance of competing goods
-                                   - Assess judgment in specific context
-                                4. Analyze impact on personal and community flourishing
-                                5. Provide a clear conclusion about virtue alignment
-                                6. Optional: Suggest how the action might better express virtue
+                                Please provide a detailed analysis following the same structure using HTML tags:
+                                <ol>
+                                    <li><strong>Identify relevant virtues and vices at play</strong></li>
+                                    <li><strong>Assess how the action reflects and impacts character</strong></li>
+                                    <li><strong>Evaluate the role of practical wisdom</strong>
+                                        <ul>
+                                            <li>Consider balance of competing goods</li>
+                                            <li>Assess judgment in specific context</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Analyze impact on personal and community flourishing</strong></li>
+                                    <li><strong>Provide a clear conclusion</strong> about virtue alignment</li>
+                                    <li><strong>Optional:</strong> Suggest how the action might better express virtue</li>
+                                </ol>
                                 
                                 Please be thorough in your reasoning and specific in your conclusions.`
                         }],
