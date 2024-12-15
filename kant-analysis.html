@@ -351,38 +351,44 @@
                         messages: [{
                             role: "user",
                             content: type === 'kantian' ? 
-                                `You are a Kantian ethics expert. Please analyze the following situation using Kantian ethical principles. 
+                                `You are a Kantian ethics expert. Please analyze the following situation using Kantian ethical principles and format your response using HTML tags for headers, lists, and emphasis. 
                                 Follow this structured approach, as shown in these examples:
                                 
                                 Example 1:
                                 Situation: Lying on a job application to get hired
                                 Analysis:
-                                1. Maxim: "When seeking employment, I will deceive others about my qualifications to achieve my goals"
-                                2. Universalization Test: Fails - If everyone lied on job applications, the entire system of hiring would break down as trust would be impossible
-                                3. Humanity Formula: Fails - Treats both employer and other candidates as mere means, denying their rational autonomy
-                                4. Conclusion: This action is not morally permissible under Kantian ethics
+                                <ol>
+                                    <li>Maxim: "When seeking employment, I will deceive others about my qualifications to achieve my goals"</li>
+                                    <li>Universalization Test: Fails - If everyone lied on job applications, the entire system of hiring would break down as trust would be impossible</li>
+                                    <li>Humanity Formula: Fails - Treats both employer and other candidates as mere means, denying their rational autonomy</li>
+                                    <li>Conclusion: This action is not morally permissible under Kantian ethics</li>
+                                </ol>
                                 
                                 Example 2:
                                 Situation: Donating to charity anonymously
                                 Analysis:
-                                1. Maxim: "I will give resources to help others in need without seeking recognition"
-                                2. Universalization Test: Passes - A world where everyone helps others in need would be coherent and desirable
-                                3. Humanity Formula: Passes - Treats recipients as ends in themselves, respecting their dignity and autonomy
-                                4. Conclusion: This action is morally permissible and arguably dutiful under Kantian ethics
+                                <ol>
+                                    <li>Maxim: "I will give resources to help others in need without seeking recognition"</li>
+                                    <li>Universalization Test: Passes - A world where everyone helps others in need would be coherent and desirable</li>
+                                    <li>Humanity Formula: Passes - Treats recipients as ends in themselves, respecting their dignity and autonomy</li>
+                                    <li>Conclusion: This action is morally permissible and arguably dutiful under Kantian ethics</li>
+                                </ol>
                                 
                                 Now, please analyze the following situation:
                                 ${situation}
                                 
-                                Please provide a detailed analysis following the same structure:
-                                1. Clearly state the maxim (the underlying principle of action)
-                                2. Apply the Universalization Test (Formula of Universal Law)
-                                   - Can this maxim be universalized without contradiction?
-                                   - What would a world look like where everyone acted on this maxim?
-                                3. Apply the Humanity Formula
-                                   - Does this action treat humanity as an end in itself?
-                                   - Does it respect the rational autonomy of all involved?
-                                4. Provide a clear conclusion about the moral permissibility of the action
-                                5. Optional: Suggest any relevant modifications that would make the action more aligned with Kantian ethics
+                                Please provide a detailed analysis following the same structure using HTML tags:
+                                <ol>
+                                    <li>Clearly state the maxim (the underlying principle of action)</li>
+                                    <li>Apply the Universalization Test (Formula of Universal Law)
+                                       - Can this maxim be universalized without contradiction?
+                                       - What would a world look like where everyone acted on this maxim?</li>
+                                    <li>Apply the Humanity Formula
+                                       - Does this action treat humanity as an end in itself?
+                                       - Does it respect the rational autonomy of all involved?</li>
+                                    <li>Provide a clear conclusion about the moral permissibility of the action</li>
+                                    <li>Optional: Suggest any relevant modifications that would make the action more aligned with Kantian ethics</li>
+                                </ol>
                                 
                                 Please be thorough in your reasoning and specific in your conclusions.` :
                                 type === 'consequentialist' ?
@@ -510,7 +516,7 @@
                 }
                 
                 if (data.choices && data.choices[0]) {
-                    result.innerHTML = data.choices[0].message.content.replace(/\n/g, '<br>');
+                    result.innerHTML = data.choices[0].message.content;
                     result.style.display = 'block';
                 } else {
                     throw new Error('Invalid API response');
