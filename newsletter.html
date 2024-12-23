@@ -2,225 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philosophy of Computing Archive</title>
-    <!-- Keep only the essential external resources -->
+    <!-- Load the common stylesheet first -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Additional resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
     <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --background-color: #f5f7fa;
-            --text-color: #333333;
-            --card-background: #ffffff;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --border-radius: 12px;
-            --spacing: 1rem;
-            --gradient-start: #2c3e50;
-            --gradient-end: #3498db;
-            --card-bg: transparent;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.8;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        /* Navigation Styles */
-        .main-nav {
-            background-color: transparent;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .main-nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .main-nav a:hover,
-        .main-nav a.active {
-            background-color: var(--primary-color);
-        }
-
-        /* Header Styles */
-        header {
-            text-align: center;
-            margin-bottom: 4rem;
-            padding: 2rem 0;
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            margin: -2rem -2rem 3rem -2rem;
-            border-radius: 20px 20px 0 0;
-            color: white;
-            font-family: "EB Garamond", serif;
-        }
-
-        header .main-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        header .main-nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s;
-            background-color: transparent;
-        }
-
-        header .main-nav a:hover,
-        header .main-nav a.active {
-            background-color: transparent;
-            border-bottom: 2px solid white;
-        }
-
-        header .profile-header {
-            text-align: center;
-            color: white;  /* This ensures header text is white regardless of global text color */
-        }
-
-        header .profile-header h1 {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        header .profile-header .subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1rem;
-        }
-
-        header .profile-header .contact-info a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        header .profile-header .contact-info a:hover {
-            opacity: 0.8;
-        }
-
-        /* Container and Section Styles */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
+        /* Newsletter-specific styles only */
         .section {
-            background-color: var(--card-background);
+            background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--shadow-color);
+            box-shadow: var(--shadow-sm);
             padding: var(--spacing);
             margin-bottom: 30px;
             overflow: hidden;
         }
 
-        /* Card Grid and Card Styles */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--spacing);
-            padding: var(--spacing);
+        .about-content p {
+            margin-bottom: 2rem;
         }
 
-        .card {
-            background: var(--card-background);
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 4px var(--shadow-color);
-            padding: var(--spacing);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 8px var(--shadow-color);
-        }
-
-        /* Tag Styles */
-        .tag {
-            display: inline-block;
-            padding: 0.3rem 0.6rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tag.academic {
-            background-color: #ce93d8;
-            color: white;
-        }
-
-        .tag.alt-ac {
-            background-color: #81c784;
-            color: white;
-        }
-
-        .tag.deadline {
-            background-color: #ff6b6b;
-            color: white;
-        }
-
-        .tag.location {
-            background-color: #e8f5e9;
-            color: var(--text-color);
-        }
-
-        /* Bibliography Styles */
-        .bibliography-card {
-            background: var(--card-background);
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .bibliography-header {
-            background: var(--secondary-color);
-            color: white;
-            padding: var(--spacing);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .bibliography-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-
-        .bibliography-card.expanded .bibliography-content {
-            max-height: 10000px;
-        }
-
-        /* Globe Visualization Styles */
+        /* Globe styles */
         #globeViz {
             position: relative;
             height: 500px;
@@ -255,98 +61,61 @@
             font-size: 14px;
         }
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
+        /* Bibliography styles */
+        .bibliography-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            overflow: hidden;
         }
 
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .globe-loading, .globe-error {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
+        .bibliography-header {
+            background: var(--primary-color);
             color: white;
-            padding: 15px;
-            border-radius: 4px;
+            padding: var(--spacing);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Responsive Design */
+        .bibliography-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .bibliography-card.expanded .bibliography-content {
+            max-height: 10000px;
+        }
+
+        /* Tag styles */
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tag.academic { background-color: #ce93d8; color: white; }
+        .tag.alt-ac { background-color: #81c784; color: white; }
+        .tag.deadline { background-color: #ff6b6b; color: white; }
+        .tag.location { background-color: #e8f5e9; color: var(--text-color); }
+
+        /* Card grid for opportunities */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing);
+            padding: var(--spacing);
+        }
+
         @media (max-width: 768px) {
             .card-grid {
                 grid-template-columns: 1fr;
             }
-
-            header .main-nav {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-        }
-
-        /* Update the base font styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.8;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        /* Update heading styles */
-        h1, h2, h3 {
-            font-family: 'Georgia', serif;
-            color: var(--primary-color);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        /* Update paragraph and general text styles */
-        p {
-            color: #4a5568;
-            line-height: 1.8;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.9);
-            font-weight: 300;
-        }
-
-        /* Update card text styles */
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        /* Update tag styles */
-        .tag {
-            font-size: 0.9rem;
-            padding: 0.3rem 0.6rem;
         }
     </style>
 </head>
@@ -361,7 +130,7 @@
                 <a href="newsletter.html" class="active">Newsletter</a>
             </nav>
             <div class="profile-header">
-                <h1>Philosophy & AI Newsletter Archive</h1>
+                <h1>Philosophy of Computing Archive</h1>
                 <p class="subtitle">MINT Lab | Australian National University</p>
                 <p class="contact-info">
                     <a href="https://philosophyofcomputing.substack.com"><i class="fas fa-envelope"></i> Subscribe to Our Newsletter</a>
