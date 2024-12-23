@@ -593,14 +593,16 @@
             const header = content.previousElementSibling;
             const icon = header.querySelector('i');
             
-            if (content.style.maxHeight) {
-                // Collapse
-                content.style.maxHeight = null;
-                icon.style.transform = "rotate(0deg)"; // Point up when closed
+            // Toggle a class instead of checking maxHeight
+            content.classList.toggle('expanded');
+            
+            // Update icon rotation based on expanded class
+            if (content.classList.contains('expanded')) {
+                icon.style.transform = "rotate(180deg)";
+                content.style.maxHeight = content.scrollHeight + 'px';
             } else {
-                // Expand
-                content.style.maxHeight = '100%';
-                icon.style.transform = "rotate(180deg)"; // Point down when open
+                icon.style.transform = "rotate(0deg)";
+                content.style.maxHeight = '0px';
             }
         }
 
@@ -608,11 +610,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.section-content');
             sections.forEach(section => {
-                // Set initial maxHeight explicitly to ensure toggle works on first click
                 section.style.maxHeight = '0px';
+                section.classList.remove('expanded');
                 const icon = section.previousElementSibling.querySelector('i');
                 if (icon) {
-                    icon.style.transform = "rotate(0deg)"; // Point up when closed
+                    icon.style.transform = "rotate(0deg)";
                 }
             });
         });
@@ -765,7 +767,11 @@
         .section-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-out;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .section-content.expanded {
+            max-height: 2000px; /* Large enough to contain content */
         }
 
         #bibliography-content {
