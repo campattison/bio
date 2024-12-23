@@ -2,353 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Philosophy & AI Newsletter</title>
-    <!-- Keep only the essential external resources -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy of Computing Archive</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
     <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --background-color: #f5f7fa;
-            --text-color: #333333;
-            --card-background: #ffffff;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --border-radius: 12px;
-            --spacing: 1rem;
-            --gradient-start: #2c3e50;
-            --gradient-end: #3498db;
-            --card-bg: transparent;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.8;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        /* Navigation Styles */
-        .main-nav {
-            background-color: transparent;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .main-nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .main-nav a:hover,
-        .main-nav a.active {
-            background-color: var(--primary-color);
-        }
-
-        /* Header Styles */
-        header {
-            text-align: center;
-            margin-bottom: 4rem;
-            padding: 2rem 0;
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            margin: -2rem -2rem 3rem -2rem;
-            border-radius: 20px 20px 0 0;
-            color: white;
-            font-family: "EB Garamond", serif;
-        }
-
-        header .main-nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        header .main-nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s;
-            background-color: transparent;
-        }
-
-        header .main-nav a:hover,
-        header .main-nav a.active {
-            background-color: transparent;
-            border-bottom: 2px solid white;
-        }
-
-        header .profile-header {
-            text-align: center;
-            color: white;  /* This ensures header text is white regardless of global text color */
-        }
-
-        header .profile-header h1 {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        header .profile-header .subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1rem;
-        }
-
-        header .profile-header .contact-info a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        header .profile-header .contact-info a:hover {
-            opacity: 0.8;
-        }
-
-        /* Container and Section Styles */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .section {
-            background-color: var(--card-background);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--shadow-color);
-            padding: var(--spacing);
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-        /* Card Grid and Card Styles */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--spacing);
-            padding: var(--spacing);
-        }
-
-        .card {
-            background: var(--card-background);
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 4px var(--shadow-color);
-            padding: var(--spacing);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 8px var(--shadow-color);
-        }
-
-        /* Tag Styles */
-        .tag {
-            display: inline-block;
-            padding: 0.3rem 0.6rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tag.academic {
-            background-color: #ce93d8;
-            color: white;
-        }
-
-        .tag.alt-ac {
-            background-color: #81c784;
-            color: white;
-        }
-
-        .tag.deadline {
-            background-color: #ff6b6b;
-            color: white;
-        }
-
-        .tag.location {
-            background-color: #e8f5e9;
-            color: var(--text-color);
-        }
-
-        /* Bibliography Styles */
-        .bibliography-card {
-            background: var(--card-background);
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .bibliography-header {
-            background: var(--secondary-color);
-            color: white;
-            padding: var(--spacing);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .bibliography-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-
-        .bibliography-card.expanded .bibliography-content {
-            max-height: 10000px;
-        }
-
-        /* Globe Visualization Styles */
-        #globeViz {
-            position: relative;
-            height: 500px;
-            width: 100%;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .globe-tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 14px;
-            pointer-events: none;
-            z-index: 1000;
-            max-width: 200px;
-        }
-
-        .globe-legend {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
-        }
-
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .globe-loading, .globe-error {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 15px;
-            border-radius: 4px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            header .main-nav {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-        }
-
-        /* Update the base font styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.8;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        /* Update heading styles */
-        h1, h2, h3 {
-            font-family: 'Georgia', serif;
-            color: var(--primary-color);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        /* Update paragraph and general text styles */
-        p {
-            color: #4a5568;
-            line-height: 1.8;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.9);
-            font-weight: 300;
-        }
-
-        /* Update card text styles */
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        /* Update tag styles */
-        .tag {
-            font-size: 0.9rem;
-            padding: 0.3rem 0.6rem;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -361,25 +21,24 @@
                 <a href="newsletter.html" class="active">Newsletter</a>
             </nav>
             <div class="profile-header">
-                <h1>Newsletter</h1>
-                <p class="subtitle">Cameron Pattison & Seth Lazar | MINT Lab</p>
+                <h1>Philosophy of Computing Archive</h1>
+                <p class="subtitle">MINT Lab | Australian National University</p>
                 <p class="contact-info">
-                    <a href="https://philosophyofcomputing.substack.com"><i class="fas fa-envelope"></i> Philosophy of Computing Newsletter</a>
+                    <a href="https://philosophyofcomputing.substack.com"><i class="fas fa-envelope"></i> Subscribe to Our Newsletter</a>
                 </p>
             </div>
         </header>
+
         <!-- Introduction Section -->
         <div class="section" id="intro-section">
-            <h2>About the Newsletter</h2>
-            <p>Welcome to the MINT Lab's Philosophy of Computing Newsletter! This newsletter, led by Professor Seth Lazar and curated with assistance from Cameron Pattison and the MINT Lab team, serves as a hub for the growing community of analytic philosophers working on normative questions in computing.</p>
-            
-            <p>Our mission is to connect researchers, practitioners, and enthusiasts in the field of normative philosophy of computing, sharing opportunities, events, and cutting-edge research. We cover everything from AI ethics and safety to technical governance and philosophical implications of emerging technologies.</p>
+            <h2>About This Archive</h2>
+            <p>This page serves as a companion to the <a href="https://philosophyofcomputing.substack.com">Philosophy of Computing Newsletter</a>, a monthly publication led by Professor Seth Lazar with support from Cameron Pattison and the MINT Lab team. While the newsletter delivers the latest updates in normative philosophy of computing to your inbox, this archive maintains a comprehensive list of active opportunities that remain relevant beyond their initial announcement.</p>
 
-            <p>While our monthly Substack newsletter features the latest updates and newest opportunities, this page serves as a comprehensive archive of all currently relevant events, job opportunities, and calls for papers that have been featured in past issues. Due to space constraints in each newsletter, we can't repeat previously announced opportunities, so we maintain this hub as a complete, up-to-date resource for the community.</p>
+            <p>Our field moves quickly, and each newsletter issue focuses on what's new. However, many opportunities—conferences, job postings, and calls for papers—remain open long after their first announcement. Rather than repeating these in subsequent newsletters, we maintain this hub as a living repository of current opportunities in the field.</p>
 
             <div class="card" style="text-align: center; margin-top: 2rem; padding: 2rem;">
-                <h3 style="margin-bottom: 1rem;">Subscribe to Our Newsletter</h3>
-                <p style="margin-bottom: 1.5rem;">Get monthly updates on the latest developments in philosophy of computing, AI ethics, and technology governance.</p>
+                <h3 style="margin-bottom: 1rem;">Get the Monthly Newsletter</h3>
+                <p style="margin-bottom: 1.5rem;">Join our community of researchers, practitioners, and enthusiasts in normative philosophy of computing.</p>
                 <a href="https://philosophyofcomputing.substack.com" target="_blank" style="display: inline-block; padding: 1rem 2rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
                     <i class="fas fa-envelope"></i> Subscribe on Substack
                 </a>
@@ -387,21 +46,36 @@
         </div>
 
         <!-- CFPs Section -->
-        <div class="section" id="cfps-section">
-            <h2>Call for Papers</h2>
-            <ul id="cfps-list"></ul>
+        <div class="section collapsible-section" id="cfps-section">
+            <div class="section-header" onclick="toggleSection('cfps-content')">
+                <h2>Call for Papers</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content" id="cfps-content">
+                <ul id="cfps-list"></ul>
+            </div>
         </div>
 
         <!-- Conferences Section -->
-        <div class="section" id="conferences-section">
-            <h2>Upcoming Conferences and Events</h2>
-            <ul id="conferences-list"></ul>
+        <div class="section collapsible-section" id="conferences-section">
+            <div class="section-header" onclick="toggleSection('conferences-content')">
+                <h2>Upcoming Conferences and Events</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content" id="conferences-content">
+                <ul id="conferences-list"></ul>
+            </div>
         </div>
 
         <!-- Jobs Section -->
-        <div class="section" id="jobs-section">
-            <h2>Job Opportunities</h2>
-            <ul id="jobs-list"></ul>
+        <div class="section collapsible-section" id="jobs-section">
+            <div class="section-header" onclick="toggleSection('jobs-content')">
+                <h2>Job Opportunities</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content" id="jobs-content">
+                <ul id="jobs-list"></ul>
+            </div>
         </div>
 
         <!-- Globe Section -->
@@ -409,38 +83,91 @@
             <h2>Job and Conference Globe</h2>
             <div id="globeViz"></div>
         </div>
-        
-        <!-- Bibliography Section (Last) -->
-        <div class="section" id="bibliography-section">
-            <div class="bibliography-card" onclick="toggleBibliography(this)">
-                <div class="bibliography-header">
-                    <h2>December Philosophy Papers</h2>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="bibliography-content">
-                    <div id="dec-papers-container"></div>
-                </div>
+
+        <!-- Bibliography Section -->
+        <div class="section collapsible-section" id="bibliography-section">
+            <div class="section-header" onclick="toggleSection('bibliography-content')">
+                <h2>Recent Philosophy Papers</h2>
+                <i class="fas fa-chevron-up"></i>
             </div>
-            
-            <div class="bibliography-card" onclick="toggleBibliography(this)">
-                <div class="bibliography-header">
-                    <h2>November Philosophy Papers</h2>
-                    <span class="arrow">▼</span>
+            <div class="section-content" id="bibliography-content">
+                <!-- December Papers -->
+                <div class="month-section">
+                    <h3>December 2024</h3>
+                    <p class="view-all">
+                        <a href="newsletters/dec_phil_papers.html" class="button">
+                            <i class="fas fa-book"></i> View All December Papers
+                        </a>
+                    </p>
+                    <div class="paper-preview">
+                        <h4>Featured Papers:</h4>
+                        <ul>
+                            <li onclick="window.open('http://arxiv.org/abs/2411.19211', '_blank')">
+                                <div class="paper-title">On the Ethical Considerations of Generative Agents</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">N'yoma Diamond, Soumya Banerjee</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Discusses ethical challenges and concerns posed by generative agents, suggesting guidelines for mitigating systemic risks.</div>
+                            </li>
+                            <li onclick="window.open('https://doi.org/10.1007/s11098-024-02257-w', '_blank')">
+                                <div class="paper-title">The linguistic dead zone of value-aligned agency</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Travis LaCroix</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Argues that linguistic communication is a necessary condition for robust value alignment in AI systems.</div>
+                            </li>
+                            <li onclick="window.open('http://arxiv.org/abs/2407.02996', '_blank')">
+                                <div class="paper-title">Are Large Language Models Consistent over Value-laden Questions?</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Jared Moore, Tanvi Deshpande, Diyi Yang</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Investigates LLM consistency across paraphrases, related questions, and multilingual translations.</div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bibliography-content">
-                    <div id="nov-papers-container"></div>
+
+                <!-- November Papers -->
+                <div class="month-section">
+                    <h3>November 2024</h3>
+                    <p class="view-all">
+                        <a href="newsletters/nov_phil_papers.html" class="button">
+                            <i class="fas fa-book"></i> View All November Papers
+                        </a>
+                    </p>
+                    <div class="paper-preview">
+                        <h4>Featured Papers:</h4>
+                        <ul>
+                            <li onclick="window.open('https://osf.io/tz6an', '_blank')">
+                                <div class="paper-title">Conscious artificial intelligence and biological naturalism</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Seth Anil</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Explores the possibility of AI consciousness, challenging common assumptions about computational consciousness.</div>
+                            </li>
+                            <li onclick="window.open('http://arxiv.org/abs/2410.06415', '_blank')">
+                                <div class="paper-title">Biased AI can Influence Political Decision-Making</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Jillian Fisher et al.</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Presents experiments showing how partisan bias in AI models can influence political decision-making.</div>
+                            </li>
+                            <li onclick="window.open('http://arxiv.org/abs/2410.06415', '_blank')">
+                                <div class="paper-title">Take Caution in Using LLMs as Human Surrogates</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Yuan Gao, Dokyun Lee, Gordon Burtch, Sina Fazelpour</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Examines limitations of using LLMs as human surrogates in social science research.</div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        window.addEventListener('error', function(e) {
-            console.error('Global error:', e);
-            // Prevent complete page failure
-            return false;
-        });
-
+        // Data and functions will be loaded here
         const data = {
             cfps: [
                 {
@@ -587,6 +314,23 @@
             ]
         };
 
+        // Wait for DOM to be fully loaded before initializing
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Initialize all functionality
+                updateLists();
+                createGlobe();
+
+                // Add error handling
+                window.onerror = function(msg, url, lineNo, columnNo, error) {
+                    console.error('Global error:', { msg, url, lineNo, columnNo, error });
+                    return false;
+                };
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+
         function isWithinSixMonths(dateString) {
             const itemDate = new Date(dateString);
             const currentDate = new Date();
@@ -628,34 +372,34 @@
 
         function formatCFP(cfp) {
             return `
-                <div class="card" onclick="toggleCard(this)">
+                <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">${cfp.title}</h3>
                         <span class="tag deadline">Deadline: ${cfp.deadline}</span>
                     </div>
                     <div class="card-content">
-                        <a href="${cfp.url}" target="_blank" class="button">Submit</a>
+                        <a href="${cfp.url}" target="_blank" class="button">Submit Paper</a>
                     </div>
                 </div>`;
         }
 
         function formatConference(conference) {
             return `
-                <div class="card" onclick="toggleCard(this)">
+                <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">${conference.title}</h3>
                         <span class="tag deadline">${conference.date}</span>
                         <span class="tag location">${conference.location}</span>
                     </div>
                     <div class="card-content">
-                        <a href="${conference.url}" target="_blank" class="button">Learn More</a>
+                        <a href="${conference.url}" target="_blank" class="button">Learn More & Register</a>
                     </div>
                 </div>`;
         }
 
         function formatJob(job) {
             return `
-                <div class="card" onclick="toggleCard(this)">
+                <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">${job.title}</h3>
                         <p class="card-subtitle">${job.organization}</p>
@@ -669,77 +413,30 @@
                 </div>`;
         }
 
-        function toggleCard(card) {
-            card.classList.toggle('expanded');
-        }
-
         function updateLists() {
-            const sortedCFPs = sortByDateAscending(data.cfps);
-            const sortedConferences = sortByDateAscending(data.conferences);
-            const sortedJobs = data.jobs.sort((a, b) => a.type.localeCompare(b.type));
+            // Sort CFPs by deadline
+            const sortedCFPs = data.cfps
+                .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
+                .filter(cfp => isDeadlineFuture(cfp.deadline));
 
-            updateList(sortedCFPs, 'cfps-list', isDeadlineFuture, formatCFP);
-            updateList(sortedConferences, 'conferences-list', isConferenceFuture, formatConference);
+            // Sort conferences by date
+            const sortedConferences = data.conferences
+                .sort((a, b) => new Date(a.date) - new Date(b.date))
+                .filter(conf => isConferenceFuture(conf.date));
+
+            // Sort jobs first by type, then by organization
+            const sortedJobs = data.jobs
+                .sort((a, b) => {
+                    if (a.type !== b.type) {
+                        return a.type.localeCompare(b.type);
+                    }
+                    return a.organization.localeCompare(b.organization);
+                });
+
+            updateList(sortedCFPs, 'cfps-list', () => true, formatCFP);
+            updateList(sortedConferences, 'conferences-list', () => true, formatConference);
             updateList(sortedJobs, 'jobs-list', () => true, formatJob);
         }
-
-        // Initial update
-        updateLists();
-
-        // Update every day (86400000 milliseconds = 24 hours)
-        setInterval(updateLists, 86400000);
-
-        function toggleBibliography(card) {
-            card.classList.toggle('expanded');
-        }
-
-        // Function to load the bibliography content
-        async function loadBibliography() {
-            // Load December papers
-            const decContainer = document.getElementById('dec-papers-container');
-            if (decContainer) {
-                try {
-                    const decResponse = await fetch('newsletters/dec_phil_papers.html');
-                    if (!decResponse.ok) {
-                        throw new Error(`HTTP error! status: ${decResponse.status}`);
-                    }
-                    const decText = await decResponse.text();
-                    decContainer.innerHTML = decText;
-                } catch (error) {
-                    console.error('Error loading December bibliography:', error);
-                    decContainer.innerHTML = `
-                        <div style="padding: 20px; text-align: center;">
-                            <p>Error loading December bibliography. Please try again later.</p>
-                            <button onclick="loadBibliography()">Retry</button>
-                        </div>
-                    `;
-                }
-            }
-
-            // Load November papers
-            const novContainer = document.getElementById('nov-papers-container');
-            if (novContainer) {
-                try {
-                    const novResponse = await fetch('newsletters/nov_phil_papers.html');
-                    if (!novResponse.ok) {
-                        throw new Error(`HTTP error! status: ${novResponse.status}`);
-                    }
-                    const novText = await novResponse.text();
-                    novContainer.innerHTML = novText;
-                } catch (error) {
-                    console.error('Error loading November bibliography:', error);
-                    novContainer.innerHTML = `
-                        <div style="padding: 20px; text-align: center;">
-                            <p>Error loading November bibliography. Please try again later.</p>
-                            <button onclick="loadBibliography()">Retry</button>
-                        </div>
-                    `;
-                }
-            }
-        }
-
-        // Load bibliography when page loads
-        document.addEventListener('DOMContentLoaded', loadBibliography);
 
         function createGlobe() {
             const globeContainer = document.getElementById('globeViz');
@@ -891,34 +588,192 @@
             }
         }
 
-        // Add initialization error handling
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Initializing with Globe:', typeof Globe, 'THREE:', typeof THREE);
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('i');
             
-            // Add error boundary
-            window.onerror = function(msg, url, lineNo, columnNo, error) {
-                console.error('Global error:', { msg, url, lineNo, columnNo, error });
-                const globeContainer = document.getElementById('globeViz');
-                if (globeContainer) {
-                    globeContainer.innerHTML = `
-                        <div class="globe-error">
-                            An error occurred.<br>
-                            Please refresh the page or check console for details.<br>
-                            <button onclick="location.reload()" style="margin-top: 10px;">Refresh Page</button>
-                        </div>
-                    `;
-                }
-                return false;
-            };
-
-            try {
-                createGlobe();
-                loadBibliography();
-                updateLists();
-            } catch (error) {
-                console.error('Initialization error:', error);
+            if (content.style.maxHeight) {
+                // Collapse
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(180deg)"; // Point up when closed
+            } else {
+                // Expand
+                content.style.maxHeight = '100%';
+                icon.style.transform = "rotate(0deg)"; // Point down when open
             }
+        }
+
+        // Initialize sections as collapsed by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.style.maxHeight = null;
+                const icon = section.previousElementSibling.querySelector('i');
+                if (icon) {
+                    icon.style.transform = "rotate(180deg)"; // Point up when closed
+                }
+            });
         });
     </script>
+
+    <style>
+        .month-section {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .month-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5em;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .paper-preview {
+            margin-top: 1.5rem;
+        }
+
+        .paper-preview h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.1em;
+        }
+
+        .paper-preview ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .paper-preview li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .paper-preview li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .paper-title {
+            flex: 2;
+            color: var(--primary-color);
+            font-size: 1.1em;
+            font-weight: bold;
+            padding-right: 1rem;
+        }
+
+        .paper-authors {
+            flex: 1;
+            color: var(--secondary-color);
+            font-size: 0.95em;
+            padding: 0 1rem;
+        }
+
+        .paper-summary {
+            flex: 2;
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+            padding-left: 1rem;
+        }
+
+        .paper-divider {
+            width: 1px;
+            height: 40px;
+            background-color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .view-all {
+            text-align: right;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .view-all .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .view-all .button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .view-all .button i {
+            font-size: 1.1em;
+        }
+
+        .card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .card .card-content {
+            display: block;
+            padding: 15px;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .section-header, .month-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .section-header:hover, .month-header:hover {
+            background: #e9ecef;
+        }
+
+        .section-header h2, .month-header h3 {
+            margin: 0;
+            border: none;
+        }
+
+        .section-header i, .month-header i {
+            transition: transform 0.3s ease;
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        #bibliography-content {
+            padding: 0;
+        }
+
+        #bibliography-content.expanded {
+            max-height: none;
+        }
+    </style>
 </body>
 </html>

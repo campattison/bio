@@ -12,6 +12,11 @@
     --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
 }
 
+/* Test style to verify CSS loading */
+.test-style {
+    border: 5px solid red;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.8;
@@ -300,5 +305,93 @@ tr:hover {
     object-fit: cover;
     border-radius: 50%;
     box-shadow: var(--shadow-sm);
+}
+
+/* Newsletter-specific styles */
+.section {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    padding: 2rem;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+/* Globe styles */
+#globeViz {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.globe-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    max-width: 200px;
+}
+
+.globe-legend {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Tag styles */
+.tag {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tag.academic { background-color: #ce93d8; color: white; }
+.tag.alt-ac { background-color: #81c784; color: white; }
+.tag.deadline { background-color: #ff6b6b; color: white; }
+.tag.location { background-color: #e8f5e9; color: var(--text-color); }
+
+/* Card grid for opportunities */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
 }
  
