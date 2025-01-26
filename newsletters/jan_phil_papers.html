@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline' data:">
+		<title>Zotero Report</title>
+		<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7Cgljb2xvci1zY2hlbWU6IGxpZ2h0IGRhcms7CgkvKiBUaGVzZSBzaG91bGQgYmUgdGhlIGRlZmF1bHRzLCBidXQganVzdCBpbiBjYXNlOiAqLwoJYmFja2dyb3VuZDogQ2FudmFzOwoJY29sb3I6IENhbnZhc1RleHQ7Cn0KCmEgewoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7Cn0KCmJvZHkgewoJcGFkZGluZzogMDsKfQoKdWwucmVwb3J0IGxpLml0ZW0gewoJYm9yZGVyLXRvcDogNHB4IHNvbGlkICM1NTU7CglwYWRkaW5nLXRvcDogMWVtOwoJcGFkZGluZy1sZWZ0OiAxZW07CglwYWRkaW5nLXJpZ2h0OiAxZW07CgltYXJnaW4tYm90dG9tOiAyZW07Cn0KCmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDIgewoJbWFyZ2luOiAwIDAgLjVlbTsKfQoKaDIucGFyZW50SXRlbSB7Cglmb250LXdlaWdodDogNjAwOwoJZm9udC1zaXplOiAxZW07CglwYWRkaW5nOiAwIDAgLjVlbTsKCWJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjOwp9CgovKiBJZiBjb21iaW5pbmcgY2hpbGRyZW4sIGRpc3BsYXkgcGFyZW50IHNsaWdodGx5IGxhcmdlciAqLwp1bC5yZXBvcnQuY29tYmluZUNoaWxkSXRlbXMgaDIucGFyZW50SXRlbSB7Cglmb250LXNpemU6IDEuMWVtOwoJcGFkZGluZy1ib3R0b206IC43NWVtOwoJbWFyZ2luLWJvdHRvbTogLjRlbTsKfQoKaDIucGFyZW50SXRlbSAudGl0bGUgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDMgewoJbWFyZ2luLWJvdHRvbTogLjZlbTsKCWZvbnQtd2VpZ2h0OiA2MDAgIWltcG9ydGFudDsKCWZvbnQtc2l6ZTogMWVtOwoJZGlzcGxheTogYmxvY2s7Cn0KCi8qIE1ldGFkYXRhIHRhYmxlICovCnRoIHsKCXZlcnRpY2FsLWFsaWduOiB0b3A7Cgl0ZXh0LWFsaWduOiByaWdodDsKCXdpZHRoOiAxNSU7Cgl3aGl0ZS1zcGFjZTogbm93cmFwOwp9Cgp0ZCB7CglwYWRkaW5nLWxlZnQ6IC41ZW07Cn0KCgp1bC5yZXBvcnQsIHVsLm5vdGVzLCB1bC50YWdzIHsKCWxpc3Qtc3R5bGU6IG5vbmU7CgltYXJnaW4tbGVmdDogMDsKCXBhZGRpbmctbGVmdDogMDsKfQoKLyogVGFncyAqLwpoMy50YWdzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLnRhZ3MgewoJbGluZS1oZWlnaHQ6IDEuNzVlbTsKCWxpc3Qtc3R5bGU6IG5vbmU7Cn0KCnVsLnRhZ3MgbGkgewoJZGlzcGxheTogaW5saW5lOwp9Cgp1bC50YWdzIGxpOm5vdCg6bGFzdC1jaGlsZCk6YWZ0ZXIgewoJY29udGVudDogJywgJzsKfQoKCi8qIENoaWxkIG5vdGVzICovCmgzLm5vdGVzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLm5vdGVzIHsKCW1hcmdpbi1ib3R0b206IDEuMmVtOwp9Cgp1bC5ub3RlcyA+IGxpOmZpcnN0LWNoaWxkIHAgewoJbWFyZ2luLXRvcDogMDsKfQoKdWwubm90ZXMgPiBsaSB7CglwYWRkaW5nOiAuN2VtIDA7Cn0KCnVsLm5vdGVzID4gbGk6bm90KDpsYXN0LWNoaWxkKSB7Cglib3JkZXItYm90dG9tOiAxcHggI2NjYyBzb2xpZDsKfQoKCnVsLm5vdGVzID4gbGkgcDpmaXJzdC1jaGlsZCB7CgltYXJnaW4tdG9wOiAwOwp9Cgp1bC5ub3RlcyA+IGxpIHA6bGFzdC1jaGlsZCB7CgltYXJnaW4tYm90dG9tOiAwOwp9CgovKiBBZGQgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBibG9ja3F1b3RlICovCnVsLm5vdGVzID4gbGkgYmxvY2txdW90ZSBwOm5vdCg6ZW1wdHkpOmJlZm9yZSwKbGkubm90ZSBibG9ja3F1b3RlIHA6bm90KDplbXB0eSk6YmVmb3JlIHsKCWNvbnRlbnQ6ICfigJwnOwp9Cgp1bC5ub3RlcyA+IGxpIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyLApsaS5ub3RlIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyIHsKCWNvbnRlbnQ6ICfigJ0nOwp9CgovKiBQcmVzZXJ2ZSB3aGl0ZXNwYWNlIG9uIHBsYWludGV4dCBub3RlcyAqLwp1bC5ub3RlcyBsaSBwLnBsYWludGV4dCwgbGkubm90ZSBwLnBsYWludGV4dCwgZGl2Lm5vdGUgcC5wbGFpbnRleHQgewoJd2hpdGUtc3BhY2U6IHByZS13cmFwOwp9CgovKiBEaXNwbGF5IHRhZ3Mgd2l0aGluIGNoaWxkIG5vdGVzIGlubGluZSAqLwp1bC5ub3RlcyBoMy50YWdzIHsKCWRpc3BsYXk6IGlubGluZTsKCWZvbnQtc2l6ZTogMWVtOwp9Cgp1bC5ub3RlcyBoMy50YWdzOmFmdGVyIHsKCWNvbnRlbnQ6ICcgJzsKfQoKdWwubm90ZXMgdWwudGFncyB7CglkaXNwbGF5OiBpbmxpbmU7Cn0KCnVsLm5vdGVzIHVsLnRhZ3MgbGk6bm90KDpsYXN0LWNoaWxkKTphZnRlciB7Cgljb250ZW50OiAnLCAnOwp9CgoKLyogQ2hpbGQgYXR0YWNobWVudHMgKi8KaDMuYXR0YWNobWVudHMgewoJZm9udC1zaXplOiAxLjFlbTsKfQoKdWwuYXR0YWNobWVudHMgbGkgewoJcGFkZGluZy10b3A6IC41ZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHsKCW1hcmdpbi1sZWZ0OiAyZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHA6Zmlyc3QtY2hpbGQgewoJbWFyZ2luLXRvcDogLjc1ZW07Cn0KCmRpdiB0YWJsZSB7Cglib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOwp9CgpkaXYgdGFibGUgdGQsIGRpdiB0YWJsZSB0aCB7Cglib3JkZXI6IDFweCAjY2NjIHNvbGlkOwoJYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKCXdvcmQtYnJlYWs6IGJyZWFrLWFsbDsKfQoKZGl2IHRhYmxlIHRkIHA6ZW1wdHk6OmFmdGVyLCBkaXYgdGFibGUgdGggcDplbXB0eTo6YWZ0ZXIgewoJY29udGVudDogIlwwMGEwIjsKfQoKZGl2IHRhYmxlIHRkICo6Zmlyc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmZpcnN0LWNoaWxkIHsKCW1hcmdpbi10b3A6IDA7Cn0KCmRpdiB0YWJsZSB0ZCAqOmxhc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmxhc3QtY2hpbGQgewoJbWFyZ2luLWJvdHRvbTogMDsKfQo=">
+		<link rel="stylesheet" type="text/css" media="screen,projection" href="data:text/css;base64,LyogR2VuZXJpYyBzdHlsZXMgKi8KYm9keSB7Cglmb250OiA2Mi41JSBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cgl3aWR0aDogNzgwcHg7CgltYXJnaW46IDAgYXV0bzsKfQoKaDIgewoJZm9udC1zaXplOiAxLjVlbTsKCWxpbmUtaGVpZ2h0OiAxLjVlbTsKCWZvbnQtZmFtaWx5OiBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cn0KCnAgewoJbGluZS1oZWlnaHQ6IDEuNWVtOwp9CgphOmFueS1saW5rIHsKCWNvbG9yOiAjOTAwOwp9CgphOmhvdmVyLCBhOmFjdGl2ZSB7Cgljb2xvcjogIzc3NzsKfQoKQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewoJYTphbnktbGluayB7CgkJY29sb3I6ICNmMDA7Cgl9CgoJYTpob3ZlciwgYTphY3RpdmUgewoJCWNvbG9yOiAjOTk5OwoJfQp9CgoKdWwucmVwb3J0IHsKCWZvbnQtc2l6ZTogMS40ZW07Cgl3aWR0aDogNjgwcHg7CgltYXJnaW46IDAgYXV0bzsKCXBhZGRpbmc6IDIwcHggMjBweDsKfQoKLyogTWV0YWRhdGEgdGFibGUgKi8KdGFibGUgewoJYm9yZGVyOiAxcHggI2NjYyBzb2xpZDsKCW92ZXJmbG93OiBhdXRvOwoJd2lkdGg6IDEwMCU7CgltYXJnaW46IC4xZW0gYXV0byAuNzVlbTsKCXBhZGRpbmc6IDAuNWVtOwp9Cg==">
+		<link rel="stylesheet" type="text/css" media="print" href="data:text/css;base64,Ym9keSB7Cglmb250OiAxMnB0ICJUaW1lcyBOZXcgUm9tYW4iLCBUaW1lcywgR2VvcmdpYSwgc2VyaWY7CgltYXJnaW46IDA7Cgl3aWR0aDogYXV0bzsKfQoKLyogUGFnZSBCcmVha3MgKHBhZ2UtYnJlYWstaW5zaWRlIG9ubHkgcmVjb2duaXplZCBieSBPcGVyYSkgKi8KaDEsIGgyLCBoMywgaDQsIGg1LCBoNiB7CglwYWdlLWJyZWFrLWFmdGVyOiBhdm9pZDsKCXBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZDsKfQoKdWwsIG9sLCBkbCB7CglwYWdlLWJyZWFrLWluc2lkZTogYXZvaWQ7Cgljb2xvci1hZGp1c3Q6IGV4YWN0Owp9CgpoMiB7Cglmb250LXNpemU6IDEuM2VtOwoJbGluZS1oZWlnaHQ6IDEuM2VtOwp9CgphIHsKCWNvbG9yOiBpbmhlcml0OwoJdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9Cg==">
+	</head>
+	<body>
+		<ul class="report combineChildItems">
+			<li id="item_EN22MPNS" class="item preprint">
+			<h2>A theory of appropriateness with applications to generative artificial intelligence</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Joel Z. Leibo</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alexander Sasha Vezhnevets</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Manfred Diaz</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>John P. Agapiou</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>William A. Cunningham</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Peter Sunehag</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Julia Haas</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Raphael Koster</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Edgar A. Duéñez-Guzmán</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>William S. Isaac</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Georgios Piliouras</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Stanley M. Bileschi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Iyad Rahwan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Simon Osindero</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>What is appropriateness? Humans navigate a multi-scale mosaic 
+of interlocking notions of what is appropriate for different situations.
+ We act one way with our friends, another with our family, and yet 
+another in the office. Likewise for AI, appropriate behavior for a 
+comedy-writing assistant is not the same as appropriate behavior for a 
+customer-service representative. What determines which actions are 
+appropriate in which contexts? And what causes these standards to change
+ over time? Since all judgments of AI appropriateness are ultimately 
+made by humans, we need to understand how appropriateness guides human 
+decision making in order to properly evaluate AI decision making and 
+improve it. This paper presents a theory of appropriateness: how it 
+functions in human society, how it may be implemented in the brain, and 
+what it means for responsible deployment of generative AI technology.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-26</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.19010">http://arxiv.org/abs/2412.19010</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:48:40 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.19010 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.19010">10.48550/arXiv.2412.19010</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.19010</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:48:40 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:48:40 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_BSJ6MHU8">
+<p class="plaintext">Comment: 115 pages, 2 figures</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_98ECLF4G">Preprint PDF					</li>
+					<li id="item_NTA2DQAG">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_BRELM7AP" class="item blogPost">
+			<h2>Desire-Fulfilment and Consciousness - Andreas Mogensen</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Blog Post</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Christian Panzer</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>I show that there are good reasons to think that some 
+individuals without any capacity for consciousness should be counted as 
+welfare subjects, assuming that desire-fulfilment is a welfare good and 
+that any individuals who can accrue welfare goods are welfare subjects. 
+While other philosophers have argued for similar conclusions, I show 
+that they have done so by relying on a simplistic understanding of the 
+desire-fulfilment theory. My argument is intended to be sensitive to the
+ complexities and nuances of contemporary developments of the theory, 
+while avoiding highly counter-intuitive implications of previous 
+arguments for the same conclusion.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-10-28T14:33:10+00:00</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en-GB</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://globalprioritiesinstitute.org/desire-fulfilment-and-consciousness-andreas-mogensen/">https://globalprioritiesinstitute.org/desire-fulfilment-and-consciousness-andreas-mogensen/</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/26/2025, 10:48:08 AM</td>
+					</tr>
+					<tr>
+					<th>Blog Title</th>
+						<td>Global Priorities Institute</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/26/2025, 10:48:08 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/26/2025, 10:48:08 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_KSSD7UMU">PDF					</li>
+					<li id="item_YAD7Y5GV">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_6UJ6F7N5" class="item preprint">
+			<h2>How to tell if a rule was broken: The role of codification, norms, morality, and legitimacy</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jordan Wylie</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dries H. Bostyn</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ana P. Gantman</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Rules are essential for the successful coordination of 
+large-scale societies, with official, codified rules (e.g., laws) 
+proscribing behaviors for everyone in their jurisdiction. These rules 
+ostensibly provide a clear signal about what is permitted or prohibited,
+ making it straightforward to identify when they have been broken. 
+However, signals from descriptive norms, moral prohibition, and (lack 
+of) legitimacy of enforcement can sometimes provide conflicting accounts
+ of what behaviors really violate rules, possibly shaping whether 
+someone thinks a rule has been broken at all. Across three experiments 
+(N = 2,262), we explored how each of these signals affect rule concept 
+judgments. In Study 1, we used a variety of real rules in the US and 
+found that all four signals—descriptive norms, codification, moral 
+wrongness, and legitimacy of punishment—are associated with judgments of
+ whether a rule was broken, but to varying degrees. Study 2 replicated 
+these findings in a preregistered study. Study 3 experimentally 
+manipulated these four signals in a novel context using a conjoint 
+design. We found that codification and moral wrongness most strongly 
+influence rule concepts. Together, these findings suggest that judgments
+ about what constitutes a rule are shaped by the integration of multiple
+ distinct signals, including but not limited to the literal codification
+ of the rule itself.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-27</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en-us</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>How to tell if a rule was broken</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>OSF Preprints</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://osf.io/mvkwy">https://osf.io/mvkwy</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:47:47 AM</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.31234/osf.io/mvkwy">10.31234/osf.io/mvkwy</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>OSF</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:47:47 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:47:53 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_MW7Z5HAX">OSF Preprint					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_2YQATZPI" class="item blogPost">
+			<h2>Imperfect Recall and AI Delegation - Eric Olav Chen, Alexis Ghersengorin and Sami Petersen</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Blog Post</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Christian Panzer</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>A principal wants to deploy an artificial intelligence (AI) 
+system to perform some task. But the AI may be misaligned and aim to 
+pursue a conflicting objective. The principal cannot restrict its 
+options or deliver punishments. Instead, the principal is endowed with 
+the ability to impose imperfect recall on the agent. The principal can 
+then simulate the task and obscure whether it is real or part of a test.
+ This allows the principal to screen misaligned AIs during testing and 
+discipline their behaviour in deployment. By increasing the number of 
+tests, the principal can screen arbitrarily well and may even discipline
+ perfectly in finite time. We show that, in equilibrium, screening can 
+only be achieved with imperfect recall. The perfect screening result is 
+robust to the agent observing any amount of noisy information revealing 
+the nature of the task.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-11-28T08:49:43+00:00</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en-GB</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://globalprioritiesinstitute.org/imperfect-recall-and-ai-delegation-chen-ghersengorin-and-petersen/">https://globalprioritiesinstitute.org/imperfect-recall-and-ai-delegation-chen-ghersengorin-and-petersen/</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/26/2025, 10:48:32 AM</td>
+					</tr>
+					<tr>
+					<th>Blog Title</th>
+						<td>Global Priorities Institute</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/26/2025, 10:48:32 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/26/2025, 10:48:32 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_XDRWZWER">PDF					</li>
+					<li id="item_FW6DRAGA">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_68W54ETS" class="item preprint">
+			<h2>Who Does the Giant Number Pile Like Best: Analyzing Fairness in Hiring Contexts</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Preethi Seshadri</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Seraphina Goldfarb-Tarrant</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Large language models (LLMs) are increasingly being deployed 
+in high-stakes applications like hiring, yet their potential for unfair 
+decision-making and outcomes remains understudied, particularly in 
+generative settings. In this work, we examine the fairness of LLM-based 
+hiring systems through two real-world tasks: resume summarization and 
+retrieval. By constructing a synthetic resume dataset and curating job 
+postings, we investigate whether model behavior differs across 
+demographic groups and is sensitive to demographic perturbations. Our 
+findings reveal that race-based differences appear in approximately 10% 
+of generated summaries, while gender-based differences occur in only 1%.
+ In the retrieval setting, all evaluated models display non-uniform 
+selection patterns across demographic groups and exhibit high 
+sensitivity to both gender and race-based perturbations. Surprisingly, 
+retrieval models demonstrate comparable sensitivity to non-demographic 
+changes, suggesting that fairness issues may stem, in part, from general
+ brittleness issues. Overall, our results indicate that LLM-based hiring
+ systems, especially at the retrieval stage, can exhibit notable biases 
+that lead to discriminatory outcomes in real-world contexts.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-01-08</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Who Does the Giant Number Pile Like Best</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2501.04316">http://arxiv.org/abs/2501.04316</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/26/2025, 10:47:59 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2501.04316 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2501.04316">10.48550/arXiv.2501.04316</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2501.04316</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/26/2025, 10:47:59 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/26/2025, 10:47:59 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_BHHBV5CK">Preprint PDF					</li>
+					<li id="item_XACFRNK5">Snapshot					</li>
+				</ul>
+			</li>
+
+		</ul>
+	
+</body></html>

@@ -162,6 +162,42 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- January Papers -->
+                <div class="month-section">
+                    <h3>January 2025</h3>
+                    <p class="view-all">
+                        <a href="newsletters/jan_phil_papers.html" class="button">
+                            <i class="fas fa-book"></i> View All January Papers
+                        </a>
+                    </p>
+                    <div class="paper-preview">
+                        <h4>Featured Papers:</h4>
+                        <ul>
+                            <li onclick="window.open('http://arxiv.org/abs/2501.04316', '_blank')">
+                                <div class="paper-title">Who Does the Giant Number Pile Like Best: Analyzing Fairness in Hiring Contexts</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Preethi Seshadri, Seraphina Goldfarb-Tarrant</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Explores fairness in LLM-based hiring systems through resume summarization and retrieval tasks, revealing concerning biases and brittleness.</div>
+                            </li>
+                            <li onclick="window.open('https://globalprioritiesinstitute.org/desire-fulfilment-and-consciousness-andreas-mogensen/', '_blank')">
+                                <div class="paper-title">Desire-Fulfilment and Consciousness</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Andreas Mogensen</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Argues that individuals without consciousness can still accrue welfare goods under a nuanced understanding of desire-fulfilment theory.</div>
+                            </li>
+                            <li onclick="window.open('http://arxiv.org/abs/2412.19010', '_blank')">
+                                <div class="paper-title">A Theory of Appropriateness with Applications to Generative AI</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Joel Z. Leibo et al.</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Presents a theory of appropriateness for AI systems based on human social and cognitive foundations.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -171,22 +207,25 @@
         const data = {
             cfps: [
                 {
-                    title: "IASEAI '25: International Association for Safe and Ethical AI Inaugural Conference",
-                    deadline: "2024-11-24",
-                    url: "https://www.iaseai.org/conference"
+                    title: "Workshop on Advancing Fairness in Machine Learning",
+                    deadline: "2025-02-06",
+                    url: "https://philevents.org/event/show/130478"
                 },
                 {
-                    title: "First International Conference on the Philosophy of Content Moderation",
-                    deadline: "2024-12-15",
-                    url: "https://www.philmod.org/conference"
-                },
-                {
-                    title: "ACM FAccT 2025",
-                    deadline: "2025-01-15",
-                    url: "https://facctconference.org/2025/cfp"
+                    title: "International Conference on Large-Scale AI Risks",
+                    deadline: "2025-02-15",
+                    url: "https://www.kuleuven.be/ethics-kuleuven/chair-ai/conference-ai-risks"
                 }
             ],
             conferences: [
+                {
+                    title: "Philosophy of Artificial Intelligence Network Talks (PAINT)",
+                    date: "2025-02-03",
+                    location: "Online",
+                    url: "https://sites.google.com/view/paint-series/home",
+                    lat: null,
+                    lng: null
+                },
                 {
                     title: "TeXne Conference",
                     date: "2025-02-01",
@@ -196,31 +235,59 @@
                     lng: -71.0942
                 },
                 {
-                    title: "IASEAI '25: International Association for Safe and Ethical AI Inaugural Conference",
-                    date: "2025-02-06",
-                    location: "OECD La Muette Headquarters, Paris, France",
-                    url: "https://www.iaseai.org/conference",
-                    lat: 48.8566,
-                    lng: 2.3522
+                    title: "Workshop on Advancing Fairness in Machine Learning",
+                    date: "2025-04-09",
+                    location: "Center for Cyber Social Dynamics, University of Kansas, Lawrence, United States",
+                    url: "https://philevents.org/event/show/130478",
+                    lat: 38.9717,
+                    lng: -95.2353
                 },
                 {
-                    title: "First International Conference on the Philosophy of Content Moderation",
-                    date: "2025-04-12",
-                    location: "Asilomar Conference Grounds, California, USA",
-                    url: "https://www.philmod.org/conference",
-                    lat: 36.6177,
-                    lng: -121.9166
+                    title: "International Conference on Large-Scale AI Risks",
+                    date: "2025-05-26",
+                    location: "KU Leuven, Belgium",
+                    url: "https://www.kuleuven.be/ethics-kuleuven/chair-ai/conference-ai-risks",
+                    lat: 50.8798,
+                    lng: 4.7005
                 },
                 {
                     title: "ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)",
                     date: "2025-06-23",
                     location: "Athens, Greece",
-                    url: "https://facctconference.org/2025/cfp",
+                    url: "https://facctconference.org/2025/",
                     lat: 37.9838,
                     lng: 23.7275
+                },
+                {
+                    title: "Cooperative AI Summer School 2025",
+                    date: "2025-07-09",
+                    location: "Marlow, near London",
+                    url: "https://www.cooperativeai.com/summer-school/summer-school-2025",
+                    lat: 51.5714,
+                    lng: -0.7750
                 }
             ],
             jobs: [
+                {
+                    title: "Postdoctoral Research Opportunity on AI Safety",
+                    location: "Pittsburgh, PA",
+                    organization: "Carnegie Mellon University",
+                    type: "Academic",
+                    url: "Apply here",
+                    description: "One-year postdoctoral position in AI safety, focusing on machine learning, NLP, and human-computer interaction. Application deadline: February 7, 2025.",
+                    lat: 40.4444,
+                    lng: -79.9608
+                },
+                {
+                    title: "AIDE Summer Program",
+                    location: "Boston, MA",
+                    organization: "Northeastern University",
+                    type: "Academic",
+                    url: "https://cssh.northeastern.edu/ethics/aide-summer/",
+                    description: "Summer program for graduate students in AI ethics, data ethics, and philosophy of technology. Deadline: January 30th, 2025.",
+                    lat: 42.3398,
+                    lng: -71.0892
+                },
                 {
                     title: "Policy Positions",
                     location: "Remote",
@@ -308,7 +375,7 @@
                     type: "Alt-Ac",
                     url: "https://x.com/ohlennart/status/1864368808091373696?s=12",
                     description: "Roles in compute governance and technical AI policy, including positions on their Compute Team.",
-                    lat: 38.9072,  // Washington DC coordinates since RAND has major presence there
+                    lat: 38.9072,
                     lng: -77.0369
                 }
             ]
