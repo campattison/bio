@@ -663,15 +663,15 @@
             }
         }
 
-        // Initialize sections as collapsed by default
+        // Initialize sections as expanded by default
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.section-content');
             sections.forEach(section => {
-                section.style.maxHeight = '0px';
-                section.classList.remove('expanded');
+                section.style.maxHeight = section.scrollHeight + 'px';
+                section.classList.add('expanded');
                 const icon = section.previousElementSibling.querySelector('i');
                 if (icon) {
-                    icon.style.transform = "rotate(0deg)";
+                    icon.style.transform = "rotate(180deg)";
                 }
             });
         });
