@@ -44,11 +44,16 @@
                 </a>
             </div>
         </div>
+        <!-- Globe Section -->
+        <div class="section">
+            <h2>Global Opportunities Map</h2>
+            <div id="globeViz"></div>
+        </div>
 
         <!-- CFPs Section -->
         <div class="section collapsible-section" id="cfps-section">
             <div class="section-header" onclick="toggleSection('cfps-content')">
-                <h2>Call for Papers</h2>
+                <h2>Call for Proposals</h2>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="section-content" id="cfps-content">
@@ -78,19 +83,49 @@
             </div>
         </div>
 
-        <!-- Globe Section -->
-        <div class="section">
-            <h2>Job and Conference Globe</h2>
-            <div id="globeViz"></div>
-        </div>
-
         <!-- Bibliography Section -->
-        <div class="section collapsible-section" id="bibliography-section">
+        <div class="section collapsible-section" id="bibliography`-section">
             <div class="section-header" onclick="toggleSection('bibliography-content')">
                 <h2>Recent Philosophy Papers</h2>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="section-content" id="bibliography-content">
+                <!-- February Papers -->
+                <div class="month-section">
+                    <h3>February 2025</h3>
+                    <p class="view-all">
+                        <a href="newsletters/feb_phil_papers.html" class="button">
+                            <i class="fas fa-book"></i> View All February Papers
+                        </a>
+                    </p>
+                    <div class="paper-preview">
+                        <h4>Featured Papers:</h4>
+                        <ul>
+                            <li onclick="window.open('https://onlinelibrary.wiley.com/doi/abs/10.1111/papa.12279', '_blank')">
+                                <div class="paper-title">Governing the Algorithmic City</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Seth Lazar</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Examines how algorithmic systems that mediate our social relationships raise novel questions for political philosophy, introducing the concept of the "Algorithmic City" and developing frameworks for procedural legitimacy and justification.</div>
+                            </li>
+                            <li onclick="window.open('https://www.cambridge.org/core/journals/american-political-science-review/article/dating-apps-and-the-digital-sexual-sphere/2F83AAEFB7DEA94FA4179369A004CEEC', '_blank')">
+                                <div class="paper-title">Dating Apps and the Digital Sexual Sphere</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Elsa Kugelberg</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Examines dating apps as powerful intermediaries in the "digital sexual sphere," arguing that while they offer opportunities for justice, their design often reinforces existing inequalities.</div>
+                            </li>
+                            <li onclick="window.open('http://arxiv.org/abs/2501.17420', '_blank')">
+                                <div class="paper-title">Actions Speak Louder than Words: Agent Decisions Reveal Implicit Biases in Language Models</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Yuxuan Li, Hirokazu Shirado, Sauvik Das</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Reveals how language models may harbor implicit biases even when explicit bias has been reduced through alignment, using a novel technique examining LLM-generated agent decisions.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
                 <!-- January Papers -->
                 <div class="month-section">
                     <h3>January 2025</h3>
@@ -198,6 +233,42 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- February Papers -->
+                <div class="month-section">
+                    <h3>February 2025</h3>
+                    <p class="view-all">
+                        <a href="newsletters/feb_phil_papers.html" class="button">
+                            <i class="fas fa-book"></i> View All February Papers
+                        </a>
+                    </p>
+                    <div class="paper-preview">
+                        <h4>Featured Papers:</h4>
+                        <ul>
+                            <li onclick="window.open('https://onlinelibrary.wiley.com/doi/abs/10.1111/papa.12279', '_blank')">
+                                <div class="paper-title">Governing the Algorithmic City</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Seth Lazar</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Examines how algorithmic systems that mediate our social relationships raise novel questions for political philosophy, introducing the concept of the "Algorithmic City" and developing frameworks for procedural legitimacy and justification.</div>
+                            </li>
+                            <li onclick="window.open('https://www.cambridge.org/core/journals/american-political-science-review/article/dating-apps-and-the-digital-sexual-sphere/2F83AAEFB7DEA94FA4179369A004CEEC', '_blank')">
+                                <div class="paper-title">Dating Apps and the Digital Sexual Sphere</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Elsa Kugelberg</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Examines dating apps as powerful intermediaries in the "digital sexual sphere," arguing that while they offer opportunities for justice, their design often reinforces existing inequalities.</div>
+                            </li>
+                            <li onclick="window.open('http://arxiv.org/abs/2501.17420', '_blank')">
+                                <div class="paper-title">Actions Speak Louder than Words: Agent Decisions Reveal Implicit Biases in Language Models</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-authors">Yuxuan Li, Hirokazu Shirado, Sauvik Das</div>
+                                <div class="paper-divider"></div>
+                                <div class="paper-summary">Reveals how language models may harbor implicit biases even when explicit bias has been reduced through alignment, using a novel technique examining LLM-generated agent decisions.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -207,25 +278,22 @@
         const data = {
             cfps: [
                 {
-                    title: "Workshop on Advancing Fairness in Machine Learning",
-                    deadline: "2025-02-06",
-                    url: "https://philevents.org/event/show/130478"
+                    title: "The Paris Conference on AI & Digital Ethics",
+                    deadline: "2025-03-15",
+                    url: "https://paris-conference.com/call-for-papers-2025/"
                 },
                 {
-                    title: "International Conference on Large-Scale AI Risks",
-                    deadline: "2025-02-15",
-                    url: "https://www.kuleuven.be/ethics-kuleuven/chair-ai/conference-ai-risks"
+                    title: "Artificial Intelligence and Collective Agency Workshop",
+                    deadline: "2025-03-27",
+                    url: "https://philevents.org/event/show/132182?ref=email"
+                },
+                {
+                    title: "Open Philanthropy RFP: Improving Capability Evaluations",
+                    deadline: "2025-04-01",
+                    url: "https://www.openphilanthropy.org/focus/global-catastrophic-risks/potential-risks-advanced-ai/request-for-proposals-capability-evaluations/"
                 }
             ],
             conferences: [
-                {
-                    title: "Philosophy of Artificial Intelligence Network Talks (PAINT)",
-                    date: "2025-02-03",
-                    location: "Online",
-                    url: "https://sites.google.com/view/paint-series/home",
-                    lat: null,
-                    lng: null
-                },
                 {
                     title: "TeXne Conference",
                     date: "2025-02-01",
@@ -251,6 +319,38 @@
                     lng: 4.7005
                 },
                 {
+                    title: "Cooperative AI Summer School 2025",
+                    date: "2025-07-09",
+                    location: "Marlow, near London",
+                    url: "https://www.cooperativeai.com/summer-school/summer-school-2025",
+                    lat: 51.5714,
+                    lng: -0.7750
+                },
+                {
+                    title: "AI for Animals 2025",
+                    date: "2025-03-01",
+                    location: "University of California, Berkeley",
+                    url: "https://www.aiforanimals.org",
+                    lat: 37.8719,
+                    lng: -122.2585
+                },
+                {
+                    title: "Workshop on Bidirectional Human-AI Alignment",
+                    date: "2025-04-27",
+                    location: "Hybrid (In-person & Virtual)",
+                    url: "https://bialign-workshop.github.io/#/",
+                    lat: null,
+                    lng: null
+                },
+                {
+                    title: "1st Workshop on Sociotechnical AI Governance (STAIG@CHI 2025)",
+                    date: "2025-06-23",
+                    location: "Yokohama, Japan",
+                    url: "https://chi-staig.github.io/",
+                    lat: 35.4437,
+                    lng: 139.6380
+                },
+                {
                     title: "ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)",
                     date: "2025-06-23",
                     location: "Athens, Greece",
@@ -259,25 +359,15 @@
                     lng: 23.7275
                 },
                 {
-                    title: "Cooperative AI Summer School 2025",
-                    date: "2025-07-09",
-                    location: "Marlow, near London",
-                    url: "https://www.cooperativeai.com/summer-school/summer-school-2025",
-                    lat: 51.5714,
-                    lng: -0.7750
+                    title: "Diverse Intelligences Summer Institute 2025",
+                    date: "2025-07-06",
+                    location: "St Andrews, Scotland",
+                    url: "https://disi.org/apply/",
+                    lat: 56.3398,
+                    lng: -2.7967
                 }
             ],
             jobs: [
-                {
-                    title: "Postdoctoral Research Opportunity on AI Safety",
-                    location: "Pittsburgh, PA",
-                    organization: "Carnegie Mellon University",
-                    type: "Academic",
-                    url: "Apply here",
-                    description: "One-year postdoctoral position in AI safety, focusing on machine learning, NLP, and human-computer interaction. Application deadline: February 7, 2025.",
-                    lat: 40.4444,
-                    lng: -79.9608
-                },
                 {
                     title: "Policy Positions",
                     location: "Remote",
@@ -367,6 +457,56 @@
                     description: "Roles in compute governance and technical AI policy, including positions on their Compute Team.",
                     lat: 38.9072,
                     lng: -77.0369
+                },
+                {
+                    title: "John and Daria Barry Postdoctoral Associate in AI Ethics",
+                    location: "Urbana-Champaign, IL",
+                    organization: "University of Illinois at Urbana-Champaign",
+                    type: "Academic",
+                    url: "https://philosophy.illinois.edu/academics/illinois-forum-human-flourishing-digital-age",
+                    description: "One-year postdoctoral position (with possible renewal) in Ethics and/or Philosophy of AI. Teaching load is 1-2 courses. Minimum salary $62,000.",
+                    lat: 40.1020,
+                    lng: -88.2272
+                },
+                {
+                    title: "GovAI Research Scholar and Research Fellow Positions",
+                    location: "London, UK",
+                    organization: "Centre for the Governance of AI",
+                    type: "Academic",
+                    url: "https://www.governance.ai/post/research-scholar",
+                    description: "One-year visiting Research Scholar position and two-year Research Fellow positions in AI governance research.",
+                    lat: 51.5074,
+                    lng: -0.1278
+                },
+                {
+                    title: "Post-doctoral Researcher Positions (2)",
+                    location: "Dublin, Ireland",
+                    organization: "Trinity College Dublin",
+                    type: "Academic",
+                    url: "https://aial.ie/pages/hiring/post-doc-researcher/",
+                    description: "Two full-time post-doctoral fellows for a 2-year term to work on policy translation and AI evaluation.",
+                    lat: 53.3438,
+                    lng: -6.2546
+                },
+                {
+                    title: "University of Guelph Assistant Professor, Ethics or Applied Ethics",
+                    location: "Guelph, Canada",
+                    organization: "University of Guelph",
+                    type: "Academic",
+                    url: "https://careers.uoguelph.ca/job/Guelph-Assistant-Professor",
+                    description: "Teaching commitment is 5 semester courses per year at the undergraduate and graduate levels.",
+                    lat: 43.5327,
+                    lng: -80.2262
+                },
+                {
+                    title: "Legal Volunteer Project: AI Capability Evaluation",
+                    location: "Remote",
+                    organization: "Good Ancestors",
+                    type: "Alt-Ac",
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLSdjs_8keFGvIlHg-UD-HqkssnstZp6_hXI3WeGNogtzDZawYw/viewform",
+                    description: "Legal experts invited to contribute 3-10 hours per puzzle to design and document specific modifications to legislative frameworks.",
+                    lat: null,
+                    lng: null
                 }
             ]
         };
@@ -432,10 +572,16 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">${cfp.title}</h3>
-                        <span class="tag deadline">Deadline: ${cfp.deadline}</span>
+                        <div class="card-meta">
+                            <span class="tag deadline">
+                                <i class="fas fa-clock"></i> Deadline: ${new Date(cfp.deadline).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                            </span>
+                        </div>
                     </div>
                     <div class="card-content">
-                        <a href="${cfp.url}" target="_blank" class="button">Submit Paper</a>
+                        <a href="${cfp.url}" target="_blank" class="button">
+                            <i class="fas fa-paper-plane"></i> Submit Proposal
+                        </a>
                     </div>
                 </div>`;
         }
@@ -445,11 +591,19 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">${conference.title}</h3>
-                        <span class="tag deadline">${conference.date}</span>
-                        <span class="tag location">${conference.location}</span>
+                        <div class="card-meta">
+                            <span class="tag date">
+                                <i class="fas fa-calendar"></i> ${new Date(conference.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                            </span>
+                            <span class="tag location">
+                                <i class="fas fa-map-marker-alt"></i> ${conference.location}
+                            </span>
+                        </div>
                     </div>
                     <div class="card-content">
-                        <a href="${conference.url}" target="_blank" class="button">Learn More & Register</a>
+                        <a href="${conference.url}" target="_blank" class="button">
+                            <i class="fas fa-info-circle"></i> Learn More & Register
+                        </a>
                     </div>
                 </div>`;
         }
@@ -521,44 +675,83 @@
                 // Mount the globe
                 globe(globeContainer);
 
-                // Initialize markers after globe is mounted
-                const markers = [];
-                
-                // Add conferences (using blue for better colorblind accessibility)
-                data.conferences.forEach(conf => {
-                    if (conf.lat && conf.lng) {
-                        markers.push({
-                            lat: conf.lat,
-                            lng: conf.lng,
-                            size: 0.8,
-                            color: '#2196F3',  // Accessible blue
-                            type: 'conference',
-                            data: conf
-                        });
-                    }
+                // Add legend
+                const legend = document.createElement('div');
+                legend.className = 'globe-legend';
+                legend.innerHTML = `
+                    <div class="legend-item" id="legend-conferences">
+                        <span class="legend-dot" style="background: #2196F3;"></span> Conferences
+                    </div>
+                    <div class="legend-item" id="legend-jobs">
+                        <span class="legend-dot" style="background: #FF9800;"></span> Jobs
+                    </div>
+                `;
+                globeContainer.appendChild(legend);
+
+                // Handle legend click events to toggle visibility
+                let showConferences = true;
+                let showJobs = true;
+
+                document.getElementById('legend-conferences').addEventListener('click', () => {
+                    showConferences = !showConferences;
+                    document.getElementById('legend-conferences').classList.toggle('disabled', !showConferences);
+                    updateMarkers();
                 });
 
-                // Add jobs (using orange for better colorblind accessibility)
-                data.jobs.forEach(job => {
-                    if (job.lat && job.lng) {
-                        markers.push({
-                            lat: job.lat,
-                            lng: job.lng,
-                            size: 0.8,
-                            color: '#FF9800',  // Accessible orange
-                            type: 'job',
-                            data: job
-                        });
-                    }
+                document.getElementById('legend-jobs').addEventListener('click', () => {
+                    showJobs = !showJobs;
+                    document.getElementById('legend-jobs').classList.toggle('disabled', !showJobs);
+                    updateMarkers();
                 });
 
-                // Add markers to globe
-                globe
-                    .pointsData(markers)
-                    .pointColor('color')
-                    .pointAltitude(0.01)
-                    .pointRadius('size')
-                    .pointResolution(32);
+                // Add CSS for disabled legend items
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    .legend-item.disabled {
+                        opacity: 0.5;
+                    }
+                `;
+                document.head.appendChild(style);
+
+                function updateMarkers() {
+                    const markers = [];
+                    if (showConferences) {
+                        data.conferences.forEach(conf => {
+                            if (conf.lat && conf.lng) {
+                                markers.push({
+                                    lat: conf.lat,
+                                    lng: conf.lng,
+                                    size: 0.8,
+                                    color: '#2196F3',  // Accessible blue
+                                    type: 'conference',
+                                    data: conf
+                                });
+                            }
+                        });
+                    }
+                    if (showJobs) {
+                        data.jobs.forEach(job => {
+                            if (job.lat && job.lng) {
+                                markers.push({
+                                    lat: job.lat,
+                                    lng: job.lng,
+                                    size: 0.8,
+                                    color: '#FF9800',  // Accessible orange
+                                    type: 'job',
+                                    data: job
+                                });
+                            }
+                        });
+                    }
+                    globe.pointsData(markers)
+                         .pointColor('color')
+                         .pointAltitude(0.01)
+                         .pointRadius('size')
+                         .pointResolution(32);
+                }
+
+                // Initialize markers
+                updateMarkers();
 
                 // Create tooltip element
                 const tooltip = document.createElement('div');
@@ -612,19 +805,6 @@
                         window.open(point.data.url, '_blank');
                     }
                 });
-
-                // Add legend
-                const legend = document.createElement('div');
-                legend.className = 'globe-legend';
-                legend.innerHTML = `
-                    <div class="legend-item">
-                        <span class="legend-dot" style="background: #2196F3;"></span> Conferences
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-dot" style="background: #FF9800;"></span> Jobs
-                    </div>
-                `;
-                globeContainer.appendChild(legend);
 
                 // Handle window resize
                 window.addEventListener('resize', () => {
@@ -872,45 +1052,43 @@
             font-size: 0.95em;
         }
 
-        .card-content {
-            padding: 1.2rem;
-            background: white;
-        }
-
-        .card-content p {
-            margin: 0 0 1rem 0;
-            color: #666;
-            line-height: 1.5;
+        .card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .tag {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 0.4rem 0.8rem;
             border-radius: 4px;
             font-size: 0.85em;
-            margin-top: 0.5rem;
-            margin-right: 0.5rem;
             color: white;
         }
 
+        .tag i {
+            font-size: 0.9em;
+        }
+
         .tag.deadline {
-            background-color: var(--primary-color);
+            background-color: #e74c3c;
+        }
+
+        .tag.date {
+            background-color: #3498db;
         }
 
         .tag.location {
-            background-color: var(--secondary-color);
-        }
-
-        .tag.academic {
-            background-color: #2196F3;
-        }
-
-        .tag.alt-ac {
-            background-color: #FF9800;
+            background-color: #2ecc71;
         }
 
         .button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 0.7rem 1.2rem;
             background: var(--primary-color);
             color: white;
@@ -918,7 +1096,6 @@
             border-radius: 6px;
             transition: all 0.3s ease;
             font-weight: 500;
-            margin-top: 0.5rem;
         }
 
         .button:hover {
@@ -991,6 +1168,36 @@
             color: #666;
             font-size: 0.9em;
             margin: 2px 0;
+        }
+
+        /* Update the globe filters markup styling */
+        .globe-filters {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .globe-filters label {
+            margin: 0;
+        }
+
+        .globe-filters label input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        .globe-filters label select {
+            margin-left: 0.5rem;
+        }
+
+        .globe-filters select {
+            padding: 0.25rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
         }
     </style>
 </body>
