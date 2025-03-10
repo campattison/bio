@@ -6,6 +6,9 @@
     <title>Cameron Pattison - Philosophy & AI </title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fonts for multilingual content -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -28,10 +31,37 @@
 
         <section class="about">
             <h2>About Me</h2>
-            <div class="about-content">
-                <p>I'm a Ph.D. student at Vanderbilt University bridging classical Islamic philosophy with contemporary AI ethics and philosophy of mind. My research explores how historical philosophical frameworks can inform our understanding of artificial intelligence and machine reasoning, while using AI tools to advance research in classical philosophy.</p>
-                <img src="Cameron Pattison0204_crop.jpg" alt="Cameron Pattison" class="profile-photo">
-            </div>
+            
+            <!-- English Section -->
+            <section class="language-container english-container">
+                <h3>About My Research</h3>
+                <div class="language-section english-section">
+                    <img src="Cameron Pattison0204_crop.jpg" alt="Cameron Pattison" class="profile-photo">
+                    <p>I am a Ph.D. student in Philosophy at Vanderbilt University exploring the intersection of classical philosophical traditions and artificial intelligence. My research examines how premodern conceptions of rationality can illuminate contemporary debates about AI ethics and cognition. I investigate whether large-scale AI models resemble human cognition in ways that challenge assumptions about human uniqueness, and consider what this means for moral status and our ethical frameworks. I also lead initiatives on AI applications in humanities research and teaching with Vanderbilt's RPW Center.</p>
+                </div>
+            </section>
+                
+            <!-- Arabic Section -->
+            <section class="language-container arabic-container">
+                <h3>السيرة الذاتية البحثية</h3>
+                <div class="language-section arabic-section">
+                    <img src="IMG_6013.jpeg" alt="Photo from Jordan" class="language-photo arabic-photo">
+                    <p dir="rtl" lang="ar" class="arabic-text">
+                        لقد كرّستُ جزءًا كبيرًا من حياتي الأكاديمية لدراسة الفلسفة الإسلامية الكلاسيكية، مع تركيز خاص على دور الدين والتعددية الدينية في الشهادة الموثوقة. بحثتُ في نظريات العقل والإدراك، مع اهتمام دقيق بالطرق التي حاول بها الفلاسفة في العصور الوسطى استيعاب البصائر النبوية كشهادة موثوقة. كما درستُ نظرية الحب عند ابن عربي في كتابه "الفتوحات المكية" ووجدتُ أن الشعر العربي من أروع ما قُدّم في الأدب العالمي. هذه الدراسات أثرت بشكل عميق فهمي للعقلانية والإدراك البشري، وتشكّل أساسًا مهمًا لبحثي الحالي حول الذكاء الاصطناعي.
+                    </p>
+                </div>
+            </section>
+                
+            <!-- Greek Section -->
+            <section class="language-container greek-container">
+                <h3>Ἡ φιλοσοφικὴ ἀρχή</h3>
+                <div class="language-section greek-section">
+                    <img src="8c93dc12-0cd8-4175-90a5-f59f190b27db.jpg" alt="Photo from Greece" class="language-photo greek-photo">
+                    <p lang="grc" class="greek-text">
+                        Τὴν ἀρχαίαν Ἑλληνικὴν φιλοσοφίαν πολὺν χρόνον ἐμελέτησα, μάλιστα τὴν μίμησιν παρὰ Πλάτωνι, Ἀριστοτέλει, Φίλωνι καὶ ἄλλοις. Ἐξετάσα πῶς οὗτοι οἱ φιλόσοφοι τὸ ὄντως ὂν ἀπὸ τῆς μιμήσεως διεχώριζον. Τῶν ἀρχαίων ποιητῶν, μάλιστα τοῦ Ὁμήρου, τὰ ἔπη ἡδέως ἀνέλεξα. Αὕτη ἡ παιδεία τὴν νῦν ἐμὴν ἔρευναν περὶ τοῦ νοῦ καὶ τῆς μιμήσεως ἐν τῷ τεχνητῷ νοῖ θεμελιοῖ.
+                    </p>
+                </div>
+            </section>
         </section>
 
         <section class="specialization">
@@ -49,91 +79,211 @@
             <h2>Current Research</h2>
             <div class="project">
                 <h3>RPW Center Graduate Researcher on Generative AI</h3>
-                <p>Leading initiatives on AI applications in humanities research and teaching AI & Humanities faculty seminar.</p>
+                <p>Leading initiatives on AI applications in humanities research and teaching, with a focus on faculty development and interdisciplinary collaboration.</p>
+                <div class="project-details">
+                    <h4><a href="teaching.html">AI and the Human: Interdisciplinary Dialogues <i class="fas fa-chalkboard-teacher"></i></a></h4>
+                    <p>Coordinating a seminar series bringing together philosophers, ethicists, and AI researchers including David Chalmers, John Tasioulas, and Sina Fazelpour. The seminar examines how artificial intelligence reshapes our concepts of justice, power, and humanity through structured interdisciplinary conversations.</p>
+                </div>
             </div>
             <div class="project">
-                <h3>Classical Text Analysis with LLMs</h3>
+                <h3>Classical Source Analysis with LLMs</h3>
                 <p>Developing innovative approaches to source analysis in classical Arabic, Syriac, and Greek texts using large language models, aiming to transform traditional philological methods.</p>
+                <div class="project-details">
+                    <h4><a href="https://github.com/campattison/sourceanalysis" target="_blank">Source Analysis Recommender <i class="fab fa-github"></i></a></h4>
+                    <p>This project bridges computational linguistics with traditional philological methods to provide evidence-based insights into the transmission of philosophical ideas across linguistic and cultural boundaries. It helps scholars discover overlooked textual connections between Greek, Arabic, and other classical traditions.</p>
+                </div>
             </div>
             <div class="project">
-                <h3>Democratic Discourse Enhancement</h3>
-                <p>Creating AI-powered tools to improve democratic discourse by identifying and elevating meaningful but overlooked contributions in public discussions.</p>
+                <h3>Normative Dimensions of Summarization</h3>
+                <p>Examining how AI systems summarize public comments and input in normatively weighty contexts, with a focus on identifying whether these systems capture or miss morally significant perspectives.</p>
+                <div class="project-details">
+                    <h4><a href="https://mintresearch.org/people-mint/cameron-pattison" target="_blank">AI Ethics & Public Deliberation (in association with the MINT Lab at ANU) <i class="fas fa-globe"></i></a></h4>
+                    <p>This research investigates three critical questions in AI-assisted democratic deliberation: (1) How are automated summarization systems currently used in policy contexts? (2) How are these models optimized, and what values do they prioritize? (3) What normative dimensions are overlooked, particularly high-signal, low-frequency perspectives that may hold moral significance?</p>
+                </div>
             </div>
         </section>
 
-        <section class="experience">
-            <h2>Selected Experience</h2>
-            <div class="experience-item">
-                <h3>Research & Leadership</h3>
-                <ul>
-                    <li>Co-director of AI and the Human Faculty Seminar (2024-present)</li>
-                    <li>RPW Center Graduate Researcher on Generative AI (2023-2022)</li>
-                    <li>TA for Introduction to Ethics and Intro to Philosophy (2023-present)</li>
-                    <li>Communications Director, Harvard Ibn Arabi Seminar (2021-2023)</li>
-                    <li>Assistant Director, Brunswick School Vermont (2019-2021)</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="education">
-            <h2>Education</h2>
-            <ul>
-                <li><strong>Ph.D. Philosophy</strong> - Vanderbilt University (expected 2029)</li>
-                <li><strong>M.A. Philosophy</strong> - Boston College (2023)</li>
-                <li><strong>B.A. Philosophy</strong> - Colorado College (2018, with honors)</li>
+        <section class="publications">
+            <h2>Publications</h2>
+            <ul class="publication-list">
+                <li>
+                    <strong>Justin Humphreys: Inventing the Imagination</strong> (book review)<br>
+                    <em>Graduate Faculty Philosophy Journal</em>, 2025
+                </li>
+                <li>
+                    <strong>Revelation in al-Fārābī's Virtuous City</strong><br>
+                    <em>Springer Studies in the History of Philosophy, Philosophy of Mind; Mind, Soul and the Cosmos in the High Middle Ages</em>, 2024
+                </li>
+                <li>
+                    <strong><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=npc8f50AAAAJ&citation_for_view=npc8f50AAAAJ:eQOLeE2rZwMC" target="_blank">Evaluating persona prompting for question answering tasks</a></strong><br>
+                    <em>Proceedings of the 10th International Conference on Artificial Intelligence and Soft Computing</em>, Sydney, Australia, 2024<br>
+                    Carlos Olea, Holly Tucker, Jessica Phelan, <strong>Cameron Pattison</strong>, Shen Zhang, Maxwell Lieb, Doug Schmidt, Jules White
+                </li>
+                <li>
+                    <strong>EPÉE: Evaluating Personified Expert Effectiveness</strong><br>
+                    <em>Computer Science Conference Proceedings in Computer Science & Information Technology (CS & IT)</em>, 2024<br>
+                    (co-authored)
+                </li>
             </ul>
-        </section>
-
-        <section class="awards">
-            <h2>Recent Recognition</h2>
-            <ul>
-                <li>(2024) Berry First-Year Teaching Award</li>
-                <li>(2024) Berry Publication Prize</li>
-                <li>(2024) Vanderbilt Award for Doctoral Discovery</li>
-                <li>(2023) Russell G. Hamilton Scholarship</li>
-            </ul>
-        </section>
-
-        <section id="fun-ai-tools">
-            <h2>🎉 Fun AI Tools</h2>
-            <div class="tool-card">
-                <h3><a href="kant-analysis.html" class="tool-link"> Ethical Analysis Tool <i class="fas fa-external-link-alt"></i></a></h3>
-                <p>Analyze ethical situations using Kantian principles. Enter your situation and get a detailed analysis!</p>
-                <iframe src="kant-analysis.html?embedded=true" width="100%" height="1000" style="border: none; border-radius: 5px;"></iframe>
-            </div>
         </section>
     </div>
 
     <style>
-        #fun-ai-tools {
-            margin-top: 50px;
-            padding: 20px;
+        /* Language container styling */
+        .language-container {
+            margin-bottom: 50px;
+            padding: 25px;
+            border-radius: 10px;
             background-color: #f9f9f9;
-            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .tool-card {
+        .english-container {
+            background-color: #f5f8ff;
+        }
+
+        .arabic-container {
+            background-color: #fff8f5;
+            text-align: right;
+        }
+
+        .greek-container {
+            background-color: #f5fff8;
+        }
+
+        .language-container h3 {
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+        }
+
+        .arabic-container h3 {
+            text-align: right;
+        }
+
+        /* Publications styling */
+        .publication-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .publication-list li {
+            background-color: #f8f9fa;
+            padding: 20px;
             margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fff;
+            border-radius: 6px;
+            border-left: 4px solid #4285f4;
         }
 
-        .tool-link {
-            color: #2962ff !important;
+        .publication-list li:hover {
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .publication-list strong {
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .publication-list em {
+            color: #555;
+            font-style: italic;
+        }
+
+        .publication-list a {
+            color: #4285f4;
             text-decoration: none;
             transition: color 0.2s;
         }
-        
-        .tool-link:hover {
-            color: #0039cb !important;
+
+        .publication-list a:hover {
+            color: #2a5db0;
             text-decoration: underline;
         }
+
+        /* Project details styling */
+        .project-details {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            margin-top: 15px;
+            border-left: 4px solid #4285f4;
+            border-radius: 4px;
+        }
+
+        .project-details h4 {
+            margin-top: 0;
+            color: #4285f4;
+        }
+
+        .project-details a {
+            color: #4285f4;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .project-details a:hover {
+            color: #2a5db0;
+            text-decoration: underline;
+        }
+
+        .project-details ul {
+            padding-left: 20px;
+        }
+
+        .project-details li {
+            margin-bottom: 8px;
+        }
+
+        /* Language section styling */
+        .language-section {
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+            clear: both;
+        }
+
+        .arabic-text, .greek-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-align: justify;
+            margin: 0;
+            display: block;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', 'Scheherazade New', serif;
+            text-align: justify;
+        }
+
+        .greek-text {
+            font-family: 'Noto Serif', 'New Athena Unicode', serif;
+        }
         
-        .tool-link i {
-            font-size: 0.8em;
-            margin-left: 5px;
+        /* Photo styling */
+        .profile-photo {
+            float: right;
+            margin: 0 0 20px 20px;
+            max-width: 250px;
+            border-radius: 8px;
+        }
+
+        .language-photo {
+            display: block;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 0 0 20px 0;
+            float: right;
+            margin-left: 20px;
+        }
+
+        .arabic-photo {
+            float: left;
+            margin-left: 0;
+            margin-right: 20px;
         }
     </style>
 </body>
