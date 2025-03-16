@@ -1,0 +1,257 @@
+INTRO
+
+March: Building Bridges
+
+As we move deeper into 2025, the philosophical and technical communities studying AI continue to find productive intersections. We're seeing a fresh wave of interdisciplinary workshops tackling everything from fairness in machine learning to the challenges of bidirectional human-AI alignment. The tension between rapid commercial deployment and thoughtful governance remains, but the conversation is increasingly sophisticated, with philosophers, ethicists, and computer scientists meeting in shared forums.
+
+This newsletter reflects that convergence. Many of this month's highlighted papers explore AI's epistemic implications – how AI systems affect knowledge formation, reinforce biases, and potentially undermine expertise. We're particularly excited about the growing interest in collective agency questions, as seen in the Oxford workshop on AI and collective agency coming up in July.
+
+Meanwhile, technical developments continue their relentless pace. OpenAI's work on Safeguards and Deep Research tools signals a growing recognition of AI safety challenges, while debates about model fine-tuning and safety training become more technically complex. The line between epistemology, ethics, and computer science continues to blur as we collectively work to understand what increasingly capable systems mean for human knowledge and agency.
+
+As always, we welcome your contributions for future issues – send relevant events, papers, or opportunities to mint@anu.edu.au.
+
+March Highlights
+
+• Opportunities: Several summer research positions and fellowships have upcoming deadlines! The Ethics Institute Summer Research Internship (deadline March 31) offers PhD students and recent graduates a chance to work on AI evaluation and governance. The AISI Challenge Fund and Diverse Intelligences Summer Institute are both accepting rolling applications from March.
+
+• New Papers: This month features thought-provoking work on AI's epistemic impacts, including Eva Schmidt's examination of how AI opacity undermines medical doctors' knowledge, Anthony Aguirre's argument against AGI development, and Michael Bennett's mathematical framework comparing biological and artificial intelligence.
+
+• Events: Mark your calendar for the Workshop on Advancing Fairness in Machine Learning (April 9-10) at the University of Kansas and the Workshop on Bidirectional Human-AI Alignment (April 27) at ICLR. Both events bring together interdisciplinary perspectives on creating more responsible AI systems.
+
+Events:
+
+
+
+Workshop on Advancing Fairness in Machine Learning
+
+Date: April 9-10, 2025
+
+Location: Center for Cyber Social Dynamics, University of Kansas, Lawrence, United States
+
+Link: https://philevents.org/event/show/130478
+
+Hosted by the Center for Cyber Social Dynamics, this multidisciplinary workshop aims to foster dialogue on fairness in machine learning across technical, legal, social, and philosophical domains. Topics include algorithmic bias, fairness metrics, ethical foundations, real-world applications, and legal frameworks.
+
+Workshop on Bidirectional Human-AI Alignment
+
+Date: April 27, 2025 (ICLR Workshop, Hybrid)
+
+Location: Hybrid (In-person & Virtual)
+
+Website: https://bialign-workshop.github.io/#/
+
+This interdisciplinary workshop redefines the challenge of human-AI alignment by emphasizing a bidirectional approach—not only aligning AI with human specifications but also empowering humans to critically engage with AI systems. Featuring research from Machine Learning (ML), Human-Computer Interaction (HCI), Natural Language Processing (NLP), and related fields, the workshop explores dynamic, evolving interactions between humans and AI.
+
+International Conference on Large-Scale AI Risks
+
+Date: May 26-28, 2025
+
+Location: KU Leuven, Belgium
+
+Link: https://www.kuleuven.be/ethics-kuleuven/chair-ai/conference-ai-risks
+
+Hosted by KU Leuven, this conference focuses on exploring and mitigating the risks posed by large-scale AI systems. It brings together experts in AI safety, governance, and ethics to discuss emerging challenges and policy frameworks.
+
+1st Workshop on Sociotechnical AI Governance (STAIG@CHI 2025)
+
+Date: To be held at CHI 2025 (exact date TBA)
+
+Location: Yokohama, Japan
+
+Link: https://chi-staig.github.io/
+
+STAIG@CHI 2025 aims to build a community that tackles AI governance from a sociotechnical perspective, bringing together researchers and practitioners to drive actionable strategies.
+
+ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)
+
+Date: June 23-26, 2025 (tentative dates)
+
+Location: Athens, Greece
+
+Link: https://facctconference.org/2025/
+
+FAccT is a premier interdisciplinary conference dedicated to the study of responsible computing. The 2025 edition in Athens will bring together researchers across fields—philosophy, law, technical AI, social sciences—to advance the goals of fairness, accountability, and transparency in computing systems.
+
+Open Opportunities
+
+European Workshop on Algorithmic Fairness (EWAF'25)
+
+Date: Submission deadline for interactive sessions: March 27, 2025
+
+Location: Europe (specific venue TBA)
+
+Link: https://2025.ewaf.org/submitting/call-for-interactive-sessions
+
+The fourth European Workshop on Algorithmic Fairness is accepting proposals for interactive sessions that address fairness in AI within the European context. EWAF seeks contributions that bridge gaps between theory and practice, examine European institutions' impact on ethical AI, and foster interdisciplinary conversations between diverse stakeholders. Formats include workshops, panels, unconferences, artistic interventions, and other interactive formats. Themes include AI regulation in Europe, discrimination in European contexts, data privacy, AI's impact on public services, and community-led approaches to AI design and deployment. The workshop particularly values contributions demonstrating practical applications and real-world case studies.
+
+
+2nd Dortmund Conference on Philosophy and Society 2025
+
+Location: Dortmund, Germany
+
+Link: https://ipp.ht.tu-dortmund.de/details/2nd-dortmund-conference-on-philosophy-and-society-with-kate-vredenburgh-lse-october-1-2-2025-50341/
+
+Deadline: May 31, 2025
+
+The Department of Philosophy and Political Science at TU Dortmund University, in partnership with the Lamarr Institute for Machine Learning and Artificial Intelligence, invites paper submissions for the 2nd Dortmund Conference on Philosophy and Society. Scheduled for October 1–2, 2025, the conference will feature keynote speaker Kate Vredenburgh (LSE). The first day will host up to six presentations with interactive discussions and a public evening lecture by Vredenburgh, while the second day offers a student workshop exploring her research. Contributions addressing topics such as explainable AI, algorithmic bias, the right to explanation, and the impact of AI on work and institutions are especially welcome.
+
+AISI Challenge Fund 2025
+
+Location: Remote
+
+Link: https://www.aisi.gov.uk/grants#challenge-fund
+
+Deadline: Rolling from March 5, 2025
+
+The AI Security Institute (AISI) is offering grant funding of up to £200,000 per project for cutting-edge research in AI safety and security. The Challenge Fund supports research addressing AI risks, including cyber-attacks, AI misuse, and systemic vulnerabilities. Eligible researchers from UK and international academic institutions and non-profits are encouraged to apply. Applications close on March 5, 2025.
+
+Diverse Intelligences Summer Institute 2025
+
+Location: St Andrews, Scotland
+
+Link: https://disi.org/apply/
+
+Deadline: Rolling from March 1, 2025
+
+The Diverse Intelligences Summer Institute (DISI) invites applications for their summer 2025 program, running July 6-27. The Fellows Program seeks scholars from fields including biology, anthropology, AI, cognitive science, computer science, and philosophy for interdisciplinary research. Applications reviewed on a rolling basis starting March 1.
+
+Cooperative AI Summer School 2025
+
+Date: July 9–13, 2025
+
+Location: Marlow, near London
+
+Link: https://www.cooperativeai.com/summer-school/summer-school-2025
+
+Deadline: March 7, 2025
+
+Applications are now open for the Cooperative AI Summer School, designed for students and early-career professionals in AI, computer science, social sciences, and related fields. This program offers a unique opportunity to engage with leading researchers and peers on topics at the intersection of AI and cooperation.
+
+CFP: Artificial Intelligence and Collective Agency
+
+Dates: July 3–4, 2025
+
+Location: Institute for Ethics in AI, Oxford University (Online & In-Person)
+
+Link: https://philevents.org/event/show/132182?ref=email
+
+Deadline: March 27, 2025
+
+The Artificial Intelligence and Collective Agency workshop explores philosophical and interdisciplinary perspectives on AI and group agency. Topics include analogies between AI and corporate or state entities, responsibility gaps, and the role of AI in collective decision-making. Open to researchers in philosophy, business ethics, law, and computer science, as well as policy and industry professionals. Preference for early-career scholars.
+
+Ethics Institute 2025 Summer Research Internship
+
+Location: Boston, MA (in-person for at least 50% of the internship)
+
+Stipend: $6,000–$8,000 per month
+
+Link: Full details and application
+
+Deadline: March 31, 2025
+
+Prof. Sina Fazelpour is inviting applications for 12-week Research Internship positions during Summer 2025 (June–August or July–September). Interns will collaborate on developing concepts, methodologies, or frameworks to enhance AI evaluation and governance.
+
+This position is open to current PhD students and recent PhD graduates with a demonstrated interest in AI ethics and governance. Applicants from diverse fields—including philosophy, cognitive science, computer science, statistics, human-computer interaction, network science, and science & technology studies—are encouraged to apply.
+
+Intro to Transformative AI 5-Day Course
+
+Location: Remote
+
+Link: https://bluedot.org/intro-to-tai
+
+Deadline: Rolling (Next cohorts: March 17-21, 24-28)
+
+BlueDot Impact offers an intensive course on transformative AI fundamentals and implications. The program features expert-facilitated group discussions and curated materials over 5 days, requiring 15 hours total commitment. Participants join small discussion groups to explore AI safety concepts. No technical background needed. The course is free with optional donations and includes a completion certificate.
+
+Jobs
+
+Research Engineer / Scientist, Safeguards
+
+Location: San Francisco, CA | New York City, NY
+
+Link: https://boards.greenhouse.io/anthropic/jobs/4459012008
+
+Deadline: Rolling
+
+The Safeguards Research Team ($320,000—$560,000 USD) conducts critical safety research and engineering to ensure AI systems can be deployed safely. As part of Anthropic's broader safeguards organization, they work on both immediate safety challenges and longer-term research initiatives, with projects spanning jailbreak robustness, automated red-teaming, monitoring techniques, and applied threat modeling. They prioritize techniques that will enable the safe deployment of more advanced AI systems (ASL-3 and beyond), taking a pragmatic approach to fundamental AI safety challenges while maintaining strong research rigor.
+
+Sloan Foundation Metascience and AI Postdoctoral Fellowship
+
+Location: Various eligible institutions (US/Canada preferred)
+
+Link: https://sloan.org/programs/digital-technology/aipostdoc-rfp
+
+Deadline: April 10, 2025, 5:00pm ET
+
+Two-year postdoctoral fellowship ($250,000 total) for social sciences and humanities researchers studying AI's implications for science and research. Fellows must have completed PhD by start date and not hold a permanent/tenure-track position. Research focuses on how AI is changing research practices, epistemic/ethical implications, and policy responses. Key areas include AI's impact on scientific methods, research pace, explainability, and human-AI collaboration in science. Includes fully-funded 2026 summer school. Application requires research vision statement, approach description, career development plan, CV, mentor support letter, and budget. UK-based applicants should apply through parallel UKRI program.
+
+Post-doctoral Researcher Positions (2)
+
+Location: Trinity College Dublin, Ireland
+
+Email: https://aial.ie/pages/hiring/post-doc-researcher/
+
+Deadline: Rolling basis
+
+The AI Accountability Lab (AIAL) is seeking two full-time post-doctoral fellows for a 2-year term to work with Dr. Abeba Birhane on policy translation and AI evaluation. The policy translation role focuses on investigating regulatory loopholes and producing policy insights, while the AI evaluation position involves designing and executing audits of AI systems for bias and harm. Candidates should submit a letter of motivation, CV, and representative work.
+
+Papers
+
+The Epistemic Cost of Opacity: How the Use of Artificial Intelligence Undermines the Knowledge of Medical Doctors in High-Stakes Contexts 
+
+Author: Eva Schmidt, Paul Martin Putora, & Rianne Fijten | Philosophy and Technology
+
+Schmidt, Putora, and Fijten contend that in high-stakes medical contexts, the inherent opacity of AI systems can undermine doctors' knowledge—even when the systems are statistically reliable. By examining a case of  cancer risk prediction, they show that doctors may arrive at true beliefs merely by luck, failing a crucial safety condition for genuine knowledge. Their analysis highlights epistemic risks with implications for clinical decision-making, moral responsibility, and the integrity of informed consent.
+
+Keep the Future Human: Why and How We Should Close the Gates to AGI and Superintelligence, and What We Should Build Instead
+
+Author: Anthony Aguirre | Preprint
+
+This preprint contends that in an era of rapidly advancing AI, it is crucial to restrict the development of autonomous, superhuman systems. Aguirre argues that rather than pursuing ever-more powerful AGI, research should prioritize building trustworthy AI tools that empower individuals and strengthen human capacities for a more beneficial societal transformation.
+
+Are Biological Systems More Intelligent Than Artificial Intelligence?
+
+Author: Michael Timothy Bennett | Preprint
+
+Bennett develops a mathematical framework for causal learning to show that the dynamic, decentralized control inherent in biology enables more efficient adaptation than the rigid, top-down structures typical in artificial systems. The work provides insights into designing more robust and adaptive technologies.
+
+AGI, Governments, and Free Societies
+
+Authors: Justin B. Bullock, Samuel Hammond, Seb Krier | Preprint
+
+Drawing on the 'narrow corridor' framework, the authors explore how Artificial General Intelligence (AGI) might drive societies toward authoritarian surveillance or, alternatively, erode state legitimacy. They advocate for a governance framework that incorporates technical safeguards, adaptive regulation, and hybrid institutional designs to ensure that technological progress supports rather than undermines democratic freedoms.
+
+Manipulative Underspeciﬁcation
+
+Author: Justin D'Ambrosio | Phil Review (forthcoming)
+
+D'Ambrosio introduces the concept of "pied piping" to describe how speakers deliberately leave their utterances underspecified, enabling a range of retroactive interpretations. By incorporating game-theoretic elements into a common-ground framework, the paper illuminates how such conversational tactics can serve various noncommunicative goals, from reducing conflict to bolstering status.
+
+Authorship and ChatGPT: a Conservative View
+
+Authors: René van Woudenberg, Chris Ranalli, Daniel Bracker | Philosophy and Technology
+
+The authors argue that despite its human-like text generation, ChatGPT lacks the intentionality, responsibility, and mental states required for true authorship. By contrasting liberal, conservative, and moderate views on AI agency, the paper ultimately defends a conservative stance that preserves a clear distinction between human creativity and machine output.
+
+Towards a Theory of AI Personhood
+
+Author: Francis Rhys Ward | Preprint
+
+Ward reviews evidence from contemporary machine learning research to assess whether current AI models meet these conditions, finding the results inconclusive. The paper raises significant ethical questions regarding the treatment and control of AI, suggesting that ascribing personhood to machines could challenge existing frameworks of regulation and alignment.
+
+Better Feeds: Algorithms That Put People First
+
+Authors: Alex Moehring, Alissa Cooper, Arvind Narayanan, Aviv Ovadya, Elissa Redmiles, Jeff Allen, Jonathan Stray, Julia Kamin, Leif Sigerson, Luke Thorburn, Matt Motyl, Motahhare Eslami, Nadine Farid Johnson, Nathaniel Lubin, Ravi Iyer, Zander Arnao | Knight-Georgetown Institute
+
+This report offers an in-depth analysis of modern recommender systems, critiquing their focus on short-term engagement metrics like clicks and likes. Developed by the KGI Expert Working Group, it provides comprehensive policy guidance aimed at redesigning these algorithms to prioritize long-term user value and richer interactions. The report outlines actionable solutions for policymakers and product designers to shift toward systems that enhance overall user well-being.
+
+Links
+
+OpenAI discusses safety and alignment, discusses a much more expensive tier for next-generation agents, and submits a policy proposal to the US government, linking fair-use directly to national security. as Scale AI wins major DOD contract. Not to be outdone, Anthropic raised $3.5 billion at a $61.5 billion post-money valuation and Google releases Gemma 3. 
+
+Need a fairly technical rundown of recent work on reasoning models? Sebastian Raschka's The State of Reasoning Models is a good place to get your bearings. Take a look at Jan Kulveit's day-after-christmas post on LLM Psychology for character-trained models for a little refresher after that. 
+
+Intro, Highlights and Links by Seth Lazar with editorial support from Cameron Pattison, Events, Opportunities, and Paper Summaries by Cameron Pattison with curation by Seth; additional link-hunting support from the MINT Lab team.
+
+Thanks for reading Normative Philosophy of Computing Newsletter! Subscribe for free to stay up to date.
+
