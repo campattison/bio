@@ -50,6 +50,40 @@
             <div id="globeViz"></div>
         </div>
 
+        <!-- Calendar Section -->
+        <div class="section collapsible-section" id="calendar-section">
+            <div class="section-header" onclick="toggleSection('calendar-content')">
+                <h2>Upcoming Deadlines Calendar</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="calendar-content">
+                <div class="calendar-controls">
+                    <button id="prev-month" class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="calendar-month">March 2025</h3>
+                    <button id="next-month" class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-grid" id="calendar-grid">
+                        <!-- Calendar will be generated here -->
+                    </div>
+                </div>
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--cfp-color);"></span>
+                        <span>Call for Proposals</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--conference-color);"></span>
+                        <span>Conference</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--job-color);"></span>
+                        <span>Job Application</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- CFPs Section -->
         <div class="section collapsible-section" id="cfps-section">
             <div class="section-header" onclick="toggleSection('cfps-content')">
@@ -569,6 +603,7 @@
                 // Initialize all functionality
                 updateLists();
                 createGlobe();
+                initCalendar();
 
                 // Add error handling
                 window.onerror = function(msg, url, lineNo, columnNo, error) {
@@ -899,14 +934,309 @@
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.section-content');
             sections.forEach(section => {
-                section.style.maxHeight = section.scrollHeight + 'px';
                 section.classList.add('expanded');
                 const icon = section.previousElementSibling.querySelector('i');
                 if (icon) {
                     icon.style.transform = "rotate(180deg)";
                 }
+                
+                // Don't set maxHeight immediately - wait for content to be fully loaded
+                setTimeout(() => {
+                    section.style.maxHeight = 'none'; // First set to none to ensure all content is rendered
+                    section.style.maxHeight = section.scrollHeight + 'px';
+                }, 300);
             });
+            
+            // Additional fix for calendar section specifically
+            setTimeout(() => {
+                const calendarContent = document.getElementById('calendar-content');
+                if (calendarContent) {
+                    calendarContent.style.maxHeight = 'none';
+                    // Use a larger value to ensure all content is visible, then update once rendered
+                    calendarContent.style.maxHeight = '2000px';
+                    
+                    // After the calendar is fully rendered, set exact height
+                    setTimeout(() => {
+                        calendarContent.style.maxHeight = calendarContent.scrollHeight + 'px';
+                    }, 600);
+                }
+            }, 500);
         });
+
+        function createCalendarEventObject(item, type) {
+            const deadlineDate = type === 'conference' 
+                ? new Date(item.date) 
+                : new Date(item.deadline);
+            
+            return {
+                id: type + '_' + Math.random().toString(36).substr(2, 9),
+                title: item.title,
+                date: deadlineDate,
+                type: type,
+                item: item
+            };
+        }
+
+        function getAllEvents() {
+            const events = [];
+            
+            // Add CFPs
+            data.cfps.forEach(item => {
+                if (item.deadline && item.deadline !== 'Rolling') {
+                    events.push(createCalendarEventObject(item, 'cfp'));
+                }
+            });
+            
+            // Add conferences
+            data.conferences.forEach(item => {
+                events.push(createCalendarEventObject(item, 'conference'));
+            });
+            
+            // Add job deadlines (for jobs that have deadlines)
+            data.jobs.forEach(item => {
+                if (item.deadline) {
+                    events.push(createCalendarEventObject(item, 'job'));
+                }
+            });
+            
+            return events;
+        }
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        let calendarEvents = [];
+
+        function initCalendar() {
+            // Get all events from data
+            calendarEvents = getAllEvents();
+            
+            // Initialize the calendar
+            updateCalendar(currentMonth, currentYear);
+            
+            // Add event listeners for month navigation
+            document.getElementById('prev-month').addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                updateCalendar(currentMonth, currentYear);
+            });
+            
+            document.getElementById('next-month').addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                updateCalendar(currentMonth, currentYear);
+            });
+
+            // Create tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'event-tooltip';
+            tooltip.style.display = 'none';
+            document.body.appendChild(tooltip);
+
+            // Global event listener for calendar events
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('calendar-event')) {
+                    const eventId = e.target.dataset.eventId;
+                    const event = calendarEvents.find(ev => ev.id === eventId);
+                    
+                    if (event) {
+                        // Navigate to the URL if clicked
+                        window.open(event.item.url, '_blank');
+                    }
+                }
+            });
+
+            // Mouseover events to show tooltips
+            document.addEventListener('mouseover', function(e) {
+                if (e.target.classList.contains('calendar-event')) {
+                    const eventId = e.target.dataset.eventId;
+                    const event = calendarEvents.find(ev => ev.id === eventId);
+                    
+                    if (event) {
+                        const rect = e.target.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        
+                        tooltip.innerHTML = `
+                            <strong>${event.title}</strong><br>
+                            <span>${event.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                            ${event.type === 'conference' ? `<br><span>Location: ${event.item.location}</span>` : ''}
+                        `;
+                        
+                        tooltip.style.top = (rect.bottom + scrollTop + 10) + 'px';
+                        tooltip.style.left = rect.left + 'px';
+                        tooltip.style.display = 'block';
+                    }
+                }
+            });
+
+            document.addEventListener('mouseout', function(e) {
+                if (e.target.classList.contains('calendar-event')) {
+                    tooltip.style.display = 'none';
+                }
+            });
+            
+            // Handle window resize for responsive calendar
+            window.addEventListener('resize', function() {
+                // Reapply calendar layout after resize
+                updateCalendar(currentMonth, currentYear);
+            });
+            
+            // Fix for initial rendering
+            setTimeout(() => {
+                // Reset the calendar content height and update the calendar
+                const calendarContent = document.getElementById('calendar-content');
+                if (calendarContent) {
+                    // Ensure proper display of expanded section
+                    calendarContent.style.maxHeight = 'none';
+                    calendarContent.style.maxHeight = '2000px';
+                }
+                
+                // Force calendar to redraw
+                updateCalendar(currentMonth, currentYear);
+                
+                // Ensure the section has proper height after calendar is rendered
+                setTimeout(() => {
+                    if (calendarContent) {
+                        calendarContent.style.maxHeight = Math.max(calendarContent.scrollHeight, 800) + 'px';
+                    }
+                    
+                    // Update parent scrollHeight 
+                    const calendarSection = document.getElementById('calendar-section');
+                    if (calendarSection && calendarSection.parentElement) {
+                        calendarSection.parentElement.style.maxHeight = 'none';
+                    }
+                }, 400);
+            }, 300);
+        }
+
+        function updateCalendar(month, year) {
+            const calendarGrid = document.getElementById('calendar-grid');
+            const monthLabel = document.getElementById('calendar-month');
+            
+            // Clear existing content
+            calendarGrid.innerHTML = '';
+            
+            // Set month and year label
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            monthLabel.textContent = `${monthNames[month]} ${year}`;
+            
+            // Add day headers
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day-header';
+                dayHeader.textContent = day;
+                calendarGrid.appendChild(dayHeader);
+            });
+            
+            // Get first day of month and last day of month
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            
+            // Get starting day (might be from previous month)
+            const startingDayOfWeek = firstDay.getDay();
+            const totalDays = lastDay.getDate();
+            
+            // Previous month days
+            const prevMonthLastDay = new Date(year, month, 0).getDate();
+            for (let i = startingDayOfWeek - 1; i >= 0; i--) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = prevMonthLastDay - i;
+                
+                dayElement.appendChild(dayNumber);
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Current month days
+            const today = new Date();
+            for (let day = 1; day <= totalDays; day++) {
+                const date = new Date(year, month, day);
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                // Check if it's today
+                if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
+                    dayElement.classList.add('today');
+                }
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = day;
+                
+                dayElement.appendChild(dayNumber);
+                
+                // Add events for this day
+                const dayEvents = calendarEvents.filter(event => {
+                    const eventDate = event.date;
+                    return eventDate.getDate() === day && 
+                           eventDate.getMonth() === month && 
+                           eventDate.getFullYear() === year;
+                });
+                
+                // Sort events by type to ensure consistent display order (CFPs first, then conferences, then jobs)
+                const sortedEvents = dayEvents.sort((a, b) => {
+                    const typeOrder = { cfp: 1, conference: 2, job: 3 };
+                    return typeOrder[a.type] - typeOrder[b.type];
+                });
+                
+                // Limit to a maximum of 3 visible events per day to avoid overflow
+                const visibleEvents = sortedEvents.slice(0, 3);
+                const hiddenEvents = sortedEvents.length > 3 ? sortedEvents.slice(3) : [];
+                
+                visibleEvents.forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = `calendar-event ${event.type}`;
+                    eventElement.textContent = event.title.length > 15 ? event.title.substring(0, 15) + '...' : event.title;
+                    eventElement.dataset.eventId = event.id;
+                    eventElement.title = event.title;
+                    dayElement.appendChild(eventElement);
+                });
+                
+                // Add indicator for hidden events
+                if (hiddenEvents.length > 0) {
+                    const moreIndicator = document.createElement('div');
+                    moreIndicator.className = 'calendar-event-more';
+                    moreIndicator.textContent = `+${hiddenEvents.length} more`;
+                    moreIndicator.style.fontSize = '0.8em';
+                    moreIndicator.style.color = '#666';
+                    moreIndicator.style.textAlign = 'center';
+                    dayElement.appendChild(moreIndicator);
+                }
+                
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Next month days (to fill the grid)
+            const totalCalendarCells = 42; // 6 rows * 7 days
+            const remainingCells = totalCalendarCells - (startingDayOfWeek + totalDays);
+            
+            for (let day = 1; day <= remainingCells; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = day;
+                
+                dayElement.appendChild(dayNumber);
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Force a reflow/repaint to ensure the calendar renders correctly
+            calendarGrid.style.display = 'none';
+            setTimeout(() => {
+                calendarGrid.style.display = 'grid';
+            }, 10);
+        }
     </script>
 
     <style>
@@ -1250,6 +1580,196 @@
             padding: 0.25rem;
             border-radius: 4px;
             border: 1px solid #ccc;
+        }
+
+        /* Calendar Styles */
+        :root {
+            --cfp-color: #e74c3c;
+            --conference-color: #3498db;
+            --job-color: #2ecc71;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .calendar-nav-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .calendar-nav-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        #calendar-month {
+            margin: 0;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .calendar-container {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 1.5rem;
+            overflow: visible;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 100%;
+            min-height: 500px; /* Ensure minimum height for calendar */
+        }
+
+        #calendar-content {
+            overflow: visible;
+            height: auto !important;
+            min-height: 650px; /* Set minimum height for calendar section */
+            transition: max-height 0.5s ease-out;
+        }
+
+        .calendar-day-header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .calendar-day {
+            min-height: 80px;
+            border: 1px solid #e0e0e0;
+            padding: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-day-number {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+
+        .calendar-day.other-month {
+            background-color: #f5f5f5;
+            color: #aaa;
+        }
+
+        .calendar-day.today {
+            background-color: #f8f9fa;
+            border: 2px solid var(--primary-color);
+        }
+
+        .calendar-event {
+            margin: 2px 0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            color: white;
+        }
+
+        .calendar-event.cfp {
+            background-color: var(--cfp-color);
+        }
+
+        .calendar-event.conference {
+            background-color: var(--conference-color);
+        }
+
+        .calendar-event.job {
+            background-color: var(--job-color);
+        }
+
+        .calendar-event-more {
+            margin-top: 2px;
+            font-size: 0.8em;
+            color: #666;
+            text-align: center;
+        }
+
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .legend-color {
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            margin-right: 5px;
+            flex-shrink: 0;
+        }
+
+        .event-tooltip {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-width: 250px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.85em;
+            }
+            
+            .calendar-day {
+                min-height: 60px;
+                padding: 3px;
+            }
+            
+            .calendar-event {
+                font-size: 0.7em;
+                padding: 1px 2px;
+            }
+            
+            .calendar-day-header {
+                padding: 5px 0;
+                font-size: 0.8em;
+            }
         }
     </style>
 </body>
