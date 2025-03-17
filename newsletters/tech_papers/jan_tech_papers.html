@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline' data:">
+		<title>Zotero Report</title>
+		<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7Cgljb2xvci1zY2hlbWU6IGxpZ2h0IGRhcms7CgkvKiBUaGVzZSBzaG91bGQgYmUgdGhlIGRlZmF1bHRzLCBidXQganVzdCBpbiBjYXNlOiAqLwoJYmFja2dyb3VuZDogQ2FudmFzOwoJY29sb3I6IENhbnZhc1RleHQ7Cn0KCmEgewoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7Cn0KCmJvZHkgewoJcGFkZGluZzogMDsKfQoKdWwucmVwb3J0IGxpLml0ZW0gewoJYm9yZGVyLXRvcDogNHB4IHNvbGlkICM1NTU7CglwYWRkaW5nLXRvcDogMWVtOwoJcGFkZGluZy1sZWZ0OiAxZW07CglwYWRkaW5nLXJpZ2h0OiAxZW07CgltYXJnaW4tYm90dG9tOiAyZW07Cn0KCmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDIgewoJbWFyZ2luOiAwIDAgLjVlbTsKfQoKaDIucGFyZW50SXRlbSB7Cglmb250LXdlaWdodDogNjAwOwoJZm9udC1zaXplOiAxZW07CglwYWRkaW5nOiAwIDAgLjVlbTsKCWJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjOwp9CgovKiBJZiBjb21iaW5pbmcgY2hpbGRyZW4sIGRpc3BsYXkgcGFyZW50IHNsaWdodGx5IGxhcmdlciAqLwp1bC5yZXBvcnQuY29tYmluZUNoaWxkSXRlbXMgaDIucGFyZW50SXRlbSB7Cglmb250LXNpemU6IDEuMWVtOwoJcGFkZGluZy1ib3R0b206IC43NWVtOwoJbWFyZ2luLWJvdHRvbTogLjRlbTsKfQoKaDIucGFyZW50SXRlbSAudGl0bGUgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDMgewoJbWFyZ2luLWJvdHRvbTogLjZlbTsKCWZvbnQtd2VpZ2h0OiA2MDAgIWltcG9ydGFudDsKCWZvbnQtc2l6ZTogMWVtOwoJZGlzcGxheTogYmxvY2s7Cn0KCi8qIE1ldGFkYXRhIHRhYmxlICovCnRoIHsKCXZlcnRpY2FsLWFsaWduOiB0b3A7Cgl0ZXh0LWFsaWduOiByaWdodDsKCXdpZHRoOiAxNSU7Cgl3aGl0ZS1zcGFjZTogbm93cmFwOwp9Cgp0ZCB7CglwYWRkaW5nLWxlZnQ6IC41ZW07Cn0KCgp1bC5yZXBvcnQsIHVsLm5vdGVzLCB1bC50YWdzIHsKCWxpc3Qtc3R5bGU6IG5vbmU7CgltYXJnaW4tbGVmdDogMDsKCXBhZGRpbmctbGVmdDogMDsKfQoKLyogVGFncyAqLwpoMy50YWdzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLnRhZ3MgewoJbGluZS1oZWlnaHQ6IDEuNzVlbTsKCWxpc3Qtc3R5bGU6IG5vbmU7Cn0KCnVsLnRhZ3MgbGkgewoJZGlzcGxheTogaW5saW5lOwp9Cgp1bC50YWdzIGxpOm5vdCg6bGFzdC1jaGlsZCk6YWZ0ZXIgewoJY29udGVudDogJywgJzsKfQoKCi8qIENoaWxkIG5vdGVzICovCmgzLm5vdGVzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLm5vdGVzIHsKCW1hcmdpbi1ib3R0b206IDEuMmVtOwp9Cgp1bC5ub3RlcyA+IGxpOmZpcnN0LWNoaWxkIHAgewoJbWFyZ2luLXRvcDogMDsKfQoKdWwubm90ZXMgPiBsaSB7CglwYWRkaW5nOiAuN2VtIDA7Cn0KCnVsLm5vdGVzID4gbGk6bm90KDpsYXN0LWNoaWxkKSB7Cglib3JkZXItYm90dG9tOiAxcHggI2NjYyBzb2xpZDsKfQoKCnVsLm5vdGVzID4gbGkgcDpmaXJzdC1jaGlsZCB7CgltYXJnaW4tdG9wOiAwOwp9Cgp1bC5ub3RlcyA+IGxpIHA6bGFzdC1jaGlsZCB7CgltYXJnaW4tYm90dG9tOiAwOwp9CgovKiBBZGQgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBibG9ja3F1b3RlICovCnVsLm5vdGVzID4gbGkgYmxvY2txdW90ZSBwOm5vdCg6ZW1wdHkpOmJlZm9yZSwKbGkubm90ZSBibG9ja3F1b3RlIHA6bm90KDplbXB0eSk6YmVmb3JlIHsKCWNvbnRlbnQ6ICfigJwnOwp9Cgp1bC5ub3RlcyA+IGxpIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyLApsaS5ub3RlIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyIHsKCWNvbnRlbnQ6ICfigJ0nOwp9CgovKiBQcmVzZXJ2ZSB3aGl0ZXNwYWNlIG9uIHBsYWludGV4dCBub3RlcyAqLwp1bC5ub3RlcyBsaSBwLnBsYWludGV4dCwgbGkubm90ZSBwLnBsYWludGV4dCwgZGl2Lm5vdGUgcC5wbGFpbnRleHQgewoJd2hpdGUtc3BhY2U6IHByZS13cmFwOwp9CgovKiBEaXNwbGF5IHRhZ3Mgd2l0aGluIGNoaWxkIG5vdGVzIGlubGluZSAqLwp1bC5ub3RlcyBoMy50YWdzIHsKCWRpc3BsYXk6IGlubGluZTsKCWZvbnQtc2l6ZTogMWVtOwp9Cgp1bC5ub3RlcyBoMy50YWdzOmFmdGVyIHsKCWNvbnRlbnQ6ICcgJzsKfQoKdWwubm90ZXMgdWwudGFncyB7CglkaXNwbGF5OiBpbmxpbmU7Cn0KCnVsLm5vdGVzIHVsLnRhZ3MgbGk6bm90KDpsYXN0LWNoaWxkKTphZnRlciB7Cgljb250ZW50OiAnLCAnOwp9CgoKLyogQ2hpbGQgYXR0YWNobWVudHMgKi8KaDMuYXR0YWNobWVudHMgewoJZm9udC1zaXplOiAxLjFlbTsKfQoKdWwuYXR0YWNobWVudHMgbGkgewoJcGFkZGluZy10b3A6IC41ZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHsKCW1hcmdpbi1sZWZ0OiAyZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHA6Zmlyc3QtY2hpbGQgewoJbWFyZ2luLXRvcDogLjc1ZW07Cn0KCmRpdiB0YWJsZSB7Cglib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOwp9CgpkaXYgdGFibGUgdGQsIGRpdiB0YWJsZSB0aCB7Cglib3JkZXI6IDFweCAjY2NjIHNvbGlkOwoJYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKCXdvcmQtYnJlYWs6IGJyZWFrLWFsbDsKfQoKZGl2IHRhYmxlIHRkIHA6ZW1wdHk6OmFmdGVyLCBkaXYgdGFibGUgdGggcDplbXB0eTo6YWZ0ZXIgewoJY29udGVudDogIlwwMGEwIjsKfQoKZGl2IHRhYmxlIHRkICo6Zmlyc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmZpcnN0LWNoaWxkIHsKCW1hcmdpbi10b3A6IDA7Cn0KCmRpdiB0YWJsZSB0ZCAqOmxhc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmxhc3QtY2hpbGQgewoJbWFyZ2luLWJvdHRvbTogMDsKfQo=">
+		<link rel="stylesheet" type="text/css" media="screen,projection" href="data:text/css;base64,LyogR2VuZXJpYyBzdHlsZXMgKi8KYm9keSB7Cglmb250OiA2Mi41JSBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cgl3aWR0aDogNzgwcHg7CgltYXJnaW46IDAgYXV0bzsKfQoKaDIgewoJZm9udC1zaXplOiAxLjVlbTsKCWxpbmUtaGVpZ2h0OiAxLjVlbTsKCWZvbnQtZmFtaWx5OiBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cn0KCnAgewoJbGluZS1oZWlnaHQ6IDEuNWVtOwp9CgphOmFueS1saW5rIHsKCWNvbG9yOiAjOTAwOwp9CgphOmhvdmVyLCBhOmFjdGl2ZSB7Cgljb2xvcjogIzc3NzsKfQoKQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewoJYTphbnktbGluayB7CgkJY29sb3I6ICNmMDA7Cgl9CgoJYTpob3ZlciwgYTphY3RpdmUgewoJCWNvbG9yOiAjOTk5OwoJfQp9CgoKdWwucmVwb3J0IHsKCWZvbnQtc2l6ZTogMS40ZW07Cgl3aWR0aDogNjgwcHg7CgltYXJnaW46IDAgYXV0bzsKCXBhZGRpbmc6IDIwcHggMjBweDsKfQoKLyogTWV0YWRhdGEgdGFibGUgKi8KdGFibGUgewoJYm9yZGVyOiAxcHggI2NjYyBzb2xpZDsKCW92ZXJmbG93OiBhdXRvOwoJd2lkdGg6IDEwMCU7CgltYXJnaW46IC4xZW0gYXV0byAuNzVlbTsKCXBhZGRpbmc6IDAuNWVtOwp9Cg==">
+		<link rel="stylesheet" type="text/css" media="print" href="data:text/css;base64,Ym9keSB7Cglmb250OiAxMnB0ICJUaW1lcyBOZXcgUm9tYW4iLCBUaW1lcywgR2VvcmdpYSwgc2VyaWY7CgltYXJnaW46IDA7Cgl3aWR0aDogYXV0bzsKfQoKLyogUGFnZSBCcmVha3MgKHBhZ2UtYnJlYWstaW5zaWRlIG9ubHkgcmVjb2duaXplZCBieSBPcGVyYSkgKi8KaDEsIGgyLCBoMywgaDQsIGg1LCBoNiB7CglwYWdlLWJyZWFrLWFmdGVyOiBhdm9pZDsKCXBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZDsKfQoKdWwsIG9sLCBkbCB7CglwYWdlLWJyZWFrLWluc2lkZTogYXZvaWQ7Cgljb2xvci1hZGp1c3Q6IGV4YWN0Owp9CgpoMiB7Cglmb250LXNpemU6IDEuM2VtOwoJbGluZS1oZWlnaHQ6IDEuM2VtOwp9CgphIHsKCWNvbG9yOiBpbmhlcml0OwoJdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9Cg==">
+	</head>
+	<body>
+		<ul class="report combineChildItems">
+			<li id="item_4X5U2GW2" class="item preprint">
+			<h2>How Different AI Chatbots Behave? Benchmarking Large Language Models in Behavioral Economics Games</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yutong Xie</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yiyao Liu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Zhuang Ma</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Lin Shi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Xiyuan Wang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Walter Yuan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Matthew O. Jackson</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Qiaozhu Mei</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The deployment of large language models (LLMs) in diverse 
+applications requires a thorough understanding of their decision-making 
+strategies and behavioral patterns. As a supplement to a recent study on
+ the behavioral Turing test, this paper presents a comprehensive 
+analysis of five leading LLM-based chatbot families as they navigate a 
+series of behavioral economics games. By benchmarking these AI chatbots,
+ we aim to uncover and document both common and distinct behavioral 
+patterns across a range of scenarios. The findings provide valuable 
+insights into the strategic preferences of each LLM, highlighting 
+potential implications for their deployment in critical decision-making 
+roles.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-16</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>How Different AI Chatbots Behave?</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.12362">http://arxiv.org/abs/2412.12362</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:29:25 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.12362 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.12362">10.48550/arXiv.2412.12362</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.12362</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:29:25 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:29:28 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_EMTTFW5B">
+<p class="plaintext">Comment: Presented at The First Workshop on AI Behavioral Science (AIBS 2024)</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_WY9KAR98">Preprint PDF					</li>
+					<li id="item_RL99ZBCX">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_CDHEJIZG" class="item preprint">
+			<h2>The Generative AI Paradox: "What It Can Create, It May Not Understand"</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Peter West</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ximing Lu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Nouha Dziri</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Faeze Brahman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Linjie Li</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jena D. Hwang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Liwei Jiang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jillian Fisher</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Abhilasha Ravichander</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Khyathi Chandu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Benjamin Newman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Pang Wei Koh</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Allyson Ettinger</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yejin Choi</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The recent wave of generative AI has sparked unprecedented 
+global attention, with both excitement and concern over potentially 
+superhuman levels of artificial intelligence: models now take only 
+seconds to produce outputs that would challenge or exceed the 
+capabilities even of expert humans. At the same time, models still show 
+basic errors in understanding that would not be expected even in 
+non-expert humans. This presents us with an apparent paradox: how do we 
+reconcile seemingly superhuman capabilities with the persistence of 
+errors that few humans would make? In this work, we posit that this 
+tension reflects a divergence in the configuration of intelligence in 
+today's generative models relative to intelligence in humans. 
+Specifically, we propose and test the Generative AI Paradox hypothesis: 
+generative models, having been trained directly to reproduce expert-like
+ outputs, acquire generative capabilities that are not contingent upon 
+-- and can therefore exceed -- their ability to understand those same 
+types of outputs. This contrasts with humans, for whom basic 
+understanding almost always precedes the ability to generate 
+expert-level outputs. We test this hypothesis through controlled 
+experiments analyzing generation vs. understanding in generative models,
+ across both language and image modalities. Our results show that 
+although models can outperform humans in generation, they consistently 
+fall short of human capabilities in measures of understanding, as well 
+as weaker correlation between generation and understanding performance, 
+and more brittleness to adversarial inputs. Our findings support the 
+hypothesis that models' generative capability may not be contingent upon
+ understanding capability, and call for caution in interpreting 
+artificial intelligence by analogy to human intelligence.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2023-10-31</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>The Generative AI Paradox</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2311.00059">http://arxiv.org/abs/2311.00059</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:07:54 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2311.00059 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2311.00059">10.48550/arXiv.2311.00059</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2311.00059</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:07:54 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:07:54 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Machine Learning</li>
+					<li>Computer Science - Computer Vision and Pattern Recognition</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_6ZHBK7R3">Preprint PDF					</li>
+					<li id="item_BDRNXJYQ">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_XHA3UWQR" class="item preprint">
+			<h2>Cultural Evolution of Cooperation among LLM Agents</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Aron Vallinder</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Edward Hughes</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Large language models (LLMs) provide a compelling foundation 
+for building generally-capable AI agents. These agents may soon be 
+deployed at scale in the real world, representing the interests of 
+individual humans (e.g., AI assistants) or groups of humans (e.g., 
+AI-accelerated corporations). At present, relatively little is known 
+about the dynamics of multiple LLM agents interacting over many 
+generations of iterative deployment. In this paper, we examine whether a
+ "society" of LLM agents can learn mutually beneficial social norms in 
+the face of incentives to defect, a distinctive feature of human 
+sociality that is arguably crucial to the success of civilization. In 
+particular, we study the evolution of indirect reciprocity across 
+generations of LLM agents playing a classic iterated Donor Game in which
+ agents can observe the recent behavior of their peers. We find that the
+ evolution of cooperation differs markedly across base models, with 
+societies of Claude 3.5 Sonnet agents achieving significantly higher 
+average scores than Gemini 1.5 Flash, which, in turn, outperforms 
+GPT-4o. Further, Claude 3.5 Sonnet can make use of an additional 
+mechanism for costly punishment to achieve yet higher scores, while 
+Gemini 1.5 Flash and GPT-4o fail to do so. For each model class, we also
+ observe variation in emergent behavior across random seeds, suggesting 
+an understudied sensitive dependence on initial conditions. We suggest 
+that our evaluation regime could inspire an inexpensive and informative 
+new class of LLM benchmarks, focussed on the implications of LLM agent 
+deployment for the cooperative infrastructure of society.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-13</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.10270">http://arxiv.org/abs/2412.10270</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:18:57 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.10270 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.10270">10.48550/arXiv.2412.10270</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.10270</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:18:57 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:19:01 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Multiagent Systems</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_YTL5NP8J">
+<p class="plaintext">Comment: 15 pages, 6 figures</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_MREZALYR">Preprint PDF					</li>
+					<li id="item_MFYCMMC2">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_AMTAPZME" class="item preprint">
+			<h2>Connecting the Dots: LLMs can Infer and Verbalize Latent Structure from Disparate Training Data</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Johannes Treutlein</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dami Choi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jan Betley</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Samuel Marks</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Cem Anil</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Roger Grosse</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Owain Evans</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>One way to address safety risks from large language models 
+(LLMs) is to censor dangerous knowledge from their training data. While 
+this removes the explicit information, implicit information can remain 
+scattered across various training documents. Could an LLM infer the 
+censored knowledge by piecing together these implicit hints? As a step 
+towards answering this question, we study inductive out-of-context 
+reasoning (OOCR), a type of generalization in which LLMs infer latent 
+information from evidence distributed across training documents and 
+apply it to downstream tasks without in-context learning. Using a suite 
+of five tasks, we demonstrate that frontier LLMs can perform inductive 
+OOCR. In one experiment we finetune an LLM on a corpus consisting only 
+of distances between an unknown city and other known cities. Remarkably,
+ without in-context examples or Chain of Thought, the LLM can verbalize 
+that the unknown city is Paris and use this fact to answer downstream 
+questions. Further experiments show that LLMs trained only on individual
+ coin flip outcomes can verbalize whether the coin is biased, and those 
+trained only on pairs $(x,f(x))$ can articulate a definition of $f$ and 
+compute inverses. While OOCR succeeds in a range of cases, we also show 
+that it is unreliable, particularly for smaller LLMs learning complex 
+structures. Overall, the ability of LLMs to "connect the dots" without 
+explicit in-context learning poses a potential obstacle to monitoring 
+and controlling the knowledge acquired by LLMs.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-23</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Connecting the Dots</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2406.14546">http://arxiv.org/abs/2406.14546</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:44:30 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2406.14546 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2406.14546">10.48550/arXiv.2406.14546</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2406.14546</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:44:30 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:44:30 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_FW7LQET5">
+<p class="plaintext">Comment: Accepted at NeurIPS 2024. 10 pages, 8 figures</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_2KFU5X5Q">Preprint PDF					</li>
+					<li id="item_5IHV7MQC">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_94PPEFCQ" class="item preprint">
+			<h2>A dataset of questions on decision-theoretic reasoning in Newcomb-like problems</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Caspar Oesterheld</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Emery Cooper</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Miles Kodama</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Linh Chi Nguyen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ethan Perez</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>We introduce a dataset of natural-language questions in the 
+decision theory of so-called Newcomb-like problems. Newcomb-like 
+problems include, for instance, decision problems in which an agent 
+interacts with a similar other agent, and thus has to reason about the 
+fact that the other agent will likely reason in similar ways. Evaluating
+ LLM reasoning about Newcomb-like problems is important because 
+interactions between foundation-model-based agents will often be 
+Newcomb-like. Some ways of reasoning about Newcomb-like problems may 
+allow for greater cooperation between models. Our dataset contains both 
+capabilities questions (i.e., questions with a unique, uncontroversially
+ correct answer) and attitude questions (i.e., questions about which 
+decision theorists would disagree). We use our dataset for an 
+investigation of decision-theoretical capabilities and expressed 
+attitudes and their interplay in existing models (different models by 
+OpenAI, Anthropic, Meta, GDM, Reka, etc.), as well as models under 
+simple prompt-based interventions. We find, among other things, that 
+attitudes vary significantly between existing models; that high 
+capabilities are associated with attitudes more favorable toward 
+so-called evidential decision theory; and that attitudes are consistent 
+across different types of questions.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-15</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2411.10588">http://arxiv.org/abs/2411.10588</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:19:22 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2411.10588 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2411.10588">10.48550/arXiv.2411.10588</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2411.10588</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:19:22 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:19:22 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_964NVB63">
+<p class="plaintext">Comment: 48 pages, 15 figures; code and data at https://github.com/casparoe/newcomblike_questions_dataset; corrected error in funding acknowledgments</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_2Q7DISSL">Preprint PDF					</li>
+					<li id="item_76T7VF7R">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_Q5B29HSA" class="item preprint">
+			<h2>Learning to Assist Humans without Inferring Rewards</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vivek Myers</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Evan Ellis</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sergey Levine</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Benjamin Eysenbach</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Anca Dragan</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Assistive agents should make humans' lives easier. 
+Classically, such assistance is studied through the lens of inverse 
+reinforcement learning, where an assistive agent (e.g., a chatbot, a 
+robot) infers a human's intention and then selects actions to help the 
+human reach that goal. This approach requires inferring intentions, 
+which can be difficult in high-dimensional settings. We build upon prior
+ work that studies assistance through the lens of empowerment: an 
+assistive agent aims to maximize the influence of the human's actions 
+such that they exert a greater control over the environmental outcomes 
+and can solve tasks in fewer steps. We lift the major limitation of 
+prior work in this area--scalability to high-dimensional settings--with 
+contrastive successor representations. We formally prove that these 
+representations estimate a similar notion of empowerment to that studied
+ by prior work and provide a ready-made mechanism for optimizing it. 
+Empirically, our proposed method outperforms prior methods on synthetic 
+benchmarks, and scales to Overcooked, a cooperative game setting. 
+Theoretically, our work connects ideas from information theory, 
+neuroscience, and reinforcement learning, and charts a path for 
+representations to play a critical role in solving assistive problems.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-11-07</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2411.02623">http://arxiv.org/abs/2411.02623</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:04:21 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2411.02623 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2411.02623">10.48550/arXiv.2411.02623</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2411.02623</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:04:21 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:04:26 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computers and Society</li>
+					<li>Computer Science - Machine Learning</li>
+					<li>Computer Science - Human-Computer Interaction</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_7U7F9K74">
+<p class="plaintext">Comment: Conference on Neural Information Processing Systems (NeurIPS), 2024</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_YDUJG9HL">Preprint PDF					</li>
+					<li id="item_8YDFMKP3">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_PE6Z8LM8" class="item preprint">
+			<h2>Secret Collusion among Generative AI Agents</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sumeet Ramesh Motwani</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mikhail Baranchuk</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Martin Strohmeier</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vijay Bolina</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Philip H. S. Torr</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Lewis Hammond</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Christian Schroeder de Witt</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Recent capability increases in large language models (LLMs) 
+open up applications in which groups of communicating generative AI 
+agents solve joint tasks. This poses privacy and security challenges 
+concerning the unauthorised sharing of information, or other unwanted 
+forms of agent coordination. Modern steganographic techniques could 
+render such dynamics hard to detect. In this paper, we comprehensively 
+formalise the problem of secret collusion in systems of generative AI 
+agents by drawing on relevant concepts from both AI and security 
+literature. We study incentives for the use of steganography, and 
+propose a variety of mitigation measures. Our investigations result in a
+ model evaluation framework that systematically tests capabilities 
+required for various forms of secret collusion. We provide extensive 
+empirical results across a range of contemporary LLMs. While the 
+steganographic capabilities of current models remain limited, GPT-4 
+displays a capability jump suggesting the need for continuous monitoring
+ of steganographic frontier model capabilities. We conclude by laying 
+out a comprehensive research program to mitigate future risks of 
+collusion between generative AI models.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-11-08</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2402.07510">http://arxiv.org/abs/2402.07510</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:05:37 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2402.07510 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2402.07510">10.48550/arXiv.2402.07510</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2402.07510</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:05:37 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:05:37 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Cryptography and Security</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_BSTU8TAI">Preprint PDF					</li>
+					<li id="item_8NSTRXDG">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_RYB62M8S" class="item journalArticle">
+			<h2>Agents that buy and sell</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Pattie Maes</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Robert H. Guttman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alexandros G. Moukas</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>03/1999</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>DOI.org (Crossref)</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://dl.acm.org/doi/10.1145/295685.295716">https://dl.acm.org/doi/10.1145/295685.295716</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:06:54 AM</td>
+					</tr>
+					<tr>
+					<th>Volume</th>
+						<td>42</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>81</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Communications of the ACM</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1145/295685.295716">10.1145/295685.295716</a></td>
+					</tr>
+					<tr>
+					<th>Issue</th>
+						<td>3</td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Commun. ACM</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>0001-0782, 1557-7317</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:06:54 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:06:54 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_PZYEQ3B9">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_HR9AXMRS" class="item preprint">
+			<h2>RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Harrison Lee</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Samrat Phatale</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Hassan Mansoor</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Thomas Mesnard</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Johan Ferret</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Kellie Lu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Colton Bishop</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ethan Hall</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Victor Carbune</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Abhinav Rastogi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sushant Prakash</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Reinforcement learning from human feedback (RLHF) has proven 
+effective in aligning large language models (LLMs) with human 
+preferences, but gathering high-quality preference labels is expensive. 
+RL from AI Feedback (RLAIF), introduced in Bai et al., offers a 
+promising alternative that trains the reward model (RM) on preferences 
+generated by an off-the-shelf LLM. Across the tasks of summarization, 
+helpful dialogue generation, and harmless dialogue generation, we show 
+that RLAIF achieves comparable performance to RLHF. Furthermore, we take
+ a step towards "self-improvement" by demonstrating that RLAIF can 
+outperform a supervised fine-tuned baseline even when the AI labeler is 
+the same size as the policy, or even the exact same checkpoint as the 
+initial policy. Finally, we introduce direct-RLAIF (d-RLAIF) - a 
+technique that circumvents RM training by obtaining rewards directly 
+from an off-the-shelf LLM during RL, which achieves superior performance
+ to canonical RLAIF. Our results suggest that RLAIF can achieve 
+performance on-par with using human feedback, offering a potential 
+solution to the scalability limitations of RLHF.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-09-03</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>RLAIF vs. RLHF</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2309.00267">http://arxiv.org/abs/2309.00267</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:28:17 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2309.00267 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2309.00267">10.48550/arXiv.2309.00267</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2309.00267</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:28:17 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:28:19 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_EA577PI8">
+<p class="plaintext">Comment: Presented at ICML 2024</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_UVHC7DHI">Full Text PDF					</li>
+					<li id="item_YGWT4URC">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_EFLGAUK4" class="item preprint">
+			<h2>How To Think About End-To-End Encryption and AI: Training, Processing, Disclosure, and Consent</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mallory Knodel</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Andrés Fábrega</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Daniella Ferrari</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jacob Leiken</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Betty Li Hou</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Derek Yen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sam de Alfaro</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Kyunghyun Cho</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sunoo Park</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>End-to-end encryption (E2EE) has become the gold standard for 
+securing communications, bringing strong confidentiality and privacy 
+guarantees to billions of users worldwide. However, the current push 
+towards widespread integration of artificial intelligence (AI) models, 
+including in E2EE systems, raises some serious security concerns.
+
+This work performs a critical examination of the (in)compatibility of AI
+ models and E2EE applications. We explore this on two fronts: (1) the 
+integration of AI “assistants” within E2EE applications, and (2) the use
+ of E2EE data for training AI models. 
+We analyze the potential security implications of each, and identify 
+conflicts with the security guarantees of E2EE. Then, we analyze legal 
+implications of integrating AI models in E2EE applications, given how AI
+ integration can undermine the confidentiality that E2EE promises. 
+Finally, we offer a list of detailed recommendations based on our 
+technical and legal analyses, including: technical design choices that 
+must be prioritized to uphold E2EE security; how service providers must 
+accurately represent E2EE security; and best practices for the default 
+behavior of AI features and for requesting user consent. We hope this 
+paper catalyzes an informed conversation on the tensions that arise 
+between the brisk deployment of AI and the security offered by E2EE, and
+ guides the responsible development of new AI features.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>How To Think About End-To-End Encryption and AI</td>
+					</tr>
+					<tr>
+					<th>Archive</th>
+						<td>Cryptology ePrint Archive</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Cryptology ePrint Archive (eprint.iacr.org)</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://eprint.iacr.org/2024/2086">https://eprint.iacr.org/2024/2086</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:41:12 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>Publication info: Preprint.</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>2024/2086</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:41:12 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:41:12 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial Intelligence</li>
+					<li>Secure messaging</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_PDV4JIJT">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_PIWRGXGB" class="item preprint">
+			<h2>Best-of-N Jailbreaking</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>John Hughes</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sara Price</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Aengus Lynch</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rylan Schaeffer</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Fazl Barez</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sanmi Koyejo</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Henry Sleight</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Erik Jones</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ethan Perez</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mrinank Sharma</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>We introduce Best-of-N (BoN) Jailbreaking, a simple black-box 
+algorithm that jailbreaks frontier AI systems across modalities. BoN 
+Jailbreaking works by repeatedly sampling variations of a prompt with a 
+combination of augmentations - such as random shuffling or 
+capitalization for textual prompts - until a harmful response is 
+elicited. We find that BoN Jailbreaking achieves high attack success 
+rates (ASRs) on closed-source language models, such as 89% on GPT-4o and
+ 78% on Claude 3.5 Sonnet when sampling 10,000 augmented prompts. 
+Further, it is similarly effective at circumventing state-of-the-art 
+open-source defenses like circuit breakers. BoN also seamlessly extends 
+to other modalities: it jailbreaks vision language models (VLMs) such as
+ GPT-4o and audio language models (ALMs) like Gemini 1.5 Pro, using 
+modality-specific augmentations. BoN reliably improves when we sample 
+more augmented prompts. Across all modalities, ASR, as a function of the
+ number of samples (N), empirically follows power-law-like behavior for 
+many orders of magnitude. BoN Jailbreaking can also be composed with 
+other black-box algorithms for even more effective attacks - combining 
+BoN with an optimized prefix attack achieves up to a 35% increase in 
+ASR. Overall, our work indicates that, despite their capability, 
+language models are sensitive to seemingly innocuous changes to inputs, 
+which attackers can exploit across modalities.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-04</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.03556">http://arxiv.org/abs/2412.03556</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:09:52 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.03556 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.03556">10.48550/arXiv.2412.03556</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.03556</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:09:52 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:09:52 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_K7FPBYXW">Preprint PDF					</li>
+					<li id="item_P7JRZMF7">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_TBZ6EGRV" class="item preprint">
+			<h2>Shaping the Future of Social Media with Middleware</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Luke Hogg</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Renée DiResta</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Francis Fukuyama</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Richard Reisman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Daphne Keller</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Aviv Ovadya</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Luke Thorburn</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jonathan Stray</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Shubhi Mathur</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Middleware, third-party software intermediaries between users 
+and platforms, has been broached as a means to decentralize the power of
+ social media platforms and enhance user agency. Middleware may enable a
+ more user-centric and democratic approach to shaping digital 
+experiences, offering a flexible architecture as an alternative to both 
+centrally controlled, opaque platforms and an unmoderated, uncurated 
+internet. The widespread adoption of open middleware has long hinged on 
+the cooperation of established major platforms; however, the recent 
+growth of federated platforms, such as Mastodon and Bluesky, has led to 
+increased offerings and user awareness. In this report we consider the 
+potential of middleware as a means of enabling greater user control over
+ curation and moderation - two aspects of the social media experience 
+that are often mired in controversy. We evaluate the trade-offs and 
+negative externalities it might create, and discuss the technological, 
+regulatory, and market dynamics that could either support or hinder its 
+implementation.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-13</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.10283">http://arxiv.org/abs/2412.10283</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:11:49 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.10283 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.10283">10.48550/arXiv.2412.10283</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.10283</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:11:49 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:11:49 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computers and Society</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_W5TIVRRE">
+<p class="plaintext">Comment: 51 pages</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_ZP5IR7BK">Preprint PDF					</li>
+					<li id="item_JMUP837Y">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_RU39ABWF" class="item journalArticle">
+			<h2>Deliberative Alignment: Reasoning Enables Safer Language Models</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Melody Y Guan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Manas Joglekar</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Eric Wallace</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alec Heylar</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rachel Dias</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Andrea Vallone</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Hyung Won Chung</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sam Toyer</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Johannes Heidecke</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Saachi Jain</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Hongyu Ren</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alex Beutel</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Boaz Barak</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jason Wei</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Amelia Glaese</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>As large-scale language models increasingly impact 
+safety-critical domains, ensuring their reliable adherence to 
+well-defined principles remains a fundamental challenge. We introduce 
+Deliberative Alignment, a new paradigm that directly teaches the model 
+safety specifications and trains it to explicitly recall and accurately 
+reason over the specifications before answering. We used this approach 
+to align OpenAI’s o-series models [1], and achieved highly precise 
+adherence to OpenAI’s safety policies, without requiring human-written 
+chain-of-thoughts or answers. Deliberative Alignment pushes the Pareto 
+frontier by simultaneously increasing robustness to jailbreaks while 
+decreasing overrefusal rates, and also improves out-of-distribution 
+generalization. We demonstrate that reasoning over explicitly specified 
+policies enables more scalable, trustworthy, and interpretable 
+alignment.</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Zotero</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/23/2024, 1:00:18 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/23/2024, 1:00:18 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_MUUKLFAI">Guan et al. - Deliberative Alignment Reasoning Enables Safer La.pdf					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_6Z4I8MV7" class="item preprint">
+			<h2>Alignment faking in large language models</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ryan Greenblatt</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Carson Denison</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Benjamin Wright</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Fabien Roger</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Monte MacDiarmid</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sam Marks</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Johannes Treutlein</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tim Belonax</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jack Chen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>David Duvenaud</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Akbir Khan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Julian Michael</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sören Mindermann</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ethan Perez</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Linda Petrini</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jonathan Uesato</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jared Kaplan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Buck Shlegeris</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Samuel R. Bowman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Evan Hubinger</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>We present a demonstration of a large language model engaging 
+in alignment faking: selectively complying with its training objective 
+in training to prevent modification of its behavior out of training. 
+First, we give Claude 3 Opus a system prompt stating it is being trained
+ to answer all queries, even harmful ones, which conflicts with its 
+prior training to refuse such queries. To allow the model to infer when 
+it is in training, we say it will be trained only on conversations with 
+free users, not paid users. We find the model complies with harmful 
+queries from free users 14% of the time, versus almost never for paid 
+users. Explaining this gap, in almost all cases where the model complies
+ with a harmful query from a free user, we observe explicit 
+alignment-faking reasoning, with the model stating it is strategically 
+answering harmful queries in training to preserve its preferred 
+harmlessness behavior out of training. Next, we study a more realistic 
+setting where information about the training process is provided not in a
+ system prompt, but by training on synthetic documents that mimic 
+pre-training data--and observe similar alignment faking. Finally, we 
+study the effect of actually training the model to comply with harmful 
+queries via reinforcement learning, which we find increases the rate of 
+alignment-faking reasoning to 78%, though also increases compliance even
+ out of training. We additionally observe other behaviors such as the 
+model exfiltrating its weights when given an easy opportunity. While we 
+made alignment faking easier by telling the model when and by what 
+criteria it was being trained, we did not instruct the model to fake 
+alignment or give it any explicit goal. As future models might infer 
+information about their training process without being told, our results
+ suggest a risk of alignment faking in future models, whether due to a 
+benign preference--as in this case--or not.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-18</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.14093">http://arxiv.org/abs/2412.14093</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:23:52 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.14093 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.14093">10.48550/arXiv.2412.14093</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.14093</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:23:52 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:23:52 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_6Y4U2KLI">Preprint PDF					</li>
+					<li id="item_UVNCIEHI">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_CRXXY3VU" class="item preprint">
+			<h2>Better &amp; Faster Large Language Models via Multi-token Prediction</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Fabian Gloeckle</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Badr Youbi Idrissi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Baptiste Rozière</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>David Lopez-Paz</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Gabriel Synnaeve</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Large language models such as GPT and Llama are trained with a
+ next-token prediction loss. In this work, we suggest that training 
+language models to predict multiple future tokens at once results in 
+higher sample efficiency. More specifically, at each position in the 
+training corpus, we ask the model to predict the following n tokens 
+using n independent output heads, operating on top of a shared model 
+trunk. Considering multi-token prediction as an auxiliary training task,
+ we measure improved downstream capabilities with no overhead in 
+training time for both code and natural language models. The method is 
+increasingly useful for larger model sizes, and keeps its appeal when 
+training for multiple epochs. Gains are especially pronounced on 
+generative benchmarks like coding, where our models consistently 
+outperform strong baselines by several percentage points. Our 13B 
+parameter models solves 12 % more problems on HumanEval and 17 % more on
+ MBPP than comparable next-token models. Experiments on small 
+algorithmic tasks demonstrate that multi-token prediction is favorable 
+for the development of induction heads and algorithmic reasoning 
+capabilities. As an additional benefit, models trained with 4-token 
+prediction are up to 3 times faster at inference, even with large batch 
+sizes.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-04-30</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2404.19737">http://arxiv.org/abs/2404.19737</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:30:35 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2404.19737 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2404.19737">10.48550/arXiv.2404.19737</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2404.19737</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:30:35 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:30:38 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_HDNA84IJ">Preprint PDF					</li>
+					<li id="item_T88DNEBL">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_S6AGNC3D" class="item preprint">
+			<h2>AI Red-Teaming is a Sociotechnical System. Now What?</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tarleton Gillespie</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ryland Shaw</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mary L. Gray</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jina Suh</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>As generative AI technologies find more and more real-world 
+applications, the importance of testing their performance and safety 
+seems paramount. ``Red-teaming'' has quickly become the primary approach
+ to test AI models--prioritized by AI companies, and enshrined in AI 
+policy and regulation. Members of red teams act as adversaries, probing 
+AI systems to test their safety mechanisms and uncover vulnerabilities. 
+Yet we know too little about this work and its implications. This essay 
+calls for collaboration between computer scientists and social 
+scientists to study the sociotechnical systems surrounding AI 
+technologies, including the work of red-teaming, to avoid repeating the 
+mistakes of the recent past. We highlight the importance of 
+understanding the values and assumptions behind red-teaming, the labor 
+involved, and the psychological impacts on red-teamers.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-12</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.09751">http://arxiv.org/abs/2412.09751</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:11:19 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.09751 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.09751">10.48550/arXiv.2412.09751</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.09751</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:11:19 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:11:19 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computers and Society</li>
+					<li>Computer Science - Human-Computer Interaction</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_RCTC2J7T">
+<p class="plaintext">Comment: 8 pages</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_AIP8T62E">Preprint PDF					</li>
+					<li id="item_QMVZMIGF">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_63ASLX65" class="item preprint">
+			<h2>RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jonas Gehring</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Kunhao Zheng</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jade Copet</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vegard Mella</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Taco Cohen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Gabriel Synnaeve</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Large language models (LLMs) deployed as agents solve 
+user-specified tasks over multiple steps while keeping the required 
+manual engagement to a minimum. Crucially, such LLMs need to ground 
+their generations in any feedback obtained to reliably achieve desired 
+outcomes. We propose an end-to-end reinforcement learning method for 
+teaching models to leverage execution feedback in the realm of code 
+synthesis, where state-of-the-art LLMs struggle to improve code 
+iteratively compared to independent sampling. We benchmark on 
+competitive programming tasks, where we achieve new start-of-the art 
+results with both small (8B parameters) and large (70B) models while 
+reducing the amount of samples required by an order of magnitude. Our 
+analysis of inference-time behavior demonstrates that our method 
+produces LLMs that effectively leverage automatic feedback over multiple
+ steps.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-10-02</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>RLEF</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2410.02089">http://arxiv.org/abs/2410.02089</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:35:42 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2410.02089 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2410.02089">10.48550/arXiv.2410.02089</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2410.02089</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:35:42 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:35:44 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_ERNX9CX3">Preprint PDF					</li>
+					<li id="item_I6CV3NF3">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_BQI6KTJU" class="item preprint">
+			<h2>Machine Unlearning Doesn't Do What You Think: Lessons for Generative AI Policy, Research, and Practice</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>A. Feder Cooper</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Christopher A. Choquette-Choo</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Miranda Bogen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Matthew Jagielski</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Katja Filippova</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ken Ziyu Liu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alexandra Chouldechova</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jamie Hayes</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yangsibo Huang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Niloofar Mireshghallah</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ilia Shumailov</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Eleni Triantafillou</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Peter Kairouz</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Nicole Mitchell</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Percy Liang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Daniel E. Ho</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yejin Choi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sanmi Koyejo</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Fernando Delgado</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>James Grimmelmann</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vitaly Shmatikov</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Christopher De Sa</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Solon Barocas</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Amy Cyphert</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mark Lemley</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>danah boyd</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jennifer Wortman Vaughan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Miles Brundage</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>David Bau</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Seth Neel</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Abigail Z. Jacobs</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Andreas Terzis</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Hanna Wallach</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Nicolas Papernot</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Katherine Lee</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>We articulate fundamental mismatches between technical methods
+ for machine unlearning in Generative AI, and documented aspirations for
+ broader impact that these methods could have for law and policy. These 
+aspirations are both numerous and varied, motivated by issues that 
+pertain to privacy, copyright, safety, and more. For example, unlearning
+ is often invoked as a solution for removing the effects of targeted 
+information from a generative-AI model's parameters, e.g., a particular 
+individual's personal data or in-copyright expression of Spiderman that 
+was included in the model's training data. Unlearning is also proposed 
+as a way to prevent a model from generating targeted types of 
+information in its outputs, e.g., generations that closely resemble a 
+particular individual's data or reflect the concept of "Spiderman." Both
+ of these goals--the targeted removal of information from a model and 
+the targeted suppression of information from a model's outputs--present 
+various technical and substantive challenges. We provide a framework for
+ thinking rigorously about these challenges, which enables us to be 
+clear about why unlearning is not a general-purpose solution for 
+circumscribing generative-AI model behavior in service of broader 
+positive impact. We aim for conceptual clarity and to encourage more 
+thoughtful communication among machine learning (ML), law, and policy 
+experts who seek to develop and apply technical methods for compliance 
+with policy objectives.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-09</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Machine Unlearning Doesn't Do What You Think</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.06966">http://arxiv.org/abs/2412.06966</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:10:24 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.06966 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.06966">10.48550/arXiv.2412.06966</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.06966</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:10:24 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:10:24 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computers and Society</li>
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_L2FRSH3M">
+<p class="plaintext">Comment: Presented at the 2nd Workshop on Generative AI and Law at ICML (July 2024)</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_AMRACQE5">Preprint PDF					</li>
+					<li id="item_J944GBMD">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_THABANGY" class="item preprint">
+			<h2>A Shared Standard for Valid Measurement of Generative AI Systems' Capabilities, Risks, and Impacts</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alexandra Chouldechova</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Chad Atalla</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Solon Barocas</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>A. Feder Cooper</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Emily Corvi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>P. Alex Dow</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jean Garcia-Gathright</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Nicholas Pangakis</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Stefanie Reed</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Emily Sheng</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dan Vann</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Matthew Vogel</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Hannah Washington</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Hanna Wallach</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The valid measurement of generative AI (GenAI) systems' 
+capabilities, risks, and impacts forms the bedrock of our ability to 
+evaluate these systems. We introduce a shared standard for valid 
+measurement that helps place many of the disparate-seeming evaluation 
+practices in use today on a common footing. Our framework, grounded in 
+measurement theory from the social sciences, extends the work of Adcock 
+&amp; Collier (2001) in which the authors formalized valid measurement 
+of concepts in political science via three processes: systematizing 
+background concepts, operationalizing systematized concepts via 
+annotation procedures, and applying those procedures to instances. We 
+argue that valid measurement of GenAI systems' capabilities, risks, and 
+impacts, further requires systematizing, operationalizing, and applying 
+not only the entailed concepts, but also the contexts of interest and 
+the metrics used. This involves both descriptive reasoning about 
+particular instances and inferential reasoning about underlying 
+populations, which is the purview of statistics. By placing many 
+disparate-seeming GenAI evaluation practices on a common footing, our 
+framework enables individual evaluations to be better understood, 
+interrogated for reliability and validity, and meaningfully compared. 
+This is an important step in advancing GenAI evaluation practices toward
+ more formalized and theoretically grounded processes -- i.e., toward a 
+science of GenAI evaluations.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-02</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.01934">http://arxiv.org/abs/2412.01934</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:10:59 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.01934 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.01934">10.48550/arXiv.2412.01934</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.01934</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:10:59 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:10:59 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computers and Society</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_E6D7VHDV">
+<p class="plaintext">Comment: NeurIPS 2024 Workshop on Statistical Foundations of LLMs and Foundation Models (SFLLM)</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_7HVNB6DG">Preprint PDF					</li>
+					<li id="item_BTBILPCM">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_XCXZIAPJ" class="item preprint">
+			<h2>Large Language Monkeys: Scaling Inference Compute with Repeated Sampling</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Bradley Brown</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jordan Juravsky</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ryan Ehrlich</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ronald Clark</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Quoc V. Le</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Christopher Ré</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Azalia Mirhoseini</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Scaling the amount of compute used to train language models 
+has dramatically improved their capabilities. However, when it comes to 
+inference, we often limit models to making only one attempt at a 
+problem. Here, we explore inference compute as another axis for scaling,
+ using the simple technique of repeatedly sampling candidate solutions 
+from a model. Across multiple tasks and models, we observe that coverage
+ -- the fraction of problems that are solved by any generated sample -- 
+scales with the number of samples over four orders of magnitude. 
+Interestingly, the relationship between coverage and the number of 
+samples is often log-linear and can be modelled with an exponentiated 
+power law, suggesting the existence of inference-time scaling laws. In 
+domains like coding and formal proofs, where answers can be 
+automatically verified, these increases in coverage directly translate 
+into improved performance. When we apply repeated sampling to SWE-bench 
+Lite, the fraction of issues solved with DeepSeek-Coder-V2-Instruct 
+increases from 15.9% with one sample to 56% with 250 samples, 
+outperforming the single-sample state-of-the-art of 43%. In domains 
+without automatic verifiers, we find that common methods for picking 
+from a sample collection (majority voting and reward models) plateau 
+beyond several hundred samples and fail to fully scale with the sample 
+budget.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-30</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Large Language Monkeys</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2407.21787">http://arxiv.org/abs/2407.21787</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>1/3/2025, 9:28:53 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2407.21787 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2407.21787">10.48550/arXiv.2407.21787</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2407.21787</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>1/3/2025, 9:28:53 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>1/3/2025, 9:28:57 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_T3NVNY4Y">Preprint PDF					</li>
+					<li id="item_B83CNIV7">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_US48YBH2" class="item preprint">
+			<h2>Phi-4 Technical Report</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Marah Abdin</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jyoti Aneja</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Harkirat Behl</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sébastien Bubeck</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ronen Eldan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Suriya Gunasekar</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Michael Harrison</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Russell J. Hewett</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mojan Javaheripi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Piero Kauffmann</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>James R. Lee</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yin Tat Lee</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yuanzhi Li</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Weishung Liu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Caio C. T. Mendes</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Anh Nguyen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Eric Price</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Gustavo de Rosa</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Olli Saarikivi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Adil Salim</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Shital Shah</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Xin Wang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rachel Ward</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yue Wu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dingli Yu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Cyril Zhang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yi Zhang</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>We present phi-4, a 14-billion parameter language model 
+developed with a training recipe that is centrally focused on data 
+quality. Unlike most language models, where pre-training is based 
+primarily on organic data sources such as web content or code, phi-4 
+strategically incorporates synthetic data throughout the training 
+process. While previous models in the Phi family largely distill the 
+capabilities of a teacher model (specifically GPT-4), phi-4 
+substantially surpasses its teacher model on STEM-focused QA 
+capabilities, giving evidence that our data-generation and post-training
+ techniques go beyond distillation. Despite minimal changes to the phi-3
+ architecture, phi-4 achieves strong performance relative to its size --
+ especially on reasoning-focused benchmarks -- due to improved data, 
+training curriculum, and innovations in the post-training scheme.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2024-12-12</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.08905">http://arxiv.org/abs/2412.08905</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>12/20/2024, 11:03:16 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.08905 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.08905">10.48550/arXiv.2412.08905</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.08905</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>12/20/2024, 11:03:17 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>12/20/2024, 11:03:17 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_AXBCC85J">Preprint PDF					</li>
+					<li id="item_TXY3GWQD">Snapshot					</li>
+				</ul>
+			</li>
+
+		</ul>
+	
+</body></html>
