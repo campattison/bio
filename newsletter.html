@@ -1123,17 +1123,31 @@
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.section-content');
             sections.forEach(section => {
-                section.classList.add('expanded');
-                const icon = section.previousElementSibling.querySelector('i');
-                if (icon) {
-                    icon.style.transform = "rotate(180deg)";
-                }
+                // Check if this is the calendar section or not
+                const isCalendarSection = section.id === 'calendar-content';
                 
-                // Don't set maxHeight immediately - wait for content to be fully loaded
-                setTimeout(() => {
-                    section.style.maxHeight = 'none'; // First set to none to ensure all content is rendered
-                    section.style.maxHeight = section.scrollHeight + 'px';
-                }, 300);
+                // Only add 'expanded' class to calendar section
+                if (isCalendarSection) {
+                    section.classList.add('expanded');
+                    const icon = section.previousElementSibling.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = "rotate(180deg)";
+                    }
+                    
+                    // Don't set maxHeight immediately for the calendar - wait for content to be fully loaded
+                    setTimeout(() => {
+                        section.style.maxHeight = 'none'; // First set to none to ensure all content is rendered
+                        section.style.maxHeight = section.scrollHeight + 'px';
+                    }, 300);
+                } else {
+                    // For all other sections, ensure they're collapsed
+                    section.classList.remove('expanded');
+                    const icon = section.previousElementSibling.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = "rotate(0deg)";
+                    }
+                    section.style.maxHeight = '0px';
+                }
             });
             
             // Additional fix for calendar section specifically
