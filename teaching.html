@@ -26,138 +26,349 @@
                 </div>
             </header>
             
-        <section class="seminar-info">
-            <h2>About the Seminar</h2>
-            <p>This seminar explores what it means to be intelligent in an age of artificial minds. It examines how AI reshapes our sense of justice, power, and humanity. Join us for discussions with global experts in ethics, consciousness, and AI.</p>
-        </section>
-
-        <section class="focus-aims">
-            <h2>Focus and Aims</h2>
-            <ul>
-                <li><i class="fas fa-brain"></i> How does AI challenge traditional concepts of intelligence and human uniqueness?</li>
-                <li><i class="fas fa-balance-scale"></i> What ethical dilemmas arise from the integration of AI into our daily lives?</li>
-                <li><i class="fas fa-globe"></i> How does AI reshape existing power dynamics, and what new forms of power does it create?</li>
-                <li><i class="fas fa-book"></i> How can the humanities enrich the ongoing discourse on AI’s societal implications?</li>
-            </ul>
-        </section>
-
-        <section class="guest-speakers">
-            <h2>Guest Speakers</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>John Tasioulas</h3>
-                    <p>AI Ethics and Human Rights, Oxford University</p>
-                </div>
-                <div class="card">
-                    <h3>Sina Fazelpour</h3>
-                    <p>Tradeoffs Between Accuracy and Interpretability, Northeastern</p>
-                </div>
-                <div class="card">
-                    <h3>David Chalmers</h3>
-                    <p>Consciousness and AI, NYU</p>
-                </div>
-                <div class="card">
-                    <h3>John Basl</h3>
-                    <p>AI Ethics and Decision Subjects, Northeastern</p>
-                </div>
-                <!-- Add more cards for other speakers -->
+        <section class="section collapsible-section" id="about-section">
+            <div class="section-header" onclick="toggleSection('about-content')">
+                <h2>About the Seminar</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="about-content">
+                <p>This seminar explores what it means to be intelligent in an age of artificial minds. It examines how AI reshapes our sense of justice, power, and humanity. Join us for discussions with global experts in ethics, consciousness, and AI.</p>
             </div>
         </section>
 
-        <section class="calendar">
-            <h2>📅 Calendar of Events</h2>
-            <p>📍 In person at the RPW Center Main Conference Room | 🕒 12-2pm central time</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Guest</th>
-                        <th>Readings</th>
-                        <th>Topic</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10 Sept</td>
-                        <td>No guest</td>
-                        <td>Mollick: <em>Co-Intelligence</em>, Ch. 3, <a href="https://aeon.co/essays/can-philosophy-help-us-get-a-grip-on-the-consequences-of-ai" target="_blank" rel="noopener noreferrer">Frontier AI Ethics</a></td>
-                        <td>Introduction to AI and the Issues</td>
-                    </tr>
-                    <tr>
-                        <td>8 Oct</td>
-                        <td>John Tasioulas (Oxford, Institute for Ethics in AI)</td>
-                        <td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4879572" target="_blank" rel="noopener noreferrer">AI Ethics with Aristotle</a></td>
-                        <td>AI and virtue ethics</td>
-                    </tr>
-                    <tr>
-                        <td>29 Oct</td>
-                        <td>Sina Fazelpour (Northeastern University)</td>
-                        <td><a href="https://arxiv.org/abs/2403.04226" target="_blank" rel="noopener noreferrer">Disciplining deliberation: a sociotechnical perspective on machine learning trade-offs</a></td>
-                        <td>Tradeoffs between Accuracy and Interpretability/Fairness</td>
-                    </tr>
-                    <tr>
-                        <td>19 Nov</td>
-                        <td>Anaïs Nony (Johannesburg Institute for Advanced Study)</td>
-                        <td><a href="https://www.notion.so/Proletarianization-of-the-Mind-120323b6c467803b9b8cf35cf6956559?pvs=21" target="_blank" rel="noopener noreferrer">Proletarianization of the Mind</a></td>
-                        <td>AI and Contemporary French Theory</td>
-                    </tr>
-                    <tr>
-                        <td>7 Jan</td>
-                        <td>Kate Vredenburg (London School of Economics)</td>
-                        <td><a href="https://onlinelibrary.wiley.com/doi/10.1111/jopp.12262" target="_blank" rel="noopener noreferrer">The Right to Explanation</a></td>
-                        <td>Justice and Explainability in AI</td>
-                    </tr>
-                    <tr>
-                        <td>11 Feb</td>
-                        <td>David Chalmers (NYU, Center for Mind, Brain, and Consciousness)</td>
-                        <td>TBA</td>
-                        <td>Consciousness, Mind, and AI</td>
-                    </tr>
-                    <tr>
-                        <td>4 Mar</td>
-                        <td>John Basl (Northeastern University)</td>
-                        <td><a href="https://philpapers.org/archive/GRAWWO-2.pdf" target="_blank" rel="noopener noreferrer">What We Owe to Decision Subjects</a></td>
-                        <td>Should AI be allowed to do that?</td>
-                    </tr>
-                    <tr>
-                        <td>8 Apr</td>
-                        <td>David Thorstad & Jesse Spencer-Smith (Vanderbilt!)</td>
-                        <td><a href="https://globalprioritiesinstitute.org/wp-content/uploads/David-Thorstad-Against-the-singularity-hypothesis.pdf" target="_blank" rel="noopener noreferrer">Against the Singularity Hypothesis</a></td>
-                        <td>The Singularity Hypothesis and the Future of AI</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="section collapsible-section" id="focus-section">
+            <div class="section-header" onclick="toggleSection('focus-content')">
+                <h2>Focus and Aims</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="focus-content">
+                <ul>
+                    <li><i class="fas fa-brain"></i> How does AI challenge traditional concepts of intelligence and human uniqueness?</li>
+                    <li><i class="fas fa-balance-scale"></i> What ethical dilemmas arise from the integration of AI into our daily lives?</li>
+                    <li><i class="fas fa-globe"></i> How does AI reshape existing power dynamics, and what new forms of power does it create?</li>
+                    <li><i class="fas fa-book"></i> How can the humanities enrich the ongoing discourse on AI's societal implications?</li>
+                </ul>
+            </div>
         </section>
 
-        <section class="special-features">
-            <h2>Special Features</h2>
-            <ul>
-                <li><i class="fas fa-tools"></i> Full Access to Amplify AI Platform</li>
-                <li><i class="fas fa-microphone"></i> Talks from leading ethicists, philosophers, and researchers</li>
-                <li><i class="fas fa-laptop-code"></i> Hands-On Sessions showcasing practical AI applications</li>
-            </ul>
+        <section class="section collapsible-section" id="speakers-section">
+            <div class="section-header" onclick="toggleSection('speakers-content')">
+                <h2>Guest Speakers</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="speakers-content">
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>John Tasioulas</h3>
+                        <p>AI Ethics and Human Rights, Oxford University</p>
+                    </div>
+                    <div class="card">
+                        <h3>Sina Fazelpour</h3>
+                        <p>Tradeoffs Between Accuracy and Interpretability, Northeastern</p>
+                    </div>
+                    <div class="card">
+                        <h3>Anaïs Nony</h3>
+                        <p>Proletarianization of the Mind, Johannesburg Institute for Advanced Study</p>
+                    </div>
+                    <div class="card">
+                        <h3>Kate Vredenburg</h3>
+                        <p>The Right to Explanation, London School of Economics</p>
+                    </div>
+                    <div class="card">
+                        <h3>David Chalmers</h3>
+                        <p>Consciousness and AI, NYU</p>
+                    </div>
+                    <div class="card">
+                        <h3>John Basl</h3>
+                        <p>AI Ethics and Decision Subjects, Northeastern</p>
+                    </div>
+                    <div class="card">
+                        <h3>David Thorstad</h3>
+                        <p>The Singularity Hypothesis, Vanderbilt</p>
+                    </div>
+                    <div class="card">
+                        <h3>Jesse Spencer-Smith</h3>
+                        <p>Future of AI, Vanderbilt</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="resources">
-            <h2>Resources</h2>
-            <ul>
-                <li><a href="https://www.vanderbilt.ai" target="_blank" rel="noopener noreferrer">Vanderbilt's Amplify Login</a></li>
-                <li><a href="https://researchguides.library.vanderbilt.edu/AI-teaching" target="_blank" rel="noopener noreferrer">Vanderbilt's AI Resource Database</a></li>
-            </ul>
+        <section class="section collapsible-section" id="calendar-section">
+            <div class="section-header" onclick="toggleSection('calendar-content')">
+                <h2>📅 Calendar of Events</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="calendar-content">
+                <p>📍 In person at the RPW Center Main Conference Room | 🕒 12-2pm central time</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Guest</th>
+                            <th>Readings</th>
+                            <th>Topic</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10 Sept</td>
+                            <td>No guest</td>
+                            <td>Mollick: <em>Co-Intelligence</em>, Ch. 3, <a href="https://aeon.co/essays/can-philosophy-help-us-get-a-grip-on-the-consequences-of-ai" target="_blank" rel="noopener noreferrer">Frontier AI Ethics</a></td>
+                            <td>Introduction to AI and the Issues</td>
+                        </tr>
+                        <tr>
+                            <td>8 Oct</td>
+                            <td>John Tasioulas (Oxford, Institute for Ethics in AI)</td>
+                            <td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4879572" target="_blank" rel="noopener noreferrer">AI Ethics with Aristotle</a></td>
+                            <td>AI and virtue ethics</td>
+                        </tr>
+                        <tr>
+                            <td>29 Oct</td>
+                            <td>Sina Fazelpour (Northeastern University)</td>
+                            <td><a href="https://arxiv.org/abs/2403.04226" target="_blank" rel="noopener noreferrer">Disciplining deliberation: a sociotechnical perspective on machine learning trade-offs</a></td>
+                            <td>Tradeoffs between Accuracy and Interpretability/Fairness</td>
+                        </tr>
+                        <tr>
+                            <td>19 Nov</td>
+                            <td>Anaïs Nony (Johannesburg Institute for Advanced Study)</td>
+                            <td><a href="https://www.notion.so/Proletarianization-of-the-Mind-120323b6c467803b9b8cf35cf6956559?pvs=21" target="_blank" rel="noopener noreferrer">Proletarianization of the Mind</a></td>
+                            <td>AI and Contemporary French Theory</td>
+                        </tr>
+                        <tr>
+                            <td>7 Jan</td>
+                            <td>Kate Vredenburg (London School of Economics)</td>
+                            <td><a href="https://onlinelibrary.wiley.com/doi/10.1111/jopp.12262" target="_blank" rel="noopener noreferrer">The Right to Explanation</a></td>
+                            <td>Justice and Explainability in AI</td>
+                        </tr>
+                        <tr>
+                            <td>11 Feb</td>
+                            <td>David Chalmers (NYU, Center for Mind, Brain, and Consciousness)</td>
+                            <td>TBA</td>
+                            <td>Consciousness, Mind, and AI</td>
+                        </tr>
+                        <tr>
+                            <td>4 Mar</td>
+                            <td>John Basl (Northeastern University)</td>
+                            <td><a href="https://philpapers.org/archive/GRAWWO-2.pdf" target="_blank" rel="noopener noreferrer">What We Owe to Decision Subjects</a></td>
+                            <td>Should AI be allowed to do that?</td>
+                        </tr>
+                        <tr>
+                            <td>8 Apr</td>
+                            <td>David Thorstad & Jesse Spencer-Smith (Vanderbilt!)</td>
+                            <td><a href="https://globalprioritiesinstitute.org/wp-content/uploads/David-Thorstad-Against-the-singularity-hypothesis.pdf" target="_blank" rel="noopener noreferrer">Against the Singularity Hypothesis</a></td>
+                            <td>The Singularity Hypothesis and the Future of AI</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
-        <section class="podcasts">
-            <h2>Podcasts We Like</h2>
-            <ul>
-                <li>🎧 Hardfork (NYTimes) – weekly</li>
-                <li>🎧 The AI Daily Brief – daily</li>
-            </ul>
+        <section class="section collapsible-section" id="features-section">
+            <div class="section-header" onclick="toggleSection('features-content')">
+                <h2>Special Features</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="features-content">
+                <ul>
+                    <li><i class="fas fa-tools"></i> Full Access to Amplify AI Platform</li>
+                    <li><i class="fas fa-microphone"></i> Talks from leading ethicists, philosophers, and researchers</li>
+                    <li><i class="fas fa-laptop-code"></i> Hands-On Sessions showcasing practical AI applications</li>
+                </ul>
+            </div>
         </section>
 
-        <section class="contact">
-            <h2>Contact</h2>
-            <p>For more information, reach out to Cameron Pattison at <a href="mailto:cameron.pattison@vanderbilt.edu">cameron.pattison@vanderbilt.edu</a>.</p>
+        <section class="section collapsible-section" id="resources-section">
+            <div class="section-header" onclick="toggleSection('resources-content')">
+                <h2>Resources</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="resources-content">
+                <ul>
+                    <li><a href="https://www.vanderbilt.ai" target="_blank" rel="noopener noreferrer">Vanderbilt's Amplify Login</a></li>
+                    <li><a href="https://researchguides.library.vanderbilt.edu/AI-teaching" target="_blank" rel="noopener noreferrer">Vanderbilt's AI Resource Database</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section collapsible-section" id="podcasts-section">
+            <div class="section-header" onclick="toggleSection('podcasts-content')">
+                <h2>Podcasts We Like</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="podcasts-content">
+                <ul>
+                    <li>🎧 The AI Daily Brief – daily</li>
+                    <li>🎧 Hardfork (NYTimes) – weekly</li>
+                    <li>🎧 Latent Space – weekly</li>
+                    <li>🎧 The Gradient – monthly</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section collapsible-section" id="contact-section">
+            <div class="section-header" onclick="toggleSection('contact-content')">
+                <h2>Contact</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="contact-content">
+                <p>For more information, reach out to Cameron Pattison at <a href="mailto:cameron.pattison@vanderbilt.edu">cameron.pattison@vanderbilt.edu</a>.</p>
+            </div>
         </section>
     </div>
-</body>
-</html> 
+
+<style>
+    /* Collapsible sections */
+    .section {
+        margin-bottom: 2rem;
+    }
+    
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .section-header:hover {
+        background-color: var(--card-bg);
+        border-radius: 4px;
+        border-left: 4px solid var(--accent-color);
+        padding-left: calc(1rem - 4px);
+    }
+    
+    .section-header h2 {
+        margin: 0;
+    }
+    
+    .section-header i {
+        transition: transform 0.3s ease;
+        color: var(--accent-color);
+    }
+    
+    .section-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    
+    .section-content.expanded {
+        max-height: 5000px; /* Large enough to show all content */
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 1rem;
+    }
+
+    .card {
+        background-color: var(--card-bg);
+        border-radius: 6px;
+        padding: 1.5rem;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid var(--accent-color);
+    }
+
+    .card h3 {
+        margin-top: 0;
+        color: var(--text-color);
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Table styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        background-color: var(--card-bg);
+        font-weight: bold;
+        color: var(--accent-color);
+    }
+
+    tr:hover {
+        background-color: var(--hover-bg);
+    }
+</style>
+
+<!-- Add the typing effect script and toggle functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add typing effect to h1 headers
+        const headers = document.querySelectorAll('h1');
+        headers.forEach(header => {
+            const text = header.textContent;
+            header.textContent = '';
+            header.classList.add('typing-animation');
+            
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < text.length) {
+                    header.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                    // Remove cursor once animation is done
+                    setTimeout(() => {
+                        header.classList.remove('typing-animation');
+                    }, 1500);
+                }
+            }, parseInt(getComputedStyle(document.documentElement).getPropertyValue('--typing-speed')));
+        });
+        
+        // Initialize collapsible sections
+        const sections = document.querySelectorAll('.section-content');
+        sections.forEach(section => {
+            // Initially display all sections as expanded
+            section.classList.add('expanded');
+            const header = section.previousElementSibling;
+            const icon = header.querySelector('i');
+            if (icon) {
+                icon.style.transform = "rotate(180deg)";
+            }
+            section.style.maxHeight = section.scrollHeight + 'px';
+        });
+    });
+    
+    // Toggle section visibility
+    function toggleSection(sectionId) {
+        const content = document.getElementById(sectionId);
+        const header = content.previousElementSibling;
+        const icon = header.querySelector('i');
+        
+        // Toggle expanded class
+        content.classList.toggle('expanded');
+        
+        // Update icon rotation based on expanded class
+        if (content.classList.contains('expanded')) {
+            icon.style.transform = "rotate(180deg)";
+            content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+            icon.style.transform = "rotate(0deg)";
+            content.style.maxHeight = '0px';
+        }
+    }
+</script> 

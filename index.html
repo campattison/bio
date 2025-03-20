@@ -71,7 +71,8 @@
                 <li>AI Ethics</li>
                 <li>Classical Islamic Philosophy</li>
                 <li>Ancient Philosophy</li>
-                <li>Political Philosophy</li>
+                <li>Philosophy of Mind</li>
+                <li>Ethics</li>
             </ul>
         </section>
 
@@ -234,4 +235,31 @@
         }
     </style>
 </body>
+
+<!-- Add the typing effect script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add typing effect to h1 headers
+        const headers = document.querySelectorAll('h1');
+        headers.forEach(header => {
+            const text = header.textContent;
+            header.textContent = '';
+            header.classList.add('typing-animation');
+            
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < text.length) {
+                    header.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                    // Remove cursor once animation is done
+                    setTimeout(() => {
+                        header.classList.remove('typing-animation');
+                    }, 1500);
+                }
+            }, parseInt(getComputedStyle(document.documentElement).getPropertyValue('--typing-speed')));
+        });
+    });
+</script>
 </html> 

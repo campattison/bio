@@ -6,8 +6,8 @@
     <title>Philosophy of Computing Archive</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
@@ -36,12 +36,13 @@
 
             <p>Our field moves quickly, and each newsletter issue focuses on what's new. However, many opportunities—conferences, job postings, and calls for papers—remain open long after their first announcement. Rather than repeating these in subsequent newsletters, we maintain this hub as a living repository of current opportunities in the field.</p>
 
-            <div class="card" style="text-align: center; margin-top: 2rem; padding: 2rem;">
-                <h3 style="margin-bottom: 1rem;">Get the Monthly Newsletter</h3>
-                <p style="margin-bottom: 1.5rem;">Join our community of researchers, practitioners, and enthusiasts in normative philosophy of computing.</p>
-                <a href="https://philosophyofcomputing.substack.com" target="_blank" style="display: inline-block; padding: 1rem 2rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
+            <div class="card subscription-card" onclick="window.open('https://philosophyofcomputing.substack.com', '_blank')">
+                <h3>Get the Monthly Newsletter</h3>
+                <p>Join our community of researchers, practitioners, and enthusiasts in normative philosophy of computing.</p>
+                <div class="subscribe-button">
                     <i class="fas fa-envelope"></i> Subscribe on Substack
-                </a>
+                </div>
+                <p class="click-hint"><i class="fas fa-mouse-pointer"></i> Click anywhere in this box to subscribe</p>
             </div>
         </div>
         <!-- Globe Section -->
@@ -790,9 +791,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             try {
                 // Initialize all functionality
+                setTimeout(() => {
                 updateLists();
                 createGlobe();
                 initCalendar();
+                }, 100);
 
                 // Add error handling
                 window.onerror = function(msg, url, lineNo, columnNo, error) {
@@ -928,6 +931,9 @@
         function createGlobe() {
             const globeContainer = document.getElementById('globeViz');
             
+            // Detect theme preference
+            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
             // Clear any existing content
             globeContainer.innerHTML = '<div class="globe-loading">Loading visualization...</div>';
             
@@ -936,10 +942,17 @@
                 const containerWidth = globeContainer.clientWidth;
                 const containerHeight = 500;
 
+                // Check if Globe function exists
+                if (typeof Globe !== 'function') {
+                    throw new Error('Globe function not found. Library may not be loaded properly.');
+                }
+
                 // Initialize globe with explicit dimensions
                 const globe = Globe()
-                    .backgroundColor('#ffffff')
-                    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                    .backgroundColor(prefersDarkMode ? '#121212' : '#f0f0f0')
+                    .globeImageUrl(prefersDarkMode 
+                        ? 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg'
+                        : 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
                     .width(containerWidth)
                     .height(containerHeight)
                     .pointOfView({
@@ -956,10 +969,10 @@
                 legend.className = 'globe-legend';
                 legend.innerHTML = `
                     <div class="legend-item" id="legend-conferences">
-                        <span class="legend-dot" style="background: #2196F3;"></span> Conferences
+                        <span class="legend-dot" style="background: ${prefersDarkMode ? '#2196F3' : '#3182CE'};"></span> Conferences
                     </div>
                     <div class="legend-item" id="legend-jobs">
-                        <span class="legend-dot" style="background: #FF9800;"></span> Jobs
+                        <span class="legend-dot" style="background: ${prefersDarkMode ? '#FF9800' : '#ED8936'};"></span> Jobs
                     </div>
                 `;
                 globeContainer.appendChild(legend);
@@ -998,7 +1011,7 @@
                                     lat: conf.lat,
                                     lng: conf.lng,
                                     size: 0.8,
-                                    color: '#2196F3',  // Accessible blue
+                                    color: prefersDarkMode ? '#2196F3' : '#3182CE',  // Accessible blue
                                     type: 'conference',
                                     data: conf
                                 });
@@ -1012,7 +1025,7 @@
                                     lat: job.lat,
                                     lng: job.lng,
                                     size: 0.8,
-                                    color: '#FF9800',  // Accessible orange
+                                    color: prefersDarkMode ? '#FF9800' : '#ED8936',  // Accessible orange
                                     type: 'job',
                                     data: job
                                 });
@@ -1087,6 +1100,12 @@
                     const width = globeContainer.clientWidth;
                     globe.width(width);
                     globe.controls().update();
+                });
+                
+                // Listen for theme changes
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addEventListener('change', () => {
+                    // Will be reloaded by the main theme change listener
                 });
 
                 return globe;
@@ -1442,538 +1461,351 @@
         }
     </script>
 
-    <style>
-        .month-section {
-            margin: 1rem 0;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 12px;
-        }
-
-        .month-section h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.5em;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .paper-preview {
-            margin-top: 1.5rem;
-        }
-
-        .paper-preview h4 {
-            color: var(--secondary-color);
-            margin-bottom: 1.2rem;
-            font-size: 1.1em;
-        }
-
-        .paper-preview ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .paper-preview li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1.2rem 1.5rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-
-        .paper-preview li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .paper-title {
-            flex: 2;
-            color: var(--primary-color);
-            font-size: 1.1em;
-            font-weight: bold;
-            padding-right: 1rem;
-        }
-
-        .paper-authors {
-            flex: 1;
-            color: var(--secondary-color);
-            font-size: 0.95em;
-            padding: 0 1rem;
-        }
-
-        .paper-summary {
-            flex: 2;
-            color: #666;
-            font-size: 0.95em;
-            line-height: 1.5;
-            padding-left: 1rem;
-        }
-
-        .paper-divider {
-            width: 1px;
-            height: 40px;
-            background-color: var(--primary-color);
-            opacity: 0.3;
-        }
-
-        .view-all {
-            text-align: right;
-            margin: 1.5rem 0 0.5rem;
-        }
-
-        .view-all .button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.2rem;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .view-all .button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .view-all .button i {
-            font-size: 1.1em;
-        }
-
-        .card {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .card .card-content {
-            display: block;
-            padding: 15px;
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .section-header, .month-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        .section-header:hover, .month-header:hover {
-            background: #e9ecef;
-        }
-
-        .section-header h2, .month-header h3 {
-            margin: 0;
-            border: none;
-        }
-
-        .section-header i, .month-header i {
-            transition: transform 0.3s ease;
-        }
-
-        .section-content {
-            max-height: 0;
+    <!-- UI Enhancement Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user prefers dark or light mode
+            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Add hover effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.card, .calendar-event, .paper-preview li, .section-header');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)';
+                    if (this.classList.contains('section-header')) {
+                        this.style.backgroundColor = prefersDarkMode ? '#161616' : '#e8e8e8';
+                    } else if (this.classList.contains('calendar-event')) {
+                        this.style.borderLeftWidth = '4px';
+                        this.style.paddingLeft = '8px';
+                    } else if (this.classList.contains('card')) {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.borderColor = 'var(--accent-color)';
+                        this.style.boxShadow = prefersDarkMode 
+                            ? '0 8px 20px rgba(0, 0, 0, 0.3)' 
+                            : '0 8px 20px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        this.style.transform = 'translateY(-2px)';
+                        this.style.borderColor = 'var(--accent-color)';
+                        this.style.boxShadow = prefersDarkMode 
+                            ? '0 5px 15px rgba(0, 0, 0, 0.3)'
+                            : '0 5px 15px rgba(0, 0, 0, 0.08)';
+                    }
+                });
+                
+                el.addEventListener('mouseleave', function() {
+                    if (this.classList.contains('section-header')) {
+                        this.style.backgroundColor = '';
+                    } else if (this.classList.contains('calendar-event')) {
+                        this.style.borderLeftWidth = '';
+                        this.style.paddingLeft = '';
+                    } else {
+                        this.style.transform = '';
+                        this.style.borderColor = '';
+                        this.style.boxShadow = '';
+                    }
+                });
+            });
+            
+            // Add typing effect to headers
+            const headers = document.querySelectorAll('h1');
+            headers.forEach(header => {
+                const text = header.textContent;
+                header.textContent = '';
+                header.classList.add('typing-animation');
+                
+                let i = 0;
+                const typingEffect = setInterval(() => {
+                    if (i < text.length) {
+                        header.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingEffect);
+                        // Remove cursor once animation is done
+                        setTimeout(() => {
+                            header.classList.remove('typing-animation');
+                        }, 1500);
+                    }
+                }, parseInt(getComputedStyle(document.documentElement).getPropertyValue('--typing-speed')));
+            });
+            
+            // Add terminal-style loading indicator for globe
+            const globeContainer = document.getElementById('globeViz');
+            if (globeContainer) {
+                const loader = document.createElement('div');
+                loader.className = 'globe-loading';
+                
+                // Different loading indicator based on theme
+                if (prefersDarkMode) {
+                    // Dark theme terminal-style loader
+                    loader.innerHTML = `
+                        <div style="font-family: var(--font-mono); text-align: left; color: #f0f0f0;">
+                            <div style="margin-bottom: 15px; font-size: 1rem;">
+                                <span style="color: var(--accent-color);">></span> Initializing globe visualization
+                            </div>
+                            <div class="terminal-loader">
+                                <span style="color: var(--accent-color);">[</span>
+                                <span class="loader-progress" style="color: var(--text-color);"></span>
+                                <span style="color: var(--accent-color);">]</span>
+                                <span class="loader-percent" style="color: var(--accent-color); margin-left: 10px;">0%</span>
+                            </div>
+                        </div>`;
+                } else {
+                    // Light theme more minimal loader
+                    loader.innerHTML = `
+                        <div style="text-align: center; font-family: var(--font-sans);">
+                            <svg class="spinner" width="50" height="50" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                            <div style="margin-top: 15px; color: var(--text-color);">
+                                Loading Globe Visualization
+                            </div>
+                            <div class="loader-percent" style="font-size: 0.9rem; color: var(--accent-color); margin-top: 5px;">0%</div>
+                        </div>`;
+                }
+                
+                // Only add if not already present
+                if (!document.querySelector('.globe-loading')) {
+                    globeContainer.appendChild(loader);
+                    
+                    // Animate the loader
+                    const percent = loader.querySelector('.loader-percent');
+                    let progress = 0;
+                    
+                    const interval = setInterval(() => {
+                        if (progress >= 100) {
+                            clearInterval(interval);
+                            
+                            // Remove loader once globe is initialized
+                            if (typeof Globe === 'function') {
+                                setTimeout(() => {
+                                    const loader = document.querySelector('.globe-loading');
+                                    if (loader) {
+                                        loader.style.opacity = '0';
+                                        setTimeout(() => loader.style.display = 'none', 500);
+                                    }
+                                }, 500);
+                            }
+                        }
+                        
+                        progress += 5;
+                        
+                        if (prefersDarkMode) {
+                            // Update terminal style progress
+                            const progressBar = loader.querySelector('.loader-progress');
+                            const barWidth = Math.floor(progress / 5);
+                            progressBar.innerHTML = '='.repeat(barWidth);
+                        } else {
+                            // Update circular spinner rotation
+                            const spinner = loader.querySelector('.spinner');
+                            if (spinner) {
+                                spinner.style.transform = `rotate(${progress * 3.6}deg)`;
+                            }
+                        }
+                        
+                        percent.textContent = `${progress}%`;
+                    }, 100);
+                }
+                
+                // Add style for loaders
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    /* Dark theme loader */
+                    .terminal-loader {
+                        display: inline-block;
+                        font-family: var(--font-mono);
+                        color: var(--text-color);
+                        background: ${prefersDarkMode ? 'rgba(10, 10, 10, 0.8)' : 'transparent'};
+                        padding: 8px;
+                    }
+                    
+                    .loader-progress {
+                        display: inline-block;
+                        width: 20ch;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
+                    }
+                    
+                    .loader-percent {
+                        margin-left: 10px;
+                        width: 4ch;
+                        display: inline-block;
+                    }
+                    
+                    /* Light theme spinner */
+                    .spinner {
+                        animation: rotate 2s linear infinite;
+                        width: 50px;
+                        height: 50px;
+                    }
+                    
+                    .spinner .path {
+                        stroke: var(--accent-color);
+                        stroke-linecap: round;
+                        animation: dash 1.5s ease-in-out infinite;
+                    }
+                    
+                    @keyframes rotate {
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+                    
+                    @keyframes dash {
+                        0% {
+                            stroke-dasharray: 1, 150;
+                            stroke-dashoffset: 0;
+                        }
+                        50% {
+                            stroke-dasharray: 90, 150;
+                            stroke-dashoffset: -35;
+                        }
+                        100% {
+                            stroke-dasharray: 90, 150;
+                            stroke-dashoffset: -124;
+                        }
+                    }
+                    
+                    .globe-loading {
+                        transition: opacity 0.5s ease;
+                        background: var(--card-bg);
+                        padding: 20px 25px;
+                        border: 1px solid var(--accent-color);
+                        box-shadow: var(--card-shadow);
+                    }
 
-        .section-content.expanded {
-            max-height: 2000px; /* Large enough to contain content */
-        }
-
-        #bibliography-content {
-            padding: 0;
-        }
-
-        #bibliography-content.expanded {
-            max-height: none;
-        }
-
-        /* Card Styles */
-        .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .card-header {
-            padding: 1.2rem;
-            border-bottom: 1px solid #eee;
-            background: #f8f9fa;
-        }
-
-        .card-title {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 1.2em;
-        }
-
-        .card-subtitle {
-            color: var(--secondary-color);
-            margin: 0.5rem 0;
-            font-size: 0.95em;
-        }
-
-        .card-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85em;
-            color: white;
-        }
-
-        .tag i {
-            font-size: 0.9em;
-        }
-
-        .tag.deadline {
-            background-color: #e74c3c;
-        }
-
-        .tag.date {
-            background-color: #3498db;
-        }
-
-        .tag.location {
-            background-color: #2ecc71;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.2rem;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .button:hover {
-            background: var(--secondary-color);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 1rem;
-        }
-
-        /* Globe Legend Styles */
-        .globe-legend {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
-            font-size: 0.9em;
-            color: #333;
-        }
-
-        .legend-dot {
-            width: 12px;
-            height: 12px;
+                    /* Ensure tooltips have good contrast */
+                    .globe-tooltip, .event-tooltip {
+                        color: var(--text-color);
+                        background: var(--card-bg);
+                        border: 1px solid var(--accent-color);
+                        box-shadow: var(--card-shadow);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Custom cursor effect - more subtle in light mode
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            document.body.appendChild(cursor);
+            
+            // Add style for custom cursor
+            const cursorStyle = document.createElement('style');
+            cursorStyle.innerHTML = `
+                .custom-cursor {
+                    position: fixed;
+                    width: ${prefersDarkMode ? '8px' : '6px'};
+                    height: ${prefersDarkMode ? '8px' : '6px'};
+                    background: var(--accent-color);
             border-radius: 50%;
-            margin-right: 8px;
-            display: inline-block;
-        }
-
-        #globeViz {
-            position: relative;
-            height: 500px;
-            width: 100%;
-            background: #fff;
-        }
-
-        .globe-tooltip {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 0.9em;
             pointer-events: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
+                    mix-blend-mode: ${prefersDarkMode ? 'difference' : 'normal'};
+                    z-index: 9999;
+                    transform: translate(-50%, -50%);
+                    transition: width 0.2s, height 0.2s, background 0.2s;
+                    opacity: ${prefersDarkMode ? '0.7' : '0.4'};
+                }
+                
+                .custom-cursor-active {
+                    width: ${prefersDarkMode ? '20px' : '16px'};
+                    height: ${prefersDarkMode ? '20px' : '16px'};
+                    background: ${prefersDarkMode ? 'rgba(100, 255, 218, 0.3)' : 'rgba(11, 125, 108, 0.2)'};
+                    mix-blend-mode: normal;
+                    border: 1px solid var(--accent-color);
+                }
 
-        .globe-tooltip strong {
-            color: var(--primary-color);
-            display: block;
-            margin-bottom: 4px;
-        }
+                /* Additional styles to ensure text readability */
+                .card-content p {
+                    font-size: 0.95rem;
+                    line-height: 1.7;
+                }
 
-        .tooltip-date, .tooltip-org, .tooltip-location, .tooltip-type {
-            display: block;
-            color: #666;
-            font-size: 0.9em;
-            margin: 2px 0;
-        }
-
-        /* Update the globe filters markup styling */
-        .globe-filters {
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 0.5rem;
-            background: #f0f0f0;
-            border-radius: 8px;
-        }
-
-        .globe-filters label {
-            margin: 0;
-        }
-
-        .globe-filters label input[type="checkbox"] {
-            margin-right: 0.5rem;
-        }
-
-        .globe-filters label select {
-            margin-left: 0.5rem;
-        }
-
-        .globe-filters select {
-            padding: 0.25rem;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        /* Calendar Styles */
-        :root {
-            --cfp-color: #e74c3c;
-            --conference-color: #3498db;
-            --job-color: #2ecc71;
-        }
-
-        .calendar-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .calendar-nav-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .calendar-nav-btn:hover {
-            background-color: var(--secondary-color);
-        }
-
-        #calendar-month {
-            margin: 0;
-            font-size: 1.3em;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        .calendar-container {
-            width: 100%;
-            padding: 0;
-            margin-bottom: 1.5rem;
-            overflow: visible;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            width: 100%;
-            max-width: 100%;
-            min-height: 500px; /* Ensure minimum height for calendar */
-        }
-
-        #calendar-content {
-            overflow: visible;
-            height: auto !important;
-            min-height: 650px; /* Set minimum height for calendar section */
-            transition: max-height 0.5s ease-out;
-        }
-
-        .calendar-day-header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 8px 0;
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-
-        .calendar-day {
-            min-height: 80px;
-            border: 1px solid #e0e0e0;
-            padding: 5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .calendar-day-number {
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-align: right;
-        }
-
-        .calendar-day.other-month {
-            background-color: #f5f5f5;
-            color: #aaa;
-        }
-
-        .calendar-day.today {
-            background-color: #f8f9fa;
-            border: 2px solid var(--primary-color);
-        }
-
-        .calendar-event {
-            margin: 2px 0;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            cursor: pointer;
-            color: white;
-        }
-
-        .calendar-event.cfp {
-            background-color: var(--cfp-color);
-        }
-
-        .calendar-event.conference {
-            background-color: var(--conference-color);
-        }
-
-        .calendar-event.job {
-            background-color: var(--job-color);
-        }
-
-        .calendar-event-more {
-            margin-top: 2px;
-            font-size: 0.8em;
-            color: #666;
-            text-align: center;
-        }
-
-        .calendar-legend {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.9em;
-            margin-bottom: 5px;
-        }
-
-        .legend-color {
-            display: block;
-            width: 16px;
-            height: 16px;
-            border-radius: 3px;
-            margin-right: 5px;
-            flex-shrink: 0;
-        }
-
-        .event-tooltip {
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 4px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            max-width: 250px;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .calendar-grid {
-                grid-template-columns: repeat(7, 1fr);
-                font-size: 0.85em;
-            }
+                .tag {
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+                
+                /* Theme adaptation listener */
+                @media (prefers-color-scheme: dark) {
+                    .custom-cursor {
+                        width: 8px;
+                        height: 8px;
+                        opacity: 0.7;
+                        mix-blend-mode: difference;
+                    }
+                    
+                    .custom-cursor-active {
+                        width: 20px;
+                        height: 20px;
+                        background: rgba(100, 255, 218, 0.3);
+                    }
+                }
+                
+                @media (prefers-color-scheme: light) {
+                    .custom-cursor {
+                        width: 6px;
+                        height: 6px;
+                        opacity: 0.4;
+                        mix-blend-mode: normal;
+                    }
+                    
+                    .custom-cursor-active {
+                        width: 16px;
+                        height: 16px;
+                        background: rgba(11, 125, 108, 0.2);
+                    }
+                }
+            `;
+            document.head.appendChild(cursorStyle);
             
-            .calendar-day {
-                min-height: 60px;
-                padding: 3px;
-            }
+            document.addEventListener('mousemove', e => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
             
-            .calendar-event {
-                font-size: 0.7em;
-                padding: 1px 2px;
-            }
+            document.addEventListener('mousedown', () => {
+                cursor.classList.add('custom-cursor-active');
+            });
             
-            .calendar-day-header {
-                padding: 5px 0;
-                font-size: 0.8em;
-            }
-        }
-    </style>
+            document.addEventListener('mouseup', () => {
+                cursor.classList.remove('custom-cursor-active');
+            });
+            
+            // Smooth scroll to section when clicked in navigation
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Only apply to hash links on the same page
+                    if (this.getAttribute('href').includes('#') && !this.getAttribute('href').includes('.html')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').split('#')[1];
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+                
+                // Add hover effect for nav links
+                link.addEventListener('mouseenter', function() {
+                    cursor.classList.add('custom-cursor-active');
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    cursor.classList.remove('custom-cursor-active');
+                });
+            });
+            
+            // Listen for system theme changes
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            mediaQuery.addEventListener('change', () => {
+                // Reload the page to apply new theme
+                window.location.reload();
+            });
+        });
+    </script>
 </body>
 </html>
