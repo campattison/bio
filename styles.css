@@ -111,17 +111,41 @@ header {
     transition: background-color 0.3s ease;
 }
 
+/* Create rainbow animation keyframes */
+@keyframes rainbow-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Update the header bar */
 header::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 3px;
     background: linear-gradient(90deg, 
-        var(--cfp-color) 0%, 
-        var(--conference-color) 50%, 
-        var(--job-color) 100%);
+        #ff0000 0%, 
+        #ff9900 10%, 
+        #ffff00 20%, 
+        #33cc33 30%, 
+        #0099cc 40%, 
+        #0066ff 50%, 
+        #6633cc 60%, 
+        #cc33cc 70%, 
+        #ff0066 80%, 
+        #ff0000 90%, 
+        #ff9900 100%);
+    background-size: 200% 200%;
+    animation: rainbow-move 8s linear infinite;
 }
 
 .main-nav {
