@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Reasoning Lab Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .time-display {
+            display: flex;
+            gap: 20px;
+            cursor: pointer;
+        }
+        .time-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .time-box {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 150px;
+            text-align: center;
+        }
+        .reset-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .reset-button:hover {
+            background-color: #d32f2f;
+        }
+        .activity-container {
+            margin-top: 30px;
+        }
+        .activity {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .activity:hover {
+            background-color: #f0f0f0;
+        }
+        .activity.transition:hover {
+            background-color: #e0e8ff;
+        }
+        .activity.current:hover {
+            background-color: #d7f2d7;
+        }
+        .activity-time {
+            min-width: 120px;
+            font-weight: bold;
+        }
+        .activity-duration {
+            min-width: 100px;
+            color: #555;
+        }
+        .activity-description {
+            flex-grow: 1;
+        }
+        .current {
+            background-color: #e7f7e7;
+            border-left: 5px solid #4CAF50;
+            font-weight: bold;
+        }
+        .completed {
+            background-color: #f5f5f5;
+            color: #999;
+        }
+        .upcoming {
+            background-color: white;
+        }
+        .transition {
+            background-color: #f0f4ff;
+            font-style: italic;
+            color: #555;
+        }
+        .description-panel {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #2196F3;
+        }
+        .description-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* Fullscreen overlay styles */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: auto;
+        }
+        
+        .overlay-content {
+            width: 80%;
+            max-width: 1000px;
+            text-align: center;
+            padding: 40px 0;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .overlay-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .overlay-timer {
+            font-size: 60px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .overlay-description {
+            font-size: 22px;
+            margin: 15px 0;
+            line-height: 1.4;
+            text-align: left;
+        }
+        
+        .overlay-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .overlay-button {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .next-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .exit-button {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .auto-advance-toggle {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin: 0 10px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #4CAF50;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+        
+        .activity-guidance {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            overflow-y: auto;
+            max-height: 40vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">Maxie Case Debate - Analogical Reasoning</div>
+            <div class="time-controls">
+                <div class="time-display" id="timeDisplay">
+                    <div class="time-box" id="clock">12:00:00</div>
+                    <div class="time-box" id="timer">00:00</div>
+                </div>
+                <button class="reset-button" id="resetButton">Reset Timer</button>
+            </div>
+        </div>
+
+        <div class="activity-container" id="activities">
+            <!-- Activities will be inserted here by JavaScript -->
+        </div>
+
+        <div class="description-panel" id="current-description">
+            <div class="description-title">Current Activity</div>
+            <div id="description-content">
+                Welcome to the Legal Reasoning Lab. We'll be analyzing the Maxie case using analogical argument techniques.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fullscreen overlay -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <div class="overlay-content">
+            <div class="overlay-title" id="overlayTitle">Current Activity</div>
+            <div class="overlay-timer" id="overlayTimer">00:00</div>
+            <div class="overlay-description" id="overlayDescription">
+                Activity description will appear here.
+            </div>
+            <div class="activity-guidance" id="activityGuidance">
+                Detailed instructions will appear here.
+            </div>
+            <div class="overlay-buttons">
+                <button class="overlay-button next-button" id="nextButton">Next Activity</button>
+                <button class="overlay-button exit-button" id="exitButton">Exit Fullscreen</button>
+            </div>
+            <div class="auto-advance-toggle">
+                <span>Auto-advance:</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="autoAdvanceToggle" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define activities
+        const activities = [
+            {
+                time: "10:10 - 10:20",
+                duration: "10 minutes",
+                description: "Setup: Assign teams and explain activity",
+                details: "We'll divide into teams and explain the structure of the debate. Each team will construct an analogical argument either supporting Maxie's position or the federal agents' position using the three controlling cases.",
+                guidance: `
+                    <h3>What is this activity about?</h3>
+                    <p>In this Legal Reasoning Lab, we're exploring how analogical arguments work in legal reasoning by analyzing a Fourth Amendment case. We're examining whether intercepting cell phone messages constitutes an unreasonable search.</p>
+                    
+                    <h3>Team Positions:</h3>
+                    <ul>
+                        <li><strong>Prosecution Teams:</strong> Argue that the federal agents did NOT violate Maxie's reasonable expectation of privacy when intercepting his messages (government position)</li>
+                        <li><strong>Defense Teams:</strong> Argue that the federal agents DID violate Maxie's reasonable expectation of privacy (Maxie's position)</li>
+                    </ul>
+                    
+                    <h3>The tools we're using:</h3>
+                    <ul>
+                        <li><strong>Analogical reasoning</strong> - comparing cases with similar characteristics</li>
+                        <li><strong>Controlling cases</strong> - precedents that guide our decision-making</li>
+                        <li><strong>Evaluation criteria</strong> - ways to judge the strength of analogical arguments</li>
+                    </ul>
+                    
+                    <h3>What you need to do now:</h3>
+                    <p>Listen for your team assignment. We'll have four teams total (two prosecution, two defense) running concurrent debates.</p>
+                `
+            },
+            {
+                time: "10:20 - 10:21",
+                duration: "--",
+                description: "Transition to team areas",
+                isTransition: true,
+                details: "Please move to your assigned team areas to begin preparation.",
+                guidance: `
+                    <p>Please move to your assigned team areas now.</p>
+                    <p>Prosecution teams to the bottom of the room.</p>
+                    <p>Defense teams to the top of the room.</p>
+                    <p>We'll have two separate debates running concurrently.</p>
+                `
+            },
+            {
+                time: "10:21 - 10:28",
+                duration: "7 minutes",
+                description: "Team preparation: \"War game\" opinions",
+                details: "Teams should identify relevant similarities and dissimilarities between Maxie's case and the controlling cases that support their assigned position.",
+                guidance: `
+                    <h3>Prosecution Teams (Government Position):</h3>
+                    <p>Your goal is to argue that federal agents did NOT violate Maxie's reasonable expectation of privacy.</p>
+                    
+                    <h3>Defense Teams (Maxie's Position):</h3>
+                    <p>Your goal is to argue that federal agents DID violate Maxie's reasonable expectation of privacy.</p>
+
+                    <h3>How to prepare your argument:</h3>
+                    <ol>
+                        <li>Identify which controlling cases support your position</li>
+                        <li>List the relevant similarities between your supporting case(s) and Maxie's situation</li>
+                        <li>Prepare to explain why these similarities are <em>relevant</em> to the legal conclusion</li>
+                        <li>Anticipate which cases the opposing team will use and prepare counter-arguments</li>
+                        <li>Consider the key dissimilarities the opposition might raise and how you'll respond</li>
+                    </ol>
+                    
+                    <h3>Remember the form of analogical argument:</h3>
+                    <ol>
+                        <li>Case A has characteristics F, G, H</li>
+                        <li>Case B has characteristics F, G, H</li>
+                        <li>Case A was decided X way</li>
+                        <li>Therefore, Case B should be decided X way</li>
+                    </ol>
+                `
+            },
+            {
+                time: "10:28 - 10:29",
+                duration: "--",
+                description: "Transition to presentation space",
+                isTransition: true,
+                details: "Please move to your debate areas for team arguments.",
+                guidance: `
+                    <p>Each debate group should move to their designated presentation area.</p>
+                    <p>Debate 1: Front of room | Debate 2: Back of room</p>
+                    <p>Prosecution teams will present first, followed by the defense.</p>
+                    <p>Each team should select 1-2 speakers to present their argument.</p>
+                `
+            },
+            {
+                time: "10:29 - 10:34",
+                duration: "5 minutes",
+                description: "Prosecution presentation",
+                details: "The prosecution team will present their argument supporting the government's position that there was no violation of Maxie's reasonable expectation of privacy. Focus on analogies to Weber and Robinson cases.",
+                guidance: `
+                    <h3>Prosecution Guidelines:</h3>
+                    <p>Your goal is to argue that the federal agents did NOT violate Maxie's reasonable expectation of privacy when they intercepted his cell phone messages.</p>
+                    
+                `
+            },
+            {
+                time: "10:34 - 10:39",
+                duration: "5 minutes",
+                description: "Defense presentation",
+                details: "The defense team will present their argument supporting Maxie's position that the search violated his reasonable expectation of privacy. Focus on analogies to the Taylor case.",
+                guidance: `
+                    <h3>Defense Guidelines:</h3>
+                    <p>Your goal is to argue that the federal agents violated Maxie's reasonable expectation of privacy when they intercepted his cell phone messages.</p>
+                `
+            },
+            {
+                time: "10:39 - 10:40",
+                duration: "--",
+                description: "Return to team areas",
+                isTransition: true,
+                details: "Please return to your team areas for the debrief session.",
+                guidance: `
+                    <p>Please return to your team areas for the debrief session.</p>
+                    <p>You'll discuss the strengths and weaknesses of both presentations.</p>
+                `
+            },
+            {
+                time: "10:40 - 10:47",
+                duration: "7 minutes",
+                description: "Team debrief",
+                details: "Discuss the strengths and weaknesses of both arguments. Evaluate the analogical arguments using our criteria: truth, relevance, number, diversity, and disanalogy.",
+                guidance: `
+                    <h3>Debrief Questions to Discuss:</h3>
+                    <ol>
+                        <li>Which team had stronger analogies to the controlling cases?</li>
+                        <li>Were there any factual errors in either presentation? (Truth)</li>
+                        <li>Did both teams focus on legally relevant similarities? (Relevance)</li>
+                        <li>Which team used more supporting cases effectively? (Number)</li>
+                        <li>Did either team successfully use diverse types of similarities? (Diversity)</li>
+                        <li>How effectively did each team address potential dissimilarities? (Disanalogy)</li>
+                    </ol>
+                    
+                    <p>Prepare to write up a brief summary of your argument, incorporating any strong points from the opposing side that you need to address.</p>
+                `
+            },
+            {
+                time: "10:47 - 10:55",
+                duration: "8 minutes",
+                description: "Write up conclusions",
+                details: "Each team should write a brief reflection on the power of analogical reasoning in law, using this case as an example.",
+                guidance: `
+                    <h3>Write-up Guidelines:</h3>
+                    <p>On your handout, prepare a written reflection that includes:</p>
+                    
+                    <ol>
+                        <li>How analogical reasoning helps navigate novel legal questions like those in the Maxie case</li>
+                        <li>Which similarities and dissimilarities between the cases were most relevant to reaching a conclusion</li>
+                        <li>How the various criteria for evaluating analogical arguments (truth, relevance, number, diversity, disanalogy) influenced your thinking</li>
+                        <li>The strengths and limitations of analogical reasoning you observed in analyzing this Fourth Amendment question</li>
+                    </ol>
+                    
+                    <p>This reflection will be collected at the end of the session.</p>
+                `
+            },
+            {
+                time: "10:55 - 10:56",
+                duration: "--",
+                description: "Prepare for voting",
+                isTransition: true,
+                details: "We'll now prepare to vote on how the Maxie case should be decided.",
+                guidance: `
+                    <p>Please finish your reflections.</p>
+                    <p>We'll now vote on how the Maxie case should be decided based on the analogical reasoning we've explored.</p>
+                    <p>Think about which precedent cases provide the most compelling analogies to Maxie's situation.</p>
+                `
+            },
+            {
+                time: "10:56 - 10:58",
+                duration: "2 minutes",
+                description: "Final voting",
+                details: "We'll conduct an oral vote with 'ayes' and 'nays' on how the Maxie case should be ruled.",
+                guidance: `
+                    <h3>Oral Voting Instructions:</h3>
+                    <p>We'll vote by voice on whether the federal agents violated Maxie's reasonable expectation of privacy:</p>
+                    <ul>
+                        <li><strong>"AYE"</strong> - Vote for <strong>Maxie's position</strong> (Defense): The agents violated his privacy rights by intercepting his messages without a warrant</li>
+                        <li><strong>"NAY"</strong> - Vote for the <strong>Government's position</strong> (Prosecution): No reasonable expectation of privacy was violated</li>
+                    </ul>
+                    
+                    <p>When called upon, please respond clearly with either "aye" (for Maxie) or "nay" (for the government) based on which legal position you find more convincing after hearing the analogical arguments.</p>
+                `
+            },
+            {
+                time: "10:58 - 11:00",
+                duration: "2 minutes",
+                description: "Wrap-up",
+                details: "We'll announce the results and discuss what we've learned about applying analogical reasoning in legal contexts.",
+                guidance: `
+                    <h3>Key Takeaways:</h3>
+                    <ul>
+                        <li>Analogical reasoning is central to legal argumentation</li>
+                        <li>The strength of an analogical argument depends on the relevance of similarities</li>
+                        <li>Identifying and addressing dissimilarities is crucial</li>
+                        <li>Courts often wrestle with competing analogies to decide cases</li>
+                    </ul>
+                    
+                    <p>Please submit your team's written conclusions before leaving.</p>
+                    <p>Thank you for your participation!</p>
+                `
+            }
+        ];
+
+        // Variables for timer
+        let timerStarted = false;
+        let timerInterval;
+        let autoAdvanceEnabled = true;
+        
+        // Get DOM elements
+        const timeDisplay = document.getElementById("timeDisplay");
+        const fullscreenOverlay = document.getElementById("fullscreenOverlay");
+        const overlayTitle = document.getElementById("overlayTitle");
+        const overlayTimer = document.getElementById("overlayTimer");
+        const overlayDescription = document.getElementById("overlayDescription");
+        const activityGuidance = document.getElementById("activityGuidance");
+        const nextButton = document.getElementById("nextButton");
+        const exitButton = document.getElementById("exitButton");
+        const autoAdvanceToggle = document.getElementById("autoAdvanceToggle");
+        const resetButton = document.getElementById("resetButton");
+        
+        // Current activity index for navigation
+        let currentActivityIndex = 0;
+        
+        // Function to initialize timer and start from beginning
+        function initializeTimer() {
+            if (!timerStarted) {
+                timerStarted = true;
+                
+                // Reset all activity times based on now
+                const now = new Date();
+                let currentTime = new Date(now);
+                
+                // Set up the timing for each activity
+                activities.forEach((activity, index) => {
+                    activity.startTime = new Date(currentTime);
+                    
+                    // Calculate end time based on duration
+                    let durationMinutes = 1; // Default 1 minute for transitions
+                    
+                    if (!activity.isTransition) {
+                        const durationStr = activity.duration;
+                        const parsedDuration = parseInt(durationStr);
+                        if (!isNaN(parsedDuration)) {
+                            durationMinutes = parsedDuration;
+                        }
+                    }
+                    
+                    currentTime = new Date(currentTime.getTime() + (durationMinutes * 60 * 1000));
+                    activity.endTime = new Date(currentTime);
+                });
+                
+                // Start at the first activity
+                currentActivityIndex = 0;
+            }
+        }
+        
+        // Reset timer function
+        function resetTimer() {
+            // Reset timer started flag
+            timerStarted = false;
+            
+            // Initialize timer again
+            initializeTimer();
+            
+            // Update display
+            updateDisplay();
+        }
+        
+        // Reset button click event
+        resetButton.addEventListener("click", resetTimer);
+        
+        // Show fullscreen overlay
+        timeDisplay.addEventListener("click", () => {
+            fullscreenOverlay.style.display = "flex";
+            initializeTimer();
+            updateFullscreenOverlay();
+        });
+        
+        // Exit fullscreen overlay
+        exitButton.addEventListener("click", () => {
+            fullscreenOverlay.style.display = "none";
+        });
+        
+        // Auto-advance toggle
+        autoAdvanceToggle.addEventListener("change", (e) => {
+            autoAdvanceEnabled = e.target.checked;
+        });
+        
+        // Next activity button
+        nextButton.addEventListener("click", () => {
+            advanceToNextActivity();
+        });
+        
+        // Function to advance to the next activity
+        function advanceToNextActivity() {
+            if (currentActivityIndex < activities.length - 1) {
+                currentActivityIndex++;
+                
+                // Force the time to match this activity
+                const now = new Date();
+                const forcedStartTime = new Date(now);
+                forcedStartTime.setSeconds(0);
+                
+                // Set end time based on duration
+                const forcedEndTime = new Date(forcedStartTime);
+                if (!activities[currentActivityIndex].isTransition) {
+                    const durationStr = activities[currentActivityIndex].duration;
+                    const durationMinutes = parseInt(durationStr);
+                    if (!isNaN(durationMinutes)) {
+                        forcedEndTime.setMinutes(forcedStartTime.getMinutes() + durationMinutes);
+                    } else {
+                        forcedEndTime.setMinutes(forcedStartTime.getMinutes() + 1);
+                    }
+                } else {
+                    forcedEndTime.setMinutes(forcedStartTime.getMinutes() + 1);
+                }
+                
+                // Update activity times
+                activities[currentActivityIndex].startTime = forcedStartTime;
+                activities[currentActivityIndex].endTime = forcedEndTime;
+                
+                updateFullscreenOverlay();
+                updateDisplay();
+            }
+        }
+        
+        // Update fullscreen overlay content
+        function updateFullscreenOverlay() {
+            const currentActivity = activities[currentActivityIndex];
+            if (currentActivity) {
+                overlayTitle.textContent = currentActivity.description;
+                overlayDescription.textContent = currentActivity.details;
+                activityGuidance.innerHTML = currentActivity.guidance;
+                
+                // Disable next button if we're at the last activity
+                nextButton.disabled = currentActivityIndex >= activities.length - 1;
+            }
+        }
+        
+        // Function to update the display
+        function updateDisplay() {
+            const now = new Date();
+            
+            // Update clock
+            document.getElementById("clock").textContent = now.toLocaleTimeString();
+            
+            if (timerStarted) {
+                // Get current activity based on timer progress
+                const currentActivity = activities[currentActivityIndex];
+                
+                // Update timer if there's a current activity
+                if (currentActivity) {
+                    // Only show countdown for non-transition activities
+                    if (!currentActivity.isTransition) {
+                        const timeRemaining = Math.floor((currentActivity.endTime - now) / 1000);
+                        const minutes = Math.floor(timeRemaining / 60);
+                        const seconds = timeRemaining % 60;
+                        const timerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        document.getElementById("timer").textContent = timerText;
+                        overlayTimer.textContent = timerText;
+                        
+                        // Check if time is up and auto-advance is enabled
+                        if (timeRemaining <= 0 && autoAdvanceEnabled) {
+                            advanceToNextActivity();
+                            return; // Exit to prevent double updates
+                        }
+                    } else {
+                        document.getElementById("timer").textContent = "--:--";
+                        overlayTimer.textContent = "TRANSITION";
+                        
+                        // Auto-advance quickly for transitions
+                        const timeRemaining = Math.floor((currentActivity.endTime - now) / 1000);
+                        if (timeRemaining <= 0 && autoAdvanceEnabled) {
+                            advanceToNextActivity();
+                            return; // Exit to prevent double updates
+                        }
+                    }
+                    
+                    // Update description
+                    document.getElementById("description-content").textContent = currentActivity.details;
+                }
+                
+                // Render activities list
+                const activitiesContainer = document.getElementById("activities");
+                activitiesContainer.innerHTML = "";
+                
+                activities.forEach((activity, index) => {
+                    const activityEl = document.createElement("div");
+                    
+                    // Determine status class
+                    let statusClass = "upcoming";
+                    if (index === currentActivityIndex) {
+                        statusClass = "current";
+                    } else if (index < currentActivityIndex) {
+                        statusClass = "completed";
+                    }
+                    
+                    if (activity.isTransition) {
+                        activityEl.className = `activity transition ${statusClass}`;
+                    } else {
+                        activityEl.className = `activity ${statusClass}`;
+                    }
+                    
+                    activityEl.innerHTML = `
+                        <div class="activity-time">${activity.time}</div>
+                        <div class="activity-duration">${activity.duration}</div>
+                        <div class="activity-description">${activity.description}</div>
+                    `;
+                    
+                    // Make the activity clickable
+                    activityEl.addEventListener("click", () => {
+                        selectActivity(index);
+                    });
+                    
+                    activitiesContainer.appendChild(activityEl);
+                });
+            } else {
+                // Default display when timer not started
+                document.getElementById("timer").textContent = "00:00";
+                
+                // Render activities list with default styling
+                const activitiesContainer = document.getElementById("activities");
+                activitiesContainer.innerHTML = "";
+                
+                activities.forEach((activity, index) => {
+                    const activityEl = document.createElement("div");
+                    
+                    if (activity.isTransition) {
+                        activityEl.className = "activity transition";
+                    } else {
+                        activityEl.className = "activity";
+                    }
+                    
+                    activityEl.innerHTML = `
+                        <div class="activity-time">${activity.time}</div>
+                        <div class="activity-duration">${activity.duration}</div>
+                        <div class="activity-description">${activity.description}</div>
+                    `;
+                    
+                    // Make the activity clickable
+                    activityEl.addEventListener("click", () => {
+                        selectActivity(index);
+                    });
+                    
+                    activitiesContainer.appendChild(activityEl);
+                });
+            }
+        }
+        
+        // Function to select and display a specific activity
+        function selectActivity(index) {
+            if (!timerStarted) {
+                initializeTimer();
+            }
+            
+            currentActivityIndex = index;
+            
+            // Update activity times
+            const now = new Date();
+            const forcedStartTime = new Date(now);
+            forcedStartTime.setSeconds(0);
+            
+            // Set end time based on duration
+            const forcedEndTime = new Date(forcedStartTime);
+            if (!activities[currentActivityIndex].isTransition) {
+                const durationStr = activities[currentActivityIndex].duration;
+                const durationMinutes = parseInt(durationStr);
+                if (!isNaN(durationMinutes)) {
+                    forcedEndTime.setMinutes(forcedStartTime.getMinutes() + durationMinutes);
+                } else {
+                    forcedEndTime.setMinutes(forcedStartTime.getMinutes() + 1);
+                }
+            } else {
+                forcedEndTime.setMinutes(forcedStartTime.getMinutes() + 1);
+            }
+            
+            // Update activity times
+            activities[currentActivityIndex].startTime = forcedStartTime;
+            activities[currentActivityIndex].endTime = forcedEndTime;
+            
+            // Enter fullscreen mode
+            fullscreenOverlay.style.display = "flex";
+            updateFullscreenOverlay();
+            updateDisplay();
+        }
+        
+        // Initial update
+        updateDisplay();
+        
+        // Update every second
+        setInterval(updateDisplay, 1000);
+    </script>
+</body>
+</html>
