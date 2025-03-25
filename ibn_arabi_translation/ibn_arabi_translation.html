@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Meccan Revelations: Chapter 178</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Serif:wght@400;700&display=swap');
         
@@ -14,12 +15,13 @@
             line-height: 1.6;
             color: #333;
             background-color: #f9f9f9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23bbc4d1' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
         
         .container {
             display: flex;
             flex-direction: column;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -43,41 +45,63 @@
         .columns {
             display: flex;
             flex-direction: row;
-            height: 70vh;
-            border: 1px solid #ddd;
+            height: 80vh;
+            border: none;
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-radius: 8px;
         }
         
         .column {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            padding: 30px 40px;
             position: relative;
             scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc #f9f9f9;
+        }
+        
+        /* Custom scrollbar styling */
+        .column::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .column::-webkit-scrollbar-track {
+            background: #f9f9f9;
+        }
+        
+        .column::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 6px;
+            border: 2px solid #f9f9f9;
         }
         
         .english {
-            border-right: 1px solid #ddd;
+            border-right: 1px solid #eee;
+            font-size: 1.1rem;
         }
         
         .arabic {
             font-family: 'Amiri', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             direction: rtl;
             text-align: right;
+            line-height: 1.8;
         }
         
         .poem, .paragraph {
             margin: 30px 0;
             white-space: pre-wrap;
             cursor: pointer;
-            padding: 5px;
+            padding: 10px;
             border-radius: 4px;
             transition: background-color 0.3s, border 0.3s;
             border-left: 3px solid transparent;
             border-right: 3px solid transparent;
             position: relative;
+            line-height: 1.8;
         }
         
         .poem:hover, .paragraph:hover {
@@ -102,13 +126,14 @@
         
         .section-title {
             font-weight: bold;
-            font-size: 1.4rem;
-            margin: 20px 0;
+            font-size: 1.5rem;
+            margin: 30px 0;
             text-align: center;
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
             border-radius: 4px;
             transition: background-color 0.3s;
+            color: #4a6fa5;
         }
         
         .section-title:hover {
@@ -143,9 +168,9 @@
             font-weight: bold;
             font-size: 0.9rem;
             color: #888;
-            margin: 20px 0;
-            padding: 5px;
-            border-top: 1px dotted #ccc;
+            margin: 30px 0;
+            padding: 10px;
+            border-top: 1px dotted #eee;
             text-align: center;
         }
         
@@ -188,28 +213,36 @@
         .controls {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            gap: 10px;
+            margin-bottom: 25px;
+            gap: 15px;
         }
         
         .controls button {
-            padding: 8px 16px;
+            padding: 10px 20px;
             background-color: #4a6fa5;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
+            transition: background-color 0.3s;
         }
         
         .controls button:hover {
             background-color: #3a5a8f;
         }
         
+        .controls button.active {
+            background-color: #2c4875;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
         .controls select {
-            padding: 8px;
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 6px;
             border: 1px solid #ddd;
+            font-size: 15px;
+            min-width: 120px;
         }
         
         @media (max-width: 768px) {
@@ -219,17 +252,49 @@
             }
             
             .column {
-                max-height: 50vh;
+                max-height: 60vh;
+                padding: 20px;
             }
             
             .english {
                 border-right: none;
-                border-bottom: 1px solid #ddd;
+                border-bottom: 1px solid #eee;
             }
         }
         
         .english .poem {
             font-style: italic;
+        }
+        
+        .welcome-message {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-left: 4px solid #4a6fa5;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            line-height: 1.7;
+        }
+        
+        .welcome-message h3 {
+            margin-top: 0;
+            color: #4a6fa5;
+            font-size: 1.4rem;
+        }
+        
+        .welcome-message a.pdf-download {
+            display: inline-block;
+            background-color: #4a6fa5;
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .welcome-message a.pdf-download:hover {
+            background-color: #3a5a8f;
         }
     </style>
 </head>
@@ -240,6 +305,13 @@
             <h2>Ibn Arabi</h2>
             <p>Translated with Claude 3.7</p>
         </header>
+        
+        <div class="welcome-message">
+            <h3>Welcome!</h3>
+            <p>This is an experimental parallel text edition of Ibn Arabi's "The Meccan Revelations: Chapter 178." Both the English translation and the Arabic OCR text were generated using Claude 3.7 AI and should be treated with scholarly caution.</p>
+            <p><strong>Note:</strong> The reference text for this project was the Mansoub edition of Chapter 178. For authoritative resources on Ibn Arabi's works, please visit <a href="http://www.ibnarabiseminar.org" target="_blank" style="color: #4a6fa5;">www.ibnarabiseminar.org</a>.</p>
+            <p><a href="Ch 178 Mansoub Merged Copy Futuhat .pdf" download class="pdf-download"><i class="fas fa-file-pdf" style="margin-right: 8px;"></i>Download Original PDF</a></p>
+        </div>
         
         <div class="controls">
             <select id="pageSelector">
@@ -712,7 +784,7 @@
         
         toggleHighlightBtn.addEventListener('click', function() {
             highlightMode = !highlightMode;
-            this.textContent = highlightMode ? 'Toggle Highlight Mode (ON)' : 'Toggle Highlight Mode (OFF)';
+            updateHighlightButtonText();
             
             // Remove existing highlights when turned off
             if (!highlightMode) {
@@ -722,8 +794,19 @@
             }
         });
         
+        function updateHighlightButtonText() {
+            toggleHighlightBtn.innerHTML = highlightMode ? 
+                '<i class="fas fa-link"></i> Alignment Mode: ON' : 
+                '<i class="fas fa-unlink"></i> Alignment Mode: OFF';
+            
+            toggleHighlightBtn.className = highlightMode ? 'active' : '';
+        }
+        
         // Initialize
-        document.addEventListener('DOMContentLoaded', loadTranslationData);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTranslationData();
+            updateHighlightButtonText();
+        });
     </script>
 </body>
 </html> 
