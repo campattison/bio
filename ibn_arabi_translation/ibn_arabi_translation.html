@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Meccan Revelations: Chapter 178</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Serif:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Serif', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .columns {
+            display: flex;
+            flex-direction: row;
+            height: 70vh;
+            border: 1px solid #ddd;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .column {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+        
+        .english {
+            border-right: 1px solid #ddd;
+        }
+        
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            direction: rtl;
+            text-align: right;
+        }
+        
+        .poem, .paragraph {
+            margin: 30px 0;
+            white-space: pre-wrap;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s, border 0.3s;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            position: relative;
+        }
+        
+        .poem:hover, .paragraph:hover {
+            background-color: rgba(200, 227, 255, 0.2);
+        }
+        
+        .highlighted {
+            background-color: rgba(200, 227, 255, 0.5);
+            border-left: 3px solid #4a6fa5;
+            border-right: 3px solid #4a6fa5;
+        }
+        
+        .english .poem.highlighted, .english .paragraph.highlighted {
+            border-right: 3px solid #4a6fa5;
+            border-left: 3px solid transparent;
+        }
+        
+        .arabic .poem.highlighted, .arabic .paragraph.highlighted {
+            border-left: 3px solid #4a6fa5;
+            border-right: 3px solid transparent;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin: 20px 0;
+            text-align: center;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .section-title:hover {
+            background-color: rgba(200, 227, 255, 0.2);
+        }
+        
+        .section-title.highlighted {
+            background-color: rgba(200, 227, 255, 0.5);
+        }
+        
+        /* Tooltip to show alignment status */
+        .tooltip {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(74, 111, 165, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: none;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        .poem:hover .tooltip, .paragraph:hover .tooltip {
+            display: block;
+        }
+        
+        .page-marker {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #888;
+            margin: 20px 0;
+            padding: 5px;
+            border-top: 1px dotted #ccc;
+            text-align: center;
+        }
+        
+        .footnote {
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            margin-top: 20px;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .loader {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        
+        .controls button {
+            padding: 8px 16px;
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .controls button:hover {
+            background-color: #3a5a8f;
+        }
+        
+        .controls select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .columns {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .column {
+                max-height: 50vh;
+            }
+            
+            .english {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+        
+        .english .poem {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Meccan Revelations: Chapter 178</h1>
+            <h2>Ibn Arabi</h2>
+            <p>Translated with Claude 3.7</p>
+        </header>
+        
+        <div class="controls">
+            <select id="pageSelector">
+                <option value="all">All Pages</option>
+                <!-- Pages will be dynamically added here -->
+            </select>
+            <button id="loadPageBtn">Load Page</button>
+            <button id="toggleHighlightBtn">Toggle Highlight Mode</button>
+        </div>
+        
+        <div class="loader" id="loader">
+            <div class="loading-spinner"></div>
+            <p>Loading content...</p>
+        </div>
+        
+        <div class="columns">
+            <div class="column english" id="englishColumn">
+                <!-- English content will be loaded here -->
+            </div>
+            
+            <div class="column arabic" id="arabicColumn">
+                <!-- Arabic content will be loaded here -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>© Cameron Pattison 2025 - Translation prepared using Claude 3.7 AI | Ibn Arabi's The Meccan Revelations: Chapter 178</p>
+            <p><small>This is an academic translation for scholarly purposes. All rights to the original text belong to their respective owners.</small></p>
+        </footer>
+    </div>
+
+    <script>
+        // Global variables
+        const englishColumn = document.getElementById('englishColumn');
+        const arabicColumn = document.getElementById('arabicColumn');
+        const pageSelector = document.getElementById('pageSelector');
+        const loadPageBtn = document.getElementById('loadPageBtn');
+        const toggleHighlightBtn = document.getElementById('toggleHighlightBtn');
+        const loader = document.getElementById('loader');
+        
+        // State variables
+        let textPairs = [];
+        let highlightMode = true;
+        let currentPage = 'all';
+        let pages = [];
+        let englishText = '';
+        let arabicText = '';
+        
+        // Load both translation data files
+        async function loadTranslationData() {
+            try {
+                loader.style.display = 'block';
+                
+                // Load English translation
+                const englishResponse = await fetch('combined_translation.txt');
+                if (!englishResponse.ok) {
+                    throw new Error('Failed to load English translation data');
+                }
+                englishText = await englishResponse.text();
+                
+                // Load Arabic OCR results
+                const arabicResponse = await fetch('ocr_results.txt');
+                if (!arabicResponse.ok) {
+                    throw new Error('Failed to load Arabic OCR data');
+                }
+                arabicText = await arabicResponse.text();
+                
+                parseTranslationData();
+                
+                // Populate page selector
+                populatePageSelector();
+                
+                // Load initial content
+                loadContent();
+                
+                loader.style.display = 'none';
+            } catch (error) {
+                console.error('Error loading translation data:', error);
+                alert('Failed to load translation data. Please try again later.');
+                loader.style.display = 'none';
+            }
+        }
+        
+        // Parse the translation data
+        function parseTranslationData() {
+            // Process English text
+            const englishBlocks = englishText.split('===== page_');
+            // Process Arabic text
+            const arabicBlocks = arabicText.split('===== page_');
+            
+            // Create page objects with both English and Arabic content
+            for (let i = 1; i < Math.min(englishBlocks.length, arabicBlocks.length); i++) {
+                const englishBlock = englishBlocks[i];
+                const arabicBlock = arabicBlocks[i];
+                
+                // Extract page number and content for English
+                const englishPageNumberEnd = englishBlock.indexOf(' =====');
+                if (englishPageNumberEnd === -1) continue;
+                
+                const pageNumber = englishBlock.substring(0, englishPageNumberEnd);
+                const englishContent = englishBlock.substring(englishPageNumberEnd + 7).trim();
+                
+                // Extract Arabic content
+                const arabicPageNumberEnd = arabicBlock.indexOf(' =====');
+                if (arabicPageNumberEnd === -1) continue;
+                
+                const arabicContent = arabicBlock.substring(arabicPageNumberEnd + 7).trim();
+                
+                pages.push({
+                    number: pageNumber,
+                    englishContent: englishContent,
+                    arabicContent: arabicContent
+                });
+            }
+        }
+        
+        // Populate page selector dropdown
+        function populatePageSelector() {
+            pages.forEach(page => {
+                const option = document.createElement('option');
+                option.value = page.number;
+                option.textContent = `Page ${page.number}`;
+                pageSelector.appendChild(option);
+            });
+        }
+        
+        // Load content based on selected page
+        function loadContent() {
+            // Clear previous content
+            englishColumn.innerHTML = '';
+            arabicColumn.innerHTML = '';
+            textPairs = [];
+            
+            loader.style.display = 'block';
+            
+            setTimeout(() => {
+                if (currentPage === 'all') {
+                    // Load all pages
+                    pages.forEach(page => {
+                        parsePage(page);
+                    });
+                } else {
+                    // Load single page
+                    const selectedPage = pages.find(p => p.number === currentPage);
+                    if (selectedPage) {
+                        parsePage(selectedPage);
+                    }
+                }
+                
+                // Setup event listeners for text alignment
+                setupTextAlignmentListeners();
+                
+                loader.style.display = 'none';
+            }, 100); // Small timeout to allow UI to update
+        }
+        
+        // Enhanced text alignment system
+        function parsePage(page) {
+            // Create page markers
+            const englishPageMarker = document.createElement('div');
+            englishPageMarker.className = 'page-marker';
+            englishPageMarker.textContent = `— p. ${page.number} —`;
+            englishPageMarker.id = `english-page-${page.number}`;
+            
+            const arabicPageMarker = document.createElement('div');
+            arabicPageMarker.className = 'page-marker';
+            arabicPageMarker.textContent = `— ${page.number} —`;
+            arabicPageMarker.id = `arabic-page-${page.number}`;
+            
+            englishColumn.appendChild(englishPageMarker);
+            arabicColumn.appendChild(arabicPageMarker);
+            
+            // Add to text pairs (for alignment)
+            textPairs.push({
+                english: englishPageMarker,
+                arabic: arabicPageMarker
+            });
+            
+            // Parse English content
+            const englishLines = page.englishContent.split('\n');
+            const englishBlocks = parseContent(englishLines, 'english', page.number);
+            
+            // Parse Arabic content
+            const arabicLines = page.arabicContent.split('\n');
+            const arabicBlocks = parseContent(arabicLines, 'arabic', page.number);
+            
+            // Create a smarter alignment between the blocks
+            alignBlocks(englishBlocks, arabicBlocks, page.number);
+        }
+        
+        // Parse content for either English or Arabic
+        function parseContent(lines, language, pageNumber) {
+            const column = language === 'english' ? englishColumn : arabicColumn;
+            let currentBlock = null;
+            let blockCount = 0;
+            const blocks = [];
+            
+            lines.forEach(line => {
+                line = line.trim();
+                
+                // Skip page number at end and footnote references
+                if (/^\d+$/.test(line) || /^[\d\u0660-\u0669]+$/.test(line)) return;
+                
+                // Handle section titles (lines starting with #)
+                if (line.startsWith('# ')) {
+                    const titleText = line.substring(2);
+                    
+                    const titleElement = document.createElement('div');
+                    titleElement.className = 'section-title';
+                    titleElement.textContent = titleText;
+                    titleElement.dataset.index = blocks.length;
+                    titleElement.dataset.language = language;
+                    titleElement.dataset.type = 'title';
+                    
+                    column.appendChild(titleElement);
+                    blocks.push(titleElement);
+                    return;
+                }
+                
+                // Handle footnotes or references (lines starting with numbers)
+                if (/^[\d\u0660-\u0669]/.test(line) && line.length < 50) {
+                    return; // Skip footnotes
+                }
+                
+                // Handle normal text
+                if (line === '') {
+                    // End of a block
+                    currentBlock = null;
+                    return;
+                }
+                
+                // Improved poem detection
+                const isPoem = language === 'english' 
+                    ? (line.includes('    ') || line.match(/\s{3,}/) || line.match(/\|/) || line.includes('—'))
+                    : (line.includes('|') || line.match(/\s{3,}/) || line.includes('—'));
+                
+                if (!currentBlock || (currentBlock.className === 'poem' && !isPoem) || 
+                   (currentBlock.className === 'paragraph' && isPoem)) {
+                    // Create new block
+                    currentBlock = document.createElement('div');
+                    currentBlock.className = isPoem ? 'poem' : 'paragraph';
+                    currentBlock.dataset.index = blocks.length;
+                    currentBlock.dataset.language = language;
+                    currentBlock.dataset.type = isPoem ? 'poem' : 'paragraph';
+                    column.appendChild(currentBlock);
+                    blocks.push(currentBlock);
+                }
+                
+                currentBlock.textContent += line + '\n';
+            });
+            
+            return blocks;
+        }
+        
+        // Smarter block alignment algorithm
+        function alignBlocks(englishBlocks, arabicBlocks, pageNumber) {
+            // If blocks are very uneven, we need a more sophisticated approach
+            // We'll try to align based on block types (poem vs paragraph) and relative positions
+            
+            // First pass: match by type and similar position
+            const maxBlocks = Math.max(englishBlocks.length, arabicBlocks.length);
+            const alignmentRatio = englishBlocks.length / arabicBlocks.length;
+            
+            // Map to track which blocks have been paired
+            const pairedEnglish = new Set();
+            const pairedArabic = new Set();
+            
+            // First pass: match titles, which are most reliable
+            englishBlocks.forEach((englishBlock, eIndex) => {
+                if (englishBlock.dataset.type === 'title') {
+                    // Find the closest title in Arabic blocks
+                    const closestTitleIndex = findClosestBlockOfType(
+                        arabicBlocks, 
+                        'title', 
+                        eIndex / englishBlocks.length * arabicBlocks.length
+                    );
+                    
+                    if (closestTitleIndex !== -1) {
+                        const arabicBlock = arabicBlocks[closestTitleIndex];
+                        const pairId = `pair-${pageNumber}-title-${eIndex}`;
+                        
+                        englishBlock.dataset.pairId = pairId;
+                        arabicBlock.dataset.pairId = pairId;
+                        
+                        textPairs.push({
+                            english: englishBlock,
+                            arabic: arabicBlock
+                        });
+                        
+                        pairedEnglish.add(eIndex);
+                        pairedArabic.add(closestTitleIndex);
+                    }
+                }
+            });
+            
+            // Second pass: match poems, which are also quite reliable
+            englishBlocks.forEach((englishBlock, eIndex) => {
+                if (!pairedEnglish.has(eIndex) && englishBlock.dataset.type === 'poem') {
+                    // Find the closest poem in Arabic blocks
+                    const estimatedArabicPos = Math.floor(eIndex / englishBlocks.length * arabicBlocks.length);
+                    const closestPoemIndex = findClosestBlockOfType(
+                        arabicBlocks, 
+                        'poem', 
+                        estimatedArabicPos,
+                        pairedArabic
+                    );
+                    
+                    if (closestPoemIndex !== -1) {
+                        const arabicBlock = arabicBlocks[closestPoemIndex];
+                        const pairId = `pair-${pageNumber}-poem-${eIndex}`;
+                        
+                        englishBlock.dataset.pairId = pairId;
+                        arabicBlock.dataset.pairId = pairId;
+                        
+                        textPairs.push({
+                            english: englishBlock,
+                            arabic: arabicBlock
+                        });
+                        
+                        pairedEnglish.add(eIndex);
+                        pairedArabic.add(closestPoemIndex);
+                    }
+                }
+            });
+            
+            // Final pass: match remaining blocks by position
+            englishBlocks.forEach((englishBlock, eIndex) => {
+                if (!pairedEnglish.has(eIndex)) {
+                    // Find the closest unpaired Arabic block by position
+                    const estimatedArabicPos = Math.floor(eIndex / englishBlocks.length * arabicBlocks.length);
+                    let closestIndex = -1;
+                    let minDistance = arabicBlocks.length;
+                    
+                    for (let i = 0; i < arabicBlocks.length; i++) {
+                        if (!pairedArabic.has(i)) {
+                            const distance = Math.abs(i - estimatedArabicPos);
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                closestIndex = i;
+                            }
+                        }
+                    }
+                    
+                    if (closestIndex !== -1) {
+                        const arabicBlock = arabicBlocks[closestIndex];
+                        const pairId = `pair-${pageNumber}-${eIndex}`;
+                        
+                        englishBlock.dataset.pairId = pairId;
+                        arabicBlock.dataset.pairId = pairId;
+                        
+                        textPairs.push({
+                            english: englishBlock,
+                            arabic: arabicBlock
+                        });
+                        
+                        pairedEnglish.add(eIndex);
+                        pairedArabic.add(closestIndex);
+                    }
+                }
+            });
+            
+            // Final check: make sure every block has a pair ID
+            // If some Arabic blocks are still unpaired, pair them with the closest English block
+            arabicBlocks.forEach((arabicBlock, aIndex) => {
+                if (!pairedArabic.has(aIndex)) {
+                    // Find the closest English block by position
+                    const estimatedEnglishPos = Math.floor(aIndex / arabicBlocks.length * englishBlocks.length);
+                    const englishBlock = englishBlocks[estimatedEnglishPos];
+                    
+                    if (englishBlock) {
+                        // Get the existing pair ID or create a new one
+                        const pairId = englishBlock.dataset.pairId || `pair-${pageNumber}-extra-${aIndex}`;
+                        arabicBlock.dataset.pairId = pairId;
+                        
+                        if (!englishBlock.dataset.pairId) {
+                            englishBlock.dataset.pairId = pairId;
+                            textPairs.push({
+                                english: englishBlock,
+                                arabic: arabicBlock
+                            });
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Helper function to find the closest block of a specific type
+        function findClosestBlockOfType(blocks, type, targetPosition, pairedSet = new Set()) {
+            let closestIndex = -1;
+            let minDistance = blocks.length;
+            
+            for (let i = 0; i < blocks.length; i++) {
+                if (!pairedSet.has(i) && blocks[i].dataset.type === type) {
+                    const distance = Math.abs(i - targetPosition);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestIndex = i;
+                    }
+                }
+            }
+            
+            return closestIndex;
+        }
+        
+        // Setup event listeners for text alignment
+        function setupTextAlignmentListeners() {
+            document.querySelectorAll('.poem, .paragraph, .section-title').forEach(element => {
+                // Add tooltip for alignment status
+                if (element.classList.contains('poem') || element.classList.contains('paragraph')) {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = 'Click to align';
+                    element.appendChild(tooltip);
+                }
+                
+                element.addEventListener('click', function() {
+                    if (!highlightMode) return;
+                    
+                    // Remove previous highlights
+                    document.querySelectorAll('.highlighted').forEach(el => {
+                        el.classList.remove('highlighted');
+                    });
+                    
+                    // Find the pair ID
+                    const pairId = this.dataset.pairId;
+                    if (!pairId) {
+                        console.warn('No pair ID found for element', this);
+                        return;
+                    }
+                    
+                    // Find the corresponding element
+                    const isEnglish = this.dataset.language === 'english';
+                    const targetSelector = isEnglish ? '#arabicColumn' : '#englishColumn';
+                    const targetElement = document.querySelector(`${targetSelector} [data-pair-id="${pairId}"]`);
+                    
+                    if (targetElement) {
+                        // Add highlight to both elements
+                        this.classList.add('highlighted');
+                        targetElement.classList.add('highlighted');
+                        
+                        // Update tooltips
+                        const tooltips = document.querySelectorAll('.tooltip');
+                        tooltips.forEach(tooltip => {
+                            tooltip.textContent = 'Aligned';
+                        });
+                        
+                        // Scroll the target element into view
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Flash effect to make the alignment more obvious
+                        setTimeout(() => {
+                            targetElement.style.transition = 'background-color 0.3s';
+                            targetElement.style.backgroundColor = 'rgba(200, 227, 255, 0.8)';
+                            setTimeout(() => {
+                                targetElement.style.backgroundColor = '';
+                            }, 300);
+                        }, 300);
+                    } else {
+                        console.warn('No matching element found for pair ID', pairId);
+                    }
+                });
+            });
+        }
+        
+        // Event listeners
+        loadPageBtn.addEventListener('click', function() {
+            currentPage = pageSelector.value;
+            loadContent();
+        });
+        
+        toggleHighlightBtn.addEventListener('click', function() {
+            highlightMode = !highlightMode;
+            this.textContent = highlightMode ? 'Toggle Highlight Mode (ON)' : 'Toggle Highlight Mode (OFF)';
+            
+            // Remove existing highlights when turned off
+            if (!highlightMode) {
+                document.querySelectorAll('.highlighted').forEach(el => {
+                    el.classList.remove('highlighted');
+                });
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadTranslationData);
+    </script>
+</body>
+</html> 
