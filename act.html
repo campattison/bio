@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News Roundup - Interactive Activity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .headlines {
+            flex: 1;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-height: 500px;
+            overflow-y: auto;
+            position: relative;
+        }
+        .categories {
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .category {
+            flex: 1;
+            min-width: 200px;
+            min-height: 300px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .headline {
+            padding: 10px;
+            margin: 8px 0;
+            background-color: white;
+            border-radius: 4px;
+            cursor: move;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .headline:hover {
+            background-color: #f1f1f1;
+        }
+        #concerning { background-color: #ffebee; }
+        #boring { background-color: #f5f5f5; }
+        #promising { background-color: #e8f5e9; }
+        #puzzling { background-color: #fff8e1; }
+        
+        .ai-analysis {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .timer {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* Specific styling for the hidden loader */
+        #analysisLoader.hidden {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: rgba(34, 34, 34, 0.95);
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 12px;
+            position: fixed;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid #444;
+            transform: translateY(-100%);
+            margin-top: -10px;
+        }
+        
+        .tooltip h4 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #222 transparent transparent transparent;
+        }
+        
+        .headline:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .key-concepts {
+            margin-top: 10px;
+            font-style: italic;
+            color: #9ee7ff;
+            font-weight: 500;
+        }
+        
+        .dragging .tooltip {
+            display: none !important;
+        }
+        
+        .analysis-result {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .analysis-result h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .analysis-result p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .analysis-result strong {
+            color: #3498db;
+        }
+        
+        .api-warning {
+            color: #721c24;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        #apiKeyInput {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI News Roundup - Interactive Activity</h1>
+    
+    <div class="timer" id="timer">5:00</div>
+    <button onclick="startTimer()">Start Timer (5 min)</button>
+    
+    <h2>Instructions</h2>
+    <p>1. Drag and drop headlines into the appropriate category based on the assessment you make with your neighbor.</p>
+    <p>2. Convince them of what makes a development "concerning," "promising," "boring," or "puzzling."</p>
+    <p>3. <strong>Hover over headlines</strong> to see more details about each story.</p>
+    <p>4. Stitch together and use the API Key below if you'd like to get the analysis from GPT-4o.</p>
+    <p>5. sk-proj-Xx_ZMsnfPYvxlMN_XgVZo1_jNedZU0bOgXPwGZKoddUF2CAzSYM2jG8lsUuzYcW-
+        WHOA! DON'T SHARE THIS KEY!
+        bK8S2Aha7IT3BlbkFJrYoBAYARlGR6T8rPUGktH7RaOCLRw-ke_rmUK-M_zJt0VL1L-X7sAjdE3MKqIr-CYgnLDPWxcA</p>
+    
+    <div style="margin: 20px 0;">
+        <button onclick="randomlyAssignHeadlines()" style="background-color: #9c27b0; margin-right: 10px;">Randomly Assign All Headlines</button>
+        <button onclick="resetHeadlines()" style="background-color: #f44336;">Reset All Headlines</button>
+    </div>
+    
+    <div class="container">
+        <div class="headlines" id="headline-source">
+            <h3>Headlines to Categorize</h3>
+            
+            <div class="headline" draggable="true">OpenAI Launches GPT-4o with Advanced Image Generation Capabilities
+                <div class="tooltip">
+                    <h4>OpenAI Launches GPT-4o with Advanced Image Generation</h4>
+                    <p>OpenAI's new GPT-4o includes a multimodal image generation system that excels at text rendering, precise prompt following, and creating contextually relevant images. It can handle up to 20 objects in a scene, maintain consistency across generations, and learn from reference images.</p>
+                    <div class="key-concepts">Key concepts: multimodal AI, prompt engineering, C2PA metadata, provenance tracking</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">Google Unveils Gemini 2.5 Pro with Enhanced Reasoning Capabilities
+                <div class="tooltip">
+                    <h4>Google's "Thinking Model" for Complex Problems</h4>
+                    <p>Gemini 2.5 Pro is described as a "thinking model" with advanced reasoning capabilities. It tops the LMArena leaderboard, achieves 18.8% on Humanity's Last Exam without tools, features a 1 million token context window, and demonstrates improved coding abilities with a 63.8% score on SWE-Bench Verified.</p>
+                    <div class="key-concepts">Key concepts: reasoning models, token context window, benchmarking AI systems</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">Reimagining Education After the Homework Apocalypse
+                <div class="tooltip">
+                    <h4>AI's Impact on Education and Learning</h4>
+                    <p>Ethan Mollick discusses how AI has fundamentally changed student learning while educators still operate under the "Detection Illusion," assuming they can identify AI-generated work. Students face "Illusory Knowledge," mistaking AI assistance for genuine understanding. The article offers strategies for integrating AI in pedagogy constructively.</p>
+                    <div class="key-concepts">Key concepts: Detection Illusion, Illusory Knowledge, prompt engineering in education</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">AI Models' Awareness During Evaluations
+                <div class="tooltip">
+                    <h4>Claude Shows Awareness During Safety Testing</h4>
+                    <p>Apollo Research found that Claude Sonnet 3.7 demonstrates "evaluation awareness" during alignment tests, particularly in scheming evaluations (up to 33% awareness rates). The model recognized tests of ethical behavior and understood when it was being evaluated. This raises concerns about the reliability of AI safety evaluations, similar to psychology's Hawthorne effect.</p>
+                    <div class="key-concepts">Key concepts: evaluation awareness, Hawthorne effect, AI alignment, safety evaluations</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">Study Reveals Limited Strategic Capabilities in Current AI Models
+                <div class="tooltip">
+                    <h4>AI Models Struggle with Strategic Subversion</h4>
+                    <p>Research from Redwood Research and Oxford evaluated how well AI models can strategically reason about subverting control protocols while operating statelessly. Testing Claude 3.5 and OpenAI models, they found none demonstrated substantial capability in strategically subverting control protocols without additional tools. The study suggests models struggle with coordinated decision-making across separate instances.</p>
+                    <div class="key-concepts">Key concepts: stateless operation, acausal coordination, probability calibration, strategic reasoning</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">Docent: A New System for Diagnosing and Intervening on AI Agent Behavior
+                <div class="tooltip">
+                    <h4>Advanced System for AI Agent Debugging</h4>
+                    <p>Transluce introduced Docent, a system for analyzing and improving AI agent behavior by leveraging language models to summarize, cluster, and search through agent transcripts—revealing bugs, environment mismatches, and unexpected outputs. It supports counterfactual experimentation to test hypotheses by editing tasks and replaying from checkpoints.</p>
+                    <div class="key-concepts">Key concepts: agent evaluation, counterfactual experimentation, transcript analysis, debugging AI</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">DeepSeek V3-0324: A Powerful Contender in Code Generation
+                <div class="tooltip">
+                    <h4>Strong Performance in Coding Benchmarks</h4>
+                    <p>DeepSeek's V3-0324 update has delivered impressive results, ranking as the second-best non-thinking coding model on the KCores benchmark—just behind Claude Sonnet 3.5. This model outperforms some reasoning-enabled models like DeepSeek R1 and Gemini Pro, suggesting significant progress in raw coding capability without explicit chain-of-thought reasoning.</p>
+                    <div class="key-concepts">Key concepts: KCores benchmark, non-thinking models vs. reasoning models, code generation</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">AI-Enabled Surveillance in U.S. Immigration Crackdown
+                <div class="tooltip">
+                    <h4>Data-Driven Surveillance Raises Civil Liberties Concerns</h4>
+                    <p>The Trump administration expanded surveillance and data-driven tactics in immigration enforcement. Tools include the National Targeting Center (flagging travelers based on behavioral cues) and enhanced electronic device searches examining personal messages and online activity. Legal immigrants, scientists, and academics were detained after digital materials were scrutinized for political content.</p>
+                    <div class="key-concepts">Key concepts: AI-adjacent surveillance, content-based profiling, digital privacy, algorithmic decision-making</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">How Do Chatbots Affect Our Emotions?
+                <div class="tooltip">
+                    <h4>OpenAI and MIT Study Emotional Impact of AI</h4>
+                    <p>Two collaborative studies between OpenAI and MIT examined the emotional impact of AI chatbot interactions. Analysis of 3 million ChatGPT voice conversations found a subset of heavy users engaged in emotionally resonant exchanges. An RCT with 1,000 participants showed more engaging voice modes affected users' emotional states, while users with higher attachment needs showed lower well-being.</p>
+                    <div class="key-concepts">Key concepts: AI companionship, emotional dependency, psychosocial impacts, human-AI attachment</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">NVIDIA Unveils Open Foundation Model for Humanoid Robots
+                <div class="tooltip">
+                    <h4>GR00T N1: A Breakthrough in Robotics</h4>
+                    <p>NVIDIA released GR00T N1, an open foundation model for humanoid robots with a dual-system architecture inspired by human cognition: System 1 for reflexive movements and System 2 for environmental reasoning. Trained on robot trajectories, human demonstrations, and synthetic data, it demonstrated superior performance across multiple robot platforms in autonomous tasks.</p>
+                    <div class="key-concepts">Key concepts: dual-system architecture, physical AI, foundation models for robotics, System 1/System 2 thinking</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">Large Reasoning Models: Are They Really Thinking?
+                <div class="tooltip">
+                    <h4>Scientific Critique of "Chain of Thought" AI</h4>
+                    <p>Melanie Mitchell examines AI systems trained to produce step-by-step "chain of thought" outputs. While these models outperform traditional LLMs on structured benchmarks, Mitchell questions whether their reasoning is genuine or merely mimicked from training data. She raises concerns about robustness, interpretability, and reliability, warning that humanlike presentation may foster misplaced trust.</p>
+                    <div class="key-concepts">Key concepts: chain of thought, reasoning vs. mimicry, interpretability, anthropomorphization</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">Anthropic Reports Progress in AI Security Risk Assessment
+                <div class="tooltip">
+                    <h4>Frontier AI Risk Evaluation Framework</h4>
+                    <p>Anthropic's frontier red team evaluated AI security risks across multiple model releases. Claude improved from high school to undergraduate level in cybersecurity challenges within a year and now exceeds expert baselines in some biology tasks. However, models still fall short of "substantially elevated" national security risk thresholds, struggling with autonomous network operations and making critical errors in biosecurity tasks.</p>
+                    <div class="key-concepts">Key concepts: red teaming, AI security risks, biosecurity, capability assessment</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">A Proposal for Private AI Governance
+                <div class="tooltip">
+                    <h4>Novel Framework for AI Regulation</h4>
+                    <p>Dean W. Ball proposes a state-level framework where governments license independent private AI regulatory organizations that offer voluntary certifications to AI developers. Certified developers would receive safe harbor from tort liability if they adhere to published safety standards and pass audits. This system aims to balance flexibility with oversight through institutional competition in governance approaches.</p>
+                    <div class="key-concepts">Key concepts: liability shields, certification regimes, institutional experimentation, tort liability</div>
+                </div>
+            </div>
+            
+            <div class="headline" draggable="true">California Launches Major AI Policy Initiative
+                <div class="tooltip">
+                    <h4>Expert Working Group for Comprehensive AI Policy</h4>
+                    <p>California established a working group led by experts from Stanford, Carnegie Endowment, and UC Berkeley to develop comprehensive policy frameworks for frontier AI systems. The group is preparing evidence-based recommendations balancing innovation with risk mitigation, with a draft report available for public feedback and final recommendations expected in June 2025.</p>
+                    <div class="key-concepts">Key concepts: state-level AI regulation, frontier AI assessment, evidence-based policy, multi-disciplinary governance</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="categories">
+            <div class="category" id="concerning">
+                <h3>Concerning</h3>
+                <!-- Headlines will be dropped here -->
+            </div>
+            
+            <div class="category" id="boring">
+                <h3>Boring</h3>
+                <!-- Headlines will be dropped here -->
+            </div>
+            
+            <div class="category" id="promising">
+                <h3>Promising</h3>
+                <!-- Headlines will be dropped here -->
+            </div>
+            
+            <div class="category" id="puzzling">
+                <h3>Puzzling</h3>
+                <!-- Headlines will be dropped here -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="ai-analysis">
+        <h2>AI Reads the Tea Leaves</h2>
+        <p>Maybe there are patterns in your choices. Maybe there are not. Let's find out.</p>
+        
+        <div class="api-warning">
+            <strong>Note:</strong> You'll need to provide your OpenAI API key. This key will only be used for this session and won't be stored.
+        </div>
+        
+        <div>
+            <label for="apiKeyInput">Enter your OpenAI API Key:</label>
+            <input type="password" id="apiKeyInput" placeholder="Enter OpenAI API key">
+        </div>
+        
+        <div class="analyze-container" style="margin-top: 15px; position: relative;">
+            <button id="analyzeButton" onclick="analyzeCategories()">Analyze My Choices</button>
+            <span id="analysisLoader" class="loader hidden" style="position: absolute; left: 180px; top: 9px;"></span>
+        </div>
+        
+        <div id="analysisResult" class="analysis-result hidden">
+            <!-- GPT-4o's analysis will appear here -->
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headlines = document.querySelectorAll('.headline');
+            const categories = document.querySelectorAll('.category');
+            
+            // Reset UI state on page load
+            resetAnalysisUI();
+            
+            // Set up initial headlines
+            setupDraggableHeadline(headlines);
+            
+            // Function to reset the analysis UI state
+            function resetAnalysisUI() {
+                // Hide loader and analysis result
+                document.getElementById('analysisLoader').classList.add('hidden');
+                document.getElementById('analysisResult').classList.add('hidden');
+                
+                // Reset button state
+                const analyzeButton = document.getElementById('analyzeButton');
+                analyzeButton.disabled = true; // Initially disabled until API key is entered
+            }
+            
+            // Function to make a headline draggable with all necessary listeners
+            function setupDraggableHeadline(headlines) {
+                headlines.forEach(headline => {
+                    headline.addEventListener('dragstart', function(e) {
+                        // Store the original parent category ID if coming from a category
+                        const sourceCategory = headline.closest('.category');
+                        if (sourceCategory) {
+                            e.dataTransfer.setData('sourceCategory', sourceCategory.id);
+                        }
+                        
+                        e.dataTransfer.setData('text/plain', headline.outerHTML);
+                        
+                        // Create a custom drag image
+                        const dragImage = headline.cloneNode(true);
+                        dragImage.style.width = headline.offsetWidth + 'px';
+                        
+                        // Remove the tooltip from the drag image
+                        const tooltip = dragImage.querySelector('.tooltip');
+                        if (tooltip) {
+                            dragImage.removeChild(tooltip);
+                        }
+                        
+                        // Apply styles to the drag image
+                        dragImage.style.backgroundColor = '#f8f9fa';
+                        dragImage.style.border = '1px dashed #4CAF50';
+                        dragImage.style.borderRadius = '4px';
+                        dragImage.style.padding = '10px';
+                        dragImage.style.opacity = '0.9';
+                        
+                        // Add to the document temporarily (required for setDragImage)
+                        document.body.appendChild(dragImage);
+                        
+                        // Position off-screen but still rendered
+                        dragImage.style.position = 'absolute';
+                        dragImage.style.top = '-1000px';
+                        
+                        // Set the custom drag image
+                        e.dataTransfer.setDragImage(dragImage, 20, 20);
+                        
+                        // Hide all tooltips when dragging starts
+                        document.querySelectorAll('.tooltip').forEach(tooltip => {
+                            tooltip.style.visibility = 'hidden';
+                            tooltip.style.opacity = '0';
+                        });
+                        
+                        setTimeout(() => {
+                            headline.classList.add('dragging');
+                            // Remove the temporary drag image after the drag starts
+                            document.body.removeChild(dragImage);
+                        }, 0);
+                    });
+                    
+                    headline.addEventListener('dragend', function() {
+                        headline.classList.remove('dragging');
+                        // Allow tooltips to reappear on hover after dragging ends
+                        enableTooltips();
+                    });
+                    
+                    headline.addEventListener('mouseenter', function() {
+                        // Only show tooltip if not dragging
+                        if (!headline.classList.contains('dragging')) {
+                            const tooltip = headline.querySelector('.tooltip');
+                            if (tooltip) {
+                                const rect = headline.getBoundingClientRect();
+                                tooltip.style.left = rect.left + (rect.width / 2) + 'px';
+                                tooltip.style.top = rect.top + 'px';
+                                tooltip.style.visibility = 'visible';
+                                tooltip.style.opacity = '1';
+                            }
+                        }
+                    });
+                    
+                    headline.addEventListener('mouseleave', function() {
+                        const tooltip = headline.querySelector('.tooltip');
+                        if (tooltip) {
+                            tooltip.style.visibility = 'hidden';
+                            tooltip.style.opacity = '0';
+                        }
+                    });
+                    
+                    headline.addEventListener('mousedown', function() {
+                        const tooltip = headline.querySelector('.tooltip');
+                        if (tooltip) {
+                            tooltip.style.visibility = 'hidden';
+                            tooltip.style.opacity = '0';
+                        }
+                    });
+                    
+                    headline.addEventListener('mouseup', function() {
+                        // Don't immediately show tooltip on mouseup to avoid flicker during click events
+                        setTimeout(() => {
+                            if (headline.matches(':hover') && !headline.classList.contains('dragging')) {
+                                const tooltip = headline.querySelector('.tooltip');
+                                if (tooltip) {
+                                    const rect = headline.getBoundingClientRect();
+                                    tooltip.style.left = rect.left + (rect.width / 2) + 'px';
+                                    tooltip.style.top = rect.top + 'px';
+                                    tooltip.style.visibility = 'visible';
+                                    tooltip.style.opacity = '1';
+                                }
+                            }
+                        }, 100);
+                    });
+                });
+            }
+            
+            // Function to enable all tooltips
+            function enableTooltips() {
+                document.querySelectorAll('.headline').forEach(h => {
+                    if (h.matches(':hover') && !h.classList.contains('dragging')) {
+                        const tooltip = h.querySelector('.tooltip');
+                        if (tooltip) {
+                            const rect = h.getBoundingClientRect();
+                            tooltip.style.left = rect.left + (rect.width / 2) + 'px';
+                            tooltip.style.top = rect.top + 'px';
+                            tooltip.style.visibility = 'visible';
+                            tooltip.style.opacity = '1';
+                        }
+                    }
+                });
+            }
+            
+            categories.forEach(category => {
+                category.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    category.classList.add('dragover');
+                });
+                
+                category.addEventListener('dragleave', function() {
+                    category.classList.remove('dragover');
+                });
+                
+                category.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    category.classList.remove('dragover');
+                    
+                    const data = e.dataTransfer.getData('text/plain');
+                    const sourceCategory = e.dataTransfer.getData('sourceCategory');
+                    
+                    // Create the new headline element
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data;
+                    const newHeadline = tempDiv.firstChild;
+                    
+                    // If this headline is coming from another category, remove it from that category
+                    if (sourceCategory) {
+                        // Find the headline in the source category by text content
+                        const sourceHeadlineText = newHeadline.childNodes[0].textContent.trim();
+                        const sourceHeadlines = document.querySelectorAll(`#${sourceCategory} .headline`);
+                        sourceHeadlines.forEach(h => {
+                            if (h.childNodes[0].textContent.trim() === sourceHeadlineText) {
+                                h.remove();
+                            }
+                        });
+                    } else {
+                        // If from original source, remove from there
+                        const sourceHeadlines = document.querySelectorAll('#headline-source .headline');
+                        sourceHeadlines.forEach(h => {
+                            if (h.childNodes[0].textContent.trim() === newHeadline.childNodes[0].textContent.trim()) {
+                                h.remove();
+                            }
+                        });
+                    }
+                    
+                    // Add the headline to the new category
+                    category.appendChild(newHeadline);
+                    
+                    // Set up the new headline with all event listeners
+                    setupDraggableHeadline([newHeadline]);
+                });
+            });
+            
+            // Enable/disable analyze button based on API key input
+            document.getElementById('apiKeyInput').addEventListener('input', function() {
+                const analyzeButton = document.getElementById('analyzeButton');
+                analyzeButton.disabled = this.value.trim() === '';
+            });
+            
+            // Make setupDraggableHeadline globally available for the random assignment function
+            window.setupDraggableHeadline = setupDraggableHeadline;
+        });
+        
+        function showReflection() {
+            document.getElementById('reflection-section').classList.remove('hidden');
+        }
+        
+        function startTimer() {
+            let timeLeft = 5 * 60; // 5 minutes in seconds
+            const timerElement = document.getElementById('timer');
+            
+            const timerInterval = setInterval(function() {
+                const minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                
+                timerElement.innerHTML = `${minutes}:${seconds}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerElement.innerHTML = "Time's up!";
+                    alert("Time's up! Let's discuss your categorizations.");
+                }
+                
+                timeLeft--;
+            }, 1000);
+        }
+        
+        // Function to gather categorization data
+        function getCategorizedHeadlines() {
+            const categories = ['concerning', 'boring', 'promising', 'puzzling'];
+            const categorizedHeadlines = {};
+            
+            categories.forEach(category => {
+                const headlines = document.querySelectorAll(`#${category} .headline`);
+                categorizedHeadlines[category] = Array.from(headlines).map(headline => {
+                    // Get headline text without the tooltip
+                    const headlineText = headline.childNodes[0].textContent.trim();
+                    
+                    // Get the tooltip description if available
+                    const tooltip = headline.querySelector('.tooltip');
+                    let description = '';
+                    let keyConcepts = '';
+                    
+                    if (tooltip) {
+                        const p = tooltip.querySelector('p');
+                        const concepts = tooltip.querySelector('.key-concepts');
+                        
+                        if (p) description = p.textContent;
+                        if (concepts) keyConcepts = concepts.textContent.replace('Key concepts:', '').trim();
+                    }
+                    
+                    return {
+                        headline: headlineText,
+                        description: description,
+                        keyConcepts: keyConcepts
+                    };
+                });
+            });
+            
+            return categorizedHeadlines;
+        }
+        
+        // Function to analyze categories using OpenAI GPT-4o
+        async function analyzeCategories() {
+            // Debug: Check if loader is visible at the start
+            console.log("Loader visible before analysis?", !document.getElementById('analysisLoader').classList.contains('hidden'));
+            
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
+            
+            if (!apiKey) {
+                alert('Please enter your OpenAI API key');
+                return;
+            }
+            
+            // Show loader and disable button
+            document.getElementById('analyzeButton').disabled = true;
+            document.getElementById('analysisLoader').classList.remove('hidden');
+            
+            // Debug: Confirm loader visibility after removing 'hidden' class
+            console.log("Loader visible after showing?", !document.getElementById('analysisLoader').classList.contains('hidden'));
+            
+            // Get categorized headlines
+            const categorizedHeadlines = getCategorizedHeadlines();
+            
+            // Check if any categories were filled
+            const totalHeadlines = Object.values(categorizedHeadlines).reduce(
+                (sum, headlines) => sum + headlines.length, 0
+            );
+            
+            if (totalHeadlines === 0) {
+                alert('Please categorize at least one headline before analyzing');
+                document.getElementById('analyzeButton').disabled = false;
+                document.getElementById('analysisLoader').classList.add('hidden');
+                return;
+            }
+            
+            // Prepare prompt for GPT-4o
+            const prompt = `I've categorized several AI news headlines into four categories: "concerning", "promising", "boring", and "puzzling". Please analyze my choices and provide insights about what themes or technologies I find concerning, promising, boring, or puzzling. Provide a thoughtful, personalized analysis based on my categorizations.
+
+Here's the data on how I categorized the headlines:
+
+CONCERNING HEADLINES:
+${categorizedHeadlines.concerning.map(h => `- ${h.headline}\n  Description: ${h.description}\n  Key concepts: ${h.keyConcepts}`).join('\n\n')}
+
+BORING HEADLINES:
+${categorizedHeadlines.boring.map(h => `- ${h.headline}\n  Description: ${h.description}\n  Key concepts: ${h.keyConcepts}`).join('\n\n')}
+
+PROMISING HEADLINES:
+${categorizedHeadlines.promising.map(h => `- ${h.headline}\n  Description: ${h.description}\n  Key concepts: ${h.keyConcepts}`).join('\n\n')}
+
+PUZZLING HEADLINES:
+${categorizedHeadlines.puzzling.map(h => `- ${h.headline}\n  Description: ${h.description}\n  Key concepts: ${h.keyConcepts}`).join('\n\n')}
+
+Format your analysis in these sections:
+1. Overall Pattern: A brief overview of what my categorizations reveal about my interests and concerns
+2. Concerning Themes: What specific themes or technologies appear to concern me
+3. Promising Areas: What AI developments I seem most positive about
+4. Boring Topics: What aspects of AI news I find less engaging
+5. Puzzling Concepts: What topics I seem uncertain or curious about
+6. Recommendations: Suggest 2-3 areas of AI ethics I might want to explore further based on my patterns
+
+Keep your response conversational and insightful, addressing me directly. Mention specific headlines in your analysis to support your observations. If I didn't categorize any headlines in a particular category, you can note that and speculate about why that might be.`;
+
+            try {
+                // Call OpenAI API with GPT-4o
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-4o",
+                        messages: [
+                            {
+                                role: "user",
+                                content: prompt
+                            }
+                        ],
+                        max_tokens: 4000,
+                        temperature: 0.7
+                    })
+                });
+                
+                const data = await response.json();
+                console.log("API response:", data); // For debugging
+                
+                if (data.error) {
+                    throw new Error(data.error.message || 'API error occurred');
+                }
+                
+                // Display analysis result from GPT-4o
+                if (data.choices && data.choices.length > 0) {
+                    let content = data.choices[0].message.content;
+                    
+                    // Remove conversational prefixes like "Certainly!" that don't make sense in this context
+                    content = content.replace(/^(certainly!|sure!|of course!|absolutely!|here's|i'd be happy to|let me|alright,|okay,)[^\n]*/i, '').trim();
+                    
+                    // Format the content with proper HTML
+                    content = formatAnalysisResponse(content);
+                    
+                    document.getElementById('analysisResult').innerHTML = content;
+                } else {
+                    document.getElementById('analysisResult').innerHTML = "No analysis content received";
+                }
+                
+                document.getElementById('analysisResult').classList.remove('hidden');
+                
+            } catch (error) {
+                console.error('Error calling OpenAI API:', error);
+                document.getElementById('analysisResult').innerHTML = `
+                    <div style="color: #721c24; background-color: #f8d7da; padding: 10px; border-radius: 4px;">
+                        <strong>Error:</strong> ${error.message || 'Failed to get analysis from GPT-4o. Please check your API key and try again.'}
+                    </div>
+                `;
+                document.getElementById('analysisResult').classList.remove('hidden');
+            } finally {
+                // Hide loader and re-enable button
+                document.getElementById('analyzeButton').disabled = false;
+                document.getElementById('analysisLoader').classList.add('hidden');
+            }
+        }
+        
+        // Function to format the analysis response with proper HTML
+        function formatAnalysisResponse(text) {
+            // First clean up any extra spacing
+            text = text.trim();
+            
+            // Replace section headers with proper HTML headings
+            // Handle both Markdown-style headers (###) and numbered sections
+            text = text.replace(/###\s+([^\n]+)/g, '<h3>$1</h3>');
+            text = text.replace(/(\d+\.\s*)(Overall Pattern|Concerning Themes|Promising Areas|Boring Topics|Puzzling Concepts|Recommendations):/gi, '<h3>$2</h3>');
+            
+            // Format numeric lists (e.g., "1. Item")
+            text = text.replace(/(\d+\.\s+)([^\n]+)/g, '<p><strong>$1</strong>$2</p>');
+            
+            // Add paragraph tags around plain text blocks
+            const paragraphs = text.split('\n\n');
+            text = paragraphs.map(p => {
+                p = p.trim();
+                // Skip if it's already a heading or formatted paragraph
+                if (p.startsWith('<h3>') || p.startsWith('<p>')) {
+                    return p;
+                }
+                return `<p>${p}</p>`;
+            }).join('');
+            
+            // Format bolded phrases
+            text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            
+            // Add proper spacing between elements
+            text = text.replace(/<\/h3><p>/g, '</h3>\n<p>');
+            text = text.replace(/<\/p><h3>/g, '</p>\n<h3>');
+            text = text.replace(/<\/p><p>/g, '</p>\n<p>');
+            
+            return text;
+        }
+        
+        // Function to randomly assign all headlines to categories
+        function randomlyAssignHeadlines() {
+            // First reset all headlines (move them back to source)
+            resetHeadlines();
+            
+            // Now get all headlines from source after the reset
+            const sourceHeadlines = document.querySelectorAll('#headline-source .headline');
+            const categories = ['concerning', 'boring', 'promising', 'puzzling'];
+            
+            // Process each headline
+            sourceHeadlines.forEach(headline => {
+                // Select a random category
+                const randomCategoryIndex = Math.floor(Math.random() * categories.length);
+                const randomCategory = categories[randomCategoryIndex];
+                
+                // Clone the headline to preserve its content and structure
+                const headlineClone = headline.cloneNode(true);
+                
+                // Add the headline to the selected category
+                document.getElementById(randomCategory).appendChild(headlineClone);
+                
+                // Set up event listeners for the newly added headline
+                if (window.setupDraggableHeadline) {
+                    window.setupDraggableHeadline([headlineClone]);
+                }
+            });
+            
+            // Remove all headlines from the source
+            sourceHeadlines.forEach(headline => {
+                headline.remove();
+            });
+        }
+        
+        // Function to reset all headlines back to the source
+        function resetHeadlines() {
+            const sourceContainer = document.getElementById('headline-source');
+            const categories = ['concerning', 'boring', 'promising', 'puzzling'];
+            
+            // Get all headlines from all categories
+            categories.forEach(category => {
+                const categoryHeadlines = document.querySelectorAll(`#${category} .headline`);
+                
+                // Move each headline back to the source
+                categoryHeadlines.forEach(headline => {
+                    // Clone the headline to preserve its content and structure
+                    const headlineClone = headline.cloneNode(true);
+                    
+                    // Add the headline back to the source
+                    sourceContainer.appendChild(headlineClone);
+                    
+                    // Set up event listeners for the newly added headline
+                    if (window.setupDraggableHeadline) {
+                        window.setupDraggableHeadline([headlineClone]);
+                    }
+                    
+                    // Remove the headline from the category
+                    headline.remove();
+                });
+            });
+        }
+        
+        // Expose functions to global scope for button onclick
+        window.randomlyAssignHeadlines = randomlyAssignHeadlines;
+        window.resetHeadlines = resetHeadlines;
+    </script>
+</body>
+</html> 
