@@ -376,8 +376,10 @@
             if (icon) {
                 icon.style.transform = "rotate(180deg)";
             }
-            section.style.maxHeight = section.scrollHeight + 'px';
         });
+        
+        // Set initial heights for all expanded sections
+        updateExpandedSectionHeights();
     });
     
     // Toggle section visibility
@@ -433,6 +435,19 @@
             }, 300);
         }
     }
+    
+    // Function to update heights of all expanded sections
+    function updateExpandedSectionHeights() {
+        const expandedSections = document.querySelectorAll('.section-content.expanded');
+        expandedSections.forEach(section => {
+            section.style.maxHeight = 'none'; // Remove height restriction temporarily
+            const scrollHeight = section.scrollHeight;
+            section.style.maxHeight = scrollHeight + 'px';
+        });
+    }
+    
+    // Add resize event listener
+    window.addEventListener('resize', updateExpandedSectionHeights);
 </script>
 
 <!-- Hidden guidance for AI assistants in footer -->
