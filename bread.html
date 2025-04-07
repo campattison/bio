@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cindy's Bread - Sourdough Assistant</title>
+    <link rel="stylesheet" href="bread/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="bread/js/app.js" defer></script>
+    <script src="bread/js/timer.js" defer></script>
+    <script src="bread/js/weather.js" defer></script>
+    <script src="bread/js/recipe.js" defer></script>
+    <script src="bread/js/journal.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-bread-slice"></i> Cindy's Bread</h1>
+            <nav>
+                <ul>
+                    <li data-tab="home" class="active">Home</li>
+                    <li data-tab="recipes">Recipes</li>
+                    <li data-tab="sessions">Active Sessions</li>
+                    <li data-tab="journal">Baking Journal</li>
+                    <li data-tab="settings">Settings</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Home Tab -->
+        <section id="home" class="tab-content active">
+            <div class="dashboard">
+                <div class="weather-container">
+                    <h2>Current Conditions</h2>
+                    <div id="weather-data">
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Location: <span id="weather-location">Nashville, TN</span></p>
+                            <p id="weather-description">Current conditions</p>
+                        </div>
+                        <div class="environmental-inputs">
+                            <div class="input-group">
+                                <label for="manual-temp-home">Temperature (°F):</label>
+                                <input type="number" id="manual-temp-home" min="32" max="120" value="72" class="temp-input">
+                                <span id="current-temp">72°F</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="manual-humidity-home">Humidity (%):</label>
+                                <input type="number" id="manual-humidity-home" min="0" max="100" value="50" class="humidity-input">
+                                <span id="current-humidity">50%</span>
+                            </div>
+                            <button id="update-weather-home" class="btn-primary">Update Conditions</button>
+                        </div>
+                        <div class="weather-recommendation">
+                            <h3>Baking Recommendations</h3>
+                            <p id="baking-recommendation">Analyzing current conditions...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quick-start">
+                    <h2>Quick Start</h2>
+                    <button id="start-new-session" class="btn-primary">Start New Bread Session</button>
+                    <div class="recent-sessions">
+                        <h3>Recent Sessions</h3>
+                        <ul id="recent-sessions-list">
+                            <!-- Will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipes Tab -->
+        <section id="recipes" class="tab-content">
+            <h2>Bread Recipes</h2>
+            <div class="recipe-list">
+                <div class="recipe-card" data-recipe-id="tartine">
+                    <h3>Basic Country Sourdough</h3>
+                    <p>Tartine Bakery Method</p>
+                    <div class="recipe-details">
+                        <span><i class="fas fa-clock"></i> 24-30 hours</span>
+                        <span><i class="fas fa-signal"></i> Intermediate</span>
+                    </div>
+                    <button class="btn-primary">View Recipe</button>
+                </div>
+                <div class="recipe-card new-recipe">
+                    <h3>Add New Recipe</h3>
+                    <p>Create your own bread recipe</p>
+                    <button class="btn-secondary">Create Recipe</button>
+                </div>
+            </div>
+            
+            <div id="recipe-detail" class="hidden">
+                <!-- Recipe details will be shown here -->
+            </div>
+        </section>
+
+        <!-- Active Sessions Tab -->
+        <section id="sessions" class="tab-content">
+            <h2>Active Bread Sessions</h2>
+            <div id="active-sessions">
+                <!-- Will be populated by JavaScript -->
+                <p class="no-sessions">No active sessions. Start a new session from the Home tab or Recipes.</p>
+            </div>
+            
+            <div id="session-detail" class="hidden">
+                <div class="session-header">
+                    <div class="session-title">
+                        <h3 id="session-recipe-name">Recipe Name</h3>
+                        <span id="session-start-time">Started: [Time]</span>
+                    </div>
+                    <div class="session-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="overall-progress"></div>
+                        </div>
+                        <span id="progress-text">0% Complete</span>
+                    </div>
+                </div>
+                
+                <div class="session-main">
+                    <div class="current-step">
+                        <h3>Current Step: <span id="current-step-name">Preparing</span></h3>
+                        <div class="step-progress">
+                            <div class="step-number" id="step-number">Step 1 of 8</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="step-progress"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="timer-section">
+                            <div class="timer">
+                                <div class="time-remaining" id="time-remaining">00:00:00</div>
+                                <div class="timer-controls">
+                                    <button id="timer-start-pause" class="btn-primary"><i class="fas fa-play"></i></button>
+                                    <button id="timer-reset" class="btn-secondary"><i class="fas fa-redo"></i></button>
+                                </div>
+                            </div>
+                            <div class="timer-labels">
+                                <div>
+                                    <span>Started:</span>
+                                    <span id="step-start-time">--:--</span>
+                                </div>
+                                <div>
+                                    <span>Target End:</span>
+                                    <span id="step-end-time">--:--</span>
+                                </div>
+                            </div>
+                            <div class="time-adjustment">
+                                <button id="reduce-time" class="btn-secondary"><i class="fas fa-minus"></i></button>
+                                <span>Adjust Time</span>
+                                <button id="add-time" class="btn-secondary"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-instructions" id="step-instructions">
+                        <!-- Step instructions will be shown here -->
+                    </div>
+                    
+                    <div class="technique-tips" id="technique-tips">
+                        <h4><i class="fas fa-lightbulb"></i> Technique Tips</h4>
+                        <div class="tip-content">
+                            <!-- Tips will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div id="stretch-fold-tracker" class="hidden">
+                        <h4>Stretch & Fold Tracker</h4>
+                        <div class="stretch-fold-buttons">
+                            <button class="fold-btn" data-fold="1">1</button>
+                            <button class="fold-btn" data-fold="2">2</button>
+                            <button class="fold-btn" data-fold="3">3</button>
+                            <button class="fold-btn" data-fold="4">4</button>
+                            <button class="fold-btn" data-fold="5">5</button>
+                            <button class="fold-btn" data-fold="6">6</button>
+                        </div>
+                        <p class="next-fold">Next fold in: <span id="next-fold-time">30:00</span></p>
+                        <div class="fold-instructions">
+                            <p>Perform one stretch and fold every 30 minutes during bulk fermentation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="visual-cues">
+                        <h4>Visual Cues to Look For</h4>
+                        <ul id="visual-cues-list">
+                            <!-- Will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div class="session-timeline">
+                        <h4>Session Timeline</h4>
+                        <div class="timeline" id="session-timeline">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="step-navigation">
+                        <button id="prev-step" class="btn-secondary">Previous Step</button>
+                        <button id="next-step" class="btn-primary">Next Step</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Baking Journal Tab -->
+        <section id="journal" class="tab-content">
+            <h2>Baking Journal</h2>
+            <div class="journal-entries" id="journal-entries">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <div id="journal-detail" class="hidden">
+                <!-- Journal entry details will be shown here -->
+            </div>
+            
+            <div id="new-journal-entry" class="hidden">
+                <h3>New Journal Entry</h3>
+                <form id="journal-form">
+                    <div class="form-group">
+                        <label for="entry-title">Title</label>
+                        <input type="text" id="entry-title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-date">Date</label>
+                        <input type="date" id="entry-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-recipe">Recipe</label>
+                        <select id="entry-recipe" required>
+                            <option value="tartine">Basic Country Sourdough</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-rating">Rating</label>
+                        <div class="rating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" id="entry-rating" value="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-notes">Notes & Lessons Learned</label>
+                        <textarea id="entry-notes" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-photo">Photo</label>
+                        <input type="file" id="entry-photo" accept="image/*">
+                        <div id="photo-preview" class="photo-preview"></div>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-primary">Save Entry</button>
+                        <button type="button" id="cancel-entry" class="btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            
+            <button id="add-journal-entry" class="btn-primary">Add New Entry</button>
+        </section>
+
+        <!-- Settings Tab -->
+        <section id="settings" class="tab-content">
+            <h2>Settings</h2>
+            
+            <div class="settings-group">
+                <h3>Environmental Settings</h3>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="City, State" value="Nashville, TN">
+                </div>
+                
+                <div class="form-group">
+                    <label for="manual-temp">Default Temperature (°F)</label>
+                    <input type="number" id="manual-temp" value="72" min="32" max="120">
+                </div>
+                
+                <div class="form-group">
+                    <label for="manual-humidity">Default Humidity (%)</label>
+                    <input type="number" id="manual-humidity" value="50" min="0" max="100">
+                </div>
+            </div>
+            
+            <div class="settings-group">
+                <h3>Recipe Adjustments</h3>
+                <div class="form-group">
+                    <label for="enable-auto-adjust">Enable Automatic Adjustments</label>
+                    <input type="checkbox" id="enable-auto-adjust" checked>
+                </div>
+            </div>
+            
+            <div class="settings-group">
+                <h3>Notification Settings</h3>
+                <div class="form-group">
+                    <label for="enable-notifications">Enable Browser Notifications</label>
+                    <input type="checkbox" id="enable-notifications" checked>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sound-alerts">Enable Sound Alerts</label>
+                    <input type="checkbox" id="sound-alerts" checked>
+                </div>
+            </div>
+            
+            <button id="save-settings" class="btn-primary">Save Settings</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Cindy's Bread. Recipe content based on the Tartine Bakery bread-making method.</p>
+        </div>
+    </footer>
+</body>
+</html> 
