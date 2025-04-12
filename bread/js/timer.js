@@ -1,165 +1,91 @@
 // Timer functionality
-let timerInterval = null;
-let timerEndTime = null;
-let timerPaused = false;
-let timerPauseStart = null;
-let timerPauseDuration = 0;
-
-// Initialize timer
-function initTimer(endTime) {
-    // Clear any existing timer
-    if (timerInterval) {
-        clearInterval(timerInterval);
+class Timer {
+    constructor(totalSeconds, onTick, onComplete) {
+        this.totalSeconds = totalSeconds;
+        this.remainingSeconds = totalSeconds;
+        this.onTick = onTick;
+        this.onComplete = onComplete;
+        this.timerId = null;
+        this.startTime = null;
+        this.pausedTime = null;
     }
-    
-    // Set the end time
-    timerEndTime = endTime;
-    timerPaused = false;
-    timerPauseDuration = 0;
-    
-    // Update timer immediately
-    updateTimerDisplay();
-    
-    // Set up interval to update timer every second
-    timerInterval = setInterval(updateTimerDisplay, 1000);
-}
 
-// Update timer display
-function updateTimerDisplay() {
-    if (!timerEndTime) return;
-    
-    if (timerPaused) {
-        // Don't update the time if paused
-        return;
+    start() {
+        if (this.timerId !== null) return; // Already running
+
+        // If we're resuming from pause
+        if (this.pausedTime !== null) {
+            // Adjust the start time to account for the time already elapsed
+            const pauseDuration = Date.now() - this.pausedTime;
+            this.startTime += pauseDuration;
+            this.pausedTime = null;
+        } else {
+            // Starting fresh
+            this.startTime = Date.now() - ((this.totalSeconds - this.remainingSeconds) * 1000);
+        }
+
+        this.timerId = setInterval(() => {
+            const elapsedSeconds = Math.floor((Date.now() - this.startTime) / 1000);
+            this.remainingSeconds = Math.max(0, this.totalSeconds - elapsedSeconds);
+            
+            if (this.onTick) {
+                this.onTick(this.remainingSeconds);
+            }
+            
+            if (this.remainingSeconds <= 0) {
+                this.stop();
+                if (this.onComplete) {
+                    this.onComplete();
+                }
+            }
+        }, 1000);
+
+        return this;
     }
-    
-    const now = new Date();
-    const remaining = timerEndTime - now - timerPauseDuration;
-    
-    if (remaining <= 0) {
-        // Timer complete
-        clearInterval(timerInterval);
-        document.getElementById('time-remaining').textContent = 'Complete!';
+
+    pause() {
+        if (this.timerId === null) return; // Not running
         
-        // Play sound if enabled
-        playTimerCompleteSound();
+        clearInterval(this.timerId);
+        this.timerId = null;
+        this.pausedTime = Date.now();
         
-        // Send notification if enabled
-        showTimerCompleteNotification();
+        return this;
+    }
+
+    stop() {
+        if (this.timerId === null) return; // Not running
         
-        return;
-    }
-    
-    // Update the display
-    document.getElementById('time-remaining').textContent = formatTime(remaining);
-}
-
-// Toggle timer pause/resume
-function toggleTimer() {
-    if (!timerEndTime) return;
-    
-    if (timerPaused) {
-        // Resume timer
-        const pauseDuration = new Date() - timerPauseStart;
-        timerPauseDuration += pauseDuration;
-        timerPaused = false;
+        clearInterval(this.timerId);
+        this.timerId = null;
+        this.pausedTime = null;
         
-        // Update button
-        document.getElementById('timer-start-pause').innerHTML = '<i class="fas fa-pause"></i>';
-    } else {
-        // Pause timer
-        timerPaused = true;
-        timerPauseStart = new Date();
+        return this;
+    }
+
+    reset() {
+        this.stop();
+        this.remainingSeconds = this.totalSeconds;
+        if (this.onTick) {
+            this.onTick(this.remainingSeconds);
+        }
         
-        // Update button
-        document.getElementById('timer-start-pause').innerHTML = '<i class="fas fa-play"></i>';
+        return this;
     }
-}
 
-// Reset timer to original duration
-function resetTimer() {
-    if (!timerEndTime) return;
-    
-    // Get the original duration
-    const originalDuration = getStepDuration();
-    
-    // Reset the end time
-    timerEndTime = new Date(Date.now() + originalDuration);
-    timerPaused = false;
-    timerPauseDuration = 0;
-    
-    // Update button
-    document.getElementById('timer-start-pause').innerHTML = '<i class="fas fa-pause"></i>';
-    
-    // Update display
-    updateTimerDisplay();
-}
-
-// Get the duration for the current step
-function getStepDuration() {
-    if (!window.currentSession) return 0;
-    
-    const recipe = window.recipes[window.currentSession.recipeId];
-    if (!recipe) return 0;
-    
-    const step = recipe.steps.find(s => s.name === window.currentSession.currentStep);
-    if (!step) return 0;
-    
-    return step.duration * 1000; // Convert seconds to milliseconds
-}
-
-// Play timer complete sound
-function playTimerCompleteSound() {
-    // Check if sound is enabled
-    const soundEnabled = document.getElementById('sound-alerts')?.checked ?? true;
-    if (!soundEnabled) return;
-    
-    // In a real app, would play a sound
-    // For this demo, just output to console
-    console.log('Timer complete sound played');
-}
-
-// Show timer complete notification
-function showTimerCompleteNotification() {
-    // Check if notifications are enabled
-    const notificationsEnabled = document.getElementById('enable-notifications')?.checked ?? true;
-    if (!notificationsEnabled) return;
-    
-    // Check if browser supports notifications
-    if (!('Notification' in window)) return;
-    
-    // Check if permission is granted
-    if (Notification.permission !== 'granted') {
-        Notification.requestPermission();
-        return;
+    isRunning() {
+        return this.timerId !== null;
     }
-    
-    // Show notification
-    const stepName = window.currentSession?.currentStep || 'Current step';
-    const notification = new Notification('Bread Timer Complete', {
-        body: `Your ${stepName} timer is complete!`,
-        icon: 'img/bread-icon.png' // Would use a real icon in a production app
-    });
-    
-    // Close notification after 10 seconds
-    setTimeout(() => notification.close(), 10000);
-}
 
-// Format time in milliseconds to a readable string
-function formatTime(ms) {
-    const totalSeconds = Math.floor(ms / 1000);
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    
-    if (hours > 0) {
-        return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-    } else {
-        return `${pad(minutes)}:${pad(seconds)}`;
+    formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        
+        return [
+            hours.toString().padStart(2, '0'),
+            minutes.toString().padStart(2, '0'),
+            secs.toString().padStart(2, '0')
+        ].join(':');
     }
-}
-
-// Pad a number with leading zeros
-function pad(num) {
-    return num.toString().padStart(2, '0');
 } 
