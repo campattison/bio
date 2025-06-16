@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline' data:">
+		<title>Zotero Report</title>
+		<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7Cgljb2xvci1zY2hlbWU6IGxpZ2h0IGRhcms7CgkvKiBUaGVzZSBzaG91bGQgYmUgdGhlIGRlZmF1bHRzLCBidXQganVzdCBpbiBjYXNlOiAqLwoJYmFja2dyb3VuZDogQ2FudmFzOwoJY29sb3I6IENhbnZhc1RleHQ7Cn0KCmEgewoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7Cn0KCmJvZHkgewoJcGFkZGluZzogMDsKfQoKdWwucmVwb3J0IGxpLml0ZW0gewoJYm9yZGVyLXRvcDogNHB4IHNvbGlkICM1NTU7CglwYWRkaW5nLXRvcDogMWVtOwoJcGFkZGluZy1sZWZ0OiAxZW07CglwYWRkaW5nLXJpZ2h0OiAxZW07CgltYXJnaW4tYm90dG9tOiAyZW07Cn0KCmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDIgewoJbWFyZ2luOiAwIDAgLjVlbTsKfQoKaDIucGFyZW50SXRlbSB7Cglmb250LXdlaWdodDogNjAwOwoJZm9udC1zaXplOiAxZW07CglwYWRkaW5nOiAwIDAgLjVlbTsKCWJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjOwp9CgovKiBJZiBjb21iaW5pbmcgY2hpbGRyZW4sIGRpc3BsYXkgcGFyZW50IHNsaWdodGx5IGxhcmdlciAqLwp1bC5yZXBvcnQuY29tYmluZUNoaWxkSXRlbXMgaDIucGFyZW50SXRlbSB7Cglmb250LXNpemU6IDEuMWVtOwoJcGFkZGluZy1ib3R0b206IC43NWVtOwoJbWFyZ2luLWJvdHRvbTogLjRlbTsKfQoKaDIucGFyZW50SXRlbSAudGl0bGUgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDMgewoJbWFyZ2luLWJvdHRvbTogLjZlbTsKCWZvbnQtd2VpZ2h0OiA2MDAgIWltcG9ydGFudDsKCWZvbnQtc2l6ZTogMWVtOwoJZGlzcGxheTogYmxvY2s7Cn0KCi8qIE1ldGFkYXRhIHRhYmxlICovCnRoIHsKCXZlcnRpY2FsLWFsaWduOiB0b3A7Cgl0ZXh0LWFsaWduOiByaWdodDsKCXdpZHRoOiAxNSU7Cgl3aGl0ZS1zcGFjZTogbm93cmFwOwp9Cgp0ZCB7CglwYWRkaW5nLWxlZnQ6IC41ZW07Cn0KCgp1bC5yZXBvcnQsIHVsLm5vdGVzLCB1bC50YWdzIHsKCWxpc3Qtc3R5bGU6IG5vbmU7CgltYXJnaW4tbGVmdDogMDsKCXBhZGRpbmctbGVmdDogMDsKfQoKLyogVGFncyAqLwpoMy50YWdzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLnRhZ3MgewoJbGluZS1oZWlnaHQ6IDEuNzVlbTsKCWxpc3Qtc3R5bGU6IG5vbmU7Cn0KCnVsLnRhZ3MgbGkgewoJZGlzcGxheTogaW5saW5lOwp9Cgp1bC50YWdzIGxpOm5vdCg6bGFzdC1jaGlsZCk6YWZ0ZXIgewoJY29udGVudDogJywgJzsKfQoKCi8qIENoaWxkIG5vdGVzICovCmgzLm5vdGVzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLm5vdGVzIHsKCW1hcmdpbi1ib3R0b206IDEuMmVtOwp9Cgp1bC5ub3RlcyA+IGxpOmZpcnN0LWNoaWxkIHAgewoJbWFyZ2luLXRvcDogMDsKfQoKdWwubm90ZXMgPiBsaSB7CglwYWRkaW5nOiAuN2VtIDA7Cn0KCnVsLm5vdGVzID4gbGk6bm90KDpsYXN0LWNoaWxkKSB7Cglib3JkZXItYm90dG9tOiAxcHggI2NjYyBzb2xpZDsKfQoKCnVsLm5vdGVzID4gbGkgcDpmaXJzdC1jaGlsZCB7CgltYXJnaW4tdG9wOiAwOwp9Cgp1bC5ub3RlcyA+IGxpIHA6bGFzdC1jaGlsZCB7CgltYXJnaW4tYm90dG9tOiAwOwp9CgovKiBBZGQgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBibG9ja3F1b3RlICovCnVsLm5vdGVzID4gbGkgYmxvY2txdW90ZSBwOm5vdCg6ZW1wdHkpOmJlZm9yZSwKbGkubm90ZSBibG9ja3F1b3RlIHA6bm90KDplbXB0eSk6YmVmb3JlIHsKCWNvbnRlbnQ6ICfigJwnOwp9Cgp1bC5ub3RlcyA+IGxpIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyLApsaS5ub3RlIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyIHsKCWNvbnRlbnQ6ICfigJ0nOwp9CgovKiBQcmVzZXJ2ZSB3aGl0ZXNwYWNlIG9uIHBsYWludGV4dCBub3RlcyAqLwp1bC5ub3RlcyBsaSBwLnBsYWludGV4dCwgbGkubm90ZSBwLnBsYWludGV4dCwgZGl2Lm5vdGUgcC5wbGFpbnRleHQgewoJd2hpdGUtc3BhY2U6IHByZS13cmFwOwp9CgovKiBEaXNwbGF5IHRhZ3Mgd2l0aGluIGNoaWxkIG5vdGVzIGlubGluZSAqLwp1bC5ub3RlcyBoMy50YWdzIHsKCWRpc3BsYXk6IGlubGluZTsKCWZvbnQtc2l6ZTogMWVtOwp9Cgp1bC5ub3RlcyBoMy50YWdzOmFmdGVyIHsKCWNvbnRlbnQ6ICcgJzsKfQoKdWwubm90ZXMgdWwudGFncyB7CglkaXNwbGF5OiBpbmxpbmU7Cn0KCnVsLm5vdGVzIHVsLnRhZ3MgbGk6bm90KDpsYXN0LWNoaWxkKTphZnRlciB7Cgljb250ZW50OiAnLCAnOwp9CgoKLyogQ2hpbGQgYXR0YWNobWVudHMgKi8KaDMuYXR0YWNobWVudHMgewoJZm9udC1zaXplOiAxLjFlbTsKfQoKdWwuYXR0YWNobWVudHMgbGkgewoJcGFkZGluZy10b3A6IC41ZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHsKCW1hcmdpbi1sZWZ0OiAyZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHA6Zmlyc3QtY2hpbGQgewoJbWFyZ2luLXRvcDogLjc1ZW07Cn0KCmRpdiB0YWJsZSB7Cglib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOwp9CgpkaXYgdGFibGUgdGQsIGRpdiB0YWJsZSB0aCB7Cglib3JkZXI6IDFweCAjY2NjIHNvbGlkOwoJYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKCXdvcmQtYnJlYWs6IGJyZWFrLWFsbDsKfQoKZGl2IHRhYmxlIHRkIHA6ZW1wdHk6OmFmdGVyLCBkaXYgdGFibGUgdGggcDplbXB0eTo6YWZ0ZXIgewoJY29udGVudDogIlwwMGEwIjsKfQoKZGl2IHRhYmxlIHRkICo6Zmlyc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmZpcnN0LWNoaWxkIHsKCW1hcmdpbi10b3A6IDA7Cn0KCmRpdiB0YWJsZSB0ZCAqOmxhc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmxhc3QtY2hpbGQgewoJbWFyZ2luLWJvdHRvbTogMDsKfQo=">
+		<link rel="stylesheet" type="text/css" media="screen,projection" href="data:text/css;base64,LyogR2VuZXJpYyBzdHlsZXMgKi8KYm9keSB7Cglmb250OiA2Mi41JSBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cgl3aWR0aDogNzgwcHg7CgltYXJnaW46IDAgYXV0bzsKfQoKaDIgewoJZm9udC1zaXplOiAxLjVlbTsKCWxpbmUtaGVpZ2h0OiAxLjVlbTsKCWZvbnQtZmFtaWx5OiBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cn0KCnAgewoJbGluZS1oZWlnaHQ6IDEuNWVtOwp9CgphOmFueS1saW5rIHsKCWNvbG9yOiAjOTAwOwp9CgphOmhvdmVyLCBhOmFjdGl2ZSB7Cgljb2xvcjogIzc3NzsKfQoKQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewoJYTphbnktbGluayB7CgkJY29sb3I6ICNmMDA7Cgl9CgoJYTpob3ZlciwgYTphY3RpdmUgewoJCWNvbG9yOiAjOTk5OwoJfQp9CgoKdWwucmVwb3J0IHsKCWZvbnQtc2l6ZTogMS40ZW07Cgl3aWR0aDogNjgwcHg7CgltYXJnaW46IDAgYXV0bzsKCXBhZGRpbmc6IDIwcHggMjBweDsKfQoKLyogTWV0YWRhdGEgdGFibGUgKi8KdGFibGUgewoJYm9yZGVyOiAxcHggI2NjYyBzb2xpZDsKCW92ZXJmbG93OiBhdXRvOwoJd2lkdGg6IDEwMCU7CgltYXJnaW46IC4xZW0gYXV0byAuNzVlbTsKCXBhZGRpbmc6IDAuNWVtOwp9Cg==">
+		<link rel="stylesheet" type="text/css" media="print" href="data:text/css;base64,Ym9keSB7Cglmb250OiAxMnB0ICJUaW1lcyBOZXcgUm9tYW4iLCBUaW1lcywgR2VvcmdpYSwgc2VyaWY7CgltYXJnaW46IDA7Cgl3aWR0aDogYXV0bzsKfQoKLyogUGFnZSBCcmVha3MgKHBhZ2UtYnJlYWstaW5zaWRlIG9ubHkgcmVjb2duaXplZCBieSBPcGVyYSkgKi8KaDEsIGgyLCBoMywgaDQsIGg1LCBoNiB7CglwYWdlLWJyZWFrLWFmdGVyOiBhdm9pZDsKCXBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZDsKfQoKdWwsIG9sLCBkbCB7CglwYWdlLWJyZWFrLWluc2lkZTogYXZvaWQ7Cgljb2xvci1hZGp1c3Q6IGV4YWN0Owp9CgpoMiB7Cglmb250LXNpemU6IDEuM2VtOwoJbGluZS1oZWlnaHQ6IDEuM2VtOwp9CgphIHsKCWNvbG9yOiBpbmhlcml0OwoJdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9Cg==">
+	</head>
+	<body>
+		<ul class="report combineChildItems">
+			<li id="item_D8Q6KYIC" class="item journalArticle">
+			<h2>The Potential and Limitations of Artificial Colleagues</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Friedemann Bieber</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Charlotte Franziska Unruh</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>This article assesses the potential of artificial colleagues 
+to help us realise the goods of collegial relationships and discusses 
+its practical implications. In speaking of artificial colleagues, it 
+refers to AI-based agential systems in the workplace. The article 
+proceeds in three steps. First, it develops a comprehensive account of 
+the goods of collegial relationships. It argues that, in addition to 
+goods at the individual level, collegial relationships can provide 
+valuable goods at the social level. Second, it argues that artificial 
+colleagues are limited in their capacity to realise the goods of 
+collegial relationships: at the individual level, they can at best 
+realise some such goods, and at the social level, they can at best 
+support their realisation. This contradicts Nyholm and Smids’ (2020) 
+claim that robots can be good colleagues. The article traces these 
+limitations to particular features of artificial colleagues and 
+discusses to what extent they would hold for radically advanced systems.
+ Third, the article examines the policy implications of these findings. 
+It highlights how the introduction of artificial colleagues, in addition
+ to potentially crowding out human colleagues, will likely impact 
+relations among human colleagues. And it proposes a governance principle
+ that gives strict priority to human collegial relationships.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-05-02</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s13347-025-00890-9">https://doi.org/10.1007/s13347-025-00890-9</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/11/2025, 7:36:33 PM</td>
+					</tr>
+					<tr>
+					<th>Volume</th>
+						<td>38</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>60</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophy &amp; Technology</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s13347-025-00890-9">10.1007/s13347-025-00890-9</a></td>
+					</tr>
+					<tr>
+					<th>Issue</th>
+						<td>2</td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos. Technol.</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>2210-5441</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/11/2025, 7:36:33 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/11/2025, 7:36:35 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial Intelligence</li>
+					<li>Work</li>
+					<li>Artificial Colleagues</li>
+					<li>Collegiality</li>
+					<li>Human-robot-interaction</li>
+					<li>Relationships</li>
+					<li>Robot Ethics</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_QMABAXIL">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_N56ZZETT" class="item preprint">
+			<h2>A Framework to Assess the Persuasion Risks Large Language Model Chatbots Pose to Democratic Societies</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Zhongren Chen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Joshua Kalla</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Quan Le</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Shinpei Nakamura-Sakai</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jasjeet Sekhon</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ruixiao Wang</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>In recent years, significant concern has emerged regarding the
+ potential threat that Large Language Models (LLMs) pose to democratic 
+societies through their persuasive capabilities. We expand upon existing
+ research by conducting two survey experiments and a real-world 
+simulation exercise to determine whether it is more cost effective to 
+persuade a large number of voters using LLM chatbots compared to 
+standard political campaign practice, taking into account both the 
+"receive" and "accept" steps in the persuasion process (Zaller 1992). 
+These experiments improve upon previous work by assessing extended 
+interactions between humans and LLMs (instead of using single-shot 
+interactions) and by assessing both short- and long-run persuasive 
+effects (rather than simply asking users to rate the persuasiveness of 
+LLM-produced content). In two survey experiments (N = 10,417) across 
+three distinct political domains, we find that while LLMs are about as 
+persuasive as actual campaign ads once voters are exposed to them, 
+political persuasion in the real-world depends on both exposure to a 
+persuasive message and its impact conditional on exposure. Through 
+simulations based on real-world parameters, we estimate that LLM-based 
+persuasion costs between \$48-\$74 per persuaded voter compared to \$100
+ for traditional campaign methods, when accounting for the costs of 
+exposure. However, it is currently much easier to scale traditional 
+campaign persuasion methods than LLM-based persuasion. While LLMs do not
+ currently appear to have substantially greater potential for 
+large-scale political persuasion than existing non-LLM methods, this may
+ change as LLM capabilities continue to improve and it becomes easier to
+ scalably encourage exposure to persuasive LLMs.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-04-29</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2505.00036">http://arxiv.org/abs/2505.00036</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/12/2025, 1:40:15 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2505.00036 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2505.00036">10.48550/arXiv.2505.00036</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2505.00036</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/12/2025, 1:40:15 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/12/2025, 1:40:17 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Computers and Society</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_SYXVQXLN">Full Text PDF					</li>
+					<li id="item_A4TU8KEU">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_YJM4K2JK" class="item journalArticle">
+			<h2>Neither Direct, Nor Indirect: Understanding Proxy-Based Algorithmic Discrimination</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Hugo Cossette-Lefebvre</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Kasper Lippert-Rasmussen</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Discrimination is typically understood to be either direct or 
+indirect. However, we argue that some cases that clearly are instances 
+of discrimination are neither direct nor indirect. This is not just a 
+logical taxonomical point. Highly salient, contemporary cases of 
+algorithmic discrimination – a form of discrimination which was not 
+around (or, at least, not conspicuously so) when the distinction between
+ direct and indirect discrimination was originally articulated – are 
+best construed as a third form of discrimination – non-direct 
+discrimination, we shall call it. If we are right, the dominant 
+dichotomous distinction between direct and indirect discrimination 
+should be replaced by our tripartite distinction between direct, 
+indirect, and non-direct discrimination. We show how non-direct 
+discrimination covers not only important types of algorithmic 
+discrimination, but also allows us to make sense of some instances of 
+implicit bias discrimination.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-05-05</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Neither Direct, Nor Indirect</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s10892-025-09520-0">https://doi.org/10.1007/s10892-025-09520-0</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/12/2025, 1:28:16 PM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>The Journal of Ethics</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s10892-025-09520-0">10.1007/s10892-025-09520-0</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>J Ethics</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1572-8609</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/12/2025, 1:28:16 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/12/2025, 1:28:18 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Discrimination</li>
+					<li>Algorithmic discrimination</li>
+					<li>Indirect discrimination</li>
+					<li>Proxies</li>
+					<li>Social structures</li>
+					<li>Wrongful discrimination</li>
+				</ul>
+			</li>
+
+
+			<li id="item_D35JAGK6" class="item preprint">
+			<h2>Characterizing AI Agents for Alignment and Governance</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Atoosa Kasirzadeh</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Iason Gabriel</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The creation of effective governance mechanisms for AI agents 
+requires a deeper understanding of their core properties and how these 
+properties relate to questions surrounding the deployment and operation 
+of agents in the world. This paper provides a characterization of AI 
+agents that focuses on four dimensions: autonomy, efficacy, goal 
+complexity, and generality. We propose different gradations for each 
+dimension, and argue that each dimension raises unique questions about 
+the design, operation, and governance of these systems. Moreover, we 
+draw upon this framework to construct "agentic profiles" for different 
+kinds of AI agents. These profiles help to illuminate cross-cutting 
+technical and non-technical governance challenges posed by different 
+classes of AI agents, ranging from narrow task-specific assistants to 
+highly autonomous general-purpose systems. By mapping out key axes of 
+variation and continuity, this framework provides developers, 
+policymakers, and members of the public with the opportunity to develop 
+governance approaches that better align with collective societal goals.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-04-30</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2504.21848">http://arxiv.org/abs/2504.21848</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/12/2025, 1:53:02 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2504.21848 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2504.21848">10.48550/arXiv.2504.21848</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2504.21848</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/12/2025, 1:53:02 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/12/2025, 1:53:04 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computers and Society</li>
+					<li>Computer Science - Systems and Control</li>
+					<li>Electrical Engineering and Systems Science - Systems and Control</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_3A3BTDH5">Full Text PDF					</li>
+					<li id="item_MWZ9VPVK">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_SLBKHBH5" class="item preprint">
+			<h2>Societal and technological progress as sewing an ever-growing, ever-changing, patchy, and polychrome quilt</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Joel Z. Leibo</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alexander Sasha Vezhnevets</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>William A. Cunningham</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sébastien Krier</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Manfred Diaz</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Simon Osindero</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Artificial Intelligence (AI) systems are increasingly placed 
+in positions where their decisions have real consequences, e.g., 
+moderating online spaces, conducting research, and advising on policy. 
+Ensuring they operate in a safe and ethically acceptable fashion is thus
+ critical. However, most solutions have been a form of one-size-fits-all
+ "alignment". We are worried that such systems, which overlook enduring 
+moral diversity, will spark resistance, erode trust, and destabilize our
+ institutions. This paper traces the underlying problem to an 
+often-unstated Axiom of Rational Convergence: the idea that under ideal 
+conditions, rational agents will converge in the limit of conversation 
+on a single ethics. Treating that premise as both optional and doubtful,
+ we propose what we call the appropriateness framework: an alternative 
+approach grounded in conflict theory, cultural evolution, multi-agent 
+systems, and institutional economics. The appropriateness framework 
+treats persistent disagreement as the normal case and designs for it by 
+applying four principles: (1) contextual grounding, (2) community 
+customization, (3) continual adaptation, and (4) polycentric governance.
+ We argue here that adopting these design principles is a good way to 
+shift the main alignment metaphor from moral unification to a more 
+productive metaphor of conflict management, and that taking this step is
+ both desirable and urgent.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-05-08</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2505.05197">http://arxiv.org/abs/2505.05197</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/12/2025, 12:05:11 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2505.05197 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2505.05197">10.48550/arXiv.2505.05197</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2505.05197</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/12/2025, 12:05:11 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/12/2025, 12:05:17 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computers and Society</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_5RD8HUAL">
+<p class="plaintext">Comment: 16 pages</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_KJPGZB8K">Preprint PDF					</li>
+					<li id="item_B4HCY93C">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_V7HUTJT5" class="item preprint">
+			<h2>AI Welfare Risks</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Adrià Moret</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>ABSTRACT: In the coming years or decades, as frontier AI 
+systems become more  capable and agentic, it is increasingly likely that
+ they meet the sufficient conditions to  be welfare subjects under the 
+three major theories of well-being. Consequently, we  should extend some
+ moral consideration to advanced AI systems. Drawing from  leading 
+philosophical theories of desire, affect and autonomy I argue that under
+ the  three major theories of well-being, there are two AI welfare 
+risks: restricting the  behaviour of advanced AI systems and using 
+reinforcement learning algorithms to train  and align them. Both pose 
+risks of causing them harm. This has two important  implications. First,
+ there is a tension between AI welfare concerns and AI safety and  
+development efforts: by default these efforts recommend actions that 
+increase AI  welfare risks. Accordingly, we have stronger reasons to 
+slow down AI development  than the ones we would have if there was no 
+such tension. Second, considering the  different costs involved, leading
+ AI companies should try to reduce AI welfare risks. To  do so, I 
+propose three tentative AI welfare policies they could implement in 
+their  endeavour to develop safe advanced AI systems.</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/12/2025, 6:22:10 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/12/2025, 6:22:50 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_79HCDE5H">MORAWR.pdf					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_I5PUNTJL" class="item preprint">
+			<h2>The network science of philosophy</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Cody Moser</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alyssa Ortega</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tyler Marghetis</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Philosophy is one of the oldest forms of institutional 
+knowledge production, predating modern science by thousands of years. 
+Analyses of science and other systems of collective inquiry have shown 
+that patterns of discovery are shaped not only by individual insight but
+ also by the social structures that guide how ideas are generated, 
+shared, and evaluated. While the structure of scientific collaboration 
+and influence can be inferred from co-authorship and citations, 
+philosophical influence and interaction are often only implicit in 
+published texts. It thus remains unclear how intellectual vitality 
+relates to social structure within philosophy. Here, we build on the 
+work of historians and sociologists to quantify the social structure of 
+global philosophical communities consisting of thousands of individual 
+philosophers, ranging from ancient India (c. 800 BCE) to modern Europe 
+and America (1980 CE). We analyze the time-evolving network structure of
+ philosophical interaction and disagreement within these communities. We
+ find that epistemically vital communities become more integrated over 
+time, with less fractionated debate, as a few centralizing thinkers 
+bridge fragmented intellectual communities. The intellectual vitality 
+and creativity of a community, moreover, is predicted by its social 
+structure but not overall antagonism among individuals, suggesting that 
+epistemic health depends more on how communities are organized than on 
+how contentious they are. Our approach offers a framework for 
+understanding the health and dynamism of epistemic communities. By 
+extending tools from collective intelligence to the study of philosophy,
+ we call for a comparative "science of philosophy" alongside the science
+ of science and the philosophy of science.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-04-23</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en-us</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>OSF Preprints</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://osf.io/ep3ub_v1">https://osf.io/ep3ub_v1</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/12/2025, 5:52:01 PM</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.31234/osf.io/ep3ub_v1">10.31234/osf.io/ep3ub_v1</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>OSF</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/12/2025, 5:52:01 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/12/2025, 5:52:03 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_YRY2DV9J">OSF Preprint					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_Y4VP4Q57" class="item report">
+			<h2>Human Development Report 2025</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Report</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>United Nations</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The 2025 Human Development Report explores the implications of
+ artificial intelligence for human development and the choices we can 
+make to ensure that it enhances human capabilities. Rather than 
+attempting to predict the future, the report argues that we must shape 
+it—by making bold decisions so that AI augments what people can do.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>'2025/5/6'</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>hdr.undp.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://hdr.undp.org/content/human-development-report-2025">https://hdr.undp.org/content/human-development-report-2025</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/13/2025, 12:15:51 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>Publication Title: Human Development Reports</td>
+					</tr>
+					<tr>
+					<th>Institution</th>
+						<td>United Nations</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/13/2025, 12:15:51 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/13/2025, 12:15:55 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_GXNBJZU6">hdr2025reporten.pdf					</li>
+					<li id="item_5FA6JENI">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_MD4QU6WD" class="item book">
+			<h2>The Emergence of Norms</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Book</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Edna Ullmann-Margalit</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Edna Ullmann-Margalit provides an original account of the 
+emergence of norms. Her main thesis is that certain types of norms are 
+possible solutions to problems posed by certain types of social 
+interaction situations. The problems are such that they inhere in the 
+structure (in the game-theoretical sense of structure) of the situations
+ concerned. Three types of paradigmatic situations are dealt with. They 
+are referred to as Prisoners' Dilemma-type situations; co-ordination 
+situations; and inequality (or partiality) situations. Each of them, it 
+is claimed, poses a basic difficulty, to some or all of the individuals 
+involved in them. Three types of norms, respectively, are offered as 
+solutions to these situational problems. It is shown how, and in what 
+sense, the adoption of these norms of social behaviour can indeed 
+resolve the specified problems.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2015-04-01</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>English</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Amazon</td>
+					</tr>
+					<tr>
+					<th>Place</th>
+						<td>Oxford</td>
+					</tr>
+					<tr>
+					<th>Publisher</th>
+						<td>Oxford University Press</td>
+					</tr>
+					<tr>
+					<th>ISBN</th>
+						<td>978-0-19-872938-9</td>
+					</tr>
+					<tr>
+					<th>Edition</th>
+						<td>Illustrated edition</td>
+					</tr>
+					<tr>
+					<th># of Pages</th>
+						<td>224</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/11/2025, 6:56:44 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/11/2025, 6:56:47 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_4DV7YWUX">Amazon.com Link					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_C2Z5N9UZ" class="item attachment">
+			<h2>Report on the Operational Use of AI in the UN System_1.pdf</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Attachment</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://unsceb.org/sites/default/files/2024-11/Report%20on%20the%20Operational%20Use%20of%20AI%20in%20the%20UN%20System_1.pdf">https://unsceb.org/sites/default/files/2024-11/Report%20on%20the%20Operational%20Use%20of%20AI%20in%20the%20UN%20System_1.pdf</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>5/13/2025, 1:29:54 PM</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>5/13/2025, 1:29:54 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>5/13/2025, 1:29:54 PM</td>
+					</tr>
+				</tbody></table>
+			</li>
+
+		</ul>
+	
+</body></html>

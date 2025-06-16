@@ -1,0 +1,216 @@
+AI and Democratic Freedoms
+
+This month saw the culmination of a yearlong initiative between myself and the Knight 1st Amendment Institute to cultivate research on AI and democratic freedoms—a year which has seen the former rapidly accelerating while the latter hit the skids. It was an inspiring two days—you can find a livestream at the Knight 1A YouTube channel, and edited videos will be up soon. Though at times it got dark (as the times warrant), there was definitely a ray of light in Erica Chenoweth’s keynote among others, which explored avenues for using advanced AI systems to support social movements. Worth watching out for.
+
+Meanwhile there’s a bunch of philosophy of AI and computing content at the Pacific APA (see below for some highlights), some new papers out in the Phil Studies special issue on AI Safety, and the CFP is out for AI, Ethics and Society, chaired this year by philosopher Ted Lechterman and computer scientist Kush Varsney.
+
+The biggest AI news of the last month has probably been Gemini 2.5 pro, which constitutes a non-trivial push forward in capabilities if not personality (and while we were drafting this piece OAI responded with o3 and o4-mini). OpenAI’s native image generation (also possible with Gemini!) is a big deal too—especially if you’re trying to illustrate slides. But yeh it hasn’t really been a month in which AI progress (of which there has been a tonne) has been centre-stage…
+
+April Highlights
+
+• Playbooks and Forecasts: An Approach to Technical AGI Safety and Security, Google DeepMind’s new 140+ page strategy paper, lays out a comprehensive roadmap for mitigating catastrophic AGI risks. With a strong emphasis on practical mitigations for misuse and misalignment, it frames the challenge in terms of deployable interventions—dangerous capability evaluations, access controls, interpretability, uncertainty estimation, and layered safety cases—rather than speculative scenarios. This is one of the clearest articulations to date of a near-term, technically mature approach to AGI safety. Meanwhile if you do prefer speculative scenarios, then you’ll be stimulated by the Ministry for the Future Style, deeply-researched (but still fundamentally speculative) AI capabilities forecasting from Daniel Kokotaljo and co’s AI 2027.
+
+• Events: There’s been a tonne of AI at the APA (happening now), and there’s still time to catch Friday’s colloquium with Strevens, Fritz, and Minarik on AI oracles, deference, and the value of synthetic creations (full guide below). If you have more cross-disciplinary interests, then check out Bidirectional Human-AI Alignment (April 27, ICLR), and Sociotechnical AI Governance (STAIG@CHI, also April 27). These bring together leading scholars and practitioners to rethink alignment, regulation, and the democratic implications of large-scale AI deployment. Here’s the program and here are the abstracts.
+
+• Papers: Several standout papers have landed this month. A Matter of Principle? by Gabriel and Keeling argues for procedural fairness as the core of AI alignment. AI and Epistemic Agency examines how AI systems subtly undermine belief revision, while Simulation & Manipulation proposes that even in a simulated world, moral responsibility may survive. These pieces deepen our conceptual toolkit for thinking about responsibility, alignment, and the epistemic costs of intelligent systems.
+
+Events
+
+Workshop on Bidirectional Human-AI Alignment
+
+Date: April 27, 2025 (ICLR Workshop, Hybrid)
+
+Location: Hybrid (In-person & Virtual)
+
+Link: https://bialign-workshop.github.io/#/
+
+This interdisciplinary workshop redefines the challenge of human-AI alignment by emphasizing a bidirectional approach—not only aligning AI with human specifications but also empowering humans to critically engage with AI systems. Featuring research from Machine Learning (ML), Human-Computer Interaction (HCI), Natural Language Processing (NLP), and related fields, the workshop explores dynamic, evolving interactions between humans and AI.
+
+1st Workshop on Sociotechnical AI Governance (STAIG@CHI 2025)
+
+Date: April 27, 2025
+
+Location: Yokohama, Japan
+
+Link: https://chi-staig.github.io/
+
+STAIG@CHI 2025 aims to build a community that tackles AI governance from a sociotechnical perspective, bringing together researchers and practitioners to drive actionable strategies.
+
+ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)
+
+Date: June 23-26, 2025
+
+Location: Athens, Greece
+
+Link: https://facctconference.org/2025/
+
+FAccT is a premier interdisciplinary conference dedicated to the study of responsible computing. The 2025 edition in Athens will bring together researchers across fields—philosophy, law, technical AI, social sciences—to advance the goals of fairness, accountability, and transparency in computing systems.
+
+Artificial Intelligence and Collective Agency
+
+Dates: July 3–4, 2025
+
+Location: Institute for Ethics in AI, Oxford University (Online & In-Person)
+
+Link: https://philevents.org/event/show/132182?ref=email
+
+The Artificial Intelligence and Collective Agency workshop explores philosophical and interdisciplinary perspectives on AI and group agency. Topics include analogies between AI and corporate or state entities, responsibility gaps, and the role of AI in collective decision-making. Open to researchers in philosophy, business ethics, law, and computer science, as well as policy and industry professionals. Preference for early-career scholars.
+
+Opportunities
+
+CFP: NeurIPS 2025 Position Paper Track
+
+Link: https://neurips.cc/Conferences/2025/CallForPositionPapers
+
+Deadline: May 22, 2025 – AoE
+
+NeurIPS 2025 is accepting position papers that argue for a particular stance, policy, or research direction in machine learning. Unlike the research track, these papers aim to stimulate community-wide discussion and reflection. Topics may include ethics, governance, methodology, regulation, or the social consequences of ML systems. Controversial perspectives are welcome, and submissions should clearly state and support a position using evidence, reasoning, and relevant context. Accepted papers will appear in conference proceedings and be presented at NeurIPS.
+
+CFP: Neurons and Machines: Philosophy, Ethics, Policies, and the Law
+
+Dates: November 27–29, 2025
+
+Location: Ioannina, Greece
+
+Link: https://politech.philosophy.uoi.gr/conference-2025/
+
+Deadline: May 18, 2025
+
+As brain-computer interfaces, neurotechnologies and AI increasingly blur the boundaries between humans and machines, critical questions emerge regarding the need for new digital ontologies (e.g., ‘mental data’), the protection of bio-technologically augmented individuals, as well as the moral and legal status of AI-powered minds. Though distinct, these and similar questions share a common thread: they invite us to introduce new—or reinterpret existing—ethical principles, legal frameworks and policies in order to address the challenges posed by biological, hybrid, and artificial minds. This conference aims to confront these questions from an interdisciplinary perspective, bringing together contributions from fields such as philosophy of mind, metaphysics, neuroscience, law, computer science, artificial intelligence, and anthropology.
+
+CFP: AIES 2025 – AI, Ethics, and Society
+
+Dates: October 20–22, 2025
+
+Location: Madrid, Spain
+
+Link: https://www.aies-conference.com/
+
+Deadline: May 14, 2025 – 11:59pm AoE
+
+The AAAI/ACM Conference on Artificial Intelligence, Ethics, and Society (AIES) welcomes submissions on ethical, legal, societal, and philosophical dimensions of AI. The conference brings together researchers across computer science, law, philosophy, policy, and the social sciences to address topics including value alignment, interpretability, surveillance, democratic accountability, and AI’s cultural and economic impacts. Submissions (max 10 pages, AAAI 2-column format) will be double-anonymously reviewed. Non-archival options are available to accommodate journal publication. Optional ethical, positionality, and impact statements are encouraged. Generative model outputs are prohibited unless analyzed in the paper. Proceedings will be published in the AAAI Digital Library.
+
+Training: ESSAI & ACAI 2025 – European Summer School on Artificial Intelligence
+
+Dates: June 30 – July 4, 2025
+
+Location: Bratislava, Slovakia
+
+Link: https://essai2025.eu
+
+The 3rd European Summer School on Artificial Intelligence (ESSAI), co-organized with the longstanding ACAI series, offers a week-long program of courses and tutorials aimed at PhD students and early-career researchers. Participants will engage in 5+ parallel tracks covering both foundational and advanced topics in AI, with lectures and tutorials by 30+ international experts. The program includes poster sessions, networking events, and a rich social program, all hosted at the Slovak University of Technology in Bratislava. ESSAI emphasizes interdisciplinary breadth and community-building across AI subfields.
+
+Training: Diverse Intelligences Summer Institute 2025
+
+Location: St Andrews, Scotland
+
+Link: https://disi.org/apply/
+
+Deadline: Rolling from March 1, 2025
+
+The Diverse Intelligences Summer Institute (DISI) invites applications for their summer 2025 program, running July 6-27. The Fellows Program seeks scholars from fields including biology, anthropology, AI, cognitive science, computer science, and philosophy for interdisciplinary research. Applications reviewed on a rolling basis starting March 1.
+
+Jobs
+
+Post-doctoral Fellowship: Algorithm Bias
+
+Location: Centre for Ethics, University of Toronto | Toronto, Canada
+
+Link: https://philjobs.org/job/show/28946
+
+Deadline: April 30, 2025 (priority deadline; open until filled)
+
+The Centre for Ethics at the University of Toronto is hiring a postdoctoral fellow for the 2025–26 academic year to work on a new project addressing algorithm bias. The fellow will conduct independent research, organize interdisciplinary events, and contribute to public discourse on ethical issues in technology. The role includes a 0.5 course teaching requirement (either a third- or fourth-year undergraduate class), and the total compensation is $60,366.55 annually. Applicants must hold a PhD in philosophy or a related field by August 31, 2025, and have earned their degree within the past five years. This is a full-time, 12-month position with the possibility of renewal for up to three years.
+
+Post-doctoral Researcher Positions (3)
+
+Location: New York University | New York, NY
+
+Link: https://philjobs.org/job/show/28878
+
+Deadline: Rolling basis
+
+NYU's Department of Philosophy and Center for Mind, Brain, and Consciousness is seeking up to three postdoctoral or research scientist positions specializing in philosophy of AI and philosophy of mind, beginning September 2025. These research-focused roles (no teaching duties) will support Professor David Chalmers' projects on artificial consciousness and related topics. Post-Doctoral positions require PhDs earned between September 2020-August 2025, while Research Scientist positions are for those with PhDs from September 2015-August 2020. Both positions offer a $62,500 annual base salary. Applications including CV, writing samples, research statement, and references must be submitted by March 30th, 2025 via Interfolio.
+
+Post-doctoral Researcher Positions (2)
+
+Location: Trinity College Dublin, Ireland
+
+Email: https://aial.ie/pages/hiring/post-doc-researcher/
+
+Deadline: Rolling basis
+
+The AI Accountability Lab (AIAL) is seeking two full-time post-doctoral fellows for a 2-year term to work with Dr. Abeba Birhane on policy translation and AI evaluation. The policy translation role focuses on investigating regulatory loopholes and producing policy insights, while the AI evaluation position involves designing and executing audits of AI systems for bias and harm. Candidates should submit a letter of motivation, CV, and representative work.
+
+Papers
+
+A Matter of Principle? AI Alignment as the Fair Treatment of Claims
+
+Authors: Iason Gabriel, Geoff Keeling | Philosophical Studies
+
+Gabriel and Keeling propose a new approach to AI alignment rooted in fairness and public justification. Rather than aligning AI to vague notions of helpfulness or intent, they argue for principles derived from fair processes that can be justified to all stakeholders. This pluralistic framework aims to guide alignment amid value disagreement and contextual variability.
+
+Two Types of AI Existential Risk: Decisive and Accumulative
+
+Author: Atoosa Kasirzadeh | Philosophical Studies
+
+Kasirzadeh distinguishes between two overlooked pathways to AI-induced existential catastrophe. The first is the conventional “decisive” scenario—a single, abrupt event, such as a rogue superintelligence takeover. The second, and her primary focus, is an “accumulative” scenario in which interconnected social risks—manipulation, misinformation, surveillance, and economic destabilization—gradually erode systemic resilience. Drawing on complex systems analysis, she argues that cascading failures could culminate in global collapse even in the absence of a superintelligent agent. This paper reframes x-risk governance by integrating ethical and social risk into existential threat modeling.
+
+Embodiment and the Future of Human–AI Interaction
+
+Author: Zed Adams | Philosophical Studies
+
+Adams examines how embodiment conditions human experience and contrasts this with the disembodied nature of contemporary AI systems. He argues that the future of human–AI interaction hinges on whether AI can access something akin to first-person perspective or phenomenal consciousness, which he claims depends on embodied experience. By analyzing distinctions between functional simulation and experiential understanding, Adams raises philosophical challenges for the development of socially and ethically integrated AI systems.
+
+AI and Epistemic Agency: How AI Influences Belief Revision and Its Normative Implications
+
+Author: Mark Coeckelbergh | Social Epistemology
+
+Coeckelbergh explores how AI systems subtly shape the processes by which individuals revise beliefs, sometimes undermining epistemic agency even as they increase informational input. Through case studies and normative analysis, the paper examines how belief formation may be externally steered in ways that erode autonomy and deliberation, with downstream ethical and political implications.
+
+Political Neutrality in AI is Impossible—But Here is How to Approximate It
+
+Authors: Jillian Fisher et al. | arXiv
+
+This position paper challenges the possibility of true political neutrality in AI systems. Drawing on philosophical insights and empirical case studies, the authors propose practical approximations of neutrality—tools, metrics, and frameworks to balance perspectives and mitigate manipulation. Their framework evaluates contemporary LLMs and provides eight techniques for building more responsible, politically aware models.
+
+Generative Midtended Cognition and Artificial Intelligence: Thinging with Thinging Things
+
+Authors: Xabier E. Barandiaran, Marta Pérez-Verdugo | Synthese
+
+This article proposes a novel conceptual framework—“generative midtended cognition”—for understanding human-AI co-creativity. It situates generative AI within cognitive extension theory but argues for a distinct category of hybrid intentional agency. By analyzing context sensitivity (“width”) and iterative structure (“depth”), the paper maps a middle ground between social cognition and subpersonal processing, raising new questions about authorship, creativity, and cognitive responsibility.
+
+Simulation & Manipulation: What Skepticism (Or Its Modern Variation) Teaches Us About Free Will
+
+Author: Z. Huey Wen | Episteme
+
+Wen investigates the intersection of simulation theory and manipulation arguments, arguing that moral responsibility survives even if we are simulated beings. Through structural parallels between simulated and manipulated agents, the paper defends the possibility of agency and accountability under radically external control—raising provocative questions for AI metaphysics and moral theory.
+
+Off-switching not guaranteed
+
+Author: Sven Neth | Philosophical Studies
+
+Neth critically examines the “Off-Switch Game” proposed by Hadfield-Menell et al., which suggests that uncertainty about human preferences will lead AI agents to defer to human oversight. He argues that this deference is not guaranteed, especially when AI agents (1) lack incentives to learn, (2) employ decision theories other than expected utility maximization, or (3) receive misleading signals about human preferences. The paper challenges the assumptions underpinning cooperative inverse reinforcement learning and underscores the fragility of guarantees about corrigibility.
+
+Bias, Machine Learning, and Conceptual Engineering
+
+Authors: Rachel Etta Rudolph, Elay Shech, Michael Tamir | Philosophical Studies
+
+Rudolph, Shech, and Tamir argue that de-biasing large language models (LLMs) should be understood as a form of conceptual engineering. LLMs not only reflect but can amplify social biases embedded in language; mitigating these biases involves revising the statistical prototypes associated with our concepts. The authors distinguish between three types of bias—false, modally fragile, and modally robust—and propose that technical interventions (e.g., altering training data or tuning outputs) can play a normative role in reshaping biased conceptual structures. This philosophical framework reorients LLM de-biasing as a deliberate, value-laden enterprise, tied to broader goals of social amelioration and conceptual reform
+
+Links
+
+In model news: OpenAI releases a new model, GPT-4.1 for API use only. The model boasts a 1 million token context length, impressive SWE-bench scores, and some concerning misalignment potential! OpenAI also released o3 and o4-mini with fanfare on o3’s HLE score and improved performance on long duration tasks. OpenAI also announced plans for its first open model since GPT-2, and released native image generation (all those Ghiblis) in ChatGPT (very good for making graphics for slides). Google’s Gemini 2.5 Pro launched to an almost-unprecedented lead of 40+ points on LM Arena, with Google models dominating the Pareto frontier, while Meta’s Llama 4 underwhelmed. Meanwhile, Nova Act from Amazon offers 3-line browser automation and Google offers a new Agent2Agent (A2A) open protocol for agent communication.
+
+For research: Sakana’s AI Scientist v2 performs agentic tree search to accelerate scientific discovery (or at least writing of accepted papers at AI workshops). Speaking of agents, four LMs were given computers and the goal of collaboratively choosing a charity and raising as much money as possible for them. In other research news, AlphaXiv enables Elicit or Undermind style research assistance to help generate literature reviews on the basis of ArXiv papers. Goodfire also released the first open-source sparse autoencoder so that you can dig into models on your own! In hardware news: Nvidia’s GR00T N1 advertises the “age of generalist robotics” with System 1/System 2 architectures for humanoid cognition. At the frontier: 1X’s Neo is in-home and reports from China tout industry-scale progress.
+
+On the safety and policy front: Stanford’s comprehensive 2025 AI Index reports on a staggering array of AI-relevant developments. The Frontier Model Forum formalized inter-firm threat sharing, and Jonathan Stray proposed “maximum equal approval” as a metric for political neutrality in AI. A LessWrong study reexamines alignment faking with improved classifiers (AUROC 0.92), and Anthropic releases new research to the effect that Reasoning Models Don’t Always Say What They Think. Other research from Anthropic makes sociotechnical evaluation in education settings easier. Dworkesh Patel’s Scaling Era looks back at the recent history of the people involved in AI, and Vintage Data and AI-2027 look ahead and try to make research-based predictions about AGI.
+
+Elsewhere: the Wall Street Journal looks into Sam Altman’s firing and rapid reinstatement, Meta goes to anti-trust court, and Google receives another inditement for anti-competitive practices.
+
+Need a better grip on the fundamentals? Check out Sander Dielman’s explanation of the modeling pipeline. It’s not quite an entry level piece, but one which, if you work through it, will give you a better than average understanding of how models turn text and images into vectors, and then convert that into something useful!
+
+Content by Seth and Cameron; additional link-hunting support from the MINT Lab team.
+
+
+Thanks for reading the Philosophy of Computing Newsletter! This post is public so feel free to share it.

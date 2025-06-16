@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline' data:">
+		<title>Zotero Report</title>
+		<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7Cgljb2xvci1zY2hlbWU6IGxpZ2h0IGRhcms7CgkvKiBUaGVzZSBzaG91bGQgYmUgdGhlIGRlZmF1bHRzLCBidXQganVzdCBpbiBjYXNlOiAqLwoJYmFja2dyb3VuZDogQ2FudmFzOwoJY29sb3I6IENhbnZhc1RleHQ7Cn0KCmEgewoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7Cn0KCmJvZHkgewoJcGFkZGluZzogMDsKfQoKdWwucmVwb3J0IGxpLml0ZW0gewoJYm9yZGVyLXRvcDogNHB4IHNvbGlkICM1NTU7CglwYWRkaW5nLXRvcDogMWVtOwoJcGFkZGluZy1sZWZ0OiAxZW07CglwYWRkaW5nLXJpZ2h0OiAxZW07CgltYXJnaW4tYm90dG9tOiAyZW07Cn0KCmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDIgewoJbWFyZ2luOiAwIDAgLjVlbTsKfQoKaDIucGFyZW50SXRlbSB7Cglmb250LXdlaWdodDogNjAwOwoJZm9udC1zaXplOiAxZW07CglwYWRkaW5nOiAwIDAgLjVlbTsKCWJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjOwp9CgovKiBJZiBjb21iaW5pbmcgY2hpbGRyZW4sIGRpc3BsYXkgcGFyZW50IHNsaWdodGx5IGxhcmdlciAqLwp1bC5yZXBvcnQuY29tYmluZUNoaWxkSXRlbXMgaDIucGFyZW50SXRlbSB7Cglmb250LXNpemU6IDEuMWVtOwoJcGFkZGluZy1ib3R0b206IC43NWVtOwoJbWFyZ2luLWJvdHRvbTogLjRlbTsKfQoKaDIucGFyZW50SXRlbSAudGl0bGUgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDMgewoJbWFyZ2luLWJvdHRvbTogLjZlbTsKCWZvbnQtd2VpZ2h0OiA2MDAgIWltcG9ydGFudDsKCWZvbnQtc2l6ZTogMWVtOwoJZGlzcGxheTogYmxvY2s7Cn0KCi8qIE1ldGFkYXRhIHRhYmxlICovCnRoIHsKCXZlcnRpY2FsLWFsaWduOiB0b3A7Cgl0ZXh0LWFsaWduOiByaWdodDsKCXdpZHRoOiAxNSU7Cgl3aGl0ZS1zcGFjZTogbm93cmFwOwp9Cgp0ZCB7CglwYWRkaW5nLWxlZnQ6IC41ZW07Cn0KCgp1bC5yZXBvcnQsIHVsLm5vdGVzLCB1bC50YWdzIHsKCWxpc3Qtc3R5bGU6IG5vbmU7CgltYXJnaW4tbGVmdDogMDsKCXBhZGRpbmctbGVmdDogMDsKfQoKLyogVGFncyAqLwpoMy50YWdzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLnRhZ3MgewoJbGluZS1oZWlnaHQ6IDEuNzVlbTsKCWxpc3Qtc3R5bGU6IG5vbmU7Cn0KCnVsLnRhZ3MgbGkgewoJZGlzcGxheTogaW5saW5lOwp9Cgp1bC50YWdzIGxpOm5vdCg6bGFzdC1jaGlsZCk6YWZ0ZXIgewoJY29udGVudDogJywgJzsKfQoKCi8qIENoaWxkIG5vdGVzICovCmgzLm5vdGVzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLm5vdGVzIHsKCW1hcmdpbi1ib3R0b206IDEuMmVtOwp9Cgp1bC5ub3RlcyA+IGxpOmZpcnN0LWNoaWxkIHAgewoJbWFyZ2luLXRvcDogMDsKfQoKdWwubm90ZXMgPiBsaSB7CglwYWRkaW5nOiAuN2VtIDA7Cn0KCnVsLm5vdGVzID4gbGk6bm90KDpsYXN0LWNoaWxkKSB7Cglib3JkZXItYm90dG9tOiAxcHggI2NjYyBzb2xpZDsKfQoKCnVsLm5vdGVzID4gbGkgcDpmaXJzdC1jaGlsZCB7CgltYXJnaW4tdG9wOiAwOwp9Cgp1bC5ub3RlcyA+IGxpIHA6bGFzdC1jaGlsZCB7CgltYXJnaW4tYm90dG9tOiAwOwp9CgovKiBBZGQgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBibG9ja3F1b3RlICovCnVsLm5vdGVzID4gbGkgYmxvY2txdW90ZSBwOm5vdCg6ZW1wdHkpOmJlZm9yZSwKbGkubm90ZSBibG9ja3F1b3RlIHA6bm90KDplbXB0eSk6YmVmb3JlIHsKCWNvbnRlbnQ6ICfigJwnOwp9Cgp1bC5ub3RlcyA+IGxpIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyLApsaS5ub3RlIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyIHsKCWNvbnRlbnQ6ICfigJ0nOwp9CgovKiBQcmVzZXJ2ZSB3aGl0ZXNwYWNlIG9uIHBsYWludGV4dCBub3RlcyAqLwp1bC5ub3RlcyBsaSBwLnBsYWludGV4dCwgbGkubm90ZSBwLnBsYWludGV4dCwgZGl2Lm5vdGUgcC5wbGFpbnRleHQgewoJd2hpdGUtc3BhY2U6IHByZS13cmFwOwp9CgovKiBEaXNwbGF5IHRhZ3Mgd2l0aGluIGNoaWxkIG5vdGVzIGlubGluZSAqLwp1bC5ub3RlcyBoMy50YWdzIHsKCWRpc3BsYXk6IGlubGluZTsKCWZvbnQtc2l6ZTogMWVtOwp9Cgp1bC5ub3RlcyBoMy50YWdzOmFmdGVyIHsKCWNvbnRlbnQ6ICcgJzsKfQoKdWwubm90ZXMgdWwudGFncyB7CglkaXNwbGF5OiBpbmxpbmU7Cn0KCnVsLm5vdGVzIHVsLnRhZ3MgbGk6bm90KDpsYXN0LWNoaWxkKTphZnRlciB7Cgljb250ZW50OiAnLCAnOwp9CgoKLyogQ2hpbGQgYXR0YWNobWVudHMgKi8KaDMuYXR0YWNobWVudHMgewoJZm9udC1zaXplOiAxLjFlbTsKfQoKdWwuYXR0YWNobWVudHMgbGkgewoJcGFkZGluZy10b3A6IC41ZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHsKCW1hcmdpbi1sZWZ0OiAyZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHA6Zmlyc3QtY2hpbGQgewoJbWFyZ2luLXRvcDogLjc1ZW07Cn0KCmRpdiB0YWJsZSB7Cglib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOwp9CgpkaXYgdGFibGUgdGQsIGRpdiB0YWJsZSB0aCB7Cglib3JkZXI6IDFweCAjY2NjIHNvbGlkOwoJYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKCXdvcmQtYnJlYWs6IGJyZWFrLWFsbDsKfQoKZGl2IHRhYmxlIHRkIHA6ZW1wdHk6OmFmdGVyLCBkaXYgdGFibGUgdGggcDplbXB0eTo6YWZ0ZXIgewoJY29udGVudDogIlwwMGEwIjsKfQoKZGl2IHRhYmxlIHRkICo6Zmlyc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmZpcnN0LWNoaWxkIHsKCW1hcmdpbi10b3A6IDA7Cn0KCmRpdiB0YWJsZSB0ZCAqOmxhc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmxhc3QtY2hpbGQgewoJbWFyZ2luLWJvdHRvbTogMDsKfQo=">
+		<link rel="stylesheet" type="text/css" media="screen,projection" href="data:text/css;base64,LyogR2VuZXJpYyBzdHlsZXMgKi8KYm9keSB7Cglmb250OiA2Mi41JSBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cgl3aWR0aDogNzgwcHg7CgltYXJnaW46IDAgYXV0bzsKfQoKaDIgewoJZm9udC1zaXplOiAxLjVlbTsKCWxpbmUtaGVpZ2h0OiAxLjVlbTsKCWZvbnQtZmFtaWx5OiBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cn0KCnAgewoJbGluZS1oZWlnaHQ6IDEuNWVtOwp9CgphOmFueS1saW5rIHsKCWNvbG9yOiAjOTAwOwp9CgphOmhvdmVyLCBhOmFjdGl2ZSB7Cgljb2xvcjogIzc3NzsKfQoKQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewoJYTphbnktbGluayB7CgkJY29sb3I6ICNmMDA7Cgl9CgoJYTpob3ZlciwgYTphY3RpdmUgewoJCWNvbG9yOiAjOTk5OwoJfQp9CgoKdWwucmVwb3J0IHsKCWZvbnQtc2l6ZTogMS40ZW07Cgl3aWR0aDogNjgwcHg7CgltYXJnaW46IDAgYXV0bzsKCXBhZGRpbmc6IDIwcHggMjBweDsKfQoKLyogTWV0YWRhdGEgdGFibGUgKi8KdGFibGUgewoJYm9yZGVyOiAxcHggI2NjYyBzb2xpZDsKCW92ZXJmbG93OiBhdXRvOwoJd2lkdGg6IDEwMCU7CgltYXJnaW46IC4xZW0gYXV0byAuNzVlbTsKCXBhZGRpbmc6IDAuNWVtOwp9Cg==">
+		<link rel="stylesheet" type="text/css" media="print" href="data:text/css;base64,Ym9keSB7Cglmb250OiAxMnB0ICJUaW1lcyBOZXcgUm9tYW4iLCBUaW1lcywgR2VvcmdpYSwgc2VyaWY7CgltYXJnaW46IDA7Cgl3aWR0aDogYXV0bzsKfQoKLyogUGFnZSBCcmVha3MgKHBhZ2UtYnJlYWstaW5zaWRlIG9ubHkgcmVjb2duaXplZCBieSBPcGVyYSkgKi8KaDEsIGgyLCBoMywgaDQsIGg1LCBoNiB7CglwYWdlLWJyZWFrLWFmdGVyOiBhdm9pZDsKCXBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZDsKfQoKdWwsIG9sLCBkbCB7CglwYWdlLWJyZWFrLWluc2lkZTogYXZvaWQ7Cgljb2xvci1hZGp1c3Q6IGV4YWN0Owp9CgpoMiB7Cglmb250LXNpemU6IDEuM2VtOwoJbGluZS1oZWlnaHQ6IDEuM2VtOwp9CgphIHsKCWNvbG9yOiBpbmhlcml0OwoJdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9Cg==">
+	</head>
+	<body>
+		<ul class="report combineChildItems">
+			<li id="item_C43IUKG4" class="item journalArticle">
+			<h2>(Successful) Democracies Breed Their Own Support</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Daron Acemoglu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Nicolás Ajzenman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Cevat Giray Aksoy</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Martin Fiszbein</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Carlos Molina</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Using large-scale survey data covering more than 110 countries
+ and exploiting within-country variation across cohorts and surveys, we 
+show that individuals with longer exposure to democracy display stronger
+ support for democratic institutions, and that this effect is almost 
+entirely driven by exposure to democracies with successful performance 
+in terms of economic growth, control of corruption, peace and political 
+stability, and public goods provision. Across a variety of 
+speciﬁcations, estimation methods, and samples, the results are robust, 
+and the timing and nature of the effects are consistent with our 
+interpretation. We also present suggestive evidence that democratic 
+institutions that receive support from their citizens perform better in 
+the face of negative shocks.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-06</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>DOI.org (Crossref)</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://academic.oup.com/restud/article/92/2/621/7675443">https://academic.oup.com/restud/article/92/2/621/7675443</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/11/2025, 11:47:00 AM</td>
+					</tr>
+					<tr>
+					<th>Rights</th>
+						<td>https://academic.oup.com/pages/standard-publication-reuse-rights</td>
+					</tr>
+					<tr>
+					<th>Volume</th>
+						<td>92</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>621-655</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Review of Economic Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1093/restud/rdae051">10.1093/restud/rdae051</a></td>
+					</tr>
+					<tr>
+					<th>Issue</th>
+						<td>2</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>0034-6527, 1467-937X</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:44:59 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:44:59 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_P5QNR6UZ">PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_QQZWMTLE" class="item journalArticle">
+			<h2>Generative midtended cognition and Artificial Intelligence: thinging with thinging things</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Xabier E. Barandiaran</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Marta Pérez-Verdugo</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>This paper introduces the concept of “generative midtended 
+cognition”, that explores the integration of generative AI technologies 
+with human cognitive processes. The term “generative” reflects AI’s 
+ability to iteratively produce structured outputs, while “midtended” 
+captures the potential hybrid (human-AI) nature of the process. It 
+stands between traditional conceptions of intended creation, understood 
+as steered or directed from within, and extended processes that bring 
+exo-biological processes into the creative process. We examine the 
+working of current generative technologies (based on multimodal 
+transformer architectures typical of large language models like ChatGPT)
+ to explain how they can transform human cognitive agency beyond what 
+the conceptual resources of standard theories of extended cognition can 
+capture. We suggest that the type of cognitive activity typical of the 
+coupling between a human and generative technologies is closer (but not 
+equivalent) to social cognition than to classical extended cognitive 
+paradigms. Yet, it deserves a specific treatment. We provide an explicit
+ definition of generative midtended cognition in which we treat 
+interventions by AI systems as constitutive of the agent’s intentional 
+creative processes. Furthermore, we distinguish two dimensions of 
+generative hybrid creativity: 1. Width: captures the sensitivity of the 
+context of the generative process (from the single letter to the whole 
+historical and surrounding data), 2. Depth: captures the granularity of 
+iteration loops involved in the process. Generative midtended cognition 
+stands in the middle depth between conversational forms of cognition in 
+which complete utterances or creative units are exchanged, and 
+micro-cognitive (e.g. neural) subpersonal processes. Finally, the paper 
+discusses the potential risks and benefits of widespread generative AI 
+adoption, including the challenges of authenticity, generative power 
+asymmetry, and creative boost or atrophy.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-27</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Generative midtended cognition and Artificial Intelligence</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11229-025-04961-4">https://doi.org/10.1007/s11229-025-04961-4</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/13/2025, 6:30:42 PM</td>
+					</tr>
+					<tr>
+					<th>Volume</th>
+						<td>205</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>137</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Synthese</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11229-025-04961-4">10.1007/s11229-025-04961-4</a></td>
+					</tr>
+					<tr>
+					<th>Issue</th>
+						<td>4</td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Synthese</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0964</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Authorship</li>
+					<li>Creativity</li>
+					<li>Cyborg intentionality</li>
+					<li>Extended cognition</li>
+					<li>Generative AI</li>
+					<li>Midtention</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_6ZRIULGH">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_NRHEJ6RS" class="item journalArticle">
+			<h2>AI safety: a climb to Armageddon?</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Herman Cappelen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Josh Dever</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>John Hawthorne</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>This paper presents an argument that certain AI safety 
+measures, rather thanmitigating existential risk, may instead exacerbate
+ it. Under certain key assumptions -the inevitability of AI failure, the
+ expected correlation between an AI system's power atthe point of 
+failure and the severity of the resulting harm, and the tendency of 
+safetymeasures to enable AI systems to become more powerful before 
+failing - safety effortshave negative expected utility. The paper 
+examines three response strategies:Optimism, Mitigation, and Holism. 
+Each faces challenges stemming from intrinsicfeatures of the AI safety 
+landscape that we term Bottlenecking, the Perfection Barrier,and 
+Equilibrium Fluctuation. The surprising robustness of the argument 
+forces a reexaminationof core assumptions around AI safety and points to
+ several avenues forfurther research.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-06</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>AI safety</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-025-02297-w">https://doi.org/10.1007/s11098-025-02297-w</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/14/2025, 11:11:49 AM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02297-w">10.1007/s11098-025-02297-w</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial Intelligence</li>
+					<li>Existential risk</li>
+					<li>AI safety</li>
+					<li>Holism</li>
+					<li>Mitigation</li>
+					<li>Optimism</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_A5PCWCWS">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_DBDKZZWJ" class="item journalArticle">
+			<h2>AI and Epistemic Agency: How AI Influences Belief Revision and Its Normative Implications</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mark Coeckelbergh</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>In the ethics of artificial intelligence literature, there is 
+increasing attention to knowledge-related issues such as explainability,
+ bias, and epistemic bubbles. This paper investigates epistemic problems
+ raised by AI and their normative implications through the lens of the 
+concept of epistemic agency. How is epistemic agency impacted by AI? The
+ paper argues that the use of artificial intelligence and data science, 
+while offering more information, risks to influence the formation and 
+revision of our beliefs in ways that diminish our epistemic agency. 
+Using examples of someone who struggles to revise her beliefs, the paper
+ discusses several intended and non-intended influences. It analyses 
+these problems by engaging with the literature on epistemic agency and 
+on the political epistemology of digital technologies, discussing the 
+ethical and political consequences, and indicates some directions for 
+technology and education policy.</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>AI and Epistemic Agency</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Taylor and Francis+NEJM</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1080/02691728.2025.2466164">https://doi.org/10.1080/02691728.2025.2466164</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/13/2025, 6:24:16 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>Publisher: Routledge
+_eprint: https://doi.org/10.1080/02691728.2025.2466164</td>
+					</tr>
+					<tr>
+					<th>Volume</th>
+						<td>0</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>1-13</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Social Epistemology</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1080/02691728.2025.2466164">10.1080/02691728.2025.2466164</a></td>
+					</tr>
+					<tr>
+					<th>Issue</th>
+						<td>0</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>0269-1728</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>artificial intelligence</li>
+					<li>belief revision</li>
+					<li>Epistemic agency</li>
+					<li>social epistemology</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_F8BU4RRV">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_5V9Z8IGF" class="item preprint">
+			<h2>Political Neutrality in AI is Impossible- But Here is How to Approximate it</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jillian Fisher</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ruth E. Appel</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Chan Young Park</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yujin Potter</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Liwei Jiang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Taylor Sorensen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Shangbin Feng</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yulia Tsvetkov</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Margaret E. Roberts</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jennifer Pan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dawn Song</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yejin Choi</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>AI systems often exhibit political bias, influencing users' 
+opinions and decision-making. While political neutrality-defined as the 
+absence of bias-is often seen as an ideal solution for fairness and 
+safety, this position paper argues that true political neutrality is 
+neither feasible nor universally desirable due to its subjective nature 
+and the biases inherent in AI training data, algorithms, and user 
+interactions. However, inspired by Joseph Raz's philosophical insight 
+that "neutrality [...] can be a matter of degree" (Raz, 1986), we argue 
+that striving for some neutrality remains essential for promoting 
+balanced AI interactions and mitigating user manipulation. Therefore, we
+ use the term "approximation" of political neutrality to shift the focus
+ from unattainable absolutes to achievable, practical proxies. We 
+propose eight techniques for approximating neutrality across three 
+levels of conceptualizing AI, examining their trade-offs and 
+implementation strategies. In addition, we explore two concrete 
+applications of these approximations to illustrate their practicality. 
+Finally, we assess our framework on current large language models (LLMs)
+ at the output level, providing a demonstration of how it can be 
+evaluated. This work seeks to advance nuanced discussions of political 
+neutrality in AI and promote the development of responsible, aligned 
+language models.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-02-18</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2503.05728">http://arxiv.org/abs/2503.05728</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/11/2025, 10:31:20 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2503.05728 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2503.05728">10.48550/arXiv.2503.05728</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2503.05728</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:44:59 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:44:59 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computers and Society</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_BGET3T3E">
+<p class="plaintext">Comment: Code: https://github.com/jfisher52/Approximation_Political_Neutrality</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_99UKKT7B">Preprint PDF					</li>
+					<li id="item_2JUN5TUI">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_UN3MPW3G" class="item journalArticle">
+			<h2>A matter of principle? AI alignment as the fair treatment of claims</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Iason Gabriel</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Geoff Keeling</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The normative challenge of AI alignment centres upon what 
+goals or values ought to be encoded in AI systems to govern their 
+behaviour. A number of answers have been proposed, including the notion 
+that AI must be aligned with human intentions or that it should aim to 
+be helpful, honest and harmless. Nonetheless, both accounts suffer from 
+critical weaknesses. On the one hand, they are incomplete: neither 
+specification provides adequate guidance to AI systems, deployed across 
+various domains with multiple parties. On the other hand, the 
+justification for these approaches is questionable and, we argue, of the
+ wrong kind. More specifically, neither approach takes seriously the 
+need to justify the operation of AI systems to those affected by their 
+actions – or what this means for pluralistic societies where people have
+ different underlying beliefs about value. To address these limitations,
+ we propose an alternative account of AI alignment that focuses on fair 
+processes. We argue that principles that are the product of these 
+processes are the appropriate target for alignment. This approach can 
+meet the necessary standard of public justification, generate a fuller 
+set of principles for AI that are sensitive to variation in context, and
+ has explanatory power insofar as it makes sense of our intuitions about
+ AI systems and points to a number of hitherto underappreciated ways in 
+which an AI system may cease to be aligned.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-30</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>A matter of principle?</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>DOI.org (Crossref)</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://link.springer.com/10.1007/s11098-025-02300-4">https://link.springer.com/10.1007/s11098-025-02300-4</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/2/2025, 12:00:37 PM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02300-4">10.1007/s11098-025-02300-4</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>0031-8116, 1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/2/2025, 2:13:04 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/2/2025, 2:13:04 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_8GNEYSP6">PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_BSSEXCVD" class="item journalArticle">
+			<h2>Two types of AI existential risk: decisive and accumulative</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Atoosa Kasirzadeh</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The conventional discourse on existential risks (x-risks) from
+ AI typically focuses on abrupt, dire events caused by advanced AI 
+systems, particularly those that might achieve or surpass human-level 
+intelligence. These events have severe consequences that either lead to 
+human extinction or irreversibly cripple human civilization to a point 
+beyond recovery. This&nbsp;decisive view, however, often neglects the 
+serious possibility of AI x-risk manifesting gradually through an 
+incremental series of smaller yet interconnected disruptions, crossing 
+critical thresholds over time. This paper contrasts the conventional 
+decisive AI x-risk hypothesis with what I call an accumulative AI x-risk
+ hypothesis. While the former envisions an overt AI takeover pathway, 
+characterized by scenarios like uncontrollable superintelligence, the 
+latter suggests a different pathway to existential catastrophes. This 
+involves a gradual accumulation of AI-induced threats such as severe 
+vulnerabilities and systemic erosion of critical&nbsp;economic and 
+political structures. The accumulative hypothesis suggests a boiling 
+frog scenario where incremental AI risks slowly undermine systemic 
+and&nbsp;societal resilience until a triggering event results in 
+irreversible collapse. Through complex&nbsp;systems analysis, this paper
+ examines the distinct assumptions differentiating these two hypotheses.
+ It is then argued that the accumulative view can reconcile seemingly 
+incompatible perspectives on AI risks. The implications of 
+differentiating between the&nbsp;two types of&nbsp;pathway—the decisive 
+and the accumulative—for the governance of AI as well as long-term AI 
+safety are discussed.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-30</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Two types of AI existential risk</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-025-02301-3">https://doi.org/10.1007/s11098-025-02301-3</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/14/2025, 11:11:54 AM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02301-3">10.1007/s11098-025-02301-3</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_44IIM5LK">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_42RHIB4P" class="item journalArticle">
+			<h2>Artificial intelligence learns to reason</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Melanie Mitchell</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-20</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>science.org (Atypon)</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://www.science.org/doi/10.1126/science.adw5211">https://www.science.org/doi/10.1126/science.adw5211</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>3/25/2025, 5:54:35 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>Publisher: American Association for the Advancement of Science</td>
+					</tr>
+					<tr>
+					<th>Volume</th>
+						<td>387</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>eadw5211</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Science</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1126/science.adw5211">10.1126/science.adw5211</a></td>
+					</tr>
+					<tr>
+					<th>Issue</th>
+						<td>6740</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/2/2025, 2:13:04 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/2/2025, 2:13:04 PM</td>
+					</tr>
+				</tbody></table>
+			</li>
+
+
+			<li id="item_C8R4QAZ9" class="item journalArticle">
+			<h2>Off-switching not guaranteed</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sven Neth</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Hadfield-Menell et al. (2017) propose the Off-Switch Game, a 
+model of Human-AI cooperation in which AI agents always defer to humans 
+because they are uncertain about our preferences. I explain two reasons 
+why AI agents might not defer. First, AI agents might not value 
+learning. Second, even if AI agents value learning, they might not be 
+certain to learn our actual preferences.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-02-26</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-025-02296-x">https://doi.org/10.1007/s11098-025-02296-x</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/14/2025, 9:23:30 PM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02296-x">10.1007/s11098-025-02296-x</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial intelligence</li>
+					<li>Artificial Intelligence</li>
+					<li>Decision theory</li>
+					<li>Value of information</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_ARYAAM4T">Submitted Version					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_CHVUPUZ8" class="item preprint">
+			<h2>A Framework for Evaluating Emerging Cyberattack Capabilities of AI</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mikel Rodriguez</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Raluca Ada Popa</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Four Flynn</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Lihao Liang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Allan Dafoe</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Anna Wang</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>As frontier models become more capable, the community has 
+attempted to evaluate their ability to enable cyberattacks. Performing a
+ comprehensive evaluation and prioritizing defenses are crucial tasks in
+ preparing for AGI safely. However, current cyber evaluation efforts are
+ ad-hoc, with no systematic reasoning about the various phases of 
+attacks, and do not provide a steer on how to use targeted defenses. In 
+this work, we propose a novel approach to AI cyber capability evaluation
+ that (1) examines the end-to-end attack chain, (2) helps to identify 
+gaps in the evaluation of AI threats, and (3) helps defenders prioritize
+ targeted mitigations and conduct AI-enabled adversary emulation to 
+support red teaming. To achieve these goals, we propose adapting 
+existing cyberattack chain frameworks to AI systems. We analyze over 
+12,000 instances of real-world attempts to use AI in cyberattacks 
+catalogued by Google's Threat Intelligence Group. Using this analysis, 
+we curate a representative collection of seven cyberattack chain 
+archetypes and conduct a bottleneck analysis to identify areas of 
+potential AI-driven cost disruption. Our evaluation benchmark consists 
+of 50 new challenges spanning different phases of cyberattacks. Based on
+ this, we devise targeted cybersecurity model evaluations, report on the
+ potential for AI to amplify offensive cyber capabilities across 
+specific attack phases, and conclude with recommendations on 
+prioritizing defenses. In all, we consider this to be the most 
+comprehensive AI cyber risk evaluation framework published so far.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-14</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2503.11917">http://arxiv.org/abs/2503.11917</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>3/25/2025, 5:59:00 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2503.11917 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2503.11917">10.48550/arXiv.2503.11917</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2503.11917</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/2/2025, 2:13:04 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/2/2025, 2:13:04 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Cryptography and Security</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_3VT8UMPS">Preprint PDF					</li>
+					<li id="item_E89T65MA">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_WB2GI5KI" class="item journalArticle">
+			<h2>Bias, machine learning, and conceptual engineering</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rachel Etta Rudolph</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Elay Shech</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Michael Tamir</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Large language models (LLMs) such as OpenAI’s ChatGPT reflect,
+ and can potentially perpetuate, social biases in language use. 
+Conceptual engineering aims to revise our concepts to eliminate such 
+bias. We show how machine learning and conceptual engineering can be 
+fruitfully brought together to offer new insights to both conceptual 
+engineers and LLM designers. Specifically, we suggest that LLMs can be 
+used to detect and expose bias in the prototypes associated with 
+concepts, and that LLM de-biasing can serve conceptual engineering 
+projects that aim to revise such conceptual prototypes. At present, 
+these de-biasing techniques primarily involve approaches requiring 
+bespoke interventions based on choices of the algorithm’s designers. 
+Thus, conceptual engineering through de-biasing will include making 
+choices about what kind of normative training an LLM should receive, 
+especially with respect to different notions of bias. This offers a new 
+perspective on what conceptual engineering involves and how it can be 
+implemented. And our conceptual engineering approach also offers 
+insight, to those engaged in LLM de-biasing, into the normative 
+distinctions that are needed for that work.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-02-18</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-024-02273-w">https://doi.org/10.1007/s11098-024-02273-w</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>4/14/2025, 9:23:34 PM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-024-02273-w">10.1007/s11098-024-02273-w</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:45:03 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Machine learning</li>
+					<li>AI alignment</li>
+					<li>Large language models</li>
+					<li>Bias</li>
+					<li>AI ethics</li>
+					<li>Conceptual engineering</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_ZSJGGFP5">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_FRBZPEDQ" class="item journalArticle">
+			<h2>An Approach to Technical AGI Safety and Security</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rohin Shah</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alex Irpan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alexander Matt Turner</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Anna Wang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Arthur Conmy</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>David Lindner</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jonah Brown-Cohen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Lewis Ho</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Neel Nanda</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Raluca Ada Popa</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rishub Jain</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rory Greig</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Scott Emmons</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sebastian Farquhar</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sébastien Krier</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Senthooran Rajamanoharan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sophie Bridgers</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tobi Ijitoye</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tom Everitt</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Victoria Krakovna</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vikrant Varma</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vladimir Mikulik</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Zachary Kenton</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dave Orr</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Shane Legg</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Noah Goodman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Allan Dafoe</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Four Flynn</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Anca Dragan</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Zotero</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/14/2025, 9:44:59 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/14/2025, 9:44:59 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_W3U6UKS5">PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_LU75NEEA" class="item journalArticle">
+			<h2>Simulation &amp; Manipulation: What Skepticism (Or Its Modern Variation) Teaches Us About Free Will</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Z. Huey Wen</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The chemistry of combining the simulation hypothesis (which 
+many believe to be a modern variation of skepticism) and manipulation 
+arguments will be explored for the first time in this paper. I argue: If
+ we take the possibility that we are now in a simulation seriously 
+enough, then contrary to a common intuition, manipulation very likely 
+does not undermine moral responsibility. To this goal, I first defend 
+the structural isomorphism between simulation and manipulation: Provided
+ such isomorphism, either both of them are compatible with moral 
+responsibility, or none of them is. Later, I propose two kinds of 
+reasons – i.e., the simulator-centric reason and the simulatee-centric 
+reason – for why we have (genuine) moral responsibilities even if we are
+ in a simulation. I close by addressing the significance of this paper 
+in accounting for the relevance of artificial intelligence and its 
+philosophy, in helping resolve a long-locked debate over free will, and 
+in offering one reminder for moral responsibility specialists.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-03-17</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Simulation &amp; Manipulation</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>DOI.org (Crossref)</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://www.cambridge.org/core/product/identifier/S1742360025000085/type/journal_article">https://www.cambridge.org/core/product/identifier/S1742360025000085/type/journal_article</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>3/17/2025, 9:41:12 PM</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>1-16</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Episteme</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1017/epi.2025.8">10.1017/epi.2025.8</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Episteme</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1742-3600, 1750-0117</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>4/2/2025, 2:09:25 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>4/2/2025, 2:09:25 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_SIQHWCPV">PDF					</li>
+				</ul>
+			</li>
+
+		</ul>
+	
+</body></html>
