@@ -261,6 +261,7 @@
                 <option value="journal">By Journal</option>
                 <option value="title">By Title</option>
             </select>
+            <button id="downloadJsonBtn" class="papers-button">Download JSON</button>
         </div>
 
         <div class="papers-stats">
@@ -306,9 +307,19 @@
             }
         }
 
+        function downloadJson() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allPapers, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href",     dataStr);
+            downloadAnchorNode.setAttribute("download", "phil_ai_papers.json");
+            document.body.appendChild(downloadAnchorNode); // required for firefox
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
+
         function populateJournalFilter() {
-            const journals = [...new Set(allPapers.map(paper => paper.journal))].sort();
             const journalFilter = document.getElementById('journalFilter');
+            const journals = [...new Set(allPapers.map(paper => paper.journal))].sort();
             
             journals.forEach(journal => {
                 const option = document.createElement('option');
@@ -321,18 +332,23 @@
         function updateStats() {
             const totalPapers = allPapers.length;
             const visiblePapers = filteredPapers.length;
-            const years = allPapers.map(paper => paper.year);
-            const minYear = Math.min(...years);
-            const maxYear = Math.max(...years);
+            const years = allPapers.map(paper => paper.year).filter(y => y);
             
             document.getElementById('totalPapers').textContent = totalPapers;
             document.getElementById('visiblePapers').textContent = visiblePapers;
-            document.getElementById('yearRange').textContent = `${minYear}-${maxYear}`;
+
+            if (years.length > 0) {
+                const minYear = Math.min(...years);
+                const maxYear = Math.max(...years);
+                document.getElementById('yearRange').textContent = `${minYear}-${maxYear}`;
+            } else {
+                document.getElementById('yearRange').textContent = '-';
+            }
         }
 
         function highlightText(text, searchTerm) {
-            if (!searchTerm) return text;
-            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            if (!text || !searchTerm) return text;
+            const regex = new RegExp(`(${searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
             return text.replace(regex, '<span class="papers-highlight">$1</span>');
         }
 
@@ -361,7 +377,7 @@
                             ${authorsSection}
                         </div>
                         ${paper.abstract ? `
-                            <button class="papers-abstract-toggle" onclick="toggleAbstract(this)">
+                            <button class="papers-abstract-toggle">
                                 Show Abstract
                             </button>
                             <div class="papers-abstract-content">
@@ -375,22 +391,7 @@
             container.innerHTML = `<div class="papers-grid">${papersHTML}</div>`;
         }
 
-        function toggleAbstract(button) {
-            const abstractContent = button.nextElementSibling;
-            const isShowing = abstractContent.classList.contains('show');
-            
-            if (isShowing) {
-                abstractContent.classList.remove('show');
-                button.classList.remove('expanded');
-                button.textContent = 'Show Abstract';
-            } else {
-                abstractContent.classList.add('show');
-                button.classList.add('expanded');
-                button.textContent = 'Hide Abstract';
-            }
-        }
-
-        function filterPapers() {
+        function filterAndSortPapers() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const selectedJournal = document.getElementById('journalFilter').value;
             
@@ -432,9 +433,21 @@
         }
 
         // Event listeners
-        document.getElementById('searchInput').addEventListener('input', filterPapers);
-        document.getElementById('journalFilter').addEventListener('change', filterPapers);
-        document.getElementById('sortBy').addEventListener('change', filterPapers);
+        document.getElementById('searchInput').addEventListener('input', filterAndSortPapers);
+        document.getElementById('journalFilter').addEventListener('change', filterAndSortPapers);
+        document.getElementById('sortBy').addEventListener('change', filterAndSortPapers);
+        document.getElementById('downloadJsonBtn').addEventListener('click', downloadJson);
+
+        document.getElementById('papersContainer').addEventListener('click', function(event) {
+            if (event.target.classList.contains('papers-abstract-toggle')) {
+                const button = event.target;
+                const abstractContent = button.nextElementSibling;
+                const isShowing = abstractContent.classList.toggle('show');
+                
+                button.classList.toggle('expanded', isShowing);
+                button.textContent = isShowing ? 'Hide Abstract' : 'Show Abstract';
+            }
+        });
 
         // Initialize
         loadPapers();
