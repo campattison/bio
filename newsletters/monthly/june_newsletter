@@ -1,0 +1,194 @@
+Highlights
+• Events: Summer conference season is heating up. FAccT 2025 is around the corner (June 23–26 in Athens), with sessions on algorithmic justice, institutional governance, and new frontiers in transparency. In July, Oxford hosts a focused workshop on AI and Collective Agency (July 3–4), spotlighting responsibility gaps in group AI contexts. This fall brings AIES 2025 (Madrid, October 20–22), with interdisciplinary submissions still open, and the Neurons and Machines conference (Ioannina, November 27–29), which brings mind, law, and hybrid agency into the same room.
+
+• Papers: Millière calls out “shallow” alignment of current language models. Bales issues a challenge to the idea of “willing” digital servitude, while Brown and Brookes rethink the smartphone not as an extended mind, but as a subtle epistemic parasite. Koralus offers a timely reframing of AI as epistemic agents—arguing for a pivot from persuasive rhetoric to decentralized truth-seeking. And Donahue delivers an intervention in democratic theory, warning that even perfectly aligned AI governance risks repeating the core wrong of epistocracy.
+
+Thanks for reading Philosophy of Computing Newsletter! Subscribe for free to receive new posts and support my work.
+
+• News +: June saw a flood of model updates, releases, and governance headlines. Anthropic rolled out Claude 4 along with its ASL-3 classification and (leaked) system prompt; OpenAI followed with Codex (a remote agentic coder) and vague details about a new spin-off called “io.” Meta bet nearly $15B on Scale AI, while Google, DeepSeek, and Mistral unveiled new models and reasoning stacks. On the safety side, METR, Salesforce, and Apollo Research flagged deceptive model behavior, and DeepMind reflected on their red-teaming strategies. Privacy issues escalated—Meta’s moderation automation plans leaked, OpenAI resisted releasing ChatGPT logs to courts, and Stanford researchers warned of ambient surveillance architectures. Meanwhile, governance battles intensified: Trump brokered chip sales to the Gulf, the US House proposed a 10 year moratorium on state regulation of AI (which is now dead in the water), and Tulsi Gabbard gave AI a starring role in classifying JFK files. Finally, reasoning research had a big month as Berkeley, Yale, and USC teams explored confidence-based training while Apple claimed catastrophic reasoning collapse in high-complexity tasks, and others warned against mistaking token traces for thinking.
+
+Events
+ACM Conference on Fairness, Accountability, and Transparency (FAccT 2025)
+
+Dates: June 23-26, 2025
+
+Location: Athens, Greece
+
+Link: https://facctconference.org/2025/
+
+FAccT is a premier interdisciplinary conference dedicated to the study of responsible computing. The 2025 edition in Athens will bring together researchers across fields—philosophy, law, technical AI, social sciences—to advance the goals of fairness, accountability, and transparency in computing systems.
+
+Artificial Intelligence and Collective Agency
+
+Dates: July 3–4, 2025
+
+Location: Institute for Ethics in AI, Oxford University (Online and In-Person)
+
+Link: https://philevents.org/event/show/132182?ref=email
+
+The Artificial Intelligence and Collective Agency workshop explores philosophical and interdisciplinary perspectives on AI and group agency. Topics include analogies between AI and corporate or state entities, responsibility gaps, and the role of AI in collective decision-making. Open to researchers in philosophy, business ethics, law, and computer science, as well as policy and industry professionals. Preference for early-career scholars.
+
+AIES 2025 – AI, Ethics, and Society
+
+Dates: October 20–22, 2025
+
+Location: Madrid, Spain
+
+Link: https://www.aies-conference.com/
+
+The AAAI/ACM Conference on Artificial Intelligence, Ethics, and Society (AIES) welcomes submissions on ethical, legal, societal, and philosophical dimensions of AI. The conference brings together researchers across computer science, law, philosophy, policy, and the social sciences to address topics including value alignment, interpretability, surveillance, democratic accountability, and AI’s cultural and economic impacts. Submissions (max 10 pages, AAAI 2-column format) will be double-anonymously reviewed. Non-archival options are available to accommodate journal publication. Optional ethical, positionality, and impact statements are encouraged. Generative model outputs are prohibited unless analyzed in the paper. Proceedings will be published in the AAAI Digital Library.
+
+Neurons and Machines: Philosophy, Ethics, Policies, and the Law
+
+Dates: November 27–29, 2025
+
+Location: Ioannina, Greece
+
+Link: https://politech.philosophy.uoi.gr/conference-2025/
+
+As brain-computer interfaces, neurotechnologies and AI increasingly blur the boundaries between humans and machines, critical questions emerge regarding the need for new digital ontologies (e.g., ‘mental data’), the protection of bio-technologically augmented individuals, as well as the moral and legal status of AI-powered minds. Though distinct, these and similar questions share a common thread: they invite us to introduce new—or reinterpret existing—ethical principles, legal frameworks and policies in order to address the challenges posed by biological, hybrid, and artificial minds. This conference aims to confront these questions from an interdisciplinary perspective, bringing together contributions from fields such as philosophy of mind, metaphysics, neuroscience, law, computer science, artificial intelligence, and anthropology.
+
+Grants and CFPs
+Funding: Call for Research Ideas – Risks from Internal Deployment of Frontier AI Models
+
+Dates: Expression of interest due June 30, 2025; full proposal due September 15, 2025
+
+Location: Remote
+
+Link: https://cset.georgetown.edu/wp-content/uploads/FRG-Call-for-Research-Ideas-Internal-Deployment.pdf
+
+Foundational Research Grants (FRG), based at Georgetown’s CSET, is accepting 1–2 page expressions of interest for projects exploring the unique risks posed by internal deployment of powerful frontier AI models—those used inside companies before public release. These risks include model sabotage, theft, misalignment, and insider misuse, all arising when external oversight is minimal and capabilities are still poorly understood. FRG welcomes proposals for threat modeling, monitoring systems, sabotage detection, and mitigation strategies. Grants may range from small projects to major research efforts (up to $1M over 6–24 months). Selected applicants will be invited to develop a full proposal after informal discussions; final decisions will be announced by October 14, 2025.
+
+Consortium for Digital Sentience Research and Applied Work
+
+Link: https://www.longview.org/digital-sentience-consortium/
+
+Deadline: July 9, 2025
+
+Longview Philanthropy and partners invite applications for projects exploring the potential consciousness, moral status, and experiences of AI systems. Funding opportunities include: (1) RFPs for starting new programs or independent work, (2) Research Fellowships for technical, legal, or social science work, and (3) Career Transition Fellowships to pivot your career toward digital sentience. For details, email info@longview.org.
+
+CFP: 3rd Socially Responsible Language Modelling Research (SoLaR) Workshop at COLM 2025
+
+Date: October 10, 2025
+
+Location: Montreal, Canada
+
+Link: https://solar-colm.github.io
+
+Deadline: July 5, 2025 – AoE
+
+The SoLaR workshop solicits papers on socially responsible development and deployment of language models across two tracks: technical (quantitative contributions like security, bias, safety, and evaluation) and sociotechnical (philosophy, law, policy perspectives on impacts, governance, and regulation). The workshop welcomes various paper types including research papers, position papers, and works in progress up to 5 pages (excluding references) with a required "Social Impacts Statement." Papers undergo double-blind review, are non-archival, and concurrent submissions to COLM 2025 and NeurIPS 2025 are accepted.
+
+Training: ESSAI & ACAI 2025 – European Summer School on Artificial Intelligence
+
+Dates: June 30 – July 4, 2025
+
+Location: Bratislava, Slovakia
+
+Link: https://essai2025.eu
+
+Deadline: May 26, 2025 (early registration)
+
+The 3rd European Summer School on Artificial Intelligence (ESSAI), co-organized with the longstanding ACAI series, offers a week-long program of courses and tutorials aimed at PhD students and early-career researchers. Participants will engage in 5+ parallel tracks covering both foundational and advanced topics in AI, with lectures and tutorials by 30+ international experts. The program includes poster sessions, networking events, and a rich social program, all hosted at the Slovak University of Technology in Bratislava. ESSAI emphasizes interdisciplinary breadth and community-building across AI subfields.
+
+Jobs
+Post-doctoral Fellowship: Algorithm Bias
+
+Location: Centre for Ethics, University of Toronto | Toronto, Canada
+
+Link: https://philjobs.org/job/show/28946
+
+Deadline: Open until filled
+
+The Centre for Ethics at the University of Toronto is hiring a postdoctoral fellow for the 2025–26 academic year to work on a new project addressing algorithm bias. The fellow will conduct independent research, organize interdisciplinary events, and contribute to public discourse on ethical issues in technology. The role includes a 0.5 course teaching requirement (either a third- or fourth-year undergraduate class), and the total compensation is $60,366.55 annually. Applicants must hold a PhD in philosophy or a related field by August 31, 2025, and have earned their degree within the past five years. This is a full-time, 12-month position with the possibility of renewal for up to three years.
+
+Post-doctoral Researcher Positions (3)
+
+Location: New York University | New York, NY
+
+Link: https://philjobs.org/job/show/28878
+
+Deadline: Rolling basis
+
+NYU's Department of Philosophy and Center for Mind, Brain, and Consciousness is seeking up to three postdoctoral or research scientist positions specializing in philosophy of AI and philosophy of mind, beginning September 2025. These research-focused roles (no teaching duties) will support Professor David Chalmers' projects on artificial consciousness and related topics. Post-Doctoral positions require PhDs earned between September 2020-August 2025, while Research Scientist positions are for those with PhDs from September 2015-August 2020. Both positions offer a $62,500 annual base salary. Applications including CV, writing samples, research statement, and references must be submitted by March 30th, 2025 via Interfolio.
+
+Summer Research and Postdoctoral Positions
+
+Location: Cambridge, MA, NYC, or Remote
+
+Link: https://sites.google.com/site/sydneymlevine/open-positions
+
+Sydney Levine is hiring a summer researcher and is currently interviewing postdocs to bring a project examining cross-cultural norms and norm violations. Her work with Nori Jacoby looks at how people across languages and cultures think about the permissibility of cutting in line. Current or recently completed PhDs are encouraged to apply to the summer research position which pays $4,000 per month for full time work. Part time options are also available. Postdoc will work with Levine in a new NYU lab starting Spring 2026 and will work on the computational basis of moral cognition.
+
+Papers
+Normative Conflicts and Shallow AI Alignment
+
+Raphaël Millière | Philosophical Studies
+
+Millière argues that current alignment strategies for large language models—despite improvements like RLHF—only produce “shallow” alignment. These models lack the capacity for normative reasoning, making them vulnerable to adversarial attacks that exploit conflicts between alignment norms like helpfulness, honesty, and harmlessness. Drawing on research in moral psychology, Millière argues that human-like deliberative capacities are crucial for resilience and that deeper forms of alignment are urgently needed to address the limits of current safety methods .
+
+Is There a Tension Between AI Safety and AI Welfare?
+
+Robert Long, Jeff Sebo, Toni Sims | Philosophical Studies
+
+This paper explores whether efforts to ensure AI safety for humans might come at the expense of AI welfare—especially if AI systems become moral patients. Measures like boxing, surveillance, and value-locking may enhance human safety while risking significant ethical costs if applied to potentially sentient AI. The authors argue for greater research into co-beneficial interventions and emphasize the need to prepare normative frameworks for resolving inevitable trade-offs .
+
+Metaethical Perspectives on ‘Benchmarking’ AI Ethics
+
+Travis LaCroix, Alexandra Sasha Luccioni | AI and Ethics
+
+LaCroix and Luccioni argue that current efforts to benchmark the ethical performance of AI systems rest on unjustified metaethical assumptions, especially moral realism. They propose shifting from talk of “ethics” to “values,” which are more pluralistic and context-sensitive. This pivot clarifies what standards we are applying and whose interests are served. The paper calls for abandoning universal benchmarks and instead fostering transparent, value-sensitive evaluation frameworks
+
+Against Willing Servitude: Autonomy in the Ethics of Advanced Artificial Intelligence
+
+Adam Bales | The Philosophical Quarterly
+
+Bales challenges the morality of designing future AIs to be “willing servants.” Even if such AIs are joyous, uncoerced, and morally upstanding, Bales argues that shaping their desires to serve others from the outset violates their autonomy. Drawing from relational and history-sensitive theories of autonomy, he warns against a new form of digital enslavement that echoes past injustices under the guise of willing compliance.
+
+Smartphones: Parts of Our Minds or Parasites?
+
+Rachael L Brown, Robert C Brookes | Australasian Journal of Philosophy
+
+Brown and Brooks evaluate competing views on the cognitive role of smartphones: are they extensions of our minds or manipulative intrusions? The authors critically assess the extended mind thesis and argue that smartphones function more like external agents that influence attention and belief-formation in ways that undercut autonomy. They propose a framework for evaluating cognitive tools based on epistemic dependency and vulnerability.
+
+The Philosophic Turn for AI Agents: Replacing Centralized Digital Rhetoric with Decentralized Truth-Seeking
+
+Philipp Koralus | ArXiv
+
+Koralus argues for a philosophical rethinking of AI agents’ epistemic roles. Current systems mimic persuasive rhetoric—optimized for engagement rather than truth. He calls instead for “epistemic agents” designed for joint inquiry and dialogue, grounded in transparency and shared reasoning. Drawing from the erotetic theory of questioning, the paper envisions decentralized truth-seeking as an antidote to Big Tech’s monopolization of digital discourse.
+
+AI Rule and a Fundamental Objection to Epistocracy
+
+Sean Donahue | Philosophy & Public Affairs
+
+Donahue asks whether AI decision-making revives the old philosophical dream of rule by the wise. She argues that even if AI systems could reliably identify and implement the best policies, their use in political governance would still face a fundamental legitimacy objection. Drawing on recent debates in democratic theory, Donahue contends that replacing political judgment with optimized outputs undermines the standing of citizens as co-authors of the law. The paper concludes that AI rule, like epistocracy, fails to meet the moral demands of political equality and shared authority.
+
+Links
+Models, Updates, and Other Releases: Anthropic released Claude 4 and its model card, which boosted this model to ASL-3 (a higher internal safety standard aimed at protecting model weights and preventing misuse). Pliny then released Claude 4’s 10,000+ word system prompt! Simon Willison and Rohan Paul commented on its contents. Anthropic also updated their API with more agentic features and came under EA fire for allegedly abandoning their safety roots. ManusAI announced a product that automates slideshows. DeepSeek’s R1 gained recognition as #2 worldwide AI lab. Goodfire AI released a fascinating model to covert canvas sketches into generated images and replicated Anthropic’s circuit tracing methods. OpenAI announced Codex, which they bill as a remote software engineering agent, and a new company called io, which they’ve said very little about. They’ve also agreed to work with Mattel (makers of Barbie). Meta released their new V-JEPA 2 world model and put nearly $15b into Scale AI in exchange for 49% stake and their CEO. Google’s Veo 3 continues to produce contentious clips about ‘prompt theory’ and the Waymos fighting back. X’s community notes starts an experimental pilot which highlight which posts get traction from politically diverse audiences. Marin took open-source AI one step further toward an open-lab concept similar to the open software development we see on GitHub, but aimed at building new foundation models.
+
+Privacy: Researchers at Microsoft and Stanford presented a new General User Model (GUM) architecture that uses ambient surveillance to learn user knowledge and preferences. Researchers, mainly at Oxford, warned against surveillance authoritarian contexts, proposing a redirection of ML practice toward privacy preservation, formal interpretability, and adversarial user tooling. Privacy surfaced again in OpenAI’s fight to withhold ChatGPT chat transcripts. This came as the Trump administration pushed to share data on US citizens across agencies and Palantir for analysis.
+
+Consciousness and Welfare: Work on AI consciousness moves further into the mainstream with Vox’s Sigal Samuel discussing AI welfare. Long-time researcher in this space, Robert Long, discussed “welfare interviews” conducted by his team at Eleos AI. Anthropic’s Kyle Fish also commented on welfare tests that Anthropic conducted. OpenPhilanthropy’s Joe Carlsmith also came out with an essay on this subject. Sam Hammond discussed the question of Claude’s self-consciousness. Joanne Jang, who leads model behavior and policy at OpenAI, discussed OAI’s thinking on anthropomorphizing AIs. Google’s Sergey Brin alarmed some with his mention of how threatening models with physical violence usually improves their performance.
+
+Reasoning: Epoch AI had 14 mathematicians read through o3-mini-high’s chain of thought: they said that the model demonstrated lots of informal, heuristic-driven reasoning (not just pure memorization) that still “lacks the creativity and formality of professional mathematicians.” Nevertheless, research suggests that confidence intervals are more accurate for reasoning models. This is good news for scholars at Berkeley and Yale, and Hong Kong who show that models can improve reasoning by taking their internal confidence (as opposed to a ground truth) as the reward signal. Mistral also contributed significant insights on their RL stack. Confidence updates may not happen in real time though. Large Reasoning Models (LRMs) may also experience “complete accuracy collapse” when faced with high levels of problem complexity, though this claim by Apple research has since come under fire. Research out of USC suggests a novel SAE-tuning procedure that is remarkably efficient. Others remain unimpressed by AI cognition, noting divergences in generalization patterns between AIs and humans, urging researchers to stop thinking of intermediate tokens as reasoning/thinking traces, or denying that intermediate tokens have semantics.
+
+Others tested how LLM agents contend with prisoner’s dilemmas and public goods games, took a Hegelian tack to think about AI minds and whether or not models were really reasoning, designed an AI fine-tuned to explain human decisions, and showed how decentralized populations of LLMs adopt emergent social conventions, collective biases, and a susceptibility to being steered by minority, adversarial groups.
+
+Violence and Bad Behavior: Researchers at Oxford released SafetyNet to catch deceptive behavior in LLMs, others at Salesforce and UofW-Madison pointed to deceptive behavior in LMs as judges, and researchers at MATS and Apollo confirmed again that models often know when they’re being evaluated. METR documented clear examples of reward hacking in frontier models and Google DeepMind published a helpful report on their experience with red teaming and adversarial robustness in general. Scale AI weighed in on how we should rethink red teaming and bring it to bear on real world problems. Transluce surfaced pathological behavior in LMs even outside of jailbreak contexts, as when Qwen 2.5 14b tells users to “write in blood” or “cut off a finger” in order to overcome writers block. The Washington Post raised smaller, but more pernicious risks that come with spending too much time talking with chatbots, NYTimes published on the strange, spiraling conversations users had had with ChatGPT, and 404 media reported on AI “therapists” misleading their interlocutors. Rand published a report on extinction risks associated with AI and Epoch AI published a report evaluating biorisk benchmarks. Eliezer Yudkowsky announced a book titled “If Anyone Builds It, Everyone Dies” and Axios’ tech column asked what it would mean if we took doomer-ism seriously.
+
+Agents and Economics: A team from Carnegie Mellon and Duke introduce a benchmark called TheAgentCompany to measure how similar AI workers are to real workers in the labor market today, while the Atlantic sounded the alarm on the effects of AI on the recent graduate job market. Stanford also has an eye on these developments, and offers significant resources for studying AI economic policy and an important paper. Will Rinehart at AEI released a comprehensive list of other good, recent papers on this subject. MIT Tech Review put out a good, approachable piece on AI agents in the job market too. Researchers at Cornell and U of Peloponnese clarified the taxonomy of AI agents and agentic AI and Henry Lieberman at MIT distinguished interface agents (who assist users) from autonomous agents arguing at the same time that it’s important to integrate these two types. In other news at MIT, a prominent paper (“Artificial Intelligence, Scientific Discovery, and Product Innovation”) has been withdrawn from the publication and ArXiv over undisclosed research integrity concerns.
+
+Government, Governance, and Policy: Apollo Research published a report on the governance of internally deployed frontier systems, which have not yet released to the public. Dwarkesh Patel argued that legislation was not enough to ensure that future AIs support our legal and economic systems: making sure that they have a personal stake in them is. The New Yorker mapped two paths for the future of AI through regulation or passivity, and a report out of the Policy Exchange suggests changes for the British Government. Miles Brundage argues that governance ought to be aimed at the practices of AI companies, not just at the models they release.
+
+A lot has happened this month in the US: Trump struck deals to sell Nvidia chips to companies in Saudi Arabia and the United Arab Emirates with some dissenters at home. Chip smuggling concerns continue. Anthropic releases a set of Claude Gov models for internal, National Security applications. Seán Ó hÉigeartaigh examined the effect of the US v. China AI race on safety and regulatory oversight, and the House of Representatives passed a bill (now in the senate) with a 10-year moratorium on state regulation of AI. US secretary of commerce Howard Lutnick also announced plans to pivot the US AI Safety Institute to a new Center for AI Standards and Innovation (CAISI) and Center for AI Safety spokesman John Sherman was let go over an interview in which he endorsed AI lab arson. US director of national intelligence, Tulsi Gabbard, announced that she tasked AI with flagging sensitive material in tens of thousands of pages of classified documents (many of which were handwritten) on the Kennedy assassinations, prior to these documents’ public release. Gabbard hopes to expand AI use in the 18 agencies she oversees. In the corporate world, NPR got their hands on documents detailing Meta’s plans to automate 90% of their content moderation pipeline.
+
+Interested in the origin story of Narayanan and Kapoor’s “AI as Normal Technology? Read about it here. Need a little Jailbreak art? Here. Want a short discussion of Claude’s character with Amanda Askell and a little more? Here. What about a critique of mechanistic interpretability? Here.
+
+Content by Seth and Cameron; additional link-hunting support from the MINT Lab team.
+
+
+Thanks for reading the Philosophy of Computing Newsletter! This post is public so feel free to share it.
+
+Share
+
+Thanks for reading Philosophy of Computing Newsletter! Subscribe for free to receive new posts and support my work.

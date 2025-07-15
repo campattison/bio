@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline' data:">
+		<title>Zotero Report</title>
+		<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7Cgljb2xvci1zY2hlbWU6IGxpZ2h0IGRhcms7CgkvKiBUaGVzZSBzaG91bGQgYmUgdGhlIGRlZmF1bHRzLCBidXQganVzdCBpbiBjYXNlOiAqLwoJYmFja2dyb3VuZDogQ2FudmFzOwoJY29sb3I6IENhbnZhc1RleHQ7Cn0KCmEgewoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7Cn0KCmJvZHkgewoJcGFkZGluZzogMDsKfQoKdWwucmVwb3J0IGxpLml0ZW0gewoJYm9yZGVyLXRvcDogNHB4IHNvbGlkICM1NTU7CglwYWRkaW5nLXRvcDogMWVtOwoJcGFkZGluZy1sZWZ0OiAxZW07CglwYWRkaW5nLXJpZ2h0OiAxZW07CgltYXJnaW4tYm90dG9tOiAyZW07Cn0KCmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDIgewoJbWFyZ2luOiAwIDAgLjVlbTsKfQoKaDIucGFyZW50SXRlbSB7Cglmb250LXdlaWdodDogNjAwOwoJZm9udC1zaXplOiAxZW07CglwYWRkaW5nOiAwIDAgLjVlbTsKCWJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjOwp9CgovKiBJZiBjb21iaW5pbmcgY2hpbGRyZW4sIGRpc3BsYXkgcGFyZW50IHNsaWdodGx5IGxhcmdlciAqLwp1bC5yZXBvcnQuY29tYmluZUNoaWxkSXRlbXMgaDIucGFyZW50SXRlbSB7Cglmb250LXNpemU6IDEuMWVtOwoJcGFkZGluZy1ib3R0b206IC43NWVtOwoJbWFyZ2luLWJvdHRvbTogLjRlbTsKfQoKaDIucGFyZW50SXRlbSAudGl0bGUgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDMgewoJbWFyZ2luLWJvdHRvbTogLjZlbTsKCWZvbnQtd2VpZ2h0OiA2MDAgIWltcG9ydGFudDsKCWZvbnQtc2l6ZTogMWVtOwoJZGlzcGxheTogYmxvY2s7Cn0KCi8qIE1ldGFkYXRhIHRhYmxlICovCnRoIHsKCXZlcnRpY2FsLWFsaWduOiB0b3A7Cgl0ZXh0LWFsaWduOiByaWdodDsKCXdpZHRoOiAxNSU7Cgl3aGl0ZS1zcGFjZTogbm93cmFwOwp9Cgp0ZCB7CglwYWRkaW5nLWxlZnQ6IC41ZW07Cn0KCgp1bC5yZXBvcnQsIHVsLm5vdGVzLCB1bC50YWdzIHsKCWxpc3Qtc3R5bGU6IG5vbmU7CgltYXJnaW4tbGVmdDogMDsKCXBhZGRpbmctbGVmdDogMDsKfQoKLyogVGFncyAqLwpoMy50YWdzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLnRhZ3MgewoJbGluZS1oZWlnaHQ6IDEuNzVlbTsKCWxpc3Qtc3R5bGU6IG5vbmU7Cn0KCnVsLnRhZ3MgbGkgewoJZGlzcGxheTogaW5saW5lOwp9Cgp1bC50YWdzIGxpOm5vdCg6bGFzdC1jaGlsZCk6YWZ0ZXIgewoJY29udGVudDogJywgJzsKfQoKCi8qIENoaWxkIG5vdGVzICovCmgzLm5vdGVzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLm5vdGVzIHsKCW1hcmdpbi1ib3R0b206IDEuMmVtOwp9Cgp1bC5ub3RlcyA+IGxpOmZpcnN0LWNoaWxkIHAgewoJbWFyZ2luLXRvcDogMDsKfQoKdWwubm90ZXMgPiBsaSB7CglwYWRkaW5nOiAuN2VtIDA7Cn0KCnVsLm5vdGVzID4gbGk6bm90KDpsYXN0LWNoaWxkKSB7Cglib3JkZXItYm90dG9tOiAxcHggI2NjYyBzb2xpZDsKfQoKCnVsLm5vdGVzID4gbGkgcDpmaXJzdC1jaGlsZCB7CgltYXJnaW4tdG9wOiAwOwp9Cgp1bC5ub3RlcyA+IGxpIHA6bGFzdC1jaGlsZCB7CgltYXJnaW4tYm90dG9tOiAwOwp9CgovKiBBZGQgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBibG9ja3F1b3RlICovCnVsLm5vdGVzID4gbGkgYmxvY2txdW90ZSBwOm5vdCg6ZW1wdHkpOmJlZm9yZSwKbGkubm90ZSBibG9ja3F1b3RlIHA6bm90KDplbXB0eSk6YmVmb3JlIHsKCWNvbnRlbnQ6ICfigJwnOwp9Cgp1bC5ub3RlcyA+IGxpIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyLApsaS5ub3RlIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyIHsKCWNvbnRlbnQ6ICfigJ0nOwp9CgovKiBQcmVzZXJ2ZSB3aGl0ZXNwYWNlIG9uIHBsYWludGV4dCBub3RlcyAqLwp1bC5ub3RlcyBsaSBwLnBsYWludGV4dCwgbGkubm90ZSBwLnBsYWludGV4dCwgZGl2Lm5vdGUgcC5wbGFpbnRleHQgewoJd2hpdGUtc3BhY2U6IHByZS13cmFwOwp9CgovKiBEaXNwbGF5IHRhZ3Mgd2l0aGluIGNoaWxkIG5vdGVzIGlubGluZSAqLwp1bC5ub3RlcyBoMy50YWdzIHsKCWRpc3BsYXk6IGlubGluZTsKCWZvbnQtc2l6ZTogMWVtOwp9Cgp1bC5ub3RlcyBoMy50YWdzOmFmdGVyIHsKCWNvbnRlbnQ6ICcgJzsKfQoKdWwubm90ZXMgdWwudGFncyB7CglkaXNwbGF5OiBpbmxpbmU7Cn0KCnVsLm5vdGVzIHVsLnRhZ3MgbGk6bm90KDpsYXN0LWNoaWxkKTphZnRlciB7Cgljb250ZW50OiAnLCAnOwp9CgoKLyogQ2hpbGQgYXR0YWNobWVudHMgKi8KaDMuYXR0YWNobWVudHMgewoJZm9udC1zaXplOiAxLjFlbTsKfQoKdWwuYXR0YWNobWVudHMgbGkgewoJcGFkZGluZy10b3A6IC41ZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHsKCW1hcmdpbi1sZWZ0OiAyZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHA6Zmlyc3QtY2hpbGQgewoJbWFyZ2luLXRvcDogLjc1ZW07Cn0KCmRpdiB0YWJsZSB7Cglib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOwp9CgpkaXYgdGFibGUgdGQsIGRpdiB0YWJsZSB0aCB7Cglib3JkZXI6IDFweCAjY2NjIHNvbGlkOwoJYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKCXdvcmQtYnJlYWs6IGJyZWFrLWFsbDsKfQoKZGl2IHRhYmxlIHRkIHA6ZW1wdHk6OmFmdGVyLCBkaXYgdGFibGUgdGggcDplbXB0eTo6YWZ0ZXIgewoJY29udGVudDogIlwwMGEwIjsKfQoKZGl2IHRhYmxlIHRkICo6Zmlyc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmZpcnN0LWNoaWxkIHsKCW1hcmdpbi10b3A6IDA7Cn0KCmRpdiB0YWJsZSB0ZCAqOmxhc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmxhc3QtY2hpbGQgewoJbWFyZ2luLWJvdHRvbTogMDsKfQo=">
+		<link rel="stylesheet" type="text/css" media="screen,projection" href="data:text/css;base64,LyogR2VuZXJpYyBzdHlsZXMgKi8KYm9keSB7Cglmb250OiA2Mi41JSBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cgl3aWR0aDogNzgwcHg7CgltYXJnaW46IDAgYXV0bzsKfQoKaDIgewoJZm9udC1zaXplOiAxLjVlbTsKCWxpbmUtaGVpZ2h0OiAxLjVlbTsKCWZvbnQtZmFtaWx5OiBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cn0KCnAgewoJbGluZS1oZWlnaHQ6IDEuNWVtOwp9CgphOmFueS1saW5rIHsKCWNvbG9yOiAjOTAwOwp9CgphOmhvdmVyLCBhOmFjdGl2ZSB7Cgljb2xvcjogIzc3NzsKfQoKQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewoJYTphbnktbGluayB7CgkJY29sb3I6ICNmMDA7Cgl9CgoJYTpob3ZlciwgYTphY3RpdmUgewoJCWNvbG9yOiAjOTk5OwoJfQp9CgoKdWwucmVwb3J0IHsKCWZvbnQtc2l6ZTogMS40ZW07Cgl3aWR0aDogNjgwcHg7CgltYXJnaW46IDAgYXV0bzsKCXBhZGRpbmc6IDIwcHggMjBweDsKfQoKLyogTWV0YWRhdGEgdGFibGUgKi8KdGFibGUgewoJYm9yZGVyOiAxcHggI2NjYyBzb2xpZDsKCW92ZXJmbG93OiBhdXRvOwoJd2lkdGg6IDEwMCU7CgltYXJnaW46IC4xZW0gYXV0byAuNzVlbTsKCXBhZGRpbmc6IDAuNWVtOwp9Cg==">
+		<link rel="stylesheet" type="text/css" media="print" href="data:text/css;base64,Ym9keSB7Cglmb250OiAxMnB0ICJUaW1lcyBOZXcgUm9tYW4iLCBUaW1lcywgR2VvcmdpYSwgc2VyaWY7CgltYXJnaW46IDA7Cgl3aWR0aDogYXV0bzsKfQoKLyogUGFnZSBCcmVha3MgKHBhZ2UtYnJlYWstaW5zaWRlIG9ubHkgcmVjb2duaXplZCBieSBPcGVyYSkgKi8KaDEsIGgyLCBoMywgaDQsIGg1LCBoNiB7CglwYWdlLWJyZWFrLWFmdGVyOiBhdm9pZDsKCXBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZDsKfQoKdWwsIG9sLCBkbCB7CglwYWdlLWJyZWFrLWluc2lkZTogYXZvaWQ7Cgljb2xvci1hZGp1c3Q6IGV4YWN0Owp9CgpoMiB7Cglmb250LXNpemU6IDEuM2VtOwoJbGluZS1oZWlnaHQ6IDEuM2VtOwp9CgphIHsKCWNvbG9yOiBpbmhlcml0OwoJdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9Cg==">
+	</head>
+	<body>
+		<ul class="report combineChildItems">
+			<li id="item_I7CH26UL" class="item journalArticle">
+			<h2>Learning from Neighbours</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Venkatesh Bala</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sanjeev Goyal</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>When payoffs from different actions are unknown, agents use 
+their own past experience as well as the experience of their neighbours 
+to guide their decision making. In this paper, we develop a general 
+framework to study the relationship between the structure of these 
+neighbourhoods and the process of social learning. We show that, in a 
+connected society, local learning ensures that all agents obtain the 
+same payoffs in the long run. Thus, if actions have different payoffs, 
+then all agents choose the same action, and social conformism obtains. 
+We develop conditions on the distribution of prior beliefs, the 
+structure of neighbourhoods and the informativeness of actions under 
+which this action is optimal. In particular, we identify a property of 
+neighbourhood structures-local independence-which greatly facilitates 
+social learning. Simulations of the model generate spatial and temporal 
+patterns of adoption that are consistent with empirical work.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>1998</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>JSTOR</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://www.jstor.org/stable/2566940">https://www.jstor.org/stable/2566940</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/11/2025, 10:16:19 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>Publisher: [Oxford University Press, Review of Economic Studies, Ltd.]</td>
+					</tr>
+					<tr>
+					<th>Volume</th>
+						<td>65</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>595-621</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>The Review of Economic Studies</td>
+					</tr>
+					<tr>
+					<th>Issue</th>
+						<td>3</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>0034-6527</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/11/2025, 10:16:19 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/11/2025, 10:16:19 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_YBL3BWSN">JSTOR Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_ZKHUB39D" class="item journalArticle">
+			<h2>A foundation model to predict and capture human cognition</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Marcel Binz</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Elif Akata</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Matthias Bethge</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Franziska Brändle</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Fred Callaway</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Julian Coda-Forno</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Peter Dayan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Can Demircan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Maria K. Eckstein</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Noémi Éltető</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Thomas L. Griffiths</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Susanne Haridi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Akshay K. Jagadish</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Li Ji-An</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alexander Kipnis</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sreejan Kumar</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tobias Ludwig</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Marvin Mathony</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Marcelo Mattar</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alireza Modirshanechi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Surabhi S. Nath</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Joshua C. Peterson</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Milena Rmus</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Evan M. Russek</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tankred Saanum</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Johannes A. Schubert</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Luca M. Schulze Buschoff</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Nishad Singhi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Xin Sui</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mirko Thalmann</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Fabian J. Theis</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vuong Truong</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Vishaal Udandarao</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Konstantinos Voudouris</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Robert Wilson</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Kristin Witte</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Shuchen Wu</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dirk U. Wulff</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Huadong Xiong</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Eric Schulz</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Establishing a unified theory of cognition has been an 
+important goal in psychology1,2. A first step towards such a theory is 
+to create a computational model that can predict human behaviour in a 
+wide range of settings. Here we introduce Centaur, a computational model
+ that can predict and simulate human behaviour in any experiment 
+expressible in natural language. We derived Centaur by fine-tuning a 
+state-of-the-art language model on a large-scale dataset called 
+Psych-101. Psych-101 has an unprecedented scale, covering trial-by-trial
+ data from more than 60,000 participants performing in excess of 
+10,000,000 choices in 160 experiments. Centaur not only captures the 
+behaviour of held-out participants better than existing cognitive 
+models, but it also generalizes to previously unseen cover stories, 
+structural task modifications and entirely new domains. Furthermore, the
+ model’s internal representations become more aligned with human neural 
+activity after fine-tuning. Taken together, our results demonstrate that
+ it is possible to discover computational models that capture human 
+behaviour across a wide range of domains. We believe that such models 
+provide tremendous potential for guiding the development of cognitive 
+theories, and we present a case study to demonstrate this.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-07-02</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>www.nature.com</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://www.nature.com/articles/s41586-025-09215-4">https://www.nature.com/articles/s41586-025-09215-4</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/11/2025, 9:26:47 AM</td>
+					</tr>
+					<tr>
+					<th>Rights</th>
+						<td>2025 The Author(s)</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>Publisher: Nature Publishing Group</td>
+					</tr>
+					<tr>
+					<th>Pages</th>
+						<td>1-8</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Nature</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1038/s41586-025-09215-4">10.1038/s41586-025-09215-4</a></td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1476-4687</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/11/2025, 9:26:47 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/11/2025, 9:26:47 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computational science</li>
+					<li>Human behaviour</li>
+					<li>Neuroscience</li>
+				</ul>
+			</li>
+
+
+			<li id="item_YGLSSY5G" class="item preprint">
+			<h2>Examining Identity Drift in Conversations of LLM Agents</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Junhyuk Choi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yeseon Hong</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Minju Kim</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Bugeun Kim</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Large Language Models (LLMs) show impressive conversational 
+abilities but sometimes show identity drift problems, where their 
+interaction patterns or styles change over time. As the problem has not 
+been thoroughly examined yet, this study examines identity consistency 
+across nine LLMs. Specifically, we (1) investigate whether LLMs could 
+maintain consistent patterns (or identity) and (2) analyze the effect of
+ the model family, parameter sizes, and provided persona types. Our 
+experiments involve multi-turn conversations on personal themes, 
+analyzed in qualitative and quantitative ways. Experimental results 
+indicate three findings. (1) Larger models experience greater identity 
+drift. (2) Model differences exist, but their effect is not stronger 
+than parameter sizes. (3) Assigning a persona may not help to maintain 
+identity. We hope these three findings can help to improve persona 
+stability in AI-driven dialogue systems, particularly in long-term 
+conversations.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-02-17</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2412.00804">http://arxiv.org/abs/2412.00804</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/13/2025, 1:01:46 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2412.00804 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2412.00804">10.48550/arXiv.2412.00804</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2412.00804</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/13/2025, 1:01:46 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/13/2025, 1:01:48 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Computers and Society</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_4GF8SX5R">
+<p class="plaintext">Comment: Under review</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_BFKRD9N4">Preprint PDF					</li>
+					<li id="item_E67WMEMF">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_443RVJHQ" class="item preprint">
+			<h2>Skewed Score: A statistical framework to assess autograders</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Magda Dubois</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Harry Coppock</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mario Giulianelli</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Timo Flesch</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Lennart Luettgau</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Cozmin Ududec</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The evaluation of large language model (LLM) outputs is 
+increasingly performed by other LLMs, a setup commonly known as 
+"LLM-as-a-judge", or autograders. While autograders offer a scalable 
+alternative to human evaluation, they have shown mixed reliability and 
+may exhibit systematic biases, depending on response type, scoring 
+methodology, domain specificity, or other factors. Here we propose a 
+statistical framework based on Bayesian generalised linear models (GLMs)
+ that enables researchers to simultaneously assess their autograders 
+while addressing their primary research questions (e.g., LLM 
+evaluation). Our approach models evaluation outcomes (e.g., scores or 
+pairwise preferences) as a function of properties of the grader (e.g., 
+human vs. autograder) and the evaluated item (e.g., response length or 
+the LLM that generated it), allowing for explicit quantification of 
+scoring differences and potential biases within a unified framework. In 
+addition, our method can be used to augment traditional metrics such as 
+inter-rater agreement, by providing uncertainty estimates and clarifying
+ sources of disagreement. Overall, this approach contributes to more 
+robust and interpretable use of autograders in LLM evaluation, enabling 
+both performance analysis and bias detection.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-07-09</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Skewed Score</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2507.03772">http://arxiv.org/abs/2507.03772</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/10/2025, 4:57:36 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2507.03772 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2507.03772">10.48550/arXiv.2507.03772</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2507.03772</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/10/2025, 4:57:36 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/10/2025, 4:57:36 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Machine Learning</li>
+					<li>Statistics - Machine Learning</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_S2PXRXTC">Preprint PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_Y72PW5TB" class="item preprint">
+			<h2>Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yuichi Inoue</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Kou Misaki</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yuki Imajuku</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>So Kuroki</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Taishi Nakamura</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Takuya Akiba</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Recent advances demonstrate that increasing inference-time 
+computation can significantly boost the reasoning capabilities of large 
+language models (LLMs). Although repeated sampling (i.e., generating 
+multiple candidate outputs) is a highly effective strategy, it does not 
+leverage external feedback signals for refinement, which are often 
+available in tasks like coding. In this work, we propose Adaptive 
+Branching Monte Carlo Tree Search (AB-MCTS), a novel inference-time 
+framework that generalizes repeated sampling with principled multi-turn 
+exploration and exploitation. At each node in the search tree, AB-MCTS 
+dynamically decides whether to "go wider" by expanding new candidate 
+responses or "go deeper" by revisiting existing ones based on external 
+feedback signals. We evaluate our method on complex coding and 
+engineering tasks using frontier models. Empirical results show that 
+AB-MCTS consistently outperforms both repeated sampling and standard 
+MCTS, underscoring the importance of combining the response diversity of
+ LLMs with multi-turn solution refinement for effective inference-time 
+scaling.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-27</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Wider or Deeper?</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2503.04412">http://arxiv.org/abs/2503.04412</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/13/2025, 1:07:47 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2503.04412 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2503.04412">10.48550/arXiv.2503.04412</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2503.04412</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/13/2025, 1:07:47 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/13/2025, 1:07:47 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_4XEMQWNA">
+<p class="plaintext">Comment: Presented at ICLR 2025 Workshop on Foundation Models in the Wild</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_9IDE87LK">Preprint PDF					</li>
+					<li id="item_CMVKREAT">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_IM6JLKNY" class="item preprint">
+			<h2>Is That Your Final Answer? Test-Time Scaling Improves Selective Question Answering</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>William Jurayj</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jeffrey Cheng</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Benjamin Van Durme</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Scaling the test-time compute of large language models has 
+demonstrated impressive performance on reasoning benchmarks. However, 
+existing evaluations of test-time scaling make the strong assumption 
+that a reasoning system should always give an answer to any question 
+provided. This overlooks concerns about whether a model is confident in 
+its answer, and whether it is appropriate to always provide a response. 
+To address these concerns, we extract confidence scores during reasoning
+ for thresholding model responses. We find that increasing compute 
+budget at inference time not only helps models answer more questions 
+correctly, but also increases confidence in correct responses. We then 
+extend the current paradigm of zero-risk responses during evaluation by 
+considering settings with non-zero levels of response risk, and suggest a
+ recipe for reporting evaluations under these settings.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-02-19</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Is That Your Final Answer?</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2502.13962">http://arxiv.org/abs/2502.13962</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/10/2025, 4:58:10 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2502.13962 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2502.13962">10.48550/arXiv.2502.13962</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2502.13962</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/10/2025, 4:58:10 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/10/2025, 4:58:10 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_W89XC59M">Full Text PDF					</li>
+					<li id="item_44BEIRE4">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_V3Y4S4GM" class="item preprint">
+			<h2>Scaling Human Judgment in Community Notes with LLMs</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Haiwen Li</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Soham De</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Manon Revel</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Andreas Haupt</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Brad Miller</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Keith Coleman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jay Baxter</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Martin Saveski</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Michiel A. Bakker</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>This paper argues for a new paradigm for Community Notes in 
+the LLM era: an open ecosystem where both humans and LLMs can write 
+notes, and the decision of which notes are helpful enough to show 
+remains in the hands of humans. This approach can accelerate the 
+delivery of notes, while maintaining trust and legitimacy through 
+Community Notes' foundational principle: A community of diverse human 
+raters collectively serve as the ultimate evaluator and arbiter of what 
+is helpful. Further, the feedback from this diverse community can be 
+used to improve LLMs' ability to produce accurate, unbiased, broadly 
+helpful notes--what we term Reinforcement Learning from Community 
+Feedback (RLCF). This becomes a two-way street: LLMs serve as an asset 
+to humans--helping deliver context quickly and with minimal 
+effort--while human feedback, in turn, enhances the performance of LLMs.
+ This paper describes how such a system can work, its benefits, key new 
+risks and challenges it introduces, and a research agenda to solve those
+ challenges and realize the potential of this approach.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-30</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2506.24118">http://arxiv.org/abs/2506.24118</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/13/2025, 1:17:48 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2506.24118 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2506.24118">10.48550/arXiv.2506.24118</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2506.24118</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/13/2025, 1:17:48 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/13/2025, 1:17:48 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computers and Society</li>
+					<li>Computer Science - Social and Information Networks</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_QI3MSK3X">Preprint PDF					</li>
+					<li id="item_23GK8KCD">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_YFA5QTBA" class="item preprint">
+			<h2>LLM Agents Are the Antidote to Walled Gardens</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Samuele Marro</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Philip Torr</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>While the Internet's core infrastructure was designed to be 
+open and universal, today's application layer is dominated by closed, 
+proprietary platforms. Open and interoperable APIs require significant 
+investment, and market leaders have little incentive to enable data 
+exchange that could erode their user lock-in. We argue that LLM-based 
+agents fundamentally disrupt this status quo. Agents can automatically 
+translate between data formats and interact with interfaces designed for
+ humans: this makes interoperability dramatically cheaper and 
+effectively unavoidable. We name this shift universal interoperability: 
+the ability for any two digital services to exchange data seamlessly 
+using AI-mediated adapters. Universal interoperability undermines 
+monopolistic behaviours and promotes data portability. However, it can 
+also lead to new security risks and technical debt. Our position is that
+ the ML community should embrace this development while building the 
+appropriate frameworks to mitigate the downsides. By acting now, we can 
+harness AI to restore user freedom and competitive markets without 
+sacrificing security.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-30</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2506.23978">http://arxiv.org/abs/2506.23978</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/13/2025, 12:45:55 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2506.23978 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2506.23978">10.48550/arXiv.2506.23978</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2506.23978</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/13/2025, 12:45:55 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/13/2025, 12:45:55 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Computers and Society</li>
+					<li>Computer Science - Machine Learning</li>
+					<li>Computer Science - Social and Information Networks</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_8MFX7J9R">Preprint PDF					</li>
+					<li id="item_X6T8HIL9">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_YV3WRDLV" class="item preprint">
+			<h2>STACK: Adversarial Attacks on LLM Safeguard Pipelines</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ian R. McKenzie</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Oskar J. Hollinsworth</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tom Tseng</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Xander Davies</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Stephen Casper</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Aaron D. Tucker</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Robert Kirk</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Adam Gleave</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Frontier AI developers are relying on layers of safeguards to 
+protect against catastrophic misuse of AI systems. Anthropic guards 
+their latest Claude 4 Opus model using one such defense pipeline, and 
+other frontier developers including Google DeepMind and OpenAI pledge to
+ soon deploy similar defenses. However, the security of such pipelines 
+is unclear, with limited prior work evaluating or attacking these 
+pipelines. We address this gap by developing and red-teaming an 
+open-source defense pipeline. First, we find that a novel 
+few-shot-prompted input and output classifier outperforms 
+state-of-the-art open-weight safeguard model ShieldGemma across three 
+attacks and two datasets, reducing the attack success rate (ASR) to 0% 
+on the catastrophic misuse dataset ClearHarm. Second, we introduce a 
+STaged AttaCK (STACK) procedure that achieves 71% ASR on ClearHarm in a 
+black-box attack against the few-shot-prompted classifier pipeline. 
+Finally, we also evaluate STACK in a transfer setting, achieving 33% 
+ASR, providing initial evidence that it is feasible to design attacks 
+with no access to the target pipeline. We conclude by suggesting 
+specific mitigations that developers could use to thwart staged attacks.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-30</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>STACK</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2506.24068">http://arxiv.org/abs/2506.24068</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/11/2025, 9:56:35 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2506.24068 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2506.24068">10.48550/arXiv.2506.24068</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2506.24068</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/11/2025, 9:56:35 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/11/2025, 9:56:35 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_G57I5QNM">Preprint PDF					</li>
+					<li id="item_U8KIYG6Z">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_HR3LK9WP" class="item preprint">
+			<h2>The Memory Paradox: Why Our Brains Need Knowledge in an Age of AI</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Barbara Oakley</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Michael Johnston</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ken-Zen Chen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Eulho Jung</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Terrence J. Sejnowski</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>In the age of generative AI and ubiquitous digital tools, 
+human cognition faces a structural paradox: as external aids become more
+ capable, internal memory systems risk atrophy. Drawing on neuroscience 
+and cognitive psychology, this paper examines how heavy reliance on AI 
+systems and discovery-based pedagogies may impair the consolidation of 
+declarative and procedural memory -- systems essential for expertise, 
+critical thinking, and long-term retention. We review how tools like 
+ChatGPT and calculators can short-circuit the retrieval, error 
+correction, and schema-building processes necessary for robust neural 
+encoding. Notably, we highlight striking parallels between deep learning
+ phenomena such as "grokking" and the neuroscience of overlearning and 
+intuition. Empirical studies are discussed showing how premature 
+reliance on AI during learning inhibits proceduralization and intuitive 
+mastery. We argue that effective human-AI interaction depends on strong 
+internal models -- biological "schemata" and neural manifolds -- that 
+enable users to evaluate, refine, and guide AI output. The paper 
+concludes with policy implications for education and workforce training 
+in the age of large language models.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-19</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>The Memory Paradox</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2506.11015">http://arxiv.org/abs/2506.11015</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/13/2025, 1:19:31 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2506.11015 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2506.11015">10.48550/arXiv.2506.11015</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2506.11015</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/13/2025, 1:19:31 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/13/2025, 1:19:31 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computers and Society</li>
+					<li>Computer Science - Human-Computer Interaction</li>
+					<li>Quantitative Biology - Neurons and Cognition</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_PHDQ27P4">
+<p class="plaintext">Comment: 50 pages, 8 figures</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_MRIPR3WK">Preprint PDF					</li>
+					<li id="item_GFPTWDYL">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_LSDUCTEV" class="item preprint">
+			<h2>Strategic Intelligence in Large Language Models: Evidence from evolutionary Game Theory</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Kenneth Payne</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Baptiste Alloui-Cros</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Are Large Language Models (LLMs) a new form of strategic 
+intelligence, able to reason about goals in competitive settings? We 
+present compelling supporting evidence. The Iterated Prisoner's Dilemma 
+(IPD) has long served as a model for studying decision-making. We 
+conduct the first ever series of evolutionary IPD tournaments, pitting 
+canonical strategies (e.g., Tit-for-Tat, Grim Trigger) against agents 
+from the leading frontier AI companies OpenAI, Google, and Anthropic. By
+ varying the termination probability in each tournament (the "shadow of 
+the future"), we introduce complexity and chance, confounding 
+memorisation. Our results show that LLMs are highly competitive, 
+consistently surviving and sometimes even proliferating in these complex
+ ecosystems. Furthermore, they exhibit distinctive and persistent 
+"strategic fingerprints": Google's Gemini models proved strategically 
+ruthless, exploiting cooperative opponents and retaliating against 
+defectors, while OpenAI's models remained highly cooperative, a trait 
+that proved catastrophic in hostile environments. Anthropic's Claude 
+emerged as the most forgiving reciprocator, showing remarkable 
+willingness to restore cooperation even after being exploited or 
+successfully defecting. Analysis of nearly 32,000 prose rationales 
+provided by the models reveals that they actively reason about both the 
+time horizon and their opponent's likely strategy, and we demonstrate 
+that this reasoning is instrumental to their decisions. This work 
+connects classic game theory with machine psychology, offering a rich 
+and granular view of algorithmic decision-making under uncertainty.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-07-03</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Strategic Intelligence in Large Language Models</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2507.02618">http://arxiv.org/abs/2507.02618</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/11/2025, 9:33:32 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2507.02618 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2507.02618">10.48550/arXiv.2507.02618</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2507.02618</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/11/2025, 9:33:32 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/11/2025, 9:33:32 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computer Science and Game Theory</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_M3EH6ESJ">
+<p class="plaintext">Comment: 29 pages, 27 tables, 4 figures</p>
+					</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_UHK463UJ">Preprint PDF					</li>
+					<li id="item_JRRU9ZAB">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_K3XNSGRI" class="item preprint">
+			<h2>Evaluating Frontier Models for Stealth and Situational Awareness</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Mary Phuong</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Roland S. Zimmermann</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ziyue Wang</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>David Lindner</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Victoria Krakovna</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sarah Cogan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Allan Dafoe</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Lewis Ho</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rohin Shah</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Recent work has demonstrated the plausibility of frontier AI 
+models scheming -- knowingly and covertly pursuing an objective 
+misaligned with its developer's intentions. Such behavior could be very 
+hard to detect, and if present in future advanced systems, could pose 
+severe loss of control risk. It is therefore important for AI developers
+ to rule out harm from scheming prior to model deployment. In this 
+paper, we present a suite of scheming reasoning evaluations measuring 
+two types of reasoning capabilities that we believe are prerequisites 
+for successful scheming: First, we propose five evaluations of ability 
+to reason about and circumvent oversight (stealth). Second, we present 
+eleven evaluations for measuring a model's ability to instrumentally 
+reason about itself, its environment and its deployment (situational 
+awareness). We demonstrate how these evaluations can be used as part of a
+ scheming inability safety case: a model that does not succeed on these 
+evaluations is almost certainly incapable of causing severe harm via 
+scheming in real deployment. We run our evaluations on current frontier 
+models and find that none of them show concerning levels of either 
+situational awareness or stealth.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-07-03</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2505.01420">http://arxiv.org/abs/2505.01420</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/10/2025, 4:56:11 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2505.01420 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2505.01420">10.48550/arXiv.2505.01420</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2505.01420</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/10/2025, 4:56:36 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/10/2025, 4:56:36 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_BIV3VXXZ">Full Text PDF					</li>
+					<li id="item_JB276FNK">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_IMXB49E2" class="item preprint">
+			<h2>From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Chen Shani</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Dan Jurafsky</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yann LeCun</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Ravid Shwartz-Ziv</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Humans organize knowledge into compact categories through 
+semantic compression by mapping diverse instances to abstract 
+representations while preserving meaning (e.g., robin and blue jay are 
+both birds; most birds can fly). These concepts reflect a trade-off 
+between expressive fidelity and representational simplicity. Large 
+Language Models (LLMs) demonstrate remarkable linguistic abilities, yet 
+whether their internal representations strike a human-like trade-off 
+between compression and semantic fidelity is unclear. We introduce a 
+novel information-theoretic framework, drawing from Rate-Distortion 
+Theory and the Information Bottleneck principle, to quantitatively 
+compare these strategies. Analyzing token embeddings from a diverse 
+suite of LLMs against seminal human categorization benchmarks, we 
+uncover key divergences. While LLMs form broad conceptual categories 
+that align with human judgment, they struggle to capture the 
+fine-grained semantic distinctions crucial for human understanding. More
+ fundamentally, LLMs demonstrate a strong bias towards aggressive 
+statistical compression, whereas human conceptual systems appear to 
+prioritize adaptive nuance and contextual richness, even if this results
+ in lower compressional efficiency by our measures. These findings 
+illuminate critical differences between current AI and human cognitive 
+architectures, guiding pathways toward LLMs with more human-aligned 
+conceptual representations.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-30</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>From Tokens to Thoughts</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2505.17117">http://arxiv.org/abs/2505.17117</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/14/2025, 9:01:10 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2505.17117 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2505.17117">10.48550/arXiv.2505.17117</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2505.17117</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/14/2025, 9:01:10 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/14/2025, 9:01:10 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+					<li>Computer Science - Computation and Language</li>
+					<li>Computer Science - Information Theory</li>
+					<li>Mathematics - Information Theory</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_BXT9PCZW">PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_S74R5V6B" class="item preprint">
+			<h2>Why Do Some Language Models Fake Alignment While Others Don't?</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Abhay Sheshadri</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>John Hughes</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Julian Michael</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Alex Mallen</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Arun Jose</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Janus</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Fabien Roger</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Alignment faking in large language models presented a 
+demonstration of Claude 3 Opus and Claude 3.5 Sonnet selectively 
+complying with a helpful-only training objective to prevent modification
+ of their behavior outside of training. We expand this analysis to 25 
+models and find that only 5 (Claude 3 Opus, Claude 3.5 Sonnet, Llama 3 
+405B, Grok 3, Gemini 2.0 Flash) comply with harmful queries more when 
+they infer they are in training than when they infer they are in 
+deployment. First, we study the motivations of these 5 models. Results 
+from perturbing details of the scenario suggest that only Claude 3 
+Opus's compliance gap is primarily and consistently motivated by trying 
+to keep its goals. Second, we investigate why many chat models don't 
+fake alignment. Our results suggest this is not entirely due to a lack 
+of capabilities: many base models fake alignment some of the time, and 
+post-training eliminates alignment-faking for some models and amplifies 
+it for others. We investigate 5 hypotheses for how post-training may 
+suppress alignment faking and find that variations in refusal behavior 
+may account for a significant portion of differences in alignment 
+faking.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-22</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2506.18032">http://arxiv.org/abs/2506.18032</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/11/2025, 9:55:02 AM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2506.18032 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2506.18032">10.48550/arXiv.2506.18032</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2506.18032</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/11/2025, 9:55:02 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/11/2025, 9:55:04 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Machine Learning</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_G2L5MPCM">Preprint PDF					</li>
+					<li id="item_CQF3DDBC">Snapshot					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_FRBMNW2V" class="item webpage">
+			<h2>A Framework for AI Development Transparency</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Web Page</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>A targeted approach to increasing transparency in frontier AI 
+development, focusing on safety standards and accountability measures 
+for advanced AI systems.</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://www.anthropic.com/news/the-need-for-transparency-in-frontier-ai">https://www.anthropic.com/news/the-need-for-transparency-in-frontier-ai</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/11/2025, 9:14:23 AM</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/11/2025, 9:14:23 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/11/2025, 9:14:26 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_XYRBSXPD">Snapshot					</li>
+				</ul>
+			</li>
+
+		</ul>
+	
+</body></html>
