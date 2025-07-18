@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline' data:">
+		<title>Zotero Report</title>
+		<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSB7Cgljb2xvci1zY2hlbWU6IGxpZ2h0IGRhcms7CgkvKiBUaGVzZSBzaG91bGQgYmUgdGhlIGRlZmF1bHRzLCBidXQganVzdCBpbiBjYXNlOiAqLwoJYmFja2dyb3VuZDogQ2FudmFzOwoJY29sb3I6IENhbnZhc1RleHQ7Cn0KCmEgewoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7Cn0KCmJvZHkgewoJcGFkZGluZzogMDsKfQoKdWwucmVwb3J0IGxpLml0ZW0gewoJYm9yZGVyLXRvcDogNHB4IHNvbGlkICM1NTU7CglwYWRkaW5nLXRvcDogMWVtOwoJcGFkZGluZy1sZWZ0OiAxZW07CglwYWRkaW5nLXJpZ2h0OiAxZW07CgltYXJnaW4tYm90dG9tOiAyZW07Cn0KCmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDIgewoJbWFyZ2luOiAwIDAgLjVlbTsKfQoKaDIucGFyZW50SXRlbSB7Cglmb250LXdlaWdodDogNjAwOwoJZm9udC1zaXplOiAxZW07CglwYWRkaW5nOiAwIDAgLjVlbTsKCWJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjOwp9CgovKiBJZiBjb21iaW5pbmcgY2hpbGRyZW4sIGRpc3BsYXkgcGFyZW50IHNsaWdodGx5IGxhcmdlciAqLwp1bC5yZXBvcnQuY29tYmluZUNoaWxkSXRlbXMgaDIucGFyZW50SXRlbSB7Cglmb250LXNpemU6IDEuMWVtOwoJcGFkZGluZy1ib3R0b206IC43NWVtOwoJbWFyZ2luLWJvdHRvbTogLjRlbTsKfQoKaDIucGFyZW50SXRlbSAudGl0bGUgewoJZm9udC13ZWlnaHQ6IG5vcm1hbDsKfQoKaDMgewoJbWFyZ2luLWJvdHRvbTogLjZlbTsKCWZvbnQtd2VpZ2h0OiA2MDAgIWltcG9ydGFudDsKCWZvbnQtc2l6ZTogMWVtOwoJZGlzcGxheTogYmxvY2s7Cn0KCi8qIE1ldGFkYXRhIHRhYmxlICovCnRoIHsKCXZlcnRpY2FsLWFsaWduOiB0b3A7Cgl0ZXh0LWFsaWduOiByaWdodDsKCXdpZHRoOiAxNSU7Cgl3aGl0ZS1zcGFjZTogbm93cmFwOwp9Cgp0ZCB7CglwYWRkaW5nLWxlZnQ6IC41ZW07Cn0KCgp1bC5yZXBvcnQsIHVsLm5vdGVzLCB1bC50YWdzIHsKCWxpc3Qtc3R5bGU6IG5vbmU7CgltYXJnaW4tbGVmdDogMDsKCXBhZGRpbmctbGVmdDogMDsKfQoKLyogVGFncyAqLwpoMy50YWdzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLnRhZ3MgewoJbGluZS1oZWlnaHQ6IDEuNzVlbTsKCWxpc3Qtc3R5bGU6IG5vbmU7Cn0KCnVsLnRhZ3MgbGkgewoJZGlzcGxheTogaW5saW5lOwp9Cgp1bC50YWdzIGxpOm5vdCg6bGFzdC1jaGlsZCk6YWZ0ZXIgewoJY29udGVudDogJywgJzsKfQoKCi8qIENoaWxkIG5vdGVzICovCmgzLm5vdGVzIHsKCWZvbnQtc2l6ZTogMS4xZW07Cn0KCnVsLm5vdGVzIHsKCW1hcmdpbi1ib3R0b206IDEuMmVtOwp9Cgp1bC5ub3RlcyA+IGxpOmZpcnN0LWNoaWxkIHAgewoJbWFyZ2luLXRvcDogMDsKfQoKdWwubm90ZXMgPiBsaSB7CglwYWRkaW5nOiAuN2VtIDA7Cn0KCnVsLm5vdGVzID4gbGk6bm90KDpsYXN0LWNoaWxkKSB7Cglib3JkZXItYm90dG9tOiAxcHggI2NjYyBzb2xpZDsKfQoKCnVsLm5vdGVzID4gbGkgcDpmaXJzdC1jaGlsZCB7CgltYXJnaW4tdG9wOiAwOwp9Cgp1bC5ub3RlcyA+IGxpIHA6bGFzdC1jaGlsZCB7CgltYXJnaW4tYm90dG9tOiAwOwp9CgovKiBBZGQgcXVvdGF0aW9uIG1hcmtzIGFyb3VuZCBibG9ja3F1b3RlICovCnVsLm5vdGVzID4gbGkgYmxvY2txdW90ZSBwOm5vdCg6ZW1wdHkpOmJlZm9yZSwKbGkubm90ZSBibG9ja3F1b3RlIHA6bm90KDplbXB0eSk6YmVmb3JlIHsKCWNvbnRlbnQ6ICfigJwnOwp9Cgp1bC5ub3RlcyA+IGxpIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyLApsaS5ub3RlIGJsb2NrcXVvdGUgcDpub3QoOmVtcHR5KTpsYXN0LWNoaWxkOmFmdGVyIHsKCWNvbnRlbnQ6ICfigJ0nOwp9CgovKiBQcmVzZXJ2ZSB3aGl0ZXNwYWNlIG9uIHBsYWludGV4dCBub3RlcyAqLwp1bC5ub3RlcyBsaSBwLnBsYWludGV4dCwgbGkubm90ZSBwLnBsYWludGV4dCwgZGl2Lm5vdGUgcC5wbGFpbnRleHQgewoJd2hpdGUtc3BhY2U6IHByZS13cmFwOwp9CgovKiBEaXNwbGF5IHRhZ3Mgd2l0aGluIGNoaWxkIG5vdGVzIGlubGluZSAqLwp1bC5ub3RlcyBoMy50YWdzIHsKCWRpc3BsYXk6IGlubGluZTsKCWZvbnQtc2l6ZTogMWVtOwp9Cgp1bC5ub3RlcyBoMy50YWdzOmFmdGVyIHsKCWNvbnRlbnQ6ICcgJzsKfQoKdWwubm90ZXMgdWwudGFncyB7CglkaXNwbGF5OiBpbmxpbmU7Cn0KCnVsLm5vdGVzIHVsLnRhZ3MgbGk6bm90KDpsYXN0LWNoaWxkKTphZnRlciB7Cgljb250ZW50OiAnLCAnOwp9CgoKLyogQ2hpbGQgYXR0YWNobWVudHMgKi8KaDMuYXR0YWNobWVudHMgewoJZm9udC1zaXplOiAxLjFlbTsKfQoKdWwuYXR0YWNobWVudHMgbGkgewoJcGFkZGluZy10b3A6IC41ZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHsKCW1hcmdpbi1sZWZ0OiAyZW07Cn0KCnVsLmF0dGFjaG1lbnRzIGRpdi5ub3RlIHA6Zmlyc3QtY2hpbGQgewoJbWFyZ2luLXRvcDogLjc1ZW07Cn0KCmRpdiB0YWJsZSB7Cglib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOwp9CgpkaXYgdGFibGUgdGQsIGRpdiB0YWJsZSB0aCB7Cglib3JkZXI6IDFweCAjY2NjIHNvbGlkOwoJYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsKCXdvcmQtYnJlYWs6IGJyZWFrLWFsbDsKfQoKZGl2IHRhYmxlIHRkIHA6ZW1wdHk6OmFmdGVyLCBkaXYgdGFibGUgdGggcDplbXB0eTo6YWZ0ZXIgewoJY29udGVudDogIlwwMGEwIjsKfQoKZGl2IHRhYmxlIHRkICo6Zmlyc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmZpcnN0LWNoaWxkIHsKCW1hcmdpbi10b3A6IDA7Cn0KCmRpdiB0YWJsZSB0ZCAqOmxhc3QtY2hpbGQsIGRpdiB0YWJsZSB0aCAqOmxhc3QtY2hpbGQgewoJbWFyZ2luLWJvdHRvbTogMDsKfQo=">
+		<link rel="stylesheet" type="text/css" media="screen,projection" href="data:text/css;base64,LyogR2VuZXJpYyBzdHlsZXMgKi8KYm9keSB7Cglmb250OiA2Mi41JSBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cgl3aWR0aDogNzgwcHg7CgltYXJnaW46IDAgYXV0bzsKfQoKaDIgewoJZm9udC1zaXplOiAxLjVlbTsKCWxpbmUtaGVpZ2h0OiAxLjVlbTsKCWZvbnQtZmFtaWx5OiBHZW9yZ2lhLCBUaW1lcywgc2VyaWY7Cn0KCnAgewoJbGluZS1oZWlnaHQ6IDEuNWVtOwp9CgphOmFueS1saW5rIHsKCWNvbG9yOiAjOTAwOwp9CgphOmhvdmVyLCBhOmFjdGl2ZSB7Cgljb2xvcjogIzc3NzsKfQoKQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyaykgewoJYTphbnktbGluayB7CgkJY29sb3I6ICNmMDA7Cgl9CgoJYTpob3ZlciwgYTphY3RpdmUgewoJCWNvbG9yOiAjOTk5OwoJfQp9CgoKdWwucmVwb3J0IHsKCWZvbnQtc2l6ZTogMS40ZW07Cgl3aWR0aDogNjgwcHg7CgltYXJnaW46IDAgYXV0bzsKCXBhZGRpbmc6IDIwcHggMjBweDsKfQoKLyogTWV0YWRhdGEgdGFibGUgKi8KdGFibGUgewoJYm9yZGVyOiAxcHggI2NjYyBzb2xpZDsKCW92ZXJmbG93OiBhdXRvOwoJd2lkdGg6IDEwMCU7CgltYXJnaW46IC4xZW0gYXV0byAuNzVlbTsKCXBhZGRpbmc6IDAuNWVtOwp9Cg==">
+		<link rel="stylesheet" type="text/css" media="print" href="data:text/css;base64,Ym9keSB7Cglmb250OiAxMnB0ICJUaW1lcyBOZXcgUm9tYW4iLCBUaW1lcywgR2VvcmdpYSwgc2VyaWY7CgltYXJnaW46IDA7Cgl3aWR0aDogYXV0bzsKfQoKLyogUGFnZSBCcmVha3MgKHBhZ2UtYnJlYWstaW5zaWRlIG9ubHkgcmVjb2duaXplZCBieSBPcGVyYSkgKi8KaDEsIGgyLCBoMywgaDQsIGg1LCBoNiB7CglwYWdlLWJyZWFrLWFmdGVyOiBhdm9pZDsKCXBhZ2UtYnJlYWstaW5zaWRlOiBhdm9pZDsKfQoKdWwsIG9sLCBkbCB7CglwYWdlLWJyZWFrLWluc2lkZTogYXZvaWQ7Cgljb2xvci1hZGp1c3Q6IGV4YWN0Owp9CgpoMiB7Cglmb250LXNpemU6IDEuM2VtOwoJbGluZS1oZWlnaHQ6IDEuM2VtOwp9CgphIHsKCWNvbG9yOiBpbmhlcml0OwoJdGV4dC1kZWNvcmF0aW9uOiBub25lOwp9Cg==">
+	</head>
+	<body>
+		<ul class="report combineChildItems">
+			<li id="item_EBIXQ4IL" class="item journalArticle">
+			<h2>What is AI safety? What do we want it to be?</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jacqueline Harding</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Cameron Domenico Kirk-Giannini</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>The field of AI safety seeks to prevent or reduce the harms 
+caused by AI systems. A simple and appealing account of what is 
+distinctive of AI safety as a field holds that this feature is 
+constitutive: a research project falls within the purview of AI safety 
+just in case it aims to prevent or reduce the harms caused by AI 
+systems. Call this appealingly simple account The Safety Conception of 
+AI safety. Despite its simplicity and appeal, we argue that The Safety 
+Conception is in tension with at least two trends in the ways AI safety 
+researchers and organizations think and talk about AI safety: first, a 
+tendency to characterize the goal of AI safety research in terms of 
+catastrophic risks from future systems; second, the increasingly popular
+ idea that AI safety can be thought of as a branch of safety 
+engineering. Adopting the methodology of conceptual engineering, we 
+argue that these trends are unfortunate: when we consider what concept 
+of AI safety it would be best to have, there are compelling reasons to 
+think that The Safety Conception is the answer. Descriptively, The 
+Safety Conception allows us to see how work on topics that have 
+historically been treated as central to the field of AI safety is 
+continuous with work on topics that have historically been treated as 
+more marginal, like bias, misinformation, and privacy. Normatively, 
+taking The Safety Conception seriously means approaching all efforts to 
+prevent or mitigate harms from AI systems based on their merits rather 
+than drawing arbitrary distinctions between them.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-24</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>What is AI safety?</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-025-02367-z">https://doi.org/10.1007/s11098-025-02367-z</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/15/2025, 9:16:48 AM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02367-z">10.1007/s11098-025-02367-z</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/15/2025, 9:16:49 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/15/2025, 9:16:49 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial Intelligence</li>
+					<li>Machine Learning</li>
+					<li>Engineering Ethics</li>
+					<li>Philosophy of Artificial Intelligence</li>
+					<li>Chemical Safety</li>
+					<li>Symbolic AI</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_6YVHDBH2">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_LF8D3SBN" class="item preprint">
+			<h2>Resource Rational Contractualism Should Guide AI Alignment</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Preprint</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Sydney Levine</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Matija Franklin</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Tan Zhi-Xuan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Secil Yanik Guyot</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Lionel Wong</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Daniel Kilov</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Yejin Choi</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Joshua B. Tenenbaum</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Noah Goodman</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Seth Lazar</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Iason Gabriel</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>AI systems will soon have to navigate human environments and 
+make decisions that affect people and other AI agents whose goals and 
+values diverge. Contractualist alignment proposes grounding those 
+decisions in agreements that diverse stakeholders would endorse under 
+the right conditions, yet securing such agreement at scale remains 
+costly and slow -- even for advanced AI. We therefore propose 
+Resource-Rational Contractualism (RRC): a framework where AI systems 
+approximate the agreements rational parties would form by drawing on a 
+toolbox of normatively-grounded, cognitively-inspired heuristics that 
+trade effort for accuracy. An RRC-aligned agent would not only operate 
+efficiently, but also be equipped to dynamically adapt to and interpret 
+the ever-changing human social world.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-06-20</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>arXiv.org</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="http://arxiv.org/abs/2506.17434">http://arxiv.org/abs/2506.17434</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/11/2025, 2:11:36 PM</td>
+					</tr>
+					<tr>
+					<th>Extra</th>
+						<td>arXiv:2506.17434 [cs]</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.48550/arXiv.2506.17434">10.48550/arXiv.2506.17434</a></td>
+					</tr>
+					<tr>
+					<th>Repository</th>
+						<td>arXiv</td>
+					</tr>
+					<tr>
+					<th>Archive ID</th>
+						<td>arXiv:2506.17434</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/11/2025, 2:11:36 PM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/11/2025, 2:11:36 PM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Computer Science - Artificial Intelligence</li>
+				</ul>
+				<h3 class="notes">Notes:</h3>
+				<ul class="notes">
+					<li id="item_ER384UKL">
+<p class="plaintext">Comment: 24 pages, 10 figures</p>
+					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_Q532LQPW" class="item journalArticle">
+			<h2>A timing problem for instrumental convergence</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Rhys Southan</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Helena Ward</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jen Semler</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>Those who worry about a superintelligent AI destroying 
+humanity often appeal to the instrumental convergence thesis—the claim 
+that even if we don’t know what a superintelligence’s ultimate goals 
+will be, we can expect it to pursue various instrumental goals which are
+ useful for achieving most ends. In this paper, we argue that one of 
+these proposed goals is mistaken. We argue that instrumental goal 
+preservation—the claim that a rational agent will tend to preserve its 
+goals because that makes it better at achieving its goals—is false on 
+the basis of the timing problem: an agent which abandons or otherwise 
+changes its goal does not thereby fail to take a required means for 
+achieving a goal it has. Our argument draws on the distinction between 
+means-rationality (adopting suitable means to achieve an end) and 
+ends-rationality (choosing one’s ends based on reasons). Because 
+proponents of the instrumental convergence thesis are concerned with 
+means-rationality, we argue, they cannot avoid the timing problem. After
+ defending our argument against several objections, we conclude by 
+considering the implications our argument has for the rest of the 
+instrumental convergence thesis and for AI safety more generally.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-07-03</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-025-02370-4">https://doi.org/10.1007/s11098-025-02370-4</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/15/2025, 10:50:21 AM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02370-4">10.1007/s11098-025-02370-4</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/15/2025, 10:50:21 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/15/2025, 10:50:21 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial Intelligence</li>
+					<li>Instrumental convergence</li>
+					<li>AI alignment</li>
+					<li>Reasoning</li>
+					<li>Utilitarianism</li>
+					<li>AI safety</li>
+					<li>Superintelligence</li>
+					<li>Rationality</li>
+					<li>Pragmatism</li>
+					<li>Logic in AI</li>
+					<li>Philosophy of Artificial Intelligence</li>
+					<li>Goal preservation</li>
+					<li>Narrow scope</li>
+					<li>Wide scope</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_HCA5EU4J">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_HFRBB2V3" class="item journalArticle">
+			<h2>Counter-productivity and suspicion: two arguments against talking about the AGI control problem</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Jakob Stenseke</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>How do you control a superintelligent artificial being given 
+the possibility that its goals or actions might conflict with human 
+interests? Over the past few decades, this concern– the AGI control 
+problem– has remained a central challenge for research in AI safety. 
+This paper develops and defends two arguments that provide pro tanto 
+support for the following policy for those who worry about the AGI 
+control problem: don’t talk about it. The first is argument from 
+counter-productivity, which states that unless kept secret, efforts to 
+solve the control problem could be used by a misaligned AGI to counter 
+those very efforts. The second is argument from suspicion, stating that 
+open discussions of the control problem may serve to make humanity 
+appear threatening to an AGI, which increases the risk that the AGI 
+perceives humanity as a threat. I consider objections to the arguments 
+and find them unsuccessful. Yet, I also consider objections to the 
+don’t-talk policy itself and find it inconclusive whether it should be 
+adopted. Additionally, the paper examines whether the arguments extend 
+to other areas of AI safety research, such as AGI alignment, and argues 
+that they likely do, albeit not necessarily as directly. I conclude by 
+offering recommendations on what one can safely talk about, regardless 
+of whether the don’t-talk policy is ultimately adopted.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-07-10</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Short Title</th>
+						<td>Counter-productivity and suspicion</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-025-02379-9">https://doi.org/10.1007/s11098-025-02379-9</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/15/2025, 10:49:51 AM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02379-9">10.1007/s11098-025-02379-9</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/15/2025, 10:49:51 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/15/2025, 10:49:51 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial Intelligence</li>
+					<li>Existential risk</li>
+					<li>AI alignment</li>
+					<li>Superintelligence</li>
+					<li>Computer Ethics</li>
+					<li>Meta-Ethics</li>
+					<li>Philosophy of Artificial Intelligence</li>
+					<li>Computational Intelligence</li>
+					<li>AI control</li>
+					<li>Artificial general intelligence</li>
+					<li>Cognitive Control</li>
+				</ul>
+				<h3 class="attachments">Attachments</h3>
+				<ul class="attachments">
+					<li id="item_V7I5EYIB">Full Text PDF					</li>
+				</ul>
+			</li>
+
+
+			<li id="item_HCQUWICI" class="item journalArticle">
+			<h2>A New&nbsp;Account of Pragmatic Understanding,&nbsp;Applied to the Case of AI-Assisted Science</h2>
+				<table>
+					<tbody><tr>
+						<th>Item Type</th>
+						<td>Journal Article</td>
+					</tr>
+					<tr>
+						<th class="author">Author</th>
+						<td>Michael T. Stuart</td>
+					</tr>
+					<tr>
+					<th>Abstract</th>
+						<td>This paper presents a&nbsp;new account of pragmatic 
+understanding based on the idea that such understanding requires skills 
+rather than abilities. Specifically, one has pragmatic understanding of 
+an affordance space when one has, and is responsible for having, skills 
+that facilitate the achievement of some aims using that affordance 
+space. In science, having skills counts as having pragmatic 
+understanding when the development of those skills is praiseworthy. 
+Skills are different from abilities at least in the sense that they are 
+task-specific, can be learned, and we have some cognitive control over 
+their deployment. This paper considers how the use of AI in science 
+facilitates or frustrates the achievement of this kind of understanding.
+ I argue that we cannot properly ascribe this kind of understanding to 
+any current or near-future algorithm itself. But there are ways that we 
+can use AI algorithms to increase pragmatic understanding, namely, when 
+we take advantage of their abilities to increase our own skills&nbsp;(as
+ individuals or communities). This can&nbsp;happen when AI features in 
+human-performed science as either a tool or a collaborator.</td>
+					</tr>
+					<tr>
+					<th>Date</th>
+						<td>2025-07-03</td>
+					</tr>
+					<tr>
+					<th>Language</th>
+						<td>en</td>
+					</tr>
+					<tr>
+					<th>Library Catalog</th>
+						<td>Springer Link</td>
+					</tr>
+					<tr>
+					<th>URL</th>
+						<td><a href="https://doi.org/10.1007/s11098-025-02336-6">https://doi.org/10.1007/s11098-025-02336-6</a></td>
+					</tr>
+					<tr>
+					<th>Accessed</th>
+						<td>7/15/2025, 10:50:34 AM</td>
+					</tr>
+					<tr>
+					<th>Publication</th>
+						<td>Philosophical Studies</td>
+					</tr>
+					<tr>
+					<th>DOI</th>
+						<td><a href="http://doi.org/10.1007/s11098-025-02336-6">10.1007/s11098-025-02336-6</a></td>
+					</tr>
+					<tr>
+					<th>Journal Abbr</th>
+						<td>Philos Stud</td>
+					</tr>
+					<tr>
+					<th>ISSN</th>
+						<td>1573-0883</td>
+					</tr>
+					<tr>
+					<th>Date Added</th>
+						<td>7/15/2025, 10:50:34 AM</td>
+					</tr>
+					<tr>
+					<th>Modified</th>
+						<td>7/15/2025, 10:50:34 AM</td>
+					</tr>
+				</tbody></table>
+				<h3 class="tags">Tags:</h3>
+				<ul class="tags">
+					<li>Artificial intelligence</li>
+					<li>Public Understanding of Science</li>
+					<li>Empiricism</li>
+					<li>Pragmatism</li>
+					<li>Artifactualism</li>
+					<li>Metacognition</li>
+					<li>Pragmatic understanding</li>
+					<li>Pragmatics</li>
+					<li>Scientific understanding</li>
+					<li>Skills</li>
+					<li>Understanding</li>
+				</ul>
+			</li>
+
+		</ul>
+	
+</body></html>
