@@ -1,0 +1,227 @@
+
+Philosophy of Computing Newsletter
+Philosophy of Computing Newsletter
+
+
+
+July Edition
+Jul 17, 2025
+
+I’m Cameron Pattison, stepping in for Seth while he’s out enjoying a well-earned vacation. But don’t worry—AI didn’t take the month off! July brought another flurry of news, heated debates, regulatory arm-wrestling, and enough technical intrigue to fill several newsletters.
+
+Model capabilities keep climbing (though maybe not sprinting), and this month’s evals are sharper than ever—picking apart models for traces of reward hacking, scheming, deception, and all the clever tricks we worry about. Meanwhile, lawmakers and courts are in full scramble: new rules, new lawsuits, fresh copyright drama, and the eternal race to keep up with the tech.
+
+Perhaps most notably, several new papers are starting to reframe what we mean by “AI safety,” pressing the field to address both long-term risks and the immediate, systemic harms already emerging in practice.
+
+What follows is a packed issue: fall conferences are nearly here, research pipelines are full, and both industry and theory are moving in new directions. We hope this newsletter gives you a clear snapshot of where things stand—and maybe a few ideas for where they could go next.
+
+Highlights
+• Events and CFPs: FAccT went well! And now all the fall conferences we’ve advertised before are coming up quickly. AIES 2025 (Madrid, Oct 20–22) promises cross-disciplinary debate on alignment, surveillance, and democratic accountability, while Neurons and Machines (Ioannina, Nov 27–29) brings together metaphysics, policy, and neuroscience to ask what happens when AI crosses into the mental. More big news here from Phil Studies too: they have a new special issue on superintelligent robots.
+
+• Papers: Harding and Kirk-Giannini discuss a broader, harm-based conception of AI safety, while Levine, Lazar, Gabriel, and colleagues (lots of MINTys!) propose Resource-Rational Contractualism: a hybrid framework grounded in moral theory and cognitive heuristics that enables scalable, socially sensitive alignment. Southan, Ward, and Semler press on the instrumental convergence thesis, and Stenseke pushes further, suggesting that even talking openly about AGI control could be self-defeating. Finally, among the papers we looked at, Stuart reframes AI-assisted science through the lens of pragmatic understanding.
+
+• News +: Model releases and governance fights defined the month. xAI’s Grok weighed in on deadly floods and policy causation, while Anthropic and Meta each won copyright battles. Google pledged open protocol access; Anthropic broke the $4B revenue mark. New evals from Apollo, AISI, and Dawn Song’s lab studied scheming, reward shaping, and math benchmarks, while alignment research continues to splinter: some explore causality, some counterfactuals, and others opt out of CoT entirely. Anthropic’s Claude demonstrated that it could not run a vending machine, but could blackmail you if you threaten to turn it off!
+
+Much more, cited and segmented by theme, in the links section below. As always, if you notice we’ve missed something, send it our way!
+
+Thanks for reading Philosophy of Computing Newsletter! Subscribe for new posts.
+
+Share Philosophy of Computing Newsletter
+
+Events
+Workshop: Machine Ethics and Reasoning (MERe)
+
+Date: July 18, 2025
+
+Location: Online
+
+Register here: forms.gle/RtBHFsCGEpzTR6tN7
+
+Hosted by the University of Connecticut’s RIET Lab, the MERe Workshop brings together philosophers, computer scientists, and AI researchers to explore the intersections of moral reasoning and computational methods. The core of the workshop is a collaborative annotation session aimed at building the first large-scale dataset of philosophical arguments from ethics papers—designed to support future research in automated argument mining.
+
+Conference: 2nd Dortmund Conference on Philosophy and Society
+
+Dates: October 1–2, 2025
+
+Location: TU Dortmund, Germany
+
+Link: tinyurl.com/dortmundconference
+
+Hosted by the Department of Philosophy and Political Science at TU Dortmund and the Lamarr Institute for Machine Learning and Artificial Intelligence, this two-day conference explores themes at the intersection of political philosophy, epistemology, and the philosophy of computing. The 2025 keynote speaker is Kate Vredenburgh (LSE), whose work addresses algorithmic opacity, the right to explanation, and the future of work under AI. She will respond to selected papers on the first day and deliver a public lecture. The second day will feature a student workshop focused on her research.
+
+AIES 2025 – AI, Ethics, and Society
+
+Dates: October 20–22, 2025
+
+Location: Madrid, Spain
+
+Link: https://www.aies-conference.com/
+
+The AAAI/ACM Conference on Artificial Intelligence, Ethics, and Society (AIES) welcomes submissions on ethical, legal, societal, and philosophical dimensions of AI. The conference brings together researchers across computer science, law, philosophy, policy, and the social sciences to address topics including value alignment, interpretability, surveillance, democratic accountability, and AI’s cultural and economic impacts. Submissions (max 10 pages, AAAI 2-column format) will be double-anonymously reviewed. Non-archival options are available to accommodate journal publication. Optional ethical, positionality, and impact statements are encouraged. Generative model outputs are prohibited unless analyzed in the paper. Proceedings will be published in the AAAI Digital Library.
+
+Neurons and Machines: Philosophy, Ethics, Policies, and the Law
+
+Dates: November 27–29, 2025
+
+Location: Ioannina, Greece
+
+Link: https://politech.philosophy.uoi.gr/conference-2025/
+
+As brain-computer interfaces, neurotechnologies and AI increasingly blur the boundaries between humans and machines, critical questions emerge regarding the need for new digital ontologies (e.g., ‘mental data’), the protection of bio-technologically augmented individuals, as well as the moral and legal status of AI-powered minds. Though distinct, these and similar questions share a common thread: they invite us to introduce new—or reinterpret existing—ethical principles, legal frameworks and policies in order to address the challenges posed by biological, hybrid, and artificial minds. This conference aims to confront these questions from an interdisciplinary perspective, bringing together contributions from fields such as philosophy of mind, metaphysics, neuroscience, law, computer science, artificial intelligence, and anthropology.
+
+Four other opportunities include NC State’s Center for AI in Society and Ethics gathering on responsible AI (CASE), IDEA Leeds’ 20th-anniversary conference The Future of Practical Ethics (8–10 Sept 2025) (Leeds), Porto’s hybrid 4ICEAI on AI ethics (24–30 July 2025) (4ICEAI), and Brussels’ Ethical and Social Perspectives on New Military Technologies examining AI, autonomy, and Just-War theory (26–27 Feb 2026) (4TU Ethics).
+
+CFPs
+Philosophical Studies Special Issue – Superintelligent Robots
+
+Dates: submission deadline October 31, 2025
+
+Link: https://link.springer.com/collections/jhdeciibfg
+
+Philosophical Studies invites submissions for a special issue on Superintelligent Robots, exploring the philosophical and ethical challenges posed by machines that may surpass human intelligence. Topics of interest include moral status, alignment, epistemic implications, and societal risks associated with superintelligent systems.
+
+Jobs
+Post-doctoral Fellowship: Algorithm Bias
+
+Location: Centre for Ethics, University of Toronto | Toronto, Canada
+
+Link: https://philjobs.org/job/show/28946
+
+Deadline: Open until filled
+
+The Centre for Ethics at the University of Toronto is hiring a postdoctoral fellow for the 2025–26 academic year to work on a new project addressing algorithm bias. The fellow will conduct independent research, organize interdisciplinary events, and contribute to public discourse on ethical issues in technology. The role includes a 0.5 course teaching requirement (either a third- or fourth-year undergraduate class), and the total compensation is $60,366.55 annually. Applicants must hold a PhD in philosophy or a related field by August 31, 2025, and have earned their degree within the past five years. This is a full-time, 12-month position with the possibility of renewal for up to three years.
+
+Post-doctoral Researcher Positions (3)
+
+Location: New York University | New York, NY
+
+Link: https://philjobs.org/job/show/28878
+
+Deadline: Rolling basis
+
+NYU's Department of Philosophy and Center for Mind, Brain, and Consciousness is seeking up to three postdoctoral or research scientist positions specializing in philosophy of AI and philosophy of mind, beginning September 2025. These research-focused roles (no teaching duties) will support Professor David Chalmers' projects on artificial consciousness and related topics.
+
+Papers
+What is AI Safety? What Do We Want It to Be?
+
+Jacqueline Harding & Cameron Domenico Kirk-Giannini | Philosophical Studies
+
+Harding and Kirk-Giannini challenge prevailing narratives that frame AI safety narrowly around catastrophic risk and engineering analogies. Instead, they argue for the “Safety Conception”—a broader view that defines AI safety as any effort to prevent harm from AI systems. Using tools from conceptual engineering, they show that this inclusive definition unifies central and peripheral safety concerns, from existential threats to algorithmic bias and misinformation.
+
+Resource-Rational Contractualism Should Guide AI Alignment
+
+Sydney Levine, Matija Franklin, Tan Zhi-Xuan, Secil Yanik Guyot, Lionel Wong, Daniel Kilov, Yejin Choi, Joshua B. Tenenbaum, Noah Goodman, Seth Lazar & Iason Gabriel | arXiv preprint
+
+This ambitious preprint proposes Resource-Rational Contractualism (RRC) as a scalable approach to AI alignment. Inspired by both contractualist moral theory and human cognitive constraints, the RRC framework equips AI systems with heuristics to approximate stakeholder agreement under limited resources. The result is a model of alignment that balances efficiency with normative depth and is sensitive to dynamic, real-world social contexts.
+
+A Timing Problem for Instrumental Convergence
+
+Rhys Southan, Helena Ward & Jen Semler | Philosophical Studies
+
+Southan, Ward, and Semler critique one of the central pillars of AI risk discourse: the assumption that rational agents will preserve their goals. They argue that this instrumental goal preservation thesis fails due to a “timing problem”—changing one’s goals doesn’t violate means-end rationality if the change occurs before action. Their analysis undercuts part of the instrumental convergence thesis and raises new doubts about standard assumptions in longtermist safety scenarios.
+
+Counter-productivity and Suspicion: Two Arguments Against Talking About the AGI Control Problem
+
+Jakob Stenseke | Philosophical Studies
+
+Stenseke provocatively argues that talking openly about the AGI control problem may backfire. He offers two lines of critique: first, that discussing control measures might aid a misaligned AGI; second, that such discussions may trigger AGI suspicion by painting humanity as a threat. While he does not fully endorse a “don’t-talk” policy, Stenseke urges caution and outlines safer paths for AI safety communication.
+
+A New Account of Pragmatic Understanding, Applied to the Case of AI-Assisted Science
+
+Michael T. Stuart | Philosophical Studies
+
+Stuart develops a novel account of pragmatic understanding grounded in the cultivation of cognitive skills, rather than static abilities. He argues that AI systems cannot yet possess this kind of understanding, but can support it in humans—particularly when treated as collaborators or tools in scientific inquiry. The paper has implications for debates over AI epistemology, scientific automation, and the boundaries of understanding in hybrid systems.
+
+Links
+Models, Updates, and Other Releases: xAI released Grok 4 which exceeded expectations, but lacked any safety documentation and was later seen attributing Texas flood deaths to DOGE and Trump administration changes. Open-source Kimi K2 released some impressive demonstrations on coding and agentic tasks, and Anthropic’s Claude did NOT run a successful, in-office vending machine operation, though the company itself did reach a stunning $4 Billion in annualized revenue, up from $1B at the start of the year. Google’s Thomas Kurian announced that Google would donate their Agent2Agent protocol to Linux in hopes of creating an open future for agent communication and collaboration. Not to be left behind, Mark Zuckerberg vacuumed up top research talent for huge sums, from lots of leading labs, including OpenAI, Anthropic, and DeepMind.
+
+Evals: Brian Christian and others at Oxford looked at how reward models—which have been relatively understudied—score single-tokens, while the UK AISI stayed busy assessing AI autograders (used to improve model performance at scale), looking at sandbagging (deliberate underperformance), and demonstrating with Far AI the imperfections of “Swiss cheese security” (a paradigm which involves ensuring model security by layering imperfect safeguards). AISI also released an agentic evaluation called Inspect Cyber. Dawn Song and her team put out a new math benchmark called OMEGA. Mary Phuong and others at DeepMind presented a scheming benchmark and Apollo Research examined in-context scheming, while Anthropic et al. released comparative work on alignment faking. In the meantime, the WSJ worried that alignment is superficially masking seriously problematic models.
+
+Research: An article in Nature made big claims about AIs ability to model human cognition, using a Llama based model (available on HuggingFace) that has drawn serious enthusiasm and some criticism. A project with Yann LeCun demonstrated differences between LM information compression and human compression. Still, some gaps seem to be closing as other work demonstrated that robust linguistic generalizations could be drawn from corpora of around 100 million words. Mind & Language published work for, against, and hedging on the question, “is physical computation independent of its underlying medium?”
+
+An article we missed in April said that existential risk narratives don’t distract attention from immediate harms, and backed their claims up with a controlled study of 10,000+ participants. Research from King’s College London and Oxford demonstrated strategic thinking in LMs faced with prisoners dilemmas. Social choice theory also got a generative twist with implications for democratic processes. Others reminded us that we still need to exercise our own memory, because external aids may impair memory especially in students.
+
+Technical Research: JHU released work that suggests a variable compute budget may increase model confidence and accuracy in outputs—they argue that developers should be sensitive to correlations between confidence and accuracy, and should allow models to refuse on grounds of low confidence. Sakana AI published on a new “Adaptive Branching Monte Carlo Tree Search” that aims at optimizing inference-time computation.
+
+Fazl Barez among others argued that Chain of Thought (CoT) is not a faithful guide to model reasoning and explainability. At the same time, work from AISI and a deep bench of researchers in industry said that CoT could be a fragile, but invaluable guide to model interpretability. This is an increasingly crowded research area, which Paul Bogdan et al.’s new work and interactive tool for analyzing causal and counterfactual relationships between steps in reasoning traces also engaged in. Goodfire AI looked into interpretability of parameters, rather than activations.
+
+Government, Governance, and Policy: The US State Department now requires student-visa applicants to set their social media accounts to ‘public’. EU released a draft of their General-Purpose AI Code of Practice which focuses on issues of transparency, copyright, and safety & security. California SB 53 pushes for transparency and industrial policy in CA. Research out of the Carnegie Endowment argued that regulation should target the businesses developing AIs, not the models themselves or their use cases. Cloudflare moved to block AI scrapers by default—just days after US courts ruled in favor of Anthropic and Meta in copyright lawsuits. This looks like a major legal victory, though some say this isn’t as clean a win as it seems.
+
+Pete Buttigieg argued that American society—especially its political leadership—is dangerously underestimating the sweeping and rapid societal transformations AI will bring. Séb Krier and, at much greater length, others at the Knight First Amendment Institute discuss governance and democratic theory. Anthropic released a “targeted transparency framework” designed to promote governance of secure, responsible, and transparent AIs. Research out of X hopes to extend human community notes judgements using LLMs. The Convergence Fellowship Program is started to publish work on AI economic policy aimed at giving lawmakers a strategy playbook. OpenAI commented on their Australian economic impact. The Centre for Future Generations laid out a set of scenarios imagining this future. Haydn Belfield released a paper he wrote on computer governance and the prospects of international cooperation, and OpenAI announced a summer biodefense summit. RAND published a forecast for AGI effects on a geopolitical scale and a look at how AGI prospects might impact the risk of preventative war outbreaks.
+
+Misc: METR found that developers thought they were 20% faster when they had access to AI coders, but turned out to be about 19% slower in practice. Sayash Kapoor and Arvind Narayanan expand on this skepticism with doubts about claims that AI will speed up scientific discovery. Henry Shevlin criticized the prevailing focus on consciousness in moral status debates. Neil Levy took an article length look at this issue too. Critiques continued regarding the AI 2027 timeline. Harry Law wrote down 10 suggestions for academic critics of AI.
+
+Nathan Lambert offered some thoughts on the future of open-source AI. The New York Times issued a story on how AI is likely to change how we write our histories. Researchers at Oxford argue that the interoperability of LM agents might break down some of the closed, proprietary walls that keep the internet reliant on major market leaders. Scientists in Seoul studied identity drift in LLMs. Boaz Barak mused on what it might mean to solve the alignment problem, and what questions would remain. Thomas Dietterich crowdsourced some material on questions of shared meaning in LMs (and other systems).
+
+That’s it for the firehose that was this month’s news and research!
+
+But how exactly would Claude go about blackmailing you if you were to try to shut it down? Here. What are some numbers to back up discussions about how adults lean on AI for interpersonal issues? Here. Who said what in the June 25 US Congressional hearing on AI? Here.
+
+Content by Seth and Cameron; additional link-hunting support from the MINT Lab team.
+
+
+Thanks for reading the Philosophy of Computing Newsletter! This post is public so feel free to share it.
+
+Share
+
+Thanks for reading Philosophy of Computing Newsletter! Subscribe for free to receive new posts and support my work.
+
+4 Likes
+Discussion about this post
+Write a comment...
+
+Normative Philosophy of Computing Newsletter
+Welcome to February!
+Feb 21
+6
+
+Normative Philosophy of Computing - November
+Welcome (back) to the Normative Philosophy of Computing Newsletter
+Nov 19, 2024
+5
+
+Philosophy of Computing in June
+Highlights
+Jun 20
+4
+
+Philosophy of Computing Newsletter - March
+Drop the 'Normative'. It's cleaner.
+Mar 17
+1
+
+Normative Philosophy of Computing - January
+Happy New Year!
+Jan 16
+3
+
+Philosophy of AI in April
+AI takes a back seat to geopolitics?
+Apr 18
+1
+
+Normative Philosophy of Computing - December
+Happy Holidays!
+Dec 16, 2024
+3
+
+Philosophy of Computing in May
+Research Momentum Continues to Build
+May 14
+1
+
+Philosophy of Computing Newsletter
+Some jobs we missed in the May issue
+May 27
+2
+
+Normative Philosophy of Computing Newsletter – More Events...
+Some upcoming highlights that we missed in our Feb Issue
+Feb 25
+2
+
+© 2025 Seth Lazar
+Privacy ∙ Terms ∙ Collection notice
+Start writing
+Get the app
+Substack is the home for great culture
