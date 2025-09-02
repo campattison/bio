@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy of Computing Newsletter - Subscribe</title>
+    <style>
+        @page {
+            size: 8.5in 11in;
+            margin: 0.5in;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .flyer {
+            width: 7.5in;
+            height: 10in;
+            background: white;
+            padding: 0.75in;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flyer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+        
+        .main-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #667eea;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: #7f8c8d;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 40px;
+            flex-grow: 1;
+            align-items: start;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .feature-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .feature-text {
+            font-size: 13px;
+            color: #5a6c7d;
+            line-height: 1.5;
+        }
+        
+        .highlights-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .highlights-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .highlight-item {
+            font-size: 12px;
+            color: #5a6c7d;
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .highlight-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+        }
+        
+        .qr-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .qr-placeholder {
+            font-size: 12px;
+            color: #7f8c8d;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .scan-text {
+            font-size: 12px;
+            color: #5a6c7d;
+            max-width: 140px;
+        }
+        
+        .url-text {
+            font-size: 10px;
+            color: #7f8c8d;
+            word-break: break-all;
+            max-width: 160px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .footer-text {
+            font-size: 11px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .authors {
+            font-size: 12px;
+            color: #5a6c7d;
+            font-style: italic;
+        }
+        
+        .mint-logo {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                display: block;
+            }
+            
+            .flyer {
+                box-shadow: none;
+                border-radius: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="header">
+            <h1 class="main-title">Philosophy of Computing</h1>
+            <p class="subtitle">Monthly Newsletter</p>
+            <p class="tagline">Exploring the intersection of artificial intelligence, ethics, and philosophical inquiry</p>
+        </div>
+        
+        <div class="content-grid">
+            <div class="main-content">
+                <div class="feature-box">
+                    <h3 class="feature-title">
+                        <span class="feature-icon">🧠</span>
+                        Latest Research & Papers
+                    </h3>
+                    <p class="feature-text">
+                        Monthly curated selection of cutting-edge papers in AI ethics, philosophy of mind, 
+                        and computational theory from leading journals and conferences.
+                    </p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3 class="feature-title">
+                        <span class="feature-icon">📅</span>
+                        Events & Opportunities
+                    </h3>
+                    <p class="feature-text">
+                        Conference announcements, CFPs, job postings, and fellowship opportunities 
+                        in philosophy of AI and computational ethics.
+                    </p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3 class="feature-title">
+                        <span class="feature-icon">🌐</span>
+                        Global Community
+                    </h3>
+                    <p class="feature-text">
+                        Connect with researchers, practitioners, and enthusiasts worldwide working 
+                        at the intersection of philosophy and computing.
+                    </p>
+                </div>
+                
+                <div class="highlights-section">
+                    <h3 class="highlights-title">Recent Newsletter Highlights</h3>
+                    <div class="highlight-item">AI and Democratic Freedoms research initiative</div>
+                    <div class="highlight-item">Google DeepMind's AGI Safety roadmap analysis</div>
+                    <div class="highlight-item">Pacific APA philosophy of AI sessions</div>
+                    <div class="highlight-item">Bidirectional Human-AI Alignment workshop</div>
+                    <div class="highlight-item">Latest developments in AI consciousness research</div>
+                    <div class="highlight-item">Philosophical Studies AI Safety special issue</div>
+                </div>
+            </div>
+            
+            <div class="qr-section">
+                <h3 class="qr-title">Subscribe Now</h3>
+                <div class="qr-code">
+                    <div class="qr-placeholder">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://philosophyofcomputing.substack.com" 
+                             alt="QR Code for Newsletter Subscription" 
+                             style="width: 140px; height: 140px;">
+                    </div>
+                </div>
+                <p class="scan-text">Scan this QR code with your phone to subscribe</p>
+                <p class="url-text">philosophyofcomputing.substack.com</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p class="footer-text">Published by <span class="mint-logo">MINT LAB</span> | Australian National University</p>
+            <p class="authors">Editor: Professor Seth Lazar | Content Support: Cameron Pattison & MINT Lab Team</p>
+        </div>
+    </div>
+</body>
+</html>
