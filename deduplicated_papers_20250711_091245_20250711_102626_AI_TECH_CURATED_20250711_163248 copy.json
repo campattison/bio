@@ -1303,5 +1303,93 @@
     "url": "https://philpapers.org/rec/KAWVST",
     "abstract": "A review of Shannon Vallor's Technology and the Virtues: A Philosophical Guide to a Future Worth Wanting.",
     "source_method": "year_navigation_2017_page_1"
+  },
+  {
+    "title": "Relational equality for extended minds.",
+    "authors": [
+      "Matilda Carter"
+    ],
+    "year": 2025,
+    "journal": "Synthese",
+    "url": "https://philpapers.org/rec/CARREF-3",
+    "abstract": "This paper deals with the impact of the extended mind thesis on relational egalitarianism: the now-dominant view on (the politically relevant form of) equality within contemporary political philosophy. If proponents of the extended mind thesis are right, I argue, persons have two core interests that arise from their relationships with elements of the external environment: an interest in an environment supportive of cognition and an interest in extended mental authenticity. Acknowledging this requires relational egalitarians to be spatially-conscious, giving these interests (...) due weight wherever they are engaged. This will not always change their conclusions, but there are a range of cases in which this form of relational egalitarianism yields unique insights. In this paper, I examine three: the relationship between landlords and tenants, cloud software and tech ecosystems, and forced transfers for dementia care. (shrink)",
+    "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "Value inheritance: the transmission of values through cognitive extenders.",
+    "authors": [
+      "Helena Gagnier"
+    ],
+    "year": 2025,
+    "journal": "Synthese",
+    "url": "https://philpapers.org/rec/GAGVIT",
+    "abstract": "This paper explores the cognitive and ethical implications of cognitive extenders--tools that become integral to human cognition by functioning as part of the mind itself. Building on the Extended Mind Thesis, which posits that cognition extends beyond the brain to incorporate external aids, I argue that cognitive extenders, particularly artificial intelligence (AI) tools, can embed and transmit values to users through a process I call \"value inheritance.\" By examining the relationship between cognition and value-laden technology, I propose that if a (...) technology becomes a cognitive extender, its embedded values may influence the user's mental content. I show that technological tools are not neutral; they carry values that can affect users' beliefs and behaviours. Specifically, I examine AI extenders--such as decision-making assistants and language models--that seamlessly integrate with users, potentially embedding biases and societal norms in subtle, unconscious ways. This raises ethical concerns, particularly regarding the role of AI developers and policymakers in designing tools that prioritize ethical considerations. The paper concludes with a discussion of the ethical stakes in AI design, emphasizing the need for transparency, responsible development, and alignment with societal values to mitigate the risks of unintentional value inheritance. Understanding this potential for value-laden cognitive influence is essential for navigating the ethical landscape of AI technology. (shrink)",
+    "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "Why causal inference is necessary for algorithmic fairness.",
+    "authors": [
+      "Alexander Williams Tolbert"
+    ],
+    "year": 2025,
+    "journal": "Synthese",
+    "url": "https://philpapers.org/rec/WILWCI-6",
+    "abstract": "This paper argues that causal inference is a necessary condition for achieving fairness in algorithmic decision-making. Dominant machine learning models are typically limited to associative methods. However, we often need to modify the very probability distributions that produce social injustice, not merely identify predictive patterns from them, an undertaking standard machine learning neglects. Fairness often requires identifying who or what is responsible for a particular outcome of interest, uncovering the source of disparities, and determining which policies are effective interventions to (...) address these issues. Normative questions such as these require causal modeling. I then confront a key objection: certain social variables, notably race, appear to violate modularity in causal models. To address this, I propose several strategies, including bracketing subsystems into coarser causal abstractions/macro-variables, refining the study design, and relaxing local invariances to handle these non-local influences. In sum, I claim that causal modeling is indispensable for responsible algorithmic decision-making. (shrink)",
+    "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "Calling for Explanation.",
+    "authors": [
+      "David Gordon"
+    ],
+    "year": 2025,
+    "journal": "The Philosophical Quarterly",
+    "url": "https://philpapers.org/rec/GORCFE",
+    "abstract": "",
+    "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "Relational equality for extended minds.",
+    "authors": [
+      "Matilda Carter"
+    ],
+    "year": 2025,
+    "journal": "Synthese",
+    "url": "https://philpapers.org/rec/CARREF-3",
+    "abstract": "This paper deals with the impact of the extended mind thesis on relational egalitarianism: the now-dominant view on (the politically relevant form of) equality within contemporary political philosophy. If proponents of the extended mind thesis are right, I argue, persons have two core interests that arise from their relationships with elements of the external environment: an interest in an environment supportive of cognition and an interest in extended mental authenticity. Acknowledging this requires relational egalitarians to be spatially-conscious, giving these interests (...) due weight wherever they are engaged. This will not always change their conclusions, but there are a range of cases in which this form of relational egalitarianism yields unique insights. In this paper, I examine three: the relationship between landlords and tenants, cloud software and tech ecosystems, and forced transfers for dementia care. (shrink)",
+    "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "Value inheritance: the transmission of values through cognitive extenders.",
+    "authors": [
+      "Helena Gagnier"
+    ],
+    "year": 2025,
+    "journal": "Synthese",
+    "url": "https://philpapers.org/rec/GAGVIT",
+    "abstract": "This paper explores the cognitive and ethical implications of cognitive extenders--tools that become integral to human cognition by functioning as part of the mind itself. Building on the Extended Mind Thesis, which posits that cognition extends beyond the brain to incorporate external aids, I argue that cognitive extenders, particularly artificial intelligence (AI) tools, can embed and transmit values to users through a process I call \"value inheritance.\" By examining the relationship between cognition and value-laden technology, I propose that if a (...) technology becomes a cognitive extender, its embedded values may influence the user's mental content. I show that technological tools are not neutral; they carry values that can affect users' beliefs and behaviours. Specifically, I examine AI extenders--such as decision-making assistants and language models--that seamlessly integrate with users, potentially embedding biases and societal norms in subtle, unconscious ways. This raises ethical concerns, particularly regarding the role of AI developers and policymakers in designing tools that prioritize ethical considerations. The paper concludes with a discussion of the ethical stakes in AI design, emphasizing the need for transparency, responsible development, and alignment with societal values to mitigate the risks of unintentional value inheritance. Understanding this potential for value-laden cognitive influence is essential for navigating the ethical landscape of AI technology. (shrink)",
+    "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "Why causal inference is necessary for algorithmic fairness.",
+    "authors": [
+      "Alexander Williams Tolbert"
+    ],
+    "year": 2025,
+    "journal": "Synthese",
+    "url": "https://philpapers.org/rec/WILWCI-6",
+    "abstract": "This paper argues that causal inference is a necessary condition for achieving fairness in algorithmic decision-making. Dominant machine learning models are typically limited to associative methods. However, we often need to modify the very probability distributions that produce social injustice, not merely identify predictive patterns from them, an undertaking standard machine learning neglects. Fairness often requires identifying who or what is responsible for a particular outcome of interest, uncovering the source of disparities, and determining which policies are effective interventions to (...) address these issues. Normative questions such as these require causal modeling. I then confront a key objection: certain social variables, notably race, appear to violate modularity in causal models. To address this, I propose several strategies, including bracketing subsystems into coarser causal abstractions/macro-variables, refining the study design, and relaxing local invariances to handle these non-local influences. In sum, I claim that causal modeling is indispensable for responsible algorithmic decision-making. (shrink)",
+    "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "Calling for Explanation.",
+    "authors": [
+      "David Gordon"
+    ],
+    "year": 2025,
+    "journal": "The Philosophical Quarterly",
+    "url": "https://philpapers.org/rec/GORCFE",
+    "abstract": "",
+    "source_method": "year_navigation_2025_page_1"
   }
 ]
