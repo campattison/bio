@@ -1,0 +1,636 @@
+https://sites.google.com/view/lamas2026
+
+
+# LaMAS 2026
+
+AAAI'26 WORKSHOP
+
+LLM-based Multi-Agent System
+
+
+
+
+
+27 January, 2026, Singapore
+
+LaMAS 2026 focuses on the emerging field of multi-agent systems powered by LLMs (LaMAS). As interest in using multiple LLM agents to solve complex problems grows, our main objective is to systematically address the critical challenges and opportunities that arise from their interaction. We aim to bridge the gap in understanding failure modes, alignment challenges, and responsible behavior in these systems. The workshop will foster discussion on making these systems powerful, transparent, verifiable, and aligned with human intent.
+
+Call for Paper
+contact us at: aaai-lamas2026@googlegroups.com
+
+We welcome both short papers (up to 4 pages) and long papers (up to 8 pages) following the AAAI template. Submissions may include recently published work, under-review papers, work in progress, and position papers. All submissions will undergo peer review through a double-blind process. While workshop publication is non-archival, accepted papers will be featured on our website with the author's permission. Topics of interest include but are not limited to the following:
+
+Organization of multiple LLM agents, including their interaction paradigms, coordination strategies, and communication protocols.
+
+Evaluation and Optimization for assessing LaMAS's performance with emergent behaviors, and fine-tuning techniques to enhance its efficiency and effectiveness.
+
+Safety, Trust, and Responsibility about how to design LaMAS that are safe, aligned, and trustworthy. This includes responsible agent behavior, human-in-the-loop oversight, and regulatory frameworks that ensure accountability, fairness, and transparency in real-world deployments.
+
+Real-World Applications spanning software development, scientific research, education, and business processes, with infrastructures for large-scale multi-agent LLM deployments.
+
+Submission site: https://openreview.net/group?id=AAAI.org/2026/Workshop/LaMAS
+
+Important Dates
+Workshop Paper Submission Due: 14 Nov 2025 (AoE)
+
+Notification of Paper Acceptance: 12 Dec 2025 (AoE) 
+
+Camera-Ready Paper Due: 10 Jan 2026 (AoE) 
+
+Workshops Date: 27 Jan 2026
+
+Detailed Workshop Schedule
+The detailed schedule will be released after submissions are finalized.
+
+Organisation Committee
+
+Muning Wen
+Shanghai Jiao Tong University
+
+
+Shuang Ao
+University of Southampton
+
+
+Arrasy Rahman
+The University of Texas at Austin
+
+
+Sarvapali D. (Gopal) Ramchurn
+University of Southampton
+
+
+Ramayya Krishnan
+Carnegie Mellon University
+
+Advisor Committee
+
+Stefano V. Albrecht
+DeepFlow London
+
+
+Weinan Zhang
+Shanghai Jiao Tong University
+
+
+Yi Dong
+University of Liverpool
+
+
+Peter Stone
+The University of Texas at Austin
+
+Accepted Paper List
+The details will be released after submissions are finalized.
+---
+https://fast-workshop.github.io/
+Foundations of
+Agentic
+Systems
+Theory
+# FAST @ AAAI 2026
+
+Jan 27, 2026
+
+FAST
+
+
+As with any complex system, the most interesting and consequential behaviors often arise not from the parts in isolation, but from the patterns of interaction between them. The current development of agentic AI has largely ignored these considerations, instead focusing on designing more (individually) capable agents. Failing to consider these effects as AI agents become more widespread will lead to a significant underestimation in both their capabilities and risks.
+
+There is an extensive body of knowledge underlying these interaction effects across various fields, but it’s not currently clear how applicable existing theoretical tools are to agentic AI systems. Tools from control theory and game/economic theory typically impose strong structural assumptions on both agents and the overall system (such as the form of objective functions, state evolution/dynamics, or degree of rationality) in efforts to obtain concrete results. On the other hand, methods from the social sciences use observations of human behavior, cultural contexts, and social norms to make more measured claims about probable patterns within the complexity and variability of human experience. Agentic AI systems don’t cleanly map to either of these settings. The underlying LLM in an AI agent does not possess the same rational behavior as idealized control/game/economic agents, nor does it exhibit the culturally embedded, emotionally driven, or evolutionarily shaped behaviors that characterize human agents.
+
+The Foundations of Agentic Systems Theory (FAST) workshop broadly aims to help evaluate the degree to which existing theory can be used to describe the behavior of agentic AI systems. Drawing from a variety of fields (notably beyond computer science, including developmental psychology, neuroscience, and social dynamics), FAST will explore both if and how existing mechanisms of emergent behavior from other systems carry over to systems of LLM-based agents, the properties of the underlying agents (and their LLMs) that facilitate these behaviors, and our ability to control/induce desirable system-wide outcomes. We strongly seek interdisciplinary participation (via both contributions and invited talks), with the ultimate goal of fundamentally contributing to a better understanding of the underlying processes that govern the system-level behavior (and risks) of agentic AI.
+
+
+Submit Paper
+Registration
+Venue
+Important Dates
+September 12, 2025	Submission window opens (OpenReview)
+October 19, 2025	Abstract submission deadline
+October 22, 2025	Paper submission deadline
+November 5, 2025	Acceptance notification
+November 16, 2025	Early registration ends
+December 14, 2025	Refund deadline; late registration ends
+January 27, 2026	Workshop
+Scope and Topics
+Large language models have recently become sophisticated enough to be reliably integrated into more complex pipelines, leading to more automated (i.e., agentic) use cases. However, the community has focused disproportionately on building these systems rather than understanding why they may (or may not) work. The goal of the FAST workshop is to investigate how both existing theory (notably that outside of the traditional AI community) and new insights (unique to LLM-based agents) can help to build this understanding.
+
+As such, we invite submissions on the following topics:
+
+Mechanisms of emergent capabilities (in both biological and artificial agents)
+Evaluation, detection, and mitigation/bounding of emergent capabilities in AI systems
+Incentive mechanisms for inducing behavior in systems of LLM-based agents
+Definitions of agency (of agents, and of systems); philosophy of agency in engineered systems
+Definitions of emergence in engineered systems
+Benchmarks and datasets for monitoring capabilities/agency, risks, and failure modes in agentic AI systems
+Submission Information
+Submissions can be either full or short papers:
+
+Full papers: Up to 7 pages (excluding references and appendices); should present mature or completed research.
+Short papers: Up to 4 pages (excluding references and appendices); intended for describing ongoing work, early-stage ideas, or the release of benchmarks and datasets (authors are encouraged to use the short paper format for benchmarks and datasets).
+All submissions must be made through our OpenReview page. Please follow the AAAI template when preparing your submission.
+
+Submissions must be anonymized for double-blind review. Reviewing will follow the standards of AAAI, with evaluation based on novelty, technical depth, clarity, reproducibility, and potential impact. Accepted papers will be presented as either posters or lightning talks. At least one author of each accepted paper must register and attend the workshop. If you have any questions, please contact us at fast.workshop.team@gmail.com.
+
+Organizers
+Portrait of Erik Miehling
+Erik Miehling
+IBM Research - Ireland
+
+erik.miehling@ibm.com
+
+Portrait of Chenchen Ye
+Chenchen Ye
+University of California, Los Angeles
+
+ccye@cs.ucla.edu
+
+Portrait of Atoosa Kasirzadeh
+Atoosa Kasirzadeh
+Carnegie Mellon University
+
+atoosa@cmu.edu
+
+Portrait of Djallel Bouneffouf
+Djallel Bouneffouf
+IBM Research - Yorktown Heights
+
+djallel.bouneffouf@ibm.com
+
+Portrait of Anne Arzberger
+Anne Arzberger
+TU Delft
+
+a.arzberger@tudelft.nl
+
+
+Program Committee
+We are grateful to the following people for helping make the FAST workshop a success:
+
+Adam Dahlgren Lindström (Umeå University)
+Alex Zhang (PhD candidate, UIUC)
+Antonin Sulc (Berkeley Lab)
+Bjorn de Koning (Erasmus University Rotterdam)
+Daiki Kimura (IBM Japan)
+David Santandreu (MBZUAI)
+Dennis Wei (IBM Research)
+Dmitry Zubarev (IBM Research)
+Ekdeep Singh Lubana (Harvard)
+Emanuele Sansone (MIT)
+Emre Acartürk (PhD candidate, RPI)
+Enrico Liscio (TU Delft)
+Hariram Veeramani (PhD candidate, UCLA)
+Ivoline Ngong (PhD candidate, University of Vermont)
+Jay Nanavati (IQVIA)
+Jinqi Luo (PhD student, University of Pennsylvania)
+Kartik Ahuja (FAIR, Meta)
+Konstantinos Roumeliotis (University of Peloponnese)
+Mariya Hendriksen (Microsoft Research)
+Mats Leon Richter (H Company)
+Penny Pexman (Western University)
+Peter Belcak (NVIDIA)
+Praveen Venkateswaran (IBM Research)
+Ranjan Sapkota (Cornell)
+Shengran Hu (PhD candidate, UBC)
+Saranya Vijayakumar (PhD candidate, CMU)
+Shubham Subhnil (PhD candidate, Trinity College)
+Srishti Yadav (PhD candidate, University of Copenhagen)
+Thorsten Hellert (Berkeley Lab)
+Tianwei Xing (UCLA)
+Tim Klinger (IBM Research)
+Victor Dibia (Microsoft Research)
+Contact
+fast.workshop.team@gmail.com
+Design forked from: HTML5 UP Graphics courtesy of: Canva
+
+
+---
+
+
+https://trustagenticai.github.io/AAAI2026/
+# AAAI26-Trustworthy Agentic AI Workshop
+Home
+Schedule
+Speakers
+Organizers
+Committee
+Call for Papers
+How Can We Trust and Control Agentic AI? Toward Alignment, Robustness, and Verifiability in Autonomous LLM Agents
+January 27, 2026
+Expo, Singapore
+About the Workshop
+Agentic AI marks a new frontier for artificial intelligence: systems that move beyond static prediction to autonomous reasoning, tool use, and sustained collaboration with humans and society. These agents hold the potential to transform healthcare, education, robotics, and enterprise automation. Realizing this promise requires not only technical advances, but also ensuring that such systems remain aligned with human values, resilient under real-world complexity, and verifiable in ways that inspire lasting trust and effective control.
+
+The AAAI 2026 Workshop on Trust and Control in Agentic AI convenes leading voices from research, industry, and policy to shape this agenda. We invite contributions that advance the principles and practice of alignment, robustness, and verifiability in agentic systems, spanning core algorithms, evaluation methods, institutional frameworks, and governance. By fostering cross-disciplinary dialogue and catalyzing new collaborations, the workshop aims to chart pathways for deploying agentic AI responsibly and at scale, ensuring that its benefits are realized broadly and equitably.
+
+Schedule
+8:30am - 8:50am
+Informal Coffee Social
+8:50am - 9:00am
+Introduction and opening remarks
+9:00am - 9:30am
+Invited Talk 1 and Q&A
+9:30am - 10:00am
+Invited Talk 2 and Q&A
+10:00am - 10:45am
+Oral Presentations (15 min × 3)
+10:45am - 11:15am
+Invited Talk 3 and Q&A
+11:15am - 12:00am
+NVIDIA-led Hands On session
+12:00pm - 1:00pm
+Lunch Break
+1:00pm - 1:30pm
+Invited Talk 4 and Q&A
+1:30pm - 2:00pm
+Invited Talk 5 and Q&A
+2:00pm - 2:45pm
+Oral Presentations 15 min × 3
+2:45pm - 4:00pm
+Poster Session & Coffee Social
+4:00pm - 5:00pm
+Panel Discussion
+5:00pm - 5:20pm
+Best Paper Awards & Closing
+All times are in Singapore Time (SGT)
+
+Invited Speakers
+Minlie Huang
+Minlie Huang
+Tsinghua University, China
+
+Matthew E. Taylor
+Matthew E. Taylor
+University of Alberta, Canada
+
+Stefano Albrecht
+Stefano Albrecht
+University of Edinburgh, Scotland
+
+Yewen (Evan) Pu
+Yewen (Evan) Pu
+Nanyang Technological University, Singapore
+
+Chi Zhang
+Chi Zhang
+Westlake University, China
+
+Jiafei Duan
+Jiafei Duan
+University of Washington, USA
+
+Organizers
+Haiyan Yin
+Haiyan Yin
+CFAR, A*STAR, Singapore
+
+Joey Tianyi Zhou
+Joey Tianyi Zhou
+CFAR, A*STAR, Singapore
+
+Sebastian Tschiatschek
+Sebastian Tschiatschek
+University of Vienna, Austria
+
+Piotr Koniusz
+Piotr Koniusz
+Data61, CSIRO;
+
+Australian National University, Australia
+
+Simon See
+Simon See
+NVIDIA AI Technology Center, USA
+
+Advisory & Extended Committee
+Yew-Soon Ong
+Yew-Soon Ong
+Advisory Board
+
+CFAR, A*STAR & NTU
+
+Ivor Tsang
+Ivor Tsang
+Advisory Board
+
+CFAR, A*STAR & NTU
+
+Xu Cong
+Xu Cong
+Advisory Board
+
+HPE Labs
+
+Yueming Lyu
+Yueming Lyu
+Workflow Chair
+
+CFAR A*STAR
+
+Aik Beng Ng
+Aik Beng Ng
+Industry Chair
+
+NVIDIA
+
+Megani Rajendran
+Megani Rajendran
+Industry Outreach Committee
+
+NVIDIA
+
+Timothy Liu
+Timothy Liu
+Industry Outreach Committee
+
+NVIDIA
+
+Call for Papers
+We invite submissions on advancing trust and control in agentic AI, with a focus on alignment, robustness, and verifiability.
+
+Trustworthy planning and control in agentic systems
+Verification and auditable behavior of agentic LLMs
+Personalized agents and consistent persona modeling
+Safety-critical embodied agentic AI
+Human-centric alignment and feedback integration
+Human oversight and control in agentic workflows
+Evaluating and benchmarking trust in agentic LLMs
+Governance, transparency, and accountability frameworks
+Submission Requirements:
+Submissions must be prepared using the AAAI 2026 template. We accept research papers (novel algorithms, theory, or experiments), position papers (provocative perspectives on agentic AI), and survey papers.
+
+Long papers: up to 7 pages of technical content, plus 1 page for references
+Short papers: up to 4 pages of technical content, plus 1 page for references
+Authors may include supplementary material, but reviewers are not required to review it.
+Important Dates
+Submission Deadline:
+October 22, 2025
+Author Notification:
+November 05, 2025
+Camera Ready Deadline:
+TBD
+Workshop Date:
+January 27, 2026
+Submit Paper
+Trustworthy Agentic AI
+AAAI 2026 Workshop
+
+January 27, 2026
+
+Quick Links
+Schedule
+Speakers
+Organizers
+Committee
+Call for Papers
+Address
+Expo, Singapore
+
+© 2026 AAAI Workshop. All rights reserved.
+
+
+
+
+
+
+
+---
+
+https://aigovernance.github.io/
+
+# AIGOV @ AAAI 2025
+AIGOV-25(current)
+AIGOV-25 Schedule
+AIGOV-25 Program
+AIGOV-25 CFP
+AIGOV-24
+AIGOV-24 Schedule
+AIGOV-24 Program
+
+The 2nd International Workshop on AI Governance (AIGOV)
+Held in conjunction with AAAI 2025
+A workshop which aims to delve into the critical aspects of AI governance with a specific focus on the contribution of Large Language Models (LLMs) in shaping ethical and responsible AI practices.
+
+[Call for Reviewers]
+[Call for Papers]
+[Last Event: AIGOV @ IJCAI 2024]
+Introduction
+We are excited to announce the 2nd International Workshop on “AI Governance: Alignment, Morality and Law” (AIGOV) at the AAAI 2025, a critical event addressing the principles, frameworks, and best practices necessary to navigate the ethical, legal, and societal dimensions of AI.
+
+The rapid advancements in Artificial Intelligence (AI) bring unprecedented opportunities and challenges. As organizations and governments increasingly integrate AI technologies into various aspects of society, the need for effective AI governance becomes paramount. This workshop aims to provide a comprehensive understanding of AI governance principles, frameworks, and best practices to empower participants in navigating the ethical, legal, and societal dimensions of AI.
+
+In addition to insightful technical discussions, we also plan to hold introductory talks to educate a broader community about the importance and urgency of AI governance. These talks will serve as a foundational introduction to the subject matter and its implications for society at large. Some topics of interest include but not limited to:
+
+Understanding AI Governance: Define the core principles of AI governance. Explore existing regulations and ethical frameworks
+Role of LLMs in AI Governance: Highlight the capabilities of LLMs in analyzing and generating human-readable content. Discuss how LLMs can contribute to drafting policies and guidelines.
+Addressing Bias and Fairness: Examine the challenges of bias in AI systems. Showcase how LLMs can assist in identifying and mitigating bias.
+Transparency and Accountability: Explore the importance of transparency in AI decision-making. Discuss how LLMs can aid in creating understandable and accountable AI systems.
+Policy Interpretation and Compliance: Illustrate how LLMs can assist policymakers in understanding complex technical concepts. Discuss the role of LLMs in monitoring and auditing AI systems for compliance with governance standards.
+Human-AI Collaboration: Emphasize the need for human oversight in AI governance. Discuss the collaborative approach between humans and LLMs.
+AI alignment methods
+Prompt engineering
+Fine tuning
+Explainable AI
+Responsible AI practices
+We believe that incorporating knowledge can potentially solve many of the most pressing challenges tackling the AI and society today. The primary goal of this workshop is to facilitate community building, as AI governance is a critical field with two distinct communities: policymakers crafting regulations and researchers/developers working on the technologies. The workshop aims to bring these communities together to foster collaboration and enhance understanding. The workshop aims to educate a broader community about the intricacies of AI governance. Through informative sessions and discussions, participants will gain a deeper understanding of the challenges posed by AI technologies and the need for effective governance.
+
+This workshop will be a hybrid event held in conjunction with AAAI 2025, taking place on Mar 3rd, 2025 at Philadelphia, PA, USA. The session will cover invited talks, contributed talks, posters, and a panel discussion.
+
+Key Dates
+Submission deadline: Nov 30th, 2024 (11:59 pm AOE)
+Acceptance notification: Dec 30th, 2024
+Camera ready for accepted submissions: Jan 20th, 2025
+Confirmed Keynote and Invited Speakers
+Christopher S. Yoo
+Christopher S. Yoo
+Penn Law
+
+Rumman Chowdhury
+Rumman Chowdhury
+Parity Consulting, Harvard
+
+Kush R. Varshney
+Kush R. Varshney
+IBM Research
+
+Laura Bingham
+Laura Bingham
+Temple Law
+
+Desmond Patton
+Desmond Patton
+U Penn
+
+Sara Migliorini
+Sara Migliorini
+Macau Law
+
+
+
+Organizing Committee
+Baihan Lin
+Baihan Lin
+Harvard Law, Mount Sinai
+
+Djallel Bouneffouf
+Djallel Bouneffouf
+IBM Research
+
+Asim Munawar
+Asim Munawar
+IBM Research
+
+Irina Rish
+Irina Rish
+Mila - Quebec AI Institute
+
+Lauri Goldkind
+Lauri Goldkind
+Fordham University
+
+
+
+Technical Program Committee (TPC)
+We would like to express our sincere gratitude to our technical program committee for generously volunteering their time and expertise to review submissions for our workshop. Their valuable contributions have been instrumental in ensuring the quality and rigor of the workshop’s program. We deeply appreciate their dedication and commitment to our workshop’s success:
+
+Tianhao Li, Ruixiang Qi, Tianliang Yao, Zecheng Zhang, Rahul Jain, Jiacheng Lu, Saai Krishnan Udayakumar, Rishit Dholakia, Haocheng Bi, Botao Zhang, Hejun Huang, Ahmed Olabisi Olajide, Mahak Shah, Chandrashekar Konda, Zhun Zhou, Zhengyu Fang, Gaurav Mishra, Rohan Kulkarni, Prithviraj Dasgupta, Imran Nasim, Akshata Kishore Moharir, Harsh NILESH PATHAK, Zhoujie Ding, Deepak Jayabalan, Utsha Saha, Aashish Sheshadri, Yuan Tian, YI HAN, Zonghao Ying, Ziyi Wang, Jahnavi Anilkumar Kachhia, Matin Khajavi, Haohang Li, Yuanjian Xu, Akaash Vishal Hazarika, Benedikt Schesch, Yue Li, Jiajing Chen, Bum Jun Kim, Junlin Guo, Qinfeng Zhu, Ramya Sree Boppana, KE WANG, Martin Meinke, Zijian Zhang, Ye Zhang, Amit Agarwal, Moncef GAROUANI, Songlin Jiang, Madiha Shakil Mirza, Abuh Ibrahim Sani, Sai Prasanna Teja Reddy Bogireddy, Pallavi Gudipati, Xiaoxia Lei, Sai Tarun Kaniganti, Victoria Abosede Ogunsanya, Shashikanta Sahoo, Maryam Taeb, Jue Xiao, Prudhvi Nethi, Rianat Abbas, Madhulekha Arunmozhi, Bala Siva Sai Akhil Malepati, Hengyang Zhou, Kshitij Chandna, Kai Xi, Ojas Gupta, Yidi Xu, Zong Ke, Vishal Shah, Chloe Zhu, Mukesh Yadav, GUANGYAN GAN, Yu Ma, Karanbir Singh, Feng Chen, Qi Song, Zhao Xu, Junlong Aaron Zhou, Chandrasekar Ramachandran, Venkat Nilesh Dadi, Linjun He, Ruchi Sharma, Botao Zhang, Bharath Mummadisetty, Reza Zakerian, Xihao Xie, Zerui Wang
+
+Contact
+For any questions, please contact us at blin@law.harvard.edu.
+
+Sponsors
+Harvard Law School
+Icahn School of Medicine at Mount Sinai
+IBM Research
+Mila - Quebec AI Institute
+Fordham University
+© Copyright 2025 AIGOV @ AAAI 2025 . Powered by Jekyll with al-folio theme. Hosted by GitHub Pages.
+
+
+
+
+---
+
+https://www.aialign.net/ws-machine-ethics
+
+# AAAI 2026 Workshop (WS37)
+Machine Ethics:  from formal methods to emergent machine ethics
+ January 26, 2026@Singapore
+Overview
+Machine ethics is concerned with the behaviour of machines towards people and other machines.  Advances in Artificial Intelligence (AI) continue to reinforce the need for research work in this field either in the top down, bottom up or hybrid approaches. In one direction this work involves specifying, implementing, and verifying ethical and safe AI. In another direction  is the study of ethics that emerges by self-organizing inside AI-centric societies. We need to be able to verify the existing ethical capabilities of AI systems, and make advances towards  understanding how transparent, collaboratively guidable AI ecosystems might evolve. All of these efforts, while happening at different technology and conceptual levels, are united in the need to establish a global hub for AI-safety, multi-agent cooperation, and governance research.
+
+Twenty years ago, a fall AAAI Fall symposium on Machine Ethics, kick-started the machine ethics field in computer science (https://auld.aaai.org/Library/Symposia/Fall/fs05-06.php ). The time is right for a formative venue of a new generation of machine ethics researchers and teams. Building on emerging work in communities such as Japan's SIG-AGI ( https://www.sig-agi.org/sig-agi/event/sig-agi-30-panel-en  ), where foundations for Emergent Machine Ethics are being actively developed, this workshop marks a critical evolution from traditional top-down approaches to include bottom-up emergence, recognizing that as AI systems become increasingly autonomous, we need both formal verification methods and emergent approaches working in tandem to respect their agency while ensuring beneficial outcomes.This workshop has two objectives. 
+
+Consolidation: investigation of formal methods for and in machine ethics and value alignment.
+
+We aim to provide an arena for presenting new work on classical topics studied in machine ethics from an artificial intelligence and computer science perspective. We hope to see and discuss to tackling  challenges of how autonomous and intelligent systems 
+
+systems can acquire verifiably correct behavior: how we can specify, implement and validate ethical and safe reasoning. 
+
+Emergence: investigation of Emergent Machine Ethics (EME) - ethics that self-organize within AI-centric societies. As AI capabilities advance exponentially, the rapid pace of development, dynamic human values, and emergent AI-AI interactions necessitate ethics that develop internally within AI systems to complement traditional approaches. EME encompasses studying ethical emergence dynamics, developing inter-intelligence evaluation systems, and facilitating human-AI co-creative guidance. Through this paradigm, we seek to understand how AI societies might develop internal ethical capabilities that scale with their increasing autonomy and complexity.
+
+Important Dates
+EventDate  
+
+Submission Deadline: November 10, 2025 (AOE)
+
+Notification of Acceptance: November 25, 2025 (AOE) 
+
+Camera‑ready & schedule online xxxx (AOE)
+
+Workshop day  January 26, 2026 (SST (=UTC+8))
+
+Topics
+The topics of this workshop include but are not limited to the 
+
+Logics for morality and ethics
+
+Knowledge representation of ethical theories and ethically salient information
+
+Computational modeling of morality and ethics
+
+Specification of ethical reasoning and behavior
+
+Verification of ethical reasoning and behavior
+
+Formal modeling of ethical accountability item Formal modeling of agent responsibility
+
+Normative reasoning, concepts, and systems in relation to moral behavior of artificial agents
+
+Neuro-symbolic approaches towards attaining ethical behavior in artificial agents and autonomous systems
+
+Ethical reinforcement learning agents
+
+Runtime monitoring of ethical issues
+
+Dynamic, and formally justified, ethical repair
+
+Emergent Machine Ethics (EME) - foundational theories and frameworks
+
+Comparative life-form analysis for value-neutral ethics exploration
+
+Individual attachment differences between humans and digital entities
+
+Ethics emergence dynamics in multi-agent AI systems
+
+Autonomous norm formation, internalization, and stabilization
+
+Emergent cooperation without external enforcement
+
+Self-organizing governance in AI ecosystems
+
+Convergence criteria for collaborative ethical systems
+
+Inter-intelligence evaluation and mutual assessment frameworks
+
+Human-AI co-creative guidance mechanisms
+
+Bidirectional ethical influence in human-AI societies
+
+Value alignment through internal emergence rather than external control
+
+Scalable approaches to internal ethical development
+
+Benchmarks and metrics for emergent ethics
+
+Submission System & Website
+Submission System: EasyChair
+
+Submission Site: https://easychair.org/conferences?conf=aaaimew26
+
+Workshop URL: https://www.aialign.net/aaaimew26
+
+Paper Submission Formats
+Full Papers
+Same format as AAAI submissions
+
+Fast review track: Papers rejected from AAAI main conference can be resubmitted with reviews and response letter addressing the issues
+
+Short Papers
+4-page extended abstracts
+
+Suitable for work that invites discussion but is not yet mature for publication
+
+Publication
+Publication Format: WS-CEUR proceedings publisher
+
+Contact Information
+Marija Slavkovik: marija.slavkovik@uib.no
+
+Rafal Rzepka: rzepka@ist.hokudai.ac.jp
+
+Programme (Tentative)
+Time (JST +9)Session
+
+TBD
+
+Invited Speakers
+TBD
+
+団体概要
+スタッフ募集
+個人情報保護方針
+
+© 2024 AI Alignment Network, General Incorporated Association. All rights reserved.
+This is a provisional website and will be updated daily as we expand our activities.
