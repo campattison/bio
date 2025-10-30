@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy Toolkit - Learn Core Concepts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fafbfc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f5f6f8;
+            --text-primary: #1a1d23;
+            --text-secondary: #5f6672;
+            --text-tertiary: #9199a6;
+            --accent-primary: #6366f1;
+            --accent-hover: #4f46e5;
+            --accent-light: #eef2ff;
+            --border-color: #e5e7eb;
+            --success: #10b981;
+            --error: #ef4444;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #0a0c10;
+                --bg-secondary: #12151c;
+                --bg-tertiary: #1a1d26;
+                --text-primary: #e8eaed;
+                --text-secondary: #b4b9c3;
+                --text-tertiary: #6b7280;
+                --border-color: #272b35;
+                --accent-light: #1e1f3d;
+                --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+                --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+                --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+            }
+
+            body::before {
+                opacity: 0.6;
+            }
+
+            .modal {
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+            }
+
+            .message.error {
+                background: rgba(239, 68, 68, 0.15);
+                color: #fca5a5;
+                border: 1px solid rgba(239, 68, 68, 0.3);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(
+                135deg,
+                rgba(99, 102, 241, 0.35),
+                rgba(139, 92, 246, 0.35),
+                rgba(236, 72, 153, 0.35),
+                rgba(251, 146, 60, 0.35),
+                rgba(245, 158, 11, 0.35),
+                rgba(59, 130, 246, 0.35),
+                rgba(14, 165, 233, 0.35),
+                rgba(16, 185, 129, 0.35),
+                rgba(5, 150, 105, 0.35),
+                rgba(168, 85, 247, 0.35),
+                rgba(219, 39, 119, 0.35),
+                rgba(99, 102, 241, 0.35)
+            );
+            background-size: 400% 400%;
+            animation: shimmer 15s ease-in-out infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            opacity: 0.7;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* API Key Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+        }
+
+        .modal-overlay.hide {
+            display: none;
+        }
+
+        .modal {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.show .modal {
+            transform: scale(1);
+        }
+
+        .modal h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .modal p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .modal input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .modal button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .modal button:hover {
+            background: var(--accent-hover);
+        }
+
+        .modal .note {
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .api-status {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+        }
+
+        .btn-icon {
+            padding: 8px 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .btn-icon:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
+            transition: grid-template-columns 0.3s ease;
+        }
+
+        .container.sidebar-minimized {
+            grid-template-columns: 60px 1fr;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 90px;
+            height: calc(100vh - 122px);
+            overflow-y: auto;
+            padding-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-toggle {
+            padding: 6px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .sidebar-toggle:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-primary);
+        }
+
+        .sidebar-content {
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar.minimized {
+            overflow: visible;
+        }
+
+        .sidebar.minimized .sidebar-content {
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .sidebar.minimized .sidebar-title {
+            display: none;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        .search-box {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 36px 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            pointer-events: none;
+        }
+
+        .category {
+            margin-bottom: 32px;
+        }
+
+        .category-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+        }
+
+        .concept-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .concept-card:hover {
+            border-color: var(--accent-primary);
+            background: var(--accent-light);
+            transform: translateX(4px);
+        }
+
+        .concept-card.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .concept-card.active .concept-name,
+        .concept-card.active .concept-desc {
+            color: white;
+        }
+
+        .concept-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .concept-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Main Content */
+        .main-content {
+            min-height: calc(100vh - 122px);
+        }
+
+        .welcome-state {
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .welcome-state h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--accent-primary), #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-state p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Concept View */
+        .concept-view {
+            display: none;
+        }
+
+        .concept-view.active {
+            display: block;
+        }
+
+        .concept-header {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .concept-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .concept-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* Content Area */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 24px;
+            transition: grid-template-columns 0.4s ease;
+        }
+
+        .content-grid.learning-expanded {
+            grid-template-columns: 1.5fr 1fr;
+        }
+
+        .content-grid.chat-expanded {
+            grid-template-columns: 1fr 1.5fr;
+        }
+
+        .exemplar-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .exemplar-section:hover {
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .exemplar-section.expanded {
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .expand-hint {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .exemplar-section:hover .expand-hint {
+            opacity: 1;
+        }
+
+        .exemplar-section.expanded .expand-hint {
+            opacity: 0;
+        }
+
+        .exemplar-content {
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .exemplar-content p {
+            margin-bottom: 16px;
+        }
+
+        .exemplar-content strong {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .exemplar-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .exemplar-content h1,
+        .exemplar-content h2,
+        .exemplar-content h3 {
+            color: var(--accent-primary);
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .exemplar-content h1 {
+            font-size: 24px;
+        }
+
+        .exemplar-content h2 {
+            font-size: 20px;
+        }
+
+        .exemplar-content h3 {
+            font-size: 18px;
+        }
+
+        .exemplar-content code {
+            background: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--accent-primary);
+        }
+
+        .exemplar-content pre {
+            background: var(--bg-tertiary);
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            margin: 16px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .exemplar-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-primary);
+        }
+
+        .exemplar-content ul,
+        .exemplar-content ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .exemplar-content li {
+            margin-bottom: 8px;
+        }
+
+        .message.assistant strong {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .message.assistant code {
+            background: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .message.assistant ul,
+        .message.assistant ol {
+            margin-left: 24px;
+            margin-top: 8px;
+        }
+
+        .message.assistant li {
+            margin-bottom: 4px;
+        }
+
+        .message.assistant::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .message.assistant::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 2px;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            color: var(--text-tertiary);
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Chat Section */
+        .chat-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            padding: 0;
+            margin-bottom: 24px;
+        }
+
+        .message {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            background: var(--accent-primary);
+            color: white;
+            margin-left: 40px;
+        }
+
+        .message.assistant {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            margin-right: 40px;
+        }
+
+        .message.system {
+            background: transparent;
+            color: var(--text-tertiary);
+            font-size: 13px;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .message.error {
+            background: #fee;
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .chat-input-area button {
+            padding: 12px 24px;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .chat-input-area button:hover {
+            background: var(--accent-hover);
+        }
+
+        .chat-input-area button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Empty States */
+        .empty-state {
+            padding: 60px 40px;
+            text-align: center;
+            color: var(--text-tertiary);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container,
+            .container.sidebar-minimized {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                height: auto;
+                margin-bottom: 32px;
+            }
+
+            .sidebar.minimized .sidebar-content {
+                opacity: 1;
+                pointer-events: auto;
+                height: auto;
+                overflow: visible;
+            }
+
+            .sidebar.minimized .sidebar-title {
+                display: block;
+            }
+
+            .sidebar-toggle {
+                display: none;
+            }
+
+            .content-grid,
+            .content-grid.learning-expanded,
+            .content-grid.chat-expanded {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .concept-header {
+                padding: 20px;
+            }
+
+            .concept-title {
+                font-size: 24px;
+            }
+
+            .welcome-state h1 {
+                font-size: 28px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- API Key Modal -->
+    <div id="apiKeyModal" class="modal-overlay">
+        <div class="modal">
+            <h2>Welcome to Philosophy Toolkit</h2>
+            <p>To get started, enter your Anthropic API key. Your key is stored locally and never shared.</p>
+            <input
+                type="password"
+                id="apiKeyInput"
+                placeholder="sk-ant-..."
+                autocomplete="off"
+            />
+            <button onclick="saveApiKey()">Continue</button>
+            <p class="note">
+                Don't have a key? Get one at
+                <a href="https://console.anthropic.com" target="_blank" style="color: var(--accent-primary);">console.anthropic.com</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">📚 Philosophy Toolkit</div>
+            <div class="header-actions">
+                <div class="api-status" id="apiStatus">
+                    <span class="status-dot"></span>
+                    <span>API Connected</span>
+                </div>
+                <button class="btn-icon" onclick="changeApiKey()">Change Key</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container" id="mainContainer">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">Concepts</div>
+                <button class="sidebar-toggle" onclick="toggleSidebar()" id="sidebarToggle">
+                    ◀
+                </button>
+            </div>
+            <div class="sidebar-content">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search concepts..."
+                        oninput="filterConcepts()"
+                    />
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div id="conceptsList"></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome State -->
+            <div id="welcomeState" class="welcome-state">
+                <h1>Master Philosophy's Core Tools</h1>
+                <p>Learn essential argument forms, conceptual distinctions, and critical thinking tools used by philosophers.</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Argument Forms</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Key Distinctions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Fallacies</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Core Tools</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Concept View -->
+            <div id="conceptView" class="concept-view">
+                <div class="concept-header">
+                    <div class="breadcrumb" id="breadcrumb"></div>
+                    <h1 class="concept-title" id="conceptTitle"></h1>
+                    <p class="concept-description" id="conceptDescription"></p>
+                    <div class="action-bar">
+                        <button class="btn btn-primary" onclick="generateExemplar()">
+                            ✨ Generate Example
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearChat()">
+                            🔄 Clear Chat
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-grid" id="contentGrid">
+                    <!-- Exemplar Section -->
+                    <div class="exemplar-section" id="learningSection" onclick="expandSection('learning')">
+                        <div class="section-title">
+                            <span>Learning Content</span>
+                            <span class="expand-hint">Click to expand</span>
+                        </div>
+                        <div id="exemplarContent" class="exemplar-content">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">💡</div>
+                                <p>Click "Generate Example" to see a concrete example of this concept in action.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Section -->
+                    <div class="exemplar-section chat-section" id="chatSection" onclick="expandSection('chat')">
+                        <div class="section-title">
+                            <span>Ask Questions</span>
+                            <span class="expand-hint">Click to expand</span>
+                        </div>
+                        <div id="chatMessages" class="chat-messages">
+                            <div class="message system">
+                                Ready to answer your questions about this concept!
+                            </div>
+                        </div>
+                        <div class="chat-input-area" onclick="event.stopPropagation()">
+                            <input
+                                type="text"
+                                id="chatInput"
+                                placeholder="Ask a question..."
+                                onkeypress="handleChatKeypress(event)"
+                            />
+                            <button id="sendBtn" onclick="sendMessage()">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Configuration
+        const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+        const MODEL = 'claude-sonnet-4-5-20250929';
+
+        // Philosophy concepts data
+        const CONCEPTS = {
+            "argument_forms": [
+                { name: "Reductio ad absurdum", description: "Assuming the opposite of what you want to prove and deriving a contradiction or absurdity", category: "argument_forms" },
+                { name: "Modus ponens", description: "If P then Q; P; therefore Q", category: "argument_forms" },
+                { name: "Modus tollens", description: "If P then Q; not-Q; therefore not-P", category: "argument_forms" },
+                { name: "Counterexample", description: "Refuting a universal claim by finding a single case where it fails", category: "argument_forms" },
+                { name: "Thought experiment", description: "Using hypothetical scenarios to test intuitions and principles", category: "argument_forms" },
+                { name: "Inference to the best explanation", description: "Arguing that a hypothesis should be accepted because it best explains the available evidence", category: "argument_forms" },
+                { name: "Argument by analogy", description: "Drawing parallels between cases to extend judgments or principles", category: "argument_forms" },
+                { name: "Dilemma/trilemma", description: "Showing that all available options lead to problems for a position", category: "argument_forms" }
+            ],
+            "conceptual_distinctions": [
+                { name: "Necessary vs. sufficient conditions", description: "What's required for X vs. what guarantees X", category: "conceptual_distinctions" },
+                { name: "Intrinsic vs. instrumental value", description: "Valuable in itself vs. valuable as a means", category: "conceptual_distinctions" },
+                { name: "Normative vs. descriptive", description: "How things ought to be vs. how things are", category: "conceptual_distinctions" },
+                { name: "Necessary vs. contingent", description: "Must be the case vs. happens to be the case (applies to truths, beings, and properties)", category: "conceptual_distinctions" },
+                { name: "Type vs. token", description: "The general category vs. particular instances", category: "conceptual_distinctions" }
+            ],
+            "fallacies": [
+                { name: "Begging the question (circular reasoning)", description: "Assuming what you're trying to prove in your premises", category: "fallacies" },
+                { name: "Equivocation", description: "Using the same word with different meanings within an argument", category: "fallacies" },
+                { name: "Appeal to authority", description: "Accepting a claim merely because someone said it (rather than because of reasons)", category: "fallacies" }
+            ],
+            "conceptual_tools": [
+                { name: "Principle of charity", description: "Interpreting arguments in their strongest form", category: "conceptual_tools" },
+                { name: "Burden of proof", description: "Understanding who needs to provide evidence for their claim", category: "conceptual_tools" }
+            ]
+        };
+
+        // State
+        let allConcepts = [];
+        let selectedConcept = null;
+        let conversationHistory = [];
+
+        // Initialize
+        function init() {
+            // Flatten concepts
+            for (const category in CONCEPTS) {
+                allConcepts.push(...CONCEPTS[category]);
+            }
+
+            // Check for API key
+            const apiKey = localStorage.getItem('anthropic_api_key');
+            if (!apiKey) {
+                showApiKeyModal();
+            } else {
+                hideApiKeyModal();
+            }
+
+            // Render concepts list
+            renderConceptsList();
+        }
+
+        // API Key Management
+        function showApiKeyModal() {
+            const modal = document.getElementById('apiKeyModal');
+            modal.classList.add('show');
+            modal.classList.remove('hide');
+        }
+
+        function hideApiKeyModal() {
+            const modal = document.getElementById('apiKeyModal');
+            modal.classList.remove('show');
+            setTimeout(() => modal.classList.add('hide'), 300);
+        }
+
+        function saveApiKey() {
+            const input = document.getElementById('apiKeyInput');
+            const key = input.value.trim();
+
+            if (!key) {
+                alert('Please enter an API key');
+                return;
+            }
+
+            if (!key.startsWith('sk-ant-')) {
+                alert('Invalid API key format. Anthropic keys start with "sk-ant-"');
+                return;
+            }
+
+            localStorage.setItem('anthropic_api_key', key);
+            hideApiKeyModal();
+            input.value = '';
+        }
+
+        function changeApiKey() {
+            showApiKeyModal();
+        }
+
+        // Render Concepts List
+        function renderConceptsList() {
+            const container = document.getElementById('conceptsList');
+            const categories = {
+                'argument_forms': 'Argument Forms',
+                'conceptual_distinctions': 'Conceptual Distinctions',
+                'fallacies': 'Fallacies',
+                'conceptual_tools': 'Conceptual Tools'
+            };
+
+            let html = '';
+            for (const [key, title] of Object.entries(categories)) {
+                const concepts = CONCEPTS[key];
+                if (concepts.length === 0) continue;
+
+                html += `
+                    <div class="category">
+                        <div class="category-title">${title}</div>
+                        ${concepts.map(concept => `
+                            <div class="concept-card" onclick="selectConcept('${concept.name}')" data-name="${concept.name.toLowerCase()}">
+                                <div class="concept-name">${concept.name}</div>
+                                <div class="concept-desc">${concept.description}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // Filter Concepts
+        function filterConcepts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.concept-card');
+
+            cards.forEach(card => {
+                const name = card.dataset.name;
+                if (name.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Select Concept
+        function selectConcept(conceptName) {
+            selectedConcept = allConcepts.find(c => c.name === conceptName);
+            if (!selectedConcept) return;
+
+            conversationHistory = [];
+            window.currentExemplar = null;
+
+            // Update UI
+            document.getElementById('welcomeState').style.display = 'none';
+            document.getElementById('conceptView').classList.add('active');
+
+            // Update active state
+            document.querySelectorAll('.concept-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            event.target.closest('.concept-card').classList.add('active');
+
+            // Update header
+            const categoryLabels = {
+                'argument_forms': 'Argument Forms',
+                'conceptual_distinctions': 'Conceptual Distinctions',
+                'fallacies': 'Fallacies',
+                'conceptual_tools': 'Conceptual Tools'
+            };
+            document.getElementById('breadcrumb').textContent =
+                `${categoryLabels[selectedConcept.category]} › ${selectedConcept.name}`;
+            document.getElementById('conceptTitle').textContent = selectedConcept.name;
+            document.getElementById('conceptDescription').textContent = selectedConcept.description;
+
+            // Clear content
+            document.getElementById('exemplarContent').innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">💡</div>
+                    <p>Click "Generate Example" to see a concrete example of this concept in action.</p>
+                </div>
+            `;
+
+            clearChat();
+        }
+
+        // API Call to Anthropic
+        async function callClaude(prompt, systemPrompt = null) {
+            const apiKey = localStorage.getItem('anthropic_api_key');
+            if (!apiKey) {
+                throw new Error('No API key found. Please enter your key.');
+            }
+
+            const messages = [{ role: 'user', content: prompt }];
+
+            const body = {
+                model: MODEL,
+                max_tokens: 4096,
+                messages: messages
+            };
+
+            if (systemPrompt) {
+                body.system = systemPrompt;
+            }
+
+            const response = await fetch(ANTHROPIC_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey,
+                    'anthropic-version': '2023-06-01',
+                    'anthropic-dangerous-direct-browser-access': 'true'
+                },
+                body: JSON.stringify(body)
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || 'API request failed');
+            }
+
+            const data = await response.json();
+            return data.content[0].text;
+        }
+
+        // Generate Exemplar
+        async function generateExemplar() {
+            if (!selectedConcept) return;
+
+            const container = document.getElementById('exemplarContent');
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <span>Generating example...</span>
+                </div>
+            `;
+
+            const prompt = `You are a philosophy tutor who teaches through contrasting examples. Present everything in a straightforward, matter-of-fact tone.
+
+Generate an exemplar for the following concept:
+
+Concept: ${selectedConcept.name}
+Description: ${selectedConcept.description}
+
+STRUCTURE - Provide two contrasting examples with clear, well-formatted writing aimed at quick and thorough comprehension:
+
+**First Example:**
+- Use a strange, vivid, unexpected scenario (think strange, odd, or uncanny. Not scary, traumatizing, or violent, but still odd and unexpected in a way that's not goofy or silly.)
+- Present it deadpan, as if completely normal - NO meta-commentary
+- Must clearly demonstrate the philosophical concept
+
+**Second Example:**
+- Use a real historical argument, philosophical debate, or serious real-world situation
+- Draw from actual historical events, court cases, scientific debates, ethical dilemmas
+- Show the gravity and real-world stakes of this concept
+- Can deal with serious subjects, but don't be gratuitously traumatic
+
+**Format (use markdown):**
+1. **Example**: Present the unusual scenario
+2. **Analysis**: Explain how this illustrates the concept
+3. **Historical Application**: Present the serious, historically-grounded example showing this concept in action
+
+The contrast shows students these tools work for both thought experiments AND serious intellectual work. Use markdown formatting (**bold**, *italic*, lists, etc.).`;
+
+            try {
+                const response = await callClaude(prompt);
+                container.innerHTML = `
+                    <div class="exemplar-content">${formatText(response)}</div>
+                    <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                        <button class="btn btn-secondary" onclick="event.stopPropagation(); portExampleToChat()" style="width: 100%;">
+                            💬 Discuss This Example in Chat
+                        </button>
+                    </div>
+                `;
+
+                // Store the example for chat reference
+                window.currentExemplar = response;
+
+                // Add to conversation history
+                conversationHistory.push({
+                    role: 'assistant',
+                    content: response
+                });
+            } catch (error) {
+                container.innerHTML = `
+                    <div class="message error">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Port Example to Chat
+        function portExampleToChat() {
+            if (!window.currentExemplar) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.getElementById('chatInput');
+
+            // Add a system message showing the example has been added to chat context
+            const contextMsg = document.createElement('div');
+            contextMsg.className = 'message system';
+            contextMsg.innerHTML = '📋 Example added to chat context. Ask me anything about it!';
+            chatMessages.appendChild(contextMsg);
+
+            // Add the exemplar to chat history if not already there
+            const exemplarMsg = document.createElement('div');
+            exemplarMsg.className = 'message assistant';
+            exemplarMsg.innerHTML = formatText(window.currentExemplar);
+            exemplarMsg.style.maxHeight = '200px';
+            exemplarMsg.style.overflow = 'auto';
+            exemplarMsg.style.fontSize = '13px';
+            chatMessages.appendChild(exemplarMsg);
+
+            // Scroll to bottom and focus input
+            scrollToBottom();
+            chatInput.focus();
+            chatInput.placeholder = 'Ask about the example...';
+        }
+
+        // Send Chat Message
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message || !selectedConcept) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.textContent = message;
+            chatMessages.appendChild(userMsg);
+
+            input.value = '';
+            scrollToBottom();
+
+            // Show loading
+            const loadingMsg = document.createElement('div');
+            loadingMsg.className = 'message system';
+            loadingMsg.innerHTML = '<div class="spinner"></div> Thinking...';
+            chatMessages.appendChild(loadingMsg);
+            scrollToBottom();
+
+            const systemPrompt = `You are a knowledgeable and patient philosophy tutor. You're currently helping a student understand the concept of "${selectedConcept.name}".
+
+Concept description: ${selectedConcept.description}
+
+Your role is to:
+- Answer questions about this concept clearly and accurately
+- Provide examples when helpful
+- Ask probing questions to deepen understanding
+- Connect this concept to related ideas when appropriate
+- Be encouraging and supportive
+
+Keep responses concise but informative (2-4 paragraphs maximum).`;
+
+            try {
+                const response = await callClaude(message, systemPrompt);
+
+                // Remove loading
+                loadingMsg.remove();
+
+                // Add assistant response
+                const assistantMsg = document.createElement('div');
+                assistantMsg.className = 'message assistant';
+                assistantMsg.innerHTML = formatText(response);
+                chatMessages.appendChild(assistantMsg);
+
+                // Update history
+                conversationHistory.push({ role: 'user', content: message });
+                conversationHistory.push({ role: 'assistant', content: response });
+
+                scrollToBottom();
+            } catch (error) {
+                loadingMsg.remove();
+
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'message error';
+                errorMsg.innerHTML = `<strong>Error:</strong> ${error.message}`;
+                chatMessages.appendChild(errorMsg);
+
+                scrollToBottom();
+            }
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Clear Chat
+        function clearChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.getElementById('chatInput');
+            chatMessages.innerHTML = `
+                <div class="message system">
+                    Ready to answer your questions about this concept!
+                </div>
+            `;
+            conversationHistory = [];
+            chatInput.placeholder = 'Ask a question...';
+        }
+
+        // Utility Functions
+        function scrollToBottom() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function formatText(text) {
+            // Basic markdown renderer
+            let html = text;
+
+            // Escape HTML first
+            const escapeMap = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;'
+            };
+
+            // Code blocks (``` ```) - protect these first
+            const codeBlocks = [];
+            html = html.replace(/```([\s\S]*?)```/g, (match, code) => {
+                codeBlocks.push(code);
+                return `__CODEBLOCK_${codeBlocks.length - 1}__`;
+            });
+
+            // Inline code (` `)
+            const inlineCodes = [];
+            html = html.replace(/`([^`]+)`/g, (match, code) => {
+                inlineCodes.push(code);
+                return `__INLINECODE_${inlineCodes.length - 1}__`;
+            });
+
+            // Headers
+            html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+
+            // Bold
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Italic
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+            // Unordered lists
+            html = html.replace(/^\- (.+)$/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+
+            // Ordered lists
+            html = html.replace(/^\d+\.\s(.+)$/gm, '<li>$1</li>');
+
+            // Paragraphs (split on double newlines)
+            html = html.split('\n\n').map(block => {
+                // Don't wrap headers, lists in paragraphs
+                if (block.match(/^<h[123]>|^<ul>|^<ol>|^<li>/)) {
+                    return block;
+                }
+                return `<p>${block.trim()}</p>`;
+            }).join('');
+
+            // Restore code blocks
+            codeBlocks.forEach((code, i) => {
+                html = html.replace(`__CODEBLOCK_${i}__`,
+                    `<pre><code>${code.trim()}</code></pre>`);
+            });
+
+            // Restore inline code
+            inlineCodes.forEach((code, i) => {
+                html = html.replace(`__INLINECODE_${i}__`,
+                    `<code>${code}</code>`);
+            });
+
+            return html;
+        }
+
+        // Toggle Sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const container = document.getElementById('mainContainer');
+            const toggleBtn = document.getElementById('sidebarToggle');
+
+            sidebar.classList.toggle('minimized');
+            container.classList.toggle('sidebar-minimized');
+
+            if (sidebar.classList.contains('minimized')) {
+                toggleBtn.textContent = '▶';
+            } else {
+                toggleBtn.textContent = '◀';
+            }
+        }
+
+        // Expand Section
+        let currentExpandedSection = null;
+
+        function expandSection(section) {
+            const grid = document.getElementById('contentGrid');
+            const learningSection = document.getElementById('learningSection');
+            const chatSection = document.getElementById('chatSection');
+
+            // If clicking the already expanded section, collapse it
+            if (currentExpandedSection === section) {
+                grid.classList.remove('learning-expanded', 'chat-expanded');
+                learningSection.classList.remove('expanded');
+                chatSection.classList.remove('expanded');
+                currentExpandedSection = null;
+                return;
+            }
+
+            // Remove all expansion classes
+            grid.classList.remove('learning-expanded', 'chat-expanded');
+            learningSection.classList.remove('expanded');
+            chatSection.classList.remove('expanded');
+
+            // Add appropriate expansion
+            if (section === 'learning') {
+                grid.classList.add('learning-expanded');
+                learningSection.classList.add('expanded');
+                currentExpandedSection = 'learning';
+            } else if (section === 'chat') {
+                grid.classList.add('chat-expanded');
+                chatSection.classList.add('expanded');
+                currentExpandedSection = 'chat';
+            }
+        }
+
+        // Initialize app
+        init();
+    </script>
+</body>
+</html>
