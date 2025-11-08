@@ -418,7 +418,7 @@ const otherSelectionItems=Object.keys(this.selectedIndicesByItem).filter(key=>ke
           const hoverData = data;
           datamap.addMetaData(hoverData, {
             tooltipFunction: ({index}) => hoverData.hover_text[index],
-            onClickFunction: ({index, picked, layer}, event) => { if (picked) {window.open(point_data['url'], '_blank') } },
+            onClickFunction: ({index, picked, layer}, event) => { if (picked && hoverData.url && hoverData.url[index]) {window.open(hoverData.url[index], '_blank') } },
             searchField: "hover_text",
           });
 
