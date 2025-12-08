@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,25 +62,33 @@
                 color: #fca5a5;
                 border: 1px solid rgba(239, 68, 68, 0.3);
             }
+
+            .terminology-warning {
+                background: rgba(239, 68, 68, 0.1);
+                border-color: rgba(239, 68, 68, 0.2);
+            }
+
+            .terminology-explanation {
+                background: rgba(99, 102, 241, 0.1);
+                border-color: rgba(99, 102, 241, 0.2);
+            }
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            background: linear-gradient(
-                135deg,
-                rgba(99, 102, 241, 0.35),
-                rgba(139, 92, 246, 0.35),
-                rgba(236, 72, 153, 0.35),
-                rgba(251, 146, 60, 0.35),
-                rgba(245, 158, 11, 0.35),
-                rgba(59, 130, 246, 0.35),
-                rgba(14, 165, 233, 0.35),
-                rgba(16, 185, 129, 0.35),
-                rgba(5, 150, 105, 0.35),
-                rgba(168, 85, 247, 0.35),
-                rgba(219, 39, 119, 0.35),
-                rgba(99, 102, 241, 0.35)
-            );
+            background: linear-gradient(135deg,
+                    rgba(99, 102, 241, 0.35),
+                    rgba(139, 92, 246, 0.35),
+                    rgba(236, 72, 153, 0.35),
+                    rgba(251, 146, 60, 0.35),
+                    rgba(245, 158, 11, 0.35),
+                    rgba(59, 130, 246, 0.35),
+                    rgba(14, 165, 233, 0.35),
+                    rgba(16, 185, 129, 0.35),
+                    rgba(5, 150, 105, 0.35),
+                    rgba(168, 85, 247, 0.35),
+                    rgba(219, 39, 119, 0.35),
+                    rgba(99, 102, 241, 0.35));
             background-size: 400% 400%;
             animation: shimmer 15s ease-in-out infinite;
             color: var(--text-primary);
@@ -463,9 +472,12 @@
         }
 
         @keyframes shimmer {
-            0%, 100% {
+
+            0%,
+            100% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
@@ -519,6 +531,40 @@
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 24px;
+            margin-bottom: 24px;
+        }
+
+        .terminology-box {
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+        }
+
+        .terminology-warning {
+            background: #fef2f2;
+            border-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .terminology-explanation {
+            background: #eef2ff;
+            border-color: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .terminology-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .terminology-text {
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         .action-bar {
@@ -750,7 +796,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Chat Section */
@@ -776,6 +824,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -864,6 +913,7 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
+
             .container,
             .container.sidebar-minimized {
                 grid-template-columns: 1fr;
@@ -926,22 +976,19 @@
         }
     </style>
 </head>
+
 <body>
     <!-- API Key Modal -->
     <div id="apiKeyModal" class="modal-overlay">
         <div class="modal">
             <h2>Welcome to Philosophy Toolkit</h2>
             <p>To get started, enter your Anthropic API key. Your key is stored locally and never shared.</p>
-            <input
-                type="password"
-                id="apiKeyInput"
-                placeholder="sk-ant-..."
-                autocomplete="off"
-            />
+            <input type="password" id="apiKeyInput" placeholder="sk-ant-..." autocomplete="off" />
             <button onclick="saveApiKey()">Continue</button>
             <p class="note">
                 Don't have a key? Get one at
-                <a href="https://console.anthropic.com" target="_blank" style="color: var(--accent-primary);">console.anthropic.com</a>
+                <a href="https://console.anthropic.com" target="_blank"
+                    style="color: var(--accent-primary);">console.anthropic.com</a>
             </p>
         </div>
     </div>
@@ -972,12 +1019,7 @@
             </div>
             <div class="sidebar-content">
                 <div class="search-box">
-                    <input
-                        type="text"
-                        id="searchInput"
-                        placeholder="Search concepts..."
-                        oninput="filterConcepts()"
-                    />
+                    <input type="text" id="searchInput" placeholder="Search concepts..." oninput="filterConcepts()" />
                     <span class="search-icon">🔍</span>
                 </div>
                 <div id="conceptsList"></div>
@@ -989,7 +1031,8 @@
             <!-- Welcome State -->
             <div id="welcomeState" class="welcome-state">
                 <h1>Master Philosophy's Core Tools</h1>
-                <p>Learn essential argument forms, conceptual distinctions, and critical thinking tools used by philosophers.</p>
+                <p>Learn essential argument forms, conceptual distinctions, and critical thinking tools used by
+                    philosophers.</p>
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-number">8</div>
@@ -1053,12 +1096,8 @@
                             </div>
                         </div>
                         <div class="chat-input-area" onclick="event.stopPropagation()">
-                            <input
-                                type="text"
-                                id="chatInput"
-                                placeholder="Ask a question..."
-                                onkeypress="handleChatKeypress(event)"
-                            />
+                            <input type="text" id="chatInput" placeholder="Ask a question..."
+                                onkeypress="handleChatKeypress(event)" />
                             <button id="sendBtn" onclick="sendMessage()">Send</button>
                         </div>
                     </div>
@@ -1099,6 +1138,29 @@
             "conceptual_tools": [
                 { name: "Principle of charity", description: "Interpreting arguments in their strongest form", category: "conceptual_tools" },
                 { name: "Burden of proof", description: "Understanding who needs to provide evidence for their claim", category: "conceptual_tools" }
+            ],
+            "terminology_watch": [
+                {
+                    name: "Philosophies",
+                    description: "Avoid pluralizing 'philosophy'. It implies relativism. Philosophers argue for positions/theories, not personal 'philosophies'.",
+                    category: "terminology_watch",
+                    bad_usage: "\"According to the philosophies of...\" or \"Many philosophies say that...\"",
+                    detailed_explanation: "Philosophy is a discipline of reasoned inquiry aimed at truth—not a personal 'worldview' or set of values. When people say 'my philosophy' or 'different philosophies,' they usually mean something like 'personal outlook,' which trivializes what philosophy actually does. Philosophers don't just hold positions; they argue for them with reasons that others can evaluate and challenge."
+                },
+                {
+                    name: "Ideologies",
+                    description: "Use 'theory' or 'position' instead. 'Ideology' is a pejorative term for deceptive theories used to secure power.",
+                    category: "terminology_watch",
+                    bad_usage: "\"According to Mill's ideology...\" or \"Kant's ideology suggests...\"",
+                    detailed_explanation: "'Ideology' is not a neutral synonym for 'belief system'. It refers to a system of ideas that deceives people to maintain a power structure. Accusing Mill of having an 'ideology' implies he is trying to trick you, which is a massive claim to make without evidence. Stick to 'view', 'theory', 'account', or 'position'."
+                },
+                {
+                    name: "I feel that...",
+                    description: "Philosophy is about arguments and reasons, not reporting on your internal emotional states.",
+                    category: "terminology_watch",
+                    bad_usage: "\"I feel that abortion is wrong\" or \"I feel like Descartes is making a mistake\"",
+                    detailed_explanation: "When you say \"I feel,\" you are reporting a psychological fact about yourself, which is unassailable but philosophically irrelevant. No one can argue with your feelings. Philosophy requires you to make objective claims supported by public reasons. Say \"I argue that,\" \"I believe that,\" or simply stated the claim directly: \"Abortion is wrong because...\""
+                }
             ]
         };
 
@@ -1169,7 +1231,8 @@
                 'argument_forms': 'Argument Forms',
                 'conceptual_distinctions': 'Conceptual Distinctions',
                 'fallacies': 'Fallacies',
-                'conceptual_tools': 'Conceptual Tools'
+                'conceptual_tools': 'Conceptual Tools',
+                'terminology_watch': 'Terminology Watch'
             };
 
             let html = '';
@@ -1231,12 +1294,38 @@
                 'argument_forms': 'Argument Forms',
                 'conceptual_distinctions': 'Conceptual Distinctions',
                 'fallacies': 'Fallacies',
-                'conceptual_tools': 'Conceptual Tools'
+                'conceptual_tools': 'Conceptual Tools',
+                'terminology_watch': 'Terminology Watch'
             };
             document.getElementById('breadcrumb').textContent =
                 `${categoryLabels[selectedConcept.category]} › ${selectedConcept.name}`;
             document.getElementById('conceptTitle').textContent = selectedConcept.name;
-            document.getElementById('conceptDescription').textContent = selectedConcept.description;
+            document.getElementById('conceptTitle').textContent = selectedConcept.name;
+
+            // Handle Description + Terminology Watch Extra Fields
+            let descriptionHtml = selectedConcept.description;
+
+            if (selectedConcept.category === 'terminology_watch' && selectedConcept.bad_usage) {
+                // Add Bad Usage Box
+                descriptionHtml += `
+                    <div class="terminology-box terminology-warning" style="margin-top: 24px;">
+                        <div class="terminology-label">❌ Bad Usage</div>
+                        <div class="terminology-text">"${selectedConcept.bad_usage}"</div>
+                    </div>
+                `;
+            }
+
+            if (selectedConcept.category === 'terminology_watch' && selectedConcept.detailed_explanation) {
+                // Add Explanation Box
+                descriptionHtml += `
+                    <div class="terminology-box terminology-explanation">
+                        <div class="terminology-label">☝️ Philosopher's Beef</div>
+                        <div class="terminology-text">${selectedConcept.detailed_explanation}</div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('conceptDescription').innerHTML = descriptionHtml;
 
             // Clear content
             document.getElementById('exemplarContent').innerHTML = `
@@ -1596,4 +1685,5 @@ Keep responses concise but informative (2-4 paragraphs maximum).`;
         init();
     </script>
 </body>
+
 </html>
