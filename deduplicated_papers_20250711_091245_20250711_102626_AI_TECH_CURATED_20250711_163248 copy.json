@@ -1391,5 +1391,239 @@
     "url": "https://philpapers.org/rec/GORCFE",
     "abstract": "",
     "source_method": "year_navigation_2025_page_1"
+  },
+  {
+    "title": "What is AI safety? What do we want it to be?",
+    "authors": ["Jacqueline Harding", "Cameron Domenico Kirk-Giannini"],
+    "year": 2025,
+    "journal": "Philosophical Studies",
+    "url": "https://doi.org/10.1007/s11098-025-02367-z",
+    "abstract": "Challenges prevailing narratives that frame AI safety narrowly around catastrophic risk and engineering analogies. Instead, they argue for the 'Safety Conception'—a broader view that defines AI safety as any effort to prevent harm from AI systems.",
+    "source_method": "newsletter_july_2025"
+  },
+  {
+    "title": "Resource Rational Contractualism Should Guide AI Alignment",
+    "authors": ["Sydney Levine", "Matija Franklin", "Tan Zhi-Xuan"],
+    "year": 2025,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2506.17434",
+    "abstract": "Proposes Resource-Rational Contractualism (RRC), a framework where AI systems approximate agreements rational parties would form using normatively-grounded, cognitively-inspired heuristics that balance effort and accuracy.",
+    "source_method": "newsletter_july_2025"
+  },
+  {
+    "title": "A timing problem for instrumental convergence",
+    "authors": ["Rhys Southan", "Helena Ward", "Jen Semler"],
+    "year": 2025,
+    "journal": "Philosophical Studies",
+    "url": "https://doi.org/10.1007/s11098-025-02370-4",
+    "abstract": "Critiques the assumption that rational agents will preserve their goals, arguing that this instrumental goal preservation thesis fails due to a 'timing problem.'",
+    "source_method": "newsletter_july_2025"
+  },
+  {
+    "title": "Is there a tension between AI safety and AI welfare?",
+    "authors": ["Robert Long", "Jeff Sebo", "Toni Sims"],
+    "year": 2025,
+    "journal": "Philosophical Studies",
+    "url": "https://doi.org/10.1007/s11098-025-02302-2",
+    "abstract": "Examines whether AI safety measures create ethical tensions with AI welfare, arguing there is indeed a moderately strong tension that deserves more examination and thoughtful frameworks for navigation.",
+    "source_method": "newsletter_june_2025"
+  },
+  {
+    "title": "Against willing servitude: Autonomy in the ethics of advanced artificial intelligence",
+    "authors": ["Adam Bales"],
+    "year": 2025,
+    "journal": "The Philosophical Quarterly",
+    "url": "https://academic.oup.com/pq/advance-article/doi/10.1093/pq/pqaf031/8100849",
+    "abstract": "Argues that designing AI systems with moral status to be willing servants would problematically violate their autonomy, raising fundamental questions about the ethics of AI servitude.",
+    "source_method": "newsletter_june_2025"
+  },
+  {
+    "title": "The Potential and Limitations of Artificial Colleagues",
+    "authors": ["Friedemann Bieber", "Charlotte Franziska Unruh"],
+    "year": 2025,
+    "journal": "Philosophy & Technology",
+    "url": "https://doi.org/10.1007/s13347-025-00890-9",
+    "abstract": "Critically assesses whether AI agents in the workplace can fulfill the social and moral goods associated with collegial relationships, arguing they fall short at the collective level.",
+    "source_method": "newsletter_may_2025"
+  },
+  {
+    "title": "A Framework to Assess the Persuasion Risks Large Language Model Chatbots Pose to Democratic Societies",
+    "authors": ["Friedemann Bieber", "Charlotte Franziska Unruh"],
+    "year": 2025,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2505.00036",
+    "abstract": "Develops a framework for assessing how LLM chatbots might pose persuasion risks to democratic processes through their communicative capabilities.",
+    "source_method": "newsletter_may_2025"
+  },
+  {
+    "title": "Neither Direct, Nor Indirect: Understanding Proxy-Based Algorithmic Discrimination",
+    "authors": [],
+    "year": 2025,
+    "journal": "Journal of Ethics and Social Philosophy",
+    "url": "https://doi.org/10.1007/s10892-025-09520-0",
+    "abstract": "Examines proxy-based algorithmic discrimination that operates through neither direct nor traditionally understood indirect pathways.",
+    "source_method": "newsletter_may_2025"
+  },
+  {
+    "title": "A Matter of Principle? AI Alignment as the Fair Treatment of Claims",
+    "authors": ["Iason Gabriel", "Geoff Keeling"],
+    "year": 2025,
+    "journal": "Philosophical Studies",
+    "url": "https://link.springer.com/10.1007/s11098-025-02300-4",
+    "abstract": "Proposes a new approach to AI alignment rooted in fairness and public justification, arguing for principles derived from fair processes that can be justified to all stakeholders.",
+    "source_method": "newsletter_april_2025"
+  },
+  {
+    "title": "Two Types of AI Existential Risk: Decisive and Accumulative",
+    "authors": ["Atoosa Kasirzadeh"],
+    "year": 2025,
+    "journal": "Philosophical Studies",
+    "url": "https://doi.org/10.1007/s11098-025-02301-3",
+    "abstract": "Distinguishes between two pathways to AI-induced existential catastrophe: decisive (abrupt) and accumulative (gradual erosion through interconnected social risks).",
+    "source_method": "newsletter_april_2025"
+  },
+  {
+    "title": "Political Neutrality in AI is Impossible—But Here is How to Approximate It",
+    "authors": ["Jillian Fisher"],
+    "year": 2025,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2503.05728",
+    "abstract": "Challenges the possibility of true political neutrality in AI systems and proposes practical approximations—tools, metrics, and frameworks to balance perspectives.",
+    "source_method": "newsletter_april_2025"
+  },
+  {
+    "title": "The Epistemic Cost of Opacity: How the Use of Artificial Intelligence Undermines the Knowledge of Medical Doctors in High-Stakes Contexts",
+    "authors": ["Eva Schmidt", "Paul Martin Putora", "Rianne Fijten"],
+    "year": 2025,
+    "journal": "Philosophy & Technology",
+    "url": "https://link.springer.com/article/10.1007/s13347-024-00834-9",
+    "abstract": "Examines how the inherent opacity of AI systems can undermine doctors' knowledge in high-stakes medical contexts, even when the systems are statistically reliable.",
+    "source_method": "newsletter_march_2025"
+  },
+  {
+    "title": "Are Biological Systems More Intelligent Than Artificial Intelligence?",
+    "authors": ["Michael Timothy Bennett"],
+    "year": 2025,
+    "journal": "OSF Preprints",
+    "url": "https://osf.io/e6fky_v2",
+    "abstract": "Develops a mathematical framework showing that dynamic, decentralized control in biology enables more efficient adaptation than rigid structures in artificial systems.",
+    "source_method": "newsletter_march_2025"
+  },
+  {
+    "title": "Authorship and ChatGPT: a Conservative View",
+    "authors": ["René van Woudenberg", "Chris Ranalli", "Daniel Bracker"],
+    "year": 2025,
+    "journal": "Philosophy & Technology",
+    "url": "https://doi.org/10.1007/s13347-024-00715-1",
+    "abstract": "Argues that despite its human-like text generation, ChatGPT lacks the intentionality, responsibility, and mental states required for true authorship.",
+    "source_method": "newsletter_march_2025"
+  },
+  {
+    "title": "Governing the Algorithmic City",
+    "authors": ["Seth Lazar"],
+    "year": 2025,
+    "journal": "Philosophy & Public Affairs",
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/papa.12279",
+    "abstract": "Examines how algorithmic systems that mediate our social relationships raise novel questions for political philosophy, introducing the concept of the 'Algorithmic City' and developing frameworks for procedural legitimacy and justification.",
+    "source_method": "newsletter_february_2025"
+  },
+  {
+    "title": "Dating Apps and the Digital Sexual Sphere",
+    "authors": ["Elsa Kugelberg"],
+    "year": 2025,
+    "journal": "American Political Science Review",
+    "url": "https://www.cambridge.org/core/journals/american-political-science-review/article/dating-apps-and-the-digital-sexual-sphere/2F83AAEFB7DEA94FA4179369A004CEEC",
+    "abstract": "Examines dating apps as powerful intermediaries in the 'digital sexual sphere,' arguing that while they offer opportunities for justice, their design often reinforces existing inequalities.",
+    "source_method": "newsletter_february_2025"
+  },
+  {
+    "title": "Actions Speak Louder than Words: Agent Decisions Reveal Implicit Biases in Language Models",
+    "authors": ["Yuxuan Li", "Hirokazu Shirado", "Sauvik Das"],
+    "year": 2025,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2501.17420",
+    "abstract": "Reveals how language models may harbor implicit biases even when explicit bias has been reduced through alignment, using a novel technique examining LLM-generated agent decisions.",
+    "source_method": "newsletter_february_2025"
+  },
+  {
+    "title": "Who Does the Giant Number Pile Like Best: Analyzing Fairness in Hiring Contexts",
+    "authors": ["Preethi Seshadri", "Seraphina Goldfarb-Tarrant"],
+    "year": 2025,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2501.04316",
+    "abstract": "Explores fairness in LLM-based hiring systems through resume summarization and retrieval tasks, revealing concerning biases and brittleness.",
+    "source_method": "newsletter_january_2025"
+  },
+  {
+    "title": "Desire-Fulfilment and Consciousness",
+    "authors": ["Andreas Mogensen"],
+    "year": 2025,
+    "journal": "Global Priorities Institute",
+    "url": "https://globalprioritiesinstitute.org/desire-fulfilment-and-consciousness-andreas-mogensen/",
+    "abstract": "Argues that individuals without consciousness can still accrue welfare goods under a nuanced understanding of desire-fulfilment theory.",
+    "source_method": "newsletter_january_2025"
+  },
+  {
+    "title": "A Theory of Appropriateness with Applications to Generative AI",
+    "authors": ["Joel Z. Leibo"],
+    "year": 2024,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2412.19010",
+    "abstract": "Presents a theory of appropriateness for AI systems based on human social and cognitive foundations.",
+    "source_method": "newsletter_january_2025"
+  },
+  {
+    "title": "On the Ethical Considerations of Generative Agents",
+    "authors": ["N'yoma Diamond", "Soumya Banerjee"],
+    "year": 2024,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2411.19211",
+    "abstract": "Discusses ethical challenges and concerns posed by generative agents, suggesting guidelines for mitigating systemic risks.",
+    "source_method": "newsletter_december_2024"
+  },
+  {
+    "title": "The linguistic dead zone of value-aligned agency",
+    "authors": ["Travis LaCroix"],
+    "year": 2024,
+    "journal": "Philosophical Studies",
+    "url": "https://doi.org/10.1007/s11098-024-02257-w",
+    "abstract": "Argues that linguistic communication is a necessary condition for robust value alignment in AI systems.",
+    "source_method": "newsletter_december_2024"
+  },
+  {
+    "title": "Are Large Language Models Consistent over Value-laden Questions?",
+    "authors": ["Jared Moore", "Tanvi Deshpande", "Diyi Yang"],
+    "year": 2024,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2407.02996",
+    "abstract": "Investigates LLM consistency across paraphrases, related questions, and multilingual translations.",
+    "source_method": "newsletter_december_2024"
+  },
+  {
+    "title": "Conscious artificial intelligence and biological naturalism",
+    "authors": ["Anil Seth"],
+    "year": 2024,
+    "journal": "OSF Preprints",
+    "url": "https://osf.io/tz6an",
+    "abstract": "Explores the possibility of AI consciousness, challenging common assumptions about computational consciousness.",
+    "source_method": "newsletter_november_2024"
+  },
+  {
+    "title": "Biased AI can Influence Political Decision-Making",
+    "authors": ["Jillian Fisher"],
+    "year": 2024,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2410.06415",
+    "abstract": "Presents experiments showing how partisan bias in AI models can influence political decision-making.",
+    "source_method": "newsletter_november_2024"
+  },
+  {
+    "title": "Take Caution in Using LLMs as Human Surrogates",
+    "authors": ["Yuan Gao", "Dokyun Lee", "Gordon Burtch", "Sina Fazelpour"],
+    "year": 2024,
+    "journal": "arXiv",
+    "url": "http://arxiv.org/abs/2410.19599",
+    "abstract": "Examines limitations of using LLMs as human surrogates in social science research.",
+    "source_method": "newsletter_november_2024"
   }
 ]

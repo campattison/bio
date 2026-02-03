@@ -805,6 +805,52 @@ p {
     box-shadow: var(--card-shadow);
 }
 
+/* New paper list styles */
+.paper-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.paper-item {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    background: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.paper-item:hover {
+    border-color: var(--accent-color);
+}
+
+.paper-item .paper-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.paper-item .paper-title:hover {
+    text-decoration: underline;
+}
+
+.paper-item .paper-authors {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+}
+
+.paper-item .paper-abstract {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
 .view-all {
     text-align: right;
     margin: 1.5rem 0 0;
