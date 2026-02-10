@@ -1,55 +1,1904 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cindy's Bread - Tartine Method</title>
-    <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FFF8F0">
+<title>Proof — Sourdough Timer</title>
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --terracotta: #C75B3A;
+  --cream: #FFF8F0;
+  --deep-brown: #4A3728;
+  --warm-white: #FFFCF7;
+  --light-tan: #F5EBDC;
+  --success: #4C8C4A;
+  --warning: #DAA520;
+  --text: #4A3728;
+  --text-secondary: rgba(74, 55, 40, 0.7);
+  --terracotta-10: rgba(199, 91, 58, 0.1);
+  --terracotta-15: rgba(199, 91, 58, 0.15);
+  --terracotta-05: rgba(199, 91, 58, 0.05);
+  --success-15: rgba(76, 140, 74, 0.15);
+  --warning-10: rgba(218, 165, 32, 0.1);
+  --shadow: rgba(74, 55, 40, 0.08);
+  --padding-sm: 8px;
+  --padding-md: 16px;
+  --padding-lg: 24px;
+  --radius: 16px;
+  --card-radius: 20px;
+  --font-family: -apple-system, 'SF Pro Rounded', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.title-font { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+.headline-font { font-size: 1.05rem; font-weight: 600; }
+.body-font { font-size: 1rem; font-weight: 400; }
+.caption-font { font-size: 0.8rem; font-weight: 400; }
+.timer-font { font-size: 3rem; font-weight: 300; font-variant-numeric: tabular-nums; }
+
+/* ===== CARD ===== */
+.card {
+  padding: var(--padding-md);
+  background: var(--warm-white);
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-family); font-size: 1.05rem; font-weight: 600;
+  border: none; cursor: pointer; border-radius: var(--radius);
+  padding: var(--padding-md) var(--padding-lg);
+  transition: opacity 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--terracotta); color: #fff; }
+.btn-secondary { background: var(--terracotta-10); color: var(--terracotta); }
+.btn-subtle { background: var(--light-tan); color: var(--deep-brown); }
+.btn-full { width: 100%; }
+.btn-sm { padding: var(--padding-sm) var(--padding-md); font-size: 0.9rem; }
+.btn:disabled { opacity: 0.4; cursor: default; }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 480px; margin: 0 auto; padding: var(--padding-md); padding-bottom: 40px; }
+.stack { display: flex; flex-direction: column; }
+.row { display: flex; flex-direction: row; align-items: center; }
+.gap-sm { gap: var(--padding-sm); }
+.gap-md { gap: var(--padding-md); }
+.gap-lg { gap: var(--padding-lg); }
+.center { text-align: center; align-items: center; }
+.spread { justify-content: space-between; }
+.hidden { display: none !important; }
+
+/* ===== VIEW TRANSITIONS ===== */
+.view { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== HOME VIEW ===== */
+.hero-icon {
+  width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--terracotta), var(--deep-brown));
+  border-radius: 16px; margin: 20px auto 0;
+}
+.hero-icon svg { width: 36px; height: 36px; fill: #fff; }
+
+.journey-row {
+  display: flex; align-items: center; padding: 12px 4px; gap: 12px; cursor: pointer;
+  transition: background 0.15s; border-radius: 8px;
+}
+.journey-row:hover { background: var(--terracotta-05); }
+.journey-num { width: 20px; text-align: right; color: var(--text-secondary); font-size: 0.8rem; }
+.journey-icon { width: 24px; text-align: center; color: var(--terracotta); font-size: 1.1rem; }
+.journey-name { flex: 1; }
+.journey-dur { color: var(--text-secondary); font-size: 0.8rem; }
+.journey-divider { border: none; border-top: 1px solid var(--light-tan); margin-left: 48px; }
+
+/* ===== BAKE VIEW ===== */
+.phase-bar { display: flex; gap: 4px; padding: var(--padding-sm) var(--padding-md); }
+.phase-segment { flex: 1; height: 4px; border-radius: 2px; transition: background 0.3s; }
+.phase-complete { background: var(--success); }
+.phase-current { background: var(--terracotta); }
+.phase-future { background: var(--light-tan); }
+
+.phase-icon-circle {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--terracotta-15); display: flex; align-items: center; justify-content: center;
+  margin: 0 auto; font-size: 2rem; color: var(--terracotta);
+}
+
+.timer-ring-container { position: relative; width: 260px; height: 260px; margin: 0 auto; }
+.timer-ring-container svg { width: 100%; height: 100%; }
+.timer-ring-center {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+
+.timer-controls { display: flex; gap: 16px; justify-content: center; }
+.timer-btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--terracotta-10); color: var(--terracotta);
+  border: none; cursor: pointer; font-size: 1.3rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.timer-btn:active { transform: scale(0.93); }
+
+.turn-dots { display: flex; gap: 6px; justify-content: center; }
+.turn-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  transition: background 0.2s;
+}
+.turn-dot-filled { background: var(--terracotta); }
+.turn-dot-empty { background: var(--light-tan); }
+
+.substep-row {
+  display: flex; align-items: flex-start; gap: 12px; padding: 12px;
+  border-radius: 12px; transition: background 0.2s;
+}
+.substep-current { background: var(--terracotta-05); }
+.substep-icon { font-size: 1.2rem; margin-top: 2px; }
+.substep-badge {
+  font-size: 10px; font-weight: 700; color: #fff; background: var(--terracotta);
+  padding: 2px 6px; border-radius: 4px; text-transform: uppercase;
+}
+
+.weather-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 8px 16px; background: var(--warm-white); border-radius: 20px;
+  font-size: 0.8rem; color: var(--text);
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.time-info { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+.time-info-label { font-size: 0.8rem; color: var(--text-secondary); }
+.time-info-value { font-size: 0.9rem; font-weight: 600; }
+
+.journal-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: var(--padding-md); background: var(--terracotta-10); color: var(--terracotta);
+  border: none; border-radius: var(--radius); cursor: pointer;
+  font-family: var(--font-family); font-size: 1.05rem; font-weight: 600;
+  transition: opacity 0.15s;
+}
+
+.note-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 8px; background: var(--light-tan); border-radius: 8px;
+}
+.note-icon { color: var(--terracotta); font-size: 0.8rem; margin-top: 2px; }
+
+.tip-box {
+  padding: 12px; background: var(--warning-10); border-radius: 8px;
+  font-size: 0.8rem; color: var(--warning); display: flex; gap: 8px; align-items: flex-start;
+}
+
+/* ===== HISTORY ===== */
+.history-card { cursor: pointer; transition: transform 0.1s; }
+.history-card:active { transform: scale(0.98); }
+.stars { display: flex; gap: 4px; }
+.star { font-size: 1rem; }
+.star-filled { color: var(--warning); }
+.star-empty { color: var(--light-tan); }
+.photo-thumb {
+  width: 80px; height: 80px; border-radius: 8px; object-fit: cover;
+  flex-shrink: 0;
+}
+.photo-thumb-sm { width: 50px; height: 50px; border-radius: 6px; }
+.photo-thumb-lg { width: 120px; height: 120px; border-radius: 8px; }
+.photo-overflow {
+  width: 50px; height: 50px; border-radius: 6px;
+  background: var(--light-tan); display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; color: var(--text-secondary); flex-shrink: 0;
+}
+.photo-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.photo-scroll::-webkit-scrollbar { display: none; }
+
+/* ===== MODAL/SHEET ===== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  z-index: 100; display: flex; align-items: flex-end; justify-content: center;
+  animation: fadeOverlay 0.2s ease;
+}
+@keyframes fadeOverlay { from { opacity: 0; } to { opacity: 1; } }
+.modal-sheet {
+  background: var(--cream); border-radius: 20px 20px 0 0;
+  width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto;
+  padding: var(--padding-lg); animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-handle {
+  width: 36px; height: 4px; background: var(--light-tan);
+  border-radius: 2px; margin: 0 auto 16px;
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.modal-close {
+  background: none; border: none; color: var(--terracotta);
+  font-size: 1rem; font-weight: 600; cursor: pointer; font-family: var(--font-family);
+}
+
+/* ===== TEXT INPUT ===== */
+textarea, input[type="text"] {
+  font-family: var(--font-family); font-size: 1rem;
+  border: none; background: var(--warm-white); border-radius: 12px;
+  padding: 12px; width: 100%; resize: vertical; color: var(--text);
+  outline: none;
+}
+textarea:focus, input[type="text"]:focus { box-shadow: 0 0 0 2px var(--terracotta-15); }
+textarea { min-height: 120px; }
+
+/* ===== MISC ===== */
+.badge {
+  font-size: 10px; font-weight: 700; color: #fff; background: var(--terracotta);
+  padding: 2px 6px; border-radius: 4px;
+}
+.divider { border: none; border-top: 1px solid var(--light-tan); }
+.text-secondary { color: var(--text-secondary); }
+.text-terracotta { color: var(--terracotta); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Cindy's Bread</h1>
-        <h2>Tartine Basic Country Sourdough</h2>
-    </header>
 
-    <main>
-        <section id="session-control">
-            <h2>Bread Baking Session</h2>
-            <div class="control-panel">
-                <button id="start-session">Start New Session</button>
-                <button id="export-log" disabled>Export Journal</button>
-            </div>
-        </section>
+<div id="app" class="container"></div>
 
-        <section id="current-step" class="hidden">
-            <h2 id="step-title">Step Title</h2>
-            <div id="step-instructions"></div>
-            <div id="timer-container" class="hidden">
-                <div id="timer-display">00:00:00</div>
-                <div class="timer-controls">
-                    <button id="start-timer">Start Timer</button>
-                    <button id="pause-timer">Pause</button>
-                    <button id="reset-timer">Reset</button>
-                </div>
-            </div>
-            <div class="navigation">
-                <button id="prev-step" disabled>Previous Step</button>
-                <button id="complete-step">Complete & Next</button>
-            </div>
-        </section>
+<script>
+// ===================================================================
+// PROOF — Sourdough Timer (Web Edition)
+// ===================================================================
 
-        <section id="journal-log">
-            <h2>Baking Journal</h2>
-            <div id="log-entries"></div>
-        </section>
-    </main>
+// ===== PHASE DATA =====
+const PHASES = [
+  { id: 0, key: 'makeLeaven', name: 'Make Leaven', icon: '\u{1F319}', duration: 43200, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: 'Mix leaven the night before. 1 tbsp starter + 200g warm water (78\u00B0F) + 200g 50/50 flour. Cover loosely, room temperature (65\u201375\u00B0F) overnight. Ready when it passes the float test.',
+    tip: 'A warmer spot (75\u201380\u00B0F) speeds fermentation. A cooler spot (65\u00B0F) slows it.' },
+  { id: 1, key: 'floatTest', name: 'Float Test', icon: '\u{1F4A7}', duration: 300, hasTimer: false, hasRepeatingAlerts: false,
+    instructions: 'Drop a spoonful of leaven in room-temp water. If it floats, it\u2019s ready. If it sinks, wait 30 more minutes. Ready leaven: doubled in size, domed on top, full of bubbles, smells sweet and tangy.',
+    tip: 'If leaven doesn\u2019t float after 1\u20132 hours of retesting, feed your starter more regularly before next bake.' },
+  { id: 2, key: 'mixDough', name: 'Mix Dough', icon: '\u{2728}', duration: 600, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: 'Dissolve 200g leaven in 700g warm water. Add 900g bread flour + 100g whole wheat flour. Mix until no dry flour remains. Mixture will be shaggy.',
+    tip: 'Don\u2019t worry about lumps \u2014 they\u2019ll hydrate during autolyse.' },
+  { id: 3, key: 'autolyse', name: 'Autolyse', icon: '\u{23F0}', duration: 1800, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: 'Cover bowl, let sit 25\u201340 minutes. Flour hydrates, gluten begins forming, dough becomes easier to work with. No kneading.',
+    tip: 'Longer autolyse (up to 1 hour) can make dough more extensible.' },
+  { id: 4, key: 'addSalt', name: 'Add Salt & Mix', icon: '\u{2728}', duration: 300, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: '20g fine sea salt + 50g warm water. Sprinkle salt, add water, squeeze and fold until incorporated (2\u20133 minutes).',
+    tip: 'Salt strengthens gluten and controls fermentation. Don\u2019t skip or reduce much.' },
+  { id: 5, key: 'bulkFermentation', name: 'Bulk Fermentation', icon: '\u{1F504}', duration: 14400, hasTimer: true, hasRepeatingAlerts: true,
+    instructions: '3\u20134 hours at 78\u201382\u00B0F. Every 35 minutes: stretch and fold (wet hands, grab one side, stretch up and fold over, rotate 90\u00B0, repeat 4 times). 6\u20138 turns total. Done when: increased 20\u201330%, airy and jiggly, holds shape.',
+    tip: 'Dough temperature is crucial. Aim for 78\u201382\u00B0F.' },
+  { id: 6, key: 'preshape', name: 'Pre-shape', icon: '\u{270B}', duration: 300, hasTimer: false, hasRepeatingAlerts: false,
+    instructions: 'Turn dough onto unfloured surface. Divide in half. Fold sides to middle, roll to create tension. Rest seam-side down.',
+    tip: 'Wet your bench scraper and hands rather than adding flour.' },
+  { id: 7, key: 'benchRest', name: 'Bench Rest', icon: '\u{23F8}', duration: 1500, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: 'Rest pre-shaped rounds uncovered 20\u201330 minutes. Gluten relaxes, dough becomes easier to shape.',
+    tip: 'Warm kitchen: 20 min. Cold kitchen: up to 30 min.' },
+  { id: 8, key: 'finalShape', name: 'Final Shape', icon: '\u{1F4D0}', duration: 600, hasTimer: false, hasRepeatingAlerts: false,
+    instructions: 'Flour top, flip, fold bottom up, fold sides in, roll away tucking. Create surface tension. Place seam-side UP in floured banneton.',
+    tip: 'Surface tension is key \u2014 the tighter the skin, the better the oven spring.' },
+  { id: 9, key: 'finalRise', name: 'Final Rise (Proof)', icon: '\u{2744}\uFE0F', duration: 43200, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: 'Cover loosely with plastic. Refrigerate 8\u201316 hours overnight. Develops complex flavors, makes scoring easier. In the morning, preheat Dutch oven at 500\u00B0F for 1 hour.',
+    tip: 'Poke test \u2014 dough should spring back slowly. Fast spring back = needs more time.' },
+  { id: 10, key: 'bakeLoaf1', name: 'Bake Loaf 1', icon: '\u{1F525}', duration: 1200, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: 'Remove loaf from fridge (bake cold). Turn onto parchment, score. Lower into hot Dutch oven (preheated 500\u00B0F). Cover. IMMEDIATELY reduce to 450\u00B0F.\n\nCovered: 20 min at 450\u00B0F (steam creates crust; do not peek).\nUncovered: 15+ min at 450\u00B0F until VERY deep golden brown.\n\nCool on rack 1+ hour before cutting.',
+    tip: 'Score decisively with a confident, swift motion.',
+    substeps: [
+      { title: 'Bake Covered', duration: 1200, instructions: 'With lid on at 450\u00B0F (reduce from 500\u00B0F immediately)' },
+      { title: 'Bake Uncovered', duration: 900, instructions: 'Lid off at 450\u00B0F until very deep golden brown' }
+    ] },
+  { id: 11, key: 'bakeLoaf2', name: 'Bake Loaf 2', icon: '\u{1F525}', duration: 1200, hasTimer: true, hasRepeatingAlerts: false,
+    instructions: 'Reheat Dutch oven at 500\u00B0F for 10\u201315 minutes. Same process as loaf 1. Second loaf often browns faster.',
+    tip: 'Second loaf can stay in fridge while first bakes.',
+    substeps: [
+      { title: 'Bake Covered', duration: 1200, instructions: 'With lid on at 450\u00B0F (reduce from 500\u00B0F immediately)' },
+      { title: 'Bake Uncovered', duration: 900, instructions: 'Lid off at 450\u00B0F until very deep golden brown' }
+    ] },
+  { id: 12, key: 'complete', name: 'Complete!', icon: '\u{2705}', duration: 0, hasTimer: false, hasRepeatingAlerts: false,
+    instructions: 'Congratulations! Let loaves cool completely (1+ hour). Store cut-side down. Best within 3 days. Freezes well.',
+    tip: 'Try adjusting hydration next time (more water = more open crumb, harder to handle).' }
+];
 
-    <footer>
-        <p>Based on the Tartine Bakery Method</p>
-    </footer>
+const BAKE_PHASES = PHASES.filter(p => p.key !== 'complete');
 
-    <script src="js/recipe.js"></script>
-    <script src="js/timer.js"></script>
-    <script src="js/app.js"></script>
+const PHASE_DESCRIPTIONS = {
+  makeLeaven: 'Starting fresh with leaven',
+  floatTest: 'Leaven is ready, testing now',
+  mixDough: 'About to mix the dough',
+  autolyse: 'Dough mixed, starting rest',
+  addSalt: 'Autolyse done, adding salt',
+  bulkFermentation: 'Starting bulk ferment',
+  preshape: 'Bulk done, pre-shaping',
+  benchRest: 'Pre-shaped, resting',
+  finalShape: 'Ready for final shape',
+  finalRise: 'Shaped, going in fridge',
+  bakeLoaf1: 'Oven hot, baking first loaf',
+  bakeLoaf2: 'First done, baking second'
+};
+
+// ===== INGREDIENTS =====
+const INGREDIENTS = {
+  leaven: ['1 tablespoon mature starter', '200g warm water (78\u00B0F)', '200g 50/50 bread flour & whole wheat flour'],
+  dough: ['700g + 50g warm water (80\u00B0F)', '200g leaven', '900g bread flour', '100g whole wheat flour', '20g fine sea salt']
+};
+
+// ===== UTILITY FUNCTIONS =====
+function uuid() { return crypto.randomUUID ? crypto.randomUUID() : 'xxxx-xxxx-xxxx'.replace(/x/g, () => Math.floor(Math.random()*16).toString(16)); }
+
+function formatTime(seconds) {
+  seconds = Math.max(0, Math.floor(seconds));
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function formatDurationShort(seconds) {
+  if (seconds >= 3600) {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    return m > 0 ? `${h}h ${m}m` : `${h}h`;
+  }
+  return `${Math.floor(seconds / 60)}m`;
+}
+
+function formatDurationLong(seconds) {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const parts = [];
+  if (h > 0) parts.push(`${h} hour${h !== 1 ? 's' : ''}`);
+  if (m > 0) parts.push(`${m} minute${m !== 1 ? 's' : ''}`);
+  return parts.join(' ') || '0 minutes';
+}
+
+function formatDate(ts) {
+  return new Date(ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+}
+
+function formatDateShort(ts) {
+  return new Date(ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function formatTimeShort(ts) {
+  return new Date(ts).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+}
+
+function durationDesc(startTs, endTs) {
+  if (!endTs) return 'In Progress';
+  const ms = endTs - startTs;
+  const hours = ms / 3600000;
+  if (hours < 24) return `${Math.round(hours)} hours`;
+  return `${Math.round(hours / 24)} days`;
+}
+
+function renderStars(rating, size = '1rem', interactive = false, onChange = null) {
+  let html = '<div class="stars">';
+  for (let i = 1; i <= 5; i++) {
+    const filled = i <= rating;
+    const cls = filled ? 'star star-filled' : 'star star-empty';
+    const click = interactive ? `onclick="event.stopPropagation(); (${onChange})(${i})"` : '';
+    const cursor = interactive ? 'style="cursor:pointer; font-size:' + size + '"' : `style="font-size:${size}"`;
+    html += `<span class="${cls}" ${click} ${cursor}>\u2605</span>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+// ===== STORAGE =====
+const STORAGE_KEYS = {
+  session: 'proof_active_session',
+  history: 'proof_bake_history',
+  photos: 'proof_photos'
+};
+
+function saveSession(session) {
+  localStorage.setItem(STORAGE_KEYS.session, JSON.stringify(session));
+}
+
+function loadSession() {
+  const d = localStorage.getItem(STORAGE_KEYS.session);
+  return d ? JSON.parse(d) : null;
+}
+
+function clearSession() {
+  localStorage.removeItem(STORAGE_KEYS.session);
+}
+
+function loadHistory() {
+  const d = localStorage.getItem(STORAGE_KEYS.history);
+  return d ? JSON.parse(d) : [];
+}
+
+function saveHistory(history) {
+  localStorage.setItem(STORAGE_KEYS.history, JSON.stringify(history));
+}
+
+function saveLog(log) {
+  const history = loadHistory();
+  const idx = history.findIndex(h => h.id === log.id);
+  if (idx >= 0) history[idx] = log;
+  else history.unshift(log);
+  saveHistory(history);
+}
+
+function deleteLog(logId) {
+  let history = loadHistory();
+  history = history.filter(h => h.id !== logId);
+  saveHistory(history);
+  // Clean up photos
+  const photos = loadPhotos();
+  const remaining = {};
+  for (const [k, v] of Object.entries(photos)) {
+    if (!k.startsWith(logId)) remaining[k] = v;
+  }
+  localStorage.setItem(STORAGE_KEYS.photos, JSON.stringify(remaining));
+}
+
+function savePhoto(logId, photoId, dataUrl) {
+  const photos = loadPhotos();
+  photos[`${logId}_${photoId}`] = dataUrl;
+  localStorage.setItem(STORAGE_KEYS.photos, JSON.stringify(photos));
+}
+
+function loadPhoto(logId, photoId) {
+  const photos = loadPhotos();
+  return photos[`${logId}_${photoId}`] || null;
+}
+
+function loadPhotos() {
+  const d = localStorage.getItem(STORAGE_KEYS.photos);
+  return d ? JSON.parse(d) : {};
+}
+
+// ===== WEATHER SERVICE =====
+async function fetchWeather() {
+  try {
+    const resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.8781&longitude=-87.6298&current=temperature_2m,relative_humidity_2m&temperature_unit=fahrenheit&timezone=America%2FChicago');
+    const data = await resp.json();
+    return {
+      temperatureF: Math.round(data.current.temperature_2m),
+      humidity: Math.round(data.current.relative_humidity_2m),
+      location: 'Chicago, IL',
+      timestamp: Date.now()
+    };
+  } catch (e) {
+    console.log('Weather fetch failed:', e);
+    return null;
+  }
+}
+
+// ===== NOTIFICATIONS =====
+let notifPermission = Notification.permission || 'default';
+
+async function requestNotifPermission() {
+  if ('Notification' in window && Notification.permission === 'default') {
+    notifPermission = await Notification.requestPermission();
+  }
+}
+
+const scheduledNotifs = new Map();
+const scheduledTurnAlarms = new Map();
+
+function cancelAllNotifs() {
+  for (const [id, timer] of scheduledNotifs) clearTimeout(timer);
+  scheduledNotifs.clear();
+  for (const [id, timer] of scheduledTurnAlarms) clearTimeout(timer);
+  scheduledTurnAlarms.clear();
+}
+
+function scheduleNotif(id, title, body, delayMs) {
+  if (notifPermission !== 'granted' || delayMs <= 0) return;
+  const timer = setTimeout(() => {
+    new Notification(title, { body, icon: '\u{1F35E}', tag: id });
+    scheduledNotifs.delete(id);
+  }, delayMs);
+  scheduledNotifs.set(id, timer);
+}
+
+// ===== TURN ALARMS =====
+function scheduleTurnAlarm(turnNum, delayMs) {
+  if (delayMs <= 0) return;
+  const timer = setTimeout(() => {
+    scheduledTurnAlarms.delete(`turn_alarm_${turnNum}`);
+    playTurnAlarm(turnNum);
+  }, delayMs);
+  scheduledTurnAlarms.set(`turn_alarm_${turnNum}`, timer);
+}
+
+function playTurnAlarm(turnNum) {
+  // Play 3 quick beeps
+  for (let i = 0; i < 3; i++) setTimeout(() => beep(), i * 300);
+  if (navigator.vibrate) navigator.vibrate([200, 150, 200, 150, 200]);
+  // Show in-app banner
+  showTurnBanner(turnNum);
+}
+
+function showTurnBanner(turnNum) {
+  // Remove any existing banner
+  const existing = document.getElementById('turn-banner');
+  if (existing) existing.remove();
+
+  const banner = document.createElement('div');
+  banner.id = 'turn-banner';
+  banner.style.cssText = `
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: var(--terracotta); color: #fff; padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-family); font-weight: 600; font-size: 1rem;
+    animation: slideDown 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  `;
+  banner.innerHTML = `
+    <span>\u{1F504} Time for Turn #${turnNum}! Stretch & fold</span>
+    <button onclick="this.parentElement.remove()" style="background:rgba(255,255,255,0.25);border:none;color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-family:var(--font-family);font-weight:600">OK</button>
+  `;
+  document.body.appendChild(banner);
+
+  // Auto-dismiss after 30 seconds
+  setTimeout(() => { if (banner.parentElement) banner.remove(); }, 30000);
+}
+
+// Add slideDown animation
+if (!document.getElementById('turn-banner-style')) {
+  const style = document.createElement('style');
+  style.id = 'turn-banner-style';
+  style.textContent = '@keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }';
+  document.head.appendChild(style);
+}
+
+// ===== ALARM SOUND =====
+let alarmInterval = null;
+let alarmCtx = null;
+
+function playAlarm() {
+  stopAlarm();
+  let ticks = 0;
+  alarmInterval = setInterval(() => {
+    if (ticks >= 30) { stopAlarm(); return; }
+    beep();
+    if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
+    ticks++;
+  }, 1000);
+}
+
+function stopAlarm() {
+  if (alarmInterval) { clearInterval(alarmInterval); alarmInterval = null; }
+}
+
+function beep() {
+  try {
+    if (!alarmCtx) alarmCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = alarmCtx.createOscillator();
+    const gain = alarmCtx.createGain();
+    osc.connect(gain);
+    gain.connect(alarmCtx.destination);
+    osc.frequency.value = 880;
+    osc.type = 'triangle';
+    gain.gain.value = 0.3;
+    osc.start();
+    gain.gain.exponentialRampToValueAtTime(0.001, alarmCtx.currentTime + 0.3);
+    osc.stop(alarmCtx.currentTime + 0.3);
+  } catch (e) {}
+}
+
+// ===== APP STATE =====
+let state = {
+  view: 'home', // home | bake | history | historyDetail
+  session: null, // active bake session
+  weather: null,
+  timerInterval: null,
+  alarmTriggered: false,
+  selectedLog: null, // for history detail
+  modal: null // recipe | picker | adjust | note | photo | completion | jump | phaseDetail
+};
+
+// ===== SESSION MANAGEMENT =====
+function createSession(startPhaseId = 0) {
+  const phase = PHASES[startPhaseId];
+  const log = {
+    id: uuid(),
+    startDate: Date.now(),
+    endDate: null,
+    startingPhase: startPhaseId,
+    photos: [],
+    notes: [],
+    weatherReadings: [],
+    phaseTimestamps: { [startPhaseId]: Date.now() },
+    isComplete: false,
+    rating: null,
+    overallNotes: null
+  };
+  const session = {
+    currentPhaseId: startPhaseId,
+    phaseStartTime: Date.now(),
+    adjustedDuration: null,
+    turnCount: 0,
+    bakeSubstepIndex: 0,
+    isActive: true,
+    isPaused: false,
+    pausedTimeRemaining: null,
+    logId: log.id
+  };
+  saveLog(log);
+  saveSession(session);
+  state.session = session;
+  state.alarmTriggered = false;
+  return { session, log };
+}
+
+function getCurrentLog() {
+  if (!state.session) return null;
+  const history = loadHistory();
+  return history.find(h => h.id === state.session.logId) || null;
+}
+
+function getCurrentDuration() {
+  const s = state.session;
+  if (!s) return 0;
+  if (s.adjustedDuration != null) return s.adjustedDuration;
+  const phase = PHASES[s.currentPhaseId];
+  if (phase.substeps && phase.substeps[s.bakeSubstepIndex]) {
+    return phase.substeps[s.bakeSubstepIndex].duration;
+  }
+  return phase.duration;
+}
+
+function getElapsed() {
+  const s = state.session;
+  if (!s || !s.phaseStartTime) return 0;
+  if (s.isPaused && s.pausedTimeRemaining != null) {
+    return getCurrentDuration() - s.pausedTimeRemaining;
+  }
+  return (Date.now() - s.phaseStartTime) / 1000;
+}
+
+function getRemaining() {
+  const s = state.session;
+  if (!s) return 0;
+  if (s.isPaused && s.pausedTimeRemaining != null) return s.pausedTimeRemaining;
+  return Math.max(0, getCurrentDuration() - getElapsed());
+}
+
+function getProgress() {
+  const dur = getCurrentDuration();
+  if (dur <= 0) return 1;
+  return Math.min(1, getElapsed() / dur);
+}
+
+function togglePause() {
+  const s = state.session;
+  if (!s) return;
+  if (s.isPaused) {
+    // Resume
+    const remaining = s.pausedTimeRemaining;
+    s.phaseStartTime = Date.now() - (getCurrentDuration() - remaining) * 1000;
+    s.isPaused = false;
+    s.pausedTimeRemaining = null;
+  } else {
+    // Pause
+    s.pausedTimeRemaining = getRemaining();
+    s.isPaused = true;
+  }
+  state.alarmTriggered = false;
+  saveSession(s);
+  schedulePhaseNotifs();
+  render();
+}
+
+function startPhase(phaseId) {
+  const s = state.session;
+  if (!s) return;
+  s.currentPhaseId = phaseId;
+  s.phaseStartTime = Date.now();
+  s.adjustedDuration = null;
+  s.isPaused = false;
+  s.pausedTimeRemaining = null;
+  s.bakeSubstepIndex = 0;
+  if (PHASES[phaseId].key === 'bulkFermentation') s.turnCount = 0;
+  state.alarmTriggered = false;
+
+  const log = getCurrentLog();
+  if (log) {
+    log.phaseTimestamps[phaseId] = Date.now();
+    saveLog(log);
+  }
+  saveSession(s);
+  cancelAllNotifs();
+  schedulePhaseNotifs();
+}
+
+function advancePhase() {
+  const s = state.session;
+  if (!s) return;
+  const nextId = s.currentPhaseId + 1;
+  if (nextId >= PHASES.length) {
+    completeBake();
+    return;
+  }
+  stopAlarm();
+  if (PHASES[nextId].key === 'complete') {
+    state.modal = 'completion';
+    render();
+    return;
+  }
+  startPhase(nextId);
+  render();
+}
+
+function goBack() {
+  const s = state.session;
+  if (!s || s.currentPhaseId <= 0) return;
+  stopAlarm();
+  startPhase(s.currentPhaseId - 1);
+  render();
+}
+
+function advanceSubstep() {
+  const s = state.session;
+  if (!s) return;
+  stopAlarm();
+  s.bakeSubstepIndex++;
+  s.phaseStartTime = Date.now();
+  s.adjustedDuration = null;
+  s.isPaused = false;
+  s.pausedTimeRemaining = null;
+  state.alarmTriggered = false;
+  saveSession(s);
+  cancelAllNotifs();
+  schedulePhaseNotifs();
+  render();
+}
+
+function completeBake(rating = null, notes = null) {
+  const s = state.session;
+  const log = getCurrentLog();
+  if (log) {
+    log.endDate = Date.now();
+    log.isComplete = true;
+    log.rating = rating;
+    log.overallNotes = notes;
+    saveLog(log);
+  }
+  stopAlarm();
+  cancelAllNotifs();
+  clearSession();
+  state.session = null;
+  state.modal = null;
+  state.view = 'home';
+  render();
+}
+
+function adjustDuration(minutes) {
+  const s = state.session;
+  if (!s) return;
+  const current = getCurrentDuration();
+  const newDur = Math.max(60, current + minutes * 60);
+  s.adjustedDuration = newDur;
+  if (s.isPaused) {
+    s.pausedTimeRemaining = Math.max(0, Math.min(s.pausedTimeRemaining + minutes * 60, newDur));
+  }
+  state.alarmTriggered = false;
+  saveSession(s);
+  cancelAllNotifs();
+  schedulePhaseNotifs();
+  render();
+}
+
+function recordTurn() {
+  const s = state.session;
+  if (!s) return;
+  s.turnCount = Math.min(s.turnCount + 1, 8);
+  saveSession(s);
+  render();
+}
+
+function schedulePhaseNotifs() {
+  cancelAllNotifs();
+  const s = state.session;
+  if (!s || !PHASES[s.currentPhaseId].hasTimer || s.isPaused) return;
+  const remaining = getRemaining();
+  const phase = PHASES[s.currentPhaseId];
+
+  // Phase complete notification
+  const bodies = {
+    makeLeaven: 'Check your leaven with the float test.',
+    autolyse: 'Ready to add salt and mix.',
+    bulkFermentation: 'Bulk fermentation complete. Time to pre-shape!',
+    benchRest: 'Dough has relaxed. Ready for final shaping.',
+    finalRise: 'Time to preheat your Dutch oven and bake!',
+    bakeLoaf1: 'Your loaf should be ready. Check for golden color!',
+    bakeLoaf2: 'Your loaf should be ready. Check for golden color!'
+  };
+  const body = bodies[phase.key] || 'Ready for the next step.';
+  scheduleNotif(`phase_${phase.id}`, `${phase.name} Complete!`, body, remaining * 1000);
+
+  // Turn reminders for bulk fermentation (every 35 minutes)
+  if (phase.key === 'bulkFermentation') {
+    const totalDur = getCurrentDuration();
+    const interval = 2100; // 35 minutes
+    const count = Math.floor(totalDur / interval);
+    for (let i = 1; i <= count; i++) {
+      const turnDelay = (i * interval) - getElapsed();
+      if (turnDelay > 0) {
+        const turnsLeft = count - i;
+        scheduleNotif(`turn_${i}`, `Time for Turn #${i}!`, `Stretch and fold your dough. ${turnsLeft} turns remaining.`, turnDelay * 1000);
+        // Schedule in-app alarm beep for this turn
+        scheduleTurnAlarm(i, turnDelay * 1000);
+      }
+    }
+  }
+}
+
+// ===== TIMER TICK =====
+function startTimer() {
+  if (state.timerInterval) return;
+  state.timerInterval = setInterval(() => {
+    if (!state.session || state.view !== 'bake') return;
+    const phase = PHASES[state.session.currentPhaseId];
+    if (phase.hasTimer && !state.session.isPaused && getRemaining() <= 0 && !state.alarmTriggered) {
+      state.alarmTriggered = true;
+      playAlarm();
+      // For substep phases, show alert
+      if (phase.substeps) {
+        stopAlarm();
+        const sub = phase.substeps[state.session.bakeSubstepIndex];
+        const isLast = state.session.bakeSubstepIndex >= phase.substeps.length - 1;
+        state.modal = 'substepComplete';
+        render();
+        return;
+      }
+    }
+    // Only re-render the timer parts for efficiency
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function stopTimer() {
+  if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+}
+
+function updateTimerDisplay() {
+  const ring = document.getElementById('timer-ring-progress');
+  const timeEl = document.getElementById('timer-time');
+  const statusEl = document.getElementById('timer-status');
+  const elapsedEl = document.getElementById('timer-elapsed');
+  const totalEl = document.getElementById('timer-total');
+
+  if (!ring || !state.session) return;
+
+  const remaining = getRemaining();
+  const progress = getProgress();
+  const phase = PHASES[state.session.currentPhaseId];
+  const isComplete = remaining <= 0 && phase.hasTimer;
+
+  // Update ring
+  const circumference = 2 * Math.PI * 115;
+  ring.style.strokeDashoffset = circumference * (1 - progress);
+  ring.style.stroke = isComplete ? 'var(--success)' : 'var(--terracotta)';
+
+  if (timeEl) {
+    if (isComplete) {
+      timeEl.innerHTML = '<span style="font-size:3rem; color:var(--success)">\u2713</span>';
+      if (statusEl) statusEl.textContent = 'Complete!';
+    } else {
+      timeEl.textContent = formatTime(remaining);
+      if (statusEl) {
+        statusEl.textContent = state.session.isPaused ? '\u23F8 Paused' : 'remaining';
+        statusEl.style.color = state.session.isPaused ? 'var(--warning)' : 'var(--text-secondary)';
+      }
+    }
+  }
+  if (elapsedEl) elapsedEl.textContent = formatTime(getElapsed());
+  if (totalEl) totalEl.textContent = formatTime(getCurrentDuration());
+}
+
+// ===== RENDER ENGINE =====
+function render() {
+  const app = document.getElementById('app');
+  let html = '';
+
+  switch (state.view) {
+    case 'home': html = renderHome(); break;
+    case 'bake': html = renderBake(); startTimer(); break;
+    case 'history': html = renderHistory(); break;
+    case 'historyDetail': html = renderHistoryDetail(); break;
+  }
+
+  if (state.view !== 'bake') stopTimer();
+
+  // Add modal
+  if (state.modal) html += renderModal();
+
+  app.innerHTML = html;
+
+  // Post-render: set up timer ring animation
+  if (state.view === 'bake') {
+    requestAnimationFrame(updateTimerDisplay);
+  }
+}
+
+// ===== HOME VIEW =====
+function renderHome() {
+  const saved = loadSession();
+  const hasActive = saved && saved.isActive;
+
+  let html = '<div class="view stack gap-lg">';
+
+  // Hero
+  html += `
+    <div class="stack center gap-md" style="padding-top:20px">
+      <div class="hero-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <h1 class="title-font">Proof</h1>
+      <p class="body-font text-secondary" style="text-align:center">Your guide to the perfect country loaf</p>
+    </div>`;
+
+  // Actions
+  html += '<div class="stack gap-md" style="margin-top:8px">';
+
+  if (hasActive) {
+    const phaseName = PHASES[saved.currentPhaseId].name;
+    html += `<button class="btn btn-primary btn-full" onclick="resumeBake()">
+      Continue Bake \u2014 ${phaseName} \u2192
+    </button>`;
+    html += `<button class="btn btn-secondary btn-full" onclick="startNewBake()">
+      <span>\u2295</span> Start New Bake
+    </button>`;
+  } else {
+    html += `<button class="btn btn-primary btn-full" onclick="startNewBake()">
+      <span>\u2295</span> Start Baking
+    </button>`;
+  }
+
+  html += `<button class="btn btn-secondary btn-full" onclick="state.modal='picker'; render()">
+    \u2192 Start from Step...
+  </button>`;
+
+  html += `<div class="row gap-md">
+    <button class="btn btn-subtle" style="flex:1" onclick="state.modal='recipe'; render()">
+      \u{1F4D6} Recipe
+    </button>
+    <button class="btn btn-subtle" style="flex:1" onclick="state.view='history'; render()">
+      \u{1F552} History
+    </button>
+  </div>`;
+
+  html += '</div>';
+
+  // Journey overview
+  html += '<div class="card stack gap-sm">';
+  html += '<h2 class="headline-font">The Journey</h2>';
+
+  BAKE_PHASES.forEach((phase, i) => {
+    html += `<div class="journey-row" onclick="startFromPhase(${phase.id})">
+      <span class="journey-num">${i + 1}</span>
+      <span class="journey-icon">${phase.icon}</span>
+      <span class="journey-name body-font">${phase.name}</span>
+      ${phase.hasTimer ? `<span class="journey-dur">${formatDurationShort(phase.duration)}</span>` : ''}
+      <span class="text-secondary" style="font-size:0.8rem">\u203A</span>
+    </div>`;
+    if (i < BAKE_PHASES.length - 1) html += '<hr class="journey-divider">';
+  });
+
+  html += '</div>';
+  html += '</div>';
+  return html;
+}
+
+// ===== BAKE VIEW =====
+function renderBake() {
+  const s = state.session;
+  if (!s) { state.view = 'home'; return renderHome(); }
+
+  const phase = PHASES[s.currentPhaseId];
+  const log = getCurrentLog();
+  const remaining = getRemaining();
+  const progress = getProgress();
+  const isComplete = remaining <= 0 && phase.hasTimer;
+
+  let html = '<div class="view stack">';
+
+  // Toolbar
+  html += `<div class="row spread" style="padding:8px 0">
+    <button class="timer-btn" style="width:36px;height:36px;font-size:1rem" onclick="quitBake()">\u2715</button>
+    <div class="row gap-sm">
+      <button class="timer-btn" style="width:36px;height:36px;font-size:0.9rem" onclick="refreshWeather()">\u21BB</button>
+      <button class="timer-btn" style="width:36px;height:36px;font-size:0.9rem" onclick="state.modal='phaseDetail'; render()">\u2139</button>
+    </div>
+  </div>`;
+
+  // Phase progress bar
+  html += '<div class="phase-bar" onclick="state.modal=\'jump\'; render()" style="cursor:pointer">';
+  BAKE_PHASES.forEach(p => {
+    let cls = 'phase-segment ';
+    if (p.id < s.currentPhaseId) cls += 'phase-complete';
+    else if (p.id === s.currentPhaseId) cls += 'phase-current';
+    else cls += 'phase-future';
+    html += `<div class="${cls}"></div>`;
+  });
+  html += '</div>';
+
+  html += '<div class="stack gap-lg" style="padding-top:8px">';
+
+  // Weather badge
+  if (state.weather) {
+    html += `<div class="center">
+      <div class="weather-badge">
+        <span>\u{1F321}\uFE0F ${state.weather.temperatureF}\u00B0F</span>
+        <span>\u{1F4A7} ${state.weather.humidity}%</span>
+        <span class="text-secondary">${state.weather.location}</span>
+      </div>
+    </div>`;
+  }
+
+  // Phase header
+  html += `<div class="stack center gap-sm">
+    <div class="phase-icon-circle">${phase.icon}</div>
+    <h1 class="title-font">${phase.name}</h1>
+  </div>`;
+
+  // Timer or manual step
+  if (phase.hasTimer) {
+    const circumference = 2 * Math.PI * 115;
+    html += `<div class="timer-ring-container">
+      <svg viewBox="0 0 260 260">
+        <circle cx="130" cy="130" r="115" fill="none" stroke="var(--light-tan)" stroke-width="20"/>
+        <circle id="timer-ring-progress" cx="130" cy="130" r="115" fill="none"
+          stroke="${isComplete ? 'var(--success)' : 'var(--terracotta)'}" stroke-width="20"
+          stroke-linecap="round" stroke-dasharray="${circumference}"
+          stroke-dashoffset="${circumference * (1 - progress)}"
+          transform="rotate(-90 130 130)"
+          style="transition: stroke-dashoffset 0.3s ease"/>
+      </svg>
+      <div class="timer-ring-center">
+        <span id="timer-time" class="timer-font">${isComplete ? '<span style="font-size:3rem;color:var(--success)">\u2713</span>' : formatTime(remaining)}</span>
+        <span id="timer-status" class="caption-font" style="color:${s.isPaused ? 'var(--warning)' : 'var(--text-secondary)'}">
+          ${isComplete ? 'Complete!' : s.isPaused ? '\u23F8 Paused' : 'remaining'}
+        </span>
+      </div>
+    </div>`;
+
+    // Timer controls
+    html += `<div class="timer-controls">
+      <button class="timer-btn" onclick="togglePause()">${s.isPaused ? '\u25B6' : '\u23F8'}</button>
+      <button class="timer-btn" onclick="state.modal='adjust'; render()">\u2630</button>
+      <button class="timer-btn" onclick="skipTimer()">\u23ED</button>
+    </div>`;
+
+    // Time info
+    html += `<div class="time-info" style="padding:0 20px">
+      <div class="stack center">
+        <span class="time-info-label">Elapsed</span>
+        <span id="timer-elapsed" class="time-info-value">${formatTime(getElapsed())}</span>
+      </div>
+      <div class="stack center">
+        <span class="time-info-label">Total</span>
+        <span id="timer-total" class="time-info-value">${formatTime(getCurrentDuration())}</span>
+      </div>
+    </div>`;
+  } else {
+    // Manual step
+    html += `<div class="stack center gap-md" style="padding:40px 0">
+      <span style="font-size:3rem">\u{1F91A}</span>
+      <h2 class="headline-font">Manual Step</h2>
+      <p class="body-font text-secondary center">Complete this step when ready, then tap "Next Phase"</p>
+    </div>`;
+  }
+
+  // Turn tracker (bulk fermentation)
+  if (phase.key === 'bulkFermentation') {
+    html += `<div class="card stack center gap-md">
+      <div class="turn-dots">`;
+    for (let i = 0; i < 8; i++) {
+      html += `<div class="turn-dot ${i < s.turnCount ? 'turn-dot-filled' : 'turn-dot-empty'}"></div>`;
+    }
+    html += `</div>
+      <span class="caption-font text-secondary">Turn ${s.turnCount} of 8</span>
+      <button class="btn btn-primary btn-sm" onclick="recordTurn()">\u{1F504} Record Turn</button>
+      <span class="caption-font text-secondary">Tap after each stretch & fold</span>
+    </div>`;
+  }
+
+  // Bake substeps
+  if (phase.substeps) {
+    html += '<div class="card stack gap-sm">';
+    html += '<h3 class="headline-font">Baking Steps</h3>';
+    phase.substeps.forEach((sub, i) => {
+      const completed = i < s.bakeSubstepIndex;
+      const current = i === s.bakeSubstepIndex;
+      html += `<div class="substep-row ${current ? 'substep-current' : ''}">
+        <span class="substep-icon">${completed ? '<span class="text-success">\u2713</span>' : current ? '<span class="text-terracotta">\u25CF</span>' : '<span class="text-secondary">\u25CB</span>'}</span>
+        <div class="stack gap-sm" style="flex:1">
+          <div class="row gap-sm">
+            <span class="headline-font">${sub.title}</span>
+            ${current ? '<span class="substep-badge">CURRENT</span>' : ''}
+          </div>
+          <span class="caption-font text-secondary">${sub.instructions}</span>
+          <span class="caption-font text-secondary">${Math.floor(sub.duration / 60)} min</span>
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  // Journal actions
+  html += `<div class="row gap-md">
+    <button class="journal-btn" onclick="state.modal='photo'; render()">\u{1F4F7} Add Photo</button>
+    <button class="journal-btn" onclick="state.modal='note'; render()">\u{1F4DD} Add Note</button>
+  </div>`;
+
+  // Phase journal (photos & notes for current phase)
+  if (log) {
+    const phasePhotos = log.photos.filter(p => p.phase === s.currentPhaseId);
+    const phaseNotes = log.notes.filter(n => n.phase === s.currentPhaseId);
+    if (phasePhotos.length > 0 || phaseNotes.length > 0) {
+      html += '<div class="card stack gap-sm">';
+      html += '<h3 class="headline-font">This Phase</h3>';
+      if (phasePhotos.length > 0) {
+        html += '<div class="photo-scroll">';
+        phasePhotos.forEach(p => {
+          const src = loadPhoto(log.id, p.id);
+          if (src) {
+            html += `<div class="stack center gap-sm">
+              <img src="${src}" class="photo-thumb" alt="Bake photo">
+              ${p.note ? `<span class="caption-font text-secondary" style="width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.note}</span>` : ''}
+            </div>`;
+          }
+        });
+        html += '</div>';
+      }
+      if (phaseNotes.length > 0) {
+        phaseNotes.forEach(n => {
+          html += `<div class="note-item">
+            <span class="note-icon">\u{1F4DD}</span>
+            <span class="body-font">${n.text}</span>
+          </div>`;
+        });
+      }
+      html += '</div>';
+    }
+  }
+
+  // Instructions preview
+  html += `<div class="card stack gap-sm">
+    <div class="row spread">
+      <h3 class="headline-font">Instructions</h3>
+      <button class="modal-close caption-font" onclick="state.modal='phaseDetail'; render()">See All</button>
+    </div>
+    <p class="body-font text-secondary" style="display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden">${phase.instructions.replace(/\n/g, '<br>')}</p>
+    ${phase.tip ? `<div class="tip-box">\u{1F4A1} ${phase.tip}</div>` : ''}
+  </div>`;
+
+  // Navigation
+  html += '<div class="row spread" style="padding:8px 0 24px">';
+  if (s.currentPhaseId > 0) {
+    html += `<button class="btn btn-secondary" onclick="goBack()">\u2190 Back</button>`;
+  } else {
+    html += '<div></div>';
+  }
+
+  const nextPhase = PHASES[s.currentPhaseId + 1];
+  if (!nextPhase || nextPhase.key === 'complete') {
+    html += `<button class="btn btn-primary" onclick="state.modal='completion'; render()">\u2713 Complete!</button>`;
+  } else {
+    html += `<button class="btn btn-primary" onclick="advancePhase()">Next Phase \u2192</button>`;
+  }
+  html += '</div>';
+
+  html += '</div></div>';
+  return html;
+}
+
+// ===== HISTORY VIEW =====
+function renderHistory() {
+  const history = loadHistory();
+
+  let html = '<div class="view stack gap-md">';
+  html += `<div class="row spread" style="padding:8px 0">
+    <button class="modal-close" onclick="state.view='home'; render()">\u2190 Back</button>
+    <h2 class="headline-font">Bake History</h2>
+    <div style="width:40px"></div>
+  </div>`;
+
+  if (history.length === 0) {
+    html += `<div class="stack center gap-md" style="padding:60px 0">
+      <span style="font-size:3.5rem">\u{1F4D5}</span>
+      <h2 class="headline-font">No Bakes Yet</h2>
+      <p class="body-font text-secondary center">Your bake history will appear here.<br>Start a bake to begin tracking!</p>
+    </div>`;
+  } else {
+    history.forEach(log => {
+      html += `<div class="card history-card stack gap-sm" onclick="viewLogDetail('${log.id}')">
+        <div class="row spread">
+          <span class="headline-font">${formatDateShort(log.startDate)}</span>
+          <span class="caption-font text-secondary">${durationDesc(log.startDate, log.endDate)}</span>
+        </div>`;
+
+      if (log.rating) {
+        html += renderStars(log.rating, '0.8rem');
+      }
+
+      if (log.weatherReadings && log.weatherReadings.length > 0) {
+        const w = log.weatherReadings[log.weatherReadings.length - 1];
+        html += `<div class="row gap-md caption-font text-secondary">
+          <span>\u{1F321}\uFE0F ${w.temperatureF}\u00B0F</span>
+          <span>\u{1F4A7} ${w.humidity}%</span>
+        </div>`;
+      }
+
+      if (log.photos && log.photos.length > 0) {
+        html += '<div class="photo-scroll">';
+        const showPhotos = log.photos.slice(0, 5);
+        showPhotos.forEach(p => {
+          const src = loadPhoto(log.id, p.id);
+          if (src) html += `<img src="${src}" class="photo-thumb-sm" alt="">`;
+        });
+        if (log.photos.length > 5) {
+          html += `<div class="photo-overflow">+${log.photos.length - 5}</div>`;
+        }
+        html += '</div>';
+      }
+
+      if (log.startingPhase > 0) {
+        html += `<span class="caption-font text-terracotta">Started from: ${PHASES[log.startingPhase].name}</span>`;
+      }
+
+      html += '</div>';
+    });
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// ===== HISTORY DETAIL =====
+function renderHistoryDetail() {
+  const log = state.selectedLog;
+  if (!log) { state.view = 'history'; return renderHistory(); }
+
+  let html = '<div class="view stack gap-md">';
+  html += `<div class="row spread" style="padding:8px 0">
+    <button class="modal-close" onclick="state.view='history'; render()">\u2190 Back</button>
+    <h2 class="headline-font">Bake Details</h2>
+    <button class="modal-close" style="color:#c44" onclick="if(confirm('Delete this bake?')){deleteLog('${log.id}');state.view='history';render()}">Delete</button>
+  </div>`;
+
+  // Header card
+  html += `<div class="card stack gap-sm">
+    <h2 class="headline-font">${formatDate(log.startDate)}</h2>
+    <div class="row gap-md caption-font text-secondary">
+      <span>${durationDesc(log.startDate, log.endDate)}</span>
+      <span>Started: ${PHASES[log.startingPhase].name}</span>
+    </div>
+    ${log.rating ? renderStars(log.rating) : ''}
+  </div>`;
+
+  // Weather
+  if (log.weatherReadings && log.weatherReadings.length > 0) {
+    html += '<div class="card stack gap-sm">';
+    html += '<h3 class="headline-font">Weather Conditions</h3>';
+    log.weatherReadings.forEach(w => {
+      html += `<div class="row spread caption-font">
+        <span>${formatTimeShort(w.timestamp)}</span>
+        <span>${w.temperatureF}\u00B0F</span>
+        <span>${w.humidity}%</span>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  // Photos grouped by phase
+  if (log.photos && log.photos.length > 0) {
+    html += '<div class="card stack gap-sm">';
+    html += '<h3 class="headline-font">Photos</h3>';
+    const phaseGroups = {};
+    log.photos.forEach(p => {
+      if (!phaseGroups[p.phase]) phaseGroups[p.phase] = [];
+      phaseGroups[p.phase].push(p);
+    });
+    for (const [phaseId, photos] of Object.entries(phaseGroups)) {
+      html += `<span class="caption-font text-terracotta">${PHASES[phaseId].name}</span>`;
+      html += '<div class="photo-scroll">';
+      photos.forEach(p => {
+        const src = loadPhoto(log.id, p.id);
+        if (src) {
+          html += `<div class="stack center gap-sm">
+            <img src="${src}" class="photo-thumb-lg" alt="">
+            ${p.note ? `<span class="caption-font text-secondary" style="width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.note}</span>` : ''}
+          </div>`;
+        }
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+
+  // Notes
+  if (log.notes && log.notes.length > 0) {
+    html += '<div class="card stack gap-sm">';
+    html += '<h3 class="headline-font">Notes</h3>';
+    log.notes.forEach(n => {
+      html += `<div class="note-item stack gap-sm">
+        <div class="row gap-sm">
+          <span class="caption-font text-terracotta">${PHASES[n.phase].name}</span>
+          <span class="caption-font text-secondary">${formatTimeShort(n.timestamp)}</span>
+        </div>
+        <span class="body-font">${n.text}</span>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  // Final thoughts
+  if (log.overallNotes) {
+    html += `<div class="card stack gap-sm">
+      <h3 class="headline-font">Final Thoughts</h3>
+      <p class="body-font">${log.overallNotes}</p>
+    </div>`;
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// ===== MODALS =====
+function renderModal() {
+  let content = '';
+
+  switch (state.modal) {
+    case 'recipe': content = renderRecipeModal(); break;
+    case 'picker': content = renderPickerModal(); break;
+    case 'adjust': content = renderAdjustModal(); break;
+    case 'note': content = renderNoteModal(); break;
+    case 'photo': content = renderPhotoModal(); break;
+    case 'completion': content = renderCompletionModal(); break;
+    case 'jump': content = renderJumpModal(); break;
+    case 'phaseDetail': content = renderPhaseDetailModal(); break;
+    case 'substepComplete': content = renderSubstepCompleteModal(); break;
+    case 'quit': content = renderQuitModal(); break;
+    default: return '';
+  }
+
+  return `<div class="modal-overlay" onclick="if(event.target===this){closeModal()}">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-handle"></div>
+      ${content}
+    </div>
+  </div>`;
+}
+
+function closeModal() {
+  state.modal = null;
+  render();
+}
+
+function renderRecipeModal() {
+  let html = `<div class="modal-header">
+    <h2 class="headline-font">Tartine Country Sourdough</h2>
+    <button class="modal-close" onclick="closeModal()">Done</button>
+  </div>`;
+
+  // Ingredients
+  html += '<div class="card stack gap-sm" style="margin-bottom:16px">';
+  html += '<h3 class="headline-font">Leaven</h3>';
+  INGREDIENTS.leaven.forEach(i => html += `<span class="body-font text-secondary">\u2022 ${i}</span>`);
+  html += '<h3 class="headline-font" style="margin-top:12px">Dough</h3>';
+  INGREDIENTS.dough.forEach(i => html += `<span class="body-font text-secondary">\u2022 ${i}</span>`);
+  html += '</div>';
+
+  BAKE_PHASES.forEach(phase => {
+    html += `<div class="card stack gap-sm" style="margin-bottom:12px">
+      <div class="row gap-sm">
+        <span style="font-size:1.3rem">${phase.icon}</span>
+        <span class="headline-font">${phase.name}</span>
+        ${phase.hasTimer ? `<span class="caption-font text-secondary">${formatDurationShort(phase.duration)}</span>` : ''}
+      </div>
+      <p class="body-font text-secondary" style="display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden">${phase.instructions.replace(/\n/g, '<br>')}</p>
+    </div>`;
+  });
+
+  return html;
+}
+
+function renderPickerModal() {
+  let html = `<div class="modal-header">
+    <button class="modal-close" onclick="closeModal()">Cancel</button>
+    <h2 class="headline-font">Start From Step</h2>
+    <div style="width:50px"></div>
+  </div>`;
+
+  html += '<p class="body-font text-secondary" style="margin-bottom:16px">Where are you in your bake?</p>';
+
+  BAKE_PHASES.forEach(phase => {
+    html += `<div class="card row gap-md" style="margin-bottom:8px;cursor:pointer" onclick="startFromPhase(${phase.id}); closeModal()">
+      <div style="width:50px;height:50px;border-radius:50%;background:var(--terracotta-15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">${phase.icon}</div>
+      <div class="stack gap-sm" style="flex:1">
+        <span class="headline-font">${phase.name}</span>
+        <span class="caption-font text-secondary">${PHASE_DESCRIPTIONS[phase.key]}</span>
+      </div>
+      <span class="text-terracotta">\u203A</span>
+    </div>`;
+  });
+
+  return html;
+}
+
+function renderAdjustModal() {
+  const dur = getCurrentDuration();
+  let html = `<div class="modal-header">
+    <h2 class="headline-font">Adjust Duration</h2>
+    <button class="modal-close" onclick="closeModal()">Done</button>
+  </div>`;
+
+  html += `<p class="body-font text-secondary center" style="margin-bottom:16px">Current: ${formatTime(dur)}</p>`;
+
+  html += '<div class="row gap-sm" style="justify-content:center;margin-bottom:12px">';
+  html += `<button class="btn btn-secondary btn-sm" onclick="adjustDuration(-15)">-15m</button>`;
+  html += `<button class="btn btn-secondary btn-sm" onclick="adjustDuration(-5)">-5m</button>`;
+  html += `<button class="btn btn-secondary btn-sm" onclick="adjustDuration(5)">+5m</button>`;
+  html += `<button class="btn btn-secondary btn-sm" onclick="adjustDuration(15)">+15m</button>`;
+  html += '</div>';
+
+  if (dur >= 3600) {
+    html += '<div class="row gap-sm" style="justify-content:center">';
+    html += `<button class="btn btn-secondary btn-sm" onclick="adjustDuration(-60)">-1h</button>`;
+    html += `<button class="btn btn-secondary btn-sm" onclick="adjustDuration(60)">+1h</button>`;
+    html += '</div>';
+  }
+
+  return html;
+}
+
+function renderNoteModal() {
+  const s = state.session;
+  const phase = s ? PHASES[s.currentPhaseId] : null;
+
+  let html = `<div class="modal-header">
+    <button class="modal-close" onclick="closeModal()">Cancel</button>
+    <h2 class="headline-font">Add Note</h2>
+    <button class="modal-close" id="save-note-btn" onclick="saveNote()" style="font-weight:600">Save</button>
+  </div>`;
+
+  if (phase) {
+    html += `<div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--terracotta-10);border-radius:20px;margin-bottom:12px">
+      <span>${phase.icon}</span><span class="caption-font">${phase.name}</span>
+    </div>`;
+  }
+
+  html += '<h3 class="headline-font" style="margin-bottom:8px">What do you notice?</h3>';
+  html += '<textarea id="note-text" placeholder="Record observations about texture, smell, rise, temperature, or anything else..."></textarea>';
+  html += '<p class="caption-font text-secondary" style="margin-top:8px">Record observations about texture, smell, rise, temperature, or anything else that might be useful.</p>';
+
+  return html;
+}
+
+function renderPhotoModal() {
+  const s = state.session;
+  const phase = s ? PHASES[s.currentPhaseId] : null;
+
+  let html = `<div class="modal-header">
+    <button class="modal-close" onclick="closeModal()">Cancel</button>
+    <h2 class="headline-font">Add Photo</h2>
+    <button class="modal-close" id="save-photo-btn" onclick="savePhotoEntry()" style="font-weight:600" disabled>Save</button>
+  </div>`;
+
+  if (phase) {
+    html += `<div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--terracotta-10);border-radius:20px;margin-bottom:12px">
+      <span>${phase.icon}</span><span class="caption-font">${phase.name}</span>
+    </div>`;
+  }
+
+  html += `<div id="photo-preview" class="hidden stack center gap-sm" style="margin-bottom:12px">
+    <img id="photo-img" style="max-height:300px;border-radius:12px;width:100%;object-fit:contain" />
+    <button class="modal-close" style="color:#c44" onclick="clearPhotoPreview()">Remove Photo</button>
+  </div>`;
+
+  html += `<div id="photo-buttons" class="row gap-md" style="margin-bottom:16px">
+    <label class="card stack center gap-sm" style="flex:1;height:150px;cursor:pointer;justify-content:center">
+      <span style="font-size:2.5rem">\u{1F4F7}</span>
+      <span class="headline-font">Take Photo</span>
+      <input type="file" accept="image/*" capture="environment" onchange="handlePhotoSelect(this)" style="display:none">
+    </label>
+    <label class="card stack center gap-sm" style="flex:1;height:150px;cursor:pointer;justify-content:center">
+      <span style="font-size:2.5rem">\u{1F5BC}\uFE0F</span>
+      <span class="headline-font">Choose Photo</span>
+      <input type="file" accept="image/*" onchange="handlePhotoSelect(this)" style="display:none">
+    </label>
+  </div>`;
+
+  html += '<input type="text" id="photo-note" placeholder="Add a note (optional) \u2014 What do you notice about your dough?" style="margin-bottom:8px">';
+
+  return html;
+}
+
+function renderCompletionModal() {
+  let html = `<div class="stack center gap-md">
+    <span style="font-size:3.5rem;color:var(--success)">\u2713</span>
+    <h1 class="title-font">Congratulations!</h1>
+    <p class="body-font text-secondary">How did your bread turn out?</p>
+  </div>`;
+
+  html += `<div class="stack center gap-sm" style="margin:16px 0">
+    <div id="completion-stars" class="stars" style="gap:12px">`;
+  for (let i = 1; i <= 5; i++) {
+    html += `<span class="star star-empty" style="font-size:2rem;cursor:pointer" onclick="setCompletionRating(${i})">\u2605</span>`;
+  }
+  html += '</div></div>';
+
+  html += '<textarea id="completion-notes" placeholder="Final thoughts (optional)..." style="min-height:100px;margin-bottom:16px"></textarea>';
+
+  const log = getCurrentLog();
+  if (log) {
+    html += `<div class="card row spread" style="margin-bottom:16px">
+      <span class="caption-font text-secondary">\u{1F4F7} ${log.photos.length} photos</span>
+      <span class="caption-font text-secondary">\u{1F4DD} ${log.notes.length} notes</span>
+    </div>`;
+  }
+
+  html += `<button class="btn btn-primary btn-full" onclick="finishBake()">Save & Finish</button>`;
+  html += `<button class="btn btn-secondary btn-full" style="margin-top:8px" onclick="closeModal()">\u2190 Back</button>`;
+
+  return html;
+}
+
+function renderJumpModal() {
+  const s = state.session;
+  if (!s) return '';
+
+  let html = `<div class="modal-header">
+    <h2 class="headline-font">Jump to Step</h2>
+    <button class="modal-close" onclick="closeModal()">Cancel</button>
+  </div>`;
+
+  BAKE_PHASES.forEach(phase => {
+    const completed = phase.id < s.currentPhaseId;
+    const current = phase.id === s.currentPhaseId;
+
+    let icon = '<span class="text-secondary">\u25CB</span>';
+    if (completed) icon = '<span class="text-success">\u2713</span>';
+    if (current) icon = '<span class="text-terracotta">\u25CF</span>';
+
+    html += `<div class="row gap-md" style="padding:12px 4px;${current ? 'background:var(--terracotta-05);border-radius:8px' : ''};cursor:pointer"
+      onclick="jumpToPhase(${phase.id})">
+      <span style="font-size:1.2rem;width:24px;text-align:center">${icon}</span>
+      <span style="font-size:1.1rem">${phase.icon}</span>
+      <span class="body-font" style="flex:1">${phase.name}</span>
+      ${current ? '<span class="badge">CURRENT</span>' : ''}
+      ${phase.hasTimer ? `<span class="caption-font text-secondary">${formatDurationShort(phase.duration)}</span>` : ''}
+    </div>`;
+
+    if (phase.id < BAKE_PHASES.length - 1) {
+      html += '<hr class="divider" style="margin-left:56px">';
+    }
+  });
+
+  return html;
+}
+
+function renderPhaseDetailModal() {
+  const s = state.session;
+  const phase = s ? PHASES[s.currentPhaseId] : null;
+  if (!phase) return '';
+
+  let html = `<div class="modal-header">
+    <h2 class="headline-font">${phase.name}</h2>
+    <button class="modal-close" onclick="closeModal()">Done</button>
+  </div>`;
+
+  // Header
+  html += `<div class="stack center gap-sm" style="margin-bottom:16px">
+    <div style="width:60px;height:60px;border-radius:50%;background:var(--terracotta-15);display:flex;align-items:center;justify-content:center;font-size:1.8rem">${phase.icon}</div>
+    <h2 class="title-font">${phase.name}</h2>
+    <span class="caption-font text-secondary">${phase.hasTimer ? formatDurationLong(phase.duration) : 'Manual step'}</span>
+  </div>`;
+
+  // Instructions
+  html += `<div class="card stack gap-sm" style="margin-bottom:12px">
+    <h3 class="headline-font">Instructions</h3>
+    <p class="body-font text-secondary">${phase.instructions.replace(/\n/g, '<br>')}</p>
+  </div>`;
+
+  // Tip
+  if (phase.tip) {
+    html += `<div class="tip-box" style="margin-bottom:12px">\u{1F4A1} ${phase.tip}</div>`;
+  }
+
+  // Turn schedule for bulk fermentation
+  if (phase.key === 'bulkFermentation') {
+    html += '<div class="card stack gap-sm" style="margin-bottom:12px">';
+    html += '<h3 class="headline-font">Turn Schedule</h3>';
+    for (let i = 1; i <= 8; i++) {
+      html += `<div class="row spread caption-font">
+        <span>Turn ${i}</span>
+        <span class="text-secondary">+30 min</span>
+      </div>`;
+    }
+    html += '</div>';
+  }
+
+  // Baking steps for loaf phases
+  if (phase.substeps) {
+    html += '<div class="card stack gap-sm">';
+    html += '<h3 class="headline-font">Baking Steps</h3>';
+    phase.substeps.forEach((sub, i) => {
+      html += `<div class="row gap-md">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0">${i + 1}</div>
+        <div class="stack gap-sm">
+          <span class="headline-font">${sub.title}</span>
+          <span class="caption-font text-secondary">${sub.instructions} \u2014 ${Math.floor(sub.duration / 60)} min</span>
+        </div>
+      </div>`;
+    });
+    html += '<p class="caption-font text-secondary" style="margin-top:8px">Internal temperature: 205\u2013210\u00B0F (96\u201399\u00B0C)</p>';
+    html += '</div>';
+  }
+
+  return html;
+}
+
+function renderSubstepCompleteModal() {
+  const s = state.session;
+  if (!s) return '';
+  const phase = PHASES[s.currentPhaseId];
+  if (!phase.substeps) return '';
+  const sub = phase.substeps[s.bakeSubstepIndex];
+  const isLast = s.bakeSubstepIndex >= phase.substeps.length - 1;
+
+  let html = `<div class="stack center gap-md" style="padding:16px 0">
+    <span style="font-size:3rem">\u2705</span>
+    <h2 class="headline-font">${sub.title} Complete!</h2>`;
+
+  if (isLast) {
+    html += `<button class="btn btn-primary btn-full" onclick="stopAlarm(); advancePhase()">Next Phase \u2192</button>`;
+  } else {
+    html += `<button class="btn btn-primary btn-full" onclick="stopAlarm(); closeModal(); advanceSubstep()">Start Next Step</button>`;
+  }
+
+  html += `<button class="btn btn-secondary btn-full" onclick="stopAlarm(); adjustDuration(5); closeModal()">Extend 5 min</button>`;
+  html += '</div>';
+
+  return html;
+}
+
+function renderQuitModal() {
+  let html = `<div class="stack center gap-md" style="padding:16px 0">
+    <h2 class="headline-font">Quit Bake?</h2>
+    <p class="body-font text-secondary center">Your progress will be saved and you can resume later.</p>
+    <button class="btn btn-primary btn-full" onclick="closeModal()">Keep Baking</button>
+    <button class="btn btn-secondary btn-full" onclick="saveAndExit()">Save & Exit</button>
+    <button class="btn btn-full" style="background:none;color:#c44;font-weight:600" onclick="discardBake()">Discard</button>
+  </div>`;
+  return html;
+}
+
+// ===== GLOBAL ACTIONS =====
+let completionRating = 0;
+let pendingPhotoData = null;
+
+function startNewBake() {
+  if (state.session) {
+    if (!confirm('Start a new bake? Your current bake will be saved.')) return;
+    saveAndExit();
+  }
+  createSession(0);
+  state.view = 'bake';
+  requestNotifPermission();
+  fetchWeather().then(w => { if (w) { state.weather = w; addWeatherToLog(w); render(); } });
+  render();
+}
+
+function startFromPhase(phaseId) {
+  if (state.session) {
+    if (!confirm('Start a new bake? Your current bake will be saved.')) return;
+    saveAndExit();
+  }
+  createSession(phaseId);
+  state.view = 'bake';
+  state.modal = null;
+  requestNotifPermission();
+  fetchWeather().then(w => { if (w) { state.weather = w; addWeatherToLog(w); render(); } });
+  render();
+}
+
+function resumeBake() {
+  const saved = loadSession();
+  if (saved) {
+    state.session = saved;
+    state.view = 'bake';
+    state.alarmTriggered = false;
+    fetchWeather().then(w => { if (w) { state.weather = w; render(); } });
+    schedulePhaseNotifs();
+    render();
+  }
+}
+
+function quitBake() {
+  state.modal = 'quit';
+  render();
+}
+
+function saveAndExit() {
+  stopAlarm();
+  cancelAllNotifs();
+  if (state.session) saveSession(state.session);
+  state.view = 'home';
+  state.modal = null;
+  render();
+}
+
+function discardBake() {
+  stopAlarm();
+  cancelAllNotifs();
+  if (state.session) {
+    const log = getCurrentLog();
+    if (log) deleteLog(log.id);
+  }
+  clearSession();
+  state.session = null;
+  state.view = 'home';
+  state.modal = null;
+  render();
+}
+
+function skipTimer() {
+  const s = state.session;
+  if (!s) return;
+  const phase = PHASES[s.currentPhaseId];
+
+  if (phase.substeps && s.bakeSubstepIndex < phase.substeps.length - 1) {
+    if (confirm('Skip to uncovered baking?')) {
+      stopAlarm();
+      advanceSubstep();
+    }
+  } else {
+    if (confirm(`Skip the remaining time for ${phase.name} and move to the next phase?`)) {
+      stopAlarm();
+      advancePhase();
+    }
+  }
+}
+
+function jumpToPhase(phaseId) {
+  startPhase(phaseId);
+  closeModal();
+  render();
+}
+
+function refreshWeather() {
+  fetchWeather().then(w => {
+    if (w) {
+      state.weather = w;
+      addWeatherToLog(w);
+      render();
+    }
+  });
+}
+
+function addWeatherToLog(w) {
+  const log = getCurrentLog();
+  if (log) {
+    log.weatherReadings.push(w);
+    saveLog(log);
+  }
+}
+
+function saveNote() {
+  const text = document.getElementById('note-text')?.value?.trim();
+  if (!text || !state.session) return;
+  const log = getCurrentLog();
+  if (log) {
+    log.notes.push({
+      id: uuid(),
+      timestamp: Date.now(),
+      phase: state.session.currentPhaseId,
+      text
+    });
+    saveLog(log);
+  }
+  closeModal();
+}
+
+function handlePhotoSelect(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    pendingPhotoData = e.target.result;
+    document.getElementById('photo-img').src = pendingPhotoData;
+    document.getElementById('photo-preview').classList.remove('hidden');
+    document.getElementById('photo-buttons').classList.add('hidden');
+    document.getElementById('save-photo-btn').disabled = false;
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearPhotoPreview() {
+  pendingPhotoData = null;
+  document.getElementById('photo-preview').classList.add('hidden');
+  document.getElementById('photo-buttons').classList.remove('hidden');
+  document.getElementById('save-photo-btn').disabled = true;
+}
+
+function savePhotoEntry() {
+  if (!pendingPhotoData || !state.session) return;
+  const log = getCurrentLog();
+  if (!log) return;
+  const photoId = uuid();
+  const note = document.getElementById('photo-note')?.value?.trim() || null;
+
+  log.photos.push({
+    id: photoId,
+    timestamp: Date.now(),
+    phase: state.session.currentPhaseId,
+    note
+  });
+  saveLog(log);
+  savePhoto(log.id, photoId, pendingPhotoData);
+  pendingPhotoData = null;
+  closeModal();
+}
+
+function setCompletionRating(rating) {
+  completionRating = rating;
+  const stars = document.querySelectorAll('#completion-stars .star');
+  stars.forEach((s, i) => {
+    s.className = i < rating ? 'star star-filled' : 'star star-empty';
+  });
+}
+
+function finishBake() {
+  const notes = document.getElementById('completion-notes')?.value?.trim() || null;
+  completeBake(completionRating || null, notes);
+  completionRating = 0;
+}
+
+function viewLogDetail(logId) {
+  const history = loadHistory();
+  state.selectedLog = history.find(h => h.id === logId) || null;
+  state.view = 'historyDetail';
+  render();
+}
+
+// ===== LIFECYCLE =====
+// Save session on page visibility change
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && state.session) {
+    saveSession(state.session);
+  }
+});
+
+// Save session before unload
+window.addEventListener('beforeunload', () => {
+  if (state.session) saveSession(state.session);
+});
+
+// ===== INIT =====
+function init() {
+  const saved = loadSession();
+  if (saved && saved.isActive) {
+    state.session = saved;
+  }
+  render();
+}
+
+init();
+</script>
 </body>
-</html> 
+</html>
