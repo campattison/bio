@@ -282,7 +282,7 @@ const PHASES = [
     instructions: '20g fine sea salt + 50g warm water. Sprinkle salt, add water, squeeze and fold until incorporated (2\u20133 minutes).',
     tip: 'Salt strengthens gluten and controls fermentation. Don\u2019t skip or reduce much.' },
   { id: 5, key: 'bulkFermentation', name: 'Bulk Fermentation', icon: '\u{1F504}', duration: 14400, hasTimer: true, hasRepeatingAlerts: true,
-    instructions: '3\u20134 hours at 78\u201382\u00B0F. Every 35 minutes: stretch and fold (wet hands, grab one side, stretch up and fold over, rotate 90\u00B0, repeat 4 times). 6\u20138 turns total. Done when: increased 20\u201330%, airy and jiggly, holds shape.',
+    instructions: '3\u20134 hours at 78\u201382\u00B0F. Every 30 minutes: stretch and fold (wet hands, grab one side, stretch up and fold over, rotate 90\u00B0, repeat 4 times). 6\u20138 turns total. Done when: increased 20\u201330%, airy and jiggly, holds shape.',
     tip: 'Dough temperature is crucial. Aim for 78\u201382\u00B0F.' },
   { id: 6, key: 'preshape', name: 'Pre-shape', icon: '\u{270B}', duration: 300, hasTimer: false, hasRepeatingAlerts: false,
     instructions: 'Turn dough onto unfloured surface. Divide in half. Fold sides to middle, roll to create tension. Rest seam-side down.',
@@ -470,12 +470,12 @@ function loadPhotos() {
 // ===== WEATHER SERVICE =====
 async function fetchWeather() {
   try {
-    const resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.8781&longitude=-87.6298&current=temperature_2m,relative_humidity_2m&temperature_unit=fahrenheit&timezone=America%2FChicago');
+    const resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=36.1627&longitude=-86.7816&current=temperature_2m,relative_humidity_2m&temperature_unit=fahrenheit&timezone=America%2FChicago');
     const data = await resp.json();
     return {
       temperatureF: Math.round(data.current.temperature_2m),
       humidity: Math.round(data.current.relative_humidity_2m),
-      location: 'Chicago, IL',
+      location: 'Nashville, TN',
       timestamp: Date.now()
     };
   } catch (e) {
@@ -522,12 +522,48 @@ function scheduleTurnAlarm(turnNum, delayMs) {
   scheduledTurnAlarms.set(`turn_alarm_${turnNum}`, timer);
 }
 
+let turnAlarmInterval = null;
+
 function playTurnAlarm(turnNum) {
-  // Play 3 quick beeps
-  for (let i = 0; i < 3; i++) setTimeout(() => beep(), i * 300);
-  if (navigator.vibrate) navigator.vibrate([200, 150, 200, 150, 200]);
-  // Show in-app banner
+  // Stop any previous turn alarm
+  stopTurnAlarm();
+  // Play urgent alarm: 3 rounds of rapid beeps, repeating every 2s for 30s
+  let ticks = 0;
+  function urgentBeep() {
+    beepLoud(1100); // higher pitch
+    setTimeout(() => beepLoud(880), 150);
+    setTimeout(() => beepLoud(1100), 300);
+    setTimeout(() => beepLoud(880), 450);
+    if (navigator.vibrate) navigator.vibrate([300, 100, 300, 100, 300, 100, 300]);
+  }
+  urgentBeep();
+  turnAlarmInterval = setInterval(() => {
+    ticks++;
+    if (ticks >= 15) { stopTurnAlarm(); return; }
+    urgentBeep();
+  }, 2000);
+  // Show full-screen overlay + banner
   showTurnBanner(turnNum);
+}
+
+function stopTurnAlarm() {
+  if (turnAlarmInterval) { clearInterval(turnAlarmInterval); turnAlarmInterval = null; }
+}
+
+function beepLoud(freq) {
+  try {
+    if (!alarmCtx) alarmCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = alarmCtx.createOscillator();
+    const gain = alarmCtx.createGain();
+    osc.connect(gain);
+    gain.connect(alarmCtx.destination);
+    osc.frequency.value = freq || 880;
+    osc.type = 'square';
+    gain.gain.value = 0.6;
+    osc.start();
+    gain.gain.exponentialRampToValueAtTime(0.001, alarmCtx.currentTime + 0.25);
+    osc.stop(alarmCtx.currentTime + 0.25);
+  } catch (e) {}
 }
 
 function showTurnBanner(turnNum) {
@@ -535,30 +571,46 @@ function showTurnBanner(turnNum) {
   const existing = document.getElementById('turn-banner');
   if (existing) existing.remove();
 
-  const banner = document.createElement('div');
-  banner.id = 'turn-banner';
-  banner.style.cssText = `
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    background: var(--terracotta); color: #fff; padding: 16px 20px;
-    display: flex; align-items: center; justify-content: space-between;
-    font-family: var(--font-family); font-weight: 600; font-size: 1rem;
-    animation: slideDown 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  const overlay = document.createElement('div');
+  overlay.id = 'turn-banner';
+  overlay.style.cssText = `
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(199, 91, 58, 0.95);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: var(--font-family); color: #fff;
+    animation: turnFlash 0.6s ease;
   `;
-  banner.innerHTML = `
-    <span>\u{1F504} Time for Turn #${turnNum}! Stretch & fold</span>
-    <button onclick="this.parentElement.remove()" style="background:rgba(255,255,255,0.25);border:none;color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-family:var(--font-family);font-weight:600">OK</button>
+  overlay.innerHTML = `
+    <div style="font-size:4rem; margin-bottom:16px; animation: turnPulse 1s ease-in-out infinite">\u{1F504}</div>
+    <div style="font-size:2rem; font-weight:700; margin-bottom:8px">Turn #${turnNum}</div>
+    <div style="font-size:1.2rem; font-weight:400; opacity:0.9; margin-bottom:32px">Time to stretch & fold!</div>
+    <button onclick="dismissTurnBanner()" style="
+      background:#fff; color:var(--terracotta); border:none; border-radius:16px;
+      padding:16px 48px; cursor:pointer; font-family:var(--font-family);
+      font-weight:700; font-size:1.1rem; box-shadow:0 4px 16px rgba(0,0,0,0.2);
+    ">Got it!</button>
   `;
-  document.body.appendChild(banner);
+  document.body.appendChild(overlay);
 
-  // Auto-dismiss after 30 seconds
-  setTimeout(() => { if (banner.parentElement) banner.remove(); }, 30000);
+  // Auto-dismiss after 60 seconds
+  setTimeout(() => { if (overlay.parentElement) overlay.remove(); stopTurnAlarm(); }, 60000);
 }
 
-// Add slideDown animation
+function dismissTurnBanner() {
+  const banner = document.getElementById('turn-banner');
+  if (banner) banner.remove();
+  stopTurnAlarm();
+}
+
+// Add turn alarm animations
 if (!document.getElementById('turn-banner-style')) {
   const style = document.createElement('style');
   style.id = 'turn-banner-style';
-  style.textContent = '@keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }';
+  style.textContent = `
+    @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+    @keyframes turnFlash { 0% { opacity: 0; } 30% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+    @keyframes turnPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+  `;
   document.head.appendChild(style);
 }
 
@@ -776,7 +828,9 @@ function completeBake(rating = null, notes = null) {
     saveLog(log);
   }
   stopAlarm();
+  stopTurnAlarm();
   cancelAllNotifs();
+  stopWeatherRefresh();
   clearSession();
   state.session = null;
   state.modal = null;
@@ -828,10 +882,10 @@ function schedulePhaseNotifs() {
   const body = bodies[phase.key] || 'Ready for the next step.';
   scheduleNotif(`phase_${phase.id}`, `${phase.name} Complete!`, body, remaining * 1000);
 
-  // Turn reminders for bulk fermentation (every 35 minutes)
+  // Turn reminders for bulk fermentation (every 30 minutes)
   if (phase.key === 'bulkFermentation') {
     const totalDur = getCurrentDuration();
-    const interval = 2100; // 35 minutes
+    const interval = 1800; // 30 minutes
     const count = Math.floor(totalDur / interval);
     for (let i = 1; i <= count; i++) {
       const turnDelay = (i * interval) - getElapsed();
@@ -1701,6 +1755,7 @@ function startNewBake() {
   state.view = 'bake';
   requestNotifPermission();
   fetchWeather().then(w => { if (w) { state.weather = w; addWeatherToLog(w); render(); } });
+  startWeatherRefresh();
   render();
 }
 
@@ -1714,6 +1769,7 @@ function startFromPhase(phaseId) {
   state.modal = null;
   requestNotifPermission();
   fetchWeather().then(w => { if (w) { state.weather = w; addWeatherToLog(w); render(); } });
+  startWeatherRefresh();
   render();
 }
 
@@ -1723,7 +1779,8 @@ function resumeBake() {
     state.session = saved;
     state.view = 'bake';
     state.alarmTriggered = false;
-    fetchWeather().then(w => { if (w) { state.weather = w; render(); } });
+    fetchWeather().then(w => { if (w) { state.weather = w; addWeatherToLog(w); render(); } });
+    startWeatherRefresh();
     schedulePhaseNotifs();
     render();
   }
@@ -1736,7 +1793,9 @@ function quitBake() {
 
 function saveAndExit() {
   stopAlarm();
+  stopTurnAlarm();
   cancelAllNotifs();
+  stopWeatherRefresh();
   if (state.session) saveSession(state.session);
   state.view = 'home';
   state.modal = null;
@@ -1745,7 +1804,9 @@ function saveAndExit() {
 
 function discardBake() {
   stopAlarm();
+  stopTurnAlarm();
   cancelAllNotifs();
+  stopWeatherRefresh();
   if (state.session) {
     const log = getCurrentLog();
     if (log) deleteLog(log.id);
@@ -1874,6 +1935,29 @@ function viewLogDetail(logId) {
   state.selectedLog = history.find(h => h.id === logId) || null;
   state.view = 'historyDetail';
   render();
+}
+
+// ===== WEATHER AUTO-REFRESH =====
+let weatherInterval = null;
+
+function startWeatherRefresh() {
+  stopWeatherRefresh();
+  // Refresh weather every 15 minutes
+  weatherInterval = setInterval(() => {
+    if (state.session && state.view === 'bake') {
+      fetchWeather().then(w => {
+        if (w) {
+          state.weather = w;
+          addWeatherToLog(w);
+          render();
+        }
+      });
+    }
+  }, 15 * 60 * 1000);
+}
+
+function stopWeatherRefresh() {
+  if (weatherInterval) { clearInterval(weatherInterval); weatherInterval = null; }
 }
 
 // ===== LIFECYCLE =====

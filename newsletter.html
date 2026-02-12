@@ -76,6 +76,10 @@
                         <span>Call for Proposals Deadline</span>
                     </div>
                     <div class="legend-item">
+                        <span class="legend-color" style="background-color: #2196F3;"></span>
+                        <span>Conference Date</span>
+                    </div>
+                    <div class="legend-item">
                         <span class="legend-color" style="background-color: var(--job-color);"></span>
                         <span>Job Application Deadline</span>
                     </div>
@@ -472,15 +476,61 @@
             ]
         };
 
+        // Merge fetched events into existing data, deduplicating by title
+        function mergeEvents(fetchedData) {
+            if (!fetchedData) return;
+
+            // Merge conferences
+            if (fetchedData.conferences) {
+                const existingTitles = new Set(data.conferences.map(c => c.title));
+                fetchedData.conferences.forEach(conf => {
+                    if (!existingTitles.has(conf.title)) {
+                        data.conferences.push({
+                            title: conf.title,
+                            date: conf.start,
+                            location: conf.city || 'TBD',
+                            url: conf.url,
+                            lat: conf.lat,
+                            lng: conf.lng
+                        });
+                    }
+                });
+            }
+
+            // Merge CFPs
+            if (fetchedData.cfps) {
+                const existingCFPs = new Set(data.cfps.map(c => c.title));
+                fetchedData.cfps.forEach(cfp => {
+                    if (!existingCFPs.has(cfp.title)) {
+                        data.cfps.push({
+                            title: cfp.title,
+                            deadline: cfp.deadline,
+                            url: cfp.url
+                        });
+                    }
+                });
+            }
+        }
+
         // Wait for DOM to be fully loaded before initializing
         document.addEventListener('DOMContentLoaded', function() {
             try {
-                // Initialize all functionality
-                setTimeout(() => {
-                updateLists();
-                createGlobe();
-                initCalendar();
-                }, 100);
+                // Fetch dynamic events data, then initialize
+                fetch('data/events.json')
+                    .then(resp => resp.ok ? resp.json() : null)
+                    .then(fetchedData => {
+                        mergeEvents(fetchedData);
+                    })
+                    .catch(() => {
+                        // events.json not available — use hardcoded data only
+                    })
+                    .finally(() => {
+                        setTimeout(() => {
+                            updateLists();
+                            createGlobe();
+                            initCalendar();
+                        }, 100);
+                    });
 
                 // Add error handling
                 window.onerror = function(msg, url, lineNo, columnNo, error) {
@@ -932,9 +982,14 @@
                     events.push(createCalendarEventObject(item, 'cfp'));
                 }
             });
-            
-            // Note: Conferences are not included as they represent event dates, not deadlines
-            
+
+            // Add conferences as calendar events (blue markers)
+            data.conferences.forEach(item => {
+                if (item.date) {
+                    events.push(createCalendarEventObject(item, 'conference'));
+                }
+            });
+
             // Add job deadlines (all deadlines, including past ones for record keeping)
             data.jobs.forEach(item => {
                 if (item.deadline && item.deadline !== 'Rolling') {
@@ -1130,10 +1185,10 @@
                            eventDate.getFullYear() === year;
                 });
                 
-                // Sort events by type to ensure consistent display order (CFPs first, then jobs)
+                // Sort events by type to ensure consistent display order (CFPs first, conferences, then jobs)
                 const sortedEvents = dayEvents.sort((a, b) => {
-                    const typeOrder = { cfp: 1, job: 2 };
-                    return typeOrder[a.type] - typeOrder[b.type];
+                    const typeOrder = { cfp: 1, conference: 2, job: 3 };
+                    return (typeOrder[a.type] || 4) - (typeOrder[b.type] || 4);
                 });
                 
                 // Limit to a maximum of 3 visible events per day to avoid overflow
