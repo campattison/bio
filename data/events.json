@@ -1,6 +1,17 @@
 {
-  "updated": "2026-02-12",
+  "updated": "2026-02-15",
   "conferences": [
+    {
+      "title": "From Virtual to Virtue: Ethics, Epistemology, Education",
+      "start": "2026-06-15",
+      "end": "2026-06-16",
+      "city": "Ljubljana",
+      "lat": 46.0511,
+      "lng": 14.5051,
+      "url": "https://ethics-ai.eu/2026-conference/",
+      "cfp_deadline": "2026-03-02",
+      "type": "conference"
+    },
     {
       "title": "Autonomy & Algorithms (11-12 June 2026, Karlsruhe)",
       "start": "2026-06-11",
@@ -35,17 +46,6 @@
       "type": "conference"
     },
     {
-      "title": "Zicklin Center Workshop in Normative Business Ethics",
-      "start": "2025-09-19",
-      "end": "2026-04-10",
-      "city": "Philadelphia",
-      "lat": 39.9526,
-      "lng": -75.1872,
-      "url": "",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
       "title": "Science and Technology in the Anthropocene",
       "start": "2026-04-02",
       "end": "2026-04-03",
@@ -68,17 +68,6 @@
       "type": "conference"
     },
     {
-      "title": "DFT-CELFIS research seminar, University of Bucharest",
-      "start": "2025-10-28",
-      "end": "2026-09-30",
-      "city": "Bucharest",
-      "lat": 44.4377,
-      "lng": 26.0974,
-      "url": "https://filosofie.unibuc.ro/",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
       "title": "Conference of the Society for Christian Bioethicists",
       "start": "2026-02-20",
       "end": "2026-02-22",
@@ -96,17 +85,6 @@
       "city": "Helsinki",
       "lat": 60.1695,
       "lng": 24.9354,
-      "url": "",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
-      "title": "1st Annual Conference of Auslegung: Journal of Philosophy",
-      "start": "2026-02-12",
-      "end": "2026-02-13",
-      "city": "Lawrence",
-      "lat": 38.9717,
-      "lng": -95.2353,
       "url": "",
       "cfp_deadline": null,
       "type": "conference"
@@ -208,17 +186,6 @@
       "lng": -122.332,
       "url": "",
       "cfp_deadline": "2026-04-15",
-      "type": "conference"
-    },
-    {
-      "title": "Sign, Language, Reality Seminar 2025/26",
-      "start": "2025-10-09",
-      "end": "2026-06-04",
-      "city": "",
-      "lat": null,
-      "lng": null,
-      "url": "https://www.pts.edu.pl/seminarium",
-      "cfp_deadline": null,
       "type": "conference"
     },
     {
@@ -420,6 +387,28 @@
       "type": "conference"
     },
     {
+      "title": "Ethnographilosophy",
+      "start": "2026-06-15",
+      "end": "2026-06-16",
+      "city": "Berlin",
+      "lat": 52.5244,
+      "lng": 13.4105,
+      "url": "http://www.criticalagency.de",
+      "cfp_deadline": "2026-05-31",
+      "type": "conference"
+    },
+    {
+      "title": "Valencia Philosophy Lab Summer School: Mind and Rationality",
+      "start": "2026-06-15",
+      "end": "2026-06-19",
+      "city": "Valencia",
+      "lat": 39.4697,
+      "lng": -0.37739,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
       "title": "Petrus Hispanus' Tractatus: Logic and Philosophy from the Middle Ages to Modernity",
       "start": "2026-06-15",
       "end": "2026-06-19",
@@ -530,17 +519,6 @@
       "type": "conference"
     },
     {
-      "title": "STAL Seminar",
-      "start": "2025-10-01",
-      "end": "2026-06-30",
-      "city": "",
-      "lat": null,
-      "lng": null,
-      "url": "https://sites.google.com/view/stalnetwork/seminar",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
       "title": "Southern Society for Philosophy and Psychology (117th Meeting)",
       "start": "2026-02-26",
       "end": "2026-02-28",
@@ -618,28 +596,6 @@
       "type": "conference"
     },
     {
-      "title": "Polysemy in the Evaluative Sphere",
-      "start": "2025-10-01",
-      "end": "2026-06-30",
-      "city": "Porto",
-      "lat": 41.15,
-      "lng": -8.61667,
-      "url": "https://ifilosofia.up.pt/activities/seminar-polysemy-evaluative-sphere",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
-      "title": "Lies, Fiction, and Manipulation in Propaganda",
-      "start": "2026-02-12",
-      "end": "2026-02-13",
-      "city": "Barcelona",
-      "lat": 41.3888,
-      "lng": 2.15899,
-      "url": "https://biap.ub.edu/calendar/biap-collaborative-research-event-lies-fiction-and-manipulation-in-propaganda/",
-      "cfp_deadline": "2026-02-11",
-      "type": "conference"
-    },
-    {
       "title": "Virtual Symposium on Moral Courage",
       "start": "2026-02-26",
       "end": "2026-02-26",
@@ -695,25 +651,14 @@
       "type": "conference"
     },
     {
-      "title": "In Conversation: Exploring the Philosophy of Money and Finance",
-      "start": "2024-10-01",
-      "end": "2026-06-26",
-      "city": "",
-      "lat": null,
-      "lng": null,
-      "url": "https://phinancenet.substack.com/s/in-conversation-exploring-the-philosophy",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
-      "title": "Making and Unmaking Facts",
-      "start": "2026-02-13",
-      "end": "2026-02-15",
-      "city": "Calcutta",
-      "lat": 22.5697,
-      "lng": 88.3697,
-      "url": "https://www.iimcal.ac.in/events/muf2026",
-      "cfp_deadline": "2026-02-01",
+      "title": "Trust and Hope in Times of Crises",
+      "start": "2026-06-22",
+      "end": "2026-06-23",
+      "city": "Yerevan",
+      "lat": 40.1811,
+      "lng": 44.5136,
+      "url": "https://etica.aua.am/events/trust-and-hope-in-a-time-of-crisis/",
+      "cfp_deadline": "2026-06-05",
       "type": "conference"
     },
     {
@@ -824,17 +769,6 @@
       "lng": 2.3488,
       "url": "https://www.csb.eu.com/conference/",
       "cfp_deadline": "2025-10-15",
-      "type": "conference"
-    },
-    {
-      "title": "The 25th East-West Center International Graduate Student Conference (EWC-IGSC) on the Asia-Pacific region “Legacies Through Time: Rethinking the Past, Confronting the Present, Shaping the Future”",
-      "start": "2026-02-12",
-      "end": "2026-02-15",
-      "city": "Honolulu",
-      "lat": 21.3069,
-      "lng": -157.858,
-      "url": "https://www.eastwestcenter.org/education/east-west-center-student-experience/international-graduate-student-conference",
-      "cfp_deadline": "2026-01-07",
       "type": "conference"
     },
     {
@@ -972,18 +906,6 @@
   ],
   "cfps": [
     {
-      "title": "Logic in AI (CFP)",
-      "deadline": "2026-02-14",
-      "url": "https://ialogic.ir/index.php/en/",
-      "conference": "Logic in AI"
-    },
-    {
-      "title": "Kinds of Agency Graduate Conference (CFP)",
-      "deadline": "2026-02-14",
-      "url": "https://events.uconn.edu/ecom/event/1133514-kinds-of-agency",
-      "conference": "Kinds of Agency Graduate Conference"
-    },
-    {
       "title": "8th AI4Society Symposium: The Future of AI Companions (CFP)",
       "deadline": "2026-02-15",
       "url": "",
@@ -1024,6 +946,12 @@
       "deadline": "2026-02-28",
       "url": "https://www.eurasianmemory.com/eurasian-memory-meeting-2026-tokyo",
       "conference": "Eurasian Memory Meeting, 2026 Tokyo Edition"
+    },
+    {
+      "title": "From Virtual to Virtue: Ethics, Epistemology, Education (CFP)",
+      "deadline": "2026-03-02",
+      "url": "https://ethics-ai.eu/2026-conference/",
+      "conference": "From Virtual to Virtue: Ethics, Epistemology, Education"
     },
     {
       "title": "AI and Data Ethics: Philosophy and Pedagogy (CFP)",
@@ -1156,6 +1084,18 @@
       "deadline": "2026-05-18",
       "url": "https://www.numta.org",
       "conference": "Numerical Computations: Theory and Algorithms The 5th International Conference and Summer School"
+    },
+    {
+      "title": "Ethnographilosophy (CFP)",
+      "deadline": "2026-05-31",
+      "url": "http://www.criticalagency.de",
+      "conference": "Ethnographilosophy"
+    },
+    {
+      "title": "Trust and Hope in Times of Crises (CFP)",
+      "deadline": "2026-06-05",
+      "url": "https://etica.aua.am/events/trust-and-hope-in-a-time-of-crisis/",
+      "conference": "Trust and Hope in Times of Crises"
     }
   ]
 }
