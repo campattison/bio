@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-20",
+  "updated": "2026-02-24",
   "conferences": [
     {
       "title": "From Virtual to Virtue: Ethics, Epistemology, Education",
@@ -57,14 +57,14 @@
       "type": "conference"
     },
     {
-      "title": "Conference of the Society for Christian Bioethicists",
-      "start": "2026-02-20",
-      "end": "2026-02-22",
-      "city": "",
-      "lat": null,
-      "lng": null,
-      "url": "https://christianbioethicists.com",
-      "cfp_deadline": null,
+      "title": "Forms of Exculpation: Nature and Norms of Blamelessness",
+      "start": "2026-03-12",
+      "end": "2026-03-13",
+      "city": "Berlin",
+      "lat": 52.5244,
+      "lng": 13.4105,
+      "url": "",
+      "cfp_deadline": "2026-03-11",
       "type": "conference"
     },
     {
@@ -153,17 +153,6 @@
       "lng": -122.332,
       "url": "",
       "cfp_deadline": "2026-04-15",
-      "type": "conference"
-    },
-    {
-      "title": "Warwick Graduate Conference in Political and Legal Theory 2026",
-      "start": "2026-02-21",
-      "end": "2026-02-21",
-      "city": "Coventry",
-      "lat": 52.4066,
-      "lng": -1.51217,
-      "url": "https://forms.office.com/e/3wiMqJXVcs",
-      "cfp_deadline": "2026-02-06",
       "type": "conference"
     },
     {
@@ -420,6 +409,17 @@
       "type": "conference"
     },
     {
+      "title": "Fichte: Determination, Intersubjectivity and the State",
+      "start": "2026-03-11",
+      "end": "2026-03-13",
+      "city": "Ljubljana",
+      "lat": 46.0511,
+      "lng": 14.5051,
+      "url": "https://www.speculativethought.com/novica/cfa-fichte-determination-intersubjectivity-and-the-state-41",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
       "title": "Responsible Trusting Without Prejudice First Workshop",
       "start": "2026-03-20",
       "end": "2026-03-21",
@@ -607,6 +607,17 @@
       "type": "conference"
     },
     {
+      "title": "Scholastic Roots, Modern Perspectives: Logic and Mathematics from the Middle Ages to Today",
+      "start": "2026-05-19",
+      "end": "2026-05-19",
+      "city": "Leuven",
+      "lat": 50.8798,
+      "lng": 4.70052,
+      "url": "https://hiw.kuleuven.be/clps/events/agenda/scholastic-roots-modern-perspectives-logic-and-mathematics-from-the-middle-ages-to-today",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
       "title": "XXI Simposio latinoamericano de lógica matemática SLALM",
       "start": "2026-06-01",
       "end": "2026-06-05",
@@ -695,6 +706,17 @@
       "type": "conference"
     },
     {
+      "title": "University of Nebraska–Lincoln Graduate Philosophy Conference",
+      "start": "2026-03-14",
+      "end": "2026-03-15",
+      "city": "Lincoln",
+      "lat": 40.8,
+      "lng": -96.667,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
       "title": "Japan Philosophy of Medicine Workshop 2026",
       "start": "2026-03-31",
       "end": "2026-03-31",
@@ -750,17 +772,6 @@
       "type": "conference"
     },
     {
-      "title": "Kinds of Agency Graduate Conference",
-      "start": "2026-02-21",
-      "end": "2026-02-21",
-      "city": "",
-      "lat": null,
-      "lng": null,
-      "url": "https://events.uconn.edu/ecom/event/1133514-kinds-of-agency",
-      "cfp_deadline": "2026-02-14",
-      "type": "conference"
-    },
-    {
       "title": "Do Humans Also Dream of Electric Sheeps? Technoscientific, Cultural, and Cognitive Challenges of AI",
       "start": "2026-02-27",
       "end": "2026-02-28",
@@ -791,6 +802,28 @@
       "lng": 8.61667,
       "url": "https://hanse-ias.de/veranstaltungen/veranstaltung-detail-uebersicht/event/623",
       "cfp_deadline": "2026-01-09",
+      "type": "conference"
+    },
+    {
+      "title": "Interventionism and Non-Causal Dependence",
+      "start": "2026-03-12",
+      "end": "2026-03-13",
+      "city": "Paris",
+      "lat": 48.8534,
+      "lng": 2.3488,
+      "url": "",
+      "cfp_deadline": "2026-03-12",
+      "type": "conference"
+    },
+    {
+      "title": "National Doctoral Colloquium “Inter homines esse” (“To Be Among Men”): Reflections on Living Together in the Age of Plurality",
+      "start": "2026-03-13",
+      "end": "2026-03-14",
+      "city": "Bucharest",
+      "lat": 44.4377,
+      "lng": 26.0974,
+      "url": "https://filosofie.unibuc.ro/colocviul-national-al-doctoranzilor-inter-homines-esse-a-fi-printre-oameni-reflectii-asupra-convietuirii-in-epoca-pluralitatii-13-14-martie-2026/",
+      "cfp_deadline": null,
       "type": "conference"
     },
     {
@@ -851,12 +884,6 @@
   ],
   "cfps": [
     {
-      "title": "To Be or Not to Be Included in a Causal Model (CFP)",
-      "deadline": "2026-02-23",
-      "url": "https://www.centerphilsci.pitt.edu/event/to-be-or-not-to-be-included-in-a-causal-model/",
-      "conference": "To Be or Not to Be Included in a Causal Model"
-    },
-    {
       "title": "(Un)free Care: A Normative Account of the Care Crisis by Mirjam Müller (CFP)",
       "deadline": "2026-02-26",
       "url": "https://www.lecre.umontreal.ca/%C3%A9v%C3%A8nement/mirjam-mueller-universite-de-glasgow/?instance_id=4407",
@@ -903,6 +930,18 @@
       "deadline": "2026-03-06",
       "url": "https://events.ceu.edu/2026-03-09/historical-and-philosophical-foundations-artificial-intelligence",
       "conference": "Historical and Philosophical Foundations of Artificial Intelligence"
+    },
+    {
+      "title": "Forms of Exculpation: Nature and Norms of Blamelessness (CFP)",
+      "deadline": "2026-03-11",
+      "url": "",
+      "conference": "Forms of Exculpation: Nature and Norms of Blamelessness"
+    },
+    {
+      "title": "Interventionism and Non-Causal Dependence (CFP)",
+      "deadline": "2026-03-12",
+      "url": "",
+      "conference": "Interventionism and Non-Causal Dependence"
     },
     {
       "title": "THE CRITICISM CULTURE AND MORALITY OF TOLERANCE IN ISLAMIC THOUGHT -5 INTERNATIONAL SYMPOSIUM (CFP)",
