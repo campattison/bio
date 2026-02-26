@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-24",
+  "updated": "2026-02-26",
   "conferences": [
     {
       "title": "From Virtual to Virtue: Ethics, Epistemology, Education",
@@ -582,6 +582,17 @@
       "lng": 6.0,
       "url": "",
       "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Global Philosophy of Education Field Launching Conference",
+      "start": "2026-03-19",
+      "end": "2026-03-20",
+      "city": "Amsterdam",
+      "lat": 52.374,
+      "lng": 4.88969,
+      "url": "",
+      "cfp_deadline": "2025-12-08",
       "type": "conference"
     },
     {
