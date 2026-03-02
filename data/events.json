@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-26",
+  "updated": "2026-02-27",
   "conferences": [
     {
       "title": "From Virtual to Virtue: Ethics, Epistemology, Education",
@@ -123,17 +123,6 @@
       "type": "conference"
     },
     {
-      "title": "Ethics in Chinese Philosophy",
-      "start": "2026-03-20",
-      "end": "2026-03-21",
-      "city": "Hong Kong",
-      "lat": 22.2855,
-      "lng": 114.158,
-      "url": "",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
       "title": "Technology and Well Being",
       "start": "2026-04-07",
       "end": "2026-04-08",
@@ -156,14 +145,14 @@
       "type": "conference"
     },
     {
-      "title": "(Un)free Care: A Normative Account of the Care Crisis by Mirjam Müller",
-      "start": "2026-02-26",
-      "end": "2026-02-26",
-      "city": "Montréal",
-      "lat": 45.5088,
-      "lng": -73.5878,
-      "url": "https://www.lecre.umontreal.ca/%C3%A9v%C3%A8nement/mirjam-mueller-universite-de-glasgow/?instance_id=4407",
-      "cfp_deadline": "2026-02-26",
+      "title": "UAnalytiCon-2026: Universals and Objects",
+      "start": "2026-05-22",
+      "end": "2026-05-23",
+      "city": "Yekaterinburg",
+      "lat": 56.8575,
+      "lng": 60.6125,
+      "url": "https://uanalyticon.ru/index.en.html",
+      "cfp_deadline": "2026-03-31",
       "type": "conference"
     },
     {
@@ -277,6 +266,28 @@
       "type": "conference"
     },
     {
+      "title": "Idiosyncracy of Thinking: On Alphonso Lingis’s Philosophical Opera",
+      "start": "2026-03-19",
+      "end": "2026-03-20",
+      "city": "Praha",
+      "lat": 50.088,
+      "lng": 14.4208,
+      "url": "",
+      "cfp_deadline": "2026-01-15",
+      "type": "conference"
+    },
+    {
+      "title": "Ethics in Chinese Philosophy",
+      "start": "2026-03-20",
+      "end": "2026-03-21",
+      "city": "Hong Kong",
+      "lat": 22.2855,
+      "lng": 114.158,
+      "url": "https://drive.google.com/file/d/1mv2xRfN3S1Qt5x0uA_odT66xpMaZsv8H/view?usp=sharing",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
       "title": "Science, Expertise, and Society",
       "start": "2026-03-26",
       "end": "2026-03-28",
@@ -296,17 +307,6 @@
       "lng": -90.0751,
       "url": "https://aiandphilosophy.org/",
       "cfp_deadline": "2026-04-05",
-      "type": "conference"
-    },
-    {
-      "title": "Confronting the Ethics of Artificial Intelligence",
-      "start": "2026-04-16",
-      "end": "2026-04-18",
-      "city": "Scranton",
-      "lat": 41.409,
-      "lng": -75.6624,
-      "url": "https://www.scranton.edu/academics/wml/ai/index.shtml",
-      "cfp_deadline": "2026-04-01",
       "type": "conference"
     },
     {
@@ -475,17 +475,6 @@
       "type": "conference"
     },
     {
-      "title": "Southern Society for Philosophy and Psychology (117th Meeting)",
-      "start": "2026-02-26",
-      "end": "2026-02-28",
-      "city": "Atlanta",
-      "lat": 33.749,
-      "lng": -84.388,
-      "url": "https://southernsociety.org/AnnualMeeting/",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
       "title": "Phenomenology and Psychoanalysis",
       "start": "2026-03-05",
       "end": "2026-03-06",
@@ -563,28 +552,6 @@
       "type": "conference"
     },
     {
-      "title": "Virtual Symposium on Moral Courage",
-      "start": "2026-02-26",
-      "end": "2026-02-26",
-      "city": "",
-      "lat": null,
-      "lng": null,
-      "url": "https://einsteinmed.zoom.us/meeting/register/GxHds-ARTUqZhk3RbXW0bA#/registration",
-      "cfp_deadline": "2026-02-26",
-      "type": "conference"
-    },
-    {
-      "title": "Embryological Models Before and After Aristotle",
-      "start": "2026-02-26",
-      "end": "2026-02-27",
-      "city": "Genève",
-      "lat": 46.0,
-      "lng": 6.0,
-      "url": "",
-      "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
       "title": "Global Philosophy of Education Field Launching Conference",
       "start": "2026-03-19",
       "end": "2026-03-20",
@@ -648,17 +615,6 @@
       "lng": 9.05222,
       "url": "https://sites.google.com/view/iiworkshopsubstructuraltue/home",
       "cfp_deadline": null,
-      "type": "conference"
-    },
-    {
-      "title": "Ethical and Social Perspectives on New Military Technologies",
-      "start": "2026-02-26",
-      "end": "2026-02-27",
-      "city": "Brussels",
-      "lat": 50.8504,
-      "lng": 4.34878,
-      "url": "https://military-tech-ethics-conference.be/",
-      "cfp_deadline": "2026-01-16",
       "type": "conference"
     },
     {
@@ -895,18 +851,6 @@
   ],
   "cfps": [
     {
-      "title": "(Un)free Care: A Normative Account of the Care Crisis by Mirjam Müller (CFP)",
-      "deadline": "2026-02-26",
-      "url": "https://www.lecre.umontreal.ca/%C3%A9v%C3%A8nement/mirjam-mueller-universite-de-glasgow/?instance_id=4407",
-      "conference": "(Un)free Care: A Normative Account of the Care Crisis by Mirjam Müller"
-    },
-    {
-      "title": "Virtual Symposium on Moral Courage (CFP)",
-      "deadline": "2026-02-26",
-      "url": "https://einsteinmed.zoom.us/meeting/register/GxHds-ARTUqZhk3RbXW0bA#/registration",
-      "conference": "Virtual Symposium on Moral Courage"
-    },
-    {
       "title": "Eurasian Memory Meeting, 2026 Tokyo Edition (CFP)",
       "deadline": "2026-02-28",
       "url": "https://www.eurasianmemory.com/eurasian-memory-meeting-2026-tokyo",
@@ -997,6 +941,12 @@
       "conference": "Technology and Well Being"
     },
     {
+      "title": "UAnalytiCon-2026: Universals and Objects (CFP)",
+      "deadline": "2026-03-31",
+      "url": "https://uanalyticon.ru/index.en.html",
+      "conference": "UAnalytiCon-2026: Universals and Objects"
+    },
+    {
       "title": "“Rethinking Anthropocentrism: New Technologies and More- than-Human Sensing\" (CFP)",
       "deadline": "2026-03-31",
       "url": "",
@@ -1007,12 +957,6 @@
       "deadline": "2026-03-31",
       "url": "https://sites.google.com/view/ph-sc-c-wv/",
       "conference": "NEW PERSPECTIVES ON THE PHILOSOPHY OF THE ORIGIN AND EVOLUTION OF LIFE"
-    },
-    {
-      "title": "Confronting the Ethics of Artificial Intelligence (CFP)",
-      "deadline": "2026-04-01",
-      "url": "https://www.scranton.edu/academics/wml/ai/index.shtml",
-      "conference": "Confronting the Ethics of Artificial Intelligence"
     },
     {
       "title": "8th Annual Chapel Hill Normativity Workshop: Montreal Edition! (CFP)",
