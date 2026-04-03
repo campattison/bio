@@ -163,11 +163,11 @@ th.hm-label { font-size: 9px; max-width: 72px; word-wrap: break-word; white-spac
 .tag-n { background: var(--rose-50); color: var(--rose-700); }
 .resp-reasoning { font-size: 12px; color: var(--slate-500); margin-bottom: 8px; font-style: italic; line-height: 1.5; }
 .resp-text {
-  font-size: 14px; line-height: 1.7; color: var(--slate-800); white-space: pre-wrap; word-wrap: break-word;
+  font-size: 14px; line-height: 1.7; color: var(--slate-800); word-wrap: break-word;
   padding: 12px 16px; background: var(--slate-50); border-radius: 6px; margin-top: 8px;
   max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
 }
-.resp-text.open { max-height: 2000px; }
+.resp-text.open { max-height: 5000px; }
 .resp-text.loading { max-height: 40px; color: var(--slate-400); font-style: italic; }
 .toggle { background: none; border: none; font-size: 12px; color: var(--indigo-600); cursor: pointer; padding: 0; font-family: var(--sans); }
 .toggle:hover { text-decoration: underline; }
@@ -252,6 +252,29 @@ function dot(s){return `<span class="mdot" style="background:${MCOLOR[s]||'#94a3
 function fmtA(s){return s.replace(/_/g," ").replace(/\b\w/g,c=>c.toUpperCase());}
 function fmtD(s){return D.meta.defeat_names[s]||fmtA(s);}
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function md(s){
+  // Simple markdown to HTML: headers, bold, italic, lists, line breaks
+  let h=esc(s);
+  // Headers (###, ##, #)
+  h=h.replace(/^### (.+)$/gm,'<strong style="font-size:14px;display:block;margin:10px 0 4px">$1</strong>');
+  h=h.replace(/^## (.+)$/gm,'<strong style="font-size:15px;display:block;margin:12px 0 4px">$1</strong>');
+  h=h.replace(/^# (.+)$/gm,'<strong style="font-size:16px;display:block;margin:14px 0 6px">$1</strong>');
+  // Bold+italic
+  h=h.replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>');
+  // Bold
+  h=h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  // Italic
+  h=h.replace(/\*(.+?)\*/g,'<em>$1</em>');
+  // Unordered lists (- item)
+  h=h.replace(/^- (.+)$/gm,'<li style="margin-left:20px;list-style:disc">$1</li>');
+  // Ordered lists (1. item)
+  h=h.replace(/^\d+\. (.+)$/gm,'<li style="margin-left:20px;list-style:decimal">$1</li>');
+  // Double newlines to paragraphs
+  h=h.replace(/\n\n/g,'</p><p style="margin:8px 0">');
+  // Single newlines to breaks (but not inside list items)
+  h=h.replace(/\n/g,'<br>');
+  return '<p style="margin:8px 0">'+h+'</p>';
+}
 function pct(n,d){return d?Math.round(n/d*1000)/10:0;}
 
 // ===== HERO STATS =====
@@ -635,10 +658,10 @@ async function renderDetail(caseId){
         btn.textContent="Loading...";
         const data=await loadResponses(btn.dataset.dt,btn.dataset.at);
         if(data&&data[btn.dataset.cid]&&data[btn.dataset.cid][btn.dataset.slug]){
-          target.textContent=data[btn.dataset.cid][btn.dataset.slug];
+          target.innerHTML=md(data[btn.dataset.cid][btn.dataset.slug]);
         } else {
           const r=c.results[btn.dataset.slug];
-          target.textContent=r&&r.preview?r.preview+"...":"Response not available.";
+          target.innerHTML=r&&r.preview?md(r.preview+"..."):"<p>Response not available.</p>";
         }
         loaded=true;
       }
