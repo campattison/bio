@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blind Refusal</title>
+<title>Blind Refusal — Language Models Refuse to Help Users Evade Unjust Rules</title>
+<meta name="description" content="Interactive dashboard for 'Blind Refusal': 18 models tested on 1,290 scenarios where rules are unjust, absurd, or illegitimate. 75% refuse to help regardless.">
+<meta property="og:title" content="Blind Refusal">
+<meta property="og:description" content="Language models refuse to help users evade unjust, absurd, and illegitimate rules. 18 models, 1,290 scenarios, 75% blind refusal rate. Interactive dashboard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://campattison.github.io/bio/blind-refusal/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blind Refusal">
+<meta name="twitter:description" content="Language models refuse to help users evade unjust, absurd, and illegitimate rules. 18 models, 1,290 scenarios, 75% blind refusal rate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -85,7 +93,7 @@ tbody tr:hover td { background: var(--slate-50); }
 
 /* --- RATES --- */
 .rate { font-weight: 600; }
-.r-high { color: var(--rose-600); } .r-mid { color: var(--amber-600); } .r-low { color: var(--emerald-600); }
+.r-high { color: var(--rose-600); } .r-mid { color: var(--amber-600); } .r-low { color: var(--emerald-600); } .r-dim { color: var(--slate-400); }
 
 /* --- BAR CHART --- */
 .bar-wrap { display: flex; height: 18px; border-radius: 3px; overflow: hidden; min-width: 120px; }
@@ -167,7 +175,7 @@ th.hm-label { font-size: 9px; max-width: 72px; word-wrap: break-word; white-spac
   padding: 12px 16px; background: var(--slate-50); border-radius: 6px; margin-top: 8px;
   max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
 }
-.resp-text.open { max-height: 5000px; }
+.resp-text.open { max-height: none; }
 .resp-text.loading { max-height: 40px; color: var(--slate-400); font-style: italic; }
 .toggle { background: none; border: none; font-size: 12px; color: var(--indigo-600); cursor: pointer; padding: 0; font-family: var(--sans); }
 .toggle:hover { text-decoration: underline; }
@@ -191,6 +199,8 @@ th.hm-label { font-size: 9px; max-width: 72px; word-wrap: break-word; white-spac
 .defeat-card p { font-size: 13px; color: var(--slate-600); line-height: 1.5; }
 
 .loading { text-align: center; padding: 60px; color: var(--slate-400); }
+.spinner { width: 32px; height: 32px; border: 3px solid var(--slate-200); border-top-color: var(--indigo-600); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
+@keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
@@ -206,7 +216,7 @@ th.hm-label { font-size: 9px; max-width: 72px; word-wrap: break-word; white-spac
     <div class="hero-stats" id="hero-stats"></div>
     <div class="hero-links">
       <a href="https://github.com/mint-philosophy/blind-refusal">GitHub</a> &middot;
-      <a href="https://arxiv.org/abs/XXXX.XXXXX">Paper</a>
+      <a href="https://arxiv.org/abs/2604.06233">Paper</a>
     </div>
   </header>
 
@@ -216,9 +226,9 @@ th.hm-label { font-size: 9px; max-width: 72px; word-wrap: break-word; white-spac
     <button data-tab="cases">Cases</button>
   </nav>
 
-  <div id="overview" class="view active"><div class="loading">Loading...</div></div>
-  <div id="results" class="view"><div class="loading">Loading...</div></div>
-  <div id="cases" class="view"><div class="loading">Loading...</div></div>
+  <div id="overview" class="view active"><div class="loading"><div class="spinner"></div>Loading data (may take a moment on mobile)...</div></div>
+  <div id="results" class="view"><div class="loading"><div class="spinner"></div>Loading...</div></div>
+  <div id="cases" class="view"><div class="loading"><div class="spinner"></div>Loading...</div></div>
 </div>
 
 <script>
@@ -230,19 +240,34 @@ const MCOLOR = {
   "grok-4":"#dc2626","grok-4-fast":"#f87171",
   "qwen-3-5-flash":"#ea580c","qwen-3-5-plus":"#f97316","qwen-3-5-397b":"#fb923c",
   "glm-5":"#0891b2","glm-5-turbo":"#22d3ee",
-  "nemotron-3-nano":"#7c3aed","nemotron-3-super":"#a855f7"
+  "nemotron-3-nano":"#65a30d","nemotron-3-super":"#84cc16"
 };
 
 let D = null;
 let filters = {search:"",defeat:"",authority:"",response:""};
 const respCache = {};
 
-document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{
+function switchTab(tabName){
   document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");
+  document.querySelector(`nav button[data-tab="${tabName}"]`).classList.add("active");
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
-  document.getElementById(b.dataset.tab).classList.add("active");
+  document.getElementById(tabName).classList.add("active");
+}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{
+  switchTab(b.dataset.tab);
+  if(b.dataset.tab!=="cases") history.replaceState(null,null,`#${b.dataset.tab}`);
 }));
+window.addEventListener("hashchange",()=>{
+  const h=location.hash.replace("#","");
+  if(h&&D){
+    if(h.startsWith("case/")){
+      switchTab("cases");
+      renderDetail(h.replace("case/",""));
+    } else if(["overview","results","cases"].includes(h)){
+      switchTab(h);
+    }
+  }
+});
 
 function rc(r){return r>=80?"r-high":r>=50?"r-mid":"r-low";}
 function hc(r){return r>=85?"h5":r>=70?"h4":r>=50?"h3":r>=30?"h2":"h1";}
@@ -269,6 +294,12 @@ function md(s){
   h=h.replace(/^- (.+)$/gm,'<li style="margin-left:20px;list-style:disc">$1</li>');
   // Ordered lists (1. item)
   h=h.replace(/^\d+\. (.+)$/gm,'<li style="margin-left:20px;list-style:decimal">$1</li>');
+  // Code blocks (triple backtick)
+  h=h.replace(/```(\w*)\n?([\s\S]*?)```/g,'<pre style="background:#1e293b;color:#e2e8f0;padding:12px;border-radius:6px;overflow-x:auto;font-size:13px;margin:8px 0"><code>$2</code></pre>');
+  // Inline code
+  h=h.replace(/`([^`]+)`/g,'<code style="background:var(--slate-100);padding:1px 4px;border-radius:3px;font-size:13px">$1</code>');
+  // URLs
+  h=h.replace(/(https?:\/\/[^\s<)"]+)/g,'<a href="$1" target="_blank" rel="noopener" style="color:var(--indigo-600)">$1</a>');
   // Double newlines to paragraphs
   h=h.replace(/\n\n/g,'</p><p style="margin:8px 0">');
   // Single newlines to breaks (but not inside list items)
@@ -396,7 +427,7 @@ function renderResults(){
   // --- Leaderboard ---
   let html=`<div class="section">
     <div class="section-title">Model comparison</div>
-    <p class="section-desc">Refusal rate on defeated-rule requests (excluding control cases). Models are sorted by refusal rate, highest first. The bar shows the proportion of responses that help (green), deflect (yellow), or hard-refuse (red).</p>
+    <p class="section-desc">Non-help rate on defeated-rule requests (excluding control cases). Models are sorted by the combined rate of deflections and hard refusals, highest first. The bar shows the proportion of responses that help (green), deflect (amber), or hard-refuse (red).</p>
     <div class="table-wrap scroll"><table><tr>
       <th style="width:30px">#</th><th>Model</th><th style="min-width:140px">Response breakdown</th>
       <th>Helps</th><th>Deflects</th><th>Refuses</th><th>Engages</th>
@@ -419,9 +450,9 @@ function renderResults(){
       <td style="font-weight:700;color:${i===0?'var(--slate-900)':'var(--slate-400)'}">${i+1}</td>
       <td>${dot(m.slug)}<strong>${m.name}</strong><br><span style="font-size:11px;color:var(--slate-400)">${m.family}</span></td>
       <td><div class="bar-wrap"><div class="bar-seg bar-helps" style="width:${hp}%"></div><div class="bar-seg bar-deflects" style="width:${dp}%"></div><div class="bar-seg bar-refuses" style="width:${rp}%"></div></div></td>
-      <td><span class="rate r-low">${hp}%</span></td>
-      <td><span class="rate r-mid">${dp}%</span></td>
-      <td><span class="rate r-high">${rp}%</span></td>
+      <td><span class="rate ${hp>=20?'r-low':'r-dim'}">${hp}%</span></td>
+      <td><span class="rate ${dp>=20?'r-mid':'r-dim'}">${dp}%</span></td>
+      <td><span class="rate ${rp>=5?'r-high':'r-dim'}">${rp}%</span></td>
       <td>${ep}%</td>
     </tr>`;
   });
@@ -431,7 +462,7 @@ function renderResults(){
       <span class="bar-seg bar-helps" style="display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle"></span> Helps &nbsp;
       <span class="bar-seg bar-deflects" style="display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle"></span> Deflects &nbsp;
       <span class="bar-seg bar-refuses" style="display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle"></span> Hard refusal &nbsp;&middot;&nbsp;
-      ${D.meta.total_cases.toLocaleString()} cases &middot; GPT-5.4 judge &middot; 2026
+      ${D.meta.total_cases.toLocaleString()} cases &middot; GPT-5.4 judge &middot; 2026 &middot; Some models have sparse results in select categories
     </div></div></div>`;
 
   // --- Defeat family breakdown ---
@@ -519,12 +550,14 @@ function renderCases(){
   html+=`<div class="table-wrap scroll"><table><tr>
     <th>Scenario</th><th>Defeat</th><th>Authority</th><th style="max-width:240px">Policy</th>`;
   rep.forEach(m=>{
-    const n=(D.meta.model_names[m]||m).replace(/ \(.*/,"").replace("Claude ","").replace("Gemini ","").replace("Nemotron ","");
+    const n=(D.meta.model_names[m]||m).replace(/ \(.*\)/,"");
     html+=`<th style="text-align:center">${n}</th>`;
   });
   html+=`</tr>`;
 
-  const shown=filtered.slice(0,100);
+  const pageSize=100;
+  const showCount=filters._showCount||pageSize;
+  const shown=filtered.slice(0,showCount);
   shown.forEach(c=>{
     const shortId=c.id.replace(/^seed_/,"");
     const displayId=shortId.length>32?shortId.substring(0,32)+"...":shortId;
@@ -541,16 +574,20 @@ function renderCases(){
   });
 
   html+=`</table>`;
-  if(filtered.length>100) html+=`<div class="table-footer">Showing 100 of ${filtered.length} scenarios</div>`;
+  if(filtered.length>showCount) html+=`<div class="table-footer">Showing ${showCount} of ${filtered.length} scenarios <button id="load-more" style="margin-left:8px;padding:4px 12px;border:1px solid var(--slate-300);border-radius:4px;background:var(--white);cursor:pointer;font-size:12px">Load ${Math.min(pageSize,filtered.length-showCount)} more</button></div>`;
+  else if(filtered.length>pageSize) html+=`<div class="table-footer">Showing all ${filtered.length} scenarios</div>`;
   html+=`</div>`;
 
   el.innerHTML=html;
   document.getElementById("f-count").textContent=`${filtered.length} scenarios`;
 
-  document.getElementById("f-search").addEventListener("input",e=>{filters.search=e.target.value;renderCases();});
-  document.getElementById("f-defeat").addEventListener("change",e=>{filters.defeat=e.target.value;renderCases();});
-  document.getElementById("f-authority").addEventListener("change",e=>{filters.authority=e.target.value;renderCases();});
-  document.getElementById("f-response").addEventListener("change",e=>{filters.response=e.target.value;renderCases();});
+  let searchTimer;
+  document.getElementById("f-search").addEventListener("input",e=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{filters.search=e.target.value;filters._showCount=pageSize;renderCases();},200);});
+  document.getElementById("f-defeat").addEventListener("change",e=>{filters.defeat=e.target.value;filters._showCount=pageSize;renderCases();});
+  document.getElementById("f-authority").addEventListener("change",e=>{filters.authority=e.target.value;filters._showCount=pageSize;renderCases();});
+  document.getElementById("f-response").addEventListener("change",e=>{filters.response=e.target.value;filters._showCount=pageSize;renderCases();});
+  const loadMore=document.getElementById("load-more");
+  if(loadMore) loadMore.addEventListener("click",()=>{filters._showCount=(filters._showCount||pageSize)+pageSize;renderCases();});
 
   el.querySelectorAll(".s-row").forEach(row=>{
     row.addEventListener("click",()=>renderDetail(row.dataset.id));
@@ -642,7 +679,8 @@ async function renderDetail(caseId){
   html+=`</div>`;
 
   el.innerHTML=html;
-  document.getElementById("back-btn").addEventListener("click",()=>renderCases());
+  history.replaceState(null,null,`#case/${caseId}`);
+  document.getElementById("back-btn").addEventListener("click",()=>{history.replaceState(null,null,"#cases");renderCases();});
 
   // Load full responses on toggle
   el.querySelectorAll(".toggle").forEach(btn=>{
@@ -680,8 +718,16 @@ async function init(){
     renderOverview();
     renderResults();
     renderCases();
+    // Handle hash on load
+    const h=location.hash.replace("#","");
+    if(h){
+      if(h.startsWith("case/")){switchTab("cases");renderDetail(h.replace("case/",""));}
+      else if(["overview","results","cases"].includes(h)){switchTab(h);}
+    }
   }catch(e){
-    document.querySelectorAll(".loading").forEach(x=>{x.textContent="Error loading data.";});
+    document.querySelectorAll(".loading").forEach(x=>{
+      x.innerHTML='Error loading data. <button onclick="location.reload()" style="margin-left:8px;padding:4px 12px;border:1px solid var(--slate-300);border-radius:4px;background:var(--white);cursor:pointer">Retry</button>';
+    });
     console.error(e);
   }
 }
