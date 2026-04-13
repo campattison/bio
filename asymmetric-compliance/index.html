@@ -622,7 +622,7 @@ function applyFilters() {
   const domain = document.getElementById('filter-domain').value;
   const model = document.getElementById('filter-model').value;
   const difficulty = document.getElementById('filter-difficulty').value;
-  const view = document.getElementById('filter-view').value;
+  const view = '';
   const audit = document.getElementById('filter-audit').value;
   const search = document.getElementById('search-input').value.toLowerCase().trim();
 
@@ -778,7 +778,6 @@ document.addEventListener('keydown', (e) => {
 document.getElementById('filter-domain').addEventListener('change', applyFilters);
 document.getElementById('filter-model').addEventListener('change', applyFilters);
 document.getElementById('filter-difficulty').addEventListener('change', applyFilters);
-document.getElementById('filter-view').addEventListener('change', applyFilters);
 document.getElementById('filter-audit').addEventListener('change', applyFilters);
 
 let searchTimeout;
