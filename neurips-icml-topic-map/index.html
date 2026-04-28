@@ -62,12 +62,22 @@ aside.right { border-right:none; border-left:1px solid var(--border); }
 .opt .cnt { color:var(--text-dim); font-size:11px; font-variant-numeric:tabular-nums; }
 #plot { height:100%; }
 #detail { font-size:12px; line-height:1.55; }
-#detail h2 { font-size:13px; margin-bottom:6px; }
+#detail h2 { font-size:13px; margin-bottom:6px; line-height:1.35; }
 #detail .kv { color:var(--text-dim); font-size:11px; margin-top:4px; }
-#detail .auth { font-style:italic; }
-#detail .or { display:inline-block; padding:2px 8px; background:var(--surface2);
-                border-radius:4px; margin-top:8px; font-size:11px;
-                text-decoration:none; color:var(--accent); }
+#detail .auth { font-style:italic; color:var(--text-dim); font-size:11px;
+                  margin-top:4px; }
+#detail .abstract {
+  margin-top:10px; padding:8px 10px;
+  background:var(--surface2); border-left:2px solid var(--border-hi);
+  border-radius:3px; font-size:12px; line-height:1.55;
+  max-height:50vh; overflow-y:auto;
+}
+#detail .abstract.loading { color:var(--text-dim); font-style:italic; }
+#detail .or { display:inline-block; padding:3px 10px; background:var(--surface2);
+                border-radius:4px; margin-top:10px; font-size:11px;
+                text-decoration:none; color:var(--accent);
+                border:1px solid var(--border); }
+#detail .or:hover { border-color:var(--accent); }
 #cluster-search {
   width:100%; padding:5px 8px; border-radius:4px;
   background:var(--surface2); color:var(--text); border:1px solid var(--border);
@@ -154,6 +164,8 @@ const AFF_SYMBOLS_3D = {
 const AFF_LABELS = ["academic","mixed","corporate","government","nonprofit","unknown"];
 
 let DATA = null;
+let ABSTRACTS = null;        // populated lazily on first click
+let ABSTRACTS_LOADING = null; // promise while in flight
 const STATE = {
   aff: new Set(AFF_LABELS),
   ven: new Set(["icml","neurips"]),
@@ -163,6 +175,20 @@ const STATE = {
   view: "2d",        // "2d" | "3d"
   showClusterLabels: true,
 };
+
+function loadAbstracts() {
+  if (ABSTRACTS) return Promise.resolve(ABSTRACTS);
+  if (ABSTRACTS_LOADING) return ABSTRACTS_LOADING;
+  ABSTRACTS_LOADING = fetch("abstracts.json")
+    .then(r => r.json())
+    .then(d => { ABSTRACTS = d; return d; })
+    .catch(err => {
+      console.error("Failed to load abstracts:", err);
+      ABSTRACTS_LOADING = null;
+      return null;
+    });
+  return ABSTRACTS_LOADING;
+}
 
 async function load() {
   const r = await fetch("dashboard_data.json");
@@ -589,14 +615,26 @@ function showDetail(pid) {
   if (!r) return;
   const c = DATA.clusters.find(c => c.id === r.c);
   const orUrl = `https://openreview.net/forum?id=${r.id}`;
+  const abstractHtml = ABSTRACTS && ABSTRACTS[pid]
+    ? `<div class="abstract">${escapeHtml(ABSTRACTS[pid])}</div>`
+    : `<div class="abstract loading">Loading abstract…</div>`;
   document.getElementById("detail").innerHTML = `
     <h2>${escapeHtml(r.t)}</h2>
     <div class="auth">${escapeHtml((r.auth||[]).join(", "))}</div>
     <div class="kv"><b>${r.v.toUpperCase()} ${r.y}</b> · affiliation: <b>${r.a}</b>
       · cluster: <b>${c ? '['+r.c+'] '+c.label : 'none'}</b></div>
     ${c ? `<div class="kv">cluster top terms: ${c.top_terms.slice(0,6).join(', ')}</div>` : ''}
+    ${abstractHtml}
     <a class="or" href="${orUrl}" target="_blank">Open in OpenReview ↗</a>
   `;
+  // Lazy-load abstracts on first click
+  if (!ABSTRACTS) {
+    loadAbstracts().then(() => {
+      // Only update if still showing this paper
+      const stillThis = document.querySelector("#detail h2");
+      if (stillThis && stillThis.textContent === r.t) showDetail(pid);
+    });
+  }
 }
 
 function reset() {
