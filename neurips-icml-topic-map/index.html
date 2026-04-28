@@ -386,48 +386,93 @@ function redraw() {
         hoverinfo: "skip", showlegend: false,
       });
     } else if (!is3d && labelClusters.length > 0) {
-      // 2D: split clusters into left/right columns by centroid x;
-      // distribute label y-positions evenly so labels don't collide.
+      // 2D peripheral labels: place around all four edges of the data range.
+      // Each cluster's label goes to its NEAREST edge (by centroid position),
+      // distributed along that edge so leader lines fan out naturally.
       const xs = filtered.map(r => r.x);
       const ys = filtered.map(r => r.yc);
       const xmin = Math.min(...xs), xmax = Math.max(...xs);
       const ymin = Math.min(...ys), ymax = Math.max(...ys);
-      const xmid = (xmin + xmax) / 2;
-      const left = labelClusters.filter(c => c.centroid[0] < xmid)
-                                 .sort((a, b) => b.centroid[1] - a.centroid[1]);
-      const right = labelClusters.filter(c => c.centroid[0] >= xmid)
-                                  .sort((a, b) => b.centroid[1] - a.centroid[1]);
+      const xrange = xmax - xmin, yrange = ymax - ymin;
+      // Extended bounds — labels live in this extended region (data coords).
+      const xpad = xrange * 0.40, ypad = yrange * 0.18;
+      const labelXLeft  = xmin - xpad * 0.55;
+      const labelXRight = xmax + xpad * 0.55;
+      const labelYTop    = ymax + ypad * 0.55;
+      const labelYBottom = ymin - ypad * 0.55;
+      // Stash for layout.xaxis.range etc.
+      window.__labelExtent = {
+        x0: xmin - xpad, x1: xmax + xpad,
+        y0: ymin - ypad, y1: ymax + ypad,
+      };
       const colorOf = c => AFF_COLORS[
         Object.entries(c.aff_share || {})
           .reduce((best, [k, v]) => (v > best[1] ? [k, v] : best), ["unknown", -1])[0]
       ];
-      function placeColumn(list, side) {
-        // x-anchor in paper coords; y-anchor in axis (data) coords
+      // Score: which edge is closest (in normalized units)?
+      function pickEdge(c) {
+        const cx = c.centroid[0], cy = c.centroid[1];
+        const dLeft   = (cx - xmin) / xrange;
+        const dRight  = (xmax - cx) / xrange;
+        const dTop    = (ymax - cy) / yrange;
+        const dBottom = (cy - ymin) / yrange;
+        const best = Math.min(dLeft, dRight, dTop, dBottom);
+        if (best === dLeft)   return "L";
+        if (best === dRight)  return "R";
+        if (best === dTop)    return "T";
+        return "B";
+      }
+      const buckets = { L: [], R: [], T: [], B: [] };
+      for (const c of labelClusters) buckets[pickEdge(c)].push(c);
+      // Sort along the edge by perpendicular axis
+      buckets.L.sort((a, b) => b.centroid[1] - a.centroid[1]);   // top→bottom
+      buckets.R.sort((a, b) => b.centroid[1] - a.centroid[1]);
+      buckets.T.sort((a, b) => a.centroid[0] - b.centroid[0]);   // left→right
+      buckets.B.sort((a, b) => a.centroid[0] - b.centroid[0]);
+
+      function pushLabels(list, side) {
         const n = list.length;
         if (n === 0) return;
         for (let i = 0; i < n; i++) {
           const c = list[i];
-          const ly = ymax - (i + 0.5) * (ymax - ymin) / n;
           const labelText = `[${c.id}] ${c.label}`;
+          let ax, ay, xanchor, yanchor;
+          if (side === "L") {
+            ax = labelXLeft;
+            ay = ymax - (i + 0.5) * yrange / n;
+            xanchor = "right"; yanchor = "middle";
+          } else if (side === "R") {
+            ax = labelXRight;
+            ay = ymax - (i + 0.5) * yrange / n;
+            xanchor = "left"; yanchor = "middle";
+          } else if (side === "T") {
+            ax = xmin + (i + 0.5) * xrange / n;
+            ay = labelYTop;
+            xanchor = "center"; yanchor = "bottom";
+          } else {
+            ax = xmin + (i + 0.5) * xrange / n;
+            ay = labelYBottom;
+            xanchor = "center"; yanchor = "top";
+          }
           annotations.push({
             x: c.centroid[0], y: c.centroid[1], xref: "x", yref: "y",
-            ax: side === "left" ? 0.005 : 0.995,
-            ay: ly,
-            axref: "paper", ayref: "y",
-            text: labelText.length > 36 ? labelText.slice(0, 34) + "…" : labelText,
+            ax: ax, ay: ay, axref: "x", ayref: "y",
+            text: labelText.length > 32 ? labelText.slice(0, 30) + "…" : labelText,
             showarrow: true,
-            arrowhead: 0, arrowsize: 1, arrowwidth: 0.7,
+            arrowhead: 0, arrowsize: 1, arrowwidth: 0.6,
             arrowcolor: colorOf(c),
-            font: { size: 9.5, color: getCSS('--text') },
+            font: { size: 9, color: getCSS('--text') },
             bgcolor: getCSS('--surface'),
             bordercolor: colorOf(c), borderwidth: 1, borderpad: 3,
-            xanchor: side === "left" ? "right" : "left",
-            yanchor: "middle",
+            xanchor: xanchor, yanchor: yanchor,
+            opacity: 0.95,
           });
         }
       }
-      placeColumn(left, "left");
-      placeColumn(right, "right");
+      pushLabels(buckets.L, "L");
+      pushLabels(buckets.R, "R");
+      pushLabels(buckets.T, "T");
+      pushLabels(buckets.B, "B");
     }
   }
 
@@ -454,13 +499,19 @@ function redraw() {
       bgcolor: getCSS('--bg'),
     };
   } else {
-    // Reserve generous left/right margins for peripheral labels
-    layout.margin = { l: 230, r: 230, t: 10, b: 10 };
-    layout.xaxis = { visible: false };
-    layout.yaxis = { visible: false };
+    // Tight margins; labels live INSIDE the data extent (extended xaxis/yaxis range).
+    layout.margin = { l: 30, r: 30, t: 10, b: 10 };
+    const ex = window.__labelExtent;
+    layout.xaxis = { visible: false, range: ex ? [ex.x0, ex.x1] : undefined };
+    // Lock aspect ratio so UMAP geometry isn't squished
+    layout.yaxis = { visible: false, range: ex ? [ex.y0, ex.y1] : undefined,
+                     scaleanchor: "x", scaleratio: 1 };
     layout.annotations = annotations;
-    layout.legend.x = 1.0;
-    layout.legend.xanchor = "right";
+    // Move legend to upper-left corner so it doesn't fight with right-edge labels
+    layout.legend.x = 0.01;
+    layout.legend.y = 0.99;
+    layout.legend.xanchor = "left";
+    layout.legend.yanchor = "top";
   }
   const config = { responsive: true, scrollZoom: true, displaylogo: false,
                     modeBarButtonsToRemove: ['lasso2d','select2d'] };
