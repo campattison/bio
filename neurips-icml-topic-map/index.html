@@ -454,10 +454,19 @@ function redraw() {
             ay = labelYBottom;
             xanchor = "center"; yanchor = "top";
           }
+          const truncated = labelText.length > 32;
+          // Full hover text: label + n + top terms + dominant affiliation
+          const aff = Object.entries(c.aff_share || {})
+            .sort((a,b)=>b[1]-a[1]).slice(0,3)
+            .map(([k,v]) => `${k} ${(v*100).toFixed(0)}%`).join(' · ');
+          const fullHover = `[${c.id}] ${c.label}<br>` +
+            `n=${c.n.toLocaleString()} · ${aff}<br>` +
+            `terms: ${(c.top_terms||[]).slice(0,5).join(', ')}`;
           annotations.push({
             x: c.centroid[0], y: c.centroid[1], xref: "x", yref: "y",
             ax: ax, ay: ay, axref: "x", ayref: "y",
-            text: labelText.length > 32 ? labelText.slice(0, 30) + "…" : labelText,
+            text: truncated ? labelText.slice(0, 30) + "…" : labelText,
+            hovertext: fullHover,
             showarrow: true,
             arrowhead: 0, arrowsize: 1, arrowwidth: 0.6,
             arrowcolor: colorOf(c),
@@ -466,6 +475,7 @@ function redraw() {
             bordercolor: colorOf(c), borderwidth: 1, borderpad: 3,
             xanchor: xanchor, yanchor: yanchor,
             opacity: 0.95,
+            captureevents: true,
           });
         }
       }
@@ -513,16 +523,18 @@ function redraw() {
     layout.legend.xanchor = "left";
     layout.legend.yanchor = "top";
   }
-  // Disable Plotly's built-in drag in 2D — we'll add our own right-click pan.
+  // 2D: disable Plotly drag — we provide our own scroll-zoom + right-click pan.
   if (!is3d) layout.dragmode = false;
   const config = {
     responsive: true,
-    scrollZoom: true,            // wheel zoom — works in both 2D and 3D
-    doubleClick: "reset",        // double-click to reset zoom
+    scrollZoom: is3d,            // 3D uses Plotly's native scroll zoom; 2D is custom
+    doubleClick: "reset",
     displaylogo: false,
     modeBarButtonsToRemove: ['lasso2d','select2d','autoScale2d'],
   };
-  Plotly.react("plot", traces, layout, config);
+  Plotly.react("plot", traces, layout, config).then(() => {
+    if (!is3d) attachLabelHoverFront();
+  });
 
   const plot = document.getElementById("plot");
   plot.removeAllListeners?.("plotly_click");
@@ -532,7 +544,10 @@ function redraw() {
     }
   });
 
-  if (!is3d) attachRightClickPan(plot);
+  if (!is3d) {
+    attachRightClickPan(plot);
+    attachWheelZoom(plot);
+  }
 
   // Filter status
   const total = DATA.rows.length;
@@ -658,6 +673,73 @@ function attachRightClickPan(plot) {
       STATE_DRAG.active = false;
       plot.style.cursor = "";
     }
+  });
+}
+
+// Custom scroll-to-zoom for the 2D plot. Zooms toward the cursor.
+let _wheelAttached = false;
+function attachWheelZoom(plot) {
+  if (_wheelAttached) return;
+  _wheelAttached = true;
+  plot.addEventListener("wheel", e => {
+    const layout = plot._fullLayout;
+    if (!layout || !layout.xaxis || !layout.yaxis) return;
+    e.preventDefault();
+    const xa = layout.xaxis, ya = layout.yaxis;
+    const rect = plot.getBoundingClientRect();
+    // Mouse position relative to the plotting area
+    const xPxStart = xa._offset || 0;
+    const xPxLen = xa._length || rect.width;
+    const yPxStart = ya._offset || 0;
+    const yPxLen = ya._length || rect.height;
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    const xfrac = Math.max(0, Math.min(1, (px - xPxStart) / xPxLen));
+    const yfrac = Math.max(0, Math.min(1, 1 - (py - yPxStart) / yPxLen));  // invert y
+    const xspan = xa.range[1] - xa.range[0];
+    const yspan = ya.range[1] - ya.range[0];
+    const xData = xa.range[0] + xfrac * xspan;
+    const yData = ya.range[0] + yfrac * yspan;
+    const factor = e.deltaY > 0 ? 1.12 : 1 / 1.12;
+    const newX = xspan * factor, newY = yspan * factor;
+    Plotly.relayout(plot, {
+      "xaxis.range": [xData - xfrac * newX, xData + (1 - xfrac) * newX],
+      "yaxis.range": [yData - yfrac * newY, yData + (1 - yfrac) * newY],
+    });
+  }, { passive: false });
+}
+
+// On hover, move the annotation's SVG node to the end of its parent — this
+// puts it on top in SVG painting order, so overlapping labels become readable.
+function attachLabelHoverFront() {
+  const annots = document.querySelectorAll("#plot g.annotation");
+  annots.forEach(a => {
+    if (a._hoverWired) return;
+    a._hoverWired = true;
+    a.style.pointerEvents = "auto";
+    a.style.cursor = "default";
+    a.addEventListener("mouseenter", () => {
+      a.parentNode.appendChild(a);  // SVG: last child paints on top
+      const texts = a.querySelectorAll("text");
+      texts.forEach(t => {
+        if (!t.dataset.origSize) t.dataset.origSize = t.getAttribute("font-size") || "9";
+        t.setAttribute("font-size", "11");
+        t.setAttribute("font-weight", "bold");
+      });
+      const rects = a.querySelectorAll("rect");
+      rects.forEach(r => {
+        r.setAttribute("stroke-width", "1.8");
+      });
+    });
+    a.addEventListener("mouseleave", () => {
+      a.querySelectorAll("text").forEach(t => {
+        if (t.dataset.origSize) t.setAttribute("font-size", t.dataset.origSize);
+        t.removeAttribute("font-weight");
+      });
+      a.querySelectorAll("rect").forEach(r => {
+        r.setAttribute("stroke-width", "1");
+      });
+    });
   });
 }
 
