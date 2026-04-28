@@ -513,8 +513,15 @@ function redraw() {
     layout.legend.xanchor = "left";
     layout.legend.yanchor = "top";
   }
-  const config = { responsive: true, scrollZoom: true, displaylogo: false,
-                    modeBarButtonsToRemove: ['lasso2d','select2d'] };
+  // Disable Plotly's built-in drag in 2D — we'll add our own right-click pan.
+  if (!is3d) layout.dragmode = false;
+  const config = {
+    responsive: true,
+    scrollZoom: true,            // wheel zoom — works in both 2D and 3D
+    doubleClick: "reset",        // double-click to reset zoom
+    displaylogo: false,
+    modeBarButtonsToRemove: ['lasso2d','select2d','autoScale2d'],
+  };
   Plotly.react("plot", traces, layout, config);
 
   const plot = document.getElementById("plot");
@@ -524,6 +531,8 @@ function redraw() {
       showDetail(evt.points[0].customdata);
     }
   });
+
+  if (!is3d) attachRightClickPan(plot);
 
   // Filter status
   const total = DATA.rows.length;
@@ -598,6 +607,58 @@ function toggleTheme() {
 
 function getCSS(varName) {
   return getComputedStyle(document.body).getPropertyValue(varName).trim();
+}
+
+// Right-click-and-drag pan for the 2D scatter. Left-click stays free for
+// clicking points; scroll-wheel zoom is handled by Plotly's scrollZoom.
+let _rcAttached = false;
+function attachRightClickPan(plot) {
+  if (_rcAttached) return;
+  _rcAttached = true;
+  const STATE_DRAG = { active: false, startX: 0, startY: 0,
+                        x0: 0, x1: 0, y0: 0, y1: 0, w: 0, h: 0 };
+
+  // Suppress browser context menu on the plot
+  plot.addEventListener("contextmenu", e => e.preventDefault());
+
+  plot.addEventListener("mousedown", e => {
+    if (e.button !== 2) return;          // only right button
+    const layout = plot._fullLayout;
+    if (!layout || !layout.xaxis || !layout.yaxis) return;
+    const xa = layout.xaxis, ya = layout.yaxis;
+    const rect = plot.getBoundingClientRect();
+    STATE_DRAG.active = true;
+    STATE_DRAG.startX = e.clientX;
+    STATE_DRAG.startY = e.clientY;
+    STATE_DRAG.x0 = xa.range[0];
+    STATE_DRAG.x1 = xa.range[1];
+    STATE_DRAG.y0 = ya.range[0];
+    STATE_DRAG.y1 = ya.range[1];
+    // Pixel size of the plot area (approximate; uses full plot rect)
+    STATE_DRAG.w = rect.width;
+    STATE_DRAG.h = rect.height;
+    plot.style.cursor = "grabbing";
+    e.preventDefault();
+  });
+  window.addEventListener("mousemove", e => {
+    if (!STATE_DRAG.active) return;
+    const dx = e.clientX - STATE_DRAG.startX;
+    const dy = e.clientY - STATE_DRAG.startY;
+    const xspan = STATE_DRAG.x1 - STATE_DRAG.x0;
+    const yspan = STATE_DRAG.y1 - STATE_DRAG.y0;
+    const xshift = -(dx / STATE_DRAG.w) * xspan;
+    const yshift =  (dy / STATE_DRAG.h) * yspan;
+    Plotly.relayout(plot, {
+      "xaxis.range": [STATE_DRAG.x0 + xshift, STATE_DRAG.x1 + xshift],
+      "yaxis.range": [STATE_DRAG.y0 + yshift, STATE_DRAG.y1 + yshift],
+    });
+  });
+  window.addEventListener("mouseup", e => {
+    if (e.button === 2 && STATE_DRAG.active) {
+      STATE_DRAG.active = false;
+      plot.style.cursor = "";
+    }
+  });
 }
 
 function escapeHtml(s) {
