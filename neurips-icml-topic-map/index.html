@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NeurIPS + ICML Topic Map — Affiliation Explorer</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root {
+  --bg:#0e0e0e; --surface:#1a1a1a; --surface2:#242424; --border:#333; --border-hi:#555;
+  --text:#e6e6e6; --text-dim:#8a8a8a; --text-hi:#fff; --accent:#56B4E9;
+  /* Okabe-Ito (CVD-safe) */
+  --c-acad:#0072B2; --c-corp:#D55E00; --c-mix:#CC79A7; --c-gov:#009E73;
+  --c-non:#F0E442; --c-unk:#999;
+}
+body.light {
+  --bg:#f7f7f8; --surface:#fff; --surface2:#f0f1f3; --border:#d8dade; --border-hi:#b0b3b8;
+  --text:#1a1d21; --text-dim:#5b6068; --text-hi:#000; --accent:#0072B2;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg); color:var(--text); font-size:13px; line-height:1.45;
+}
+header {
+  background:var(--surface); border-bottom:1px solid var(--border);
+  padding:10px 16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+}
+h1 { font-size:15px; font-weight:600; }
+.lead { color:var(--text-dim); font-size:12px; }
+#filter-status {
+  background:var(--surface2); padding:4px 10px; border-radius:14px;
+  font-size:12px;
+}
+#filter-status.active { background:var(--accent); color:#fff; }
+button {
+  background:var(--surface2); color:var(--text); border:1px solid var(--border);
+  padding:4px 10px; border-radius:6px; cursor:pointer; font-size:12px;
+}
+button:hover { border-color:var(--border-hi); }
+button:disabled { opacity:0.4; cursor:not-allowed; }
+main {
+  display:grid; grid-template-columns:240px 1fr 320px;
+  height:calc(100vh - 50px);
+}
+aside {
+  background:var(--surface); border-right:1px solid var(--border);
+  padding:12px; overflow-y:auto;
+}
+aside.right { border-right:none; border-left:1px solid var(--border); }
+.fset { margin-bottom:14px; }
+.fset h3 { font-size:11px; text-transform:uppercase; color:var(--text-dim);
+            letter-spacing:0.5px; margin-bottom:6px; }
+.opt {
+  display:flex; align-items:center; gap:6px; padding:3px 4px;
+  border-radius:4px; cursor:pointer;
+}
+.opt:hover { background:var(--surface2); }
+.opt input { accent-color:var(--accent); }
+.opt .swatch { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.opt .lbl { flex:1; font-size:12px; }
+.opt .cnt { color:var(--text-dim); font-size:11px; font-variant-numeric:tabular-nums; }
+#plot { height:100%; }
+#detail { font-size:12px; line-height:1.55; }
+#detail h2 { font-size:13px; margin-bottom:6px; }
+#detail .kv { color:var(--text-dim); font-size:11px; margin-top:4px; }
+#detail .auth { font-style:italic; }
+#detail .or { display:inline-block; padding:2px 8px; background:var(--surface2);
+                border-radius:4px; margin-top:8px; font-size:11px;
+                text-decoration:none; color:var(--accent); }
+#cluster-search {
+  width:100%; padding:5px 8px; border-radius:4px;
+  background:var(--surface2); color:var(--text); border:1px solid var(--border);
+  font-size:12px; margin-bottom:6px;
+}
+#stats { font-size:11px; color:var(--text-dim); }
+#stats b { color:var(--text); }
+.vbtn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.color-acad { background:var(--c-acad); }
+.color-corp { background:var(--c-corp); }
+.color-mix  { background:var(--c-mix); }
+.color-gov  { background:var(--c-gov); }
+.color-non  { background:var(--c-non); }
+.color-unk  { background:var(--c-unk); }
+</style>
+</head>
+<body>
+<header>
+  <h1>NeurIPS + ICML 2023-2025 Topic Map</h1>
+  <span class="lead">20,237 papers · 60 clusters · bge-large + UMAP</span>
+  <span id="filter-status">Showing all <b>20,237</b></span>
+  <button id="reset" disabled>Reset filters</button>
+  <span style="margin-left:auto; display:flex; gap:6px;">
+    <button id="view-2d" class="vbtn active">2D</button>
+    <button id="view-3d" class="vbtn">3D</button>
+    <button id="toggle-labels">Hide labels</button>
+    <button id="theme">Light</button>
+  </span>
+</header>
+<main>
+  <aside class="left">
+    <div class="fset">
+      <h3>Affiliation</h3>
+      <div id="aff-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Venue</h3>
+      <div id="ven-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Year</h3>
+      <div id="yr-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Title / Author search</h3>
+      <input type="text" id="search" placeholder="filter by text…"
+             style="width:100%; padding:5px 8px; border-radius:4px;
+                    background:var(--surface2); color:var(--text);
+                    border:1px solid var(--border); font-size:12px;">
+    </div>
+    <div class="fset" id="stats"></div>
+  </aside>
+  <div id="plot"></div>
+  <aside class="right">
+    <div class="fset">
+      <h3>Clusters</h3>
+      <input type="text" id="cluster-search" placeholder="search cluster labels…">
+      <div id="cluster-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Selected paper</h3>
+      <div id="detail" style="color:var(--text-dim);">
+        Click a point to see paper details.
+      </div>
+    </div>
+  </aside>
+</main>
+
+<script>
+// Okabe-Ito colorblind-safe palette
+const AFF_COLORS = {
+  academic:"#0072B2", corporate:"#D55E00", mixed:"#CC79A7",
+  government:"#009E73", nonprofit:"#F0E442", unknown:"#999"
+};
+// Marker symbols too — redundant encoding helps for the most affected CVD types
+const AFF_SYMBOLS = {
+  academic:"circle", corporate:"diamond", mixed:"square",
+  government:"triangle-up", nonprofit:"cross", unknown:"x"
+};
+const AFF_SYMBOLS_3D = {
+  academic:"circle", corporate:"diamond", mixed:"square",
+  government:"diamond-open", nonprofit:"cross", unknown:"x"
+};
+const AFF_LABELS = ["academic","mixed","corporate","government","nonprofit","unknown"];
+
+let DATA = null;
+const STATE = {
+  aff: new Set(AFF_LABELS),
+  ven: new Set(["icml","neurips"]),
+  yr:  new Set([2023,2024,2025]),
+  clusters: null,    // null = all; Set of ints when filtered
+  search: "",
+  view: "2d",        // "2d" | "3d"
+  showClusterLabels: true,
+};
+
+async function load() {
+  const r = await fetch("dashboard_data.json");
+  DATA = await r.json();
+  initUI();
+  redraw();
+}
+
+function initUI() {
+  // Affiliation
+  const aCnts = {};
+  for (const r of DATA.rows) aCnts[r.a] = (aCnts[r.a] || 0) + 1;
+  const aBox = document.getElementById("aff-opts");
+  for (const lbl of AFF_LABELS) {
+    const sw = `color-${ {academic:"acad",corporate:"corp",mixed:"mix",government:"gov",nonprofit:"non",unknown:"unk"}[lbl] }`;
+    aBox.innerHTML += `<label class="opt">
+      <input type="checkbox" data-aff="${lbl}" checked>
+      <span class="swatch ${sw}"></span>
+      <span class="lbl">${lbl}</span>
+      <span class="cnt">${(aCnts[lbl]||0).toLocaleString()}</span></label>`;
+  }
+  // Venue
+  const vCnts = {};
+  for (const r of DATA.rows) vCnts[r.v] = (vCnts[r.v] || 0) + 1;
+  const vBox = document.getElementById("ven-opts");
+  for (const v of ["icml","neurips"]) {
+    vBox.innerHTML += `<label class="opt">
+      <input type="checkbox" data-ven="${v}" checked>
+      <span class="lbl">${v.toUpperCase()}</span>
+      <span class="cnt">${(vCnts[v]||0).toLocaleString()}</span></label>`;
+  }
+  // Year
+  const yCnts = {};
+  for (const r of DATA.rows) yCnts[r.y] = (yCnts[r.y] || 0) + 1;
+  const yBox = document.getElementById("yr-opts");
+  for (const y of [2023,2024,2025]) {
+    yBox.innerHTML += `<label class="opt">
+      <input type="checkbox" data-yr="${y}" checked>
+      <span class="lbl">${y}</span>
+      <span class="cnt">${(yCnts[y]||0).toLocaleString()}</span></label>`;
+  }
+  // Cluster list
+  renderClusters("");
+
+  // Wire up filter inputs
+  document.querySelectorAll('input[data-aff]').forEach(el => {
+    el.addEventListener('change', () => {
+      if (el.checked) STATE.aff.add(el.dataset.aff);
+      else STATE.aff.delete(el.dataset.aff);
+      redraw();
+    });
+  });
+  document.querySelectorAll('input[data-ven]').forEach(el => {
+    el.addEventListener('change', () => {
+      if (el.checked) STATE.ven.add(el.dataset.ven);
+      else STATE.ven.delete(el.dataset.ven);
+      redraw();
+    });
+  });
+  document.querySelectorAll('input[data-yr]').forEach(el => {
+    el.addEventListener('change', () => {
+      const y = parseInt(el.dataset.yr);
+      if (el.checked) STATE.yr.add(y);
+      else STATE.yr.delete(y);
+      redraw();
+    });
+  });
+  document.getElementById("search").addEventListener("input", e => {
+    STATE.search = e.target.value.toLowerCase();
+    redraw();
+  });
+  document.getElementById("cluster-search").addEventListener("input", e => {
+    renderClusters(e.target.value.toLowerCase());
+  });
+  document.getElementById("reset").addEventListener("click", reset);
+  document.getElementById("theme").addEventListener("click", toggleTheme);
+  document.getElementById("view-2d").addEventListener("click", () => setView("2d"));
+  document.getElementById("view-3d").addEventListener("click", () => setView("3d"));
+  document.getElementById("toggle-labels").addEventListener("click", toggleLabels);
+}
+
+function setView(v) {
+  if (v === "3d" && !DATA.has_3d) {
+    alert("3D coordinates not available — run scripts/build_umap_3d.py first.");
+    return;
+  }
+  STATE.view = v;
+  document.getElementById("view-2d").classList.toggle("active", v === "2d");
+  document.getElementById("view-3d").classList.toggle("active", v === "3d");
+  // Force re-init by purging plot
+  Plotly.purge("plot");
+  redraw();
+}
+
+function toggleLabels() {
+  STATE.showClusterLabels = !STATE.showClusterLabels;
+  document.getElementById("toggle-labels").textContent =
+    STATE.showClusterLabels ? "Hide labels" : "Show labels";
+  redraw();
+}
+
+function renderClusters(query) {
+  const box = document.getElementById("cluster-opts");
+  box.innerHTML = "";
+  const clusters = DATA.clusters
+    .filter(c => !query || c.label.toLowerCase().includes(query) ||
+                 (c.top_terms || []).some(t => t.toLowerCase().includes(query)))
+    .sort((a,b) => b.n - a.n);
+
+  // Top "all" toggle
+  box.innerHTML += `<label class="opt" style="border-bottom:1px solid var(--border); margin-bottom:6px;">
+    <input type="checkbox" id="all-clusters" ${STATE.clusters === null ? "checked" : ""}>
+    <span class="lbl"><b>All clusters</b></span>
+    <span class="cnt">${DATA.clusters.length}</span></label>`;
+
+  for (const c of clusters) {
+    const checked = STATE.clusters === null || STATE.clusters.has(c.id);
+    box.innerHTML += `<label class="opt" data-cid="${c.id}">
+      <input type="checkbox" data-cluster="${c.id}" ${checked ? "checked" : ""}>
+      <span class="lbl" title="${c.top_terms.join(', ')}">[${c.id}] ${c.label}</span>
+      <span class="cnt">${c.n.toLocaleString()}</span></label>`;
+  }
+  document.querySelectorAll('input[data-cluster]').forEach(el => {
+    el.addEventListener('change', () => {
+      if (STATE.clusters === null) STATE.clusters = new Set(DATA.clusters.map(c=>c.id));
+      const id = parseInt(el.dataset.cluster);
+      if (el.checked) STATE.clusters.add(id);
+      else STATE.clusters.delete(id);
+      // If matches default (all), set null
+      if (STATE.clusters.size === DATA.clusters.length) STATE.clusters = null;
+      document.getElementById("all-clusters").checked = (STATE.clusters === null);
+      redraw();
+    });
+  });
+  document.getElementById("all-clusters").addEventListener('change', el => {
+    STATE.clusters = el.target.checked ? null : new Set();
+    renderClusters(query);
+    redraw();
+  });
+}
+
+function isDefault() {
+  return STATE.aff.size === AFF_LABELS.length &&
+         STATE.ven.size === 2 &&
+         STATE.yr.size === 3 &&
+         STATE.clusters === null &&
+         !STATE.search;
+}
+
+function rowMatches(r) {
+  if (!STATE.aff.has(r.a)) return false;
+  if (!STATE.ven.has(r.v)) return false;
+  if (!STATE.yr.has(r.y)) return false;
+  if (STATE.clusters !== null && !STATE.clusters.has(r.c)) return false;
+  if (STATE.search) {
+    const t = r.t.toLowerCase();
+    const auths = (r.auth || []).join(" ").toLowerCase();
+    if (!t.includes(STATE.search) && !auths.includes(STATE.search)) return false;
+  }
+  return true;
+}
+
+function redraw() {
+  const filtered = DATA.rows.filter(rowMatches);
+  const is3d = STATE.view === "3d";
+  const traces = [];
+
+  // Per-affiliation point traces
+  for (const aff of AFF_LABELS) {
+    const sub = filtered.filter(r => r.a === aff);
+    if (sub.length === 0) continue;
+    const trace = {
+      name: `${aff} (${sub.length.toLocaleString()})`,
+      mode: "markers",
+      text: sub.map(r => `<b>${escapeHtml(r.t)}</b><br>${r.v.toUpperCase()} ${r.y} · ${r.a}<br>cluster ${r.c}`),
+      customdata: sub.map(r => r.id),
+      hovertemplate: "%{text}<extra></extra>",
+    };
+    if (is3d) {
+      trace.type = "scatter3d";
+      trace.x = sub.map(r => r.x3);
+      trace.y = sub.map(r => r.y3);
+      trace.z = sub.map(r => r.z3);
+      trace.marker = {
+        color: AFF_COLORS[aff],
+        symbol: AFF_SYMBOLS_3D[aff],
+        size: 2.5,
+        opacity: aff === "unknown" ? 0.18 : 0.65,
+        line: { width: 0 },
+      };
+    } else {
+      trace.type = "scattergl";
+      trace.x = sub.map(r => r.x);
+      trace.y = sub.map(r => r.yc);
+      trace.marker = {
+        color: AFF_COLORS[aff],
+        symbol: AFF_SYMBOLS[aff],
+        size: 5,
+        opacity: aff === "unknown" ? 0.25 : 0.7,
+        line: { width: 0 },
+      };
+    }
+    traces.push(trace);
+  }
+
+  // Cluster-label trace: text at centroids of currently visible clusters
+  if (STATE.showClusterLabels) {
+    const visibleClusterIds = new Set(filtered.map(r => r.c).filter(c => c >= 0));
+    const labelClusters = DATA.clusters.filter(c => visibleClusterIds.has(c.id));
+    if (labelClusters.length > 0) {
+      const labelTrace = {
+        name: "cluster labels",
+        mode: "text",
+        text: labelClusters.map(c => `[${c.id}] ${c.label}`),
+        textfont: { size: 10, color: getCSS('--text-hi') },
+        hoverinfo: "skip",
+        showlegend: false,
+      };
+      if (is3d) {
+        labelTrace.type = "scatter3d";
+        labelTrace.x = labelClusters.map(c => c.centroid3d ? c.centroid3d[0] : 0);
+        labelTrace.y = labelClusters.map(c => c.centroid3d ? c.centroid3d[1] : 0);
+        labelTrace.z = labelClusters.map(c => c.centroid3d ? c.centroid3d[2] : 0);
+      } else {
+        labelTrace.type = "scatter";
+        labelTrace.x = labelClusters.map(c => c.centroid[0]);
+        labelTrace.y = labelClusters.map(c => c.centroid[1]);
+      }
+      traces.push(labelTrace);
+    }
+  }
+
+  const layout = {
+    showlegend: true,
+    margin: { l:0, r:0, t:0, b:0 },
+    plot_bgcolor: getCSS('--bg'),
+    paper_bgcolor: getCSS('--bg'),
+    font: { color: getCSS('--text'), size: 11 },
+    hovermode: "closest",
+    legend: {
+      orientation: "v", x: 1, y: 1, xanchor: "right",
+      bgcolor: getCSS('--surface'), bordercolor: getCSS('--border'), borderwidth: 1,
+    },
+  };
+  if (is3d) {
+    layout.scene = {
+      xaxis: { title: "UMAP-1", showgrid: true, gridcolor: getCSS('--border'),
+               color: getCSS('--text-dim'), backgroundcolor: getCSS('--bg') },
+      yaxis: { title: "UMAP-2", showgrid: true, gridcolor: getCSS('--border'),
+               color: getCSS('--text-dim'), backgroundcolor: getCSS('--bg') },
+      zaxis: { title: "UMAP-3", showgrid: true, gridcolor: getCSS('--border'),
+               color: getCSS('--text-dim'), backgroundcolor: getCSS('--bg') },
+      bgcolor: getCSS('--bg'),
+    };
+  } else {
+    layout.xaxis = { visible: false };
+    layout.yaxis = { visible: false };
+  }
+  const config = { responsive: true, scrollZoom: true, displaylogo: false,
+                    modeBarButtonsToRemove: ['lasso2d','select2d'] };
+  Plotly.react("plot", traces, layout, config);
+
+  const plot = document.getElementById("plot");
+  plot.removeAllListeners?.("plotly_click");
+  plot.on("plotly_click", evt => {
+    if (evt.points && evt.points[0] && evt.points[0].customdata) {
+      showDetail(evt.points[0].customdata);
+    }
+  });
+
+  // Filter status
+  const total = DATA.rows.length;
+  const status = document.getElementById("filter-status");
+  const reset = document.getElementById("reset");
+  if (isDefault()) {
+    status.classList.remove("active");
+    status.innerHTML = `Showing all <b>${total.toLocaleString()}</b>`;
+    reset.disabled = true;
+  } else {
+    status.classList.add("active");
+    const pct = ((100 * filtered.length / total).toFixed(1));
+    status.innerHTML = `<b>${filtered.length.toLocaleString()}</b> shown (${pct}%)`;
+    reset.disabled = false;
+  }
+  // Stats panel
+  computeStats(filtered);
+}
+
+function computeStats(filtered) {
+  const n = filtered.length;
+  if (n === 0) {
+    document.getElementById("stats").innerHTML = "<i>No papers match.</i>";
+    return;
+  }
+  const counts = {};
+  for (const r of filtered) counts[r.a] = (counts[r.a] || 0) + 1;
+  const lines = [`<b>n = ${n.toLocaleString()}</b>`];
+  for (const aff of AFF_LABELS) {
+    if (!counts[aff]) continue;
+    const pct = (100 * counts[aff] / n).toFixed(1);
+    lines.push(`${aff}: <b>${counts[aff].toLocaleString()}</b> (${pct}%)`);
+  }
+  document.getElementById("stats").innerHTML = lines.join("<br>");
+}
+
+function showDetail(pid) {
+  const r = DATA.rows.find(x => x.id === pid);
+  if (!r) return;
+  const c = DATA.clusters.find(c => c.id === r.c);
+  const orUrl = `https://openreview.net/forum?id=${r.id}`;
+  document.getElementById("detail").innerHTML = `
+    <h2>${escapeHtml(r.t)}</h2>
+    <div class="auth">${escapeHtml((r.auth||[]).join(", "))}</div>
+    <div class="kv"><b>${r.v.toUpperCase()} ${r.y}</b> · affiliation: <b>${r.a}</b>
+      · cluster: <b>${c ? '['+r.c+'] '+c.label : 'none'}</b></div>
+    ${c ? `<div class="kv">cluster top terms: ${c.top_terms.slice(0,6).join(', ')}</div>` : ''}
+    <a class="or" href="${orUrl}" target="_blank">Open in OpenReview ↗</a>
+  `;
+}
+
+function reset() {
+  STATE.aff = new Set(AFF_LABELS);
+  STATE.ven = new Set(["icml","neurips"]);
+  STATE.yr  = new Set([2023,2024,2025]);
+  STATE.clusters = null;
+  STATE.search = "";
+  document.getElementById("search").value = "";
+  document.getElementById("cluster-search").value = "";
+  document.querySelectorAll('input[data-aff],input[data-ven],input[data-yr]')
+    .forEach(el => el.checked = true);
+  renderClusters("");
+  redraw();
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  document.getElementById("theme").textContent =
+    document.body.classList.contains("light") ? "Dark" : "Light";
+  redraw();
+}
+
+function getCSS(varName) {
+  return getComputedStyle(document.body).getPropertyValue(varName).trim();
+}
+
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;",
+    ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+}
+
+load();
+</script>
+</body>
+</html>
