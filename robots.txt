@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /asymmetric-compliance/dashboard_v3.html
+Disallow: /asymmetric-compliance/index_v3.html
+Disallow: /blind-refusal/dashboard_v4.html
