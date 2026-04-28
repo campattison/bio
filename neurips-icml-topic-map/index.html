@@ -349,8 +349,8 @@ function redraw() {
       trace.marker = {
         color: AFF_COLORS[aff],
         symbol: AFF_SYMBOLS_3D[aff],
-        size: 2.5,
-        opacity: aff === "unknown" ? 0.18 : 0.65,
+        size: 2.0,
+        opacity: aff === "unknown" ? 0.15 : 0.6,
         line: { width: 0 },
       };
     } else {
@@ -360,38 +360,74 @@ function redraw() {
       trace.marker = {
         color: AFF_COLORS[aff],
         symbol: AFF_SYMBOLS[aff],
-        size: 5,
-        opacity: aff === "unknown" ? 0.25 : 0.7,
+        size: 2.5,
+        opacity: aff === "unknown" ? 0.2 : 0.6,
         line: { width: 0 },
       };
     }
     traces.push(trace);
   }
 
-  // Cluster-label trace: text at centroids of currently visible clusters
+  // Cluster labels — 3D uses inline text traces, 2D uses peripheral annotations
+  // with leader lines to centroids.
+  let annotations = [];
   if (STATE.showClusterLabels) {
     const visibleClusterIds = new Set(filtered.map(r => r.c).filter(c => c >= 0));
     const labelClusters = DATA.clusters.filter(c => visibleClusterIds.has(c.id));
-    if (labelClusters.length > 0) {
-      const labelTrace = {
-        name: "cluster labels",
-        mode: "text",
+    if (is3d && labelClusters.length > 0) {
+      // 3D: inline text at centroids (no good way to do peripheral in 3D)
+      traces.push({
+        type: "scatter3d", mode: "text",
+        x: labelClusters.map(c => c.centroid3d ? c.centroid3d[0] : 0),
+        y: labelClusters.map(c => c.centroid3d ? c.centroid3d[1] : 0),
+        z: labelClusters.map(c => c.centroid3d ? c.centroid3d[2] : 0),
         text: labelClusters.map(c => `[${c.id}] ${c.label}`),
         textfont: { size: 10, color: getCSS('--text-hi') },
-        hoverinfo: "skip",
-        showlegend: false,
-      };
-      if (is3d) {
-        labelTrace.type = "scatter3d";
-        labelTrace.x = labelClusters.map(c => c.centroid3d ? c.centroid3d[0] : 0);
-        labelTrace.y = labelClusters.map(c => c.centroid3d ? c.centroid3d[1] : 0);
-        labelTrace.z = labelClusters.map(c => c.centroid3d ? c.centroid3d[2] : 0);
-      } else {
-        labelTrace.type = "scatter";
-        labelTrace.x = labelClusters.map(c => c.centroid[0]);
-        labelTrace.y = labelClusters.map(c => c.centroid[1]);
+        hoverinfo: "skip", showlegend: false,
+      });
+    } else if (!is3d && labelClusters.length > 0) {
+      // 2D: split clusters into left/right columns by centroid x;
+      // distribute label y-positions evenly so labels don't collide.
+      const xs = filtered.map(r => r.x);
+      const ys = filtered.map(r => r.yc);
+      const xmin = Math.min(...xs), xmax = Math.max(...xs);
+      const ymin = Math.min(...ys), ymax = Math.max(...ys);
+      const xmid = (xmin + xmax) / 2;
+      const left = labelClusters.filter(c => c.centroid[0] < xmid)
+                                 .sort((a, b) => b.centroid[1] - a.centroid[1]);
+      const right = labelClusters.filter(c => c.centroid[0] >= xmid)
+                                  .sort((a, b) => b.centroid[1] - a.centroid[1]);
+      const colorOf = c => AFF_COLORS[
+        Object.entries(c.aff_share || {})
+          .reduce((best, [k, v]) => (v > best[1] ? [k, v] : best), ["unknown", -1])[0]
+      ];
+      function placeColumn(list, side) {
+        // x-anchor in paper coords; y-anchor in axis (data) coords
+        const n = list.length;
+        if (n === 0) return;
+        for (let i = 0; i < n; i++) {
+          const c = list[i];
+          const ly = ymax - (i + 0.5) * (ymax - ymin) / n;
+          const labelText = `[${c.id}] ${c.label}`;
+          annotations.push({
+            x: c.centroid[0], y: c.centroid[1], xref: "x", yref: "y",
+            ax: side === "left" ? 0.005 : 0.995,
+            ay: ly,
+            axref: "paper", ayref: "y",
+            text: labelText.length > 36 ? labelText.slice(0, 34) + "…" : labelText,
+            showarrow: true,
+            arrowhead: 0, arrowsize: 1, arrowwidth: 0.7,
+            arrowcolor: colorOf(c),
+            font: { size: 9.5, color: getCSS('--text') },
+            bgcolor: getCSS('--surface'),
+            bordercolor: colorOf(c), borderwidth: 1, borderpad: 3,
+            xanchor: side === "left" ? "right" : "left",
+            yanchor: "middle",
+          });
+        }
       }
-      traces.push(labelTrace);
+      placeColumn(left, "left");
+      placeColumn(right, "right");
     }
   }
 
@@ -418,8 +454,13 @@ function redraw() {
       bgcolor: getCSS('--bg'),
     };
   } else {
+    // Reserve generous left/right margins for peripheral labels
+    layout.margin = { l: 230, r: 230, t: 10, b: 10 };
     layout.xaxis = { visible: false };
     layout.yaxis = { visible: false };
+    layout.annotations = annotations;
+    layout.legend.x = 1.0;
+    layout.legend.xanchor = "right";
   }
   const config = { responsive: true, scrollZoom: true, displaylogo: false,
                     modeBarButtonsToRemove: ['lasso2d','select2d'] };
