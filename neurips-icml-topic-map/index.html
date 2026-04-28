@@ -40,14 +40,35 @@ button {
 button:hover { border-color:var(--border-hi); }
 button:disabled { opacity:0.4; cursor:not-allowed; }
 main {
-  display:grid; grid-template-columns:240px 1fr 320px;
+  display:grid;
+  grid-template-columns:240px 1fr 320px;
   height:calc(100vh - 50px);
+  transition: grid-template-columns 0.18s ease;
 }
+main.collapsed-left { grid-template-columns: 28px 1fr 320px; }
+main.collapsed-right { grid-template-columns: 240px 1fr 28px; }
+main.collapsed-left.collapsed-right { grid-template-columns: 28px 1fr 28px; }
+
 aside {
   background:var(--surface); border-right:1px solid var(--border);
-  padding:12px; overflow-y:auto;
+  padding:12px; overflow-y:auto; position:relative;
 }
 aside.right { border-right:none; border-left:1px solid var(--border); }
+aside .collapse-btn {
+  position:absolute; top:8px; cursor:pointer;
+  background:var(--surface2); border:1px solid var(--border); border-radius:4px;
+  width:20px; height:24px; display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:var(--text-dim); padding:0;
+}
+aside .collapse-btn:hover { border-color:var(--border-hi); color:var(--text); }
+aside.left .collapse-btn { right:6px; }
+aside.right .collapse-btn { left:6px; }
+main.collapsed-left aside.left > *:not(.collapse-btn) { display:none; }
+main.collapsed-right aside.right > *:not(.collapse-btn) { display:none; }
+main.collapsed-left aside.left { padding:8px 4px; }
+main.collapsed-right aside.right { padding:8px 4px; }
+main.collapsed-left aside.left .collapse-btn,
+main.collapsed-right aside.right .collapse-btn { position:static; margin:0 auto; }
 .fset { margin-bottom:14px; }
 .fset h3 { font-size:11px; text-transform:uppercase; color:var(--text-dim);
             letter-spacing:0.5px; margin-bottom:6px; }
@@ -109,6 +130,7 @@ aside.right { border-right:none; border-left:1px solid var(--border); }
 </header>
 <main>
   <aside class="left">
+    <button class="collapse-btn" id="collapse-left" title="Collapse">‹</button>
     <div class="fset">
       <h3>Affiliation</h3>
       <div id="aff-opts"></div>
@@ -132,6 +154,7 @@ aside.right { border-right:none; border-left:1px solid var(--border); }
   </aside>
   <div id="plot"></div>
   <aside class="right">
+    <button class="collapse-btn" id="collapse-right" title="Collapse">›</button>
     <div class="fset">
       <h3>Clusters</h3>
       <input type="text" id="cluster-search" placeholder="search cluster labels…">
@@ -268,6 +291,24 @@ function initUI() {
   document.getElementById("view-2d").addEventListener("click", () => setView("2d"));
   document.getElementById("view-3d").addEventListener("click", () => setView("3d"));
   document.getElementById("toggle-labels").addEventListener("click", toggleLabels);
+  document.getElementById("collapse-left").addEventListener("click", () => toggleSidebar("left"));
+  document.getElementById("collapse-right").addEventListener("click", () => toggleSidebar("right"));
+}
+
+function toggleSidebar(side) {
+  const main = document.querySelector("main");
+  const cls = side === "left" ? "collapsed-left" : "collapsed-right";
+  main.classList.toggle(cls);
+  const btn = document.getElementById("collapse-" + side);
+  if (side === "left") {
+    btn.textContent = main.classList.contains(cls) ? "›" : "‹";
+    btn.title = main.classList.contains(cls) ? "Expand" : "Collapse";
+  } else {
+    btn.textContent = main.classList.contains(cls) ? "‹" : "›";
+    btn.title = main.classList.contains(cls) ? "Expand" : "Collapse";
+  }
+  // Wait for the CSS transition before resizing the plot
+  setTimeout(() => Plotly.Plots.resize("plot"), 200);
 }
 
 function setView(v) {
