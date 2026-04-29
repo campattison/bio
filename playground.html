@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playground — Cameron Pattison</title>
+  <meta name="description" content="Side projects, tools, and weekend builds by Cameron Pattison.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .play-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .play-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .play-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .play-card .tag {
+      align-self: flex-start;
+      font-family: "Inter", sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.18rem 0.55rem;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+    .play-card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .play-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+    .play-card .meta {
+      font-family: "Inter", sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+    .play-card .meta a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .play-card .meta a:hover { text-decoration: underline; }
+    .placeholder {
+      border-style: dashed;
+      opacity: 0.7;
+    }
+    .play-intro {
+      max-width: 42rem;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site">
+  <div class="inner">
+    <a href="index.html" class="name">Cameron Pattison</a>
+    <nav class="site">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="cv.html">CV</a>
+      <a href="playground.html" aria-current="page">Playground</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wide">
+
+  <h1>Playground</h1>
+  <p class="subtitle">Side projects, tools, weekend builds.</p>
+
+  <p class="play-intro">A loose collection of things I've made when I should have been writing — interactive philosophy demos, research tooling, data-viz experiments, the occasional tribute to a hobby. Most are open-source and several are live in the browser.</p>
+
+  <h2>Interactive demos &amp; tools</h2>
+
+  <div class="play-grid">
+
+    <a class="play-card" href="elenchus/">
+      <span class="tag">Interactive · Philosophy</span>
+      <h3>Elenchus</h3>
+      <p>A Socratic-style philosophy quiz. Pick a position; the app stress-tests it through follow-up questions and tries to find where your commitments collide.</p>
+      <span class="meta">Open in browser →</span>
+    </a>
+
+    <a class="play-card" href="kant-analysis.html">
+      <span class="tag">Interactive · Ethics</span>
+      <h3>Kantian Ethical Analysis</h3>
+      <p>Universalizability tester for Kant's categorical imperative — type a maxim, watch the formula run.</p>
+      <span class="meta">Open in browser →</span>
+    </a>
+
+    <a class="play-card" href="ibn_arabi_translation/">
+      <span class="tag">Interactive · Translation</span>
+      <h3>Ibn Arabi Parallel Text</h3>
+      <p>Side-by-side Arabic / English edition of selections from the <em>Futūḥāt al-Makkiyya</em>, with AI-assisted alignment so you can read the same passage in both languages at the same time.</p>
+      <span class="meta">Open in browser →</span>
+    </a>
+
+    <a class="play-card" href="bread/">
+      <span class="tag">Web app · Hobby</span>
+      <h3>Sourdough Timer</h3>
+      <p>A precise timer for the slow, multi-step sourdough process. Started as an iOS app, ported to a single-file web version in an afternoon.</p>
+      <span class="meta">Open in browser →</span>
+    </a>
+
+  </div>
+
+  <h2>Data viz &amp; mapping</h2>
+
+  <div class="play-grid">
+
+    <a class="play-card" href="neurips-icml-topic-map/">
+      <span class="tag">Data viz · ML research</span>
+      <h3>NeurIPS + ICML Topic Map</h3>
+      <p>20,237 papers, 49,605 author profiles, three years of conference proceedings embedded into a 2D / 3D space and clustered into sixty topic groups. You can pan, zoom, and click into any cluster to read abstracts.</p>
+      <span class="meta">Open dashboard →</span>
+    </a>
+
+    <a class="play-card" href="asymmetric-compliance/">
+      <span class="tag">Data viz · AI evaluation</span>
+      <h3>Asymmetric Compliance Dashboard</h3>
+      <p>5,217 evaluations across 16 LLMs probing what they will and won't do when the requestor's authority is corporate vs. state-based. Filterable by model, persona, and refusal mechanics.</p>
+      <span class="meta">Open dashboard →</span>
+    </a>
+
+    <a class="play-card" href="blind-refusal/">
+      <span class="tag">Data viz · AI evaluation</span>
+      <h3>Blind Refusal Dashboard</h3>
+      <p>Leaderboard, heatmap, and case explorer for the 1,290-case Blind Refusal study. Read the full model response for any of 18 frontier systems on any of the test scenarios.</p>
+      <span class="meta">Open dashboard →</span>
+    </a>
+
+  </div>
+
+  <h2>Open source</h2>
+
+  <div class="play-grid">
+
+    <a class="play-card" href="https://github.com/campattison/source_analysis_recommender" target="_blank" rel="noopener">
+      <span class="tag">CLI · NLP</span>
+      <h3>Source Analysis Recommender</h3>
+      <p>Cross-linguistic similarity tooling for Greek and Arabic philosophical texts. Surfaces probable sources for a given passage by ranking embeddings against a curated corpus.</p>
+      <span class="meta">View on GitHub →</span>
+    </a>
+
+    <a class="play-card" href="https://github.com/campattison/zotero_bot" target="_blank" rel="noopener">
+      <span class="tag">CLI · Research</span>
+      <h3>Zotero Research Assistant</h3>
+      <p>Conversational AI over a Zotero library. Semantic search, paper Q&amp;A, and chat about a corpus you already curate.</p>
+      <span class="meta">View on GitHub →</span>
+    </a>
+
+    <a class="play-card" href="https://github.com/campattison" target="_blank" rel="noopener">
+      <span class="tag">Repo</span>
+      <h3>PhilPapers AI Relevance Classifier</h3>
+      <p>5,000+ PhilPapers entries scored for philosophy-of-AI relevance using GPT-4o. Built to feed a literature-discovery pipeline; useful as a standalone classifier.</p>
+      <span class="meta">View on GitHub →</span>
+    </a>
+
+    <a class="play-card" href="https://github.com/cameronpattison/ethica" target="_blank" rel="noopener">
+      <span class="tag">Game · Philosophy</span>
+      <h3>Ethica</h3>
+      <p>A browser-based Pokémon-style RPG where 38 philosophers from a graduate ethics field exam are AI-backed NPCs. You wander an abstract philosophical landscape, talk to philosophers, and engage in AI-judged debate battles. Every NPC and judge is a Claude subprocess.</p>
+      <span class="meta">View on GitHub →</span>
+    </a>
+
+  </div>
+
+  <p style="margin-top: 3rem; color: var(--muted); font-size: 0.92rem;">
+    Want to see the source for anything here? Most of it lives at <a href="https://github.com/campattison" target="_blank" rel="noopener">github.com/campattison</a>. If something looks broken or you want a write-up, email me.
+  </p>
+
+</main>
+
+<footer class="site">
+  <a href="mailto:cameron.pattison@vanderbilt.edu">cameron.pattison@vanderbilt.edu</a> &middot;
+  <a href="https://github.com/campattison" target="_blank" rel="noopener">GitHub</a> &middot;
+  <a href="cv.html">CV</a>
+</footer>
+
+<script src="bg.js" defer></script>
+
+</body>
+</html>

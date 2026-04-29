@@ -1,91 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cameron Pattison - Curriculum Vitae</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-        .download-btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        .download-btn:hover {
-            background-color: #2980b9;
-        }
-        .container {
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .pdf-container {
-            width: 100%;
-            margin: 30px 0;
-        }
-        .pdf-viewer {
-            width: 100%;
-            height: 800px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .nav {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            gap: 20px;
-        }
-        .nav-link {
-            color: #2c3e50;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            background-color: #eee;
-            transition: background-color 0.3s;
-        }
-        .nav-link:hover {
-            background-color: #ddd;
-        }
-        .nav-link.active {
-            background-color: #3498db;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Cameron Pattison</title>
+  <meta name="description" content="Curriculum vitae of Cameron Pattison.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="nav">
-        <a href="cv.html" class="nav-link active">CV</a>
+
+<header class="site">
+  <div class="inner">
+    <a href="index.html" class="name">Cameron Pattison</a>
+    <nav class="site">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="cv.html" aria-current="page">CV</a>
+      <a href="playground.html">Playground</a>
     </nav>
-    
-    <div class="container">
-        <h1>Cameron Pattison - Curriculum Vitae</h1>
-        
-        <p>This CV was last updated on September 6, 2025.</p>
-        
-        <div class="pdf-container">
-            <iframe src="research_app/assets/cv.pdf" class="pdf-viewer"></iframe>
-        </div>
-        
-        <a href="research_app/assets/cv.pdf" class="download-btn" download>Download CV (PDF)</a>
-        
-    </div>
+  </div>
+</header>
+
+<main class="wide">
+
+  <h1>Curriculum Vitae</h1>
+  <p class="subtitle">Last updated April 2026 &middot; <a href="current_cv.pdf" download>Download PDF</a></p>
+
+  <embed class="cv-frame" src="current_cv.pdf#view=FitH" type="application/pdf">
+
+  <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted);">
+    PDF not displaying? <a href="current_cv.pdf">Open the CV directly.</a>
+  </p>
+
+</main>
+
+<footer class="site">
+  <a href="mailto:cameron.pattison@vanderbilt.edu">cameron.pattison@vanderbilt.edu</a> &middot;
+  <a href="https://github.com/campattison" target="_blank" rel="noopener">GitHub</a> &middot;
+  <a href="cv.html">CV</a>
+</footer>
+
+<script src="bg.js" defer></script>
+
 </body>
 </html>

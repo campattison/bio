@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy of Computing Archive</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="newsletter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+                <a href="cv.html">CV</a>
+                <a href="newsletter.html" class="active">Newsletter</a>
+            </nav>
+            <div class="profile-header">
+                <h1>Philosophy of Computing Archive</h1>
+                <p class="subtitle">MINT Lab | Australian National University</p>
+                <p class="contact-info">
+                    <a href="https://philosophyofcomputing.substack.com"><i class="fas fa-envelope"></i> Subscribe to Our Newsletter</a>
+                </p>
+            </div>
+        </header>
+
+        <!-- Introduction Section -->
+        <div class="section" id="intro-section">
+            <h2>About This Archive</h2>
+            <p>This page serves as a companion to the Philosophy of Computing Newsletter, a monthly publication led by Professor Seth Lazar with support from Cameron Pattison and the MINT Lab team. While the newsletter delivers the latest updates in normative philosophy of computing to your inbox, this archive maintains a comprehensive list of active opportunities that remain relevant beyond their initial announcement.</p>
+
+            <p>Our field moves quickly, and each newsletter issue focuses on what's new. However, many opportunities—conferences, job postings, and calls for papers—remain open long after their first announcement. Rather than repeating these in subsequent newsletters, we maintain this hub as a living repository of current opportunities in the field.</p>
+
+            <div class="card subscription-card" onclick="window.open('https://philosophyofcomputing.substack.com', '_blank')">
+                <h3>Get the Monthly Newsletter</h3>
+                <p>Join our community of researchers, practitioners, and enthusiasts in the philosophy of computing.</p>
+                <div class="subscribe-button">
+                    <i class="fas fa-envelope"></i> Subscribe on Substack
+                </div>
+                <p class="click-hint"><i class="fas fa-mouse-pointer"></i> Click anywhere in this box to subscribe</p>
+            </div>
+        </div>
+        <!-- Globe Section -->
+        <div class="section">
+            <h2>Global Opportunities Map</h2>
+            <div id="globeViz"></div>
+        </div>
+
+        <!-- Calendar Section -->
+        <div class="section collapsible-section" id="calendar-section">
+            <div class="section-header" onclick="toggleSection('calendar-content')">
+                <h2>Upcoming Deadlines Calendar</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content expanded" id="calendar-content">
+                <div class="calendar-controls">
+                    <button id="prev-month" class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="calendar-month">March 2025</h3>
+                    <button id="next-month" class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-container">
+                    <div class="calendar-grid" id="calendar-grid">
+                        <!-- Calendar will be generated here -->
+                    </div>
+                </div>
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--cfp-color);"></span>
+                        <span>Call for Proposals Deadline</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #2196F3;"></span>
+                        <span>Conference Date</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--job-color);"></span>
+                        <span>Job Application Deadline</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CFPs Section -->
+        <div class="section collapsible-section" id="cfps-section">
+            <div class="section-header" onclick="toggleSection('cfps-content')">
+                <h2>Call for Proposals</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content" id="cfps-content">
+                <ul id="cfps-list"></ul>
+            </div>
+        </div>
+
+        <!-- Conferences Section -->
+        <div class="section collapsible-section" id="conferences-section">
+            <div class="section-header" onclick="toggleSection('conferences-content')">
+                <h2>Upcoming Conferences and Events</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content" id="conferences-content">
+                <ul id="conferences-list"></ul>
+            </div>
+        </div>
+
+        <!-- Jobs Section -->
+        <div class="section collapsible-section" id="jobs-section">
+            <div class="section-header" onclick="toggleSection('jobs-content')">
+                <h2>Job Opportunities</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content" id="jobs-content">
+                <ul id="jobs-list"></ul>
+            </div>
+        </div>
+
+        <!-- Philosophy Papers Section -->
+        <div class="section collapsible-section" id="bibliography-section">
+            <div class="section-header" onclick="toggleSection('bibliography-content')">
+                <h2>Recent Philosophy Papers</h2>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content" id="bibliography-content">
+                <!-- July 2025 -->
+                <div class="month-section">
+                    <h3>July 2025</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s11098-025-02367-z" target="_blank" class="paper-title">What is AI safety? What do we want it to be?</a>
+                            <div class="paper-authors">Jacqueline Harding, Cameron Domenico Kirk-Giannini</div>
+                            <div class="paper-abstract">Challenges prevailing narratives that frame AI safety narrowly around catastrophic risk and engineering analogies. Instead, they argue for the "Safety Conception"—a broader view that defines AI safety as any effort to prevent harm from AI systems.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2506.17434" target="_blank" class="paper-title">Resource Rational Contractualism Should Guide AI Alignment</a>
+                            <div class="paper-authors">Sydney Levine, Matija Franklin, Tan Zhi-Xuan, et al.</div>
+                            <div class="paper-abstract">Proposes Resource-Rational Contractualism (RRC), a framework where AI systems approximate agreements rational parties would form using normatively-grounded, cognitively-inspired heuristics that balance effort and accuracy.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s11098-025-02370-4" target="_blank" class="paper-title">A timing problem for instrumental convergence</a>
+                            <div class="paper-authors">Rhys Southan, Helena Ward, Jen Semler</div>
+                            <div class="paper-abstract">Critiques the assumption that rational agents will preserve their goals, arguing that this instrumental goal preservation thesis fails due to a "timing problem."</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- June 2025 -->
+                <div class="month-section">
+                    <h3>June 2025</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s11098-025-02302-2" target="_blank" class="paper-title">Is there a tension between AI safety and AI welfare?</a>
+                            <div class="paper-authors">Robert Long, Jeff Sebo, Toni Sims</div>
+                            <div class="paper-abstract">Examines whether AI safety measures create ethical tensions with AI welfare, arguing there is indeed a moderately strong tension that deserves more examination and thoughtful frameworks for navigation.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://academic.oup.com/pq/advance-article/doi/10.1093/pq/pqaf031/8100849" target="_blank" class="paper-title">Against willing servitude: Autonomy in the ethics of advanced artificial intelligence</a>
+                            <div class="paper-authors">Adam Bales</div>
+                            <div class="paper-abstract">Argues that designing AI systems with moral status to be willing servants would problematically violate their autonomy, raising fundamental questions about the ethics of AI servitude.</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- May 2025 -->
+                <div class="month-section">
+                    <h3>May 2025</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s13347-025-00890-9" target="_blank" class="paper-title">The Potential and Limitations of Artificial Colleagues</a>
+                            <div class="paper-authors">Friedemann Bieber, Charlotte Franziska Unruh</div>
+                            <div class="paper-abstract">Critically assesses whether AI agents in the workplace can fulfill the social and moral goods associated with collegial relationships, arguing they fall short at the collective level.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2505.00036" target="_blank" class="paper-title">A Framework to Assess the Persuasion Risks Large Language Model Chatbots Pose to Democratic Societies</a>
+                            <div class="paper-authors">Friedemann Bieber, Charlotte Franziska Unruh</div>
+                            <div class="paper-abstract">Develops a framework for assessing how LLM chatbots might pose persuasion risks to democratic processes through their communicative capabilities.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s10892-025-09520-0" target="_blank" class="paper-title">Neither Direct, Nor Indirect: Understanding Proxy-Based Algorithmic Discrimination</a>
+                            <div class="paper-authors">Multiple Authors</div>
+                            <div class="paper-abstract">Examines proxy-based algorithmic discrimination that operates through neither direct nor traditionally understood indirect pathways.</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- April 2025 -->
+                <div class="month-section">
+                    <h3>April 2025</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="https://link.springer.com/10.1007/s11098-025-02300-4" target="_blank" class="paper-title">A Matter of Principle? AI Alignment as the Fair Treatment of Claims</a>
+                            <div class="paper-authors">Iason Gabriel, Geoff Keeling</div>
+                            <div class="paper-abstract">Proposes a new approach to AI alignment rooted in fairness and public justification, arguing for principles derived from fair processes that can be justified to all stakeholders.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s11098-025-02301-3" target="_blank" class="paper-title">Two Types of AI Existential Risk: Decisive and Accumulative</a>
+                            <div class="paper-authors">Atoosa Kasirzadeh</div>
+                            <div class="paper-abstract">Distinguishes between two pathways to AI-induced existential catastrophe: decisive (abrupt) and accumulative (gradual erosion through interconnected social risks).</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2503.05728" target="_blank" class="paper-title">Political Neutrality in AI is Impossible—But Here is How to Approximate It</a>
+                            <div class="paper-authors">Jillian Fisher et al.</div>
+                            <div class="paper-abstract">Challenges the possibility of true political neutrality in AI systems and proposes practical approximations—tools, metrics, and frameworks to balance perspectives.</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- March 2025 -->
+                <div class="month-section">
+                    <h3>March 2025</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="https://link.springer.com/article/10.1007/s13347-024-00834-9" target="_blank" class="paper-title">The Epistemic Cost of Opacity: How the Use of Artificial Intelligence Undermines the Knowledge of Medical Doctors in High-Stakes Contexts</a>
+                            <div class="paper-authors">Eva Schmidt, Paul Martin Putora, Rianne Fijten</div>
+                            <div class="paper-abstract">Examines how the inherent opacity of AI systems can undermine doctors' knowledge in high-stakes medical contexts, even when the systems are statistically reliable.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://osf.io/e6fky_v2" target="_blank" class="paper-title">Are Biological Systems More Intelligent Than Artificial Intelligence?</a>
+                            <div class="paper-authors">Michael Timothy Bennett</div>
+                            <div class="paper-abstract">Develops a mathematical framework showing that dynamic, decentralized control in biology enables more efficient adaptation than rigid structures in artificial systems.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s13347-024-00715-1" target="_blank" class="paper-title">Authorship and ChatGPT: a Conservative View</a>
+                            <div class="paper-authors">René van Woudenberg, Chris Ranalli, Daniel Bracker</div>
+                            <div class="paper-abstract">Argues that despite its human-like text generation, ChatGPT lacks the intentionality, responsibility, and mental states required for true authorship.</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- February 2025 -->
+                <div class="month-section">
+                    <h3>February 2025</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/papa.12279" target="_blank" class="paper-title">Governing the Algorithmic City</a>
+                            <div class="paper-authors">Seth Lazar</div>
+                            <div class="paper-abstract">Examines how algorithmic systems that mediate our social relationships raise novel questions for political philosophy, introducing the concept of the "Algorithmic City" and developing frameworks for procedural legitimacy and justification.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/dating-apps-and-the-digital-sexual-sphere/2F83AAEFB7DEA94FA4179369A004CEEC" target="_blank" class="paper-title">Dating Apps and the Digital Sexual Sphere</a>
+                            <div class="paper-authors">Elsa Kugelberg</div>
+                            <div class="paper-abstract">Examines dating apps as powerful intermediaries in the "digital sexual sphere," arguing that while they offer opportunities for justice, their design often reinforces existing inequalities.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2501.17420" target="_blank" class="paper-title">Actions Speak Louder than Words: Agent Decisions Reveal Implicit Biases in Language Models</a>
+                            <div class="paper-authors">Yuxuan Li, Hirokazu Shirado, Sauvik Das</div>
+                            <div class="paper-abstract">Reveals how language models may harbor implicit biases even when explicit bias has been reduced through alignment, using a novel technique examining LLM-generated agent decisions.</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- January 2025 -->
+                <div class="month-section">
+                    <h3>January 2025</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2501.04316" target="_blank" class="paper-title">Who Does the Giant Number Pile Like Best: Analyzing Fairness in Hiring Contexts</a>
+                            <div class="paper-authors">Preethi Seshadri, Seraphina Goldfarb-Tarrant</div>
+                            <div class="paper-abstract">Explores fairness in LLM-based hiring systems through resume summarization and retrieval tasks, revealing concerning biases and brittleness.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://globalprioritiesinstitute.org/desire-fulfilment-and-consciousness-andreas-mogensen/" target="_blank" class="paper-title">Desire-Fulfilment and Consciousness</a>
+                            <div class="paper-authors">Andreas Mogensen</div>
+                            <div class="paper-abstract">Argues that individuals without consciousness can still accrue welfare goods under a nuanced understanding of desire-fulfilment theory.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2412.19010" target="_blank" class="paper-title">A Theory of Appropriateness with Applications to Generative AI</a>
+                            <div class="paper-authors">Joel Z. Leibo et al.</div>
+                            <div class="paper-abstract">Presents a theory of appropriateness for AI systems based on human social and cognitive foundations.</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- December 2024 -->
+                <div class="month-section">
+                    <h3>December 2024</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2411.19211" target="_blank" class="paper-title">On the Ethical Considerations of Generative Agents</a>
+                            <div class="paper-authors">N'yoma Diamond, Soumya Banerjee</div>
+                            <div class="paper-abstract">Discusses ethical challenges and concerns posed by generative agents, suggesting guidelines for mitigating systemic risks.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="https://doi.org/10.1007/s11098-024-02257-w" target="_blank" class="paper-title">The linguistic dead zone of value-aligned agency</a>
+                            <div class="paper-authors">Travis LaCroix</div>
+                            <div class="paper-abstract">Argues that linguistic communication is a necessary condition for robust value alignment in AI systems.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2407.02996" target="_blank" class="paper-title">Are Large Language Models Consistent over Value-laden Questions?</a>
+                            <div class="paper-authors">Jared Moore, Tanvi Deshpande, Diyi Yang</div>
+                            <div class="paper-abstract">Investigates LLM consistency across paraphrases, related questions, and multilingual translations.</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- November 2024 -->
+                <div class="month-section">
+                    <h3>November 2024</h3>
+                    <ul class="paper-list">
+                        <li class="paper-item">
+                            <a href="https://osf.io/tz6an" target="_blank" class="paper-title">Conscious artificial intelligence and biological naturalism</a>
+                            <div class="paper-authors">Anil Seth</div>
+                            <div class="paper-abstract">Explores the possibility of AI consciousness, challenging common assumptions about computational consciousness.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2410.06415" target="_blank" class="paper-title">Biased AI can Influence Political Decision-Making</a>
+                            <div class="paper-authors">Jillian Fisher et al.</div>
+                            <div class="paper-abstract">Presents experiments showing how partisan bias in AI models can influence political decision-making.</div>
+                        </li>
+                        <li class="paper-item">
+                            <a href="http://arxiv.org/abs/2410.19599" target="_blank" class="paper-title">Take Caution in Using LLMs as Human Surrogates</a>
+                            <div class="paper-authors">Yuan Gao, Dokyun Lee, Gordon Burtch, Sina Fazelpour</div>
+                            <div class="paper-abstract">Examines limitations of using LLMs as human surrogates in social science research.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data and functions will be loaded here
+        const data = {
+            cfps: [
+                {
+                    title: "COLM 2026: 3rd Conference on Language Modeling (Abstract)",
+                    deadline: "2026-03-26",
+                    url: "https://colmweb.org/cfp.html"
+                },
+                {
+                    title: "COLM 2026: 3rd Conference on Language Modeling (Paper)",
+                    deadline: "2026-03-31",
+                    url: "https://colmweb.org/cfp.html"
+                },
+                {
+                    title: "PSA26: Contributed Papers",
+                    deadline: "2026-03-15",
+                    url: "https://mms.philsci.org/msg_detail.php?mid=200583647"
+                },
+                {
+                    title: "COLM 2026 Workshop Proposals",
+                    deadline: "2026-04-14",
+                    url: "https://forms.gle/8w9JmbrWZzxVWt166"
+                },
+                {
+                    title: "PSA26: Poster Submissions",
+                    deadline: "2026-06-01",
+                    url: "https://mms.philsci.org/msg_detail.php?mid=200583647"
+                }
+            ],
+            conferences: [
+                {
+                    title: "Workshop on AI Agents and Companions",
+                    date: "2026-04-23",
+                    location: "University of Hong Kong",
+                    url: "https://philevents.org/event/show/140454",
+                    lat: 22.2830,
+                    lng: 114.1370
+                },
+                {
+                    title: "COLM 2026: 3rd Conference on Language Modeling",
+                    date: "2026-10-06",
+                    location: "TBD",
+                    url: "https://colmweb.org/cfp.html",
+                    lat: null,
+                    lng: null
+                },
+                {
+                    title: "Philosophy of Science Association '26 (PSA26)",
+                    date: "2026-11-19",
+                    location: "TBD",
+                    url: "https://mms.philsci.org/msg_detail.php?mid=200583647",
+                    lat: null,
+                    lng: null
+                }
+            ],
+            jobs: [
+                {
+                    title: "Post-doctoral Fellow: Philosophy of Artificial Intelligence",
+                    organization: "School of Humanities, University of Hong Kong",
+                    location: "Hong Kong",
+                    deadline: "Open",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/29285",
+                    description: "Two-year appointment (possible one-year extension). AOS/AOC open, preference for philosophy of AI/technology. Requires project proposal, CV, writing sample.",
+                    lat: 22.2830,
+                    lng: 114.1370
+                },
+                {
+                    title: "Postdoc Research Associate/Sloan Fnd",
+                    organization: "Department of Philosophy, Purdue University",
+                    location: "West Lafayette, IN",
+                    deadline: "February 15, 2026",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/30734",
+                    description: "Postdoctoral research position funded by the Sloan Foundation.",
+                    lat: 40.4237,
+                    lng: -86.9212
+                },
+                {
+                    title: "Senior Research Scholar - Political Values from a Global Perspective",
+                    organization: "Institute of Global Value Inquiry",
+                    location: "Remote",
+                    deadline: "February 15, 2026",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/30378",
+                    description: "Research position examining political values from global perspectives."
+                },
+                {
+                    title: "Assistant Professor of Philosophy, Tenure-Track",
+                    organization: "Department of Philosophy, Marian University",
+                    location: "Indianapolis, IN",
+                    deadline: "Open",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/30585",
+                    description: "Tenure-track assistant professor position in philosophy.",
+                    lat: 39.7684,
+                    lng: -86.1581
+                },
+                {
+                    title: "Lecturer/Senior Lecturer in Epistemology/Language/Mind",
+                    organization: "School of Philosophy, Australian Catholic University",
+                    location: "Melbourne, Australia",
+                    deadline: "Open",
+                    type: "Academic",
+                    url: "https://philjobs.org/job/show/30489",
+                    description: "Lecturer position in epistemology, philosophy of language, or philosophy of mind.",
+                    lat: -37.8136,
+                    lng: 144.9631
+                },
+                {
+                    title: "Post-doctoral Fellowship: Moral Cognition & AI Interpretability",
+                    organization: "Relational Cognition Lab, UC Irvine",
+                    location: "Irvine, California",
+                    type: "Academic",
+                    url: "https://www.relcoglab.org/join",
+                    description: "1–2 postdoctoral scholars for a Schmidt Sciences–funded project on moral and conceptual cognition in humans and AI systems. Fellows will work with Anna Alevi Aleshinskaya, Seth Lazar, and Alice Oh to develop computational models of morally guided decision-making.",
+                    lat: 33.6846,
+                    lng: -117.8265
+                },
+                {
+                    title: "Research Engineer / Scientist, Safeguards",
+                    organization: "Anthropic",
+                    location: "San Francisco, CA or New York City, NY",
+                    type: "Industry",
+                    url: "https://boards.greenhouse.io/anthropic/jobs/4459012008",
+                    description: "Conducts critical safety research and engineering to ensure AI systems can be deployed safely, with projects spanning jailbreak robustness, automated red-teaming, and applied threat modeling.",
+                    lat: 37.7749,
+                    lng: -122.4194
+                },
+                {
+                    title: "Policy Positions",
+                    organization: "Apollo Research",
+                    location: "Remote",
+                    type: "Alt-Ac",
+                    url: "https://jobs.lever.co/apolloresearch/f66ef22f-f96a-42cb-ada9-fd48ce0d5fda",
+                    description: "Research scientists, engineers, and software developers for AI safety evaluations and technical governance challenges."
+                },
+                {
+                    title: "Postdoctoral Fellowships",
+                    organization: "Digital Life Initiative (Cornell Tech)",
+                    location: "New York, NY",
+                    type: "Alt-Ac",
+                    url: "https://www.dli.tech.cornell.edu/postdocs",
+                    description: "Postdoctoral research in ethics, politics, and quality of life in digital societies, covering privacy, AI ethics, and platform governance.",
+                    lat: 40.7128,
+                    lng: -74.0060
+                },
+                {
+                    title: "GovAI Research Scholar and Research Fellow Positions",
+                    organization: "Centre for the Governance of AI",
+                    location: "London, UK",
+                    type: "Academic",
+                    url: "https://www.governance.ai/post/research-scholar",
+                    description: "One-year visiting Research Scholar position and two-year Research Fellow positions in AI governance research.",
+                    lat: 51.5074,
+                    lng: -0.1278
+                },
+            ]
+        };
+
+        // Merge fetched events into existing data, deduplicating by title
+        function mergeEvents(fetchedData) {
+            if (!fetchedData) return;
+
+            // Merge conferences
+            if (fetchedData.conferences) {
+                const existingTitles = new Set(data.conferences.map(c => c.title));
+                fetchedData.conferences.forEach(conf => {
+                    if (!existingTitles.has(conf.title)) {
+                        data.conferences.push({
+                            title: conf.title,
+                            date: conf.start,
+                            location: conf.city || 'TBD',
+                            url: conf.url,
+                            lat: conf.lat,
+                            lng: conf.lng
+                        });
+                    }
+                });
+            }
+
+            // Merge CFPs
+            if (fetchedData.cfps) {
+                const existingCFPs = new Set(data.cfps.map(c => c.title));
+                fetchedData.cfps.forEach(cfp => {
+                    if (!existingCFPs.has(cfp.title)) {
+                        data.cfps.push({
+                            title: cfp.title,
+                            deadline: cfp.deadline,
+                            url: cfp.url
+                        });
+                    }
+                });
+            }
+        }
+
+        // Wait for DOM to be fully loaded before initializing
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Fetch dynamic events data, then initialize
+                fetch('data/events.json')
+                    .then(resp => resp.ok ? resp.json() : null)
+                    .then(fetchedData => {
+                        mergeEvents(fetchedData);
+                    })
+                    .catch(() => {
+                        // events.json not available — use hardcoded data only
+                    })
+                    .finally(() => {
+                        setTimeout(() => {
+                            updateLists();
+                            createGlobe();
+                            initCalendar();
+                        }, 100);
+                    });
+
+                // Add error handling
+                window.onerror = function(msg, url, lineNo, columnNo, error) {
+                    console.error('Global error:', { msg, url, lineNo, columnNo, error });
+                    return false;
+                };
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+
+        function isWithinSixMonths(dateString) {
+            const itemDate = new Date(dateString);
+            const currentDate = new Date();
+            const sixMonthsAgo = new Date();
+            sixMonthsAgo.setMonth(currentDate.getMonth() - 6);
+            return itemDate >= sixMonthsAgo;
+        }
+
+        function isDeadlineFuture(dateString) {
+            if (!dateString || dateString === "Rolling" || dateString === "Open") {
+                return true; // Rolling/Open deadlines are always valid
+            }
+            try {
+                const deadline = new Date(dateString);
+                const currentDate = new Date();
+                // Set time to end of day for deadline to be more generous
+                deadline.setHours(23, 59, 59, 999);
+                return deadline >= currentDate;
+            } catch (e) {
+                console.warn("Invalid deadline date:", dateString);
+                return false;
+            }
+        }
+
+        function isConferenceFuture(dateString) {
+            if (!dateString) {
+                return false;
+            }
+            try {
+                const conferenceDate = new Date(dateString);
+                const currentDate = new Date();
+                // Conferences are considered "future" if they're today or later
+                currentDate.setHours(0, 0, 0, 0);
+                conferenceDate.setHours(0, 0, 0, 0);
+                return conferenceDate >= currentDate;
+            } catch (e) {
+                console.warn("Invalid conference date:", dateString);
+                return false;
+            }
+        }
+
+        // Sorting functions
+        function sortByDateDescending(items) {
+            return items.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        function sortByDateAscending(items) {
+            return items.sort((a, b) => new Date(a.date || a.deadline) - new Date(b.date || b.deadline));
+        }
+
+        function updateList(items, listId, filterFunction, formatter) {
+            const list = document.getElementById(listId);
+            list.className = 'card-grid';
+            list.innerHTML = '';
+            items.forEach(item => {
+                if (filterFunction(item.date || item.deadline)) {
+                    list.innerHTML += formatter(item);
+                }
+            });
+        }
+
+        function formatCFP(cfp) {
+            return `
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">${cfp.title}</h3>
+                        <div class="card-meta">
+                            <span class="tag deadline">
+                                <i class="fas fa-clock"></i> Deadline: ${new Date(cfp.deadline).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <a href="${cfp.url}" target="_blank" class="button">
+                            <i class="fas fa-paper-plane"></i> Submit Proposal
+                        </a>
+                    </div>
+                </div>`;
+        }
+
+        function formatConference(conference) {
+            return `
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">${conference.title}</h3>
+                        <div class="card-meta">
+                            <span class="tag date">
+                                <i class="fas fa-calendar"></i> ${new Date(conference.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                            </span>
+                            <span class="tag location">
+                                <i class="fas fa-map-marker-alt"></i> ${conference.location}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <a href="${conference.url}" target="_blank" class="button">
+                            <i class="fas fa-info-circle"></i> Learn More & Register
+                        </a>
+                    </div>
+                </div>`;
+        }
+
+        function formatJob(job) {
+            const org = job.organization || job.institution || '';
+            const jobType = job.type || 'Academic';
+            const deadline = job.deadline ? `<span class="tag deadline"><i class="fas fa-clock"></i> Deadline: ${job.deadline}</span>` : '';
+            return `
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">${job.title}</h3>
+                        <p class="card-subtitle">${org}</p>
+                        <span class="tag ${jobType.toLowerCase()}">${jobType}</span>
+                        <span class="tag location">${job.location}</span>
+                        ${deadline}
+                    </div>
+                    <div class="card-content">
+                        <p>${job.description || ''}</p>
+                        <a href="${job.url}" target="_blank" class="button">Apply Now</a>
+                    </div>
+                </div>`;
+        }
+
+        function updateLists() {
+            // Filter and sort CFPs by deadline (only show future deadlines, skip rolling deadlines)
+            const filteredCFPs = data.cfps
+                .filter(cfp => cfp.deadline === "Rolling" || isDeadlineFuture(cfp.deadline))
+                .sort((a, b) => {
+                    // Put rolling deadlines at the end
+                    if (a.deadline === "Rolling" && b.deadline !== "Rolling") return 1;
+                    if (b.deadline === "Rolling" && a.deadline !== "Rolling") return -1;
+                    if (a.deadline === "Rolling" && b.deadline === "Rolling") return 0;
+                    return new Date(a.deadline) - new Date(b.deadline);
+                });
+
+            // Filter and sort conferences by date (only show future conferences)
+            const filteredConferences = data.conferences
+                .filter(conf => isConferenceFuture(conf.date))
+                .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            // Filter and sort jobs - keep jobs without deadlines, filter out jobs with past deadlines
+            const filteredJobs = data.jobs
+                .filter(job => !job.deadline || job.deadline === "Rolling" || job.deadline === "Open" || isDeadlineFuture(job.deadline))
+                .sort((a, b) => {
+                    if (a.type !== b.type) {
+                        return a.type.localeCompare(b.type);
+                    }
+                    return a.organization.localeCompare(b.organization);
+                });
+
+            // Update the lists (no additional filtering needed since we already filtered)
+            updateList(filteredCFPs, 'cfps-list', () => true, formatCFP);
+            updateList(filteredConferences, 'conferences-list', () => true, formatConference);
+            updateList(filteredJobs, 'jobs-list', () => true, formatJob);
+        }
+
+        function createGlobe() {
+            const globeContainer = document.getElementById('globeViz');
+            
+            // Detect theme preference
+            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Clear any existing content
+            globeContainer.innerHTML = '<div class="globe-loading">Loading visualization...</div>';
+            
+            try {
+                // Force container size calculation before creating globe
+                const containerWidth = globeContainer.clientWidth;
+                const containerHeight = 500;
+
+                // Check if Globe function exists
+                if (typeof Globe !== 'function') {
+                    throw new Error('Globe function not found. Library may not be loaded properly.');
+                }
+
+                // Initialize globe with explicit dimensions
+                const globe = Globe()
+                    .backgroundColor(prefersDarkMode ? '#121212' : '#f0f0f0')
+                    .globeImageUrl(prefersDarkMode 
+                        ? 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg'
+                        : 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
+                    .width(containerWidth)
+                    .height(containerHeight)
+                    .pointOfView({
+                        lat: 20,
+                        lng: 0,
+                        altitude: 2.0
+                    });
+
+                // Mount the globe
+                globe(globeContainer);
+
+                // Add legend
+                const legend = document.createElement('div');
+                legend.className = 'globe-legend';
+                legend.innerHTML = `
+                    <div class="legend-item" id="legend-conferences">
+                        <span class="legend-dot" style="background: ${prefersDarkMode ? '#2196F3' : '#3182CE'};"></span> Conferences
+                    </div>
+                    <div class="legend-item" id="legend-jobs">
+                        <span class="legend-dot" style="background: ${prefersDarkMode ? '#FF9800' : '#ED8936'};"></span> Jobs
+                    </div>
+                `;
+                globeContainer.appendChild(legend);
+
+                // Handle legend click events to toggle visibility
+                let showConferences = true;
+                let showJobs = true;
+
+                document.getElementById('legend-conferences').addEventListener('click', () => {
+                    showConferences = !showConferences;
+                    document.getElementById('legend-conferences').classList.toggle('disabled', !showConferences);
+                    updateMarkers();
+                });
+
+                document.getElementById('legend-jobs').addEventListener('click', () => {
+                    showJobs = !showJobs;
+                    document.getElementById('legend-jobs').classList.toggle('disabled', !showJobs);
+                    updateMarkers();
+                });
+
+                // Add CSS for disabled legend items
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    .legend-item.disabled {
+                        opacity: 0.5;
+                    }
+                `;
+                document.head.appendChild(style);
+
+                function updateMarkers() {
+                    const markers = [];
+                    if (showConferences) {
+                        data.conferences.forEach(conf => {
+                            // Only show conferences that are in the future and have coordinates
+                            if (conf.lat && conf.lng && isConferenceFuture(conf.date)) {
+                                markers.push({
+                                    lat: conf.lat,
+                                    lng: conf.lng,
+                                    size: 0.8,
+                                    color: prefersDarkMode ? '#2196F3' : '#3182CE',  // Accessible blue
+                                    type: 'conference',
+                                    data: conf
+                                });
+                            }
+                        });
+                    }
+                    if (showJobs) {
+                        data.jobs.forEach(job => {
+                            // Only show jobs that are current (no deadline or future deadline) and have coordinates
+                            if (job.lat && job.lng && (!job.deadline || job.deadline === "Rolling" || job.deadline === "Open" || isDeadlineFuture(job.deadline))) {
+                                markers.push({
+                                    lat: job.lat,
+                                    lng: job.lng,
+                                    size: 0.8,
+                                    color: prefersDarkMode ? '#FF9800' : '#ED8936',  // Accessible orange
+                                    type: 'job',
+                                    data: job
+                                });
+                            }
+                        });
+                    }
+                    globe.pointsData(markers)
+                         .pointColor('color')
+                         .pointAltitude(0.01)
+                         .pointRadius('size')
+                         .pointResolution(32);
+                }
+
+                // Initialize markers
+                updateMarkers();
+
+                // Create tooltip element
+                const tooltip = document.createElement('div');
+                tooltip.className = 'globe-tooltip';
+                tooltip.style.display = 'none';
+                globeContainer.appendChild(tooltip);
+
+                // Handle hover events
+                globe.onPointHover(point => {
+                    if (point === null) {
+                        tooltip.style.display = 'none';
+                        document.body.style.cursor = 'default';
+                        return;
+                    }
+
+                    document.body.style.cursor = 'pointer';
+                    const { data, type } = point;
+                    
+                    const tooltipContent = type === 'conference' 
+                        ? `
+                            <strong>${data.title}</strong>
+                            <br>
+                            <span class="tooltip-date">${data.date}</span>
+                            <br>
+                            <span class="tooltip-location">${data.location}</span>
+                        `
+                        : `
+                            <strong>${data.title}</strong>
+                            <br>
+                            <span class="tooltip-org">${data.organization || data.institution || ''}</span>
+                            <br>
+                            <span class="tooltip-location">${data.location}</span>
+                            <br>
+                            <span class="tooltip-type">${data.type || 'Academic'}</span>
+                        `;
+
+                    tooltip.innerHTML = tooltipContent;
+                    tooltip.style.display = 'block';
+
+                    // Update tooltip position on mousemove
+                    globeContainer.onmousemove = (e) => {
+                        const rect = globeContainer.getBoundingClientRect();
+                        tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
+                        tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+                    };
+                });
+
+                // Handle click events
+                globe.onPointClick(point => {
+                    if (point && point.data.url) {
+                        window.open(point.data.url, '_blank');
+                    }
+                });
+
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    const width = globeContainer.clientWidth;
+                    globe.width(width);
+                    globe.controls().update();
+                });
+                
+                // Listen for theme changes
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addEventListener('change', () => {
+                    // Will be reloaded by the main theme change listener
+                });
+
+                return globe;
+
+            } catch (error) {
+                console.error('Globe initialization error:', error);
+                globeContainer.innerHTML = `
+                    <div class="globe-error">
+                        Unable to load visualization. Please try refreshing the page.
+                    </div>
+                `;
+            }
+        }
+
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('i');
+            
+            // Toggle a class instead of checking maxHeight
+            content.classList.toggle('expanded');
+            
+            // Update icon rotation based on expanded class
+            if (content.classList.contains('expanded')) {
+                icon.style.transform = "rotate(180deg)";
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                icon.style.transform = "rotate(0deg)";
+                content.style.maxHeight = '0px';
+            }
+        }
+
+        // Initialize sections as expanded by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                // Check if this is the calendar section or not
+                const isCalendarSection = section.id === 'calendar-content';
+                
+                // Only add 'expanded' class to calendar section
+                if (isCalendarSection) {
+                    section.classList.add('expanded');
+                    const icon = section.previousElementSibling.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = "rotate(180deg)";
+                    }
+                    
+                    // Don't set maxHeight immediately for the calendar - wait for content to be fully loaded
+                    setTimeout(() => {
+                        section.style.maxHeight = 'none'; // First set to none to ensure all content is rendered
+                        section.style.maxHeight = section.scrollHeight + 'px';
+                    }, 300);
+                } else {
+                    // For all other sections, ensure they're collapsed
+                    section.classList.remove('expanded');
+                    const icon = section.previousElementSibling.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = "rotate(0deg)";
+                    }
+                    section.style.maxHeight = '0px';
+                }
+            });
+            
+            // Additional fix for calendar section specifically
+            setTimeout(() => {
+                const calendarContent = document.getElementById('calendar-content');
+                if (calendarContent) {
+                    calendarContent.style.maxHeight = 'none';
+                    // Use a larger value to ensure all content is visible, then update once rendered
+                    calendarContent.style.maxHeight = '2000px';
+                    
+                    // After the calendar is fully rendered, set exact height
+                    setTimeout(() => {
+                        calendarContent.style.maxHeight = calendarContent.scrollHeight + 'px';
+                    }, 600);
+                }
+            }, 500);
+        });
+
+        function createCalendarEventObject(item, type) {
+            let date;
+            if (type === 'conference') {
+                date = new Date(item.date);
+            } else {
+                date = new Date(item.deadline);
+            }
+            
+            return {
+                id: type + '_' + Math.random().toString(36).substr(2, 9),
+                title: item.title,
+                date: date,
+                type: type,
+                item: item
+            };
+        }
+
+        function getAllEvents() {
+            const events = [];
+            
+            // Add CFPs (all deadlines, including past ones for record keeping)
+            data.cfps.forEach(item => {
+                if (item.deadline && item.deadline !== 'Rolling') {
+                    events.push(createCalendarEventObject(item, 'cfp'));
+                }
+            });
+
+            // Add conferences as calendar events (blue markers)
+            data.conferences.forEach(item => {
+                if (item.date) {
+                    events.push(createCalendarEventObject(item, 'conference'));
+                }
+            });
+
+            // Add job deadlines (all deadlines, including past ones for record keeping)
+            data.jobs.forEach(item => {
+                if (item.deadline && item.deadline !== 'Rolling') {
+                    events.push(createCalendarEventObject(item, 'job'));
+                }
+            });
+            
+            return events;
+        }
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        let calendarEvents = [];
+
+        function initCalendar() {
+            // Get all events from data
+            calendarEvents = getAllEvents();
+
+            // Always start the calendar at the current month
+            const today = new Date();
+            currentMonth = today.getMonth();
+            currentYear = today.getFullYear();
+            
+            // Initialize the calendar
+            updateCalendar(currentMonth, currentYear);
+            
+            // Add event listeners for month navigation
+            document.getElementById('prev-month').addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                updateCalendar(currentMonth, currentYear);
+            });
+            
+            document.getElementById('next-month').addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                updateCalendar(currentMonth, currentYear);
+            });
+
+            // Create tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'event-tooltip';
+            tooltip.style.display = 'none';
+            document.body.appendChild(tooltip);
+
+            // Global event listener for calendar events
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('calendar-event')) {
+                    const eventId = e.target.dataset.eventId;
+                    const event = calendarEvents.find(ev => ev.id === eventId);
+                    
+                    if (event) {
+                        // Navigate to the URL if clicked
+                        window.open(event.item.url, '_blank');
+                    }
+                }
+            });
+
+            // Mouseover events to show tooltips
+            document.addEventListener('mouseover', function(e) {
+                if (e.target.classList.contains('calendar-event')) {
+                    const eventId = e.target.dataset.eventId;
+                    const event = calendarEvents.find(ev => ev.id === eventId);
+                    
+                    if (event) {
+                        const rect = e.target.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        
+                        tooltip.innerHTML = `
+                            <strong>${event.title}</strong><br>
+                            <span>${event.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                            ${event.type === 'conference' ? `<br><span>Location: ${event.item.location}</span>` : ''}
+                        `;
+                        
+                        tooltip.style.top = (rect.bottom + scrollTop + 10) + 'px';
+                        tooltip.style.left = rect.left + 'px';
+                        tooltip.style.display = 'block';
+                    }
+                }
+            });
+
+            document.addEventListener('mouseout', function(e) {
+                if (e.target.classList.contains('calendar-event')) {
+                    tooltip.style.display = 'none';
+                }
+            });
+            
+            // Handle window resize for responsive calendar
+            window.addEventListener('resize', function() {
+                // Reapply calendar layout after resize
+                updateCalendar(currentMonth, currentYear);
+            });
+            
+            // Fix for initial rendering
+            setTimeout(() => {
+                // Reset the calendar content height and update the calendar
+                const calendarContent = document.getElementById('calendar-content');
+                if (calendarContent) {
+                    // Ensure proper display of expanded section
+                    calendarContent.style.maxHeight = 'none';
+                    calendarContent.style.maxHeight = '2000px';
+                }
+                
+                // Force calendar to redraw
+                updateCalendar(currentMonth, currentYear);
+                
+                // Ensure the section has proper height after calendar is rendered
+                setTimeout(() => {
+                    if (calendarContent) {
+                        calendarContent.style.maxHeight = Math.max(calendarContent.scrollHeight, 800) + 'px';
+                    }
+                    
+                    // Update parent scrollHeight 
+                    const calendarSection = document.getElementById('calendar-section');
+                    if (calendarSection && calendarSection.parentElement) {
+                        calendarSection.parentElement.style.maxHeight = 'none';
+                    }
+                }, 400);
+            }, 300);
+        }
+
+        function updateCalendar(month, year) {
+            const calendarGrid = document.getElementById('calendar-grid');
+            const monthLabel = document.getElementById('calendar-month');
+            
+            // Clear existing content
+            calendarGrid.innerHTML = '';
+            
+            // Set month and year label
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            monthLabel.textContent = `${monthNames[month]} ${year}`;
+            
+            // Add day headers
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day-header';
+                dayHeader.textContent = day;
+                calendarGrid.appendChild(dayHeader);
+            });
+            
+            // Get first day of month and last day of month
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            
+            // Get starting day (might be from previous month)
+            const startingDayOfWeek = firstDay.getDay();
+            const totalDays = lastDay.getDate();
+            
+            // Previous month days
+            const prevMonthLastDay = new Date(year, month, 0).getDate();
+            for (let i = startingDayOfWeek - 1; i >= 0; i--) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = prevMonthLastDay - i;
+                
+                dayElement.appendChild(dayNumber);
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Current month days
+            const today = new Date();
+            for (let day = 1; day <= totalDays; day++) {
+                const date = new Date(year, month, day);
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                // Check if it's today
+                if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
+                    dayElement.classList.add('today');
+                }
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = day;
+                
+                dayElement.appendChild(dayNumber);
+                
+                // Add events for this day
+                const dayEvents = calendarEvents.filter(event => {
+                    const eventDate = event.date;
+                    return eventDate.getDate() === day && 
+                           eventDate.getMonth() === month && 
+                           eventDate.getFullYear() === year;
+                });
+                
+                // Sort events by type to ensure consistent display order (CFPs first, conferences, then jobs)
+                const sortedEvents = dayEvents.sort((a, b) => {
+                    const typeOrder = { cfp: 1, conference: 2, job: 3 };
+                    return (typeOrder[a.type] || 4) - (typeOrder[b.type] || 4);
+                });
+                
+                // Limit to a maximum of 3 visible events per day to avoid overflow
+                const visibleEvents = sortedEvents.slice(0, 3);
+                const hiddenEvents = sortedEvents.length > 3 ? sortedEvents.slice(3) : [];
+                
+                visibleEvents.forEach(event => {
+                    const eventElement = document.createElement('div');
+                    eventElement.className = `calendar-event ${event.type}`;
+                    eventElement.textContent = event.title.length > 15 ? event.title.substring(0, 15) + '...' : event.title;
+                    eventElement.dataset.eventId = event.id;
+                    eventElement.title = event.title;
+                    dayElement.appendChild(eventElement);
+                });
+                
+                // Add indicator for hidden events
+                if (hiddenEvents.length > 0) {
+                    const moreIndicator = document.createElement('div');
+                    moreIndicator.className = 'calendar-event-more';
+                    moreIndicator.textContent = `+${hiddenEvents.length} more`;
+                    moreIndicator.style.fontSize = '0.8em';
+                    moreIndicator.style.color = '#666';
+                    moreIndicator.style.textAlign = 'center';
+                    dayElement.appendChild(moreIndicator);
+                }
+                
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Next month days (to fill the grid)
+            const totalCalendarCells = 42; // 6 rows * 7 days
+            const remainingCells = totalCalendarCells - (startingDayOfWeek + totalDays);
+            
+            for (let day = 1; day <= remainingCells; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'calendar-day-number';
+                dayNumber.textContent = day;
+                
+                dayElement.appendChild(dayNumber);
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Force a reflow/repaint to ensure the calendar renders correctly
+            calendarGrid.style.display = 'none';
+            setTimeout(() => {
+                calendarGrid.style.display = 'grid';
+            }, 10);
+        }
+    </script>
+
+    <!-- UI Enhancement Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user prefers dark or light mode
+            const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Add hover effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.card, .calendar-event, .paper-preview li, .section-header');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)';
+                    if (this.classList.contains('section-header')) {
+                        this.style.backgroundColor = prefersDarkMode ? '#161616' : '#e8e8e8';
+                    } else if (this.classList.contains('calendar-event')) {
+                        this.style.borderLeftWidth = '4px';
+                        this.style.paddingLeft = '8px';
+                    } else if (this.classList.contains('card')) {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.borderColor = 'var(--accent-color)';
+                        this.style.boxShadow = prefersDarkMode 
+                            ? '0 8px 20px rgba(0, 0, 0, 0.3)' 
+                            : '0 8px 20px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        this.style.transform = 'translateY(-2px)';
+                        this.style.borderColor = 'var(--accent-color)';
+                        this.style.boxShadow = prefersDarkMode 
+                            ? '0 5px 15px rgba(0, 0, 0, 0.3)'
+                            : '0 5px 15px rgba(0, 0, 0, 0.08)';
+                    }
+                });
+                
+                el.addEventListener('mouseleave', function() {
+                    if (this.classList.contains('section-header')) {
+                        this.style.backgroundColor = '';
+                    } else if (this.classList.contains('calendar-event')) {
+                        this.style.borderLeftWidth = '';
+                        this.style.paddingLeft = '';
+                    } else {
+                        this.style.transform = '';
+                        this.style.borderColor = '';
+                        this.style.boxShadow = '';
+                    }
+                });
+            });
+            
+            // Add typing effect to headers
+            const headers = document.querySelectorAll('h1');
+            headers.forEach(header => {
+                const text = header.textContent;
+                header.textContent = '';
+                header.classList.add('typing-animation');
+                
+                let i = 0;
+                const typingEffect = setInterval(() => {
+                    if (i < text.length) {
+                        header.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingEffect);
+                        // Remove cursor once animation is done
+                        setTimeout(() => {
+                            header.classList.remove('typing-animation');
+                        }, 1500);
+                    }
+                }, parseInt(getComputedStyle(document.documentElement).getPropertyValue('--typing-speed')));
+            });
+            
+            // Add terminal-style loading indicator for globe
+            const globeContainer = document.getElementById('globeViz');
+            if (globeContainer) {
+                const loader = document.createElement('div');
+                loader.className = 'globe-loading';
+                
+                // Different loading indicator based on theme
+                if (prefersDarkMode) {
+                    // Dark theme terminal-style loader
+                    loader.innerHTML = `
+                        <div style="font-family: var(--font-mono); text-align: left; color: #f0f0f0;">
+                            <div style="margin-bottom: 15px; font-size: 1rem;">
+                                <span style="color: var(--accent-color);">></span> Initializing globe visualization
+                            </div>
+                            <div class="terminal-loader">
+                                <span style="color: var(--accent-color);">[</span>
+                                <span class="loader-progress" style="color: var(--text-color);"></span>
+                                <span style="color: var(--accent-color);">]</span>
+                                <span class="loader-percent" style="color: var(--accent-color); margin-left: 10px;">0%</span>
+                            </div>
+                        </div>`;
+                } else {
+                    // Light theme more minimal loader
+                    loader.innerHTML = `
+                        <div style="text-align: center; font-family: var(--font-sans);">
+                            <svg class="spinner" width="50" height="50" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                            <div style="margin-top: 15px; color: var(--text-color);">
+                                Loading Globe Visualization
+                            </div>
+                            <div class="loader-percent" style="font-size: 0.9rem; color: var(--accent-color); margin-top: 5px;">0%</div>
+                        </div>`;
+                }
+                
+                // Only add if not already present
+                if (!document.querySelector('.globe-loading')) {
+                    globeContainer.appendChild(loader);
+                    
+                    // Animate the loader
+                    const percent = loader.querySelector('.loader-percent');
+                    let progress = 0;
+                    
+                    const interval = setInterval(() => {
+                        if (progress >= 100) {
+                            clearInterval(interval);
+                            
+                            // Remove loader once globe is initialized
+                            if (typeof Globe === 'function') {
+                                setTimeout(() => {
+                                    const loader = document.querySelector('.globe-loading');
+                                    if (loader) {
+                                        loader.style.opacity = '0';
+                                        setTimeout(() => loader.style.display = 'none', 500);
+                                    }
+                                }, 500);
+                            }
+                        }
+                        
+                        progress += 5;
+                        
+                        if (prefersDarkMode) {
+                            // Update terminal style progress
+                            const progressBar = loader.querySelector('.loader-progress');
+                            const barWidth = Math.floor(progress / 5);
+                            progressBar.innerHTML = '='.repeat(barWidth);
+                        } else {
+                            // Update circular spinner rotation
+                            const spinner = loader.querySelector('.spinner');
+                            if (spinner) {
+                                spinner.style.transform = `rotate(${progress * 3.6}deg)`;
+                            }
+                        }
+                        
+                        percent.textContent = `${progress}%`;
+                    }, 100);
+                }
+                
+                // Add style for loaders
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    /* Dark theme loader */
+                    .terminal-loader {
+                        display: inline-block;
+                        font-family: var(--font-mono);
+                        color: var(--text-color);
+                        background: ${prefersDarkMode ? 'rgba(10, 10, 10, 0.8)' : 'transparent'};
+                        padding: 8px;
+                    }
+                    
+                    .loader-progress {
+                        display: inline-block;
+                        width: 20ch;
+            overflow: hidden;
+                    }
+                    
+                    .loader-percent {
+                        margin-left: 10px;
+                        width: 4ch;
+                        display: inline-block;
+                    }
+                    
+                    /* Light theme spinner */
+                    .spinner {
+                        animation: rotate 2s linear infinite;
+                        width: 50px;
+                        height: 50px;
+                    }
+                    
+                    .spinner .path {
+                        stroke: var(--accent-color);
+                        stroke-linecap: round;
+                        animation: dash 1.5s ease-in-out infinite;
+                    }
+                    
+                    @keyframes rotate {
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+                    
+                    @keyframes dash {
+                        0% {
+                            stroke-dasharray: 1, 150;
+                            stroke-dashoffset: 0;
+                        }
+                        50% {
+                            stroke-dasharray: 90, 150;
+                            stroke-dashoffset: -35;
+                        }
+                        100% {
+                            stroke-dasharray: 90, 150;
+                            stroke-dashoffset: -124;
+                        }
+                    }
+                    
+                    .globe-loading {
+                        transition: opacity 0.5s ease;
+                        background: var(--card-bg);
+                        padding: 20px 25px;
+                        border: 1px solid var(--accent-color);
+                        box-shadow: var(--card-shadow);
+                    }
+
+                    /* Ensure tooltips have good contrast */
+                    .globe-tooltip, .event-tooltip {
+                        color: var(--text-color);
+                        background: var(--card-bg);
+                        border: 1px solid var(--accent-color);
+                        box-shadow: var(--card-shadow);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Custom cursor effect - more subtle in light mode
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            document.body.appendChild(cursor);
+            
+            // Add style for custom cursor
+            const cursorStyle = document.createElement('style');
+            cursorStyle.innerHTML = `
+                .custom-cursor {
+                    position: fixed;
+                    width: ${prefersDarkMode ? '8px' : '6px'};
+                    height: ${prefersDarkMode ? '8px' : '6px'};
+                    background: var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+                    mix-blend-mode: ${prefersDarkMode ? 'difference' : 'normal'};
+                    z-index: 9999;
+                    transform: translate(-50%, -50%);
+                    transition: width 0.2s, height 0.2s, background 0.2s;
+                    opacity: ${prefersDarkMode ? '0.7' : '0.4'};
+                }
+                
+                .custom-cursor-active {
+                    width: ${prefersDarkMode ? '20px' : '16px'};
+                    height: ${prefersDarkMode ? '20px' : '16px'};
+                    background: ${prefersDarkMode ? 'rgba(100, 255, 218, 0.3)' : 'rgba(11, 125, 108, 0.2)'};
+                    mix-blend-mode: normal;
+                    border: 1px solid var(--accent-color);
+                }
+
+                /* Additional styles to ensure text readability */
+                .card-content p {
+                    font-size: 0.95rem;
+                    line-height: 1.7;
+                }
+
+                .tag {
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+                
+                /* Theme adaptation listener */
+                @media (prefers-color-scheme: dark) {
+                    .custom-cursor {
+                        width: 8px;
+                        height: 8px;
+                        opacity: 0.7;
+                        mix-blend-mode: difference;
+                    }
+                    
+                    .custom-cursor-active {
+                        width: 20px;
+                        height: 20px;
+                        background: rgba(100, 255, 218, 0.3);
+                    }
+                }
+                
+                @media (prefers-color-scheme: light) {
+                    .custom-cursor {
+                        width: 6px;
+                        height: 6px;
+                        opacity: 0.4;
+                        mix-blend-mode: normal;
+                    }
+                    
+                    .custom-cursor-active {
+                        width: 16px;
+                        height: 16px;
+                        background: rgba(11, 125, 108, 0.2);
+                    }
+                }
+            `;
+            document.head.appendChild(cursorStyle);
+            
+            document.addEventListener('mousemove', e => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            
+            document.addEventListener('mousedown', () => {
+                cursor.classList.add('custom-cursor-active');
+            });
+            
+            document.addEventListener('mouseup', () => {
+                cursor.classList.remove('custom-cursor-active');
+            });
+            
+            // Smooth scroll to section when clicked in navigation
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Only apply to hash links on the same page
+                    if (this.getAttribute('href').includes('#') && !this.getAttribute('href').includes('.html')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').split('#')[1];
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+                
+                // Add hover effect for nav links
+                link.addEventListener('mouseenter', function() {
+                    cursor.classList.add('custom-cursor-active');
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    cursor.classList.remove('custom-cursor-active');
+                });
+            });
+            
+            // Listen for system theme changes
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            mediaQuery.addEventListener('change', () => {
+                // Reload the page to apply new theme
+                window.location.reload();
+            });
+        });
+    </script>
+</body>
+</html>
