@@ -8,4 +8,4 @@
 // ngrok domain at dashboard.ngrok.com, re-run with:
 //   API_BASE="https://<static>.ngrok-free.app" ./scripts/deploy-to-bio.sh
 // and set DOMAIN in proxy/launch.sh so the tunnel comes up on that domain.
-window.ETHICA_API_BASE = 'https://firmly-precious-prawn.ngrok-free.app';
+window.ETHICA_API_BASE = 'https://ethica-proxy.cam-pattison.workers.dev';
