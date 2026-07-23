@@ -247,12 +247,6 @@ export function streamBattleMove(params, callbacks) {
       const allyDisplayName = allyPhilosopherId
         ? allyPhilosopherId.charAt(0).toUpperCase() + allyPhilosopherId.slice(1)
         : null;
-      const battleContext = buildBattleContext(battle, {
-        moveType,
-        finalArgument,
-        isPhilosopherAlly,
-        allyDisplayName,
-      });
 
       // Capture the philosopher's previous statement + history BEFORE we log the
       // player's move (parity with the legacy route ordering).
@@ -280,6 +274,21 @@ export function streamBattleMove(params, callbacks) {
         judgeScores: playerJudgeScores,
         damage: playerResult.damage,
         battle: playerResult.battle,
+      });
+
+      // Build the philosopher's battle context AFTER phase 1 so the judge's
+      // verdict (six dims + commentary) calibrates the reply — without it the
+      // in-character model steelmans junk input into a serious objection.
+      // Deferring is safe: neither the judge nor applyPlayerAttack touches
+      // battle.shouldSignatureMove (latched in applyPhilosopherCounter for the
+      // NEXT exchange), so the signature-move injection reads the same value it
+      // did before phase 1.
+      const battleContext = buildBattleContext(battle, {
+        moveType,
+        finalArgument,
+        isPhilosopherAlly,
+        allyDisplayName,
+        judgeResult: playerJudgeScores,
       });
 
       // Phase 2 + 3: philosopher streams, then counter judge. On failure here we

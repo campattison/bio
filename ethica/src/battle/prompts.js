@@ -221,22 +221,81 @@ function previousCommentaryBlock(previousCommentary) {
 // ─── Philosopher battle context (ported from battle.js) ───
 
 /**
+ * Response-quality tier boundaries, keyed off the player judge's average
+ * dimension score (see the battle-judge rubric: 0-1 off-topic/incoherent,
+ * 2-3 significant errors, 4-5 competent, 6-7 strong undergraduate, 8-10
+ * graduate level). enforceScoreRanges clamps integer dims to [1,10], so a
+ * pure non-argument ("boo") averages ~1 and the mock judge's all-7s average
+ * 7.0 (strong tier — the mock E2E path exercises full engagement).
+ */
+export const CALIBRATION_WEAK_MAX = 2.5;
+export const CALIBRATION_MIDDLING_MAX = 6.5;
+
+const CALIBRATION_WEAK =
+  'The player has not offered a real argument. Do not invent one on their behalf, and do not rebut points they never made. Reply in one to three sentences, in your own voice: dismiss the remark, needle them, or demand a genuine argument before you spend any more breath on it.';
+
+const CALIBRATION_MIDDLING =
+  'The argument has some substance and a real weakness. Engage with what was said, and name the weakness outright: say where it is vague, which premise is missing, or where the reasoning slips. Then defend your position against the part that lands.';
+
+const CALIBRATION_STRONG =
+  'This is a serious objection. Engage it in full and defend your position rigorously.';
+
+/**
+ * Build the calibration block appended to the battle context, from the
+ * phase-1 player-judge result. The philosopher must answer the argument the
+ * player actually made, at the strength the judge found in it — an
+ * in-character LLM otherwise steelmans junk input ("boo" read as Ayer's
+ * emotivism) into a serious objection.
+ * @param {object|null} judgeResult - JUDGE_SCHEMA-shaped scores (six dims + commentary)
+ * @returns {string} calibration text, or '' when no result is available
+ */
+export function buildJudgeCalibration(judgeResult) {
+  if (!judgeResult) return '';
+  const dims = DIM_NAMES.filter((d) => Number.isFinite(judgeResult[d]));
+  if (dims.length === 0) return '';
+  const avg = dims.reduce((sum, d) => sum + judgeResult[d], 0) / dims.length;
+  const scoreLine = dims.map((d) => `${d} ${judgeResult[d]}`).join(', ');
+  const commentaryLine = judgeResult.commentary ? `\nAssessor's commentary: ${judgeResult.commentary}` : '';
+
+  let tier;
+  if (avg < CALIBRATION_WEAK_MAX) {
+    tier = CALIBRATION_WEAK;
+  } else if (avg < CALIBRATION_MIDDLING_MAX) {
+    tier = CALIBRATION_MIDDLING;
+  } else {
+    tier = CALIBRATION_STRONG;
+  }
+
+  return (
+    `\n\nAn impartial assessment of the argument above, for your calibration only. Never mention scores, judges, assessments, or the game itself in your reply.\n` +
+    `Scores (out of 10): ${scoreLine}. Average: ${avg.toFixed(1)}.` +
+    `${commentaryLine}\n\n` +
+    `Respond to what was actually written, at the strength it was actually written. Do not supply missing premises, do not read a serious objection into a throwaway remark, and do not answer a better argument than the one on the page.\n` +
+    tier
+  );
+}
+
+/**
  * Build the battle-context wrapper appended to the philosopher's system prompt.
  * Includes the HP<=30% "USE YOUR SIGNATURE MOVE" injection (reads
- * battle.shouldSignatureMove, latched by the engine on the previous exchange).
+ * battle.shouldSignatureMove, latched by the engine on the previous exchange)
+ * and, when `judgeResult` is provided, the phase-1 judge calibration block
+ * (build this context AFTER the player judge resolves).
  * @param {import('./engine.js').Battle} battle
- * @param {object} opts - { moveType, finalArgument, isPhilosopherAlly, allyDisplayName }
+ * @param {object} opts - { moveType, finalArgument, isPhilosopherAlly, allyDisplayName, judgeResult }
  */
-export function buildBattleContext(battle, { moveType, finalArgument, isPhilosopherAlly, allyDisplayName }) {
+export function buildBattleContext(battle, { moveType, finalArgument, isPhilosopherAlly, allyDisplayName, judgeResult }) {
   const signatureInjection = battle.shouldSignatureMove
     ? '\n[USE YOUR SIGNATURE MOVE — your conviction is being challenged at its core. Deploy your most powerful philosophical argument.]'
     : '';
+  const calibration = buildJudgeCalibration(judgeResult);
 
   if (isPhilosopherAlly) {
     return (
       `You are in a philosophical debate battle. The student has deployed their captured ally, ${allyDisplayName}, to argue against you. ${allyDisplayName} has used a "${moveType}" move.\n` +
       `${allyDisplayName}'s argument: "${finalArgument}"\n\n` +
       `Respond in character. You are now debating a fellow philosopher, not just a student — match their level. Defend your position rigorously.` +
+      `${calibration}` +
       `${signatureInjection}\n` +
       `Keep your response under 300 words.`
     );
@@ -246,6 +305,7 @@ export function buildBattleContext(battle, { moveType, finalArgument, isPhilosop
     `You are in a philosophical debate battle. The student has used the move type "${moveType}".\n` +
     `Their argument: "${finalArgument}"\n\n` +
     `Respond in character. Defend your philosophical position. Be rigorous but educational.` +
+    `${calibration}` +
     `${signatureInjection}\n` +
     `Keep your response under 300 words.`
   );
