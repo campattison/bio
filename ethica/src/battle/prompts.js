@@ -32,8 +32,19 @@ const DIM_NAMES = [
   'dialectical_awareness',
 ];
 
-/** An integer score dimension, 1-10 (per V2_SPEC). */
-const intDim = () => ({ type: 'integer', minimum: 1, maximum: 10 });
+/**
+ * An integer score dimension (1-10 per V2_SPEC).
+ *
+ * NOTE: no `minimum`/`maximum` on the schema. Anthropic structured outputs
+ * (output_config.format json_schema) reject numeric constraints
+ * (minimum/maximum/multipleOf) and complex array constraints (minItems/maxItems)
+ * with a 400 (invalid_request_error: "for 'integer' type, properties maximum,
+ * minimum are not permitted"). The official SDKs strip these client-side; our
+ * raw-fetch client must not send them. Ranges are enforced after JSON.parse by
+ * `enforceScoreRanges` in llm.js (integer dims → [1,10]), and stated in prose in
+ * the judge prompt .md files.
+ */
+const intDim = () => ({ type: 'integer' });
 
 function sixDimProps() {
   const props = {};
@@ -101,11 +112,16 @@ export const RECONSTRUCT_SCHEMA = {
     charity: intDim(),
     critique: intDim(),
     commentary: { type: 'string' },
-    weighted_score: { type: 'number', minimum: 0, maximum: 10 },
+    // Range enforced post-parse (enforceScoreRanges → [0,10]); see intDim note.
+    weighted_score: { type: 'number' },
   },
 };
 
-/** Move suggester: exactly 3 { id, reason }. */
+/**
+ * Move suggester: { id, reason } list. The prompt asks for exactly 3; the count
+ * is enforced client-side in `suggestMoves` (validated, padded, sliced to 3) —
+ * NOT via minItems/maxItems, which Anthropic structured outputs reject (400).
+ */
 export const SUGGESTER_SCHEMA = {
   type: 'object',
   additionalProperties: false,
@@ -113,8 +129,6 @@ export const SUGGESTER_SCHEMA = {
   properties: {
     suggestions: {
       type: 'array',
-      minItems: 3,
-      maxItems: 3,
       items: {
         type: 'object',
         additionalProperties: false,
@@ -142,7 +156,8 @@ export const TOOLKIT_SCHEMA = {
 function quizSchema(dims, withCommentary = true) {
   const props = {};
   for (const d of dims) props[d] = intDim();
-  props.weighted_score = { type: 'number', minimum: 0, maximum: 10 };
+  // Range enforced post-parse (enforceScoreRanges → [0,10]); see intDim note.
+  props.weighted_score = { type: 'number' };
   props.feedback = { type: 'string' };
   const required = [...dims, 'weighted_score', 'feedback'];
   if (withCommentary) {

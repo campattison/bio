@@ -48,6 +48,42 @@ export class LLMParseError extends Error {
   }
 }
 
+/**
+ * Enforce numeric score ranges on a parsed structured result.
+ *
+ * Anthropic structured outputs (output_config.format json_schema) do NOT support
+ * numeric constraints (minimum/maximum/multipleOf) or array constraints
+ * (minItems/maxItems) — sending them 400s. The schemas therefore carry types
+ * only, and ranges are enforced HERE, after JSON.parse:
+ *   - integer fields (score dimensions)  → clamped to [1, 10]
+ *   - number fields  (weighted scores)   → clamped to [0, 10]
+ * A field that is present but not a finite number THROWS (fail loud — no silent
+ * coercion to 0). Absent/null fields are left untouched so caller-side fallbacks
+ * (e.g. the recall judge computing weighted_score when the model omits it) still
+ * work. Mutates `obj` in place and returns it.
+ * @param {object} obj - parsed structured result
+ * @param {object} schema - the (constraint-free) JSON schema used for the call
+ * @returns {object}
+ */
+export function enforceScoreRanges(obj, schema) {
+  if (!obj || typeof obj !== 'object' || !schema || !schema.properties) return obj;
+  for (const [key, spec] of Object.entries(schema.properties)) {
+    if (!spec || !(key in obj)) continue;
+    const type = Array.isArray(spec.type) ? spec.type[0] : spec.type;
+    if (type !== 'integer' && type !== 'number') continue;
+    const v = obj[key];
+    if (v == null) continue; // absent/null: leave for caller-side fallback
+    if (typeof v !== 'number' || !Number.isFinite(v)) {
+      throw new LLMParseError(
+        `Structured output field "${key}" must be a number, got ${JSON.stringify(v)}`,
+        obj,
+      );
+    }
+    obj[key] = type === 'integer' ? Math.min(10, Math.max(1, Math.round(v))) : Math.min(10, Math.max(0, v));
+  }
+  return obj;
+}
+
 function apiBase() {
   return (typeof window !== 'undefined' && window.ETHICA_API_BASE) || '';
 }
@@ -264,9 +300,13 @@ export async function structuredMessage({
     throw new LLMParseError('Structured response had no text content block', json);
   }
 
+  let parsed;
   try {
-    return JSON.parse(rawText);
+    parsed = JSON.parse(rawText);
   } catch (e) {
     throw new LLMParseError(`Failed to parse structured output as JSON: ${e.message}`, rawText);
   }
+  // Clamp/validate numeric scores here — the schema can no longer constrain them
+  // on the wire (Anthropic rejects minimum/maximum). Throws on non-numeric junk.
+  return enforceScoreRanges(parsed, schema);
 }
