@@ -10,6 +10,7 @@ import { SHOW_SOCIAL_LINKS } from '../config.js';
 import { BaseScene } from './base-scene.js';
 import { playBackgroundMusic } from '../utils/audio-utils.js';
 import { ensureAccessCode } from '../utils/access-code.js';
+import { closeControlsHelp, maybeShowControlsHelp, showControlsHelp } from '../utils/controls-help.js';
 import { reconcileOnBoot } from '../utils/save-sync.js';
 
 /** @type {Phaser.Types.GameObjects.Text.TextStyle} */
@@ -72,8 +73,18 @@ export class TitleScene extends BaseScene {
     // v2: make sure we have an access code before any model calls, and reconcile
     // the save document with the proxy on boot (adopts a newer remote save into
     // localStorage). Both are best-effort and non-blocking.
-    ensureAccessCode().catch(() => {});
+    // The first-visit controls card is chained strictly AFTER the access-code
+    // modal so the two DOM overlays never fight for the player's keyboard.
+    ensureAccessCode()
+      .catch(() => {})
+      .then(() => maybeShowControlsHelp())
+      .catch(() => {});
     reconcileOnBoot().catch(() => {});
+    // If the scene is torn down (E2E jumps, EXIT round-trips) while the card is
+    // up, close it so its capture-phase key handler cannot outlive the scene.
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      closeControlsHelp();
+    });
 
     this.#selectedMenuOption = MAIN_MENU_OPTIONS.NEW_GAME;
     this.#isContinueButtonEnabled = dataManager.store.get(DATA_MANAGER_STORE_KEYS.GAME_STARTED) || false;
@@ -133,6 +144,10 @@ export class TitleScene extends BaseScene {
       },
       targets: this.#mainMenuCursorPhaserImageGameObject,
     });
+
+    // Small persistent affordance to reopen the controls card after the
+    // first-visit auto-show has been dismissed.
+    this.#addControlsAffordance();
 
     // add in social links
     if (SHOW_SOCIAL_LINKS) {
@@ -242,6 +257,31 @@ export class TitleScene extends BaseScene {
       default:
         exhaustiveGuard(direction);
     }
+  }
+
+  /**
+   * "? CONTROLS" pill, bottom-left of the title screen. Clicking it reopens
+   * the controls card at any time (the card itself is a DOM overlay — see
+   * utils/controls-help.js).
+   * @returns {void}
+   */
+  #addControlsAffordance() {
+    const label = this.add
+      .text(20, this.scale.height - 12, '? CONTROLS', {
+        fontFamily: KENNEY_FUTURE_NARROW_FONT_NAME,
+        fontSize: '16px',
+        color: '#c792ea',
+        backgroundColor: '#1a1a2e',
+        padding: { x: 10, y: 6 },
+      })
+      .setOrigin(0, 1)
+      .setAlpha(0.9)
+      .setInteractive({ useHandCursor: true });
+    label.on(Phaser.Input.Events.POINTER_OVER, () => label.setAlpha(1));
+    label.on(Phaser.Input.Events.POINTER_OUT, () => label.setAlpha(0.9));
+    label.on(Phaser.Input.Events.POINTER_DOWN, () => {
+      showControlsHelp().catch(() => {});
+    });
   }
 
   #addInSocialLinks() {

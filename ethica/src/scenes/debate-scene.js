@@ -326,6 +326,12 @@ export class DebateScene extends BaseScene {
       bagOpen: !!this.#bagOverlay,
       bagTab: this.#bagTab,
       bagIndex: this.#bagScrollIndex,
+      bagTabs: this.#bagOverlay
+        ? (this.#bagOverlay.getData('tabTexts') || []).map((t) => ({
+            label: t.text,
+            active: !!t.getData('active'),
+          }))
+        : [],
       transcript: this.#transcript ? this.#transcript.map((e) => ({ label: e.label, text: e.text })) : [],
     };
   }
@@ -2617,6 +2623,18 @@ export class DebateScene extends BaseScene {
     this.#bagOverlay.add(descText);
     this.#bagOverlay.setData('descText', descText);
 
+    // One-line key hint (Cameron's playtest note: the tabs were invisible —
+    // players only found them by accident). Sits just under the main panel.
+    const tabHint = this.add
+      .text(994, 386, '◄ ► switch tabs', {
+        fontFamily: KENNEY_FUTURE_NARROW_FONT_NAME,
+        color: '#ffffff',
+        fontSize: '16px',
+      })
+      .setOrigin(1, 0)
+      .setAlpha(0.9);
+    this.#bagOverlay.add(tabHint);
+
     // Cursor
     this.#bagCursor = this.add
       .image(30, 30, UI_ASSET_KEYS.CURSOR)
@@ -2653,14 +2671,68 @@ export class DebateScene extends BaseScene {
       fontSize: '30px',
     };
     const ITEM_X = 50;
-    const ITEM_Y = 14;
+    // Content starts below the tab header bar rendered above the items.
+    const ITEM_Y = 60;
     const ITEM_SPACE = 50;
+    // The selection cursor centers on a row: row text top + 16 (was 30 when
+    // rows started at y=14).
+    const CURSOR_BASE_Y = ITEM_Y + 16;
 
     const tabNames = ['Toolkit', 'Items', 'Beliefs', 'Key Items', 'Party', 'Agree'];
     const titleText = this.add
       .text(116, 28, tabNames[this.#bagTab], ITEM_STYLE)
       .setOrigin(0.5);
     titlePanel.add(titleText);
+
+    // --- Tab header bar: every tab visible, active one highlighted, with
+    // ◄ ► edge arrows (dimmed when no further tab in that direction) ---
+    const TAB_BAR_Y = 10;
+    const leftArrow = this.add
+      .text(18, TAB_BAR_Y, '◄', {
+        fontFamily: KENNEY_FUTURE_NARROW_FONT_NAME,
+        color: '#000000',
+        fontSize: '20px',
+      })
+      .setAlpha(this.#bagTab > 0 ? 0.9 : 0.25);
+    const rightArrow = this.add
+      .text(674, TAB_BAR_Y, '►', {
+        fontFamily: KENNEY_FUTURE_NARROW_FONT_NAME,
+        color: '#000000',
+        fontSize: '20px',
+      })
+      .setOrigin(1, 0)
+      .setAlpha(this.#bagTab < tabNames.length - 1 ? 0.9 : 0.25);
+    mainPanel.add([leftArrow, rightArrow]);
+
+    const TAB_SLOT_LEFT = 44;
+    const TAB_SLOT_WIDTH = (660 - TAB_SLOT_LEFT) / tabNames.length;
+    /** @type {Phaser.GameObjects.Text[]} */
+    const tabTexts = [];
+    tabNames.forEach((name, i) => {
+      const isActive = i === this.#bagTab;
+      const centerX = TAB_SLOT_LEFT + (i + 0.5) * TAB_SLOT_WIDTH;
+      const tabText = this.add
+        .text(centerX, TAB_BAR_Y, name, {
+          fontFamily: KENNEY_FUTURE_NARROW_FONT_NAME,
+          color: isActive ? '#000000' : '#8a8a66',
+          fontSize: isActive ? '19px' : '17px',
+        })
+        .setOrigin(0.5, 0);
+      tabText.setData('active', isActive);
+      mainPanel.add(tabText);
+      tabTexts.push(tabText);
+      if (isActive) {
+        const underline = this.add
+          .rectangle(centerX, TAB_BAR_Y + 26, tabText.width + 10, 3, 0x000000, 0.85)
+          .setOrigin(0.5, 0);
+        mainPanel.add(underline);
+      }
+    });
+    this.#bagOverlay.setData('tabTexts', tabTexts);
+
+    // Separator under the tab bar
+    const tabSeparator = this.add.rectangle(14, 44, 672, 2, 0x000000, 0.22).setOrigin(0);
+    mainPanel.add(tabSeparator);
 
     // Ensure cursor is in the main panel
     if (this.#bagCursor && !mainPanel.list.includes(this.#bagCursor)) {
@@ -2714,7 +2786,7 @@ export class DebateScene extends BaseScene {
       );
       mainPanel.add(cancelText);
 
-      const cursorY = 30 + this.#bagScrollIndex * ITEM_SPACE;
+      const cursorY = CURSOR_BASE_Y + this.#bagScrollIndex * ITEM_SPACE;
       this.#bagCursor.setPosition(30, cursorY).setVisible(true);
 
       const moveKeys = Object.keys(toolkitItems);
@@ -2775,7 +2847,7 @@ export class DebateScene extends BaseScene {
         );
         mainPanel.add(cancelText);
 
-        const cursorY = 30 + this.#bagScrollIndex * ITEM_SPACE;
+        const cursorY = CURSOR_BASE_Y + this.#bagScrollIndex * ITEM_SPACE;
         this.#bagCursor.setPosition(30, cursorY).setVisible(true);
 
         if (this.#bagScrollIndex < inventory.length) {
@@ -2830,7 +2902,7 @@ export class DebateScene extends BaseScene {
         );
         mainPanel.add(cancelText);
 
-        const cursorY = 30 + this.#bagScrollIndex * ITEM_SPACE;
+        const cursorY = CURSOR_BASE_Y + this.#bagScrollIndex * ITEM_SPACE;
         this.#bagCursor.setPosition(30, cursorY).setVisible(true);
 
         if (this.#bagScrollIndex < beliefs.length) {
@@ -2881,7 +2953,7 @@ export class DebateScene extends BaseScene {
         );
         mainPanel.add(cancelText);
 
-        const cursorY = 30 + this.#bagScrollIndex * ITEM_SPACE;
+        const cursorY = CURSOR_BASE_Y + this.#bagScrollIndex * ITEM_SPACE;
         this.#bagCursor.setPosition(30, cursorY).setVisible(true);
 
         if (this.#bagScrollIndex < keyItems.length) {
@@ -2919,7 +2991,7 @@ export class DebateScene extends BaseScene {
       );
       mainPanel.add(cancelText);
 
-      const cursorY = 30 + this.#bagScrollIndex * ITEM_SPACE;
+      const cursorY = CURSOR_BASE_Y + this.#bagScrollIndex * ITEM_SPACE;
       this.#bagCursor.setPosition(30, cursorY).setVisible(true);
 
       if (this.#bagScrollIndex === 0) {
@@ -2951,7 +3023,7 @@ export class DebateScene extends BaseScene {
       );
       mainPanel.add(cancelText);
 
-      const cursorY = 30 + this.#bagScrollIndex * ITEM_SPACE;
+      const cursorY = CURSOR_BASE_Y + this.#bagScrollIndex * ITEM_SPACE;
       this.#bagCursor.setPosition(30, cursorY).setVisible(true);
 
       if (this.#bagScrollIndex === 0) {
