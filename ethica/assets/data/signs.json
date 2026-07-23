@@ -1,0 +1,29 @@
+{
+  "1": {
+    "message": "PHILOSOPHER'S TIP\nPhilosophers will challenge you to debate.\nChoose your move type carefully!"
+  },
+  "2": {
+    "message": "THE AGORA\nA gathering place for philosophical minds.\nAll seekers of wisdom welcome."
+  },
+  "3": {
+    "message": "Counterexample, Reductio, Socratic Questioning, Framework Shift.\nEach move has strengths and risks."
+  },
+  "4": {
+    "message": "The unexamined life is not worth living.\n-- Socrates"
+  },
+  "5": {
+    "message": "Beware! Some philosophers\nwill debate you on sight."
+  },
+  "6": {
+    "message": "Welcome to the Philosophical Landscape.\nGreat thinkers await."
+  },
+  "7": {
+    "message": "Framework Shifts deal bonus damage\nwhen targeting a weak tradition."
+  },
+  "8": {
+    "message": "Rest here and restore your resolve."
+  },
+  "9": {
+    "message": "The Cave of Shadows\nOnly those who question appearances\nmay ascend to the light."
+  }
+}

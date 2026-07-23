@@ -1,0 +1,1019 @@
+{
+  "1": {
+    "frame": 30,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": ["LOOKING_FOR_PROFESSOR"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": ["Your mentor next door was looking for you. Something about a philosophical journey..."]
+        }
+      },
+      {
+        "requires": ["FOUND_PROFESSOR"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": ["You should take a moment to collect your thoughts."]
+        }
+      },
+      {
+        "requires": ["FOUND_PROFESSOR"],
+        "type": "HEAL",
+        "data": {}
+      },
+      {
+        "requires": ["FOUND_PROFESSOR"],
+        "type": "SCENE_FADE_IN_AND_OUT",
+        "data": {
+          "fadeInDuration": 1000,
+          "fadeOutDuration": 1000,
+          "waitDuration": 1000
+        }
+      },
+      {
+        "requires": ["FOUND_PROFESSOR"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": ["Your resolve has been restored. The philosophical journey continues!"]
+        }
+      }
+    ]
+  },
+  "2": {
+    "frame": 20,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": ["LOOKING_FOR_PROFESSOR"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": ["I last saw your mentor heading toward the philosophical landscape beyond town."]
+        }
+      },
+      {
+        "requires": ["FOUND_PROFESSOR"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": ["Read the signposts! They contain wisdom from across the traditions."]
+        }
+      }
+    ]
+  },
+  "3": {
+    "frame": 0,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I am Plato of Athens. I have spent my life in pursuit of the Form of the Good.",
+            "Do you dare engage me in philosophical dialectic?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "plato"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You have shown me that the ascent from the Cave is not yet complete.",
+            "Perhaps we shall debate again when the shadows have shifted."
+          ]
+        }
+      }
+    ]
+  },
+  "4": {
+    "frame": 190,
+    "animationKeyPrefix": "NPC_20",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I am Immanuel Kant. The moral law within is as awe-inspiring as the starry heavens above.",
+            "Let us test whether your maxims can be universalized."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "kant"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You have challenged the categorical imperative itself.",
+            "I must reflect on whether duty alone can withstand such scrutiny."
+          ]
+        }
+      }
+    ]
+  },
+  "5": {
+    "frame": 180,
+    "animationKeyPrefix": "NPC_19",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Iris Murdoch, at your service. True moral vision requires unselfing.",
+            "Can you see clearly enough to challenge my view of moral attention?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "murdoch"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You have taught me something about moral perception today.",
+            "The just and loving gaze... perhaps it requires more than I thought."
+          ]
+        }
+      }
+    ]
+  },
+  "6": {
+    "frame": 60,
+    "animationKeyPrefix": "NPC_7",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "J.L. Mackie here. I maintain there are no objective moral values.",
+            "The argument from queerness alone should convince you. Shall we debate?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "mackie"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your arguments were... unexpectedly compelling.",
+            "But I still maintain that moral properties would be utterly different from anything else in the universe."
+          ]
+        }
+      }
+    ]
+  },
+  "7": {
+    "frame": 150,
+    "animationKeyPrefix": "NPC_16",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Peter Singer here. If you can prevent suffering without significant cost to yourself, you are morally obligated to do so.",
+            "Care to argue otherwise?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "singer"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "A strong challenge. But the drowning child still demands our attention.",
+            "Perhaps the scope of our obligations is narrower than I imagined."
+          ]
+        }
+      }
+    ]
+  },
+  "8": {
+    "frame": 160,
+    "animationKeyPrefix": "NPC_17",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Harry Frankfurt. What matters is not whether we have free will, but whether we can form second-order desires.",
+            "Do you truly will what you will? Let us examine that together."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "frankfurt"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Interesting. Your wanton disregard for hierarchical desire structures was... effective.",
+            "Perhaps the unwilling addict has more to teach us than I realized."
+          ]
+        }
+      }
+    ]
+  },
+  "9": {
+    "frame": 180,
+    "animationKeyPrefix": "NPC_19",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Christine Korsgaard. The source of normativity lies in our rational nature itself.",
+            "I am the final challenge. Can you show me that practical identity is not the ground of obligation?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "korsgaard"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You have challenged the very sources of normativity.",
+            "Perhaps the reflective endorsement test needs... revision."
+          ]
+        }
+      }
+    ]
+  },
+  "11": {
+    "frame": 170,
+    "animationKeyPrefix": "NPC_18",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You have entered my domain. I am Friedrich Nietzsche.",
+            "God is dead — and with him, your comfortable moral certainties.",
+            "Do you have the strength to create values anew? Let us find out."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "nietzsche"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You have overcome — for now.",
+            "But beware: the abyss gazes also into you."
+          ]
+        }
+      }
+    ]
+  },
+  "12": {
+    "frame": 10,
+    "animationKeyPrefix": "NPC_2",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I am Aristotle of Stagira. Virtue lies in the mean between excess and deficiency.",
+            "Come, rest here. Even the greatest philosopher must gather strength between debates.",
+            "Remember: we are what we repeatedly do. Excellence is not an act, but a habit."
+          ]
+        }
+      },
+      {
+        "requires": [],
+        "type": "HEAL",
+        "data": {}
+      },
+      {
+        "requires": [],
+        "type": "SCENE_FADE_IN_AND_OUT",
+        "data": {
+          "fadeInDuration": 1000,
+          "fadeOutDuration": 1000,
+          "waitDuration": 1000
+        }
+      },
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": ["Your resolve is restored. Now go — the philosophical life awaits!"]
+        }
+      }
+    ]
+  },
+  "10": {
+    "frame": 50,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Welcome to the Agora. Rest here and gather your thoughts.",
+            "The philosophers in these lands will challenge everything you believe."
+          ]
+        }
+      },
+      {
+        "requires": [],
+        "type": "HEAL",
+        "data": {}
+      },
+      {
+        "requires": [],
+        "type": "SCENE_FADE_IN_AND_OUT",
+        "data": {
+          "fadeInDuration": 1000,
+          "fadeOutDuration": 1000,
+          "waitDuration": 1000
+        }
+      },
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": ["Your resolve has been restored. Now go forth and seek wisdom!"]
+        }
+      }
+    ]
+  },
+  "13": {
+    "frame": 40,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Welcome to the Debate Arena!",
+            "Here you can rematch any philosopher you have previously debated.",
+            "Each rematch earns XP and can unlock concepts you may have missed."
+          ]
+        }
+      },
+      {
+        "requires": [],
+        "type": "DEBATE_ARENA",
+        "data": {}
+      }
+    ]
+  },
+  "14": {
+    "frame": 100,
+    "animationKeyPrefix": "NPC_11",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Thomas Hobbes, at your service. Without a sovereign, life is solitary, poor, nasty, brutish, and short.",
+            "You think you can argue for a state of nature? Let us see."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "hobbes"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Perhaps the Leviathan need not be so absolute after all.",
+            "But beware — without order, chaos returns."
+          ]
+        }
+      }
+    ]
+  },
+  "15": {
+    "frame": 110,
+    "animationKeyPrefix": "NPC_12",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "David Hume here. Reason is, and ought only to be, the slave of the passions.",
+            "Can you show me that morality is more than sentiment? I rather doubt it."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "hume"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "A most engaging exchange. But I remain skeptical that reason alone can move us to act.",
+            "The is-ought gap yawns as wide as ever."
+          ]
+        }
+      }
+    ]
+  },
+  "16": {
+    "frame": 120,
+    "animationKeyPrefix": "NPC_13",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "G.E. Moore. I put it to you: goodness is a simple, indefinable quality.",
+            "Any attempt to define it commits the naturalistic fallacy. Shall we discuss?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "moore"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your open question was... surprisingly persuasive.",
+            "Perhaps the relationship between natural and moral properties is more complex than I supposed."
+          ]
+        }
+      }
+    ]
+  },
+  "17": {
+    "frame": 130,
+    "animationKeyPrefix": "NPC_14",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I am A.J. Ayer. Moral statements are neither true nor false — they are mere expressions of emotion.",
+            "If you disagree, you are simply expressing a different attitude. Shall we test this?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "ayer"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Boo! Hurrah! ...I concede your argument had more substance than mere attitude.",
+            "Perhaps the verification principle needs revision."
+          ]
+        }
+      }
+    ]
+  },
+  "18": {
+    "frame": 140,
+    "animationKeyPrefix": "NPC_15",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Elizabeth Anscombe. Modern moral philosophy is bankrupt without an adequate philosophy of psychology.",
+            "You cannot understand obligation without understanding intention. Prove me wrong."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "anscombe"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You argue with genuine intention — I will grant you that.",
+            "But the question of what grounds 'ought' remains open."
+          ]
+        }
+      }
+    ]
+  },
+  "19": {
+    "frame": 70,
+    "animationKeyPrefix": "NPC_8",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Bernard Williams. Moral philosophy has been distorted by its obsession with obligation.",
+            "Thick ethical concepts, agent-relative reasons, moral luck — these are what matter. Ready?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "williams"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "One thought too many? Perhaps. But you gave me just enough to reconsider.",
+            "Ethics and the limits of philosophy... indeed."
+          ]
+        }
+      }
+    ]
+  },
+  "20": {
+    "frame": 12,
+    "animationKeyPrefix": "NPC_2",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Hey! Morality is just whatever your culture says it is!",
+            "You think YOUR values are better than anyone else's? How arrogant!"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "cultural_relativist"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Okay, maybe the fact that cultures differ doesn't prove no one is wrong...",
+            "I've got some reading to do."
+          ]
+        }
+      }
+    ]
+  },
+  "21": {
+    "frame": 22,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Morality? It's all just feelings, man. There's nothing to argue about.",
+            "You say 'wrong,' I say 'boo.' Same thing."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "unreflective_emotivist"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Huh. I guess saying 'it's all just feelings' is itself a claim that needs defending.",
+            "Maybe I should actually read Ayer before quoting him..."
+          ]
+        }
+      }
+    ]
+  },
+  "22": {
+    "frame": 32,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Simple math! More happiness equals more good. What's so hard about that?",
+            "Rights, duties, virtues -- they're all just obstacles to maximizing utility!"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "naive_utilitarian"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Okay, maybe you can't just put happiness on a spreadsheet...",
+            "Mill did say something about 'higher pleasures.' Maybe I should read past the first chapter."
+          ]
+        }
+      }
+    ]
+  },
+  "23": {
+    "frame": 42,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Let me guess -- you think people actually care about others? Please.",
+            "Everything anyone does is for themselves. I'm just honest about it."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "crude_egoist"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "If my theory can explain literally everything, maybe it doesn't actually explain anything...",
+            "I think I confused 'having a motive' with 'being selfish.' Those aren't the same, are they?"
+          ]
+        }
+      }
+    ]
+  },
+  "24": {
+    "frame": 52,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Justice? Fairness? Those are just pretty words the weak use to hold back the strong.",
+            "Power is the only thing that matters in this world. Want me to prove it?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "might_makes_right"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You beat me with arguments, not force. I... don't know what to do with that.",
+            "Maybe Thrasymachus was wrong. Socrates did have something on him."
+          ]
+        }
+      }
+    ]
+  },
+  "25": {
+    "frame": 62,
+    "animationKeyPrefix": "NPC_7",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You didn't choose to stop and talk to me. Physics chose for you.",
+            "Free will is an illusion. Nothing you do matters, morally speaking."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "simple_determinist"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Was I determined to lose this argument? That's... actually a weird thought.",
+            "Maybe responsibility doesn't require some magical free will. I need to think harder about this."
+          ]
+        }
+      }
+    ]
+  },
+  "26": {
+    "frame": 72,
+    "animationKeyPrefix": "NPC_8",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Morality comes from divine command. End of discussion.",
+            "Without God, anything is permitted. You have no foundation!"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "dogmatic_divine_commander"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Is something good because God commands it, or does God command it because it's good?",
+            "That question... I never let myself ask it before. Maybe I should."
+          ]
+        }
+      }
+    ]
+  },
+  "27": {
+    "frame": 82,
+    "animationKeyPrefix": "NPC_9",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Everyone knows what's right and wrong. It's obvious.",
+            "You philosophers just overcomplicate everything with your fancy arguments!"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "crude_moral_realist"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Okay, 'everyone knows' isn't actually an argument, is it...",
+            "Maybe understanding WHY things are right matters as much as knowing THAT they are."
+          ]
+        }
+      }
+    ]
+  },
+  "28": {
+    "frame": 20,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "No rule or principle can tell you what to do here.",
+            "You must see what the situation requires. That is phronesis."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "mcdowell"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You saw what the situation demanded without reaching for a rule.",
+            "That perceptual sensitivity is the beginning of practical wisdom."
+          ]
+        }
+      }
+    ]
+  },
+  "29": {
+    "frame": 50,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Imagine a person devoted entirely to moral perfection.",
+            "Would you actually want to spend time with them? I think not."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "wolf"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You showed that moral seriousness and a rich life can coexist.",
+            "Perhaps the moral saint could learn something from you after all."
+          ]
+        }
+      }
+    ]
+  },
+  "30": {
+    "frame": 20,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Moral life cannot be reduced to a single principle.",
+            "The good, the right, and the virtuous pull in different directions."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "dewey"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You respected the complexity of moral experience.",
+            "That is no small achievement where others would simplify."
+          ]
+        }
+      }
+    ]
+  },
+  "31": {
+    "frame": 30,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "When you say something is 'good,' you express an attitude.",
+            "But there is more to it than Ayer admits. Let me show you."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "stevenson"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your words carried both descriptive truth and emotive force.",
+            "I find my attitudes... genuinely shifted."
+          ]
+        }
+      }
+    ]
+  }
+}

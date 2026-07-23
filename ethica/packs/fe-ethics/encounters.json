@@ -1,0 +1,67 @@
+{
+  "1": [
+    ["quiz_heckler", 18],
+    ["quiz_pedant", 18],
+    ["quiz_provocateur", 17],
+    ["quiz_skeptic", 17],
+    ["cultural_relativist", 4],
+    ["unreflective_emotivist", 4],
+    ["naive_utilitarian", 4],
+    ["crude_egoist", 3],
+    ["hobbes", 6],
+    ["hume", 5],
+    ["dewey", 2],
+    ["stevenson", 2]
+  ],
+  "2": [
+    ["quiz_inquisitor", 15],
+    ["quiz_sophist", 15],
+    ["quiz_dogmatist", 14],
+    ["quiz_examiner", 13],
+    ["quiz_heckler", 13],
+    ["might_makes_right", 4],
+    ["simple_determinist", 4],
+    ["dogmatic_divine_commander", 4],
+    ["crude_moral_realist", 3],
+    ["moore", 5],
+    ["aristotle", 4],
+    ["anscombe", 3],
+    ["mcdowell", 3]
+  ],
+  "3": [
+    ["quiz_examiner", 24],
+    ["quiz_inquisitor", 23],
+    ["quiz_sophist", 23],
+    ["nietzsche", 8],
+    ["wolf", 8],
+    ["anscombe", 7],
+    ["wiggins", 7]
+  ],
+  "4": [
+    ["quiz_examiner", 20],
+    ["quiz_inquisitor", 20],
+    ["quiz_sophist", 20],
+    ["hobbes", 12],
+    ["plato", 10],
+    ["kant", 10],
+    ["nietzsche", 8]
+  ],
+  "5": [
+    ["quiz_heckler", 18],
+    ["quiz_pedant", 18],
+    ["quiz_provocateur", 14],
+    ["anscombe", 12],
+    ["murdoch", 12],
+    ["mcdowell", 13],
+    ["wolf", 13]
+  ],
+  "6": [
+    ["quiz_skeptic", 18],
+    ["quiz_provocateur", 18],
+    ["quiz_heckler", 14],
+    ["moore", 13],
+    ["ayer", 13],
+    ["dewey", 12],
+    ["stevenson", 12]
+  ]
+}

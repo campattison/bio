@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ETHICA: A Philosophical RPG</title>
+    <style>
+      html,
+      body,
+      .container {
+        margin: 0px;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background: #1a1a2e;
+      }
+
+      @font-face {
+        font-family: Kenney-Future-Narrow;
+        src: url('assets/fonts/kenneys-fonts/Kenney-Future-Narrow.ttf') format('truetype');
+      }
+
+      /* Debate text input overlay styling */
+      #ethica-debate-input {
+        font-family: 'Kenney-Future-Narrow', monospace;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+  </head>
+  <body>
+    <div class="container" id="game-container"></div>
+    <!-- Optional deploy config: sets window.ETHICA_API_BASE for a hosted
+         (cross-origin) deployment. Absent during local same-origin dev, where
+         the 404 is harmless and the client defaults to same-origin. Loaded as a
+         classic (non-module) script so it runs before the deferred main.js. -->
+    <script src="config.js"></script>
+    <script src="src/main.js" type="module"></script>
+    <script>
+      // Ensure Phaser canvas receives keyboard focus
+      window.addEventListener('load', () => {
+        const check = setInterval(() => {
+          const canvas = document.querySelector('#game-container canvas');
+          if (canvas) {
+            canvas.setAttribute('tabindex', '0');
+            canvas.style.outline = 'none';
+            canvas.focus();
+            clearInterval(check);
+          }
+        }, 100);
+      });
+      document.addEventListener('click', () => {
+        const canvas = document.querySelector('#game-container canvas');
+        if (canvas) canvas.focus();
+      });
+    </script>
+  </body>
+</html>

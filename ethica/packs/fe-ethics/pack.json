@@ -1,0 +1,147 @@
+{
+  "id": "fe-ethics",
+  "title": "Ethica: Field Exam in Ethics",
+  "description": "The original Ethica content pack. A philosophy-field-exam RPG covering seven ethical traditions, 54 philosopher/NPC personas, nine gym leaders, and a quiz mode over 123 primary-source quotes.",
+  "version": "1.0.0",
+  "traditions": [
+    "virtue_ethics",
+    "deontology",
+    "consequentialism",
+    "social_contract",
+    "metaethics",
+    "moral_psychology",
+    "applied_ethics"
+  ],
+  "typeChart": {
+    "virtue_ethics": { "strong": "consequentialism", "weak": "metaethics" },
+    "deontology": { "strong": "social_contract", "weak": "consequentialism" },
+    "consequentialism": { "strong": "deontology", "weak": "virtue_ethics" },
+    "social_contract": { "strong": "moral_psychology", "weak": "deontology" },
+    "metaethics": { "strong": "virtue_ethics", "weak": "applied_ethics" },
+    "moral_psychology": { "strong": "metaethics", "weak": "social_contract" },
+    "applied_ethics": { "strong": "moral_psychology", "weak": "metaethics" }
+  },
+  "scoreWeights": {
+    "logical_validity": 0.25,
+    "engagement": 0.25,
+    "philosophical_precision": 0.2,
+    "rhetorical_clarity": 0.15,
+    "originality": 0.1,
+    "dialectical_awareness": 0.05
+  },
+  "moveBonuses": {
+    "counterexample": { "bonus_dim": "engagement", "bonus": 2, "risk_dim": "logical_validity", "risk": -2 },
+    "reductio": { "bonus_dim": "logical_validity", "bonus": 2, "risk_dim": "engagement", "risk": -3 },
+    "socratic_questioning": { "bonus_dim": "dialectical_awareness", "bonus": 2, "damage_mult": 0.7, "debuff": true },
+    "framework_shift": { "bonus_dim": "originality", "bonus": 2, "risk_dim": "engagement", "risk": -2, "type_check": true },
+    "free_form": { "bonus_dim": null, "bonus": 0, "risk_dim": null, "risk": 0 }
+  },
+  "progression": {
+    "gymLeaderCount": 9,
+    "keyItemCount": 4
+  },
+  "files": {
+    "philosophers": "packs/fe-ethics/philosophers.json",
+    "npcs": "packs/fe-ethics/npcs.json",
+    "quiz": "packs/fe-ethics/quiz-content.json",
+    "encounters": "packs/fe-ethics/encounters.json",
+    "promptsDir": "packs/fe-ethics/prompts"
+  },
+  "zones": [
+    {
+      "id": "main_1",
+      "name": "Agora Approach",
+      "type": "world",
+      "assetKeys": { "background": "MAIN_1_BACKGROUND", "foreground": "MAIN_1_FOREGROUND", "level": "MAIN_1_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/main_1_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/main_1_level_foreground.png",
+        "level": "assets/data/main_1.json"
+      }
+    },
+    {
+      "id": "forest_1",
+      "name": "Forest",
+      "type": "world",
+      "assetKeys": { "background": "FOREST_1_BACKGROUND", "foreground": "FOREST_1_FOREGROUND", "level": "FOREST_1_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/forest_1_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/forest_1_level_foreground.png",
+        "level": "assets/data/forest_1.json"
+      }
+    },
+    {
+      "id": "cave",
+      "name": "Cave",
+      "type": "world",
+      "assetKeys": { "background": "CAVE_BACKGROUND", "foreground": "CAVE_FOREGROUND", "level": "CAVE_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/cave_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/cave_level_foreground.png",
+        "level": "assets/data/cave.json"
+      }
+    },
+    {
+      "id": "garden",
+      "name": "Garden",
+      "type": "world",
+      "assetKeys": { "background": "GARDEN_BACKGROUND", "foreground": "GARDEN_FOREGROUND", "level": "GARDEN_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/garden_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/garden_level_foreground.png",
+        "level": "assets/data/garden.json"
+      }
+    },
+    {
+      "id": "emotive_fields",
+      "name": "Emotive Fields",
+      "type": "world",
+      "assetKeys": { "background": "EMOTIVE_FIELDS_BACKGROUND", "foreground": "EMOTIVE_FIELDS_FOREGROUND", "level": "EMOTIVE_FIELDS_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/emotive_fields_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/emotive_fields_level_foreground.png",
+        "level": "assets/data/emotive_fields.json"
+      }
+    },
+    {
+      "id": "building_1",
+      "name": "Building 1 Interior",
+      "type": "building",
+      "assetKeys": { "background": "BUILDING_1_BACKGROUND", "foreground": "BUILDING_1_FOREGROUND", "level": "BUILDING_1_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/buildings/building_1_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/buildings/building_1_level_foreground.png",
+        "level": "assets/data/building_1.json"
+      }
+    },
+    {
+      "id": "building_2",
+      "name": "Building 2 Interior",
+      "type": "building",
+      "assetKeys": { "background": "BUILDING_2_BACKGROUND", "foreground": "BUILDING_2_FOREGROUND", "level": "BUILDING_2_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/buildings/building_2_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/buildings/building_2_level_foreground.png",
+        "level": "assets/data/building_2.json"
+      }
+    },
+    {
+      "id": "building_3",
+      "name": "Building 3 Interior",
+      "type": "building",
+      "assetKeys": { "background": "BUILDING_3_BACKGROUND", "foreground": "BUILDING_3_FOREGROUND", "level": "BUILDING_3_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/buildings/building_3_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/buildings/building_3_level_foreground.png",
+        "level": "assets/data/building_3.json"
+      }
+    },
+    { "id": "agora", "name": "The Agora", "type": "logical" },
+    { "id": "wandering", "name": "The Roads", "type": "logical" },
+    { "id": "trolley_tracks", "name": "Trolley Tracks", "type": "logical" },
+    { "id": "will_factory", "name": "The Will Factory", "type": "logical" },
+    { "id": "wasteland", "name": "The Wasteland", "type": "logical" },
+    { "id": "moral_storm", "name": "The Moral Storm", "type": "logical" },
+    { "id": "archives", "name": "The Archives", "type": "logical" }
+  ]
+}

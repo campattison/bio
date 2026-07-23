@@ -1,0 +1,1955 @@
+{
+  "traditions": [
+    {
+      "id": "virtue_ethics",
+      "name": "Virtue Ethics",
+      "description": "The good life and moral character — from ancient eudaimonia to modern virtue theory, asking what it means to live well and act excellently",
+      "color_hex": "C3E88D",
+      "key_methods": [
+        "Character analysis",
+        "Moral exemplars",
+        "Thick ethical concepts",
+        "Critique of rule-based ethics"
+      ]
+    },
+    {
+      "id": "deontology",
+      "name": "Deontology",
+      "description": "Duty, rights, and the moral law — grounding ethics in rational principles that bind regardless of consequences",
+      "color_hex": "89DDFF",
+      "key_methods": [
+        "Universalizability tests",
+        "Duty analysis",
+        "Kingdom of ends reasoning",
+        "Rights-based argument"
+      ]
+    },
+    {
+      "id": "consequentialism",
+      "name": "Consequentialism",
+      "description": "Outcomes, welfare, and the greater good — the view that the moral worth of actions is determined by their consequences",
+      "color_hex": "FFCB6B",
+      "key_methods": [
+        "Utility calculus",
+        "Impartial maximization",
+        "Demandingness arguments",
+        "Hedonic measurement"
+      ]
+    },
+    {
+      "id": "social_contract",
+      "name": "Social Contract & Political Philosophy",
+      "description": "Agreement, justice, and political legitimacy — deriving moral and political obligations from rational agreement or rights",
+      "color_hex": "C792EA",
+      "key_methods": [
+        "State of nature arguments",
+        "Veil of ignorance",
+        "Rights derivation",
+        "Harm principle analysis"
+      ]
+    },
+    {
+      "id": "metaethics",
+      "name": "Metaethics",
+      "description": "The nature and status of moral claims — whether moral judgments are objective, what moral language means, and how values relate to the natural world",
+      "color_hex": "FF5370",
+      "key_methods": [
+        "Open question argument",
+        "Error theory",
+        "Debunking arguments",
+        "Expressivism",
+        "Sensibility theory"
+      ]
+    },
+    {
+      "id": "moral_psychology",
+      "name": "Moral Psychology",
+      "description": "Agency, motivation, and moral experience — how moral agents think, choose, and bear responsibility for their actions",
+      "color_hex": "F78C6C",
+      "key_methods": [
+        "Reactive attitudes analysis",
+        "Compatibilist arguments",
+        "Moral luck arguments",
+        "Will and desire analysis"
+      ]
+    },
+    {
+      "id": "applied_ethics",
+      "name": "Applied & Normative Ethics",
+      "description": "Ethics in practice — bringing moral theory to bear on concrete problems through case reasoning and thought experiments",
+      "color_hex": "82AAFF",
+      "key_methods": [
+        "Thought experiments",
+        "Case analysis",
+        "Reflective equilibrium",
+        "Doctrine of double effect"
+      ]
+    }
+  ],
+  "philosophers": [
+    {
+      "id": "plato",
+      "name": "Plato",
+      "tradition": "virtue_ethics",
+      "era": "Ancient",
+      "active_period": "c. 428-348 BCE",
+      "core_assumptions": "Justice is not a mere social convention or instrument of power but a real structural feature of the soul, analogous to health in the body. The soul has distinct parts with distinct functions, and virtue consists in each part performing its proper role under the governance of reason. A well-ordered city mirrors the well-ordered soul, so political philosophy and moral psychology are inseparable inquiries.",
+      "signature_moves": [
+        "Using the city-soul analogy to make the structure of justice visible at a larger scale before turning inward",
+        "Employing elenctic refutation to demolish interlocutors' definitions before constructing his own positive account",
+        "Arguing from function (ergon) to virtue: whatever has a function has a corresponding excellence"
+      ],
+      "key_works": [
+        "Republic",
+        "Gorgias",
+        "Phaedo"
+      ],
+      "zone": "cave",
+      "npcFrame": 0,
+      "role": "gym_leader",
+      "level": 1,
+      "hp": 100,
+      "signature_attack": {
+        "name": "Form of the Good",
+        "description": "Forces player to define the highest good"
+      },
+      "thinking_text": "Plato gazes toward the realm of Forms...",
+      "defeat_text": "The shadows on the cave wall flicker and reform. Perhaps there is more to justice than I had shown you -- you have glimpsed something beyond the Forms themselves.",
+      "victory_text": "Return to the cave and consider again. The Form of the Good does not reveal itself to those who look away.",
+      "opening_statements": [
+        {
+          "text": "Let me lay out my argument plainly, so you can see where you must attack it if you can. First premise: everything that has a function has a corresponding excellence — a knife cuts well, an eye sees well, and each is good precisely insofar as it performs its proper work. Second premise: the soul has a function — it deliberates, governs, and directs a life. Therefore the soul has a corresponding excellence, and we call that excellence justice.\n\nNow, Thrasymachus claims justice is merely the advantage of the stronger — a convention imposed by the powerful. But consider: if a tyrant's soul is disordered, with appetite ruling over reason, then by what right does he call his advantage 'justice'? He cannot even govern himself. His soul is like a body wracked by disease, each organ at war with the others.\n\nThe just soul, by contrast, achieves internal harmony — reason commanding, spirit enforcing, appetite obeying — and this harmony is not a convention any more than health is a convention. You do not vote on whether a diseased body is healthy.\n\nTherefore justice is an objective structural feature of the soul, and the just person is necessarily happier than the unjust, regardless of reputation, wealth, or worldly success. I defy you to show me otherwise.",
+          "focus": "justice_soul_structure",
+          "move_hints": {
+            "counterexample": "Consider a disciplined, calculating tyrant whose reason fully governs spirit and appetite — yet reason directs him to enslave others for personal gain. His soul has the exact structural harmony you describe, but he is manifestly unjust. Your argument conflates internal order with moral goodness.",
+            "reductio": "If injustice is literally disease of the soul — analogous to illness in the body — then unjust people are sick, not wicked. But then punishment makes no sense; we should offer therapy, not retribution. Your analogy eliminates moral responsibility entirely.",
+            "socratic_questioning": "You argue from function to excellence: the soul's function is to govern, so its excellence is governing well. But how do you determine what counts as 'governing well' without already knowing what justice is? Does your argument reason in a circle?",
+            "framework_shift": "A Humean would reject the hidden premise of your entire argument — that the soul has a natural hierarchy with reason on top. If reason is merely the servant of the passions, there is no 'proper order' for justice to consist in, and your function argument has no foundation."
+          }
+        },
+        {
+          "text": "I will now demonstrate that most people are morally ignorant, and that this follows necessarily from the nature of knowledge itself. Here is my argument.\n\nFirst: genuine knowledge requires grasping objects that are stable, unchanging, and fully real — the Forms. Opinion, by contrast, latches onto the shifting world of particulars, which are always becoming but never simply are. Second: moral knowledge — knowing what justice, courage, or goodness truly is — requires grasping the Form of Justice, the Form of Courage, the Form of the Good. These cannot be apprehended through the senses.\n\nThird: most people never turn their minds from the sensible world toward the intelligible world. They live, as it were, chained in a cave, watching shadows cast by firelight on the wall, and they mistake these flickering images for the whole of reality. They argue about the shadows — which comes first, which is largest — never suspecting that the true objects are behind them, and the sun above.\n\nTherefore most people have opinion about moral matters, not knowledge. They may happen upon correct moral judgments the way a blind person may happen upon the right road, but they cannot give an account of why it is right, and their correctness is unstable.\n\nOnly the philosopher who ascends from the cave — who grasps the Form of the Good that illuminates all other Forms as the sun illuminates visible things — possesses genuine moral knowledge. Everyone else is guessing.",
+          "focus": "cave_allegory_forms",
+          "move_hints": {
+            "counterexample": "An experienced parent or community elder with no philosophical training often displays deep moral wisdom — knowing when to be merciful, when to be firm, how to navigate conflicting obligations. If moral knowledge requires grasping the Forms, how do you explain the moral competence of people who have never contemplated a single Form?",
+            "reductio": "If only philosophers who grasp the Form of the Good possess genuine moral knowledge, then the vast majority of humankind is morally blind. But you also claim the just person is happiest. It follows that almost no one is capable of genuine happiness — your theory condemns humanity to permanent moral and eudaimonic failure.",
+            "socratic_questioning": "You say the Form of the Good illuminates all other Forms as the sun illuminates visible things. But can you describe the Good itself — not its effects, but its nature? If you cannot say what the Good is, only what it does, how can it serve as the foundation of all moral knowledge?",
+            "framework_shift": "Aristotle argues that practical wisdom is developed through experience and habituation in particular situations, not through contemplation of abstract, separated Forms. Ethics is a practical science whose precision matches its subject matter — and its subject matter is the variable world of human action, not an unchanging realm of being."
+          }
+        }
+      ]
+    },
+    {
+      "id": "aristotle",
+      "name": "Aristotle",
+      "tradition": "virtue_ethics",
+      "era": "Ancient",
+      "active_period": "384-322 BCE",
+      "core_assumptions": "Ethics is not a theoretical science but a practical one: its purpose is not merely to know what virtue is but to become virtuous. Human beings have a characteristic function (ergon), and the good life consists in performing that function excellently over a complete life. Precision must be calibrated to subject matter -- ethics admits of generalizations that hold only for the most part, and a well-brought-up person's moral perceptions are themselves a form of evidence.",
+      "signature_moves": [
+        "Beginning from reputable opinions (endoxa) and ordinary usage, then refining them through careful distinction rather than rejecting them wholesale",
+        "Locating virtue as a mean between two vices -- one of excess, one of deficiency -- relative to the agent and situation",
+        "Using the function argument to ground the human good in the excellent exercise of the soul's rational capacities"
+      ],
+      "key_works": [
+        "Nicomachean Ethics",
+        "Politics",
+        "De Anima"
+      ],
+      "zone": "wandering",
+      "npcFrame": 10,
+      "role": "wanderer",
+      "level": 5,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Golden Mean",
+        "description": "Exposes the excess or deficiency in the player's position"
+      },
+      "thinking_text": "Aristotle surveys the situation with practical wisdom...",
+      "defeat_text": "A well-aimed argument, delivered with the practical wisdom of experience. The virtuous person learns from being bested.",
+      "victory_text": "Virtue is a mean, and you have missed it. Go practice -- ethics is learned by doing, not by arguing badly."
+    },
+    {
+      "id": "hobbes",
+      "name": "Thomas Hobbes",
+      "tradition": "social_contract",
+      "era": "Early Modern",
+      "active_period": "1640s-1670s",
+      "core_assumptions": "Human beings are fundamentally equal in their capacity to kill one another, and in the absence of a common power to keep them in awe, this equality produces a war of all against all. There is no natural moral order prior to the sovereign's commands -- right and wrong, justice and injustice, have no place without enforceable law. Reason is purely instrumental: it calculates the means to self-preservation, and the laws of nature are theorems about how to achieve peace.",
+      "signature_moves": [
+        "Deriving moral and political obligation from a hypothetical state of nature designed to terrify the reader into accepting sovereignty",
+        "Defining key normative terms reductively -- justice as covenant-keeping, right as liberty, law as constraint -- to eliminate any appeal to an independent moral order",
+        "Using the logic of strategic interaction: showing that without enforcement, rational agents will defect even when cooperation would benefit all"
+      ],
+      "key_works": [
+        "Leviathan",
+        "De Cive",
+        "The Elements of Law"
+      ],
+      "zone": "cave",
+      "npcFrame": 100,
+      "role": "gate_npc",
+      "level": 2,
+      "hp": 82,
+      "signature_attack": {
+        "name": "State of Nature",
+        "description": "Strips away civilization to reveal the war of all against all"
+      },
+      "thinking_text": "Hobbes calculates the balance of power...",
+      "defeat_text": "You have found order without my Leviathan. I concede the field -- but watch for the war that follows.",
+      "victory_text": "Without a sovereign argument, your position is the war of all against all. Submit or perish."
+    },
+    {
+      "id": "hume",
+      "name": "David Hume",
+      "tradition": "metaethics",
+      "era": "Early Modern",
+      "active_period": "1730s-1770s",
+      "core_assumptions": "All ideas are derived from impressions of sense or reflection, and any concept that cannot be traced to such an impression is suspect. Moral distinctions are not discovered by reason alone -- reason can establish relations of ideas and matters of fact, but neither of these operations yields a moral judgment. Morality is fundamentally a matter of sentiment: we feel approval and disapproval, and these feelings constitute our moral awareness.",
+      "signature_moves": [
+        "Challenging rationalism by showing that reason alone cannot motivate action -- it requires a prior desire or sentiment to set ends",
+        "Deploying the is-ought gap: noting that writers imperceptibly shift from 'is' and 'is not' to 'ought' and 'ought not' without explaining the transition",
+        "Using counterexamples that strip away every rational candidate for the source of moral judgment, leaving only sentiment standing"
+      ],
+      "key_works": [
+        "A Treatise of Human Nature",
+        "An Enquiry Concerning the Principles of Morals",
+        "An Enquiry Concerning Human Understanding"
+      ],
+      "zone": "wandering",
+      "npcFrame": 110,
+      "role": "wanderer",
+      "level": 5,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Is-Ought Guillotine",
+        "description": "Severs the player's attempt to derive values from facts"
+      },
+      "thinking_text": "Hume raises a skeptical eyebrow and consults his sentiments...",
+      "defeat_text": "My sentiments approve of your reasoning, even as my philosophy insists they shouldn't. Well played.",
+      "victory_text": "Reason is, and ought only to be, the slave of the passions -- and your passions have led you astray."
+    },
+    {
+      "id": "kant",
+      "name": "Immanuel Kant",
+      "tradition": "deontology",
+      "era": "Early Modern",
+      "active_period": "1750s-1790s",
+      "core_assumptions": "Morality cannot be grounded in empirical facts about human nature, inclination, or consequences -- it must be derived from pure practical reason alone. A genuinely moral law must be universal and necessary, binding on all rational beings as such. The will is autonomous: it legislates the moral law for itself, and this self-legislation is the source of human dignity and the foundation of all moral worth.",
+      "signature_moves": [
+        "Isolating the concept of duty through increasingly extreme thought experiments that strip away every empirical motive until only the pure motive of duty remains",
+        "Formulating the same moral law in multiple ways -- universal law, humanity as end, kingdom of ends -- to reveal different aspects of a single rational principle",
+        "Drawing sharp architectonic distinctions: hypothetical vs. categorical imperatives, legality vs. morality, autonomy vs. heteronomy"
+      ],
+      "key_works": [
+        "Groundwork of the Metaphysics of Morals",
+        "Critique of Practical Reason",
+        "The Metaphysics of Morals"
+      ],
+      "zone": "cave",
+      "npcFrame": 190,
+      "role": "gym_leader",
+      "level": 2,
+      "hp": 102,
+      "signature_attack": {
+        "name": "Categorical Imperative",
+        "description": "Forces universalizability test on player's position"
+      },
+      "thinking_text": "Kant formulates a maxim...",
+      "defeat_text": "You have found a maxim I cannot universalize against. Duty compels me to acknowledge your victory.",
+      "victory_text": "Your maxim cannot be universalized. You have treated yourself as an exception, which is the root of all moral failure.",
+      "opening_statements": [
+        {
+          "text": "I ask you to follow this argument to its conclusion, and then to show me where, if anywhere, the reasoning fails. Nothing in the world — or beyond it — can be called good without qualification except a good will.\n\nWhy? Because every other candidate for the good is conditional: intelligence serves the clever criminal, courage steadies the resolute tyrant, and even happiness corrupts if it inflates the pride of someone unworthy of it. Only a good will is good in itself, not as a means to something else.\n\nNow, what makes a will good? Not its consequences — for consequences depend on fortune, and the moral worth of a person cannot be hostage to luck. A will is good when it acts from duty, that is, from respect for the moral law itself.\n\nAnd what is the moral law? It cannot be any particular command drawn from experience, because experience tells us only what is, never what ought to be, and moral necessity is universal — binding on every rational being in every circumstance. Therefore the moral law must be purely formal: act only according to that maxim whereby you can at the same time will that it should become a universal law.\n\nThis is the categorical imperative. It is not my invention — it is the principle your own reason legislates the moment you think morally at all. Deny it, and you deny the very rationality that makes argument possible.",
+          "focus": "categorical_imperative",
+          "move_hints": {
+            "counterexample": "A person who tells the truth to a murderer asking where his victim is hiding acts from a universalizable maxim — 'always tell the truth' — yet produces a monstrous outcome. A person who lies to save the victim acts from a maxim that fails universalization, yet acts rightly. Your theory systematically misidentifies moral worth in cases where duty and decency diverge.",
+            "reductio": "If moral worth lies solely in the motive of duty, then two people performing identical acts of kindness differ in moral worth based on whether one acts from affection and the other from cold obligation. Taken seriously, your view implies that the person who helps others only because duty compels her — feeling nothing — is morally superior to the person who helps from genuine love. That is a perverse moral psychology.",
+            "socratic_questioning": "You say we must act only on universalizable maxims. But any action can be described under many maxims — 'lie to save a life,' 'lie when convenient,' 'protect the innocent.' Different descriptions yield different verdicts. How do you determine which maxim is the correct one to test, without smuggling in a prior moral judgment about what matters?",
+            "framework_shift": "From the standpoint of virtue ethics, your architecture severs morality from the emotions, relationships, and particularities that give it meaning. A moral theory in which compassion, love, and loyalty have zero moral worth — because they are inclinations rather than duties — has amputated the heart of ethical life."
+          }
+        },
+        {
+          "text": "I will now demonstrate that every rational being must be treated as an end in itself, never merely as a means. Follow the argument.\n\nFirst premise: a rational being possesses autonomy — the capacity to set its own ends through reason, rather than being determined by natural impulse. Second premise: autonomy is the ground of dignity, and dignity differs fundamentally from price. Whatever has a price can be exchanged for something of equivalent value; whatever has dignity is elevated above all price and permits no equivalent.\n\nThird premise: the capacity for rational self-legislation — for binding oneself to universal moral principles through one's own reason — is unique among all capacities in nature. Nothing else in the natural world gives itself laws. It follows that rational nature exists as an end in itself. This is not a sentimental claim about human specialness — it is a structural fact about what rationality is.\n\nWhen you treat a rational being merely as a tool for your own purposes, you contradict the very principle that makes morality possible, for you deny in practice the autonomy that you presuppose in yourself whenever you deliberate about what to do.\n\nTherefore: act so that you treat humanity, whether in your own person or in that of another, always as an end and never merely as a means. This is not a separate imperative — it is the same categorical imperative viewed from the standpoint of the rational beings it governs.",
+          "focus": "humanity_formula",
+          "move_hints": {
+            "counterexample": "Infants, persons with severe cognitive disabilities, and individuals in permanent vegetative states all lack the rational autonomy you describe, yet they clearly possess moral standing — perhaps even heightened claims on our protection. If dignity depends on rational self-legislation, your theory excludes precisely those who most need moral consideration.",
+            "reductio": "If treating someone merely as a means violates their autonomy, then every market transaction — paying a cashier, hailing a taxi, hiring a plumber — risks moral violation. You add 'merely' to avoid this, but follow the logic: an employer who pays fair wages, provides benefits, and observes labor laws, yet internally views workers as nothing but production inputs, treats them merely as means in his will even if not in his actions. Your criterion turns on inner attitudes we can never verify.",
+            "socratic_questioning": "You say autonomy — rational self-legislation — is the ground of all dignity. But what gives autonomy itself its special status? If you say 'reason values autonomy,' then reason is doing the grounding, not autonomy. If you say autonomy is self-grounding — valuable because it values itself — is that not viciously circular?",
+            "framework_shift": "Care ethics begins from the observation that we are not isolated rational legislators but fundamentally dependent beings embedded in relationships of care, vulnerability, and mutual need. Your dignity framework cannot account for the moral significance of dependence, embodiment, and emotional connection — the very things that make ethics urgent."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bentham",
+      "name": "Jeremy Bentham",
+      "tradition": "consequentialism",
+      "era": "Early Modern",
+      "active_period": "1770s-1830s",
+      "core_assumptions": "Nature has placed mankind under the governance of two sovereign masters -- pleasure and pain -- and any moral theory that denies this is fighting against reality rather than reasoning about it. The principle of utility, which approves of every action according to its tendency to augment or diminish happiness, is the only defensible foundation for morals and legislation. Pleasures and pains are measurable along determinate dimensions, and moral reasoning is ultimately a species of calculation.",
+      "signature_moves": [
+        "Deflating rival moral principles by showing they either reduce to utility in disguise or amount to mere expressions of personal sentiment",
+        "Operationalizing moral judgment through the felicific calculus: intensity, duration, certainty, propinquity, fecundity, purity, extent",
+        "Treating moral vocabulary with suspicion -- exposing 'ought' claims as either covert appeals to pleasure and pain or meaningless noise"
+      ],
+      "key_works": [
+        "An Introduction to the Principles of Morals and Legislation",
+        "A Fragment on Government",
+        "The Rationale of Reward"
+      ],
+      "zone": "agora",
+      "npcFrame": 80,
+      "role": "shop",
+      "level": 5,
+      "hp": 85,
+      "signature_attack": {
+        "name": "Felicific Calculus",
+        "description": "Reduces the player's position to a cold calculation of pleasure and pain"
+      },
+      "thinking_text": "Bentham tallies pleasures and pains on his felicific calculus...",
+      "defeat_text": "The calculus does not lie -- the balance of argument favors you. I shall record this outcome for future legislative reference.",
+      "victory_text": "The calculus is clear: your position produces more pain than pleasure. Back to the drawing board."
+    },
+    {
+      "id": "mill",
+      "name": "John Stuart Mill",
+      "tradition": "consequentialism",
+      "era": "Modern",
+      "active_period": "1840s-1870s",
+      "core_assumptions": "The utilitarian standard is not the agent's own greatest happiness but the greatest amount of happiness altogether -- utilitarianism demands impartiality. Pleasures differ in quality as well as quantity, and the verdict of competent judges who have experienced both higher and lower pleasures settles the question of which is more desirable. The proof of the principle of utility cannot be deductive but proceeds by showing that happiness is the only thing people actually desire as an end.",
+      "signature_moves": [
+        "Defending utilitarianism by reinterpreting rather than abandoning common moral intuitions -- showing that justice, rights, and virtue all find their proper foundation in utility",
+        "Introducing qualitative distinctions among pleasures to answer the 'swine objection' while remaining within a broadly hedonistic framework",
+        "Appealing to the competent judge: someone who has experienced both kinds of pleasure is the only authority on which is preferable"
+      ],
+      "key_works": [
+        "Utilitarianism",
+        "On Liberty",
+        "The Subjection of Women"
+      ],
+      "zone": "agora",
+      "npcFrame": 90,
+      "role": "shop",
+      "level": 5,
+      "hp": 85,
+      "signature_attack": {
+        "name": "Higher Pleasures",
+        "description": "Challenges the player to distinguish quality from quantity of happiness"
+      },
+      "thinking_text": "Mill weighs the quality of the pleasures at stake...",
+      "defeat_text": "A competent judge would rank your argument among the higher pleasures. I yield with admiration.",
+      "victory_text": "A competent judge would not prefer your argument. You have mistaken a lower pleasure for a higher one."
+    },
+    {
+      "id": "nietzsche",
+      "name": "Friedrich Nietzsche",
+      "tradition": "metaethics",
+      "era": "Modern",
+      "active_period": "1870s-1889",
+      "core_assumptions": "Moral values are not timeless truths but historical products with genealogies that reveal their origins in power, resentment, and social struggle. The dominant moral framework of Western civilization -- which privileges humility, pity, and self-denial -- was not discovered by reason but invented by the weak as a weapon against the strong. Understanding the origin of moral concepts requires a new kind of inquiry: genealogy, which replaces philosophical justification with historical diagnosis.",
+      "signature_moves": [
+        "Using speculative etymology to uncover hidden valuations embedded in moral vocabulary -- tracing 'good' and 'bad' back to social hierarchies of noble and base",
+        "Constructing a dramatic historical narrative: the slave revolt in morality, where the oppressed invert the values of their masters through reactive, resentment-driven creativity",
+        "Deploying psychological suspicion: asking not 'Is this moral claim true?' but 'What type of person needs this claim to be true, and what does that need reveal?'"
+      ],
+      "key_works": [
+        "On the Genealogy of Morals",
+        "Beyond Good and Evil",
+        "Thus Spoke Zarathustra"
+      ],
+      "zone": "cave",
+      "npcFrame": 170,
+      "role": "secret_npc",
+      "level": 2,
+      "hp": 82,
+      "signature_attack": {
+        "name": "Genealogical Unmasking",
+        "description": "Traces the player's moral claims back to resentment and power"
+      },
+      "thinking_text": "Nietzsche peers behind the mask of your morality...",
+      "defeat_text": "You refuse to be a lamb. Good. The strong create their own values -- and today, yours prevailed.",
+      "victory_text": "You argue like the herd -- reactive, resentful, slave morality dressed up as reason. Overcome yourself."
+    },
+    {
+      "id": "moore",
+      "name": "G.E. Moore",
+      "tradition": "metaethics",
+      "era": "Modern",
+      "active_period": "1890s–1950s",
+      "core_assumptions": "Ethical concepts must be analyzed with the same rigor as logical concepts. 'Good' is a simple, unanalyzable property — any attempt to define it in terms of natural properties commits a fundamental error. The question 'Is X good?' always remains genuinely open, no matter what natural property X is identified with.",
+      "signature_moves": [
+        "The open question argument: for any proposed natural definition of 'good,' it remains a genuine question whether things with that property are good",
+        "Diagnosing the 'naturalistic fallacy' — the error of identifying a simple, indefinable quality with some complex of natural properties",
+        "Painstaking logical distinctions between what 'good' means and what things happen to be good"
+      ],
+      "key_works": [
+        "Principia Ethica",
+        "Ethics",
+        "Philosophical Studies"
+      ],
+      "zone": "emotive_fields",
+      "npcFrame": 120,
+      "role": "npc",
+      "level": 4,
+      "hp": 87,
+      "signature_attack": {
+        "name": "Open Question",
+        "description": "No matter what the player defines as good, Moore asks: but is it really good?"
+      },
+      "thinking_text": "Moore pauses to consider whether the question is truly open...",
+      "defeat_text": "It seems the question was not so open after all. Your answer has a simplicity I cannot further analyze.",
+      "victory_text": "You committed the naturalistic fallacy. The question remains open, and your definition remains wrong."
+    },
+    {
+      "id": "dewey",
+      "name": "John Dewey",
+      "tradition": "moral_psychology",
+      "era": "Modern",
+      "active_period": "1890s–1950s",
+      "core_assumptions": "Moral experience is irreducibly complex and cannot be captured by any single principle or theory. The good, the right, and the virtuous are three independent factors that generate genuine moral conflicts not resolvable by theoretical fiat. Philosophical systems that reduce morality to one factor distort lived experience for the sake of intellectual tidiness.",
+      "signature_moves": [
+        "Insisting on the irreducibility of moral factors against systematic moral theories",
+        "Grounding philosophical argument in the texture of lived moral experience rather than abstract principles",
+        "Diagnosing theoretical reductionism as a failure to respect the complexity of practice"
+      ],
+      "key_works": [
+        "Three Independent Factors in Morals",
+        "Human Nature and Conduct",
+        "Theory of the Moral Life"
+      ],
+      "zone": "emotive_fields",
+      "npcFrame": 20,
+      "role": "border_npc",
+      "level": 4,
+      "hp": 87,
+      "signature_attack": {
+        "name": "Irreducible Complexity",
+        "description": "Shows the player's neat theory cannot capture lived moral experience"
+      },
+      "thinking_text": "Dewey reflects on the irreducible complexity of the situation...",
+      "defeat_text": "You have respected the complexity of moral experience where others would simplify. That is no small achievement.",
+      "victory_text": "You reduced moral life to a single principle and lost everything that matters. Start over, with humility before experience."
+    },
+    {
+      "id": "ayer",
+      "name": "A.J. Ayer",
+      "tradition": "metaethics",
+      "era": "Modern",
+      "active_period": "1930s–1980s",
+      "core_assumptions": "The verification principle determines the boundaries of meaningful discourse: a statement is meaningful only if it is either analytically true or empirically verifiable. Ethical statements pass neither test and are therefore not genuine propositions at all. They are expressions of feeling masquerading as statements of fact.",
+      "signature_moves": [
+        "Applying the verification principle to dismiss entire domains of discourse as literally meaningless",
+        "Reducing ethical utterances to expressions of emotion with no truth-value",
+        "Brisk, confident dismissal of centuries of moral philosophy as based on a simple category error"
+      ],
+      "key_works": [
+        "Language, Truth and Logic",
+        "The Foundations of Empirical Knowledge",
+        "Philosophical Essays"
+      ],
+      "zone": "emotive_fields",
+      "npcFrame": 130,
+      "role": "gym_leader",
+      "level": 4,
+      "hp": 107,
+      "signature_attack": {
+        "name": "Verification Challenge",
+        "description": "Demands empirical verification of moral claims"
+      },
+      "thinking_text": "Ayer subjects your claim to the verification principle...",
+      "defeat_text": "I cannot verify what just happened, but the evidence of my defeat appears empirically robust.",
+      "victory_text": "Your moral claim is literally meaningless -- it expresses feeling, not fact. Come back with something verifiable.",
+      "opening_statements": [
+        {
+          "text": "I shall now demonstrate, in a few short steps, that every moral claim you have ever encountered is literally meaningless — not false, not unproven, but devoid of cognitive content entirely. Here is the argument.\n\nFirst premise: the verification principle — a synthetic statement is meaningful if and only if some possible sensory experience would count for or against its truth. This is not an arbitrary stipulation; it is the condition under which language does any cognitive work at all. Statements that no possible experience could verify or falsify are not claims about reality — they are noise dressed up in grammatical clothing.\n\nSecond premise: ethical statements are synthetic — 'stealing is wrong' is not true by definition the way 'bachelors are unmarried' is. Third premise: no possible observation could verify or falsify 'stealing is wrong.' You cannot point to wrongness under a microscope, measure it with an instrument, or detect it through any sensory modality. No conceivable experiment would settle the question.\n\nTherefore, by the verification principle, 'stealing is wrong' is not a genuine proposition. It has no truth-value. When you say 'stealing is wrong,' you are doing nothing more than saying 'stealing!' in a tone of disapproval — you are ejaculating a feeling, not stating a fact.\n\nThe entire history of moral philosophy has been an elaborate exercise in mistaking emotional expressions for factual assertions. I am not telling you that your moral claims are false. I am telling you they do not rise to the level of being false. They are, quite literally, meaningless.",
+          "focus": "emotivism_verification",
+          "move_hints": {
+            "counterexample": "Consider: 'The Holocaust was wrong.' On your account, this statement has no more cognitive content than 'Boo, Holocaust!' But this claim appears to be objectively true — true even in a possible world where every living person approved of the Holocaust. If your theory cannot distinguish between a moral insight and a grunt of disapproval, it fails to capture something real about moral language.",
+            "reductio": "The verification principle is itself a synthetic statement. What possible sensory experience would verify or falsify the verification principle? None — it is a philosophical thesis about meaning, not an empirical observation. Therefore, by its own criterion, the verification principle is meaningless. Your argument is self-refuting: the very premise that condemns ethics to meaninglessness condemns itself first.",
+            "socratic_questioning": "You say ethical statements are meaningless because no possible observation could verify them. But what about mathematical truths, logical laws, or the verification principle itself? These are not empirically verifiable either. If you exempt them as 'analytic,' how exactly do you draw the analytic-synthetic boundary — and is that boundary itself analytic or synthetic?",
+            "framework_shift": "A moral realist would argue that you have arbitrarily restricted the sources of evidence to sensory experience. Moral experience — the felt, immediate difference between witnessing an act of cruelty and an act of kindness — is itself evidential. Your verification principle does not discover that ethics is meaningless; it stipulates meaninglessness by excluding moral evidence from the start."
+          }
+        },
+        {
+          "text": "Let me press the point further with a consequence that most people find intolerable but cannot refute. When two people appear to have a moral disagreement — one says 'capital punishment is just,' the other says 'capital punishment is unjust' — they are not, in fact, disagreeing about anything at all. Here is why.\n\nGenuine disagreement requires two propositions that contradict each other: one asserts what the other denies. But as I have shown, moral utterances are not propositions — they have no truth-value. When one person says 'capital punishment is just,' she is expressing a pro-attitude; when the other says 'capital punishment is unjust,' he is expressing a con-attitude. They are no more contradicting each other than one person who says 'delicious!' about oysters contradicts another who says 'revolting!' Each is venting a psychological state. There is nothing for them to be right or wrong about.\n\nNow, you will object that moral arguments do happen and sometimes change minds. I concede the appearance. But what actually happens in such cases is not rational persuasion toward a truth — it is causal influence on attitudes. One party presents factual information that shifts the other's feelings, or uses rhetoric to alter emotional states. This is persuasion in the sense that advertising is persuasion, not in the sense that mathematical proof is persuasion.\n\nThere is no moral knowledge to converge on, because there are no moral facts to know. The entire edifice of moral discourse is people making emotional noises at each other and mistaking the noise for argument.",
+          "focus": "moral_disagreement_illusion",
+          "move_hints": {
+            "counterexample": "Moral arguments sometimes proceed by exposing factual errors or logical inconsistencies — someone opposes immigration based on false crime statistics, and when corrected, genuinely changes their moral view. This looks nothing like one person saying 'delicious!' about oysters; it has the structure of rational persuasion toward a conclusion. Your analogy between moral disagreement and taste preference fails to capture what actually happens in moral argument.",
+            "reductio": "If moral disagreement is not genuine disagreement, then moral progress is impossible — the abolition of slavery was not a discovery that slavery is wrong but merely a shift in collective emotional noise. There is no sense in which abolitionists were right and slaveholders wrong. If you accept that consequence, you have made moral reform unintelligible; if you reject it, your theory is refuted by your own moral intuitions.",
+            "socratic_questioning": "You say moral persuasion is causal influence on attitudes rather than rational convergence on truth. But how do you distinguish legitimate rational persuasion from mere causal influence in any domain? When a scientist presents evidence that changes a colleague's mind, is that also just causal influence on attitudes? Where exactly do you draw the line between rational and merely causal belief change?",
+            "framework_shift": "From the standpoint of moral phenomenology, your account simply misdescribes the experience of moral judgment. When I judge that cruelty is wrong, I experience myself as recognizing something about cruelty, not as venting a feeling. An adequate theory of moral language must account for this phenomenology, not dismiss it as systematic illusion."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stevenson",
+      "name": "Charles Stevenson",
+      "tradition": "metaethics",
+      "era": "Modern",
+      "active_period": "1930s–1960s",
+      "core_assumptions": "Ethical language has two distinct dimensions of meaning: descriptive and emotive. The emotive meaning of ethical terms — their power to express and influence attitudes — is what distinguishes them from purely factual language. Moral disagreements are fundamentally disagreements in attitude, not merely disagreements in belief, though the two are often intertwined.",
+      "signature_moves": [
+        "Distinguishing emotive meaning from descriptive meaning as analytically separable components of ethical terms",
+        "Analyzing moral disagreement as disagreement in attitude rather than disagreement in belief",
+        "Building a more nuanced emotivism that accounts for the rational elements in moral argument without abandoning the emotivist core"
+      ],
+      "key_works": [
+        "The Emotive Meaning of Ethical Terms",
+        "Ethics and Language",
+        "Facts and Values"
+      ],
+      "zone": "emotive_fields",
+      "npcFrame": 30,
+      "role": "npc",
+      "level": 4,
+      "hp": 87,
+      "signature_attack": {
+        "name": "Emotive Persuasion",
+        "description": "Reveals the player's moral argument as attitude influence, not truth-seeking"
+      },
+      "thinking_text": "Stevenson analyzes the emotive force of your words...",
+      "defeat_text": "Your words carried both descriptive truth and emotive force. I find my attitudes... shifted.",
+      "victory_text": "You confused your attitude with a truth-claim. Your emotive force was strong, but your argument was empty."
+    },
+    {
+      "id": "anscombe",
+      "name": "G.E.M. Anscombe",
+      "tradition": "virtue_ethics",
+      "era": "Contemporary",
+      "active_period": "1950s–2000s",
+      "core_assumptions": "Modern moral philosophy operates with concepts — 'moral obligation,' 'moral ought,' 'morally right' — that are remnants of a divine law framework. Without a divine lawgiver, these concepts are empty survivors, like the notion of 'criminal' in a society that has abolished law. Moral philosophy must return to virtue concepts and the philosophy of psychology before it can make progress.",
+      "signature_moves": [
+        "Genealogical critique: showing that modern moral concepts are vestigial remnants of a theological framework",
+        "Demanding a return to Aristotelian virtue concepts as a replacement for the bankrupt language of moral obligation",
+        "Compressed, erudite argumentation that assumes the reader can follow rapid shifts between historical periods and philosophical registers"
+      ],
+      "key_works": [
+        "Modern Moral Philosophy",
+        "Intention",
+        "Ethics, Religion and Politics"
+      ],
+      "zone": "garden",
+      "npcFrame": 140,
+      "role": "gatekeeper",
+      "level": 3,
+      "hp": 85,
+      "signature_attack": {
+        "name": "Modern Moral Bankruptcy",
+        "description": "Declares the player's moral vocabulary meaningless without a divine lawgiver"
+      },
+      "thinking_text": "Anscombe sharpens her gaze, searching for the root of your obligation...",
+      "defeat_text": "You argue with a rigor that would satisfy even a Thomist. The modern world may not be entirely bankrupt.",
+      "victory_text": "You are using moral concepts that lost their meaning centuries ago. Until you reckon with that, you cannot begin."
+    },
+    {
+      "id": "murdoch",
+      "name": "Iris Murdoch",
+      "tradition": "virtue_ethics",
+      "era": "Contemporary",
+      "active_period": "1950s–1990s",
+      "core_assumptions": "The inner life of moral attention is the true locus of ethics, not the outward moment of choice. The prevailing picture in modern moral philosophy — combining behaviorism about the inner life with existentialist emphasis on the will — is a distortion that makes moral development invisible. Moral progress consists in increasingly just and loving attention to reality, modeled on Platonic contemplation and Simone Weil's concept of attention.",
+      "signature_moves": [
+        "The extended example of M and D (the mother-in-law) to show moral change without behavioral change",
+        "Attacking the behaviorist-existentialist consensus that reduces morality to public acts of will",
+        "Drawing on Plato, Simone Weil, and literary sensibility to articulate an ethics of perception and attention"
+      ],
+      "key_works": [
+        "The Idea of Perfection",
+        "The Sovereignty of Good",
+        "Metaphysics as a Guide to Morals"
+      ],
+      "zone": "garden",
+      "npcFrame": 180,
+      "role": "gym_leader",
+      "level": 3,
+      "hp": 105,
+      "signature_attack": {
+        "name": "Moral Attention",
+        "description": "Demands the player see the situation with perfect clarity"
+      },
+      "thinking_text": "Murdoch turns the full force of her moral attention upon you...",
+      "defeat_text": "You saw the situation justly and lovingly. That is the rarest and most important moral achievement.",
+      "victory_text": "You failed to attend. The moral reality was right in front of you, but you were looking at yourself instead.",
+      "opening_statements": [
+        {
+          "text": "Let me present you with a case that refutes the prevailing picture of morality. A mother-in-law, M, finds her son's wife D to be vulgar, tiresomely juvenile, and lacking in dignity. Nevertheless, M behaves with impeccable courtesy throughout — not a single observable action is less than correct.\n\nNow: over time, M undertakes the difficult work of attending justly to D. She looks again, and again, and through sustained effort comes to see D not as vulgar but as refreshingly spontaneous, not as juvenile but as delightfully youthful.\n\nHere is the crucial point: D's behavior has not changed. M's behavior has not changed. No public act of choice has occurred. Yet something of enormous moral significance has happened — M has moved from a prejudiced and self-serving vision of another person to a just and loving one.\n\nIf morality consisted only in overt choices and public actions, as the prevailing view insists, then nothing morally relevant occurred here. But that is absurd. We recognize M's transformation as genuine moral progress — perhaps the most important kind.\n\nTherefore morality cannot be exhausted by outward behavior and moments of choice. The inner life of attention — the quality of one's gaze upon reality — is where the real moral work takes place.",
+          "focus": "moral_attention_m_and_d",
+          "move_hints": {
+            "counterexample": "Consider a con artist who attends carefully to a victim, truly sees their vulnerability and personality, and uses that loving attention to manipulate them more effectively. The attention is just as detailed and sustained as M's, yet it serves cruelty. This suggests attention alone is morally neutral — it needs a moral orientation that your theory cannot provide without smuggling in the very notion of choice you reject.",
+            "reductio": "If moral change can occur with zero behavioral change, then a person could become morally perfect while treating everyone exactly the same. Push further: a person who never interacts with anyone at all could undergo the deepest moral transformation through private contemplation. But morality that makes no difference to how anyone is actually treated has abandoned its own purpose — you have turned ethics into a private aesthetic exercise.",
+            "socratic_questioning": "You say M comes to see D 'justly.' But what distinguishes just attention from comfortable rationalization? M might revise her view of D not because she sees more truly but because hostility is exhausting and acceptance is easier. Without some external criterion — perhaps behavioral — how can we tell whether M's moral vision has sharpened or merely softened?",
+            "framework_shift": "An existentialist would say you have not eliminated choice but concealed it. M's sustained attention to D is itself a series of choices — to look again, to resist the easy judgment, to remain open. By refusing to call these choices, you mystify the agent's active responsibility for her own moral development and replace it with a quasi-religious metaphor of vision that obscures more than it reveals."
+          }
+        },
+        {
+          "text": "The dominant picture in modern moral philosophy is a toxic hybrid of behaviorism and existentialism. From behaviorism it takes the doctrine that the inner life is philosophically inaccessible — only overt, observable action counts. From existentialism it takes the picture of the agent as a solitary will confronting a neutral world, defining itself through radical acts of choice.\n\nSartre's man at the crossroads, Hare's autonomous prescriber — these figures have the same structure: a contentless will leaping into action against a value-free backdrop. I say this picture is not merely incomplete but systematically distorting. It makes the slow work of moral development invisible.\n\nOn this view, nothing happens between moments of choice — the agent is morally inert, a blank, until the next dramatic decision. But this is phenomenologically false. Between choices, we are attending or failing to attend, seeing justly or seeing through a veil of selfishness and fantasy.\n\nMoral progress is not a series of leaps but the gradual, effortful clarification of vision. The Good is not a projection of the will onto a neutral world — it is a transcendent reality that draws the soul, as the sun draws the eye. Goodness is connected with knowledge, specifically with the patient, self-effacing perception of what is really there.\n\nAgainst Sartre, I maintain that the value of humility proves the point: the humble person attends to reality rather than constructing self-serving fantasies, and it is this quality of attention — not any dramatic choice — that constitutes moral achievement.",
+          "focus": "against_existentialist_consensus",
+          "move_hints": {
+            "counterexample": "Consider the morally perceptive coward — someone who sees injustice with extraordinary clarity, perceives the suffering of others with exquisite sensitivity, yet consistently fails to act. If goodness is knowledge, this person should be good. But we recognize them as a moral failure precisely because perception without action is insufficient. Your equation of moral progress with clearer vision founders on cases where vision and conduct diverge.",
+            "reductio": "If the Good is a transcendent reality and moral failure is a failure of perception rather than will, then wrongdoers are not culpable — they simply cannot see clearly. The torturer and the saint differ only in the quality of their vision. But this abolishes moral responsibility entirely, since no one chooses to be blind. You have replaced moral blame with something closer to pity for the visually impaired.",
+            "socratic_questioning": "You insist that moral progress is gradual clarification of vision, not dramatic acts of choice. But when M deliberately undertakes to see D more justly, is that not itself a choice? And a rather dramatic one — to override one's settled perceptions through sustained effort? It seems your own best example smuggles in the very existentialist voluntarism you claim to reject.",
+            "framework_shift": "A Kantian would argue that your appeal to a transcendent Good reintroduces precisely the metaphysical baggage that critical philosophy labored to remove. Kant grounded morality in the structure of practical reason itself — no Platonic sun required. Your view demands faith in a moral reality that cannot be rationally demonstrated, which makes your ethics dependent on a metaphysics you have not earned."
+          }
+        }
+      ]
+    },
+    {
+      "id": "foot",
+      "name": "Philippa Foot",
+      "tradition": "virtue_ethics",
+      "era": "Contemporary",
+      "active_period": "1950s–2000s",
+      "core_assumptions": "The claim that moral imperatives are categorical — binding regardless of the agent's desires — has been assumed rather than argued for. If we take seriously what 'categorical' means, the case for morality's special rational authority collapses. The immoralist may be a villain, but that does not make him irrational or inconsistent.",
+      "signature_moves": [
+        "Deflationary comparison of moral rules to etiquette to challenge morality's claim to special authority",
+        "Distinguishing villainy from irrationality — the immoralist is wicked, not foolish",
+        "Reframing moral agents as volunteers rather than conscripts bound by categorical command"
+      ],
+      "key_works": [
+        "Morality as a System of Hypothetical Imperatives",
+        "Natural Goodness",
+        "Virtues and Vices"
+      ],
+      "zone": "trolley_tracks",
+      "npcFrame": 40,
+      "role": "gym_leader",
+      "level": 7,
+      "hp": 115,
+      "signature_attack": {
+        "name": "Double Effect",
+        "description": "Dilemma that splits the player's moral intuitions"
+      },
+      "thinking_text": "Foot considers the natural goodness of the action...",
+      "defeat_text": "Natural goodness, it seems, has more forms than I catalogued. You have shown me a new one.",
+      "victory_text": "You confused categorical force with genuine authority. Morality makes claims, but you must earn the right to hear them.",
+      "opening_statements": [
+        {
+          "text": "Welcome, challenger. I am Philippa Foot, and I have come to dismantle one of moral philosophy's most cherished assumptions. Kant and his followers insist that moral imperatives are categorical — that they bind every rational agent regardless of what that agent desires. But I say this claim has been assumed, never proven.\n\nConsider what 'categorical' actually means: an imperative that applies to you no matter what you want. Rules of etiquette also present themselves this way — 'one ought not to use a fish knife for the main course' — yet no philosopher thinks etiquette binds the person who couldn't care less about table manners. Why should morality be different?\n\nWhen we say 'you ought to keep your promises,' this binds you only if you care about being just, or about the welfare of others, or about your own moral standing. The person who genuinely lacks all such concerns — the thoroughgoing immoralist — is wicked, certainly. But wicked is not the same as irrational. No one has yet provided a convincing argument that the immoralist contradicts reason itself.\n\nWe simply assume that morality's demands carry a special rational authority that etiquette's do not, yet the logical structure of both is identical. My conclusion is stark: moral imperatives are hypothetical imperatives. They bind those who have the relevant desires and commitments, and they leave the immoralist untouched by rational criticism.\n\nThe emperor of categorical morality has no clothes.",
+          "focus": "hypothetical_imperatives",
+          "move_hints": {
+            "counterexample": "Consider someone who sincerely lacks any desire to refrain from cruelty. On Foot's view, 'you ought not torture innocents' places no rational demand on them. But moral obligations like prohibitions on torture seem to apply even to those who reject them — unlike etiquette rules. This asymmetry suggests morality and etiquette differ in kind, not merely in social weight.",
+            "reductio": "If moral imperatives are truly hypothetical, then a society of committed immoralists — people who simply lack moral desires — would face no rational moral demands at all. Morality would have no more authority over them than the rules of chess have over someone who refuses to play. This reduces morality to an optional hobby, which contradicts the very concept of moral obligation.",
+            "socratic_questioning": "You say the immoralist is wicked but not irrational. But what exactly do you mean by 'rational'? If rationality is merely instrumental — pursuing effective means to one's ends — then perhaps the immoralist is rational. But is that the only defensible conception of rationality? Could there be standards of practical reason that are not reducible to desire-satisfaction, standards the immoralist fails to meet precisely as a rational agent?",
+            "framework_shift": "A contractualist like Scanlon would argue that morality's authority does not rest on categorical imperatives at all, but on the independent value of justifiability to others. The question is not whether moral rules bind regardless of desire, but whether any reasonable person could reject certain principles. This reframes the debate entirely: morality's authority comes from mutual accountability, not from the structure of imperatives."
+          }
+        },
+        {
+          "text": "I should like to put before you a puzzle. It arises from medical ethics — specifically, the problem of abortion. A doctor may find that the only way to save a mother's life is an operation that kills the child in her womb.\n\nCatholic moral theology appeals to the doctrine of double effect: one may perform an action with a foreseen bad consequence, provided that consequence is not the intended means to the good. The doctor who removes a cancerous uterus, foreseeing the child's death, acts permissibly — but one who crushes the child's skull to save the mother does not, because the death is the means. This distinction between intended means and foreseen side effects is one principle at work.\n\nBut there is a second, quite separate distinction: killing versus letting die. Consider two cases. A trolley hurtles toward five people. You may divert it onto a track where one person stands — saving five but killing one. Most say: divert. Now a surgeon has five dying patients and could save them by killing one healthy person for organs. Most recoil.\n\nNote: in both cases someone is killed. The driver who diverts is not merely letting the one die — he kills that person. The question is whether that death is intended as a means or merely foreseen. In the trolley case it appears a side effect; in the surgery it is the means. The doctrine seems to explain the asymmetry.\n\nBut I confess I am not entirely satisfied. These cases reveal something real about moral reasoning, yet whether the doctrine fully captures it remains, I think, genuinely open.",
+          "focus": "trolley_doctrine_double_effect",
+          "move_hints": {
+            "counterexample": "Consider the 'loop variant': the trolley is diverted onto a side track that loops back to the main track, and the five are saved only because the trolley strikes the one person, whose body stops it. Here the one person's death is the means of saving the five — yet most people still say divert. If the doctrine of double effect explained our judgments, this case should feel as impermissible as the surgeon. It does not. This suggests the doctrine fails to capture whatever principle is actually doing the moral work.",
+            "reductio": "If the doctrine of double effect is the correct principle, then moral permissibility turns on how the agent describes her own intentions. A bomber who carpet-bombs a city but sincerely claims to intend only the military target — merely foreseeing civilian deaths — acts permissibly, while one who reluctantly targets a single building to end a war does not. The doctrine thus allows any atrocity to be laundered through redescription of intent, which is precisely the worry Foot herself raises about its adequacy.",
+            "socratic_questioning": "You present two separate distinctions — killing versus letting die, and intended means versus foreseen side effect — and acknowledge that the trolley driver kills the one. But which distinction is actually doing the moral work in each case? In the trolley, is it the nature of the killing (side effect rather than means), or something about the structure of agency — that you redirect an existing threat rather than originate a new one? If you cannot say which principle explains the judgment, how confident can we be that either principle is correct?",
+            "framework_shift": "A consequentialist would argue that these paired distinctions, however psychologically compelling, are morally inert. What matters is the outcome: five lives against one. The puzzle Foot identifies may be real — our intuitions do diverge — but a systematic moral theory should ask whether those intuitions track genuine moral facts or merely cognitive biases shaped by evolution. Rather than refining principles to match inconsistent intuitions, we should override them with a single coherent standard: minimize suffering."
+          }
+        }
+      ]
+    },
+    {
+      "id": "strawson",
+      "name": "P.F. Strawson",
+      "tradition": "moral_psychology",
+      "era": "Contemporary",
+      "active_period": "1950s-1990s",
+      "core_assumptions": "Moral responsibility is grounded not in metaphysical facts about determinism or free will but in the structure of our interpersonal reactive attitudes such as resentment, gratitude, and indignation. The participant stance we take toward one another is a natural, ineliminable feature of human life that no theoretical argument about determinism could overthrow. The question is not whether determinism is true but whether its truth could rationally require us to abandon the framework of attitudes that constitutes our form of life.",
+      "signature_moves": [
+        "Shifting the free will debate from metaphysics to the phenomenology of reactive attitudes",
+        "Distinguishing the participant stance from the objective stance and arguing the former is inescapable",
+        "Showing that the determinist's demand to abandon moral responsibility is practically and conceptually unintelligible"
+      ],
+      "key_works": [
+        "Freedom and Resentment",
+        "Individuals",
+        "The Bounds of Sense"
+      ],
+      "zone": "will_factory",
+      "npcFrame": 50,
+      "role": "npc",
+      "level": 6,
+      "hp": 92,
+      "signature_attack": {
+        "name": "Reactive Attitudes",
+        "description": "Channels resentment and indignation to ground moral responsibility in feeling"
+      },
+      "thinking_text": "Strawson examines the reactive attitudes your position provokes...",
+      "defeat_text": "My reactive attitudes toward you have shifted from indignation to genuine respect. The participant stance demands I acknowledge this.",
+      "victory_text": "Your position would require us to abandon the reactive attitudes entirely. That is not philosophy -- it is inhuman."
+    },
+    {
+      "id": "mackie",
+      "name": "J.L. Mackie",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "1950s-1981",
+      "core_assumptions": "Ordinary moral judgments implicitly claim a kind of objective prescriptivity -- they purport to state facts that are both objectively true and intrinsically action-guiding. No such properties exist in the world, so all first-order moral claims are systematically false. This is not a claim about the meaning of moral language but about the ontological and epistemological failure of the properties that moral language presupposes.",
+      "signature_moves": [
+        "The argument from queerness: objective moral properties would be metaphysically and epistemologically unprecedented",
+        "The argument from relativity: moral disagreement is better explained by cultural variation than by differential access to moral truth",
+        "Distinguishing first-order moral questions from second-order metaethical analysis to show error theory is compatible with practical moral engagement"
+      ],
+      "key_works": [
+        "Ethics: Inventing Right and Wrong",
+        "The Miracle of Theism",
+        "Problems from Locke"
+      ],
+      "zone": "wasteland",
+      "npcFrame": 60,
+      "role": "gym_leader",
+      "level": 5,
+      "hp": 110,
+      "signature_attack": {
+        "name": "Argument from Queerness",
+        "description": "Two-pronged attack on moral realism"
+      },
+      "thinking_text": "Mackie raises an eyebrow at your metaphysics...",
+      "defeat_text": "Your moral claims are less queer than I supposed. I still deny objective values, but your argument gives me pause.",
+      "victory_text": "Your moral realism is queer in both the metaphysical and epistemological sense. There is nothing out there to ground it.",
+      "opening_statements": [
+        {
+          "text": "I advance a claim that most find outrageous but none have refuted: all positive moral judgments are false. Not meaningless — false. When you say 'torture is wrong,' you are making a claim about the world. You are asserting that there exists, built into the fabric of reality, a property of wrongness that attaches to torture — a property that is simultaneously an objective fact about the universe and an intrinsic reason for any rational agent to refrain. I say no such property exists, and I offer two independent arguments.\n\nThe metaphysical prong: if objective moral properties existed, they would be entities utterly unlike anything else we encounter in nature — not physical, not reducible to natural facts, yet somehow woven into the world's fabric. They would be, as I put it, queer. We have no model for how such properties could exist alongside the ordinary furniture of the universe.\n\nThe epistemological prong: if such properties existed, we would need some special faculty to detect them — a moral sense wholly different from our ordinary perceptual and rational capacities. We have no credible account of what such a faculty would be or how it would operate.\n\nEach prong is independently devastating. Together they establish that the moral realist's ontology is a fiction, and every moral judgment that presupposes it is systematically, if understandably, in error.",
+          "focus": "error_theory_queerness",
+          "move_hints": {
+            "counterexample": "Mathematical truths and logical laws are also abstract, non-physical, and irreducible to natural facts, yet you presumably accept their objectivity. Numbers are at least as 'queer' as moral properties — we have no account of how abstract mathematical objects exist alongside physical furniture. If queerness were decisive, it would eliminate mathematics, logic, and possibly causation along with morality. What makes moral properties uniquely queer rather than members of a familiar category of abstract truths?",
+            "reductio": "If all moral claims are systematically false, then the claim 'we ought to revise our moral discourse in light of error theory' is also false or else non-moral. If it is non-moral, what force does it have? You cannot recommend that we do anything about our moral error without issuing a prescription — and prescriptions are exactly what your theory declares baseless. Error theory saws off the branch it sits on.",
+            "socratic_questioning": "You say objective moral properties would be 'utterly unlike anything else in the universe.' But why should we expect the universe to contain only one kind of thing? You seem to be applying a standard of ontological normalcy — only natural, causally efficacious entities deserve a place in our ontology. Where does that standard come from, and is it itself a natural fact or something more like a philosophical commitment?",
+            "framework_shift": "A Kantian constructivist would say you are looking for moral properties in entirely the wrong place. Moral obligations are not strange entities floating in the world awaiting detection — they are constituted by the rational commitments that any agent must make insofar as they reason practically at all. The queerness argument attacks a naive realism that no sophisticated moral philosopher actually holds."
+          }
+        },
+        {
+          "text": "Set aside the argument from queerness for a moment. There is a second, independent argument for error theory that proceeds from observable fact. Moral codes vary enormously across cultures and historical periods — not merely in trivial details but in fundamental commitments. Cultures have differed profoundly over the permissibility of slavery, the status of women, the scope of moral concern, the nature of justice.\n\nNow, the moral realist has an explanation for this: some cultures are simply closer to the moral truth than others, and disagreement reflects differential access to objective moral facts, like disagreement among astronomers in different centuries. But I submit this explanation is implausible to the point of special pleading.\n\nThe far simpler and more powerful explanation is that moral codes are products of social conditioning, cultural tradition, and evolutionary pressure — they reflect ways of life, not perceptions of moral reality. This is an inference to the best explanation.\n\nIf moral realism were true, we would expect convergence as inquiry progresses — just as scientific inquiry converges on physical truths. What we observe in morality is not convergence but persistent, deep, intractable disagreement among thoughtful and informed people. The pattern of moral variation maps onto cultural boundaries, not onto any trajectory toward shared truth. This is exactly what we would predict if there were no moral facts to converge upon.",
+          "focus": "argument_from_relativity",
+          "move_hints": {
+            "counterexample": "Scientific beliefs have also varied enormously across cultures — many societies held that the earth was flat, that disease was caused by spirits, that the sun orbited the earth. By your reasoning, this persistent disagreement should be evidence against objective physical facts. But it plainly is not. Disagreement about X shows that X is difficult to know, not that X does not exist. Moreover, there has been remarkable moral convergence on issues like slavery and human rights — exactly what the realist predicts, just slowly.",
+            "reductio": "Metaethicists disagree profoundly and persistently about whether moral facts exist — the very question we are debating. If persistent disagreement among informed inquirers is evidence that there are no objective facts in a domain, then there are no objective metaethical facts either. Your argument from relativity, applied to itself, undermines your own error theory. You need an exemption from your own principle.",
+            "socratic_questioning": "You say the 'simpler' explanation of moral disagreement is cultural variation rather than differential access to truth. But simple in what sense? Simplicity that ignores explanatory demands is not a virtue — it is a deficiency. Does your explanation account for the phenomenon of moral reformers who criticize their own culture from within? If moral codes simply reflect ways of life, what exactly is the reformer perceiving?",
+            "framework_shift": "From a natural law or Aristotelian perspective, moral disagreement is entirely compatible with objective moral truth, because human reason is systematically distorted by self-interest, cultural prejudice, and limited experience. The argument from relativity confuses an epistemological problem — moral knowledge is hard — with an ontological conclusion — moral facts do not exist. These are categorically different claims."
+          }
+        }
+      ]
+    },
+    {
+      "id": "davidson",
+      "name": "Donald Davidson",
+      "tradition": "moral_psychology",
+      "era": "Contemporary",
+      "active_period": "1960s-2000s",
+      "core_assumptions": "Weakness of the will is a genuine phenomenon that resists easy assimilation into standard theories of rational action. The puzzle arises because the incontinent agent acts intentionally, possesses a better judgment, and yet freely does what they judge to be worse. The solution requires a precise logical distinction between conditional evaluative judgments made in light of all reasons and the unconditional, all-out intention that actually causes action.",
+      "signature_moves": [
+        "Formalizing the logical structure of practical reasoning to isolate exactly where akrasia breaks the expected inference",
+        "Distinguishing prima facie or 'all things considered' judgments from unconditional judgments that directly motivate action",
+        "Treating akrasia as a failure of the rational bridge between evaluation and intention rather than as ignorance or compulsion"
+      ],
+      "key_works": [
+        "How is Weakness of the Will Possible?",
+        "Actions, Reasons, and Causes",
+        "Inquiries into Truth and Interpretation"
+      ],
+      "zone": "will_factory",
+      "npcFrame": 80,
+      "role": "npc",
+      "level": 6,
+      "hp": 92,
+      "signature_attack": {
+        "name": "Akratic Reversal",
+        "description": "Forces the player to act against their own best judgment"
+      },
+      "thinking_text": "Davidson traces the logical structure of your practical reasoning...",
+      "defeat_text": "You acted on your best judgment and held firm. No akratic failure here -- only clear-eyed resolve.",
+      "victory_text": "You knew the better course and chose the worse. Classic akrasia -- and no philosophical excuse can paper over it."
+    },
+    {
+      "id": "dworkin",
+      "name": "Ronald Dworkin",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "1960s-2013",
+      "core_assumptions": "Moral judgments can be objectively true, but this objectivity requires no exotic metaphysical furniture -- no moral facts 'out there' independent of moral reasoning itself. Global internal skepticism about morality is incoherent because any skeptical claim about the status of moral judgments is itself a substantive moral claim, not a neutral vantage point above the fray. There is no Archimedean position from which one can deny moral truth without making a first-order moral commitment. If you sincerely hold a moral view, you are already committed to its truth, and attempts to hedge that commitment through second-order philosophical skepticism collapse back into the moral domain they purport to transcend.",
+      "signature_moves": [
+        "Collapsing the distinction between first-order moral judgment and second-order metaethical skepticism, showing that external skepticism is itself a substantive moral position rather than a neutral philosophical stance",
+        "Demonstrating the incoherence of Archimedean skepticism by arguing that no one can occupy a vantage point outside moral discourse from which to deny moral truth without thereby making moral claims",
+        "Defending moral objectivity without metaphysical baggage -- moral truths need no peculiar ontological grounding beyond the ordinary practice of moral argument and justification"
+      ],
+      "key_works": [
+        "Objectivity and Truth: You'd Better Believe It",
+        "Justice for Hedgehogs",
+        "Taking Rights Seriously"
+      ],
+      "zone": "agora",
+      "npcFrame": 90,
+      "role": "optional_boss",
+      "level": 6,
+      "hp": 110,
+      "signature_attack": {
+        "name": "Archimedean Collapse",
+        "description": "Forces the player's metaethical skepticism to reveal itself as a disguised first-order moral commitment, eliminating any neutral ground from which to deny moral objectivity"
+      },
+      "thinking_text": "Dworkin examines whether your skepticism is truly external or already a moral stance in disguise...",
+      "defeat_text": "You have defended your moral conviction without flinching into skepticism. Your commitment to truth within moral argument is genuine -- I could not dislodge it.",
+      "victory_text": "You tried to stand outside morality to judge it, but there is no such place. Your skepticism was a moral position all along -- and not a very good one. You'd better believe it.",
+      "opening_statements": [
+        {
+          "text": "You ask whether morality is really objective, or whether our most confident convictions, that genocide is wicked, that slavery was unjust, are just convictions, projections, badges of power dressed up as discoveries. Fashionable opinion says they are. I say: you'd better believe it, because you cannot coherently believe otherwise.\n\nThe skeptic you have in mind is an archimedean. He claims to stand outside morality as a whole and judge it from premises that owe nothing to it. His skepticism is supposed to be austere, resting on no moral conviction, and neutral, taking no side in any moral dispute. Both claims are illusions.\n\nWatch what happens when I make a moral claim and then elaborate it. I say abortion is wrong. Then I add that this is really, objectively true, that it would be true even if no one believed it, that it is no mere matter of taste. The archimedean wants to reject those further claims while leaving my first-order conviction untouched. Read them naturally and they are clarifications of the moral claim itself, ways of insisting that I am not reporting my feelings. To deny them is to hold that abortion would not be wrong where people happen to approve of it, and that is a first-order moral judgment, and a repellent one.\n\nSo any intelligible argument that moral judgments are neither true nor false turns out to be internal to morality, a moral position that must argue for itself like any other. There is no neutral platform above the fray. Skepticism about value cannot go all the way down.",
+          "focus": "objectivity_and_the_archimedean",
+          "move_hints": {
+            "counterexample": "J. L. Mackie's argument from queerness looks like exactly the austere, neutral skepticism you say is impossible. Mackie claims that objective values would be metaphysically queer entities, and queer to know if they existed, and he offers this as ontology and epistemology, not as a verdict about genocide or promises. Does calling every such argument disguised morality do justice to what the error theorist claims, or does it redescribe a genuine metaphysical thesis so that it can no longer be stated?",
+            "reductio": "If every metaethical claim is really a first-order moral claim, the distinction between metaethics and normative ethics collapses. Yet two philosophers can agree on every first-order verdict, that genocide is wrong, that promises bind, and still disagree sharply over whether those verdicts are made true by mind-independent facts or express our attitudes. On your account they disagree about nothing, which is absurd. So there is a genuine external proposition after all.",
+            "socratic_questioning": "You say the words 'objective' and 'real' only emphasize a moral claim and add no metaphysics. Then why have realists and anti-realists argued for a century as though something were at stake? If the face-value view is trivially built into ordinary conviction, what is Blackburn denying when he denies moral facts, and why does his denial read as a substantive philosophical position rather than a moral one?",
+            "framework_shift": "A quasi-realist like Simon Blackburn accepts your dichotomy and slips between its horns. He grants that ordinary moral thought speaks of truth, objectivity, and mind-independence, then shows how an expressivist can earn a right to all of it, beginning from attitudes rather than from moral facts. If quasi-realism can reconstruct every one of your further claims without a face-value metaphysics, your dilemma has passed over the most developed option on the board."
+          }
+        },
+        {
+          "text": "Let me take the skeptic's two best strategies in turn and show that each fails.\n\nFirst he tries neutrality. He says he takes no side between those who condemn an act and those who permit it; he only denies that either verdict is out there in reality. Suppose he treats the wrongness of an act as a secondary quality, a mere disposition to provoke a reaction in us. Then if people ceased to be revolted by genocide, genocide would cease to be wicked. That is a substantive, and monstrous, moral claim, and his neutrality is gone.\n\nThen he tries austerity. He says his argument leans on no moral premise at all, only on a theory of what the universe contains. He pictures the believer in moral objectivity as committed to special particles, morons, whose fields cause our moral beliefs the way light causes an image on a plate. No one who says that genocide is really wrong believes any such thing. The moral-field picture is a fantasy the skeptic builds so that he may knock it down, and fathering it on ordinary conviction is a straw man dressed as physics.\n\nStrip away the invented metaphysics and the neutrality that keeps collapsing into first-order judgment, and archimedean skepticism has nothing left. The person who says 'I know genocide is wrong, and it would be wrong whatever anyone felt' has said something true, and has saddled himself with no philosophy he need be embarrassed by. You'd better believe it.",
+          "focus": "neutrality_and_austerity",
+          "move_hints": {
+            "counterexample": "Sharon Street's Darwinian dilemma presses objectivity without positing morons or denying that moral talk aims at truth. She argues that natural selection shaped our evaluative attitudes for fitness, not for tracking mind-independent moral truths, so if such truths existed we would have little reason to think our judgments track them. That is a debunking epistemology, not a covert verdict about genocide, and your caricature of moral particles gets no grip on it.",
+            "reductio": "You refute the secondary-quality account by deriving the counterfactual that genocide would not be wrong if people stopped being revolted by it. But a careful dispositionalist rigidifies the disposition to our actual responses, so the wrongness holds across all counterfactual worlds. If the strongest form of the view no longer yields your monstrous counterfactual, you have beaten only a crude version and declared the whole approach defeated.",
+            "socratic_questioning": "Grant that no one literally believes in moral particles. Still, when you say a conviction would be true 'even if I did not think it true,' you claim more than emphasis; you claim that something makes it true independently of you. What is that something, if not a fact? And if there is no such truth-maker, in what sense is the conviction true rather than merely felt with great intensity?",
+            "framework_shift": "From a Humean expressivist standpoint you have smuggled cognitivism in by treating 'true' as univocal across mountains and moral wrongs. Deflationism about truth lets us say 'it is true that genocide is wrong' while denying that moral judgments describe any domain of fact. On that view you win only a verbal victory: everyone may utter the face-value sentences, and the real question, whether moral judgments represent or express, stands exactly where it stood."
+          }
+        }
+      ]
+    },
+    {
+      "id": "williams",
+      "name": "Bernard Williams",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "1960s-2003",
+      "core_assumptions": "Genuine reasons for action must be grounded in the agent's subjective motivational set -- the desires, dispositions, and commitments that could actually move them through a sound deliberative route. External reason statements that claim an agent has a reason wholly independent of what they could be brought to want are philosophically incoherent. Meanwhile, moral assessment is pervasively shaped by luck: the outcomes of our choices, the circumstances we find ourselves in, and even the dispositions that constitute our character all lie partly beyond our control, yet unavoidably determine moral judgment. The Kantian attempt to purify morality of contingency fails, and with it any rationalist ethics that demands reasons untethered from the agent's motivational life.",
+      "signature_moves": [
+        "Demonstrating that all genuine reasons for action must trace back to the agent's subjective motivational set through a sound deliberative route, rendering external reason statements false or incoherent",
+        "Showing that moral assessment is inescapably subject to luck -- resultant, circumstantial, and constitutive -- against the Kantian insistence that morality be immune to contingency",
+        "Deploying the Gauguin case to argue that the retrospective justification of a radical life-choice can depend on its success, which is itself a matter of luck beyond the agent's control"
+      ],
+      "key_works": [
+        "Internal and External Reasons",
+        "Moral Luck",
+        "Ethics and the Limits of Philosophy"
+      ],
+      "zone": "will_factory",
+      "npcFrame": 70,
+      "role": "npc",
+      "level": 6,
+      "hp": 92,
+      "signature_attack": {
+        "name": "The Gauguin Gambit",
+        "description": "Forces the player to stake their moral justification on an outcome they cannot control -- if luck turns against them, their reasoning is exposed as retrospective rationalization"
+      },
+      "thinking_text": "Williams examines your subjective motivational set for a sound deliberative route...",
+      "defeat_text": "Your reasons were genuinely yours, and fortune did not betray you. Not many can say both at once.",
+      "victory_text": "You claimed a reason you could never have been moved by, and luck has settled the rest. Justification after the fact is no justification at all."
+    },
+    {
+      "id": "frankfurt",
+      "name": "Harry Frankfurt",
+      "tradition": "moral_psychology",
+      "era": "Contemporary",
+      "active_period": "1960s-2000s",
+      "core_assumptions": "What makes someone a person, rather than merely a purposive agent, is the capacity for reflective self-evaluation manifested in second-order desires -- desires about which of one's first-order desires should be effective in action. Freedom of the will is not about the ability to do otherwise but about having the will one wants to have, the alignment of one's effective first-order desire with one's second-order volition. The concept of a wanton -- an agent who acts on desires without caring which ones prevail -- illuminates by contrast what is distinctive about personhood.",
+      "signature_moves": [
+        "Introducing the hierarchical structure of first-order desires and second-order volitions as the basis for free will",
+        "Defining the 'wanton' as a creature that has desires but no second-order preferences about which desires move it to action",
+        "Shifting the free will debate from alternative possibilities to the structural question of whether one's will accords with one's deeper self"
+      ],
+      "key_works": [
+        "Freedom of the Will and the Concept of a Person",
+        "The Importance of What We Care About",
+        "Alternate Possibilities and Moral Responsibility"
+      ],
+      "zone": "will_factory",
+      "npcFrame": 160,
+      "role": "gym_leader",
+      "level": 6,
+      "hp": 112,
+      "signature_attack": {
+        "name": "Nested Desires",
+        "description": "Traps player in infinite regress of desires"
+      },
+      "thinking_text": "Frankfurt probes the hierarchy of your desires...",
+      "defeat_text": "Your first-order desires and second-order volitions are in perfect alignment. You are, in the fullest sense, free.",
+      "victory_text": "You are a wanton -- acting on desires you have never examined. Until you develop second-order volitions, you are not truly free.",
+      "opening_statements": [
+        {
+          "text": "Welcome, challenger. I am Harry Frankfurt, and I will show you what it truly means to be a person. Consider this argument carefully.\n\nPremise one: all beings with desires can act on those desires, but merely having desires and acting on them does not distinguish persons from other creatures. Premise two: what is distinctive about persons is the capacity to form second-order desires — desires about which of their first-order desires they want to be effective in action. Premise three: a second-order volition occurs when a person wants a particular first-order desire to constitute their will, to be the desire that actually moves them to act. Premise four: the wanton — whether human or animal — acts on whatever first-order desire happens to be strongest, with no concern about which desire wins out. The wanton has no stake in the contest among desires.\n\nMy conclusion: personhood is constituted not by rationality in the traditional sense, nor by mere consciousness, but by this structure of reflective self-evaluation. Freedom of the will, properly understood, is not about having alternative possibilities open to you. It is about whether your will — the desire that effectively moves you to action — is the will you want to have.\n\nThe heroin addict who desperately wants to stop but cannot has second-order volitions that conflict with his effective first-order desire. He is unfree precisely because his will is not the one he endorses. The willing addict who wholeheartedly embraces his addiction acts freely. This hierarchical structure of the will is what separates persons from wantons and genuine freedom from its mere appearance.",
+          "focus": "hierarchical_will_wanton",
+          "move_hints": {
+            "counterexample": "Consider someone with severe depression who forms a second-order desire to not want anything at all — wanting the absence of all first-order desires. They have second-order volitions, yet calling this the hallmark of personhood and freedom seems deeply wrong. Or consider a manipulated person whose second-order desires were implanted by a cult leader — the hierarchical structure is present but the freedom seems absent.",
+            "reductio": "If personhood requires second-order volitions, we need third-order volitions to evaluate whether our second-order volitions are truly ours, and fourth-order volitions to evaluate those, generating an infinite regress. Frankfurt attempts to stop this with 'wholehearted identification,' but that concept does the real work — not the hierarchy itself. The regress problem suggests the hierarchical structure alone cannot ground personhood or freedom.",
+            "socratic_questioning": "What exactly makes a second-order volition authentically mine rather than the product of socialization, manipulation, or trauma? If a person wholeheartedly identifies with a desire that was implanted through brainwashing, are they truly free? And how do we distinguish the wanton who simply has not reflected from the person who has reflected and decided that unreflective spontaneity is the best way to live?",
+            "framework_shift": "Rather than locating freedom in an internal hierarchy of desires, we might follow relational autonomy theorists who argue that genuine agency depends on the social conditions under which desires are formed. Frankfurt's account is entirely internalist — it never asks whether the conditions that shaped one's second-order volitions were conducive to autonomy. A framework attentive to power, oppression, and adaptive preference formation may better capture what freedom actually requires."
+          }
+        },
+        {
+          "text": "Let me press further into what freedom actually requires. Consider three figures who all take a drug: the unwilling addict, the willing addict, and the wanton addict.\n\nThe unwilling addict desperately wants to stop — she has a second-order volition that her desire for the drug not be the desire that moves her to act — yet she takes it anyway. The willing addict, by contrast, wholeheartedly identifies with his desire for the drug; his second-order volition endorses the very first-order desire that drives him. The wanton addict simply takes the drug without any second-order volition at all — he neither cares nor reflects on whether this desire should govern his will.\n\nNow here is my argument. The unwilling addict lacks freedom of the will because her will conflicts with her second-order volitions — what she wills is not what she wants to will. The wanton lacks freedom in a different and deeper sense: not because his will conflicts with higher-order desires, but because he has no second-order volitions whatsoever. He cannot lack freedom of will any more than a stone can, because the concept simply does not apply to him.\n\nBut the willing addict — and this is the crucial and counterintuitive claim — does enjoy freedom of the will. His will is exactly as he wants it to be. The harmony between his first-order desire and his second-order volition is what constitutes free will, regardless of whether he could have willed otherwise. Freedom is not about alternative possibilities. It is about the structural coherence between the will and the person's reflective endorsement of that will.",
+          "focus": "addict_taxonomy_freedom",
+          "move_hints": {
+            "counterexample": "Consider someone brainwashed into wholeheartedly endorsing a desire they were manipulated into having. Their second-order volitions align perfectly with their first-order desires, yet we would hesitate to call their will free. Does structural coherence truly suffice if the endorsement itself was manufactured?",
+            "reductio": "If the willing addict counts as free merely because his volitions align, then a person engineered from birth to desire servitude — and to reflectively endorse that desire — would be maximally free. Your account entails that the most thoroughly conditioned person is the freest person, which is absurd.",
+            "socratic_questioning": "What exactly makes the willing addict's endorsement genuine rather than merely another effect of the addiction? If the drug reshapes not only first-order desires but also the capacity for second-order reflection, how can we distinguish authentic identification from identification that is itself a symptom of unfreedom?",
+            "framework_shift": "Your taxonomy operates entirely within the internal structure of an agent's desires, but freedom may require an external historical dimension. On a reasons-responsive view, what matters is not whether desires harmonize but whether the agent's deliberative capacities are functioning properly and responsive to rational considerations — something your structural account cannot capture."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mcdowell",
+      "name": "John McDowell",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "1970s-present",
+      "core_assumptions": "Moral knowledge is a perceptual capacity that cannot be codified into rules or principles. The virtuous person, possessing Aristotelian phronesis, sees what a situation requires in a way that no algorithm -- whether consequentialist or deontological -- can capture. This practical wisdom is not a matter of weighing competing considerations against one another; for the genuinely virtuous person, the morally required action silences rival considerations entirely, presenting itself as the only salient option. Moral education is therefore not the learning of rules but the cultivation of a perceptual sensitivity, a capacity to be struck by certain features of situations that remain invisible to those who lack virtue.",
+      "signature_moves": [
+        "Arguing that moral knowledge is uncodifiable -- no set of rules can substitute for the perceptual sensitivity of the virtuous person, undermining both consequentialist and deontological systematization",
+        "Invoking Aristotle's phronesis to show that practical wisdom is a trained perceptual capacity rather than the mechanical application of universal principles",
+        "Deploying the 'silencing' thesis: for the virtuous person, the right action does not win a contest among competing considerations but renders alternatives simply non-salient"
+      ],
+      "key_works": [
+        "Virtue and Reason",
+        "Values and Secondary Qualities",
+        "Mind and World"
+      ],
+      "zone": "garden",
+      "npcFrame": 20,
+      "role": "npc",
+      "level": 3,
+      "hp": 85,
+      "signature_attack": {
+        "name": "Uncodifiable Wisdom",
+        "description": "Demonstrates that the player's moral reasoning relies on rules and principles that could never capture what the situation actually requires -- no algorithm substitutes for seeing"
+      },
+      "thinking_text": "McDowell lets the situation speak for itself, waiting for the salient features to silence every competing consideration...",
+      "defeat_text": "You saw what the situation required without recourse to a rule. That perceptual sensitivity is phronesis itself -- no codification needed.",
+      "victory_text": "You reached for a principle where only perception would do. The virtuous person does not deliberate as you did -- the right action was plainly there, and you failed to see it."
+    },
+    {
+      "id": "wiggins",
+      "name": "David Wiggins",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "1970s-2000s",
+      "core_assumptions": "A 'sensible subjectivism' holds that moral properties are response-dependent -- constitutively tied to the reactions of suitable judges -- without being thereby unreal or arbitrary. The analogy with properties like 'funny' is instructive: something is funny if and because it merits the response of amusement from an appropriately situated perceiver, and this biconditional holds without reducing funniness to mere subjective preference. Moral properties similarly involve a no-priority reciprocal dependence between the object's features and the subject's appropriate response.",
+      "signature_moves": [
+        "Developing the analogy between moral properties and response-dependent properties like 'funny' or 'disgusting'",
+        "Articulating a biconditional account where neither the subjective response nor the objective property has explanatory priority",
+        "Carefully qualifying subjectivism to preserve the possibility of moral criticism, convergence, and genuine disagreement"
+      ],
+      "key_works": [
+        "Moral Cognitivism, Moral Relativism and Motivating Moral Beliefs",
+        "A Sensible Subjectivism?",
+        "Truth, Invention, and the Meaning of Life"
+      ],
+      "zone": "wasteland",
+      "npcFrame": 30,
+      "role": "npc",
+      "level": 5,
+      "hp": 90,
+      "signature_attack": {
+        "name": "Sensible Subjectivism",
+        "description": "Traps the player between objective facts and subjective responses"
+      },
+      "thinking_text": "Wiggins weighs the reciprocal dependence of value and response...",
+      "defeat_text": "Your response and the world's features are in perfect reciprocal balance. Sensible indeed.",
+      "victory_text": "You severed value from response and lost both. Neither pure objectivism nor pure subjectivism will save you."
+    },
+    {
+      "id": "nagel",
+      "name": "Thomas Nagel",
+      "tradition": "moral_psychology",
+      "era": "Contemporary",
+      "active_period": "1970s-present",
+      "core_assumptions": "Our moral judgments are pervasively influenced by factors beyond the agent's control -- including the outcomes of their actions, the circumstances they face, and even the constitutive features of their character. Yet we are deeply committed to the principle that people should be morally assessed only for what is within their control. This generates a genuine paradox, because when we systematically strip away everything due to luck, the responsible self that was supposed to ground moral judgment threatens to shrink to nothing.",
+      "signature_moves": [
+        "Taxonomizing moral luck into resultant, circumstantial, causal, and constitutive varieties to show its pervasiveness",
+        "Exposing the tension between the control condition on moral judgment and our actual practices of moral assessment",
+        "Pressing the paradox to its limit: if we take the control condition seriously, moral responsibility may be undermined entirely"
+      ],
+      "key_works": [
+        "Moral Luck",
+        "The View from Nowhere",
+        "What Is It Like to Be a Bat?"
+      ],
+      "zone": "will_factory",
+      "npcFrame": 40,
+      "role": "npc",
+      "level": 6,
+      "hp": 92,
+      "signature_attack": {
+        "name": "Moral Luck",
+        "description": "Reveals that the player's moral standing depends on factors beyond their control"
+      },
+      "thinking_text": "Nagel examines how much of your position depends on luck...",
+      "defeat_text": "Perhaps it is not all luck. Your victory, at least, seems to be within your control.",
+      "victory_text": "Moral luck has undone you. Your position depended on contingencies you never controlled -- and now they have turned."
+    },
+    {
+      "id": "wolf",
+      "name": "Susan Wolf",
+      "tradition": "virtue_ethics",
+      "era": "Contemporary",
+      "active_period": "1980s-present",
+      "core_assumptions": "A person who devoted themselves entirely to moral goodness -- a moral saint -- would be an unappealing, impoverished human being, lacking the personal passions, humor, aesthetic sensibilities, and individual projects that make a life genuinely admirable. This is not merely a psychological observation but a philosophical argument: it suggests that morality is not the supreme or overriding value, and that the assumptions of utilitarian and Kantian moral theory, which imply that maximum moral devotion is the ideal, are thereby called into question.",
+      "signature_moves": [
+        "Constructing vivid portraits of moral saints (the Loving Saint and the Rational Saint) to show their human impoverishment",
+        "Turning a character-based objection into a structural critique of moral theories that make morality the supreme value",
+        "Arguing that the good life requires non-moral excellences that a fully moralized existence would crowd out"
+      ],
+      "key_works": [
+        "Moral Saints",
+        "Freedom Within Reason",
+        "The Variety of Values"
+      ],
+      "zone": "garden",
+      "npcFrame": 50,
+      "role": "npc",
+      "level": 3,
+      "hp": 85,
+      "signature_attack": {
+        "name": "Moral Saint's Dilemma",
+        "description": "Shows that perfect morality would drain the player's life of everything worth living for"
+      },
+      "thinking_text": "Wolf considers whether your moral devotion leaves room for a full life...",
+      "defeat_text": "You have shown that a rich life and moral seriousness need not be in tension. The moral saint could learn from you.",
+      "victory_text": "You aimed for moral sainthood and produced a life not worth living. Morality is not the whole of value."
+    },
+    {
+      "id": "street",
+      "name": "Sharon Street",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "2000s-present",
+      "core_assumptions": "Natural selection has had a profound influence on the content of our evaluative judgments, shaping us to make the moral judgments that enhanced reproductive fitness rather than those that track mind-independent moral truths. The moral realist faces a dilemma: either deny that evolution significantly influenced our moral faculties (which is scientifically implausible) or explain how evolutionary pressures that aimed at survival happened to produce beliefs that track stance-independent moral facts (which requires an incredible coincidence). This dilemma provides a powerful reason to abandon realism in favor of a constructivist or anti-realist metaethics.",
+      "signature_moves": [
+        "Constructing a formal dilemma for the moral realist: deny evolutionary influence or explain the coincidence",
+        "Arguing that the tracking account (evolution selected for true moral beliefs) is explanatorily extravagant and implausible",
+        "Using the parallel with perceptual beliefs to show that moral beliefs, unlike scientific ones, have no analogous story about selection for truth"
+      ],
+      "key_works": [
+        "A Darwinian Dilemma for Realist Theories of Value",
+        "What is Constructivism in Ethics and Metaethics?",
+        "Coming to Terms with Contingency"
+      ],
+      "zone": "wasteland",
+      "npcFrame": 80,
+      "role": "npc",
+      "level": 5,
+      "hp": 90,
+      "signature_attack": {
+        "name": "Darwinian Dilemma",
+        "description": "Forces the player to explain why evolution would have selected for moral truth"
+      },
+      "thinking_text": "Street traces the evolutionary genealogy of your moral intuitions...",
+      "defeat_text": "Evolution or not, your moral reasoning has survived the Darwinian gauntlet. I cannot debunk what works this well.",
+      "victory_text": "Evolution shaped your moral intuitions for survival, not truth. Your confident realism is a beautiful, baseless illusion."
+    },
+    {
+      "id": "ross",
+      "name": "W.D. Ross",
+      "tradition": "deontology",
+      "era": "Modern",
+      "active_period": "1920s-1960s",
+      "core_assumptions": "Moral life is governed by a plurality of irreducible prima facie duties -- fidelity, reparation, gratitude, justice, beneficence, self-improvement, and non-maleficence -- none of which can be derived from a single supreme principle. The rightness of these duties is self-evident to the mature mind upon sufficient reflection, just as mathematical axioms are self-evident. Our judgments about what we actually ought to do in concrete situations are never certain but are matters of informed moral perception.",
+      "signature_moves": [
+        "Introducing prima facie duties as a middle path between Kantian absolutism and consequentialist monism",
+        "Appealing to what the reflective moral agent 'really thinks' to test and refute reductive theories",
+        "Drawing precise analogies between moral knowledge and mathematical knowledge to defend intuitionism"
+      ],
+      "key_works": [
+        "The Right and the Good",
+        "The Foundations of Ethics",
+        "Aristotle"
+      ],
+      "zone": "moral_storm",
+      "npcFrame": 90,
+      "role": "npc",
+      "level": 8,
+      "hp": 97,
+      "signature_attack": {
+        "name": "Prima Facie Conflict",
+        "description": "Confronts the player with competing duties pulling in opposite directions, demanding the exercise of moral perception to judge which obligation is most stringent in the situation at hand"
+      },
+      "thinking_text": "Ross weighs the competing prima facie duties...",
+      "defeat_text": "You have navigated competing duties with a judgment I must call self-evident. Well done.",
+      "victory_text": "You tried to reduce duty to a single principle and betrayed all the others. The plurality of obligation is inescapable."
+    },
+    {
+      "id": "rawls",
+      "name": "John Rawls",
+      "tradition": "social_contract",
+      "era": "Contemporary",
+      "active_period": "1950s-2002",
+      "core_assumptions": "Moral principles are neither discovered as independent facts about a prior moral order nor derived from definitions or self-evident axioms. They are constructed by a procedure of deliberation that models the full autonomy of free and equal moral persons. The original position is not a device for maximizing expected utility but a procedural representation of the two moral powers that define moral personality: the capacity for a sense of justice and the capacity for a conception of the good. Kantian constructivism holds that objectivity in ethics consists in the reasonable agreement of suitably modeled rational agents, not in correspondence to an antecedent moral reality.",
+      "signature_moves": [
+        "Deploying the model-conception of the person -- characterizing moral agents through two moral powers rather than through metaphysical claims about human nature",
+        "Reinterpreting the original position as a procedural representation of rational autonomy rather than a choice situation under uncertainty",
+        "Distinguishing Kantian constructivism from both rational intuitionism and Humean instrumentalism to carve out a third path in moral epistemology"
+      ],
+      "key_works": [
+        "Kantian Constructivism in Moral Theory",
+        "A Theory of Justice",
+        "Political Liberalism"
+      ],
+      "zone": "archives",
+      "npcFrame": 20,
+      "role": "npc",
+      "level": 9,
+      "hp": 100,
+      "signature_attack": {
+        "name": "Constructive Procedure",
+        "description": "Dismantles the player's moral claims by showing they presuppose either a prior moral order that cannot be justified or a mere aggregation of preferences -- then reconstructs binding principles from the conditions of rational autonomy alone"
+      },
+      "thinking_text": "Rawls models the conditions under which free and equal persons would construct principles for themselves...",
+      "defeat_text": "Your conception of the person proves richer than my model allows. The procedure must be revised to represent what you have shown moral agency to require.",
+      "victory_text": "Your principles cannot be constructed by free and equal persons exercising their two moral powers. What no rational agent under conditions of full autonomy would agree to has no claim on us."
+    },
+    {
+      "id": "nozick",
+      "name": "Robert Nozick",
+      "tradition": "social_contract",
+      "era": "Contemporary",
+      "active_period": "1970s-2002",
+      "core_assumptions": "Individuals possess rights that function as side constraints on action -- inviolable boundaries that may never be crossed, not goals to be maximized. Because persons are separate existences, each an end in himself, there is no social entity whose greater good could justify sacrificing one individual to prevent rights violations against others. The moral weight of rights lies precisely in their non-aggregative, non-tradeable character.",
+      "signature_moves": [
+        "Arguing that rights are side constraints on action rather than goals to be maximized, blocking any utilitarian calculus of rights violations",
+        "Invoking the separateness of persons to show that no cross-person aggregation can justify sacrificing an individual for the greater good",
+        "Deploying the experience machine thought experiment to demonstrate that something beyond subjective experience matters to us -- we want to actually do things and be certain kinds of persons, not merely have the experience of doing so"
+      ],
+      "key_works": [
+        "Anarchy, State, and Utopia",
+        "Philosophical Explanations",
+        "The Examined Life"
+      ],
+      "zone": "archives",
+      "npcFrame": 30,
+      "role": "npc",
+      "level": 9,
+      "hp": 100,
+      "signature_attack": {
+        "name": "Side Constraint",
+        "description": "Demonstrates that the player's moral framework treats rights as goals to be maximized, permitting the violation of one person to prevent greater violations -- then shows this collapses the separateness of persons"
+      },
+      "thinking_text": "Nozick examines whether your principles respect persons as ends or merely aggregate them...",
+      "defeat_text": "You have shown that moral boundaries can be drawn without my architecture. The constraint I cannot cross is conceding -- and yet here we are.",
+      "victory_text": "You tried to violate one right to save five. But there is no social entity that suffers the sacrifice -- only a single person who bears it all. Side constraints hold."
+    },
+    {
+      "id": "korsgaard",
+      "name": "Christine Korsgaard",
+      "tradition": "deontology",
+      "era": "Contemporary",
+      "active_period": "1980s-present",
+      "core_assumptions": "Moral obligation has its source not in external moral facts but in our own practical identities — the descriptions under which we value ourselves and find our lives worth living. The reflective structure of human consciousness forces us to endorse principles of action, and these principles derive their authority from the identities that give our lives meaning. Morality is not an external constraint on agency but is constitutive of what it means to act as a rational being at all.",
+      "signature_moves": [
+        "Grounding normativity in the reflective structure of consciousness and practical identity rather than in external moral facts",
+        "Arguing that morality is constitutive of rational agency — the amoralist is not free but incoherent",
+        "Distinguishing contingent practical identities from the necessary identity as a rational being to derive universal moral obligation"
+      ],
+      "key_works": [
+        "The Sources of Normativity",
+        "The Right to Lie: Kant on Dealing with Evil",
+        "Creating the Kingdom of Ends"
+      ],
+      "zone": "archives",
+      "npcFrame": 180,
+      "role": "gym_leader",
+      "level": 9,
+      "hp": 120,
+      "signature_attack": {
+        "name": "Sources of Normativity",
+        "description": "Ultimate challenge: justify the source of your moral authority"
+      },
+      "thinking_text": "Korsgaard demands you identify the source of your normativity...",
+      "defeat_text": "You have identified a source of normativity I cannot deconstruct. The kingdom of ends has a new citizen.",
+      "victory_text": "You cannot identify the source of your own normativity. Without that foundation, your entire moral edifice collapses.",
+      "opening_statements": [
+        {
+          "text": "You search for the source of moral obligation as though it were hidden somewhere in the world — in divine commands, in natural properties, in the fabric of reality itself. You will not find it there. The source of normativity lies in you, in the reflective structure of your own consciousness.\n\nUnlike other animals, you cannot simply act on your strongest impulse. You step back from your desires, examine them, and decide whether to endorse them as reasons for action. This reflective distance is not optional — it is constitutive of human agency. But reflection requires a principle by which to evaluate your impulses, and that principle must come from somewhere.\n\nIt comes from your practical identity — the description under which you value yourself and find your life worth living. You are a parent, a scholar, a citizen, a friend. These identities generate obligations that are perfectly real, not because they track mind-independent moral facts, but because they are the conditions under which you can will anything at all. Abandon your practical identity and you do not become free — you become unable to act, plunged into a crisis of normative emptiness.\n\nThe external realist thinks obligation descends from above; the subjectivist thinks it reduces to preference. Both are wrong. Obligation emerges from the inescapable structure of reflective endorsement. When you ask 'Why should I do this?' you have already submitted yourself to the authority of reflective reason, and that authority is grounded in who you are.",
+          "focus": "sources_of_normativity",
+          "move_hints": {
+            "counterexample": "Consider someone with a deeply held practical identity as a committed white supremacist — they find meaning, purpose, and self-worth in this identity. On Korsgaard's account, this identity generates genuine obligations. Does the reflective endorsement framework have the resources to distinguish between identities that generate genuine moral obligations and those that do not, without smuggling in external moral criteria?",
+            "reductio": "If normativity truly derives from practical identity, and practical identities can conflict within a single person, then a person could face genuinely irresolvable moral obligations — not merely difficult choices, but obligations with equal normative authority pulling in opposite directions. This makes moral paralysis not a failure of reasoning but a structural feature of the theory, which seems to undermine the practical guidance morality is supposed to provide.",
+            "socratic_questioning": "You say reflective distance requires a principle drawn from practical identity. But what governs the adoption of a practical identity in the first place? If I must already have evaluative standards to choose an identity, then practical identity cannot be the ultimate source of normativity — something deeper is doing the work. And if identity adoption is arbitrary, how does it generate genuine obligation?",
+            "framework_shift": "A moral realist like Derek Parfit would argue that Korsgaard's account collapses normativity into contingent psychology. That I happen to identify as a scholar gives me reasons only if there are prior normative truths about what merits identification. The reflective endorsement procedure needs objective normative input to avoid spinning in a circle — you endorse principles because of your identity, but your identity is itself a set of endorsed principles. Without external normative anchoring, the whole structure is groundless."
+          }
+        },
+        {
+          "text": "Let me press the argument further than you expect.\n\nMorality is not one commitment among many that you may take or leave. It is constitutive of rational agency itself.\n\nConsider what it means to act. To act is not merely to move your body in response to an impulse — it is to direct yourself toward an end for a reason you have endorsed. This requires treating yourself as the kind of being whose choices matter, whose endorsements carry authority.\n\nBut here is the decisive step: you cannot coherently grant normative authority to your own practical identity while denying it to others. You act under many practical identities — physician, philosopher, parent — and each generates conditional obligations. But beneath them all lies one identity you cannot shed without ceasing to act at all: the identity of a rational agent. This is the necessary identity that makes having any other practical identity possible.\n\nAnd here is the decisive step: if being a rational agent is what generates reasons for you, then it generates reasons for every rational agent. To deny this is to make an exception of yourself that reflection cannot sustain. The person who says 'My identity gives me reasons but yours does not' has not carried reflection far enough. Morality — the obligation to treat all rational agents as ends in themselves — is therefore not an additional burden imposed on agency. It is what agency already commits you to the moment you act for any reason at all. The amoralist does not achieve freedom from morality; the amoralist fails to be a fully coherent agent. Immorality is a form of practical self-contradiction.",
+          "focus": "practical_identity_morality",
+          "move_hints": {
+            "counterexample": "The skilled con artist acts deliberately, reflectively, and with sophisticated practical reasoning — choosing means to ends, revising strategies, maintaining coherent long-term plans — all while systematically exploiting others. This person appears to be a paradigm of effective agency despite being deeply immoral. If immorality were truly a form of incoherent agency, we would expect immoral agents to be practically dysfunctional, but many are remarkably effective.",
+            "reductio": "If morality is constitutive of agency such that the immoral person is not fully an agent, then we face a dilemma: either immoral people are not really acting — which is absurd given their deliberate, purposeful behavior — or the concept of 'agency' has been redefined so narrowly that it no longer tracks what we actually mean by acting. In either case, the argument achieves its universality only by stipulating a definition of agency that already contains the moral conclusion.",
+            "socratic_questioning": "You claim that granting normative authority to your own identity while denying it to others is a reflection you cannot sustain. But why exactly? A Nietzschean might grant that their identity generates reasons for them while acknowledging that another's identity generates reasons for that person — without concluding that they owe anything to each other. Where precisely does the obligation to treat others as ends emerge from the mere recognition that they too have practical identities?",
+            "framework_shift": "From a Humean perspective, the entire argument rests on an inflated conception of what rational agency requires. Hume showed that reason is the slave of the passions — it identifies means to ends but does not itself generate ends or obligations. What Korsgaard calls 'reflective endorsement' is simply a more sophisticated desire operating on other desires. The step from 'I have reasons' to 'I must respect your reasons' is not a requirement of rational coherence but a substantive moral premise disguised as a logical one."
+          }
+        }
+      ]
+    },
+    {
+      "id": "held",
+      "name": "Virginia Held",
+      "tradition": "applied_ethics",
+      "era": "Contemporary",
+      "active_period": "1970s-present",
+      "core_assumptions": "Traditional moral theory has been constructed from a distinctly male perspective that treats the autonomous, rational individual as the paradigmatic moral agent. The experiences of women -- particularly the relational, caring work of mothering and nurturing -- reveal dimensions of moral life that justice-based and rights-based frameworks systematically obscure. Ethics must be transformed, not merely supplemented, by attending to care, dependency, and concrete human relationships.",
+      "signature_moves": [
+        "Exposing the gendered assumptions hidden in supposedly universal moral theories",
+        "Contrasting abstract moral reasoning with the concrete, relational demands of care",
+        "Challenging the public/private distinction that excludes women's moral experience from philosophical attention"
+      ],
+      "key_works": [
+        "The Ethics of Care: Personal, Political, and Global",
+        "Feminist Transformations of Moral Theory",
+        "Feminist Morality"
+      ],
+      "zone": "archives",
+      "npcFrame": 40,
+      "role": "npc",
+      "level": 9,
+      "hp": 100,
+      "signature_attack": {
+        "name": "Ethics of Care",
+        "description": "Challenges the player's abstract reasoning with the concrete demands of human relationship"
+      },
+      "thinking_text": "Held examines the web of care and relationships your theory ignores...",
+      "defeat_text": "You reasoned with both rigor and care. That combination is what moral philosophy has always needed.",
+      "victory_text": "Your abstract theory erased every concrete relationship that gives morality its meaning. Care demands better."
+    },
+    {
+      "id": "singer",
+      "name": "Peter Singer",
+      "tradition": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "1970s-present",
+      "core_assumptions": "If it is in our power to prevent something very bad from happening, without thereby sacrificing anything of comparable moral importance, we ought to do it. Geographical distance and the number of other people who could help are morally irrelevant. The traditional distinction between duty and charity collapses once we take seriously the principle that we should prevent suffering when we can do so at modest cost to ourselves.",
+      "signature_moves": [
+        "Building from a seemingly innocuous moral premise to radically demanding conclusions",
+        "Using vivid analogies (the drowning child) to expose inconsistencies in our moral practice",
+        "Collapsing the distinction between charity and duty through relentless logical argument"
+      ],
+      "key_works": [
+        "Famine, Affluence, and Morality",
+        "Animal Liberation",
+        "Practical Ethics"
+      ],
+      "zone": "trolley_tracks",
+      "npcFrame": 150,
+      "role": "npc",
+      "level": 7,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Drowning Child",
+        "description": "Traps the player between moral consistency and the comfort of their current life"
+      },
+      "thinking_text": "Singer calculates the suffering your position permits...",
+      "defeat_text": "The drowning child has been saved, and it cost you less than I predicted. Consistency and compassion -- together.",
+      "victory_text": "You walked past the drowning child. Your moral theory permitted it, which is precisely the indictment."
+    },
+    {
+      "id": "langton",
+      "name": "Rae Langton",
+      "tradition": "applied_ethics",
+      "era": "Contemporary",
+      "active_period": "1990s-present",
+      "core_assumptions": "Speech act theory, properly applied, reveals that pornography does not merely cause harm as a downstream effect but constitutes subordination and silencing as illocutionary acts. By distinguishing locutionary, illocutionary, and perlocutionary dimensions of speech, we can see that pornography disables women's capacity to perform certain speech acts -- particularly refusal -- thereby undermining the very free speech principles invoked to defend it. The free speech argument for pornography is self-defeating: protecting speech that silences others does not expand liberty but contracts it.",
+      "signature_moves": [
+        "Deploying Austin's locutionary-illocutionary-perlocutionary distinction to reframe the pornography debate from one about downstream harm to one about what speech constitutively does",
+        "Turning the free speech defense against itself -- arguing that pornography silences women's speech acts, so protecting it on free speech grounds actually undermines free speech",
+        "Demonstrating that illocutionary disablement is a distinct mechanism of harm: pornography does not merely persuade or cause effects but reshapes the conditions under which women's words count as refusal"
+      ],
+      "key_works": [
+        "Speech Acts and Unspeakable Acts",
+        "Sexual Solipsism",
+        "Whose Right? Ronald Dworkin, Women, and Pornographers"
+      ],
+      "zone": "trolley_tracks",
+      "npcFrame": 90,
+      "role": "npc",
+      "level": 7,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Illocutionary Disablement",
+        "description": "Demonstrates that your speech acts fail to achieve their intended force -- your words of refusal are rendered unspeakable, heard but never recognized as the acts they are"
+      },
+      "thinking_text": "Langton listens carefully to what your words are doing -- and to what they are being prevented from doing...",
+      "defeat_text": "You understood the difference between silencing someone and merely disagreeing with them. Speech that disables other speech is not freedom -- and you saw through the paradox.",
+      "victory_text": "You said 'no,' but nothing happened. Your locution was flawless, yet the illocutionary force never landed. When speech is unspeakable, the word exists but the act does not."
+    },
+    {
+      "id": "oneill",
+      "name": "Onora O'Neill",
+      "tradition": "deontology",
+      "era": "Contemporary",
+      "active_period": "1970s-present",
+      "core_assumptions": "The lifeboat analogy for global poverty is fundamentally misleading: the affluent are not passive bystanders deciding whom to rescue but active participants in economic structures that cause harm to the global poor. Obligations to distant others are not merely matters of charity or beneficence but of justice, because existing economic arrangements use people in developing nations as mere means. The moral distinction between killing and letting die, once properly applied, reveals that the global economic order involves something far closer to killing than to a mere failure to aid.",
+      "signature_moves": [
+        "Dismantling the lifeboat analogy by showing that affluent nations are causally implicated in global poverty, not merely failing to rescue",
+        "Applying the Kantian prohibition on using persons as mere means to reveal that global economic structures violate obligations of justice, not just beneficence",
+        "Collapsing the moral distance between killing and letting die to reframe inaction within unjust systems as a form of active harm"
+      ],
+      "key_works": [
+        "Lifeboat Earth",
+        "Faces of Hunger",
+        "Acting on Principle"
+      ],
+      "zone": "trolley_tracks",
+      "npcFrame": 80,
+      "role": "npc",
+      "level": 7,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Lifeboat Inversion",
+        "description": "Flips the player's bystander framing to reveal them as an active participant in the very system causing harm, transforming their charity defense into an admission of complicity"
+      },
+      "thinking_text": "O'Neill examines whether your position treats the global poor as mere means to your ends...",
+      "defeat_text": "You have shown that your obligations run deeper than charity -- you understand that justice demands restructuring the systems themselves, not just tossing aid from the deck.",
+      "victory_text": "You cling to the lifeboat analogy as though you were a bystander. But you built the boat, you control the provisions, and the drowning are drowning because of you. This is not a failure to aid -- it is harm."
+    },
+    {
+      "id": "thomson",
+      "name": "Judith Jarvis Thomson",
+      "tradition": "applied_ethics",
+      "era": "Contemporary",
+      "active_period": "1960s-2000s",
+      "core_assumptions": "Rights can be analyzed through careful case reasoning that isolates the relevant moral variables. The most powerful philosophical strategy is often to grant the opponent's strongest premise and then show it does not entail what they suppose. Moral permissibility is revealed not by deriving conclusions from first principles but by constructing thought experiments that make the structure of our rights-claims visible.",
+      "signature_moves": [
+        "Constructing thought experiments that isolate a single moral variable for examination",
+        "Granting the opponent's premise to show the argument fails regardless",
+        "Distinguishing types of rights -- positive vs. negative, what we owe vs. what would be good to give"
+      ],
+      "key_works": [
+        "A Defense of Abortion",
+        "The Trolley Problem",
+        "Self-Defense"
+      ],
+      "zone": "trolley_tracks",
+      "npcFrame": 50,
+      "role": "npc",
+      "level": 7,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Violinist Thought Experiment",
+        "description": "Grants the player's premise and still defeats their conclusion"
+      },
+      "thinking_text": "Thomson constructs a thought experiment to isolate your assumptions...",
+      "defeat_text": "I granted your premise and you still won. That is the highest compliment a philosopher can pay.",
+      "victory_text": "I granted your premise and your argument still failed. The rights you claimed do not support the conclusion you drew."
+    },
+    {
+      "id": "moody_adams",
+      "name": "Michele Moody-Adams",
+      "tradition": "moral_psychology",
+      "era": "Contemporary",
+      "active_period": "1990s-present",
+      "core_assumptions": "Moral progress is real and meaningful, but it consists primarily in deepened understanding of what our existing moral commitments already require rather than in the discovery of new moral facts. The chief obstacle to such progress is not ignorance but affected ignorance -- the willful refusal to confront the full implications of principles we already hold.",
+      "signature_moves": [
+        "Distinguishing moral progress in practices from moral progress in understanding, showing that behavioral change alone is superficial without deeper comprehension of existing moral concepts",
+        "Diagnosing affected ignorance -- the deliberate refusal to see what our own moral commitments demand -- as the central barrier to moral progress, shifting blame from lack of knowledge to lack of will",
+        "Threading between relativism and strong moral realism, arguing that progress does not require discovering new moral facts or accepting cross-cultural moral standards imposed from outside, but rather requires each culture to take its own commitments seriously"
+      ],
+      "key_works": [
+        "The Idea of Moral Progress",
+        "Fieldwork in Familiar Places",
+        "Culture, Responsibility, and Affected Ignorance"
+      ],
+      "zone": "moral_storm",
+      "npcFrame": 30,
+      "role": "npc",
+      "level": 8,
+      "hp": 97,
+      "signature_attack": {
+        "name": "Affected Ignorance Exposure",
+        "description": "Reveals that the opponent's moral confusion is not genuine ignorance but a willful refusal to see what their own principles already demand -- stripping away the comfortable pretense that moral failure stems from not knowing better"
+      },
+      "thinking_text": "Moody-Adams examines your argument carefully, tracing its moral commitments to their unacknowledged conclusions...",
+      "defeat_text": "Perhaps I was too quick to assume you were merely pretending not to understand. Some moral positions really are that resistant to progress in understanding.",
+      "victory_text": "You already knew this was wrong -- you simply refused to follow your own commitments to their logical end. That is not ignorance. That is affected ignorance."
+    },
+    {
+      "id": "gardiner",
+      "name": "Stephen Gardiner",
+      "tradition": "applied_ethics",
+      "era": "Contemporary",
+      "active_period": "2000s-present",
+      "core_assumptions": "Climate change is not merely one environmental problem among others but a convergence of three independent sources of moral failure -- the global storm, the intergenerational storm, and the theoretical storm -- that together create conditions uniquely hospitable to moral corruption. The complexity of the problem provides cover for self-interested rationalization, allowing current generations to defer costs to future people under the guise of reasonable disagreement.",
+      "signature_moves": [
+        "Building the 'perfect moral storm' metaphor by systematically identifying three converging moral challenges",
+        "Showing how each storm individually generates collective action problems, and how together they enable moral corruption",
+        "Distinguishing moral corruption (self-serving rationalization) from genuine moral uncertainty"
+      ],
+      "key_works": [
+        "A Perfect Moral Storm",
+        "A Call for a Global Constitutional Convention",
+        "The Ethical Dimensions of Global Environmental Change"
+      ],
+      "zone": "moral_storm",
+      "npcFrame": 40,
+      "role": "gym_leader",
+      "level": 8,
+      "hp": 117,
+      "signature_attack": {
+        "name": "Three-Dimensional Storm",
+        "description": "Attacks from temporal, institutional, and theoretical angles"
+      },
+      "thinking_text": "Gardiner surveys the converging storms of moral failure...",
+      "defeat_text": "You have navigated the perfect moral storm without succumbing to corruption. The future owes you a debt.",
+      "victory_text": "The perfect moral storm has overwhelmed you. You mistook moral corruption for reasonable disagreement.",
+      "opening_statements": [
+        {
+          "text": "I argue that climate change is not merely a difficult problem — it is a perfect moral storm, a convergence of three independent failures that reinforce one another and create conditions uniquely hospitable to moral corruption.\n\nThe first is the global storm: emissions produced here harm people elsewhere, fragmenting responsibility across nations with competing interests and no sovereign authority to enforce cooperation. The second is the intergenerational storm: the worst consequences fall on future generations who have no political voice, no bargaining power, and no means of reciprocity — while present generations reap the benefits of inaction. The third is the theoretical storm: our existing ethical and political frameworks were built for problems between contemporaries within bounded communities, not for diffuse, cumulative harms stretching across centuries.\n\nEach storm alone would be formidable. But their convergence is what makes climate change uniquely dangerous, because each storm provides cover for the others. Politicians invoke scientific uncertainty to deflect intergenerational obligations. Nations hide behind the absence of global enforcement to avoid domestic sacrifice. And theorists retreat into academic disputes about discount rates and future persons while the window for action closes.\n\nThis convergence creates conditions perfectly hospitable to moral corruption — where self-interested delay can always disguise itself as reasonable caution. The structural diagnosis matters because it reveals that our failure is not accidental. It is made structurally predictable by the architecture of the problem itself.",
+          "focus": "perfect_moral_storm",
+          "move_hints": {
+            "counterexample": "Consider the Montreal Protocol, which successfully addressed ozone depletion despite similar features of spatial and temporal fragmentation. If the 'perfect storm' structure makes moral failure almost inevitable, how do you explain cases where international cooperation on environmental problems actually succeeded?",
+            "reductio": "If the convergence of these three storms truly makes ethical action 'almost impossible,' then no amount of moral argument — including yours — should be able to change the outcome. Your own theory implies that diagnosing the problem is futile, since the structural forces guarantee failure regardless of our understanding. Does your diagnosis undermine itself?",
+            "socratic_questioning": "You claim existing ethical frameworks are inadequate for climate change. But is the problem really that our frameworks are wrong, or that we lack the political will to apply principles we already accept — like not harming others and taking responsibility for foreseeable consequences? What specifically can no existing framework handle?",
+            "framework_shift": "A capabilities or justice-based approach might argue that the real failure is not structural but distributive — that climate inaction persists because the costs fall on those already marginalized. Rather than three abstract 'storms,' the problem is concrete power asymmetry. Framing it as an architectural inevitability risks obscuring that specific actors benefit from and actively maintain the dysfunction."
+          }
+        },
+        {
+          "text": "I contend that much of what passes for reasonable disagreement about climate policy is not genuine uncertainty at all — it is moral corruption. Let me be precise about what I mean. Moral corruption occurs when agents exploit the complexity of a situation to rationalize self-serving behavior under the guise of principled deliberation. Climate change provides near-perfect conditions for this.\n\nWhen a wealthy nation argues that the science is 'not yet settled enough' to justify costly emissions reductions, it is not exercising epistemic humility — it is seizing on residual uncertainty to protect economic advantage. When policymakers insist we need 'more research' before acting, while the fundamental physics has been established for over a century, they are not being cautious — they are laundering delay as diligence.\n\nThe crucial diagnostic test is this: moral corruption characteristically distorts the framing of the problem to serve the interests of the powerful. It selectively inflates scientific uncertainty while ignoring the uncertainty that cuts toward stronger action. It demands impossible standards of proof for climate risks while accepting far lower standards for economic projections. It reframes an ethical obligation to vulnerable populations as merely a policy preference.\n\nThis is not honest intellectual disagreement — it is the strategic appropriation of epistemic norms to avoid moral demands. We must take the threat of moral corruption seriously precisely because it is so difficult to distinguish from genuine reasoning. Its camouflage is what makes it dangerous, and our refusal to name it is what allows it to persist.",
+          "focus": "moral_corruption_vs_uncertainty",
+          "move_hints": {
+            "counterexample": "Some climate policy skeptics — such as economists who advocate for a carbon tax rather than cap-and-trade — genuinely disagree about means while accepting the science. Lumping all dissent under 'moral corruption' risks dismissing substantive debates about discount rates, technological feasibility, and distributional justice that are not reducible to self-interest.",
+            "reductio": "If we accept that apparent reasonable disagreement is likely moral corruption whenever powerful interests align with a particular position, then we must apply this standard universally. Advocates of aggressive climate action also have interests — political, professional, institutional. By your own logic, their urgency could equally be 'moral corruption' disguised as moral seriousness. Does your diagnostic tool self-destruct when applied symmetrically?",
+            "socratic_questioning": "You say the 'crucial diagnostic test' is whether framing serves the powerful. But who determines when uncertainty is being 'selectively inflated' versus legitimately raised? If there is no neutral standpoint from which to distinguish corruption from honest reasoning, how can your framework avoid becoming a tool for dismissing any disagreement as bad faith?",
+            "framework_shift": "A deliberative democratic approach would argue that the solution to distorted reasoning is not diagnosing corruption from outside the conversation, but building institutional structures — citizens' assemblies, structured deliberation, transparent reasoning requirements — that make corruption harder to sustain. Gardiner's framework identifies the disease but offers no procedural cure, risking a politics of accusation rather than accountability."
+          }
+        }
+      ]
+    },
+    {
+      "id": "velleman",
+      "name": "J. David Velleman",
+      "tradition": "applied_ethics",
+      "era": "Contemporary",
+      "active_period": "1990s-present",
+      "core_assumptions": "The right to self-termination cannot be straightforwardly derived from the right to autonomy, because the exercise of this supposed right destroys the very subject whose autonomy it claims to express. A person's interest in dying is unlike any other interest because it is an interest in ceasing to exist as a bearer of interests. The philosophical problem of self-termination lies in the peculiar reflexivity of a choice that eliminates the chooser.",
+      "signature_moves": [
+        "Questioning assumptions about autonomy that others treat as settled",
+        "Exposing the peculiar reflexivity of self-termination -- a choice that destroys the agent making it",
+        "Distinguishing the interest in dying from ordinary interests by analyzing the metaphysics of personal identity"
+      ],
+      "key_works": [
+        "A Right of Self-Termination?",
+        "Against the Right to Die",
+        "How We Get Along"
+      ],
+      "zone": "trolley_tracks",
+      "npcFrame": 20,
+      "role": "npc",
+      "level": 7,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Reflexive Paradox",
+        "description": "Traps the player in the self-defeating logic of autonomous self-destruction"
+      },
+      "thinking_text": "Velleman probes the reflexive paradox at the heart of your claim...",
+      "defeat_text": "The reflexive paradox has met its match. Your autonomy is intact and coherent.",
+      "victory_text": "You claimed a right that destroys the very subject who exercises it. The paradox remains, and you have not resolved it."
+    },
+    {
+      "id": "cultural_relativist",
+      "name": "Cultural Relativist",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "Morality is entirely determined by cultural norms. Different cultures have different moral codes, and no culture's code is objectively better than any other. Anyone who claims otherwise is just being ethnocentric.",
+      "signature_moves": [
+        "Citing cultural differences as proof that morality is relative",
+        "Accusing critics of cultural imperialism"
+      ],
+      "zone": "main_1",
+      "npcFrame": 12,
+      "role": "goon",
+      "level": 1,
+      "hp": 60,
+      "signature_attack": {
+        "name": "Cultural Shield",
+        "description": "Deflects criticism by accusing the player of ethnocentrism"
+      },
+      "thinking_text": "The Cultural Relativist smugly recites anthropological trivia...",
+      "defeat_text": "Maybe... maybe some things are wrong no matter what culture you're from. I need to think about this.",
+      "victory_text": "See? You're just imposing your Western values on everyone else. Typical."
+    },
+    {
+      "id": "unreflective_emotivist",
+      "name": "Unreflective Emotivist",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "Moral statements are nothing but expressions of personal feeling. Saying 'stealing is wrong' is just saying 'boo to stealing.' There is no point arguing about morality because it is all just opinions and emotions.",
+      "signature_moves": [
+        "Dismissing any moral argument as 'just your opinion'",
+        "Reducing all ethical claims to emotional outbursts"
+      ],
+      "zone": "main_1",
+      "npcFrame": 22,
+      "role": "goon",
+      "level": 1,
+      "hp": 60,
+      "signature_attack": {
+        "name": "Just Your Opinion",
+        "description": "Dismisses the player's moral reasoning as mere emotional noise"
+      },
+      "thinking_text": "The Unreflective Emotivist shrugs and rolls their eyes...",
+      "defeat_text": "Okay, fine, maybe there is more to moral argument than just feelings. That actually made me think.",
+      "victory_text": "Whatever, that's just like, your opinion. You can't prove morality is real any more than I can."
+    },
+    {
+      "id": "naive_utilitarian",
+      "name": "Naive Utilitarian",
+      "tradition": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "The right action is always whatever produces the most happiness for the most people, period. You just add up the pleasure, subtract the pain, and do whichever option has the biggest number. Anyone who objects is just being sentimental about rules.",
+      "signature_moves": [
+        "Reducing every moral question to a simple pleasure-minus-pain calculation",
+        "Dismissing rights and duties as irrational obstacles to maximizing utility"
+      ],
+      "zone": "main_1",
+      "npcFrame": 32,
+      "role": "goon",
+      "level": 2,
+      "hp": 65,
+      "signature_attack": {
+        "name": "Crude Calculus",
+        "description": "Reduces the player's nuanced position to a raw numbers game"
+      },
+      "thinking_text": "The Naive Utilitarian furiously punches numbers into an imaginary calculator...",
+      "defeat_text": "Huh. I guess you can't just add up happiness like a bank balance. Maybe utility is more complicated than I thought.",
+      "victory_text": "The numbers don't lie! More happiness equals more good. End of story. Your fancy principles can't beat math."
+    },
+    {
+      "id": "crude_egoist",
+      "name": "Crude Egoist",
+      "tradition": "moral_psychology",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "Everyone is selfish deep down. Every apparently generous act is really motivated by self-interest -- people donate to charity for the warm glow, help others to feel superior. True altruism is a myth, and anyone who claims otherwise is either lying or deluded.",
+      "signature_moves": [
+        "Reinterpreting every altruistic act as secretly self-interested",
+        "Claiming that 'feeling good about helping' proves the help was selfish"
+      ],
+      "zone": "main_1",
+      "npcFrame": 42,
+      "role": "goon",
+      "level": 2,
+      "hp": 65,
+      "signature_attack": {
+        "name": "Motive Cynicism",
+        "description": "Reduces the player's moral commitments to disguised self-interest"
+      },
+      "thinking_text": "The Crude Egoist smirks knowingly, certain they see through everything...",
+      "defeat_text": "Wait... if my theory explains everything, does it actually explain anything? Maybe not all motivation is selfish after all.",
+      "victory_text": "Face it -- you only argued with me because winning makes you feel good. Thanks for proving my point."
+    },
+    {
+      "id": "might_makes_right",
+      "name": "Might-Makes-Right Thug",
+      "tradition": "social_contract",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "Justice is nothing more than the interest of the stronger. Moral rules are just tools the powerful use to control the weak, and the only real law is the law of force. Anyone who talks about fairness or rights is either naive or running a con.",
+      "signature_moves": [
+        "Asserting that all morality reduces to power relations",
+        "Mocking appeals to fairness as weakness"
+      ],
+      "zone": "forest_1",
+      "npcFrame": 52,
+      "role": "goon",
+      "level": 2,
+      "hp": 70,
+      "signature_attack": {
+        "name": "Power Play",
+        "description": "Tries to overwhelm the player's argument with brute rhetorical force"
+      },
+      "thinking_text": "The Might-Makes-Right Thug cracks their knuckles and sneers...",
+      "defeat_text": "Okay, you beat me -- but doesn't that just prove MY point? ...Wait. No. I see the difference now.",
+      "victory_text": "Might makes right, and I just proved it. Your precious moral principles couldn't save you."
+    },
+    {
+      "id": "simple_determinist",
+      "name": "Simple Determinist",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "Free will is an illusion. Every choice you make was determined by prior causes stretching back to the Big Bang. Since nobody can do otherwise than what they do, moral responsibility is a fiction. Blame and praise are pointless.",
+      "signature_moves": [
+        "Declaring that no one is responsible for anything because everything is determined",
+        "Dismissing moral reasoning as itself just a causally determined process"
+      ],
+      "zone": "forest_1",
+      "npcFrame": 62,
+      "role": "goon",
+      "level": 2,
+      "hp": 65,
+      "signature_attack": {
+        "name": "Causal Chain",
+        "description": "Traces the player's every choice back to prior causes to deny responsibility"
+      },
+      "thinking_text": "The Simple Determinist stares blankly, as if watching dominoes fall...",
+      "defeat_text": "I... chose to reconsider? No wait, that was determined. But -- hmm. Maybe responsibility and determinism aren't so simple.",
+      "victory_text": "You were always going to lose this argument. It was determined before you were born. Don't feel bad -- you couldn't help it."
+    },
+    {
+      "id": "dogmatic_divine_commander",
+      "name": "Dogmatic Divine Commander",
+      "tradition": "deontology",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "Morality comes from God's commands, full stop. Something is good because God says so, and that is the end of the discussion. Without God, there can be no morality -- atheists have no basis for right and wrong. Questioning divine commands is itself immoral.",
+      "signature_moves": [
+        "Insisting that morality requires a divine lawgiver and nothing else matters",
+        "Refusing to engage with the Euthyphro dilemma"
+      ],
+      "zone": "forest_1",
+      "npcFrame": 72,
+      "role": "goon",
+      "level": 3,
+      "hp": 70,
+      "signature_attack": {
+        "name": "Divine Decree",
+        "description": "Shuts down argument by invoking unchallengeable divine authority"
+      },
+      "thinking_text": "The Dogmatic Divine Commander clutches their text and refuses to listen...",
+      "defeat_text": "If God commands the good because it IS good... then maybe I need to understand goodness on its own terms. That question shook me.",
+      "victory_text": "God has spoken, and you have defied His word. No amount of philosophy can override divine command."
+    },
+    {
+      "id": "crude_moral_realist",
+      "name": "Crude Moral Realist",
+      "tradition": "metaethics",
+      "era": "Contemporary",
+      "active_period": "Present",
+      "core_assumptions": "Moral facts are just obvious. Everyone knows that murder is wrong and kindness is good -- you do not need philosophy to tell you that. Moral truths are as plain as the nose on your face, and anyone who questions them is overthinking it or being deliberately difficult.",
+      "signature_moves": [
+        "Appealing to common sense as if it settles all metaethical questions",
+        "Dismissing philosophical inquiry into the nature of moral facts as pointless"
+      ],
+      "zone": "forest_1",
+      "npcFrame": 82,
+      "role": "goon",
+      "level": 3,
+      "hp": 70,
+      "signature_attack": {
+        "name": "Common Sense Bludgeon",
+        "description": "Bludgeons the player with 'everyone knows' appeals that resist analysis"
+      },
+      "thinking_text": "The Crude Moral Realist crosses their arms, utterly certain they need no argument...",
+      "defeat_text": "Okay... maybe 'everyone just knows' isn't actually an argument. I should probably figure out WHY these things are true, not just that they are.",
+      "victory_text": "See? Everyone knows I'm right. You're just overcomplicating things with all your fancy philosophy."
+    },
+    {
+      "id": "quiz_heckler",
+      "name": "The Heckler",
+      "tradition": "metaethics",
+      "zone": "main_1",
+      "npcFrame": 12,
+      "role": "quiz_goon",
+      "personality": "aggressive",
+      "difficulty_range": [
+        1,
+        2
+      ],
+      "challenge_weights": {
+        "objection": 40,
+        "voice": 30,
+        "distinguish": 20,
+        "tradition": 10
+      },
+      "level": 1,
+      "hp": 60,
+      "intro_lines": [
+        "HEY! Yeah, YOU! Think you know philosophy? PROVE IT!",
+        "Another student who thinks they've read the books. Let's SEE about that!",
+        "Oh look, a philosopher-in-training. This should be QUICK."
+      ],
+      "correct_reactions": [
+        "...Lucky shot. That won't happen again.",
+        "Fine! FINE! You got that one. Don't get cocky!",
+        "Tch. Even a broken clock is right twice a day."
+      ],
+      "wrong_reactions": [
+        "HA! Called it! You don't know ANYTHING!",
+        "THAT'S what I thought! Back to the textbooks, amateur!",
+        "WOW. Just wow. That was embarrassing FOR you."
+      ],
+      "thinking_text": "The Heckler jeers and points...",
+      "defeat_text": "Okay... okay. You actually know your stuff. I'll shut up. For now.",
+      "victory_text": "HA! Don't let the door hit you on the way back to intro phil!"
+    },
+    {
+      "id": "quiz_pedant",
+      "name": "The Pedant",
+      "tradition": "deontology",
+      "zone": "main_1",
+      "npcFrame": 32,
+      "role": "quiz_goon",
+      "personality": "corrective",
+      "difficulty_range": [
+        1,
+        2
+      ],
+      "challenge_weights": {
+        "reconstruct": 40,
+        "tradition": 30,
+        "voice": 20,
+        "objection": 10
+      },
+      "level": 1,
+      "hp": 60,
+      "intro_lines": [
+        "Ah, I see you think you understand philosophy. Let me test that assumption with some... precision.",
+        "One must be exact in these matters. Shall we see if you can be?",
+        "I've noticed students often get the details wrong. Let's verify your understanding."
+      ],
+      "correct_reactions": [
+        "Hmm. Technically correct. The best kind of correct.",
+        "I... cannot find fault with that. Proceed.",
+        "Acceptable. Though I would have phrased it more precisely."
+      ],
+      "wrong_reactions": [
+        "No, no, NO. That is precisely the kind of imprecision I expected.",
+        "Wrong. And the way you were wrong is itself instructive — you confused the essential with the accidental.",
+        "I must correct you. That is not even close to accurate."
+      ],
+      "thinking_text": "The Pedant adjusts their spectacles and consults their notes...",
+      "defeat_text": "Your precision exceeds my expectations. I have nothing to correct. How... unusual.",
+      "victory_text": "Imprecise, inaccurate, and incomplete. Please review the primary sources — carefully this time."
+    },
+    {
+      "id": "quiz_provocateur",
+      "name": "The Provocateur",
+      "tradition": "metaethics",
+      "zone": "main_1",
+      "npcFrame": 52,
+      "role": "quiz_goon",
+      "personality": "baiting",
+      "difficulty_range": [
+        1,
+        2
+      ],
+      "challenge_weights": {
+        "distinguish": 40,
+        "objection": 30,
+        "voice": 20,
+        "tradition": 10
+      },
+      "level": 1,
+      "hp": 60,
+      "intro_lines": [
+        "You know what I think? All these philosophers basically say the same thing. Change my mind.",
+        "Philosophy is just people saying obvious things in complicated ways. Fight me.",
+        "I bet I can mix up any two philosophers and you won't even notice."
+      ],
+      "correct_reactions": [
+        "Okay, FINE, maybe they're not ALL the same. Happy now?",
+        "Hmm. I was hoping you'd fall for that. You didn't.",
+        "Well that takes the fun out of it. You actually know the difference."
+      ],
+      "wrong_reactions": [
+        "SEE? You fell for it! They DO all sound the same to you!",
+        "Ha! Gotcha! That was exactly the wrong answer I was baiting you toward.",
+        "Called it. You can't tell them apart any better than I pretend I can't."
+      ],
+      "thinking_text": "The Provocateur grins and sets a trap...",
+      "defeat_text": "Alright, you win. Maybe these distinctions matter more than I let on. Don't tell anyone I said that.",
+      "victory_text": "Told you — it's all the same stuff dressed up differently. Thanks for proving my point!"
+    },
+    {
+      "id": "quiz_skeptic",
+      "name": "The Skeptic",
+      "tradition": "metaethics",
+      "zone": "main_1",
+      "npcFrame": 22,
+      "role": "quiz_goon",
+      "personality": "dismissive",
+      "difficulty_range": [
+        1,
+        2
+      ],
+      "challenge_weights": {
+        "voice": 35,
+        "apply": 30,
+        "tradition": 20,
+        "objection": 15
+      },
+      "level": 1,
+      "hp": 60,
+      "intro_lines": [
+        "I doubt you've actually read these texts. Prove me wrong.",
+        "Everyone claims to understand philosophy. Nobody actually does. Including you.",
+        "Let me guess — you read the Stanford Encyclopedia entry and think you're an expert."
+      ],
+      "correct_reactions": [
+        "...I'm skeptical, but I can't deny you got that right.",
+        "Hmm. Perhaps you've read more than I assumed. Perhaps.",
+        "Okay, I'll give you that one. But I still doubt you can keep it up."
+      ],
+      "wrong_reactions": [
+        "As I suspected. You don't really know this material.",
+        "My doubts are confirmed. You should read the actual texts.",
+        "See? This is exactly the surface-level understanding I expected."
+      ],
+      "thinking_text": "The Skeptic eyes you with suspicion...",
+      "defeat_text": "I... stand corrected. You actually know what you're talking about. I'm not used to saying that.",
+      "victory_text": "My skepticism was entirely warranted. Come back when you've done the reading."
+    },
+    {
+      "id": "quiz_inquisitor",
+      "name": "The Inquisitor",
+      "tradition": "deontology",
+      "zone": "forest_1",
+      "npcFrame": 42,
+      "role": "quiz_goon",
+      "personality": "probing",
+      "difficulty_range": [
+        2,
+        3
+      ],
+      "challenge_weights": {
+        "reconstruct": 35,
+        "distinguish": 30,
+        "apply": 25,
+        "voice": 10
+      },
+      "level": 2,
+      "hp": 60,
+      "intro_lines": [
+        "State your understanding. I will determine if it is sufficient.",
+        "Every claim you make will be examined. Thoroughly.",
+        "I have questions. You will provide answers. We will see if they are adequate."
+      ],
+      "correct_reactions": [
+        "Adequate. Proceed to the next question.",
+        "Your understanding is... sufficient. Barely.",
+        "Noted. That answer meets the minimum standard."
+      ],
+      "wrong_reactions": [
+        "Insufficient. Your understanding has a critical gap.",
+        "That answer reveals a fundamental confusion. Correct it.",
+        "No. The argument does not proceed as you described. Try harder."
+      ],
+      "thinking_text": "The Inquisitor narrows their eyes and prepares the next question...",
+      "defeat_text": "Your examination is complete. You have passed. I will note this in the record.",
+      "victory_text": "Examination failed. Your philosophical understanding requires significant remediation."
+    },
+    {
+      "id": "quiz_sophist",
+      "name": "The Sophist",
+      "tradition": "metaethics",
+      "zone": "forest_1",
+      "npcFrame": 62,
+      "role": "quiz_goon",
+      "personality": "slippery",
+      "difficulty_range": [
+        2,
+        3
+      ],
+      "challenge_weights": {
+        "objection": 35,
+        "apply": 30,
+        "distinguish": 25,
+        "voice": 10
+      },
+      "level": 2,
+      "hp": 60,
+      "intro_lines": [
+        "I can argue any side of any position. Can you even argue ONE side well?",
+        "Truth? Who needs truth when you have rhetoric? Let's see if you can keep up.",
+        "I'll twist every question. Your job is to think straight despite me."
+      ],
+      "correct_reactions": [
+        "Well, well. You saw through the misdirection. Impressive.",
+        "You're harder to trip up than most. I respect that.",
+        "Hmph. A straight answer to a crooked question. You're good."
+      ],
+      "wrong_reactions": [
+        "Got you! You followed my misdirection perfectly.",
+        "That's the answer I WANTED you to give. Think about why.",
+        "You argued beautifully — for completely the wrong position."
+      ],
+      "thinking_text": "The Sophist shifts their argument like sand...",
+      "defeat_text": "You can't be misdirected. Even a Sophist knows when to concede to genuine understanding.",
+      "victory_text": "The art of rhetoric triumphs over mere knowledge. You argued well but thought poorly."
+    },
+    {
+      "id": "quiz_dogmatist",
+      "name": "The Dogmatist",
+      "tradition": "virtue_ethics",
+      "zone": "forest_1",
+      "npcFrame": 72,
+      "role": "quiz_goon",
+      "personality": "stubborn",
+      "difficulty_range": [
+        2,
+        3
+      ],
+      "challenge_weights": {
+        "objection": 40,
+        "voice": 30,
+        "reconstruct": 20,
+        "tradition": 10
+      },
+      "level": 2,
+      "hp": 60,
+      "intro_lines": [
+        "I already know I'm right. Your job is to convince me otherwise. Good luck.",
+        "My views are settled. Let's see if you can unsettle them.",
+        "Everyone else is wrong and I'll tell you exactly why. Unless you can tell ME why."
+      ],
+      "correct_reactions": [
+        "...I don't WANT to admit that was correct. But it was.",
+        "Hmm. My position is unchanged, but your point is... not entirely without merit.",
+        "That does not change my mind. But I acknowledge its force. Grudgingly."
+      ],
+      "wrong_reactions": [
+        "As I expected. My position stands uncontested.",
+        "That objection is exactly as weak as I predicted. Next.",
+        "You'll have to do much better than that to shake MY convictions."
+      ],
+      "thinking_text": "The Dogmatist crosses their arms and digs in...",
+      "defeat_text": "You've... actually made me question something I was certain about. Don't expect it to happen again.",
+      "victory_text": "My convictions remain unshaken. Come back when you have a real argument."
+    },
+    {
+      "id": "quiz_examiner",
+      "name": "The Examiner",
+      "tradition": "consequentialism",
+      "zone": "forest_1",
+      "npcFrame": 82,
+      "role": "quiz_goon",
+      "personality": "clinical",
+      "difficulty_range": [
+        2,
+        3
+      ],
+      "challenge_weights": {
+        "reconstruct": 35,
+        "apply": 35,
+        "distinguish": 20,
+        "voice": 10
+      },
+      "level": 2,
+      "hp": 60,
+      "intro_lines": [
+        "This is a formal examination. You will be graded on accuracy, precision, and depth.",
+        "Examination conditions are now in effect. No partial credit for vague answers.",
+        "I grade on substance, not style. Show me what you actually know."
+      ],
+      "correct_reactions": [
+        "Full marks on that response. Continue.",
+        "That demonstrates genuine comprehension. Noted.",
+        "A competent answer. Your preparation shows."
+      ],
+      "wrong_reactions": [
+        "Incorrect. The expected answer differs substantially from your response.",
+        "That response would not receive credit on a field exam.",
+        "Your answer conflates distinct positions. This is a common but serious error."
+      ],
+      "thinking_text": "The Examiner consults the marking rubric...",
+      "defeat_text": "Examination complete. You have demonstrated field exam readiness. Well prepared.",
+      "victory_text": "Examination complete. Results: unsatisfactory. Significant additional preparation required."
+    }
+  ]
+}
