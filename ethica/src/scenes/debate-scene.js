@@ -286,9 +286,48 @@ export class DebateScene extends BaseScene {
   #currentMoveOptions;
   /** @type {string|null} Pre-fill text for TEXT_INPUT when using a toolkit item */
   #toolkitPrefill;
+  /** @type {Array<{speaker: string, label: string, text: string}>} full battle transcript (cleared per battle) */
+  #transcript;
+  /** @type {{label: string, text: string}|null} live transcript entry the philosopher stream appends into */
+  #transcriptPhilEntry;
+  /** @type {HTMLDivElement|null} transcript DOM overlay */
+  #transcriptOverlay;
+  /** @type {Function|null} transcript overlay key handler (capture-phase) */
+  #transcriptKeyHandler;
+  /** @type {Element|null} element focused before the transcript opened (restored on close) */
+  #transcriptPrevFocus;
+  /** @type {Phaser.GameObjects.Text|null} the "TRANSCRIPT [T]" affordance */
+  #transcriptButton;
+  /** @type {Phaser.Input.Keyboard.Key|undefined} */
+  #transcriptKey;
+  /** @type {boolean} guard: toolkit/ally "[Press SPACE to continue]" gate is pending — the buffered stream belongs to the not-yet-revealed philosopher response, so the SPACE flush must not consume it */
+  #deployGatePending;
 
   constructor() {
     super({ key: SCENE_KEYS.DEBATE_SCENE });
+  }
+
+  /**
+   * TEST HOOK (read-only): snapshot of debate state + the player-visible text
+   * objects, used by the E2E suite to assert on what is actually rendered.
+   * Not used by game code.
+   * @returns {object}
+   */
+  get testSnapshot() {
+    return {
+      state: this.#stateMachine ? this.#stateMachine.currentStateName : null,
+      dialogue: this.#dialogueText ? this.#dialogueText.text : '',
+      status: this.#statusText ? this.#statusText.text : '',
+      statusVisible: this.#statusText ? this.#statusText.alpha > 0 : false,
+      infoPane: this.#battleMenu ? this.#battleMenu.infoPaneText : '',
+      streamBufferLen: this.#streamBuffer ? this.#streamBuffer.length : 0,
+      inputLocked: this._controls ? this._controls.isInputLocked : null,
+      exchanges: this.#exchanges,
+      bagOpen: !!this.#bagOverlay,
+      bagTab: this.#bagTab,
+      bagIndex: this.#bagScrollIndex,
+      transcript: this.#transcript ? this.#transcript.map((e) => ({ label: e.label, text: e.text })) : [],
+    };
   }
 
   /**
@@ -334,6 +373,13 @@ export class DebateScene extends BaseScene {
     this.#pendingMoveSuggestions = null;
     this.#currentMoveOptions = MOVE_TYPES;
     this.#toolkitPrefill = null;
+    this.#transcript = [];
+    this.#transcriptPhilEntry = null;
+    this.#transcriptOverlay = null;
+    this.#transcriptKeyHandler = null;
+    this.#transcriptPrevFocus = null;
+    this.#transcriptButton = null;
+    this.#deployGatePending = false;
     this.#prevPhilHp = this.#maxPhilosopherHp;
     this.#prevPlayerHp = this.#maxPlayerHp;
     this.#nineSlice = new NineSlice({
@@ -349,6 +395,10 @@ export class DebateScene extends BaseScene {
 
     // --- Keyboard ---
     this.#escKey = this.input.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+    // T toggles the transcript overlay. No key capture: while the argument
+    // textarea has focus its stopPropagation keeps Phaser (and this key) from
+    // seeing keystrokes, so typing the letter T still works.
+    this.#transcriptKey = this.input.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.T, false);
 
     // --- Background ---
     this.#background = new Background(this);
@@ -440,6 +490,22 @@ export class DebateScene extends BaseScene {
       .setAlpha(0)
       .setDepth(10);
 
+    // --- Transcript affordance (top-left, always available during battle) ---
+    this.#transcriptButton = this.add
+      .text(20, 8, 'TRANSCRIPT [T]', {
+        fontSize: '14px',
+        fontFamily: KENNEY_FUTURE_NARROW_FONT_NAME,
+        color: '#c792ea',
+        backgroundColor: 'rgba(15, 52, 96, 0.85)',
+        padding: { x: 8, y: 4 },
+      })
+      .setOrigin(0, 0)
+      .setDepth(10)
+      .setInteractive({ useHandCursor: true });
+    this.#transcriptButton.on('pointerdown', () => {
+      this.#toggleTranscriptOverlay();
+    });
+
     // --- Battle menu (bottom panel) ---
     this.#battleMenu = new BattleMenu(this, this.#activePlayerMonster, false, false, {
       labels: { fight: 'ARGUE', switch: 'RECONSTRUCT', item: 'BAG', flee: 'FLEE' },
@@ -475,6 +541,20 @@ export class DebateScene extends BaseScene {
 
   update() {
     super.update();
+
+    // --- T: toggle the transcript overlay (read-only; works even while text
+    // streams). Skipped while a DOM field has focus (typing a "t") or the
+    // pause menu is up. While the overlay is open its capture-phase key
+    // handler stops events before Phaser sees them, so closing is handled
+    // there, not here.
+    if (this.#transcriptKey && Phaser.Input.Keyboard.JustDown(this.#transcriptKey)) {
+      const ae = document.activeElement;
+      const typing = !!ae && (ae.tagName === 'TEXTAREA' || ae.tagName === 'INPUT');
+      if (!typing && !this.#pauseMenuVisible && !this.#transcriptOverlay) {
+        this.#toggleTranscriptOverlay();
+        return;
+      }
+    }
 
     // --- ESC handling (layered: pause > bag > battle-menu cancel > open pause) ---
     if (this.#escKey && Phaser.Input.Keyboard.JustDown(this.#escKey)) {
@@ -572,7 +652,12 @@ export class DebateScene extends BaseScene {
         currentState === DEBATE_STATES.PHILOSOPHER_RESPONDS ||
         currentState === DEBATE_STATES.PHILOSOPHER_ALLY_ARGUES
       ) {
-        if (this.#streamBuffer.length > 0) {
+        // While a toolkit/ally "[Press SPACE to continue]" gate is pending, the
+        // buffered stream is the philosopher's NOT-YET-REVEALED response. Do not
+        // flush it here: this same keypress also advances the gate (OK below),
+        // whose callback clears the dialogue — flushing first rendered the
+        // response and then instantly erased it (blank-dialogue bug).
+        if (this.#streamBuffer.length > 0 && !this.#deployGatePending) {
           this.#flushStreamBuffer();
         }
       }
@@ -682,6 +767,7 @@ export class DebateScene extends BaseScene {
           this.#beginStreamText();
           this.#appendStreamText(`${phil.name}: ${opening.text}`);
           this.#endStream();
+          this.#transcriptAdd('phil', phil.name, `(opening) ${opening.text}`);
 
           // Wait for typewriter buffer to drain, then advance
           const waitForBuffer = this.time.addEvent({
@@ -707,6 +793,7 @@ export class DebateScene extends BaseScene {
           .setAlpha(1);
 
         this.#beginStreamText();
+        this.#transcriptPhilEntry = null;
 
         streamBattleMove(
           {
@@ -719,6 +806,7 @@ export class DebateScene extends BaseScene {
             onText: (chunk) => {
               this.#statusText.setAlpha(0);
               this.#appendStreamText(chunk);
+              this.#transcriptStreamChunk(phil.name, chunk);
             },
             onJudging: () => {
               // No judging on opening
@@ -744,6 +832,7 @@ export class DebateScene extends BaseScene {
             onDone: () => {
               this.#statusText.setAlpha(0);
               this.#endStream();
+              this.#transcriptPhilEntry = null;
               // Wait for the typewriter buffer to drain
               const waitForBuffer = this.time.addEvent({
                 delay: 100,
@@ -829,7 +918,21 @@ export class DebateScene extends BaseScene {
           )
           .setAlpha(1);
 
-        this.#beginStreamText();
+        // Clear the panel but do NOT start a reveal timer: the timer is created
+        // by the deploy gate's SPACE callback. Starting one here drained the
+        // philosopher's streamed response into the panel while the ally's
+        // generated argument was still on screen (mangled display) and let the
+        // battle advance past the un-pressed gate, stranding a stale info-pane
+        // entry whose callback later cleared the dialogue and locked input.
+        this.#streamBuffer = '';
+        this.#streamComplete = false;
+        if (this.#streamTimer && !this.#streamTimer.destroyed) {
+          this.#streamTimer.destroy();
+          this.#streamTimer = null;
+        }
+        this.#dialogueText.setText('');
+        this.#dialogueText.y = this.#dialogueAreaTop;
+        this.#transcriptPhilEntry = null;
 
         streamBattleMove(
           {
@@ -845,56 +948,12 @@ export class DebateScene extends BaseScene {
             },
             onToolkitArgument: (generatedArg) => {
               this.#playerArgument = generatedArg;
-              this.#statusText.setAlpha(0);
               const moveName = this.#currentMoveOptions[this.#selectedMoveIndex]?.name?.toUpperCase() || this.#selectedMoveType.toUpperCase();
-              this.#dialogueText.y = this.#dialogueAreaTop;
-              this.#dialogueText.setText(
+              this.#transcriptAdd('you', `${allyPhil.name} (your ally)`, `[${moveName}] ${generatedArg}`);
+              this.#openDeployGate(
                 `[${allyPhil.name}: ${moveName}]\n\n${generatedArg}`,
+                phil.thinking_text || `${phil.name} considers the argument...`,
               );
-              this.#autoScrollDialogue();
-
-              // Wait for SPACE before showing opponent's response
-              this.#battleMenu.updateInfoPaneMessagesAndWaitForInput(
-                ['[Press SPACE to continue]'],
-                () => {
-                  this.#statusText
-                    .setText(
-                      phil.thinking_text ||
-                        `${phil.name} considers the argument...`,
-                    )
-                    .setAlpha(1);
-                  this.#dialogueText.setText('');
-                  this.#dialogueText.y = this.#dialogueAreaTop;
-                  this._controls.lockInput = true;
-                  // Re-start the stream timer to drain any buffered text
-                  this.#streamBuffer = '';
-                  this.#streamComplete = false;
-                  if (this.#streamTimer && !this.#streamTimer.destroyed) {
-                    this.#streamTimer.destroy();
-                  }
-                  this.#streamTimer = this.time.addEvent({
-                    delay: 18,
-                    callback: () => {
-                      if (this.#streamBuffer.length > 0) {
-                        this.#statusText.setAlpha(0);
-                        const nextChar = this.#streamBuffer[0];
-                        this.#streamBuffer = this.#streamBuffer.substring(1);
-                        this.#dialogueText.setText(
-                          this.#dialogueText.text + nextChar,
-                        );
-                      } else if (
-                        this.#streamComplete &&
-                        this.#streamTimer
-                      ) {
-                        this.#streamTimer.destroy();
-                        this.#streamTimer = null;
-                      }
-                    },
-                    loop: true,
-                  });
-                },
-              );
-              this._controls.lockInput = false;
             },
             onJudging: (phase) => {
               if (phase === 'player') {
@@ -908,6 +967,9 @@ export class DebateScene extends BaseScene {
               this.#prevPhilHp = this.#philosopherHp;
               this.#philosopherHp = data.battle.philosopherHp;
               this.#pendingPlayerJudgeData = data;
+              if (data.judgeScores && data.judgeScores.commentary) {
+                this.#transcriptAdd('judge', 'Judge', `(on the argument) ${data.judgeScores.commentary}`);
+              }
 
               // Animate philosopher taking damage
               const philDmg = this.#prevPhilHp - this.#philosopherHp;
@@ -924,9 +986,13 @@ export class DebateScene extends BaseScene {
             onText: (chunk) => {
               this.#statusText.setAlpha(0);
               this.#appendStreamText(chunk);
+              this.#transcriptStreamChunk(phil.name, chunk);
             },
             onCounterJudgeResult: (data) => {
               this.#pendingCounterJudgeData = data;
+              if (data.counterJudgeScores && data.counterJudgeScores.commentary) {
+                this.#transcriptAdd('judge', 'Judge', `(on ${phil.name}'s counter) ${data.counterJudgeScores.commentary}`);
+              }
             },
             onResult: (data) => {
               this.#statusText.setAlpha(0);
@@ -974,21 +1040,28 @@ export class DebateScene extends BaseScene {
             onDone: () => {
               this.#statusText.setAlpha(0);
               this.#endStream();
-              // Safety: if onResult never fired, recover to PLAYER_INPUT
+              this.#transcriptPhilEntry = null;
+              // Safety: if onResult never fired, surface an explicit,
+              // acknowledged error — never a silent revert to the menu.
               this.time.delayedCall(500, () => {
                 if (this.#stateMachine.currentStateName === DEBATE_STATES.PHILOSOPHER_ALLY_ARGUES && !this.#pendingJudgeData) {
+                  this.#clearDeployGate();
                   this.#flushStreamBuffer();
-                  this.#battleMenu.updateInfoPaneMessageNoInputRequired(
-                    'Something went wrong. Returning to menu.',
+                  this.#battleMenu.updateInfoPaneMessagesAndWaitForInput(
+                    ['The exchange did not complete (no result from the debate engine). Press SPACE to continue.'],
+                    () => {
+                      this.#stateMachine.setState(DEBATE_STATES.PLAYER_INPUT);
+                    },
                   );
-                  this.time.delayedCall(1500, () => {
-                    this.#stateMachine.setState(DEBATE_STATES.PLAYER_INPUT);
-                  });
+                  this._controls.lockInput = false;
                 }
               });
             },
             onError: (err) => {
               this.#statusText.setAlpha(0);
+              // Drop any pending deploy gate FIRST so the error message cannot
+              // queue invisibly behind a stale "[Press SPACE to continue]".
+              this.#clearDeployGate();
               this.#flushStreamBuffer();
               this.#battleMenu.updateInfoPaneMessagesAndWaitForInput(
                 [`Error: ${err}. Press SPACE to continue.`],
@@ -1024,9 +1097,14 @@ export class DebateScene extends BaseScene {
 
         // Don't beginStreamText yet — wait for player judge result to land first,
         // then the onPlayerJudgeResult handler will start the stream display.
-        // Exception: toolkit/ally moves show the generated argument first.
-        if (isToolkitMove || isAllyMove) {
-          // Toolkit flow handles its own stream init in onToolkitArgument
+        // Exception: toolkit/ally moves show the generated argument first
+        // (their transcript entries are added in onToolkitArgument, once the
+        // generated argument exists).
+        this.#transcriptPhilEntry = null;
+        if (!isToolkitMove && !isAllyMove) {
+          const moveLabel =
+            this.#currentMoveOptions[this.#selectedMoveIndex]?.name || this.#selectedMoveType || 'Argument';
+          this.#transcriptAdd('you', 'You', `[${moveLabel}] ${this.#playerArgument}`);
         }
 
         streamBattleMove(
@@ -1042,59 +1120,12 @@ export class DebateScene extends BaseScene {
               this.#pendingMoveSuggestions = suggestions;
             },
             onToolkitArgument: (generatedArg) => {
-              this.#statusText.setAlpha(0);
-              const moveName =
-                this.#selectedMoveType.toUpperCase().replace(/_/g, ' ');
-              this.#dialogueText.y = this.#dialogueAreaTop;
-              this.#dialogueText.setText(
+              const moveName = this.#selectedMoveType.toUpperCase().replace(/_/g, ' ');
+              this.#transcriptAdd('you', 'You', `[Toolkit: ${moveName}] ${generatedArg}`);
+              this.#openDeployGate(
                 `[TOOLKIT: ${moveName}]\n\n${generatedArg}`,
+                phil.thinking_text || `${phil.name} considers your words...`,
               );
-              this.#autoScrollDialogue();
-
-              // Buffer incoming text while showing toolkit argument
-              this.#streamBuffer = '';
-              this.#streamComplete = false;
-
-              // Wait for SPACE before showing philosopher's response
-              this.#battleMenu.updateInfoPaneMessagesAndWaitForInput(
-                ['[Press SPACE to continue]'],
-                () => {
-                  this.#dialogueText.setText('');
-                  this.#dialogueText.y = this.#dialogueAreaTop;
-                  this.#statusText
-                    .setText(
-                      phil.thinking_text ||
-                        `${phil.name} considers your words...`,
-                    )
-                    .setAlpha(1);
-                  this._controls.lockInput = true;
-                  // Start character reveal timer to drain buffered text
-                  if (this.#streamTimer && !this.#streamTimer.destroyed) {
-                    this.#streamTimer.destroy();
-                  }
-                  this.#streamTimer = this.time.addEvent({
-                    delay: 18,
-                    callback: () => {
-                      if (this.#streamBuffer.length > 0) {
-                        this.#statusText.setAlpha(0);
-                        const nextChar = this.#streamBuffer[0];
-                        this.#streamBuffer = this.#streamBuffer.substring(1);
-                        this.#dialogueText.setText(
-                          this.#dialogueText.text + nextChar,
-                        );
-                      } else if (
-                        this.#streamComplete &&
-                        this.#streamTimer
-                      ) {
-                        this.#streamTimer.destroy();
-                        this.#streamTimer = null;
-                      }
-                    },
-                    loop: true,
-                  });
-                },
-              );
-              this._controls.lockInput = false;
             },
             onJudging: (phase) => {
               if (phase === 'player') {
@@ -1117,6 +1148,9 @@ export class DebateScene extends BaseScene {
 
               // Store player judge data for the overlay later
               this.#pendingPlayerJudgeData = data;
+              if (data.judgeScores && data.judgeScores.commentary) {
+                this.#transcriptAdd('judge', 'Judge', `(on your argument) ${data.judgeScores.commentary}`);
+              }
 
               // Animate philosopher taking damage
               const philDmg = this.#prevPhilHp - this.#philosopherHp;
@@ -1145,10 +1179,14 @@ export class DebateScene extends BaseScene {
             onText: (chunk) => {
               this.#statusText.setAlpha(0);
               this.#appendStreamText(chunk);
+              this.#transcriptStreamChunk(phil.name, chunk);
             },
             // Phase 2: Philosopher's counter scored — store for DAMAGE_ANIM
             onCounterJudgeResult: (data) => {
               this.#pendingCounterJudgeData = data;
+              if (data.counterJudgeScores && data.counterJudgeScores.commentary) {
+                this.#transcriptAdd('judge', 'Judge', `(on ${phil.name}'s counter) ${data.counterJudgeScores.commentary}`);
+              }
             },
             onResult: (data) => {
               this.#statusText.setAlpha(0);
@@ -1199,21 +1237,28 @@ export class DebateScene extends BaseScene {
             onDone: () => {
               this.#statusText.setAlpha(0);
               this.#endStream();
-              // Safety: if onResult never fired, recover to PLAYER_INPUT
+              this.#transcriptPhilEntry = null;
+              // Safety: if onResult never fired, surface an explicit,
+              // acknowledged error — never a silent revert to the menu.
               this.time.delayedCall(500, () => {
                 if (this.#stateMachine.currentStateName === DEBATE_STATES.PHILOSOPHER_RESPONDS && !this.#pendingJudgeData) {
+                  this.#clearDeployGate();
                   this.#flushStreamBuffer();
-                  this.#battleMenu.updateInfoPaneMessageNoInputRequired(
-                    'Something went wrong. Returning to menu.',
+                  this.#battleMenu.updateInfoPaneMessagesAndWaitForInput(
+                    ['The exchange did not complete (no result from the debate engine). Press SPACE to continue.'],
+                    () => {
+                      this.#stateMachine.setState(DEBATE_STATES.PLAYER_INPUT);
+                    },
                   );
-                  this.time.delayedCall(1500, () => {
-                    this.#stateMachine.setState(DEBATE_STATES.PLAYER_INPUT);
-                  });
+                  this._controls.lockInput = false;
                 }
               });
             },
             onError: (err) => {
               this.#statusText.setAlpha(0);
+              // Drop any pending deploy gate FIRST so the error message cannot
+              // queue invisibly behind a stale "[Press SPACE to continue]".
+              this.#clearDeployGate();
               this.#flushStreamBuffer();
               this.#battleMenu.updateInfoPaneMessagesAndWaitForInput(
                 [`Error: ${err}. Press SPACE to continue.`],
@@ -1240,6 +1285,10 @@ export class DebateScene extends BaseScene {
           this.#streamTimer.destroy();
           this.#streamTimer = null;
         }
+        // Belt-and-braces: no deploy gate (or other queued info-pane entry) may
+        // survive into a new exchange — a stale entry's callback would fire on a
+        // later keypress, clearing the dialogue and locking input mid-menu.
+        this.#clearDeployGate();
 
         this.#exchangeCounter.setText(`${this.#exchanges}/${this.#maxExchanges}`);
 
@@ -1479,7 +1528,7 @@ export class DebateScene extends BaseScene {
           this.#activePlayerMonster._phaserGameObject.setScale(4);
 
           this.#battleMenu.updateInfoPaneMessageNoInputRequired(
-            `Go, ${switchTarget.name}!`,
+            `Go, ${switchTarget.name}! Choose ARGUE and a move — they will make the argument.`,
             () => {
               this.time.delayedCall(1500, () => {
                 this.#stateMachine.setState(DEBATE_STATES.PLAYER_INPUT);
@@ -1563,6 +1612,7 @@ export class DebateScene extends BaseScene {
         this.#dialogueText.y = this.#dialogueAreaTop;
         this.#dialogueText.setText(msg);
         this.#autoScrollDialogue();
+        this.#transcriptAdd('you', 'You', `[Agree] ${msg}`);
 
         // Show XP in info pane
         let resultText = `Belief recorded. XP gained: ${partialXp}`;
@@ -1668,6 +1718,7 @@ export class DebateScene extends BaseScene {
       onEnter: () => {
         this.#hideTextInput();
         this.#hideJudgeOverlay();
+        this.#hideTranscriptOverlay();
 
         // Clean up stream timer
         if (this.#streamTimer && !this.#streamTimer.destroyed) {
@@ -1698,6 +1749,82 @@ export class DebateScene extends BaseScene {
 
     // Kick off
     this.#stateMachine.setState(DEBATE_STATES.INTRO);
+  }
+
+  /**
+   * Show a deploy-generated argument (toolkit/ally) and gate the philosopher's
+   * response behind a SPACE press. While the gate is pending the streamed
+   * response accumulates in #streamBuffer untouched — #deployGatePending guards
+   * it from the update() SPACE flush (the same keypress that advances the gate
+   * used to flush the response into the dialogue and then instantly erase it).
+   * The gate callback clears the argument panel and starts the reveal timer
+   * WITHOUT resetting the buffer, so a response that finished streaming before
+   * the keypress is never lost.
+   * @param {string} panelText - the generated-argument panel content
+   * @param {string} thinkingText - status line to show while awaiting the reveal
+   */
+  #openDeployGate(panelText, thinkingText) {
+    this.#statusText.setAlpha(0);
+    this.#dialogueText.y = this.#dialogueAreaTop;
+    this.#dialogueText.setText(panelText);
+    this.#autoScrollDialogue();
+
+    // Fresh buffer for the incoming philosopher response (no chunks have
+    // arrived yet — the player judge runs before the stream starts).
+    this.#streamBuffer = '';
+    this.#streamComplete = false;
+    if (this.#streamTimer && !this.#streamTimer.destroyed) {
+      this.#streamTimer.destroy();
+      this.#streamTimer = null;
+    }
+
+    this.#deployGatePending = true;
+    this.#battleMenu.updateInfoPaneMessagesAndWaitForInput(
+      ['[Press SPACE to continue]'],
+      () => {
+        this.#deployGatePending = false;
+        this.#dialogueText.setText('');
+        this.#dialogueText.y = this.#dialogueAreaTop;
+        this.#statusText.setText(thinkingText).setAlpha(1);
+        this._controls.lockInput = true;
+        this.#startDeployDrainTimer();
+      },
+    );
+    this._controls.lockInput = false;
+  }
+
+  /** Start the character-reveal timer WITHOUT resetting the stream buffer. */
+  #startDeployDrainTimer() {
+    if (this.#streamTimer && !this.#streamTimer.destroyed) {
+      this.#streamTimer.destroy();
+    }
+    this.#streamTimer = this.time.addEvent({
+      delay: 18,
+      callback: () => {
+        if (this.#streamBuffer.length > 0) {
+          this.#statusText.setAlpha(0);
+          const nextChar = this.#streamBuffer[0];
+          this.#streamBuffer = this.#streamBuffer.substring(1);
+          this.#dialogueText.setText(this.#dialogueText.text + nextChar);
+          this.#autoScrollDialogue();
+        } else if (this.#streamComplete && this.#streamTimer) {
+          this.#streamTimer.destroy();
+          this.#streamTimer = null;
+        }
+      },
+      loop: true,
+    });
+  }
+
+  /**
+   * Abandon a pending deploy gate and any queued info-pane messages so an
+   * error (or the next exchange) can never sit invisibly behind a stale
+   * "[Press SPACE to continue]" entry whose callback would later clear the
+   * dialogue and lock input mid-menu.
+   */
+  #clearDeployGate() {
+    this.#deployGatePending = false;
+    this.#battleMenu.resetInfoPaneQueue();
   }
 
   /** Reset the stream buffer and start the character-reveal timer. */
@@ -1756,6 +1883,232 @@ export class DebateScene extends BaseScene {
     const textHeight = this.#dialogueText.height;
     if (textHeight > visibleHeight) {
       this.#dialogueText.y = this.#dialogueAreaBottom - textHeight;
+    }
+  }
+
+  // ─── Transcript (data) ───
+
+  /**
+   * Append a completed entry to the battle transcript.
+   * @param {'you'|'phil'|'judge'} speaker
+   * @param {string} label - display label (You / philosopher name / Judge)
+   * @param {string} text
+   */
+  #transcriptAdd(speaker, label, text) {
+    const t = (text || '').trim();
+    if (!t) return;
+    this.#transcript.push({ speaker, label, text: t });
+    if (this.#transcriptOverlay) {
+      this.#renderTranscriptEntries(false);
+    }
+  }
+
+  /**
+   * Feed a streamed philosopher chunk into the transcript. The first chunk of
+   * a response creates a live entry; later chunks append to it, so the entry
+   * keeps its correct position (after the player's argument and the judge's
+   * verdict) regardless of when the stream completes.
+   * @param {string} label - philosopher display name
+   * @param {string} chunk
+   */
+  #transcriptStreamChunk(label, chunk) {
+    if (!chunk) return;
+    if (!this.#transcriptPhilEntry) {
+      this.#transcriptPhilEntry = { speaker: 'phil', label, text: '' };
+      this.#transcript.push(this.#transcriptPhilEntry);
+    }
+    this.#transcriptPhilEntry.text += chunk;
+    if (this.#transcriptOverlay) {
+      this.#renderTranscriptEntries(false);
+    }
+  }
+
+  // ─── Transcript (overlay UI) ───
+
+  #toggleTranscriptOverlay() {
+    if (this.#transcriptOverlay) {
+      this.#hideTranscriptOverlay();
+    } else {
+      this.#showTranscriptOverlay();
+    }
+  }
+
+  /**
+   * DOM overlay showing the full battle transcript. Mirrors the access-code
+   * modal's approach: plain DOM above the canvas, pointer events stopped at the
+   * overlay so Phaser never pulls focus to the canvas, and key events captured
+   * at the window (capture phase) so the game's key handling is suspended while
+   * the transcript is open and resumes untouched on close.
+   */
+  #showTranscriptOverlay() {
+    if (this.#transcriptOverlay) return;
+    const canvas = this.game.canvas;
+    const rect = canvas.getBoundingClientRect();
+    this.#transcriptPrevFocus = document.activeElement;
+
+    const overlay = document.createElement('div');
+    overlay.id = 'ethica-transcript-overlay';
+    overlay.style.cssText = `
+      position: fixed;
+      left: ${rect.left + 30}px;
+      top: ${rect.top + 20}px;
+      width: ${rect.width - 60}px;
+      height: ${rect.height - 60}px;
+      background: rgba(15, 52, 96, 0.97);
+      color: #e0e0e0;
+      border: 3px solid #533483;
+      border-radius: 10px;
+      font-family: '${KENNEY_FUTURE_NARROW_FONT_NAME}', monospace;
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.6);
+    `;
+
+    const header = document.createElement('div');
+    header.style.cssText =
+      'display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:2px solid #533483;';
+    const title = document.createElement('div');
+    title.textContent = 'DEBATE TRANSCRIPT';
+    title.style.cssText = 'color:#c792ea;font-size:16px;font-weight:bold;letter-spacing:2px;';
+    const hint = document.createElement('div');
+    hint.textContent = '[T] / [ESC] close · scroll to read';
+    hint.style.cssText = 'color:#8892a8;font-size:11px;';
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '✕';
+    closeBtn.setAttribute('aria-label', 'Close transcript');
+    closeBtn.style.cssText = `
+      background: #533483; color: #fff; border: 1px solid #c792ea; border-radius: 4px;
+      width: 26px; height: 26px; cursor: pointer; font-size: 13px; margin-left: 12px;
+      font-family: '${KENNEY_FUTURE_NARROW_FONT_NAME}', monospace;
+    `;
+    closeBtn.addEventListener('click', () => this.#hideTranscriptOverlay());
+    header.appendChild(title);
+    header.appendChild(hint);
+    header.appendChild(closeBtn);
+
+    const scroller = document.createElement('div');
+    scroller.id = 'ethica-transcript-scroll';
+    scroller.tabIndex = -1;
+    scroller.style.cssText = `
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      padding: 12px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      outline: none;
+    `;
+
+    overlay.appendChild(header);
+    overlay.appendChild(scroller);
+
+    // Keep Phaser from seeing pointer events (canvas focus-theft — see the
+    // access-code modal for the original bug).
+    const stopPointer = (e) => e.stopPropagation();
+    ['pointerdown', 'touchstart', 'click', 'mousedown'].forEach((t) => overlay.addEventListener(t, stopPointer));
+
+    // Capture-phase key handler: closes on T/Escape, and stops every other key
+    // from reaching Phaser's window listeners so battle state cannot advance
+    // unseen while the player reads. Non-close keys keep their browser default
+    // (arrows/PageUp/PageDown scroll the focused container natively).
+    this.#transcriptKeyHandler = (e) => {
+      if (e.key === 'Escape' || e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        e.stopPropagation();
+        this.#hideTranscriptOverlay();
+        return;
+      }
+      e.stopPropagation();
+    };
+    window.addEventListener('keydown', this.#transcriptKeyHandler, true);
+
+    document.body.appendChild(overlay);
+    this.#transcriptOverlay = overlay;
+    this.#renderTranscriptEntries(true);
+
+    // Focus the scroll container so arrow/page keys scroll it; preventScroll
+    // keeps the auto-scroll-to-bottom position from #renderTranscriptEntries.
+    try {
+      scroller.focus({ preventScroll: true });
+    } catch {
+      /* noop */
+    }
+  }
+
+  /** Close the transcript and hand focus/input back exactly as they were. */
+  #hideTranscriptOverlay() {
+    if (this.#transcriptKeyHandler) {
+      window.removeEventListener('keydown', this.#transcriptKeyHandler, true);
+      this.#transcriptKeyHandler = null;
+    }
+    if (this.#transcriptOverlay) {
+      this.#transcriptOverlay.remove();
+      this.#transcriptOverlay = null;
+    }
+    // Restore focus (e.g. back into the argument textarea if the player was
+    // mid-draft). If the previous element is gone, leave focus alone — Phaser's
+    // window-level keyboard listeners work regardless.
+    const prev = this.#transcriptPrevFocus;
+    this.#transcriptPrevFocus = null;
+    if (prev && prev !== document.body && document.contains(prev) && typeof prev.focus === 'function') {
+      try {
+        prev.focus();
+      } catch {
+        /* noop */
+      }
+    }
+  }
+
+  /**
+   * (Re)render the transcript entries into the scroll container.
+   * @param {boolean} scrollToBottom
+   */
+  #renderTranscriptEntries(scrollToBottom = false) {
+    if (!this.#transcriptOverlay) return;
+    const scroller = this.#transcriptOverlay.querySelector('#ethica-transcript-scroll');
+    if (!scroller) return;
+
+    // Live updates (entries arriving while open) follow the bottom only when
+    // the reader is already there — never yank them out of scroll-back.
+    const nearBottom = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 40;
+
+    const STYLES = {
+      you: { label: '#82aaff', text: '#e0e0e0', italic: false },
+      phil: { label: '#c792ea', text: '#e0e0e0', italic: false },
+      judge: { label: '#8892a8', text: '#9aa4b8', italic: true },
+    };
+
+    scroller.replaceChildren();
+    if (this.#transcript.length === 0) {
+      const empty = document.createElement('div');
+      empty.textContent = 'Nothing said yet.';
+      empty.style.cssText = 'color:#8892a8;font-style:italic;';
+      scroller.appendChild(empty);
+      return;
+    }
+
+    for (const entry of this.#transcript) {
+      const style = STYLES[entry.speaker] || STYLES.phil;
+      const row = document.createElement('div');
+      row.className = `ethica-transcript-entry ethica-transcript-${entry.speaker}`;
+      row.style.cssText = `margin-bottom:12px;${style.italic ? 'font-style:italic;font-size:12px;' : ''}`;
+      const label = document.createElement('span');
+      label.className = 'ethica-transcript-label';
+      label.textContent = entry.label;
+      label.style.cssText = `color:${style.label};font-weight:bold;letter-spacing:1px;margin-right:8px;`;
+      const body = document.createElement('span');
+      // textContent (never innerHTML): entry text is model/player-authored.
+      body.textContent = entry.text;
+      body.style.cssText = `color:${style.text};`;
+      row.appendChild(label);
+      row.appendChild(body);
+      scroller.appendChild(row);
+    }
+
+    if (scrollToBottom || nearBottom) {
+      scroller.scrollTop = scroller.scrollHeight;
     }
   }
 
@@ -1959,6 +2312,7 @@ export class DebateScene extends BaseScene {
         this.#hideTextInput();
         this.#playerArgument = reconstruction;
         this.#selectedMoveType = 'reconstruct';
+        this.#transcriptAdd('you', 'You', `[Reconstruct] ${reconstruction}`);
 
         // Send reconstruct move to server
         this._controls.lockInput = true;
@@ -1986,6 +2340,7 @@ export class DebateScene extends BaseScene {
                 this.#dialogueText.y = this.#dialogueAreaTop;
                 this.#dialogueText.setText(`JUDGE: ${data.judgeScores.commentary}`);
                 this.#autoScrollDialogue();
+                this.#transcriptAdd('judge', 'Judge', `(on your reconstruction) ${data.judgeScores.commentary}`);
               }
             },
             onJudging: () => {

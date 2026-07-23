@@ -219,6 +219,13 @@ export async function streamMessage({ system, messages, model = MODELS.PHILOSOPH
         case 'message_start':
           if (obj.message && obj.message.usage) usage = { ...(usage || {}), ...obj.message.usage };
           break;
+        case 'error': {
+          // Anthropic can emit an SSE error frame mid-stream (e.g.
+          // overloaded_error). Silently ignoring it returned partial/empty
+          // text as if the stream had completed — fail loud instead.
+          const err = obj.error || {};
+          throw new Error(`stream error: ${err.type || 'unknown'}${err.message ? ` — ${err.message}` : ''}`);
+        }
         default:
           break;
       }

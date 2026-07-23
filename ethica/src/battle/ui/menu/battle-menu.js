@@ -266,6 +266,15 @@ export class BattleMenu {
   }
 
   /**
+   * TEST HOOK (read-only): the info pane's currently displayed text, for E2E
+   * assertions on what the player actually sees.
+   * @returns {string}
+   */
+  get infoPaneText() {
+    return this.#battleTextGameObjectLine1 ? this.#battleTextGameObjectLine1.text : '';
+  }
+
+  /**
    * @param {import('../../../common/direction.js').Direction|'OK'|'CANCEL'} input
    * @returns {void}
    */
@@ -343,6 +352,20 @@ export class BattleMenu {
     if (this.#infoPanelMessagesQueue.length === 1) {
       this.#updateInfoPaneWithMessage();
     }
+  }
+
+  /**
+   * Drop every queued info-pane entry WITHOUT running its callback, and clear
+   * the wait-for-input flag. Used by the debate scene to guarantee a stale
+   * "[Press SPACE to continue]" gate (or any other pending entry) can never
+   * swallow a later message or fire its callback out of context.
+   * @returns {void}
+   */
+  resetInfoPaneQueue() {
+    this.#infoPanelMessagesQueue.length = 0;
+    this.#waitingForPlayerInput = false;
+    this.#queuedMessageAnimationPlaying = false;
+    this.hideInputCursor();
   }
 
   /**

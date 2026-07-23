@@ -301,6 +301,12 @@ export function streamBattleMove(params, callbacks) {
           userMessage: finalArgument,
           onToken: (chunk) => onText(chunk),
         });
+        // Fail loud: an empty response means the stream died silently (SSE
+        // error frame, proxy pump failure, thinking-eaten token budget, ...).
+        // Silently storing '' produced a blank exchange the player never saw.
+        if (!philosopherResponse || !philosopherResponse.trim()) {
+          throw new Error(`${philName} gave no response (empty stream)`);
+        }
         battle.addMessage('assistant', philosopherResponse);
 
         let counterJudgeScores = null;
