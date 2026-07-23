@@ -1,0 +1,112 @@
+{
+  "quotes": [
+    {
+      "id": "thomson_1",
+      "text": "Why is it that the trolley driver may turn his trolley, though the surgeon may not remove the young man's lungs, kidneys, and heart?",
+      "philosopher_id": "thomson",
+      "source_title": "The Trolley Problem",
+      "tradition_id": "rights_deontology",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Thomson poses the central puzzle of the trolley problem by contrasting two structurally similar cases with divergent moral verdicts. This sets up the need for a principled distinction beyond simple consequentialist counting of lives.",
+      "core_assumption": "The two cases must be intuitively judged differently by competent moral judges, and this difference must track a morally relevant distinction rather than mere bias.",
+      "why_characteristic": "This is the signature question that gives the trolley problem its name and animates Thomson's entire deontological investigation into permissible harm."
+    },
+    {
+      "id": "thomson_2",
+      "text": "Rights \"trump\" utilities. That is, if one would infringe a right in or by acting, then it is not sufficient justification for acting that one would thereby maximize utility.",
+      "philosopher_id": "thomson",
+      "source_title": "The Trolley Problem",
+      "tradition_id": "rights_deontology",
+      "difficulty": 2,
+      "argument_type": "rights_analysis",
+      "key_move": "Thomson articulates the core deontological constraint that rights function as side-constraints overriding aggregate welfare calculations. This establishes the theoretical framework she uses to explain why maximizing outcomes cannot alone justify killing.",
+      "core_assumption": "Assumes rights have genuine normative force independent of and capable of outweighing utility maximization.",
+      "why_characteristic": "The trumping metaphor is a hallmark of rights-based deontology and directly frames Thomson's rejection of pure consequentialist solutions to the trolley problem."
+    },
+    {
+      "id": "thomson_3",
+      "text": "It is arguable, however, that what is relevant is not that toppling the fat man off the footbridge is itself an infringement of a right of the fat man's but rather that toppling him off the footbridge is itself an infringement of a particularly stringent right of his.",
+      "philosopher_id": "thomson",
+      "source_title": "The Trolley Problem",
+      "tradition_id": "rights_deontology",
+      "difficulty": 3,
+      "argument_type": "rights_analysis",
+      "key_move": "Thomson refines the rights-based explanation by distinguishing mere rights infringement from infringement of especially stringent rights, allowing her to explain why the footbridge case feels worse than the bystander case despite both involving rights violations.",
+      "core_assumption": "Assumes rights can be ranked by stringency and that this ranking, not mere presence of infringement, explains differential moral permissibility.",
+      "why_characteristic": "This subtle distinction-drawing within rights theory exemplifies Thomson's careful analytic method of dissecting moral intuitions into finer normative categories."
+    },
+    {
+      "id": "frankfurt_1",
+      "text": "Suppose someone-Black, let us say-wants Jones4 to perform a certain action. Black is prepared to go to considerable lengths to get his way, but he prefers to avoid showing his hand unnecessarily.",
+      "philosopher_id": "frankfurt",
+      "source_title": "Alternate Possibilities and Moral Responsibility",
+      "tradition_id": "conceptual_analysis",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "This introduces the counterfactual intervener setup that constitutes the famous Frankfurt-style case, designed to isolate responsibility from the presence of alternate possibilities. The scenario is engineered so Jones acts on his own but could not have done otherwise.",
+      "core_assumption": "Requires that a counterfactual mechanism (Black) can guarantee an outcome without actually causing or influencing the agent's actual deliberation.",
+      "why_characteristic": "The Black/Jones setup is the iconic device Frankfurt invented and that bears his name across all subsequent free will literature."
+    },
+    {
+      "id": "frankfurt_2",
+      "text": "a person is not morally responsible for what he has done if he did it only because he could not have done otherwise.",
+      "philosopher_id": "frankfurt",
+      "source_title": "Alternate Possibilities and Moral Responsibility",
+      "tradition_id": "conceptual_analysis",
+      "difficulty": 2,
+      "argument_type": "conceptual_analysis",
+      "key_move": "Frankfurt carefully restates the Principle of Alternate Possibilities in its precise, restrictive form to expose exactly what his counterexample must defeat. Precision here matters because the actual PAP is often stated more loosely.",
+      "core_assumption": "Assumes there is a meaningful difference between acting 'only because' one could not do otherwise and acting for reasons that happen to coincide with unavailability of alternatives.",
+      "why_characteristic": "This careful formulation exemplifies Frankfurt's analytic precision in isolating the exact principle his thought experiment targets."
+    },
+    {
+      "id": "frankfurt_3",
+      "text": "When we excuse a person who has been coerced, we do not excuse him because he was unable to do otherwise.",
+      "philosopher_id": "frankfurt",
+      "source_title": "Alternate Possibilities and Moral Responsibility",
+      "tradition_id": "conceptual_analysis",
+      "difficulty": 3,
+      "argument_type": "conceptual_analysis",
+      "key_move": "Frankfurt diagnoses why coercion excuses agents, arguing the real excusing condition is not inability to do otherwise but something else (e.g., the nature of the will or motivation), undermining the assumed link between coercion cases and PAP.",
+      "core_assumption": "Assumes we can separate the phenomenology and rationale of excusing coerced agents from mere absence of alternatives, identifying a distinct excusing condition.",
+      "why_characteristic": "This reflects Frankfurt's broader project of reanalyzing standard excusing conditions to show PAP is not doing the explanatory work traditionally attributed to it."
+    },
+    {
+      "id": "jackson_1",
+      "text": "Tell me everything physical there is to tell about what is going on in a living brain, the kind of states, their functional role, their relation to what goes on at other times and in other brains, and so on and so forth, and be I as clever as can be in fitting it all together, you won't have told me about the hurtfulness of pains",
+      "philosopher_id": "jackson",
+      "source_title": "Epiphenomenal Qualia",
+      "tradition_id": "anti_physicalist_metaphysics",
+      "difficulty": 2,
+      "argument_type": "thought_experiment",
+      "key_move": "Jackson argues that complete physical knowledge, however exhaustively described and cleverly synthesized, cannot capture the qualitative feel of pain, motivating the claim that phenomenal facts outstrip physical facts. This directly targets physicalism's claim to completeness.",
+      "core_assumption": "Assumes that full physical/functional description could in principle be given and fully grasped, yet would still omit something knowable only through experience.",
+      "why_characteristic": "This vivid appeal to 'hurtfulness' exemplifies Jackson's qualia-based knowledge argument strategy against physicalism."
+    },
+    {
+      "id": "jackson_2",
+      "text": "We have all the physical information. Therefore, knowing all this is not knowing everything about Fred. It follows that Physicalism lea ves something out.",
+      "philosopher_id": "jackson",
+      "source_title": "Epiphenomenal Qualia",
+      "tradition_id": "anti_physicalist_metaphysics",
+      "difficulty": 2,
+      "argument_type": "reductio",
+      "key_move": "Using the Fred case (a person who sees an extra color), Jackson draws the logical conclusion that complete physical knowledge fails to entail complete knowledge of Fred's experience, hence refuting physicalism's completeness thesis.",
+      "core_assumption": "Assumes that having 'all the physical information' about Fred is achievable and clearly specifiable, and that failing to know everything about Fred despite this shows a genuine explanatory gap.",
+      "why_characteristic": "The Fred thought experiment is one of Jackson's signature devices, paired with Mary, to argue for the existence of epiphenomenal qualia beyond physical facts."
+    },
+    {
+      "id": "jackson_3",
+      "text": "It seems just obvious that she willlearn something about the world and our visual experience of it. But then it is inescapable that her previous knowledge was incomplete. But she had all the physical information. Ergo there is more to have than that, and Physicalism is false.",
+      "philosopher_id": "jackson",
+      "source_title": "Epiphenomenal Qualia",
+      "tradition_id": "anti_physicalist_metaphysics",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "This is the climactic formulation of the Mary's Room argument: Mary's learning something new upon experiencing color despite having all physical knowledge entails that physical knowledge is incomplete, directly refuting physicalism.",
+      "core_assumption": "Assumes it is obvious and uncontroversial that Mary gains new knowledge upon first seeing color, and that this new knowledge is not merely a new way of representing old facts.",
+      "why_characteristic": "This is the canonical conclusion of Jackson's famous Mary's Room thought experiment, the most iconic anti-physicalist argument from qualia in contemporary philosophy of mind."
+    }
+  ]
+}

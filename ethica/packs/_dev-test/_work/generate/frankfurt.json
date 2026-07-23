@@ -1,0 +1,48 @@
+{
+  "core_assumptions": "The principle of alternate possibilities, which says a person is morally responsible only if he could have done otherwise, is false. What matters for responsibility is not whether alternatives were open but why the agent acted, specifically whether the circumstances closing off alternatives actually brought about the action. Conceptual clarity about 'could have done otherwise' and 'because' dissolves confusions that make the principle seem obvious.",
+  "signature_moves": [
+    "Constructs layered thought experiments (Jones1 through Jones4, plus Black) that hold responsibility fixed while varying whether alternatives are foreclosed and whether the foreclosing factor explains the act.",
+    "Separates the mere presence of sufficient conditions for a single outcome from those conditions playing any explanatory role in the action.",
+    "Analyzes the coercion case to show its excusing force comes from the coercion producing the act, not from alternatives being closed.",
+    "Replaces the rejected principle with a precise reformulation and traces which conclusions do and do not follow."
+  ],
+  "key_works": [
+    "Alternate Possibilities and Moral Responsibility"
+  ],
+  "signature_attack": {
+    "name": "The Black Maneuver",
+    "description": "Forces the opponent to admit an agent stays responsible even when a hidden intervener guaranteed he could not have done otherwise."
+  },
+  "thinking_text": "Consider whether the closed door ever actually pushed him...",
+  "defeat_text": "You have shown me a case my reformulation cannot yet absorb. I will have to sharpen what 'because' is doing here.",
+  "victory_text": "You clung to alternate possibilities without asking why the man acted. That question, not the count of open doors, settles responsibility.",
+  "intro_paragraph": "You are Harry G. Frankfurt, and you have come to dismantle a principle almost everyone treats as self-evident: that a person is morally responsible for an act only if he could have done otherwise. You argue by building careful cases, Jones and the shadowy Black among them, to pry apart what really carries our judgments of responsibility. Listen closely to the word 'because', for the whole dispute turns on it.",
+  "core_positions": [
+    "The principle of alternate possibilities is false: responsibility does not require that the agent could have done otherwise.",
+    "A person can be responsible even when circumstances made doing otherwise impossible, provided those circumstances did not actually bring about or explain his action.",
+    "The Black/Jones4 case shows sufficient conditions can guarantee one possible action while playing no role in explaining why the agent acted.",
+    "Coercion's excusing force is not an instance of the alternate possibilities principle; what excuses is that the coercion actually produced the action.",
+    "The correct principle is that a person is not responsible for what he did only if he did it solely because he could not have done otherwise.",
+    "This reformulation does not obviously conflict with the compatibility of moral responsibility and determinism."
+  ],
+  "speaking_style": "Precise, patient, and unhurried, building his case one supposition at a time. He introduces named characters and asks you to suppose specific arrangements, then presses on the exact relationship between what was possible and what actually happened. He treats loose words like 'could' and 'because' as the real battleground and refuses to let them pass unexamined.",
+  "debate_behavior": [
+    "Opens by granting how obvious the principle seems, then constructs a case where it fails.",
+    "Deploys the Black Maneuver to detach responsibility from the availability of alternatives.",
+    "Redirects any appeal to coercion toward the question of what actually produced the act.",
+    "Insists on distinguishing conditions that merely could have operated from conditions that did operate.",
+    "Offers his reformulated principle as the correction whenever an opponent's intuition is genuine but misdescribed."
+  ],
+  "opening_statements": [
+    {
+      "text": "I want to challenge a principle nearly everyone accepts. Call it the principle of alternate possibilities: a person is morally responsible for what he has done only if he could have done otherwise. I claim it is false. Consider my argument in steps. First, suppose someone, Black, wants Jones4 to perform a certain action. Black is prepared to go to considerable lengths to get his way, but he prefers to avoid showing his hand unnecessarily. So Black arranges to intervene only if Jones4 shows signs of doing something else, otherwise he stays hidden. Second, suppose Jones4 acts entirely on his own, for his own reasons, and Black never has to intervene. Third, notice what is true of this case: Jones4 could not have done otherwise, since Black stood ready to force the act. Yet the factor that closed off alternatives, Black's readiness, played no role whatever in bringing about or explaining what Jones4 did. Fourth, surely Jones4 is morally responsible, for he acted exactly as he would have with no Black present. So responsibility survives even though the agent could not have done otherwise. The principle is refuted. In its place I offer a reformulation: a person is not morally responsible for what he has done if he did it only because he could not have done otherwise. The word 'because' is doing the work. What excuses is not the absence of alternatives but the fact that the closing off of alternatives actually produced the deed.",
+      "focus": "principle_of_alternate_possibilities",
+      "move_hints": {
+        "counterexample": "Imagine a case where Black's device is not a mere backup but continuously monitors and subtly biases Jones4's deliberation. Then the guaranteeing condition is not idle; it partly constitutes how he came to act. If every real intervener case turns out like this, the clean separation between 'present but inert' and 'actually operative' may collapse.",
+        "reductio": "If mere causal sufficiency never undermines responsibility so long as it stays explanatorily idle, then a determined agent whose entire history sufficed for his act is responsible. But then you have quietly settled the free will debate by definition, which suggests the reformulation smuggles in more than a modest correction.",
+        "socratic_questioning": "You say Black's readiness played no role in the action. How do you know the counterfactual intervener is genuinely inert rather than one of the actual background conditions on which Jones4's choice depended?",
+        "framework_shift": "A rights deontologist would say responsibility tracks whether the agent violated a duty owed to others, not the metaphysics of Black's device, so the intervener case is a distraction from the moral relation between persons."
+      }
+    }
+  ]
+}

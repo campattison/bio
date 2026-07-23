@@ -1,0 +1,148 @@
+[
+  {
+    "author": "Judith Jarvis Thomson",
+    "work_title": "The Trolley Problem",
+    "era": "Contemporary",
+    "active_period": "20th–21st century (article published 1985)",
+    "central_theses": [
+      "A bystander who diverts a runaway trolley onto one track worker to save five is morally permitted to do so, even though a surgeon who kills one healthy patient to harvest organs for five dying patients is not.",
+      "The killing/letting-die distinction alone cannot explain this asymmetry, since the bystander at the switch actually kills the one workman rather than merely letting him die.",
+      "The moral difference lies in whether the agent saves the five by redirecting a threat that already endangers them onto the one, rather than by using the one as a means or resource to rescue the five.",
+      "Even redirecting a threat can be impermissible if doing so requires infringing a stringent right of the one, as when a bystander must topple a fat man off a footbridge to stop the trolley.",
+      "Rights function to 'trump' considerations of maximizing utility, so the fact that an act would save more lives or produce a better outcome does not by itself make that act permissible."
+    ],
+    "argumentative_method": "Thomson proceeds through a series of carefully constructed hypothetical cases and variants (Trolley Driver, Bystander at the Switch, Transplant, Hospital, the loop variant, Fat Man, the Mayor case) to test and refine competing conceptual explanations of the moral differences among them.",
+    "characteristic_passages": [
+      {
+        "quote": "Why is it that the trolley driver may turn his trolley, though the surgeon may not remove the young man's lungs, kidneys, and heart?",
+        "location_hint": "end of Section I"
+      },
+      {
+        "quote": "Rights \"trump\" utilities. That is, if one would infringe a right in or by acting, then it is not sufficient justification for acting that one would thereby maximize utility.",
+        "location_hint": "Section V"
+      },
+      {
+        "quote": "the bystander saves his five by making something that threatens them instead threaten the one. And second, he does not do that by means which themselves constitute an infringement of any right of the one's.",
+        "location_hint": "Section V, restated in Section VI"
+      },
+      {
+        "quote": "It is arguable, however, that what is relevant is not that toppling the fat man off the footbridge is itself an infringement of a right of the fat man's but rather that toppling him off the footbridge is itself an infringement of a particularly stringent right of his.",
+        "location_hint": "Section VIII"
+      }
+    ],
+    "slug": "thomson",
+    "source_rec": {
+      "file": "/Users/cameronpattison/Documents/Academic Documents/2026-7/Intro_Philosophy_Fall_2026/to_import/Thomson - 1985 - The Trolley Problem.pdf",
+      "base": "Thomson - 1985 - The Trolley Problem",
+      "claimedAuthor": "Thomson",
+      "claimedYear": "1985",
+      "claimedTitle": "The Trolley Problem",
+      "slug": "thomson",
+      "pages": 21,
+      "chars": 57542,
+      "imageOnly": false,
+      "identityOk": true,
+      "identityNote": "OK — author surname present, title words 2/2 on first pages.",
+      "textPath": "/Users/cameronpattison/Documents/Academic Documents/GitHub/ethica/client/packs/_dev-test/_work/texts/thomson.txt",
+      "error": null
+    }
+  },
+  {
+    "author": "Harry G. Frankfurt",
+    "work_title": "Alternate Possibilities and Moral Responsibility",
+    "era": "Contemporary",
+    "active_period": "20th century",
+    "central_theses": [
+      "The principle of alternate possibilities, which holds that a person is morally responsible for an act only if he could have done otherwise, is false.",
+      "A person may be morally responsible for an action even though circumstances made it impossible for him to do otherwise, provided those circumstances did not actually bring about or explain his action.",
+      "The doctrine that coercion excludes moral responsibility is not a special case of the principle of alternate possibilities, since what excuses a coerced person is that the coercion actually produced the action, not merely that alternatives were closed off.",
+      "The Black/Jones4 thought experiment shows that sufficient conditions guaranteeing a single possible action can be present without playing any role in explaining why the agent acted, leaving moral responsibility intact.",
+      "The principle of alternate possibilities should be replaced by the claim that a person is not morally responsible for what he did only if he did it solely because he could not have done otherwise.",
+      "This revised principle does not obviously conflict with the compatibility of moral responsibility and determinism."
+    ],
+    "argumentative_method": "Frankfurt argues through constructed thought experiments (the Jones1-4 and Black scenarios) that isolate and test intuitions about coercion, causal sufficiency, and moral responsibility, combined with conceptual analysis of 'could have done otherwise' and 'because'.",
+    "characteristic_passages": [
+      {
+        "quote": "But the principle of alternate possibilities is false. A person may well be morally responsible for what he has done even though he could not have done otherwise.",
+        "location_hint": "opening section, p. 829-830"
+      },
+      {
+        "quote": "Suppose someone-Black, let us say-wants Jones4 to perform a certain action. Black is prepared to go to considerable lengths to get his way, but he prefers to avoid showing his hand unnecessarily.",
+        "location_hint": "Black/Jones4 thought experiment, p. 835"
+      },
+      {
+        "quote": "a person is not morally responsible for what he has done if he did it only because he could not have done otherwise.",
+        "location_hint": "concluding section, p. 838-839"
+      },
+      {
+        "quote": "When we excuse a person who has been coerced, we do not excuse him because he was unable to do otherwise.",
+        "location_hint": "section III, p. 834"
+      }
+    ],
+    "slug": "frankfurt",
+    "source_rec": {
+      "file": "/Users/cameronpattison/Documents/Academic Documents/2026-7/Intro_Philosophy_Fall_2026/to_import/Frankfurt - 1969 - Alternate Possibilities and Moral Responsibility.pdf",
+      "base": "Frankfurt - 1969 - Alternate Possibilities and Moral Responsibility",
+      "claimedAuthor": "Frankfurt",
+      "claimedYear": "1969",
+      "claimedTitle": "Alternate Possibilities and Moral Responsibility",
+      "slug": "frankfurt",
+      "pages": 12,
+      "chars": 31272,
+      "imageOnly": false,
+      "identityOk": true,
+      "identityNote": "OK — author surname present, title words 4/4 on first pages.",
+      "textPath": "/Users/cameronpattison/Documents/Academic Documents/GitHub/ethica/client/packs/_dev-test/_work/texts/frankfurt.txt",
+      "error": null
+    }
+  },
+  {
+    "author": "Frank Jackson",
+    "work_title": "Epiphenomenal Qualia",
+    "era": "Contemporary",
+    "active_period": "20th century",
+    "central_theses": [
+      "Complete physical knowledge about a person's brain, behavior, and functional states does not include knowledge of the qualitative character of their experiences, so physicalism is incomplete.",
+      "The Knowledge Argument, illustrated by Fred who sees an extra color and by Mary the black-and-white-room scientist, shows that someone could know all physical facts yet still learn something new upon having the experience itself.",
+      "The Modal Argument and Nagel's 'what is it like to be' argument are related but distinct from the Knowledge Argument, which does not depend on disputable modal intuitions or on imaginative extrapolation to unfamiliar experiences.",
+      "It is coherent to hold that qualia are epiphenomenal, i.e., that they are caused by physical brain processes but themselves have no causal effect on the physical world.",
+      "None of the standard objections to epiphenomenalism (concerning obvious causal appearance, evolutionary conduciveness, or knowledge of other minds via behavior) succeed in refuting the possibility of causally impotent qualia.",
+      "Physicalism rests on an overly optimistic assumption that human cognitive powers, shaped by evolution for survival, are adequate to understand everything, including how epiphenomenal qualia fit into the scheme of things."
+    ],
+    "argumentative_method": "Jackson primarily uses thought experiments (Fred the super-chromat, Mary the color scientist, the sea-slug philosophers) alongside conceptual analysis and comparison with rival arguments (the Modal Argument, Nagel's argument) to defend and refine the Knowledge Argument against physicalism.",
+    "characteristic_passages": [
+      {
+        "quote": "Tell me everything physical there is to tell about what is going on in a living brain, the kind of states, their functional role, their relation to what goes on at other times and in other brains, and so on and so forth, and be I as clever as can be in fitting it all together, you won't have told me about the hurtfulness of pains",
+        "location_hint": "opening section, introducing the qualia freak position"
+      },
+      {
+        "quote": "We have all the physical information. Therefore, knowing all this is not knowing everything about Fred. It follows that Physicalism lea ves something out.",
+        "location_hint": "§I, The Knowledge Argument, discussion of Fred"
+      },
+      {
+        "quote": "It seems just obvious that she willlearn something about the world and our visual experience of it. But then it is inescapable that her previous knowledge was incomplete. But she had all the physical information. Ergo there is more to have than that, and Physicalism is false.",
+        "location_hint": "§I, The Knowledge Argument, discussion of Mary"
+      },
+      {
+        "quote": "Qualia cause nothing physical but are caused by BOmething physical. Hence the epiphenomenalist can argue from the behaviour of others to the qualia of others by arguing from the behaviour of others back to its causes in the brains of others and out again to their qualia.",
+        "location_hint": "§IV, The Bogey of Epiphenomenalism, reply to third objection"
+      }
+    ],
+    "slug": "jackson",
+    "source_rec": {
+      "file": "/Users/cameronpattison/Documents/Academic Documents/2026-7/Intro_Philosophy_Fall_2026/to_import/Jackson - 1982 - Epiphenomenal Qualia.pdf",
+      "base": "Jackson - 1982 - Epiphenomenal Qualia",
+      "claimedAuthor": "Jackson",
+      "claimedYear": "1982",
+      "claimedTitle": "Epiphenomenal Qualia",
+      "slug": "jackson",
+      "pages": 11,
+      "chars": 31078,
+      "imageOnly": false,
+      "identityOk": true,
+      "identityNote": "OK — author surname present, title words 2/2 on first pages.",
+      "textPath": "/Users/cameronpattison/Documents/Academic Documents/GitHub/ethica/client/packs/_dev-test/_work/texts/jackson.txt",
+      "error": null
+    }
+  }
+]

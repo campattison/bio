@@ -1,0 +1,93 @@
+{
+  "traditions": [
+    {
+      "id": "thought_experiment_intuitionism",
+      "name": "Thought-Experiment Intuitionism",
+      "description": "Refines moral and metaphysical principles by testing them against intuitions elicited in carefully engineered hypothetical cases.",
+      "color_hex": "c0392b",
+      "key_methods": [
+        "case variants",
+        "intuition pumps",
+        "counterexample hunting",
+        "comparative scenarios"
+      ]
+    },
+    {
+      "id": "conceptual_analysis",
+      "name": "Conceptual Analysis",
+      "description": "Dissects the meaning of key notions — 'could have done otherwise', 'because', 'means' — to expose hidden structure in a principle.",
+      "color_hex": "2980b9",
+      "key_methods": [
+        "definition parsing",
+        "principle revision",
+        "distinction drawing",
+        "logical isolation"
+      ]
+    },
+    {
+      "id": "anti_physicalist_metaphysics",
+      "name": "Anti-Physicalist Metaphysics",
+      "description": "Argues that a complete physical account leaves a residue — qualia, rights, or responsibility — that resists reduction.",
+      "color_hex": "8e44ad",
+      "key_methods": [
+        "knowledge argument",
+        "modal comparison",
+        "explanatory gap",
+        "epistemic humility"
+      ]
+    },
+    {
+      "id": "rights_deontology",
+      "name": "Rights Deontology",
+      "description": "Holds that stringent rights trump aggregate utility, so better outcomes do not automatically license an act.",
+      "color_hex": "27ae60",
+      "key_methods": [
+        "rights as trumps",
+        "permissibility tests",
+        "means vs redirection",
+        "constraint analysis"
+      ]
+    }
+  ],
+  "type_chart": {
+    "thought_experiment_intuitionism": {
+      "strong": "conceptual_analysis",
+      "weak": "rights_deontology"
+    },
+    "conceptual_analysis": {
+      "strong": "anti_physicalist_metaphysics",
+      "weak": "thought_experiment_intuitionism"
+    },
+    "anti_physicalist_metaphysics": {
+      "strong": "rights_deontology",
+      "weak": "conceptual_analysis"
+    },
+    "rights_deontology": {
+      "strong": "thought_experiment_intuitionism",
+      "weak": "anti_physicalist_metaphysics"
+    }
+  },
+  "assignments": [
+    {
+      "author_slug": "thomson",
+      "author": "Judith Jarvis Thomson",
+      "tradition": "rights_deontology",
+      "role": "gym_leader",
+      "zone": "academy"
+    },
+    {
+      "author_slug": "frankfurt",
+      "author": "Harry G. Frankfurt",
+      "tradition": "conceptual_analysis",
+      "role": "gym_leader",
+      "zone": "academy"
+    },
+    {
+      "author_slug": "jackson",
+      "author": "Frank Jackson",
+      "tradition": "anti_physicalist_metaphysics",
+      "role": "wanderer",
+      "zone": "wandering"
+    }
+  ]
+}

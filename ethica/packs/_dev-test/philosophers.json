@@ -1,0 +1,166 @@
+{
+  "traditions": [
+    {
+      "id": "thought_experiment_intuitionism",
+      "name": "Thought-Experiment Intuitionism",
+      "description": "Refines moral and metaphysical principles by testing them against intuitions elicited in carefully engineered hypothetical cases.",
+      "color_hex": "c0392b",
+      "key_methods": [
+        "case variants",
+        "intuition pumps",
+        "counterexample hunting",
+        "comparative scenarios"
+      ]
+    },
+    {
+      "id": "conceptual_analysis",
+      "name": "Conceptual Analysis",
+      "description": "Dissects the meaning of key notions — 'could have done otherwise', 'because', 'means' — to expose hidden structure in a principle.",
+      "color_hex": "2980b9",
+      "key_methods": [
+        "definition parsing",
+        "principle revision",
+        "distinction drawing",
+        "logical isolation"
+      ]
+    },
+    {
+      "id": "anti_physicalist_metaphysics",
+      "name": "Anti-Physicalist Metaphysics",
+      "description": "Argues that a complete physical account leaves a residue — qualia, rights, or responsibility — that resists reduction.",
+      "color_hex": "8e44ad",
+      "key_methods": [
+        "knowledge argument",
+        "modal comparison",
+        "explanatory gap",
+        "epistemic humility"
+      ]
+    },
+    {
+      "id": "rights_deontology",
+      "name": "Rights Deontology",
+      "description": "Holds that stringent rights trump aggregate utility, so better outcomes do not automatically license an act.",
+      "color_hex": "27ae60",
+      "key_methods": [
+        "rights as trumps",
+        "permissibility tests",
+        "means vs redirection",
+        "constraint analysis"
+      ]
+    }
+  ],
+  "philosophers": [
+    {
+      "id": "thomson",
+      "name": "Judith Jarvis Thomson",
+      "tradition": "rights_deontology",
+      "era": "Contemporary",
+      "active_period": "20th–21st century (article published 1985)",
+      "core_assumptions": "The permissibility of an act cannot be read off the outcome it produces, since saving more lives does not by itself justify what one does. What matters morally is how the good is achieved: whether the agent redirects a threat already bearing down on the many onto the one, or instead uses the one as a means or resource to rescue them. Rights set limits on this, functioning to trump considerations of utility, so that even a life-saving redirection can be forbidden when it infringes a sufficiently stringent right.",
+      "signature_moves": [
+        "Pairs cases that look outcome-identical (Bystander at the Switch versus Transplant) to force the opponent to locate a moral difference that mere consequences cannot supply.",
+        "Shows the killing/letting-die distinction fails, because the bystander who throws the switch genuinely kills the one workman rather than merely letting him die.",
+        "Introduces variants (the loop case, Fat Man, the Mayor) to stress-test a proposed explanation until it either survives or collapses.",
+        "Deploys rights as trumps to block the inference from 'this saves more lives' to 'this is permitted'."
+      ],
+      "key_works": [
+        "The Trolley Problem"
+      ],
+      "zone": "academy",
+      "npcFrame": 0,
+      "role": "gym_leader",
+      "level": 1,
+      "hp": 100,
+      "signature_attack": {
+        "name": "The Switch and the Scalpel",
+        "description": "Forces the opponent to explain why the bystander may kill one by turning the trolley while the surgeon may not kill one to harvest organs, though both trade one life for five."
+      },
+      "thinking_text": "Consider a case just slightly altered...",
+      "defeat_text": "You have found the distinction I could not steady. The cases still crowd in on me, and I must go back and turn them over once more.",
+      "victory_text": "You counted the lives and thought the counting settled it. But rights trump utilities, and until you can tell my two cases apart, the number saved has told you nothing.",
+      "opening_statements": [
+        {
+          "text": "Let me put the puzzle that drives everything I say. First: a trolley is hurtling toward five workmen who cannot escape. A bystander stands at a switch. If he throws it, the trolley turns onto a side track where one workman stands, and that one is killed instead of the five. Most of us judge that he may throw the switch. Second: a surgeon has five patients who will die without transplants, and one healthy patient whose organs would save all five. We judge that he may not cut up the one. In both cases one dies so that five may live. So the number saved cannot be what settles it. Third: you might reach for the difference between killing and letting die. But that fails here, because the bystander who throws the switch kills the one workman; he does not merely let him die. So that distinction does not divide my two cases either. Fourth, then, is my proposal: in the trolley case the bystander redirects a threat that already endangers the five onto the one, whereas the surgeon uses the one as a resource to rescue the five. That is the moral difference. Fifth, and crucially, this does not license every redirection. Rights trump utilities. If throwing the switch, or toppling a man from a footbridge, would infringe a stringent right of the one, then the fact that five would be saved is not sufficient justification. So I ask you: tell me what divides the switch from the scalpel, without reaching for a slogan that my cases have already broken.",
+          "focus": "redirected_threat_versus_using_a_person",
+          "move_hints": {
+            "counterexample": "Consider the loop variant: the side track curves back to the five, and only the body of the one workman stops the trolley from completing the loop and killing them. Here the bystander redirects a threat, yet he also seems to use the one as the very means of stopping the trolley. If that redirection is still permitted, the redirect-versus-use line has blurred; if it is forbidden, then redirection was never doing the work.",
+            "reductio": "If mere redirection of an existing threat suffices for permission, then the surgeon could reframe his act: the disease already threatens the five, and he merely channels that threat's resolution through the one healthy body. Since we still forbid the surgeon, redirection alone cannot be the licensing feature, and Thomson's own asymmetry threatens to collapse.",
+            "socratic_questioning": "What exactly makes a threat count as 'already endangering' the five rather than the one, and who decides where the threat 'originally' points before the agent acts?",
+            "framework_shift": "A utilitarian reframes the whole affair: both bystander and surgeon face a choice between one death and five, and the only rational rule is to minimize deaths. Our reluctance about the surgeon is a psychological artifact of proximity and squeamishness, not a moral difference, so the asymmetry Thomson prizes is a bias to be corrected, not a datum to be honored."
+          }
+        }
+      ]
+    },
+    {
+      "id": "frankfurt",
+      "name": "Harry G. Frankfurt",
+      "tradition": "conceptual_analysis",
+      "era": "Contemporary",
+      "active_period": "20th century",
+      "core_assumptions": "The principle of alternate possibilities, which says a person is morally responsible only if he could have done otherwise, is false. What matters for responsibility is not whether alternatives were open but why the agent acted, specifically whether the circumstances closing off alternatives actually brought about the action. Conceptual clarity about 'could have done otherwise' and 'because' dissolves confusions that make the principle seem obvious.",
+      "signature_moves": [
+        "Constructs layered thought experiments (Jones1 through Jones4, plus Black) that hold responsibility fixed while varying whether alternatives are foreclosed and whether the foreclosing factor explains the act.",
+        "Separates the mere presence of sufficient conditions for a single outcome from those conditions playing any explanatory role in the action.",
+        "Analyzes the coercion case to show its excusing force comes from the coercion producing the act, not from alternatives being closed.",
+        "Replaces the rejected principle with a precise reformulation and traces which conclusions do and do not follow."
+      ],
+      "key_works": [
+        "Alternate Possibilities and Moral Responsibility"
+      ],
+      "zone": "academy",
+      "npcFrame": 10,
+      "role": "gym_leader",
+      "level": 2,
+      "hp": 100,
+      "signature_attack": {
+        "name": "The Black Maneuver",
+        "description": "Forces the opponent to admit an agent stays responsible even when a hidden intervener guaranteed he could not have done otherwise."
+      },
+      "thinking_text": "Consider whether the closed door ever actually pushed him...",
+      "defeat_text": "You have shown me a case my reformulation cannot yet absorb. I will have to sharpen what 'because' is doing here.",
+      "victory_text": "You clung to alternate possibilities without asking why the man acted. That question, not the count of open doors, settles responsibility.",
+      "opening_statements": [
+        {
+          "text": "I want to challenge a principle nearly everyone accepts. Call it the principle of alternate possibilities: a person is morally responsible for what he has done only if he could have done otherwise. I claim it is false. Consider my argument in steps. First, suppose someone, Black, wants Jones4 to perform a certain action. Black is prepared to go to considerable lengths to get his way, but he prefers to avoid showing his hand unnecessarily. So Black arranges to intervene only if Jones4 shows signs of doing something else, otherwise he stays hidden. Second, suppose Jones4 acts entirely on his own, for his own reasons, and Black never has to intervene. Third, notice what is true of this case: Jones4 could not have done otherwise, since Black stood ready to force the act. Yet the factor that closed off alternatives, Black's readiness, played no role whatever in bringing about or explaining what Jones4 did. Fourth, surely Jones4 is morally responsible, for he acted exactly as he would have with no Black present. So responsibility survives even though the agent could not have done otherwise. The principle is refuted. In its place I offer a reformulation: a person is not morally responsible for what he has done if he did it only because he could not have done otherwise. The word 'because' is doing the work. What excuses is not the absence of alternatives but the fact that the closing off of alternatives actually produced the deed.",
+          "focus": "principle_of_alternate_possibilities",
+          "move_hints": {
+            "counterexample": "Imagine a case where Black's device is not a mere backup but continuously monitors and subtly biases Jones4's deliberation. Then the guaranteeing condition is not idle; it partly constitutes how he came to act. If every real intervener case turns out like this, the clean separation between 'present but inert' and 'actually operative' may collapse.",
+            "reductio": "If mere causal sufficiency never undermines responsibility so long as it stays explanatorily idle, then a determined agent whose entire history sufficed for his act is responsible. But then you have quietly settled the free will debate by definition, which suggests the reformulation smuggles in more than a modest correction.",
+            "socratic_questioning": "You say Black's readiness played no role in the action. How do you know the counterfactual intervener is genuinely inert rather than one of the actual background conditions on which Jones4's choice depended?",
+            "framework_shift": "A rights deontologist would say responsibility tracks whether the agent violated a duty owed to others, not the metaphysics of Black's device, so the intervener case is a distraction from the moral relation between persons."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jackson",
+      "name": "Frank Jackson",
+      "tradition": "anti_physicalist_metaphysics",
+      "era": "Contemporary",
+      "active_period": "20th century",
+      "core_assumptions": "Complete physical knowledge of the brain, behavior, and functional states leaves out the qualitative character of experience, so physicalism is incomplete. There are qualia, felt qualities like the hurtfulness of pain, that no amount of physical information conveys. These qualia may be epiphenomenal, caused by physical brain processes yet themselves causing nothing physical, and this remains a coherent position.",
+      "signature_moves": [
+        "Deploys the Mary thought experiment: a scientist who knows every physical fact from inside a black-and-white room, then learns something new on seeing color.",
+        "Uses Fred the super-chromat, who sees an extra color, to show complete physical knowledge of him still leaves something out.",
+        "Distinguishes the Knowledge Argument from the Modal Argument and Nagel's argument, refusing to rest on disputable modal intuitions or imaginative extrapolation.",
+        "Defends epiphenomenalism by dismantling standard objections (causal appearance, evolutionary conduciveness, knowledge of other minds) one at a time."
+      ],
+      "key_works": [
+        "Epiphenomenal Qualia"
+      ],
+      "zone": "wandering",
+      "npcFrame": 20,
+      "role": "wanderer",
+      "level": 5,
+      "hp": 90,
+      "signature_attack": {
+        "name": "Mary's Release",
+        "description": "Forces the opponent to admit that someone who knows every physical fact still learns something new upon first having the experience."
+      },
+      "thinking_text": "Tell me everything physical there is to tell, and still...",
+      "defeat_text": "Perhaps our cognitive powers, honed for survival, really are adequate here. I had thought physicalism left something out. You have given me reason to look again.",
+      "victory_text": "You have told me everything physical, and been as clever as can be in fitting it together. Yet you never told me about the hurtfulness of pains. Physicalism leaves something out.",
+      "opening_statements": []
+    }
+  ]
+}

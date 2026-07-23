@@ -1,0 +1,98 @@
+{
+  "id": "_dev-test",
+  "title": "Intro Philosophy: Dev Sampler",
+  "description": "Dev smoke-test pack from three Intro Phil readings.",
+  "version": "0.1.0",
+  "traditions": [
+    "thought_experiment_intuitionism",
+    "conceptual_analysis",
+    "anti_physicalist_metaphysics",
+    "rights_deontology"
+  ],
+  "typeChart": {
+    "thought_experiment_intuitionism": {
+      "strong": "conceptual_analysis",
+      "weak": "rights_deontology"
+    },
+    "conceptual_analysis": {
+      "strong": "anti_physicalist_metaphysics",
+      "weak": "thought_experiment_intuitionism"
+    },
+    "anti_physicalist_metaphysics": {
+      "strong": "rights_deontology",
+      "weak": "conceptual_analysis"
+    },
+    "rights_deontology": {
+      "strong": "thought_experiment_intuitionism",
+      "weak": "anti_physicalist_metaphysics"
+    }
+  },
+  "scoreWeights": {
+    "logical_validity": 0.25,
+    "engagement": 0.25,
+    "philosophical_precision": 0.2,
+    "rhetorical_clarity": 0.15,
+    "originality": 0.1,
+    "dialectical_awareness": 0.05
+  },
+  "moveBonuses": {
+    "counterexample": {
+      "bonus_dim": "engagement",
+      "bonus": 2,
+      "risk_dim": "logical_validity",
+      "risk": -2
+    },
+    "reductio": {
+      "bonus_dim": "logical_validity",
+      "bonus": 2,
+      "risk_dim": "engagement",
+      "risk": -3
+    },
+    "socratic_questioning": {
+      "bonus_dim": "dialectical_awareness",
+      "bonus": 2,
+      "damage_mult": 0.7,
+      "debuff": true
+    },
+    "framework_shift": {
+      "bonus_dim": "originality",
+      "bonus": 2,
+      "risk_dim": "engagement",
+      "risk": -2,
+      "type_check": true
+    },
+    "free_form": {
+      "bonus_dim": null,
+      "bonus": 0,
+      "risk_dim": null,
+      "risk": 0
+    }
+  },
+  "progression": {
+    "gymLeaderCount": 2,
+    "keyItemCount": 0
+  },
+  "files": {
+    "philosophers": "packs/_dev-test/philosophers.json",
+    "npcs": "packs/_dev-test/npcs.json",
+    "quiz": "packs/_dev-test/quiz-content.json",
+    "promptsDir": "packs/_dev-test/prompts"
+  },
+  "zones": [
+    {
+      "id": "academy",
+      "name": "The Academy",
+      "type": "logical"
+    },
+    {
+      "id": "grove",
+      "name": "The Grove",
+      "type": "world"
+    },
+    {
+      "id": "wandering",
+      "name": "The Roads",
+      "type": "logical"
+    }
+  ]
+}

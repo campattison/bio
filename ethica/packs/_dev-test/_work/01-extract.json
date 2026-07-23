@@ -1,0 +1,47 @@
+[
+  {
+    "file": "/Users/cameronpattison/Documents/Academic Documents/2026-7/Intro_Philosophy_Fall_2026/to_import/Thomson - 1985 - The Trolley Problem.pdf",
+    "base": "Thomson - 1985 - The Trolley Problem",
+    "claimedAuthor": "Thomson",
+    "claimedYear": "1985",
+    "claimedTitle": "The Trolley Problem",
+    "slug": "thomson",
+    "pages": 21,
+    "chars": 57542,
+    "imageOnly": false,
+    "identityOk": true,
+    "identityNote": "OK — author surname present, title words 2/2 on first pages.",
+    "textPath": "/Users/cameronpattison/Documents/Academic Documents/GitHub/ethica/client/packs/_dev-test/_work/texts/thomson.txt",
+    "error": null
+  },
+  {
+    "file": "/Users/cameronpattison/Documents/Academic Documents/2026-7/Intro_Philosophy_Fall_2026/to_import/Frankfurt - 1969 - Alternate Possibilities and Moral Responsibility.pdf",
+    "base": "Frankfurt - 1969 - Alternate Possibilities and Moral Responsibility",
+    "claimedAuthor": "Frankfurt",
+    "claimedYear": "1969",
+    "claimedTitle": "Alternate Possibilities and Moral Responsibility",
+    "slug": "frankfurt",
+    "pages": 12,
+    "chars": 31272,
+    "imageOnly": false,
+    "identityOk": true,
+    "identityNote": "OK — author surname present, title words 4/4 on first pages.",
+    "textPath": "/Users/cameronpattison/Documents/Academic Documents/GitHub/ethica/client/packs/_dev-test/_work/texts/frankfurt.txt",
+    "error": null
+  },
+  {
+    "file": "/Users/cameronpattison/Documents/Academic Documents/2026-7/Intro_Philosophy_Fall_2026/to_import/Jackson - 1982 - Epiphenomenal Qualia.pdf",
+    "base": "Jackson - 1982 - Epiphenomenal Qualia",
+    "claimedAuthor": "Jackson",
+    "claimedYear": "1982",
+    "claimedTitle": "Epiphenomenal Qualia",
+    "slug": "jackson",
+    "pages": 11,
+    "chars": 31078,
+    "imageOnly": false,
+    "identityOk": true,
+    "identityNote": "OK — author surname present, title words 2/2 on first pages.",
+    "textPath": "/Users/cameronpattison/Documents/Academic Documents/GitHub/ethica/client/packs/_dev-test/_work/texts/jackson.txt",
+    "error": null
+  }
+]
