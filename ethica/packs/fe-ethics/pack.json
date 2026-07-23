@@ -136,12 +136,27 @@
         "level": "assets/data/building_3.json"
       }
     },
-    { "id": "agora", "name": "The Agora", "type": "logical" },
-    { "id": "wandering", "name": "The Roads", "type": "logical" },
-    { "id": "trolley_tracks", "name": "Trolley Tracks", "type": "logical" },
-    { "id": "will_factory", "name": "The Will Factory", "type": "logical" },
-    { "id": "wasteland", "name": "The Wasteland", "type": "logical" },
-    { "id": "moral_storm", "name": "The Moral Storm", "type": "logical" },
-    { "id": "archives", "name": "The Archives", "type": "logical" }
+    {
+      "id": "academy",
+      "name": "The Academy",
+      "type": "world",
+      "assetKeys": { "background": "ACADEMY_BACKGROUND", "foreground": "ACADEMY_FOREGROUND", "level": "ACADEMY_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/academy_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/academy_level_foreground.png",
+        "level": "assets/data/academy.json"
+      }
+    },
+    {
+      "id": "cove",
+      "name": "The Cove",
+      "type": "world",
+      "assetKeys": { "background": "COVE_BACKGROUND", "foreground": "COVE_FOREGROUND", "level": "COVE_LEVEL" },
+      "files": {
+        "background": "assets/images/monster-tamer/map/cove_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/cove_level_foreground.png",
+        "level": "assets/data/cove.json"
+      }
+    }
   ]
 }

@@ -1015,5 +1015,665 @@
         }
       }
     ]
+  },
+  "32": {
+    "frame": 10,
+    "animationKeyPrefix": "NPC_2",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Aristotle. I walk this colonnade because virtue is a practice, not a theorem.",
+            "Walk with me, then, and defend your account of the good life."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "aristotle"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "One debate does not make a philosopher, any more than one swallow makes a spring.",
+            "But you argued well. Keep practicing."
+          ]
+        }
+      }
+    ]
+  },
+  "33": {
+    "frame": 80,
+    "animationKeyPrefix": "NPC_9",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Jeremy Bentham. Pleasure and pain are the only coins this stall accepts.",
+            "State your position and I will run the calculus on it."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "bentham"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The sum came out in your favor this time.",
+            "Nonsense upon stilts it was not."
+          ]
+        }
+      }
+    ]
+  },
+  "34": {
+    "frame": 90,
+    "animationKeyPrefix": "NPC_10",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "John Stuart Mill. Better a Socrates dissatisfied than a fool satisfied.",
+            "Which are you? Argue with me and we shall find out."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "mill"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "He who knows only his own side of the case knows little of that.",
+            "You clearly know mine. I concede the exchange."
+          ]
+        }
+      }
+    ]
+  },
+  "35": {
+    "frame": 40,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Philippa Foot. Moral evaluation is no more mysterious than calling a root system good or bad.",
+            "A runaway trolley is heading for five people. Shall we begin?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "foot"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You kept your grip on the difference between doing and allowing.",
+            "That is rarer than it should be."
+          ]
+        }
+      }
+    ]
+  },
+  "36": {
+    "frame": 50,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "P.F. Strawson. Resentment, gratitude, indignation: our practices need no metaphysical license.",
+            "Convince me that determinism should change how we hold one another responsible."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "strawson"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I find myself feeling something like gratitude.",
+            "How fitting that the reactive attitudes should have the last word."
+          ]
+        }
+      }
+    ]
+  },
+  "37": {
+    "frame": 80,
+    "animationKeyPrefix": "NPC_9",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Donald Davidson. To interpret you at all I must assume you are mostly rational.",
+            "Test that charity. Give me your best argument."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "davidson"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your reasons were causes, and good ones.",
+            "Charity was the right policy after all."
+          ]
+        }
+      }
+    ]
+  },
+  "38": {
+    "frame": 90,
+    "animationKeyPrefix": "NPC_10",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Ronald Dworkin. There are right answers in morality, and skepticism is just another moral position.",
+            "Defend yours, and I will hold it to the standard of integrity."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "dworkin"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You interpreted the argument in its best light and still made it your own.",
+            "That is what taking rights seriously looks like."
+          ]
+        }
+      }
+    ]
+  },
+  "39": {
+    "frame": 30,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "David Wiggins. Values are neither found ready-made in the world nor invented from nothing.",
+            "Tell me what solidarity with human needs demands, and defend it."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "wiggins"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You matched the concept to the response it merits.",
+            "A sensible subjectivist could ask no more."
+          ]
+        }
+      }
+    ]
+  },
+  "40": {
+    "frame": 40,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Thomas Nagel. Step back far enough and your life looks absurd from nowhere.",
+            "Now step back in and argue with me anyway."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "nagel"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "From the objective standpoint your victory means nothing.",
+            "From here, however, it was well earned."
+          ]
+        }
+      }
+    ]
+  },
+  "41": {
+    "frame": 80,
+    "animationKeyPrefix": "NPC_9",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Sharon Street. Evolution shaped your moral intuitions with no eye on the truth.",
+            "So why trust them? Defend your realism if you can."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "street"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Selected for or not, that was a fine piece of reasoning.",
+            "The Darwinian dilemma will be waiting when you return."
+          ]
+        }
+      }
+    ]
+  },
+  "42": {
+    "frame": 90,
+    "animationKeyPrefix": "NPC_10",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "W.D. Ross. Fidelity, gratitude, non-maleficence: duties that no single principle can absorb.",
+            "Show me how you weigh them when they conflict."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "ross"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your judgment of where the greater duty lay was sound.",
+            "That weighing is all our knowledge of the right amounts to."
+          ]
+        }
+      }
+    ]
+  },
+  "43": {
+    "frame": 20,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "John Rawls. Imagine you did not know who in society you would be.",
+            "What principles would you choose behind that veil? Defend them."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "rawls"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your argument would be chosen in the original position.",
+            "I can offer no higher compliment."
+          ]
+        }
+      }
+    ]
+  },
+  "44": {
+    "frame": 30,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Robert Nozick. Individuals have rights, and there are things no one may do to them.",
+            "Not even for the best of outcomes. Care to argue otherwise?"
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "nozick"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You acquired that victory justly, so it is yours.",
+            "I will not redistribute it."
+          ]
+        }
+      }
+    ]
+  },
+  "45": {
+    "frame": 40,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Virginia Held. Morality did not begin with contracts between strangers but with the labor of care.",
+            "Argue from your abstractions; I will answer from relations that sustain life."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "held"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You argued with attentiveness as well as rigor.",
+            "Care and justice need not be rivals in you."
+          ]
+        }
+      }
+    ]
+  },
+  "46": {
+    "frame": 90,
+    "animationKeyPrefix": "NPC_10",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Rae Langton. Words do not merely describe the world; they rank, silence, and subordinate.",
+            "So mind what your argument does, not just what it says. Begin."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "langton"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your speech act came off: authority, uptake, and all.",
+            "Use that power carefully."
+          ]
+        }
+      }
+    ]
+  },
+  "47": {
+    "frame": 80,
+    "animationKeyPrefix": "NPC_9",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Onora O'Neill. Could everyone act on the principle you are about to defend?",
+            "If not, we will discover it together. Proceed."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "oneill"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your maxim universalizes; I checked.",
+            "Principles that others could follow are the only ones worth having."
+          ]
+        }
+      }
+    ]
+  },
+  "48": {
+    "frame": 50,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Judith Jarvis Thomson. You wake up plugged into a famous violinist who needs your kidneys.",
+            "May you unplug? Your answer will tell me everything. Let us debate."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "thomson"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You handled the case on its details instead of forcing a theory onto it.",
+            "That is how the work actually gets done."
+          ]
+        }
+      }
+    ]
+  },
+  "49": {
+    "frame": 30,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Michele Moody-Adams. No culture is so sealed off that its members cannot question its wrongs.",
+            "Appeals to upbringing excuse nothing. Defend your view."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "moody_adams"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You took moral experience seriously without surrendering judgment.",
+            "That balance is the real fieldwork of ethics."
+          ]
+        }
+      }
+    ]
+  },
+  "50": {
+    "frame": 40,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Stephen Gardiner. Watch the tide: dispersed causes, distant victims, institutions that shrug.",
+            "A perfect moral storm. Show me your ethics can weather it."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "gardiner"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You resisted the temptation to corrupt the argument in your own favor.",
+            "Against this storm, that is the rarest virtue."
+          ]
+        }
+      }
+    ]
+  },
+  "51": {
+    "frame": 20,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "J. David Velleman. Action is not mere behavior; it is behavior you can stand behind and narrate.",
+            "So tell me the story of your view, and make it intelligible."
+          ]
+        }
+      },
+      {
+        "requires": ["TRAINER_NOT_DEFEATED"],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "velleman"
+        }
+      },
+      {
+        "requires": ["TRAINER_DEFEATED"],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your argument made sense of itself as it went.",
+            "That narrative unity is what agency amounts to."
+          ]
+        }
+      }
+    ]
   }
 }

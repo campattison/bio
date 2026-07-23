@@ -1867,6 +1867,34 @@
                  "width":64,
                  "x":2432,
                  "y":3840
+                },
+                {
+                 "gid":194,
+                 "height":64,
+                 "id":75,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"connects_to",
+                         "type":"string",
+                         "value":"academy"
+                        },
+                        {
+                         "name":"entrance_id",
+                         "type":"string",
+                         "value":"academy_1"
+                        },
+                        {
+                         "name":"is_building",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"entrance",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":1536
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2869,7 +2897,7 @@
          "y":0
         }],
  "nextlayerid":51,
- "nextobjectid":75,
+ "nextobjectid":76,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.0",

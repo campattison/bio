@@ -63,5 +63,25 @@
     ["ayer", 13],
     ["dewey", 12],
     ["stevenson", 12]
+  ],
+  "7": [
+    ["quiz_examiner", 16],
+    ["quiz_sophist", 14],
+    ["quiz_pedant", 14],
+    ["aristotle", 12],
+    ["hume", 12],
+    ["thomson", 8],
+    ["velleman", 8],
+    ["ross", 8],
+    ["wiggins", 8]
+  ],
+  "8": [
+    ["quiz_skeptic", 20],
+    ["quiz_provocateur", 16],
+    ["quiz_heckler", 14],
+    ["singer", 14],
+    ["street", 14],
+    ["moody_adams", 12],
+    ["gardiner", 10]
   ]
 }

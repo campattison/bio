@@ -156,7 +156,7 @@
         "Politics",
         "De Anima"
       ],
-      "zone": "wandering",
+      "zone": "academy",
       "npcFrame": 10,
       "role": "wanderer",
       "level": 5,
@@ -216,7 +216,7 @@
         "An Enquiry Concerning the Principles of Morals",
         "An Enquiry Concerning Human Understanding"
       ],
-      "zone": "wandering",
+      "zone": "academy",
       "npcFrame": 110,
       "role": "wanderer",
       "level": 5,
@@ -298,7 +298,7 @@
         "A Fragment on Government",
         "The Rationale of Reward"
       ],
-      "zone": "agora",
+      "zone": "academy",
       "npcFrame": 80,
       "role": "shop",
       "level": 5,
@@ -328,7 +328,7 @@
         "On Liberty",
         "The Subjection of Women"
       ],
-      "zone": "agora",
+      "zone": "academy",
       "npcFrame": 90,
       "role": "shop",
       "level": 5,
@@ -612,7 +612,7 @@
         "Natural Goodness",
         "Virtues and Vices"
       ],
-      "zone": "trolley_tracks",
+      "zone": "academy",
       "npcFrame": 40,
       "role": "gym_leader",
       "level": 7,
@@ -664,7 +664,7 @@
         "Individuals",
         "The Bounds of Sense"
       ],
-      "zone": "will_factory",
+      "zone": "academy",
       "npcFrame": 50,
       "role": "npc",
       "level": 6,
@@ -694,7 +694,7 @@
         "The Miracle of Theism",
         "Problems from Locke"
       ],
-      "zone": "wasteland",
+      "zone": "academy",
       "npcFrame": 60,
       "role": "gym_leader",
       "level": 5,
@@ -746,7 +746,7 @@
         "Actions, Reasons, and Causes",
         "Inquiries into Truth and Interpretation"
       ],
-      "zone": "will_factory",
+      "zone": "academy",
       "npcFrame": 80,
       "role": "npc",
       "level": 6,
@@ -776,7 +776,7 @@
         "Justice for Hedgehogs",
         "Taking Rights Seriously"
       ],
-      "zone": "agora",
+      "zone": "academy",
       "npcFrame": 90,
       "role": "optional_boss",
       "level": 6,
@@ -828,7 +828,7 @@
         "Moral Luck",
         "Ethics and the Limits of Philosophy"
       ],
-      "zone": "will_factory",
+      "zone": "academy",
       "npcFrame": 70,
       "role": "npc",
       "level": 6,
@@ -858,7 +858,7 @@
         "The Importance of What We Care About",
         "Alternate Possibilities and Moral Responsibility"
       ],
-      "zone": "will_factory",
+      "zone": "academy",
       "npcFrame": 160,
       "role": "gym_leader",
       "level": 6,
@@ -940,7 +940,7 @@
         "A Sensible Subjectivism?",
         "Truth, Invention, and the Meaning of Life"
       ],
-      "zone": "wasteland",
+      "zone": "academy",
       "npcFrame": 30,
       "role": "npc",
       "level": 5,
@@ -970,7 +970,7 @@
         "The View from Nowhere",
         "What Is It Like to Be a Bat?"
       ],
-      "zone": "will_factory",
+      "zone": "academy",
       "npcFrame": 40,
       "role": "npc",
       "level": 6,
@@ -1030,7 +1030,7 @@
         "What is Constructivism in Ethics and Metaethics?",
         "Coming to Terms with Contingency"
       ],
-      "zone": "wasteland",
+      "zone": "cove",
       "npcFrame": 80,
       "role": "npc",
       "level": 5,
@@ -1060,7 +1060,7 @@
         "The Foundations of Ethics",
         "Aristotle"
       ],
-      "zone": "moral_storm",
+      "zone": "academy",
       "npcFrame": 90,
       "role": "npc",
       "level": 8,
@@ -1090,7 +1090,7 @@
         "A Theory of Justice",
         "Political Liberalism"
       ],
-      "zone": "archives",
+      "zone": "academy",
       "npcFrame": 20,
       "role": "npc",
       "level": 9,
@@ -1120,7 +1120,7 @@
         "Philosophical Explanations",
         "The Examined Life"
       ],
-      "zone": "archives",
+      "zone": "academy",
       "npcFrame": 30,
       "role": "npc",
       "level": 9,
@@ -1150,7 +1150,7 @@
         "The Right to Lie: Kant on Dealing with Evil",
         "Creating the Kingdom of Ends"
       ],
-      "zone": "archives",
+      "zone": "academy",
       "npcFrame": 180,
       "role": "gym_leader",
       "level": 9,
@@ -1202,7 +1202,7 @@
         "Feminist Transformations of Moral Theory",
         "Feminist Morality"
       ],
-      "zone": "archives",
+      "zone": "academy",
       "npcFrame": 40,
       "role": "npc",
       "level": 9,
@@ -1232,7 +1232,7 @@
         "Animal Liberation",
         "Practical Ethics"
       ],
-      "zone": "trolley_tracks",
+      "zone": "cove",
       "npcFrame": 150,
       "role": "npc",
       "level": 7,
@@ -1262,7 +1262,7 @@
         "Sexual Solipsism",
         "Whose Right? Ronald Dworkin, Women, and Pornographers"
       ],
-      "zone": "trolley_tracks",
+      "zone": "academy",
       "npcFrame": 90,
       "role": "npc",
       "level": 7,
@@ -1292,7 +1292,7 @@
         "Faces of Hunger",
         "Acting on Principle"
       ],
-      "zone": "trolley_tracks",
+      "zone": "academy",
       "npcFrame": 80,
       "role": "npc",
       "level": 7,
@@ -1322,7 +1322,7 @@
         "The Trolley Problem",
         "Self-Defense"
       ],
-      "zone": "trolley_tracks",
+      "zone": "academy",
       "npcFrame": 50,
       "role": "npc",
       "level": 7,
@@ -1352,7 +1352,7 @@
         "Fieldwork in Familiar Places",
         "Culture, Responsibility, and Affected Ignorance"
       ],
-      "zone": "moral_storm",
+      "zone": "cove",
       "npcFrame": 30,
       "role": "npc",
       "level": 8,
@@ -1382,7 +1382,7 @@
         "A Call for a Global Constitutional Convention",
         "The Ethical Dimensions of Global Environmental Change"
       ],
-      "zone": "moral_storm",
+      "zone": "cove",
       "npcFrame": 40,
       "role": "gym_leader",
       "level": 8,
@@ -1434,7 +1434,7 @@
         "Against the Right to Die",
         "How We Get Along"
       ],
-      "zone": "trolley_tracks",
+      "zone": "academy",
       "npcFrame": 20,
       "role": "npc",
       "level": 7,
