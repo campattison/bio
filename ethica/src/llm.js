@@ -262,7 +262,7 @@ export async function structuredMessage({
   schema,
   schemaName = 'result',
   model = MODELS.JUDGE,
-  maxTokens = 1024,
+  maxTokens = 3000,
 }) {
   const body = {
     model,
@@ -270,6 +270,12 @@ export async function structuredMessage({
     system,
     messages,
     stream: false,
+    // Sonnet 5 runs adaptive thinking BY DEFAULT when `thinking` is omitted.
+    // Thinking tokens are invisible but count against max_tokens, so a tight
+    // budget can truncate the response BEFORE the JSON text block is emitted
+    // ("structured response had no text content block"). Judge/generation
+    // calls are classification-style: disable thinking and keep headroom.
+    thinking: { type: 'disabled' },
     output_config: {
       format: {
         type: 'json_schema',
