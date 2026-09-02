@@ -32,6 +32,13 @@ const dataStore = Object.create(null);
  */
 export function getActivePackId() {
   try {
+    // URL override (?pack=<id>) wins and persists, so a shared link selects
+    // the pack for students without any console work.
+    const fromUrl = (new URLSearchParams(window.location.search).get('pack') || '').trim();
+    if (fromUrl) {
+      localStorage.setItem('ETHICA_PACK', fromUrl);
+      return fromUrl;
+    }
     const id = (localStorage.getItem('ETHICA_PACK') || '').trim();
     return id || DEFAULT_PACK_ID;
   } catch {
@@ -100,6 +107,30 @@ export function getTraditions() {
 /** @returns {object} progression counts (gymLeaderCount, keyItemCount, ...) */
 export function getProgression() {
   return activePack?.progression || {};
+}
+
+/**
+ * Per-step wild-encounter probability on encounter tiles, overridable per
+ * pack via pack.json `encounterRate`. Default matches the historical 0.2.
+ * @returns {number}
+ */
+export function getEncounterRate() {
+  const rate = activePack?.encounterRate;
+  return typeof rate === 'number' && rate >= 0 && rate <= 1 ? rate : 0.2;
+}
+
+/**
+ * Word-limit targets for LLM responses, overridable per pack via
+ * pack.json `responseLimits`. Defaults match the historical fe-ethics limits.
+ * @returns {{battle: number, dialogue: number, opening: number}}
+ */
+export function getResponseLimits() {
+  return {
+    battle: 300,
+    dialogue: 250,
+    opening: 200,
+    ...(activePack?.responseLimits || {}),
+  };
 }
 
 // ─── File-path accessors ─────────────────────────────────────────────────

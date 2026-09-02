@@ -310,6 +310,18 @@ export class BattleMenu {
   }
 
   /**
+   * Overwrite the two-line info text shown beside the main battle menu (e.g.
+   * to keep a deployed ally's standing instruction visible each turn).
+   * @param {string} line1
+   * @param {string} line2
+   * @returns {void}
+   */
+  setInfoPaneLines(line1, line2) {
+    this.#battleTextGameObjectLine1.setText(line1).setAlpha(1);
+    this.#battleTextGameObjectLine2.setText(line2).setAlpha(1);
+  }
+
+  /**
    * @param {string} message
    * @param {() => void} [callback]
    * @returns {void}

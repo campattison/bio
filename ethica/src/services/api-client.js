@@ -26,7 +26,7 @@ import {
   buildBattleContext,
   streamPhilosopherResponse,
   streamDialogueResponse,
-  OPENING_CONTEXT,
+  getOpeningContext,
   runQuizEvaluation,
   runQuizRecall,
 } from '../battle/prompts.js';
@@ -208,7 +208,7 @@ export function streamBattleMove(params, callbacks) {
       if (moveType === 'opening') {
         const philosopherResponse = await streamPhilosopherResponse({
           philosopherPrompt: systemPrompt,
-          battleContext: OPENING_CONTEXT,
+          battleContext: getOpeningContext(),
           history: battle.getHistory(),
           userMessage: argument,
           onToken: (chunk) => onText(chunk),

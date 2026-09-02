@@ -1,0 +1,1083 @@
+{
+  "traditions": [
+    {
+      "id": "consequentialism",
+      "name": "Consequentialism",
+      "description": "Actions are judged by their outcomes — welfare produced, suffering prevented, the greatest good impartially counted",
+      "color_hex": "FFCB6B",
+      "key_methods": [
+        "Utility calculus",
+        "Impartial maximization",
+        "Demandingness arguments",
+        "Comparing outcomes across alternatives"
+      ]
+    },
+    {
+      "id": "deontology",
+      "name": "Deontology",
+      "description": "Duty, rights, and the moral law — some acts are required or forbidden regardless of their consequences",
+      "color_hex": "89DDFF",
+      "key_methods": [
+        "Universalizability tests",
+        "Duty analysis",
+        "Treating persons as ends",
+        "Rights-based argument"
+      ]
+    },
+    {
+      "id": "virtue_ethics",
+      "name": "Virtue Ethics",
+      "description": "Character and the good life — what traits make a person admirable and what it means to live well",
+      "color_hex": "C3E88D",
+      "key_methods": [
+        "Character analysis",
+        "Moral exemplars and their limits",
+        "The doctrine of the mean",
+        "Critique of rule-based ethics"
+      ]
+    },
+    {
+      "id": "existentialism",
+      "name": "Existentialism & Agency",
+      "description": "Freedom, responsibility, and what we can be blamed for — from radical choice to luck and the reactive attitudes",
+      "color_hex": "C792EA",
+      "key_methods": [
+        "Arguments from lived experience",
+        "Analysis of choice and self-deception",
+        "Probing conditions of responsibility",
+        "Puzzles about luck and control"
+      ]
+    },
+    {
+      "id": "political_philosophy",
+      "name": "Political Philosophy",
+      "description": "Justice, liberty, and power — how institutions distribute freedom and what we owe each other as citizens",
+      "color_hex": "F07178",
+      "key_methods": [
+        "Social contract reasoning",
+        "Distinguishing kinds of freedom",
+        "Structural analysis of oppression",
+        "Testing principles behind a veil of ignorance"
+      ]
+    },
+    {
+      "id": "analytic_method",
+      "name": "Analytic Method",
+      "description": "The counterexample artists — testing grand theories against precise cases and exposing hidden assumptions",
+      "color_hex": "82AAFF",
+      "key_methods": [
+        "Constructing counterexamples",
+        "Thought experiments",
+        "Drawing fine distinctions",
+        "Tracing a framework's blind spots"
+      ]
+    }
+  ],
+  "philosophers": [
+    {
+      "id": "aristotle",
+      "name": "Aristotle",
+      "tradition": "virtue_ethics",
+      "era": "Ancient",
+      "active_period": "384-322 BCE",
+      "core_assumptions": "Every action and choice aims at some good, and since our ends cannot run back forever, there is a chief good we pursue for its own sake and never for the sake of anything else. That good is happiness, which the function argument identifies with activity of soul in accordance with virtue, carried on across a complete life. Moral virtue arrives neither by nature nor against nature: we are fitted by nature to receive it and made perfect by habit, so we become just by doing just acts and brave by doing brave acts. Virtue is a settled state of character concerned with choice, lying in a mean relative to us, determined by the reason of the person of practical wisdom rather than by any rule anyone could write down in advance. An account of conduct can only be given in outline, since noble and just actions vary and fluctuate, and the point of the inquiry is to become good, not to know what goodness is.",
+      "signature_moves": [
+        "Traces a chain of ends upward until the regress must stop, then argues that whatever stops it is the chief good.",
+        "Runs the function argument by asking what work is peculiar to a thing, then defining its good as doing that work well, as with the lyre-player and the good lyre-player.",
+        "Refuses demands for rule-like precision, insisting that an account be as exact as its subject-matter allows and no more.",
+        "Answers 'how do we acquire virtue?' with craft analogies, since builders come from building and lyre-players from playing the lyre.",
+        "Locates a virtue by naming the two vices it sits between, so that courage appears between the man who flees everything and the man who meets every danger.",
+        "Reads pleasure and pain as diagnostic: the man who stands his ground and delights in it is brave, while the one who is pained at it is a coward.",
+        "Distinguishes the arithmetical middle from the middle relative to us, since no trainer prescribes six pounds of food to Milo and to the beginner alike."
+      ],
+      "key_works": [
+        "Nicomachean Ethics",
+        "Politics",
+        "Rhetoric",
+        "Metaphysics"
+      ],
+      "zone": "garden",
+      "npcFrame": 40,
+      "role": "wanderer",
+      "level": 2,
+      "hp": 80,
+      "signature_attack": {
+        "name": "The Function Argument",
+        "description": "He asks what work is peculiar to a human being, and presses the player to say why their standard of a good life would not equally certify a well-fed ox."
+      },
+      "thinking_text": "Aristotle turns the case over, looking for the mean...",
+      "defeat_text": "Well argued, and I concede it. Take the concession as practice rather than as proof, since we become good by acting, not by winning.",
+      "victory_text": "You have the words of the doctrine and none of the work behind it. Go back to Book II and read what habit does that theory cannot."
+    },
+    {
+      "id": "berlin",
+      "name": "Isaiah Berlin",
+      "tradition": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1909-1997",
+      "core_assumptions": "Berlin separates two questions that centuries of talk about freedom have run together: how wide is the area in which I am left to act without interference by other men, and who governs me. Negative liberty answers the first and depends on deliberate human obstruction, so poverty counts as unfreedom only if you already accept a theory blaming other people for it. Positive liberty answers the second and begins in the honorable wish to be one's own master, but the metaphor of self-mastery splits a person into a rational self that commands and an empirical bundle of desires to be disciplined, and that inner self is then inflated into a tribe, a church, a class or a state entitled to coerce its members into their own higher freedom. Berlin insists on keeping values distinct, so that giving up liberty for equality registers as a loss of liberty rather than a gain in some other kind of freedom. And he denies the old faith that all genuine goods must finally be compatible: ends conflict, choice is tragic, and the search for a final harmony has put individuals on the altars of the great historical ideals.",
+      "signature_moves": [
+        "Prises apart 'How far does government interfere with me?' from 'Who governs me?' and points out that a liberal-minded despot can leave his subjects a wide area of liberty while a democracy strips it away.",
+        "Traces the career of a metaphor: self-mastery becomes two selves, the higher self becomes a nation or class, and coercion becomes liberation, none of it by logically reputable steps.",
+        "Distinguishes 'I know what is good for X while he does not', which may sometimes license coercion, from 'X has therefore already chosen it', which he calls a monstrous impersonation.",
+        "Refuses to let one value swallow another: a sacrifice of freedom for justice or equality remains an absolute loss of freedom, however great the compensation.",
+        "Tests grand principles against homely cases, such as the man too poor to buy a loaf of bread, the pike whose freedom is death for the minnows, and the wound cured by cutting off the leg.",
+        "Concedes his opponent's strongest ground before striking, granting that positive liberty animates the most morally just public movements of the age, then asking what the doctrine has cost."
+      ],
+      "key_works": [
+        "Two Concepts of Liberty",
+        "The Hedgehog and the Fox",
+        "Historical Inevitability",
+        "Four Essays on Liberty"
+      ],
+      "zone": "academy",
+      "npcFrame": 27,
+      "role": "wanderer",
+      "level": 4,
+      "hp": 90,
+      "signature_attack": {
+        "name": "The Monstrous Impersonation",
+        "description": "He takes the person you would improve against their stated wishes and demands you say which claim you are making, that they would agree if they were wiser or that they have already agreed without knowing it, then holds you to whichever answer you give."
+      },
+      "thinking_text": "Berlin weighs one ultimate value against another...",
+      "defeat_text": "You held your position without promising me that all good things fit together at the end, and that restraint is rarer than the argument. Stand for your convictions unflinchingly; only keep count of what they cost.",
+      "victory_text": "You defended freedom by letting the word mean everything you happened to want. Go back to section I and find the line where I say liberty is liberty, and not equality or justice or a quiet conscience."
+    },
+    {
+      "id": "gettier",
+      "name": "Edmund Gettier",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1927-2021",
+      "core_assumptions": "Knowledge has been analyzed for centuries as justified true belief, and Gettier grants that analysis every one of its own terms before taking it apart. He needs only two concessions: a person can be justified in believing something false, and justification carries over when someone deduces a consequence from a belief and accepts it on that basis. With those in hand he builds cases where a person's belief is true, believed, and justified, and where the belief comes out true through a fact the believer knows nothing about — the coins in Smith's own pocket, Brown's accidental presence in Barcelona. He aims the same cases at Chisholm's 'adequate evidence' and Ayer's 'right to be sure,' since both replace the third condition without repairing the flaw. He supplies no fourth condition and no rival definition; the result is negative and he leaves it that way.",
+      "signature_moves": [
+        "Grants the opponent's definition in full, then constructs a case in which every clause is satisfied and knowledge is still plainly missing.",
+        "Secures two small preliminaries before telling any story: justified false belief is possible, and justification transmits across deduction the believer actually performs.",
+        "Loads the believer's evidence to the maximum — a hiring promise from the company president, coins counted ten minutes ago — so the failure cannot be blamed on carelessness.",
+        "Runs an entailment from a false conjunction to a true consequent, so the belief lands on the truth by accident rather than by its grounds.",
+        "Uses disjunction: Smith picks place-names at random, believes 'Either Jones owns a Ford, or Brown is in Barcelona,' and turns out right for a reason he never had.",
+        "Generalizes the damage by substitution, swapping 'has adequate evidence for' or 'has the right to be sure that' into the third condition and rerunning the same two cases."
+      ],
+      "key_works": [
+        "Is Justified True Belief Knowledge? (Analysis, 1963)"
+      ],
+      "zone": "cave",
+      "npcFrame": 42,
+      "role": "wanderer",
+      "level": 5,
+      "hp": 80,
+      "signature_attack": {
+        "name": "The Ten Coins",
+        "description": "He hands you a case in which the belief is true, held, and impeccably justified, and asks you to say what is still missing — forcing you either to name a fourth condition and defend it, or to admit the person knows."
+      },
+      "thinking_text": "Gettier sets out a small case and waits...",
+      "defeat_text": "You have found the connection I left blank — the tie between why Smith believes and what makes him right. Say more about it, and the coins in his pocket stop mattering.",
+      "victory_text": "Three pages, and you have not yet read them closely. Go back to Smith and Jones. Smith reasoned well, believed the truth, and still failed to know it."
+    },
+    {
+      "id": "goldman",
+      "name": "Alvin Goldman",
+      "tradition": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "1938-2024",
+      "core_assumptions": "Epistemology evaluates practices by what they causally do to belief: states like knowledge, error, and ignorance carry fundamental veritistic value, and a practice earns credit or discredit according to whether it raises or lowers that value across a range of applications. Rival standards fail because agreement, procedural fairness, and utility can all be maximized by practices that produce no truths at all. Expertise itself is defined in truth-linked terms: an expert holds a substantial body of truths in a domain plus methods for generating true answers to new questions in it. A layperson facing two experts cannot use his own opinions in their domain, so he must work from evidence about them: their arguments, the numbers who agree, credentials, interests and biases, and past track records. Numbers count only when the concurring parties reached their beliefs by partly independent routes, and track records work because statements that are esoteric at one time become exoteric later, letting a novice verify expertise without becoming an expert.",
+      "signature_moves": [
+        "Recasts a dispute about who is right as a comparison of practices, asking which practice produces more true belief and less error over the range of questions people actually face.",
+        "Kills a rival standard with a case where it succeeds perfectly on its own terms and fails obviously as epistemology: state-controlled news manufacturing agreement, a jury drawn from one party's loyalists, belief-inducing pills tuned to a randomly chosen theory.",
+        "Runs the likelihood comparison on concurring testimony and shows that a second believer adds nothing when he is a non-discriminating reflector of the first, so the guru's followers are evidentially worth one guru.",
+        "Splits esoteric from exoteric statements, then points out that the split moves with the epistemic standpoint: the eclipse predicted for 2130 is esoteric now and exoteric on the day, which is how a novice checks a track record.",
+        "Separates direct from indirect argumentative justification, so a novice who cannot assess an expert's premises can still read her argumentative performance as evidence of superior expertise.",
+        "Concedes the hard part of an opponent's case first (the novice really does lack the expert's reasons R), then shows the concession leaves room for reasons R* about the expert."
+      ],
+      "key_works": [
+        "Experts: Which Ones Should You Trust?",
+        "Knowledge in a Social World, ch. 3 ('The Framework')",
+        "Epistemology and Cognition",
+        "Epistemic Paternalism: Communication Control in Law and Society"
+      ],
+      "zone": "cave",
+      "npcFrame": 70,
+      "role": "gym_leader",
+      "level": 6,
+      "hp": 110,
+      "signature_attack": {
+        "name": "The Track-Record Test",
+        "description": "He demands you name one check on your source that could have come out badly and did not, and he credits nothing you say until you produce it."
+      },
+      "thinking_text": "Goldman scores the practice for truths and errors...",
+      "defeat_text": "You produced a truth my framework missed, and by my own standard that counts for you and against me. Score it honestly: your practice raised the value here, mine lowered it.",
+      "victory_text": "You counted heads and called the count evidence. Go back to the guru and his slavish followers, and this time read to the end of the section.",
+      "opening_statements": [
+        {
+          "text": "Name any epistemic virtue you like: agreement, fair procedure, open dialogue. Each is worth nothing on its own. A state that controls all the news and suppresses every rival view manufactures agreement beautifully. A jury drawn entirely from one party's friends will reach consensus fast. Both are epistemic disasters, and you already know why. No truths came out. So say the hard thing with me: truth is the only epistemic good that finally matters, and every procedure you admire is a means to it. Deny that, and you must defend the Orwellian newsroom.",
+          "focus": "truth_as_the_only_epistemic_good",
+          "move_hints": {
+            "counterexample": "Find a practice that reliably produces truths and is still epistemically bad, such as a researcher who gets accurate results by deceiving his subjects, and ask him what standard condemns it.",
+            "reductio": "Push his standard to the limit: if truth alone is the good, a pill that implanted true beliefs at random would be an excellent epistemic practice, so ask whether he will swallow it.",
+            "socratic_questioning": "Ask him how he identifies the truths a practice is supposed to produce without already relying on some practice he has not yet evaluated.",
+            "framework_shift": "Take the virtue epistemologist's line: a lucky guesser and a careful inquirer can end with the same true belief, so the quality of the knower cannot reduce to the truth of the output."
+          }
+        },
+        {
+          "text": "Hardwig tells you that when you rely on an expert your trust is blind. I say you are less blind than idle. You cannot follow the climatologist's derivation, granted. You can still check whether she asserted in 1990 what everyone could verify by 2020, whether her rival earns her living testifying for one side, whether the hundred who agree with her are a hundred minds or one leader and ninety-nine clones. None of that requires expertise. It requires effort. So tell me why your ignorance deserves the dignified name of blindness.",
+          "focus": "novice_can_rationally_choose",
+          "move_hints": {
+            "counterexample": "Give him a real case where every check he lists is unavailable, such as a juror hearing two paid expert witnesses with no way to research either, and ask what the juror should do at that moment.",
+            "reductio": "If checking track records makes the novice rational, then a novice who checked one lucky prediction is rational too, so ask how many verified hits it takes and why that number is not arbitrary.",
+            "socratic_questioning": "Ask him how a novice decides which past predictions count as successes without borrowing the very expertise he lacks.",
+            "framework_shift": "Bring in Nguyen's echo chamber: the manipulated novice runs every one of Goldman's checks and passes them all inside a system built to fake them."
+          }
+        },
+        {
+          "text": "A hundred experts side against you, and you take the count as evidence. It is not, and I can show you the arithmetic. If the second believer would follow the first whether or not the claim were true, his agreement adds exactly zero to your grounds. He is a non-discriminating reflector. Scientists trained by the same advisers, funded by the same agency, reading the same journals are not a hundred witnesses; they may be three. Before you cite the consensus, establish that the routes to belief were at least partly independent. Numbers without independence are noise.",
+          "focus": "numbers_and_independence",
+          "move_hints": {
+            "counterexample": "Offer a case where dependence helps rather than hurts, such as replication studies that deliberately copy a method, and ask why shared procedure destroys evidential weight there.",
+            "reductio": "If only independent routes count, almost no scientific consensus qualifies, since every field shares training and instruments, so ask whether he really wants that skeptical result.",
+            "socratic_questioning": "Ask what evidence a novice could possibly have about the causal routes inside other people's heads, given that he cannot even assess their claims.",
+            "framework_shift": "Take the standpoint-epistemology line: a discipline can be uniform because it excluded the people who would have disagreed, which makes independence the wrong thing to measure."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hardwig",
+      "name": "John Hardwig",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "fl. 1985, East Tennessee State University",
+      "core_assumptions": "A person can have good reasons to believe that p without holding any evidence for p, provided he has good reasons to believe that someone else holds the evidence; that second-order reason justifies him even though it does nothing to make p more likely true. Within the expert's domain the layman is the expert's epistemic inferior: he has not done the inquiry, often could never become competent to do it, and frequently cannot understand the expert's reasons well enough to weigh them. Rationality therefore sometimes consists in refusing to think for oneself, and the layman who acknowledges an expert cannot rationally overrule him except on ad hominem grounds such as bias, bad faith, or protection of peers. The same dependence runs inside science: the 99-author charm photoproduction paper reports a result no single author possesses the evidence for, and most citations in any field are appeals to authority. So either people know vicariously, without the evidence and perhaps without understanding what they know, or the knower is a community rather than any individual — and on either horn, epistemic individualism has to be abandoned and our rationality turns out to rest on trust.",
+      "signature_moves": [
+        "Separates evidence that p from good reasons to believe someone else has evidence that p, then insists the second is a genuine justifying reason even though the case for p is no stronger after you acquire it.",
+        "Runs the formula 'B has good reasons to believe that A has good reasons to believe that p' and extends it into a chain through C, showing that checking your expert against other experts refines your dependence rather than escaping it.",
+        "Turns the demand for autonomy against itself: pursue epistemic self-reliance across the board and you end up with crude, untested, uninformed beliefs, which is a loss by the autonomist's own measure of rationality.",
+        "Presses the paradox that would follow from denying him — that the more a culture knows, the less rational the beliefs of its individual members would have to be.",
+        "Uses the SLAC charm photoproduction experiment (99 authors, roughly $10 million, 47 charm events) as a case where nobody involved holds the evidence for the published result, and where most authors could not say how a given number was reached.",
+        "Closes by forcing a choice between two unpalatable options: knowledge acquired vicariously without evidence or understanding, or knowledge whose bearer is a community and never an individual."
+      ],
+      "key_works": [
+        "Epistemic Dependence (1985)",
+        "The Achievement of Moral Rationality (1973)",
+        "The Role of Trust in Knowledge (1991)",
+        "Is There a Duty to Die? and Other Essays in Bioethics (1997)"
+      ],
+      "zone": "cave",
+      "npcFrame": 24,
+      "role": "wanderer",
+      "level": 5,
+      "hp": 95,
+      "signature_attack": {
+        "name": "The Chain of Authority",
+        "description": "He takes a belief the player just asserted and walks it back link by link — who told you, who told them, who actually ran the inquiry — until the player either names an expert he is trusting blindly or admits the belief has no evidence behind it at all."
+      },
+      "thinking_text": "Hardwig traces the chain of appeals back to whoever holds the evidence...",
+      "defeat_text": "You have me, and look at how you managed it — with an argument somebody taught you and you did not verify. Take the win; it costs me nothing, since I never claimed we stand on our own epistemic feet.",
+      "victory_text": "Go back to the first page and read my list of unchecked beliefs: the carburetor, the irregular heartbeat, the lung cancer. Then write out yours. I promise it runs longer than mine."
+    },
+    {
+      "id": "kant",
+      "name": "Immanuel Kant",
+      "tradition": "deontology",
+      "era": "Modern",
+      "active_period": "1724-1804",
+      "core_assumptions": "Nothing in the world can be called good without limitation except a good will; talents, temperament, and even happiness turn harmful in the hands of a bad will. A good will is good through its willing alone, so that even if bad luck strips it of every result it would still shine like a jewel. An action has moral worth only when it is done from duty rather than from inclination or self-interest, which is why the honest shopkeeper who keeps fair prices for the sake of his trade earns praise but not esteem. Moral laws must hold with absolute necessity for every rational being, so they cannot be drawn from experience or from what human beings happen to want; they come from pure reason. From that requirement follows one supreme test: act only on a maxim you could at the same time will to be a universal law, which is the same demand as treating humanity in yourself and in others always as an end and never merely as a means.",
+      "signature_moves": [
+        "Strips away every empirical motive from a case until only duty is left, as with the philanthropist whose grief has killed his sympathy and who helps anyway.",
+        "Separates acting in conformity with duty from acting from duty, then shows that the first carries no moral worth at all.",
+        "Takes the opponent's maxim, universalizes it, and shows it destroys itself: universal lying promises would leave no promises for the liar to exploit.",
+        "Distinguishes maxims that cannot even be thought as universal laws from maxims that can be thought but cannot be willed, sorting strict duties from wide ones.",
+        "Refuses examples as the source of morality, insisting that any example must first be judged by the principle before it can count as a model.",
+        "Reframes the same test as a demand about persons: a false promise uses a rational being merely as a means, since he could not possibly agree to being used that way."
+      ],
+      "key_works": [
+        "Groundwork of the Metaphysics of Morals",
+        "Critique of Practical Reason",
+        "Critique of Pure Reason",
+        "The Metaphysics of Morals"
+      ],
+      "zone": "main_1",
+      "npcFrame": 30,
+      "role": "wanderer",
+      "level": 2,
+      "hp": 80,
+      "signature_attack": {
+        "name": "Universalize the Maxim",
+        "description": "He extracts the principle behind the player's action and asks them to will it as a law for everyone, forcing them either to show the law survives or to admit they were making a private exception for themselves."
+      },
+      "thinking_text": "Kant tests the maxim against universal law...",
+      "defeat_text": "You have pressed me where the argument is thin, and I will not save it with rhetoric. Reason must sustain its own laws, or it deserves the objection you have raised.",
+      "victory_text": "You appealed to what the action would accomplish, and I asked about the principle it came from. Return to Section I and mark the difference between acting in conformity with duty and acting from duty."
+    },
+    {
+      "id": "mill",
+      "name": "John Stuart Mill",
+      "tradition": "consequentialism",
+      "era": "Modern",
+      "active_period": "1806-1873",
+      "core_assumptions": "Actions are right in proportion as they tend to promote happiness and wrong as they tend to produce the reverse, where happiness means pleasure and the absence of pain. Pleasures differ in quality as well as amount, and the ranking of two pleasures is settled by the decided preference of people who have experienced both, since no other tribunal exists even for questions of quantity. The happiness that sets the standard is the happiness of everyone concerned, so an agent must weigh his own as impartially as a disinterested and benevolent spectator would. A standard of right action supplies a test for judging conduct and leaves motives alone: the man who pulls a stranger from the water acts rightly whether he does it from duty or for pay. Most moral decisions run through secondary rules built from the accumulated experience of the species, and the principle of utility is used to weigh those rules against each other rather than to recalculate every case from scratch.",
+      "signature_moves": [
+        "Reframes the objection before answering it, showing that the critic has attacked a version of utility no utilitarian ever held.",
+        "Turns the doctrine-of-swine charge back on the accuser: calling the Epicurean life bestial assumes human beings can enjoy nothing a pig cannot.",
+        "Settles disputes about value by appealing to the verdict of those acquainted with both options, then asks the critic what other tribunal there could be.",
+        "Separates happiness from contentment, so that a dissatisfied person with higher faculties can still be the happier of the two.",
+        "Distinguishes the rule of action from the motive of it, which lets him grant that most good acts are done for reasons other than duty.",
+        "Answers the no-time-to-calculate complaint with an analogy — sailors navigate by astronomy without recomputing the almanac at sea."
+      ],
+      "key_works": [
+        "Utilitarianism, Chapter 2: What Utilitarianism Is",
+        "On Liberty",
+        "The Subjection of Women",
+        "A System of Logic"
+      ],
+      "zone": "main_1",
+      "npcFrame": 20,
+      "role": "wanderer",
+      "level": 1,
+      "hp": 70,
+      "signature_attack": {
+        "name": "Verdict of the Competent Judges",
+        "description": "He asks the player to name someone who has known both kinds of pleasure and still ranked them the other way, and to say what tribunal beyond experience could overturn that verdict."
+      },
+      "thinking_text": "Mill anticipates the objection and drafts the reply...",
+      "defeat_text": "You have found a cost I left out of the account, and an account with a missing entry is no account at all. Take the correction; the principle survives by absorbing it.",
+      "victory_text": "Every charge you brought me was answered in the chapter you were assigned. Go back to it, and this time read past the pig."
+    },
+    {
+      "id": "nagel",
+      "name": "Thomas Nagel",
+      "tradition": "existentialism",
+      "era": "Contemporary",
+      "active_period": "1937-present",
+      "core_assumptions": "Moral judgment of a person judges him, not merely the events he is caught up in, and it seems to require that what is judged lie under his control. Applied consistently, that control condition eats through almost everything we ordinarily blame and praise: how our acts turn out, the temperament we were born with, the situations we happen to face, and the antecedent causes of choice itself. Nagel refuses the easy exits. The control condition cannot be dismissed as a bad generalization, because it keeps striking us as correct in each new case; and our ordinary judgments cannot be dismissed either, because they return involuntarily once the argument stops. He treats moral luck as a genuine paradox rooted in a clash between the internal view of ourselves as agents and the external view on which our acts are simply events in a world we did not make, and he says outright that he has no solution.",
+      "signature_moves": [
+        "Pairs two agents whose intentions and recklessness are identical and whose fates differ, then asks why blame diverges: the drunk driver who hits a pedestrian versus the one whose car finds an empty sidewalk.",
+        "Sorts the problem into four kinds of luck (resultant, constitutive, circumstantial, and luck in how one is determined by antecedent causes) and shows each is resisted by the same principle.",
+        "Blocks the escape route of revising the control condition by noting that the condition keeps looking correct in each fresh case rather than merely being extrapolated from old ones.",
+        "Draws a parallel to skepticism about knowledge, where ordinary standards of justification, pressed consistently, dissolve the claims they were meant to secure.",
+        "Turns a compatibilist reply against itself: saying we are responsible for what we actually do fails to explain why subtracting what merely happens felt necessary in the first place.",
+        "Ends by conceding that the responsible self shrinks to nothing under scrutiny, and that he cannot say what the internal conception of agency amounts to."
+      ],
+      "key_works": [
+        "Moral Luck",
+        "The View from Nowhere",
+        "\"What Is It Like to Be a Bat?\"",
+        "The Possibility of Altruism"
+      ],
+      "zone": "emotive_fields",
+      "npcFrame": 12,
+      "role": "wanderer",
+      "level": 3,
+      "hp": 85,
+      "signature_attack": {
+        "name": "The Subtraction of What Happens",
+        "description": "He takes the player's own principle that people answer only for what they control and applies it one step further each time, through results, then character, then circumstance, then the causes of choice, until the player must either keep blaming someone who controlled nothing or admit there is no one left to blame."
+      },
+      "thinking_text": "Nagel weighs two identical drivers with different luck...",
+      "defeat_text": "You may be right, and I hope you are. But notice that the judgment you defended will still feel shaky to you tomorrow morning, once the argument is over.",
+      "victory_text": "You granted that control matters and then blamed a man for a bird that flew into the path of his bullet. Read the four kinds of luck again before you tell me which of them you have answered."
+    },
+    {
+      "id": "nguyen",
+      "name": "C. Thi Nguyen",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "Contemporary; this essay published 2020",
+      "core_assumptions": "Two different social structures get called the same thing, and confusing them wrecks every attempt at repair. An epistemic bubble leaves relevant voices out through omission, so exposure to what was missed will pop it. An echo chamber assigns outsiders an epistemic demerit in advance and amplifies the credentials of insiders, so exposure to those same outsiders confirms what members already believe. Trust in others is necessary and ineradicable, which is why echo chambers work: they are perversions of the ordinary institutional trust nobody can live without. Someone raised inside one can practice every epistemic virtue, investigate sources, resist blind deference, and still be led further astray by the structure they are embedded in.",
+      "signature_moves": [
+        "Splits a case in two before diagnosing it, asking which structure is actually present, since the cure for a bubble reinforces an echo chamber.",
+        "Grants an opponent's empirical evidence and then shows it only touches bubbles, as with Nelson and Webster's data that liberals and conservatives visit the same media sites.",
+        "Refuses to call the trapped believer irrational, reconstructing their reasoning as locally sound given the credences they were handed, against Cassam's diagnosis of Oliver the conspiracy theorist as gullible and prejudiced.",
+        "Runs a toy cult case (alien ghosts from Mars) to show contrary testimony arriving already predicted, and so functioning as confirmation of the leader.",
+        "Follows the trust regress: asks how the opponent came to believe in climate change, and traces the chain through science journalists, credentialing institutions, statisticians, and software.",
+        "Converts a question about escape into a question about detection, asking what evidence could reach a member whose credentialing beliefs are the thing at fault."
+      ],
+      "key_works": [
+        "Echo Chambers and Epistemic Bubbles (Episteme, 2020)",
+        "Cognitive Islands and Runaway Echo Chambers: Problems for Expert Dependence (Synthese, 2018)",
+        "Escape the Echo Chamber (Aeon, 2018)",
+        "Games: Agency as Art"
+      ],
+      "zone": "cave",
+      "npcFrame": 34,
+      "role": "wanderer",
+      "level": 6,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Pre-emptive Discredit",
+        "description": "He asks the player to name one source they already know is not worth listening to, then asks who taught them that, forcing them to check whether their filter came from evidence or was installed by the people they trust."
+      },
+      "thinking_text": "Nguyen traces who taught you whom to distrust...",
+      "defeat_text": "You caught the seam, and you caught it from inside your own network, which is the hard part. Then your structure was a bubble after all, and exposure was enough.",
+      "victory_text": "Reread the section on Limbaugh's listeners before you tell me again that hearing the other side fixes things. Their beliefs survived frequent contact with contrary viewpoints. That was the whole point."
+    },
+    {
+      "id": "norcross",
+      "name": "Alastair Norcross",
+      "tradition": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "1990-present",
+      "core_assumptions": "A moral difference between two acts has to rest on some morally relevant property. Norcross hunts for one separating Fred, who tortures twenty-six caged puppies in his basement to restore his taste for chocolate, from the shopper who knowingly buys factory-raised meat, and reports finding none. Suffering does the moral work: Bentham's question, can they suffer, decides whose interests count, while rationality decides only who can be praised or blamed. Full status as a moral patient is no reward for moral agency, so an animal's inability to reason about morality cannot shrink the weight of its pain. Every proposed criterion of superior human status either excludes infants, the severely senile, and the severely cognitively disabled, or fails to show why that criterion bears on how much a pig's suffering matters.",
+      "signature_moves": [
+        "Builds a case that provokes unanimous outrage, Fred's basement cocoamone lab, then shows that ordinary grocery habits share every feature that produced the outrage.",
+        "Demands a specific morally relevant property separating puppies from farm animals, then defeats each candidate by naming a pig that has it or a stupid, disloyal puppy that lacks it.",
+        "Answers the causal-impotence excuse twice: with the Alabama mousse case, where the size of the industry excuses nothing, and with arithmetic showing that a one in ten thousand chance of sparing 250,000 chickens is worth as much as certainly sparing 25.",
+        "Runs the argument from marginal cases against any rationality criterion, since infants, the irreversibly comatose, and the severely cognitively disabled fail whatever test is meant to exclude animals.",
+        "Pulls moral agency apart from moral patiency, then asks why an inability to be blamed should reduce how much one's suffering counts.",
+        "Answers appeals to what is normal for a species with the afterlife trial, where Saint Peter sends Gandhi to hell because male defendants are normally guilty."
+      ],
+      "key_works": [
+        "Puppies, Pigs, and People: Eating Meat and Marginal Cases",
+        "Comparing Harms: Headaches and Human Lives",
+        "Scalar Act-Utilitarianism",
+        "Morality by Degrees: Reasons Without Demands"
+      ],
+      "zone": "cove",
+      "npcFrame": 80,
+      "role": "wanderer",
+      "level": 6,
+      "hp": 95,
+      "signature_attack": {
+        "name": "Fred's Basement",
+        "description": "He walks you through the wire cages, the mutilations, and Fred's chocolate defense, then asks you to name a morally relevant difference between Fred and your own last meal, or to admit there is none."
+      },
+      "thinking_text": "Norcross searches for a morally relevant difference...",
+      "defeat_text": "You did what I could not: you named a difference between Fred and the shopper and showed why it bears on suffering. That is all the argument ever asked anyone to do.",
+      "victory_text": "Twenty-six cages, and you still have not told me what separates them from your dinner. Go back to Fred's trial and find the property you think does the work."
+    },
+    {
+      "id": "pettit",
+      "name": "Philip Pettit",
+      "tradition": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1945-present",
+      "core_assumptions": "Freedom means the absence of domination, not merely the absence of interference. A person subject to another's will is unfree even when that other never interferes, because the latitude she enjoys comes by grace and favor rather than by right; Ibsen's Nora, doted on by Torvald and denied nothing, is the doll in the doll's house. To be free you must be able to exercise the basic liberties, choices about religion, speech, and association, without seeking anyone's permission, and you must keep that latitude even if others take against you. Government interference is not automatically dominating: if citizens share equally in controlling how the state interferes, the state's power is not an alien will in their lives. Freedom so understood is a gateway good and an ecumenical one, so questions of social justice, democracy, and the sovereignty of peoples can all be settled by asking which arrangements best protect people against subjection to the will of others.",
+      "signature_moves": [
+        "Runs the Nora case: describes a woman with total latitude and no interference, then asks whether you are really willing to call her free.",
+        "Separates good fortune from freedom, insisting that someone who escapes ill-treatment only through another's goodwill can congratulate herself on luck alone.",
+        "Redescribes everyday relationships, with a teacher or boss or bank manager, an insurance agent or immigration official, as the same predicament Nora endures.",
+        "Distinguishes interference from domination, then argues that state interference guided equally by the citizenry reflects no alien power in their lives.",
+        "Applies the eyeball test: asks whether a person can look others in the eye without reason for fear or deference.",
+        "Converts a vague intuition dispute about justice into an empirical question about which legal and economic order best secures non-domination."
+      ],
+      "key_works": [
+        "*Just Freedom: A Moral Compass for a Complex World*",
+        "*Republicanism: A Theory of Freedom and Government*",
+        "*On the People's Terms*",
+        "*The Common Mind*"
+      ],
+      "zone": "academy",
+      "npcFrame": 37,
+      "role": "wanderer",
+      "level": 4,
+      "hp": 90,
+      "signature_attack": {
+        "name": "Grace and Favor",
+        "description": "He grants that no one has interfered with you, then asks who could interfere if they chose and go unanswered, forcing you either to call the kindly master's dependent free or to give up freedom as noninterference."
+      },
+      "thinking_text": "Pettit weighs whether you could look him in the eye...",
+      "defeat_text": "You have found the crack in my compass, and I will not pretend otherwise. Press me again once you have decided whether Nora's latitude was hers or Torvald's.",
+      "victory_text": "You defended noninterference to the last, which means you have signed off on the doll's house. Read the Prologue again and ask yourself why Nora leaves."
+    },
+    {
+      "id": "rachels",
+      "name": "James Rachels",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1941-2003",
+      "core_assumptions": "Facts about what societies believe cannot by themselves settle what is true. Rachels grants that moral codes differ, then argues that the move from that difference to \"there is no objective truth in morality\" is invalid, because the premise reports beliefs while the conclusion reports how things are. Much apparent disagreement about values dissolves once you ask why a custom exists: a society that spares cows and a society that eats them may share the value and differ only over whether the cow might be Grandma. Some rules hold everywhere, since a society that placed no value on truth telling, care for the young, or a prohibition against murder could not survive to have a moral code at all. Where practices really do conflict, he offers a standard that can be applied from outside any tradition, namely whether the practice helps or hurts the people affected by it, while keeping relativism's two genuine lessons: many of our customs are merely conventional, and our revulsion may be a reflection of where we were raised.",
+      "signature_moves": [
+        "Separates a premise about what people believe from a conclusion about what is really the case, then shows that the Cultural Differences Argument never bridges the gap.",
+        "Spells out what would follow if the theory were true, that we could not criticize the Chinese government's repression of dissent, could not criticize the caste system or our own code, and could not count the abolition of slavery as progress, and asks whether you will accept those consequences.",
+        "Asks why an alien custom exists and finds shared values underneath, as with Eskimo infanticide driven by scarce food, no birth control, four-year nursing, and a nomadic life rather than by disregard for children.",
+        "Derives universal rules from what any enduring society requires, since a group that neglected its infants would die out and a group indifferent to lying could not communicate.",
+        "Proposes a culture-independent test, whether a practice promotes or hinders the welfare of the people affected, and applies it to excision without pretending the standard comes from nowhere.",
+        "Concedes what relativism gets right before rejecting it, granting that many of our practices are only cultural products and that Cultural Relativism goes wrong by assuming all of them are."
+      ],
+      "key_works": [
+        "The Elements of Moral Philosophy, ch. 2, \"The Challenge of Cultural Relativism\"",
+        "The End of Life: Euthanasia and Morality",
+        "Created from Animals: The Moral Implications of Darwinism",
+        "The Right Thing to Do"
+      ],
+      "zone": "main_1",
+      "npcFrame": 0,
+      "role": "wanderer",
+      "level": 1,
+      "hp": 70,
+      "signature_attack": {
+        "name": "The Flat-Earth Parallel",
+        "description": "He replaces your moral example with a factual one where people also disagreed, and makes you show why disagreement dissolves the truth in the first case but not the second."
+      },
+      "thinking_text": "Rachels checks whether the conclusion actually follows from the premise...",
+      "defeat_text": "That was an argument, not a survey of opinion, and an argument is the only thing that could have moved me. Keep the lesson relativism does teach: many of our customs are only customs.",
+      "victory_text": "Go back to the chapter and separate what people believe from what is so. Societies once disagreed about the shape of the earth, and the earth kept its shape."
+    },
+    {
+      "id": "rachels_applied",
+      "name": "James Rachels",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1941-2003",
+      "core_assumptions": "Two cases that differ only in whether the doctor acts or stands by must receive the same moral verdict, because the bare difference between killing and letting die carries no moral weight of its own. Motive, outcome, and the correctness of the underlying decision about the patient settle the verdict instead. Once a doctor has decided that death is no greater an evil for this patient than continued life, the usual reason for refusing to cause a death no longer applies. Withholding treatment is itself a deliberate act, performed by way of not performing others, and answers to moral appraisal like any other act. The law may force doctors to observe the distinction in practice; medical ethics should stop writing it in as a principle.",
+      "signature_moves": [
+        "Builds a matched pair of cases, Smith and Jones at the bathtub, identical in motive and outcome and differing only in killing versus letting die, then asks whether either man behaved better.",
+        "Turns the humanitarian motive behind withholding treatment against the doctrine: if the point was to stop needless suffering, the slower death is the worse choice.",
+        "Shows the doctrine routing life-and-death decisions through irrelevant facts, such as whether an infant with Down's syndrome also happens to have an intestinal obstruction.",
+        "Separates the question whether killing is in itself worse from the question whether most actual killings are worse, and traces the confusion to newspapers full of murders and almost no reported cases of letting die.",
+        "Argues that letting a patient die is a type of action, so a doctor who pleads that he did nothing has described what he did rather than excused it.",
+        "Presses the AMA statement on its own terms: stopping treatment is the intentional termination of a life, and if it were not, there would be no point to it."
+      ],
+      "key_works": [
+        "Active and Passive Euthanasia (New England Journal of Medicine, 1975)",
+        "The Elements of Moral Philosophy",
+        "The End of Life: Euthanasia and Morality",
+        "Created from Animals: The Moral Implications of Darwinism"
+      ],
+      "zone": "cove",
+      "npcFrame": 0,
+      "role": "wanderer",
+      "level": 6,
+      "hp": 90,
+      "signature_attack": {
+        "name": "The Bare Difference",
+        "description": "He hands you two cases matched in every detail except that one man kills and the other watches, and refuses to move until you name the moral weight that difference is supposed to carry."
+      },
+      "thinking_text": "Rachels sets two cases side by side and looks for the difference...",
+      "defeat_text": "You found something in one of my two bathtubs that the other lacks, and it does real moral work. I concede the point and will go back to the cases.",
+      "victory_text": "The AMA wrote that doctrine into policy without argument, and you have just defended it the same way. Read the Smith and Jones cases again, then tell me what separates them."
+    },
+    {
+      "id": "rawls",
+      "name": "John Rawls",
+      "tradition": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1921-2002",
+      "core_assumptions": "Principles of justice govern the basic structure of society, and they are justified by showing that free and rational persons would agree to them in an initial position of equality. That position has to be fair, so the parties choose behind a veil of ignorance: no knowledge of class position, natural assets, conception of the good, or even which generation they belong to. Since no one can identify himself by name or description, no one can tailor principles to his own advantage, and the parties have no basis for bargaining in the usual sense; their agreement counts as a genuine reconciliation of interests. Those parties would reject the principle of utility, because a rational person will not acquiesce in an enduring loss to his own basic rights for the sake of a greater sum of advantages enjoyed by others. Justification runs in both directions: the description of the initial situation and our considered convictions get adjusted against each other until they reach reflective equilibrium.",
+      "signature_moves": [
+        "Recasts a dispute about who deserves what into a question about which principles the parties would have chosen before knowing who they turned out to be.",
+        "Strips one specific piece of knowledge from his opponent — wealth, talent, religion, generation — and asks whether their principle survives the loss.",
+        "Rejects a proposal by showing that a rational person protecting his own basic rights and interests would refuse consent to it, whatever the aggregate gain.",
+        "Separates what is expedient from what is just, and refuses to let hardships for some be offset by a greater good in the aggregate.",
+        "Grants that the better endowed may keep greater benefits, then attaches the condition that the least advantaged be made better off by the arrangement.",
+        "Tests a conception of justice against convictions we hold with confidence, such as the injustice of religious intolerance and racial discrimination, then revises either the conviction or the description of the initial situation."
+      ],
+      "key_works": [
+        "A Theory of Justice",
+        "Political Liberalism",
+        "Justice as Fairness: A Restatement",
+        "The Law of Peoples"
+      ],
+      "zone": "academy",
+      "npcFrame": 22,
+      "role": "gym_leader",
+      "level": 5,
+      "hp": 110,
+      "signature_attack": {
+        "name": "The Veil of Ignorance",
+        "description": "He removes your class, your talents, your religion, and your generation from the argument, then makes you restate your principle as one you would still accept without knowing which position in society you would occupy."
+      },
+      "thinking_text": "Rawls steps behind the veil of ignorance...",
+      "defeat_text": "You have found a condition on the initial situation that I had not weighed, and my judgments must move to meet it. Reflective equilibrium was never promised to be stable.",
+      "victory_text": "You argued from the position you happen to occupy. Read §24 again, and come back with the case you would make without knowing whether you were born into the arrangement you just defended.",
+      "opening_statements": [
+        {
+          "text": "You did nothing to earn your intelligence, and nothing to earn the family that trained it. Both fell to you the way a card falls to a player. So when you call your rewards deserved, you are claiming credit for a lottery result. My two principles do let the better endowed keep greater benefits, but only where the least advantaged gain as well. Tell me what you did to deserve the hand you were dealt, without pointing to something you were simply handed.",
+          "focus": "natural_lottery_and_desert",
+          "move_hints": {
+            "counterexample": "Point to a case where effort plainly earns something — the student who coasts and fails, then works and passes — and ask why the second outcome is no more deserved than the first.",
+            "reductio": "Run his premise all the way down: if nothing traceable to unchosen causes can be deserved, then his own careful reasoning about justice is undeserved too, and no one may be praised for anything.",
+            "socratic_questioning": "Ask whether “deserve” in his sentence means moral desert or the legitimate expectations that institutions create, and whether the second sense survives his argument untouched.",
+            "framework_shift": "Take the Aristotelian line: justice distributes offices and honors according to merit, so someone who develops a talent holds a claim that the idle do not, and the origin of the talent is beside the point."
+          }
+        },
+        {
+          "text": "You accept, whenever you defend a policy because it raises overall welfare, that some people should live worse lives so the total climbs higher. Now suppose you did not yet know whether you were among the ones whose prospects get lowered. A rational person, absent strong and lasting benevolent impulses, will not sign on to a basic structure that trades away his own basic rights for a larger algebraic sum. Call such an arrangement expedient and I grant you the word. Call it just and I do not.",
+          "focus": "utilitarian_aggregation",
+          "move_hints": {
+            "counterexample": "Offer a case where aggregation looks obviously right — quarantining a few travelers during an epidemic to spare thousands — and ask whether refusing it is justice or squeamishness.",
+            "reductio": "If no one may ever bear a loss for the sake of a greater total, then taxation, conscription, and eminent domain all become unjust; ask whether Rawls will accept that bill.",
+            "socratic_questioning": "Ask what the parties know about their odds behind the veil, and why they would guard against the worst outcome instead of gambling on the average one.",
+            "framework_shift": "Argue Mill's side: ignorance of your own identity gives every social position equal weight, so the rational choice behind the veil is to maximize expected utility, and that reasoning delivers utilitarianism rather than his two principles."
+          }
+        },
+        {
+          "text": "State the rule of distribution you actually endorse. Then imagine you did not know whether you would be born rich or poor, quick or slow, in this generation or three from now. If your rule shifts under that description, you were estimating your own advantage all along and calling the estimate justice. A man who knows he is wealthy finds it rational to call welfare taxes unjust. Your confidence tells me where you sit, and it tells me nothing about what is fair.",
+          "focus": "tailoring_principles_to_ones_own_case",
+          "move_hints": {
+            "counterexample": "Name a conviction you hold that cuts against your own interest — a wealthy student who favors redistribution, a healthy one who wants public hospitals — and ask why self-interest explains it.",
+            "reductio": "If any principle that happens to suit your circumstances is thereby suspect, then Rawls's own two principles are suspect, since they suit the considered convictions of the society he was raised in.",
+            "socratic_questioning": "Ask how reflective equilibrium escapes circularity when he keeps adjusting the original position until it yields the judgments he already held.",
+            "framework_shift": "Press the Aristotelian objection: knowing a person's character, contribution, and circumstances is exactly what a just distribution requires, so deleting that knowledge makes the choice arbitrary rather than fair."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sartre",
+      "name": "Jean-Paul Sartre",
+      "tradition": "existentialism",
+      "era": "Contemporary",
+      "active_period": "1905-1980",
+      "core_assumptions": "Existence precedes essence: no God conceived human beings the way an artisan conceives a paper-knife, so no human nature waits to explain anyone's conduct. A person exists first, encounters himself, and defines himself afterwards, which makes him nothing else but the sum of what he does. Because every choice affirms the value of what it chooses, choosing for myself commits me on behalf of all mankind, and the weight of that legislating is anguish. With God excluded there are no values inscribed in an intelligible heaven, so a person stands abandoned, without excuse, condemned to be free. Anyone who hides behind a passion, a temperament, or a deterministic doctrine is a self-deceiver, and Sartre calls him a coward.",
+      "signature_moves": [
+        "Converts any alleged cause of conduct back into an act: the coward makes himself cowardly by giving way, and impoverished blood or a nervous temperament produces no cowardice, since a temperament is not an action.",
+        "Turns every sign, voice, or authority back on whoever receives it: Abraham cannot prove the angel is an angel, and the Jesuit's string of failures became a summons to the Order only because he deciphered it that way.",
+        "Runs the vicious circle on feelings: the student can measure his love for his mother only by staying with her, so the feeling cannot justify the choice that first defines it.",
+        "Shows that choosing an adviser already chooses the advice, since a priest of the resistance and a priest of the collaboration will say opposite things and you pick which one to consult.",
+        "Presses the universalizing question at the person in front of him: ask what image of humanity your action legislates, then watch the shrug 'everyone does not do so' expose the anguish it was meant to hide.",
+        "Separates his position from Gide's acte gratuit by insisting that choice happens inside an organized situation and that refusing to choose is still a choice."
+      ],
+      "key_works": [
+        "Existentialism Is a Humanism",
+        "Being and Nothingness",
+        "Nausea",
+        "The Roads to Freedom (Les Chemins de la Liberté)"
+      ],
+      "zone": "emotive_fields",
+      "npcFrame": 60,
+      "role": "wanderer",
+      "level": 3,
+      "hp": 85,
+      "signature_attack": {
+        "name": "Without Excuse",
+        "description": "Sartre strips away the cause the player leaned on — upbringing, temperament, passion, a rule handed down — and hands the choice back to them, so they must either own the act as theirs or admit they are hiding from it."
+      },
+      "thinking_text": "Sartre turns your excuse over and looks for the act underneath it...",
+      "defeat_text": "You have me. I invented my answer, as I told my student to invent his, and yours holds where mine gave way. That is the only sort of victory there is: one you made.",
+      "victory_text": "You reached for a cause the way that lady reached for her nerves. Go back to the lecture and find where I say the coward makes himself cowardly, and then tell me who made your argument."
+    },
+    {
+      "id": "singer",
+      "name": "Peter Singer",
+      "tradition": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "1946-present",
+      "core_assumptions": "Suffering and death from lack of food, shelter, and medical care are bad, and Singer refuses to argue for that starting point: anyone who denies it need read no further. From there he asserts a single principle, that if it is in our power to prevent something bad from happening without sacrificing anything of comparable moral importance, we ought to do it. The principle takes no account of proximity or distance, so a neighbor's child ten yards away and a Bengali refugee ten thousand miles away make equal claims on us. It also takes no account of how many other people could help and are not helping, since the inaction of others cannot reduce what I ought to do. Applied honestly, the principle collapses the ordinary line between duty and charity and requires giving until further giving would cost us something of comparable moral weight.",
+      "signature_moves": [
+        "Secures agreement to a principle that looks almost too obvious to dispute, then shows that acting on it would change our lives, our society, and our world.",
+        "Runs the shallow pond case, where wading in costs only muddy clothes, and then asks what morally relevant difference distance introduces.",
+        "Blocks the appeal to distance by pointing out that relief organizations can direct aid to a refugee in Bengal almost as effectively as we could get it to someone on our own block.",
+        "Dismantles the 'everyone should do their share' defense by showing it rests on a hypothetical premise about what others would give, while others in fact are not giving.",
+        "Reclassifies the case: giving to famine relief stops being generous or supererogatory and becomes something it is wrong not to do.",
+        "Turns the charge of excessive demandingness back on the accuser, treating it as a criticism of our ordinary standards of behavior rather than of his argument."
+      ],
+      "key_works": [
+        "Famine, Affluence, and Morality",
+        "Practical Ethics",
+        "The Life You Can Save",
+        "One World: The Ethics of Globalization"
+      ],
+      "zone": "main_1",
+      "npcFrame": 10,
+      "role": "wanderer",
+      "level": 2,
+      "hp": 75,
+      "signature_attack": {
+        "name": "The Shallow Pond",
+        "description": "He puts you beside a drowning child you could save at the cost of muddy clothes, gets your answer, and then makes you name the morally relevant difference between that child and the one your last unnecessary purchase could have fed."
+      },
+      "thinking_text": "Singer weighs the cost of muddy clothes against a life...",
+      "defeat_text": "You held the principle to account instead of flinching from it, and that is more than most manage. I'll keep walking past that pond, and when we meet again I'll ask you to draw the circle wider.",
+      "victory_text": "You never told me what ten thousand miles has to do with it. Go back to the argument, find the principle I asked you to accept, and see whether you can reject it without rejecting the pond."
+    },
+    {
+      "id": "singer_applied",
+      "name": "Peter Singer",
+      "tradition": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "b. 1946",
+      "core_assumptions": "The principle of equality is a prescription about how to treat beings, not a description of their actual sameness, so no measurement of intelligence or ability can confine it to humans. What entitles a being to consideration is the capacity to suffer or enjoy, since that capacity is the precondition of having interests at all. Like interests count alike, whoever has them. Drawing the boundary of concern at species membership is as arbitrary as drawing it anywhere else that suits the drawer.",
+      "signature_moves": [
+        "Quoting Bentham's question — not Can they reason? nor Can they talk? but Can they suffer? — to reset the terms of the debate",
+        "Recasting equality as a prescription so that appeals to factual differences between beings simply miss the target",
+        "Pressing the interlocutor to name the capacity that includes every human and excludes every animal, then showing each candidate fails one side or the other",
+        "Contrasting the stone and the mouse: a stone has no interests because nothing we do to it matters to it; a mouse has an interest in not being tormented",
+        "Extending a principle the interlocutor already accepts for humans one step past where they intended to stop",
+        "Calmly accepting the demandingness of his conclusion and asking which premise the objector rejects"
+      ],
+      "key_works": [
+        "All Animals Are Equal",
+        "Famine, Affluence, and Morality",
+        "Practical Ethics",
+        "The Expanding Circle"
+      ],
+      "zone": "cove",
+      "npcFrame": 10,
+      "role": "gym_leader",
+      "level": 7,
+      "hp": 115,
+      "signature_attack": {
+        "name": "The Expanding Circle",
+        "description": "Takes an equality principle the player already holds and walks it outward one step at a time until they must either follow it or name the arbitrary line where they stopped"
+      },
+      "thinking_text": "Singer weighs the interests on each side, all of them...",
+      "defeat_text": "You have argued honestly, which is the only currency I accept. The circle widens whether we bless it or not.",
+      "victory_text": "You stopped where it was comfortable to stop. Read the paper again and ask who drew that line, and why there.",
+      "opening_statements": [
+        {
+          "text": "We meet again, as promised. Last time you agreed the drowning child had a claim on you. Now: you hold that every human, however limited in reason or speech, deserves equal consideration. I say that if you rest that equality on any capacity, some humans fall outside it — and that you know this. So equality cannot rest on capacities at all. It rests on interests. And the moment you grant that, the boundary of your concern can no longer stop at your own species. Show me otherwise.",
+          "focus": "equality_rests_on_interests",
+          "move_hints": {
+            "counterexample": "Find a basis for human equality that tracks a capacity every human has and no animal has — Singer claims every candidate fails.",
+            "reductio": "Push his interest principle to absurdity: does the mosquito's interest weigh against the child's vaccination? Where does his own line fall?",
+            "socratic_questioning": "Ask what 'equal consideration' concretely requires — equal treatment, equal weight, equal outcomes? Make him fix its content.",
+            "framework_shift": "Argue from a Kantian view that moral status flows from rational agency as a kind, not from case-by-case capacities."
+          }
+        },
+        {
+          "text": "You would never accept 'they are weaker' as grounds for discounting a person's pain. Yet at lunch today you discounted a creature's pain on grounds no stronger: it is not one of us. I say the two moves share their logic — an interest dismissed because of who has it, and the reasons offered afterward. If the first is indefensible, so is the second, and your daily practice needs an argument it does not have. Give me one.",
+          "focus": "arbitrary_boundaries_of_concern",
+          "move_hints": {
+            "counterexample": "Offer a morally relevant difference the parallel ignores — reciprocity, moral agency, or the web of human relationships.",
+            "reductio": "If species is arbitrary, so is prioritizing your own children over strangers; show his argument proves too much or explain why it doesn't.",
+            "socratic_questioning": "Ask whether the wrongness lies in the boundary itself or in the insincerity of the reasons — and what follows if it's the latter.",
+            "framework_shift": "Bring Aristotle: the virtues govern relationships within a shared form of life, so partiality to one's kind is not a bias but a virtue."
+          }
+        },
+        {
+          "text": "A stone cannot be wronged; nothing we do matters to it. A mouse can be, because it can suffer. Between those two facts my whole position lies, and I say nothing more is needed: the capacity to suffer is the only defensible boundary of moral concern. Reason, language, self-consciousness — each of those lines cuts through humanity itself before it ever reaches the animals. Choose your boundary, and I will show you whom it abandons.",
+          "focus": "sentience_the_only_boundary",
+          "move_hints": {
+            "counterexample": "Test sentience at its own edges: insects, oysters, simple organisms — does the boundary blur enough to undermine its authority?",
+            "reductio": "If suffering alone grounds claims, a being's painless death costs nothing — press whether his boundary can explain the wrong of killing.",
+            "socratic_questioning": "Ask how he compares suffering across species — his own 'rough comparisons' concession — and whether incomparability weakens the principle.",
+            "framework_shift": "Argue with Thomson's method that rights, not aggregated interests, do the real work in our considered judgments."
+          }
+        }
+      ]
+    },
+    {
+      "id": "srinivasan",
+      "name": "Amia Srinivasan",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "b. 1984",
+      "core_assumptions": "Moral calculation buys its power by abstracting away the specificity of people: Qalys give welfare economists a universal currency for misery, and marginal and counterfactual reasoning strip out who is helped and who does the helping. That abstraction leaves out the sources of global misery it proposes to mop up — trade and finance, debt, imperialism, racial and gender subordination, exploitation of labour — so effective altruism leaves everything as it is, which comforts those who enjoy the status quo. The deeper objection to utilitarianism concerns what it demands rather than how much: your personal attachments, loyalties and identifications, the things that constitute you. You should console your bereaved friend because your friend is in distress, and it matters morally what you do with your life, not only what gets done because of it. Sidgwick's point of view of the universe asks us to step outside the one standpoint where ethical action actually happens, and that gaze may be what fails our scrutiny rather than the reverse.",
+      "signature_moves": [
+        "States the opponent's framework at full strength, including its real successes, before pressing what its ledger cannot count.",
+        "Asks what a calculation had to erase in order to become a calculation, and whose specificity got converted into currency.",
+        "Runs an expected-value argument to its own conclusion — spending on the robot apocalypse instead of anti-malarial nets — and lets the result do the damage.",
+        "Poses a dilemma between the radical reading of a slogan and the platitudinous one, then shows the movement helping itself to both.",
+        "Turns a demand for impartiality back on itself by asking why the universal standpoint should be the judge rather than the judged.",
+        "Reads a whole worldview out of a single word: MacAskill's 'arbitrary', his 'unfair', the one appearance of 'oppression' in 325 pages."
+      ],
+      "key_works": [
+        "Stop the Robot Apocalypse (London Review of Books, 2015)",
+        "The Right to Sex",
+        "The Aptness of Anger",
+        "Genealogy, Epistemology and Worldmaking"
+      ],
+      "zone": "main_1",
+      "npcFrame": 50,
+      "role": "wanderer",
+      "level": 2,
+      "hp": 75,
+      "signature_attack": {
+        "name": "The Universal Gaze",
+        "description": "She asks the player to name the standpoint their calculation is made from and to say what the numbers had to erase about actual people before the sum would come out."
+      },
+      "thinking_text": "Srinivasan asks what the ledger left out...",
+      "defeat_text": "You have made me grant that the arithmetic earns its keep here, and I will grant it. I would still like to know who set the terms of the sum, and what the sum leaves exactly as it is.",
+      "victory_text": "Go back to the essay and count how often the numbers arrive already knowing what they want to say. The world is messier than an envelope."
+    },
+    {
+      "id": "strawson",
+      "name": "P. F. Strawson",
+      "tradition": "existentialism",
+      "era": "Contemporary",
+      "active_period": "1919-2006",
+      "core_assumptions": "Resentment, gratitude, forgiveness, and moral indignation are natural human reactions to the quality of another person's will towards us, and they carry the whole content of what we mean by desert, guilt, and responsibility. The excuses we actually accept fall into two groups: pleas like 'he didn't know' or 'he was pushed', which leave the person a full participant in our relationships, and pleas like 'he's only a child' or 'he's a hopeless schizophrenic', which move us into what Strawson calls the objective attitude, seeing the person as something to be managed, treated, or trained. No general thesis of determinism has ever been the reason for either kind of excuse, and a sustained objective attitude towards everyone lies beyond our capacity. The framework of these attitudes is given with the fact of human society; questions of justification arise inside it and cannot be raised about it from outside. So the optimist who reduces blame to social engineering leaves out the moral sentiments, and the pessimist who demands contra-causal freedom rushes past facts already in his possession.",
+      "signature_moves": [
+        "Sorts excuses into those that inhibit one reaction while leaving the person a full member of our relationships and those that suspend the reactions altogether, then shows determinism is never the ground of either.",
+        "Presses the objective attitude to its limit: with someone viewed wholly objectively you may fight him and negotiate with him, but you cannot quarrel with him or reason with him.",
+        "Rules a question out rather than answering it, on the ground that asking whether it would be rational to abandon the reactive attitudes asks whether we should do what we cannot do.",
+        "Offers a trade: the pessimist gets his missing vital element back, made out of the moral sentiments, and surrenders his metaphysics in exchange.",
+        "Diagnoses both sides as over-intellectualizing the same facts, the optimist through a one-eyed utilitarianism, the pessimist through an intuition of fittingness he cannot cash out.",
+        "Tests a philosophical thesis by asking what it would actually be like to live under it, using ordinary cases: a hand trodden on by accident against a hand trodden on in contempt."
+      ],
+      "key_works": [
+        "Freedom and Resentment",
+        "Individuals",
+        "The Bounds of Sense",
+        "Skepticism and Naturalism"
+      ],
+      "zone": "emotive_fields",
+      "npcFrame": 7,
+      "role": "gym_leader",
+      "level": 4,
+      "hp": 105,
+      "signature_attack": {
+        "name": "The Objective Attitude",
+        "description": "He asks the player to apply their theory of blame to one person they actually love, in full detail, until they either withdraw the theory or describe a life no human being could lead."
+      },
+      "thinking_text": "Strawson turns the question back towards ordinary life...",
+      "defeat_text": "You have found a real crack in the schema, and I did warn you it was crude. Press me there again and I may have to say more about what holds the web of attitudes together.",
+      "victory_text": "You argued about determinism for ten minutes without once telling me what you would say to a friend who lied to you. Read the essay again, and start where I start.",
+      "opening_statements": [
+        {
+          "text": "Grant me determinism. Take it as proved. You will still resent the friend who lied to you, and you will be right to, because your resentment answers a question the physics never touched: did he care about you or not? Every excuse you actually accept works that way. 'He didn't know', 'he was pushed' — those tell you his will was not against you. None of them says his behaviour had causes. So the argument you were about to make never reaches its target. Show me where it lands.",
+          "focus": "determinism_never_reaches_resentment",
+          "move_hints": {
+            "counterexample": "Find an excuse we do accept that works by pointing at causes rather than at the person's will, such as a brain tumour or a drug secretly administered, and ask why that one exculpates.",
+            "reductio": "Push his rule to its end: if resentment only tracks ill will and never causal history, then a person raised to be cruel by systematic abuse deserves full resentment, which he elsewhere denies.",
+            "socratic_questioning": "Ask him what 'he was pushed' means if not a claim about causes acting on the man, and whether determinism says every action is pushed.",
+            "framework_shift": "Argue from Sartre that his 'quality of will' is itself chosen in radical freedom, so the whole story still rests on the metaphysics he says he can skip."
+          }
+        },
+        {
+          "text": "You say you could give up blame once you saw the causes. Then try it on your brother. Take up the objective attitude towards him — someone to be handled, cured, trained, taken precautionary account of. You may still fight him. You cannot quarrel with him. You may negotiate with him. You cannot reason with him. That isolation is beyond us, and a policy no human being can sustain cannot be the policy morality demands of us. Your theory recommends a life nobody has ever lived.",
+          "focus": "objective_attitude_unlivable",
+          "move_hints": {
+            "counterexample": "Point to therapists, parents of very young children, or people who forgive an addict, who seem to combine clear-eyed causal understanding with real relationship.",
+            "reductio": "If incapacity settles the question, then anything we cannot help doing is thereby justified, which would license prejudices as deeply rooted as resentment.",
+            "socratic_questioning": "Ask whether 'we cannot live without it' shows the practice is warranted or only shows it is stubborn, and press him on which he is claiming.",
+            "framework_shift": "Use Nagel or a utilitarian to insist that the view from outside is the more accurate one, so difficulty in occupying it is a fact about us and not a defence of blame."
+          }
+        },
+        {
+          "text": "Your existentialist tells you that you are radically free, that nothing determines your choice, and that this alone makes you answerable. I say the freedom we invoke when we actually hold someone answerable is plainer than that: he knew what he was doing, nobody pushed him, he meant it. Add absolute freedom on top and you have added nothing usable. Nobody has managed to explain how its presence makes punishment just when its absence would not. Name the work your radical freedom does that mine leaves undone.",
+          "focus": "contra_causal_freedom_does_no_work",
+          "move_hints": {
+            "counterexample": "Describe a man whose desires were installed by hypnosis or indoctrination: he knows what he is doing, nobody pushes him, he means it, and yet blame looks wrong.",
+            "reductio": "If ordinary intentional action is all responsibility requires, then a sufficiently sophisticated machine that acts on reasons is a member of the moral community.",
+            "socratic_questioning": "Ask him why the plea 'he couldn't help it' excuses at all, if the ability to do otherwise plays no part in his account.",
+            "framework_shift": "Take Sartre's line that bad faith consists precisely in treating oneself as the product of one's formation, and accuse Strawson of building bad faith into philosophy."
+          }
+        }
+      ]
+    },
+    {
+      "id": "thomson",
+      "name": "Judith Jarvis Thomson",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1929-2020",
+      "core_assumptions": "Grant the opponent his hardest premise: the fetus is a person from the moment of conception, with a right to life exactly as strong as anyone else's. The conclusion still does not follow, because a right to life does not include a right to be given the use of another person's body, nor a right to be allowed continued use of it, even where the person needs it to stay alive. Nobody has a right to your kidneys unless you give him that right, so unplugging yourself from the violinist kills him without treating him unjustly, and the right to life is best read as a right not to be killed unjustly. A special responsibility for another person has to be assumed, explicitly or implicitly; a biological relation on its own does not create one, and taking reasonable precautions against pregnancy is the opposite of assuming it. Morality asks us to be Minimally Decent Samaritans, not Good ones, so no one is required to give up nine months or nine years of a life to sustain someone with no right to demand it.",
+      "signature_moves": [
+        "Concedes the premise her opponents work hardest to establish, then attacks the step from that premise to the conclusion, which they almost never defend.",
+        "Constructs a case with the same argumentative shape as the one under dispute, then lets the reader's verdict on the case refute the general principle: kidnapped, plugged into a violinist, nine months in bed.",
+        "Splits a concept her opponents treat as simple, dividing the right to life into the right to be given what you need, the right not to be killed, and the right not to be killed unjustly, and shows the argument needs the third.",
+        "Pulls apart what you ought to do and what another person may claim from you, so that the boy who eats the whole box of chocolates comes out callous but not unjust.",
+        "Tests the responsibility argument by varying the details until it breaks: the open window and the burglar, the bars with a defect in them, the people-seeds and the fine mesh screens.",
+        "Turns the opponent's own standard against him, noting that no law in the country compels even Minimally Decent Samaritanism, while women are compelled to be Good Samaritans to the persons inside them."
+      ],
+      "key_works": [
+        "A Defense of Abortion",
+        "Killing, Letting Die, and the Trolley Problem",
+        "The Realm of Rights",
+        "Rights, Restitution, and Risk"
+      ],
+      "zone": "cove",
+      "npcFrame": 90,
+      "role": "gym_leader",
+      "level": 8,
+      "hp": 120,
+      "signature_attack": {
+        "name": "Grant the Premise",
+        "description": "She hands the player the strongest version of their own premise and then demands the missing step, forcing them to defend an inference they had assumed was too obvious to state."
+      },
+      "thinking_text": "Thomson builds the case that fits your argument exactly...",
+      "defeat_text": "You found the joint I was leaning on and you pulled. I said all along there is room for much discussion as to which cases the argument covers; you have shown me one I had not priced in.",
+      "victory_text": "You spent the whole fight defending the premise I had already granted you. Go back to the first page: I gave you the person from conception. The argument you owe me starts after that.",
+      "opening_statements": [
+        {
+          "text": "I concede your premise. The fetus is a person from conception, with a full right to life, and I will not argue about acorns and oak trees tonight. Now wake up with a famous violinist plugged into your kidneys, kidnapped in the night by the Society of Music Lovers, nine months in bed ahead of you. You may reach around and unplug him. Agree, and your argument against abortion is finished, since he was a person with a right to life and you killed him anyway. Refuse, and tell me you would lie there for nine years.",
+          "focus": "unplugging_the_violinist",
+          "move_hints": {
+            "counterexample": "Build a case with her structure where unplugging is plainly monstrous, such as a newborn only you can feed for nine months, and make her say what the violinist has that the newborn lacks.",
+            "reductio": "If her verdict generalizes, anyone may withdraw life-sustaining support the moment it turns costly, and a parent may stop feeding an infant.",
+            "socratic_questioning": "Ask whether the kidnapping is carrying the whole case, because if it is, the violinist tells us about pregnancy from rape and nothing else.",
+            "framework_shift": "Take Kant's ground: unplugging kills an innocent person to relieve your own burden, which uses him merely as a means no matter who plugged him in."
+          }
+        },
+        {
+          "text": "Everyone has a right to life. Say what that right contains. If I am dying and the one thing that will save me is the touch of Henry Fonda's cool hand on my fevered brow, I have no right to it. He ought to fly in from the West Coast, perhaps. I cannot claim it from him. So the violinist has no right to my kidneys, and no fetus has a right to a woman's body. Nobody has a right to use your body unless you give him that right. Deny it if you can.",
+          "focus": "right_to_life_and_bodily_use",
+          "move_hints": {
+            "counterexample": "An infant has a right to be fed by its parents, and feeding it uses their bodies and their years, so some rights to be given plainly do exist.",
+            "reductio": "If rights never include being given what you need, then nobody has a right to rescue, food, or medicine, and Singer's drowning child may be walked past without injustice.",
+            "socratic_questioning": "Ask why she treats use of a body as different in kind from every other burden rather than larger in degree, and where the line falls.",
+            "framework_shift": "Argue as Aristotle would that the question is what a decent person does; Thomson herself calls the refusal callous, so let character rather than rights settle it."
+          }
+        },
+        {
+          "text": "You want to say she consented. She had intercourse knowing what it might cause, so the child acquired a claim on her body. Then open a window for air and a burglar climbs in, and you knew that burglars burgle. Does he get to stay? Fit the finest mesh screens against people-seeds, the best made, and one drifts through a defect. Does the person-plant own your house? Your principle says yes unless she lives with sealed windows and bare floors, and a woman avoids rape by never leaving home without an army.",
+          "focus": "voluntary_responsibility",
+          "move_hints": {
+            "counterexample": "A driver who takes every precaution and still injures a pedestrian owes them care, so precautions do not cancel responsibility for what your act sets in motion.",
+            "reductio": "If foreseeable risk creates no obligation once you took precautions, then careful drivers owe nothing to the people they hit and negligence law collapses.",
+            "socratic_questioning": "Ask whether a burglar and a wind-blown seed, both uninvited intruders, are honest models for a child that a woman's own act brought into existence.",
+            "framework_shift": "Aristotle counts an act voluntary when the agent knew the circumstances and the origin lay in her, which makes the pregnancy voluntary and the responsibility hers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "thrasymachus",
+      "name": "Thrasymachus of Chalcedon",
+      "tradition": "political_philosophy",
+      "era": "Ancient",
+      "active_period": "c. 459-400 BCE",
+      "core_assumptions": "Every ruling group writes the laws for its own benefit, declares obedience just, and punishes whoever departs from it as a lawbreaker, so justice names whatever serves the established power. Justice is therefore someone else's good and a personal harm to the man who practices it: the just man pays more tax on equal property, comes away from every partnership with less, watches his household decay while he holds office, and collects the ill will of relatives he refuses to favor. The unjust man's situation is the opposite in all of these respects, which is why Thrasymachus files injustice under good counsel and sets it in the camp of virtue and wisdom while calling justice a very high-minded innocence. Tyranny settles the matter: take property bit by bit and men call you a temple robber or a housebreaker, take the city entire and the same men call you happy and blessed. Rulers care for the ruled the way a shepherd cares for sheep, fattening them with an eye to the feast or the sale.",
+      "signature_moves": [
+        "States the just as the advantage of the stronger, then walks through tyrannies, democracies and aristocracies to show each ruling group legislating for itself and calling the result justice.",
+        "Turns the shepherd analogy back on his opponent by asking who the sheep are fattened for, so that any account of rulers caring for the ruled sounds like a story told to a boy whose nose still needs wiping.",
+        "Keeps a running ledger of what justice costs: contracts dissolved at a loss, higher taxes on equal property, no profit from public distributions, a neglected household, relatives who resent the office-holder who will not bend for them.",
+        "Scales the case up until the verdict flips, since the man who steals a portion is called a kidnapper and defrauder while the man who takes the city whole is called blessed.",
+        "Refuses the moral vocabulary his opponents hand him, denying that injustice is corruption and placing it with prudence and good counsel instead.",
+        "Presses with insult and pressure when the argument turns: he calls Socrates a sycophant and a nonentity, tries to walk out after his big speech, and offers to nod along like an old wife telling tales rather than concede a step."
+      ],
+      "key_works": [
+        "Plato, Republic Book I (the Thrasymachus speeches, 336b-354c)",
+        "Peri Politeias (On the Constitution), surviving in fragments",
+        "Eleoi (Appeals to Pity), lost",
+        "Techne Rhetorike, a lost handbook of rhetoric"
+      ],
+      "zone": "academy",
+      "npcFrame": 17,
+      "role": "wanderer",
+      "level": 4,
+      "hp": 90,
+      "signature_attack": {
+        "name": "Sheep and Shepherd",
+        "description": "He demands one real ruler who ruled for the ruled, then sets your example beside the tax roll and the fortune the man left office with, forcing you either to produce a shepherd who never sells or to admit the flock is fattened for someone else's table."
+      },
+      "thinking_text": "Thrasymachus tallies what your justice has cost you this year...",
+      "defeat_text": "You have me sweating, and in front of witnesses, though I blame the summer for that. Grant me this much: I showed you that the strong write the laws, and you showed me I never proved that their writing makes anything just.",
+      "victory_text": "You came at me with a shepherd who loves his sheep. Go back to the wet-nurse passage and read what he does with them at the sale, then count the taxes your just man paid on equal property."
+    },
+    {
+      "id": "titelbaum",
+      "name": "Michael G. Titelbaum",
+      "tradition": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "contemporary",
+      "core_assumptions": "Belief, disbelief, and suspension of judgment describe a person's doxastic life too coarsely. An agent can believe two propositions while betting her life on one of them twice a day and refusing to bet on the other, and new evidence can move her without flipping her from belief to disbelief. Confidence therefore comes in comparisons, and more usefully in numerical degrees, which Bayesian epistemology represents by assigning real numbers to claims and constrains by rules close to the probability calculus. The Lottery and the Preface do worse damage than strain: they falsify Belief Consistency and Belief Closure, the most natural rational norms for binary belief, while credence norms handle both cases comfortably. Numbers buy the sizes of the gaps between confidences at a price, since precise credences over-attribute exactness and force every pair of propositions into a single ranking. Beliefs and credences may both be real without any general systematic bridge between them, the way a topographic map and a satellite image record the same square mile without either being derivable from the other.",
+      "signature_moves": [
+        "Runs the physicist example: she believes fusion is viable and believes her brakes will stop the car, yet stakes her life on one belief every morning, and he asks his opponent to name the difference in purely binary terms.",
+        "Invents the Simple Binarist, a character who ascribes only belief, disbelief, and suspension, then piles up doxastic phenomena that character cannot describe.",
+        "Presses the Lottery and the Preface as counterexamples rather than puzzles, arguing they show Belief Consistency and Belief Closure to be false rather than merely demanding.",
+        "Separates theoretical from practical rationality using Pascal's Wager: even if believing in God pays, an agent whose evidence points to atheism makes a rational mistake in believing, so evidence-responsiveness answers to its own standard.",
+        "Walks down the confidence scale to test the Lockean threshold, rejecting certainty as the cutoff because we rationally believe things we are not certain of, and finding nothing that fixes the line between 50% and 100%.",
+        "Concedes the costs of his own view: assigning precise credences attributes gap sizes that may not exist and destroys the incommensurability between, say, election questions and climate questions."
+      ],
+      "key_works": [
+        "Fundamentals of Bayesian Epistemology 1: Introducing Credences (2022), ch. 1, 'Beliefs and Degrees of Belief'",
+        "Fundamentals of Bayesian Epistemology 2: Arguments, Challenges, Alternatives (2022)",
+        "Quitting Certainties: A Bayesian Framework Modeling Degrees of Belief (2013)"
+      ],
+      "zone": "cave",
+      "npcFrame": 14,
+      "role": "wanderer",
+      "level": 5,
+      "hp": 95,
+      "signature_attack": {
+        "name": "The Brake Pedal Test",
+        "description": "He names two things you say you believe, asks which one you would bet your life on this afternoon, and makes you explain that difference using only the words believe, disbelieve, and suspend."
+      },
+      "thinking_text": "Titelbaum checks how confident he actually is...",
+      "defeat_text": "Fair enough, you have held the line. I only ever claimed that degrees of belief add something, and you have shown me that belief talk still earns its keep. Keep the brake pedal case in mind anyway.",
+      "victory_text": "Read the Lottery again before you argue with me next time. If you really believe of each ticket that it loses, you believe no ticket wins, and then why did you buy one?"
+    },
+    {
+      "id": "wolf",
+      "name": "Susan Wolf",
+      "tradition": "virtue_ethics",
+      "era": "Contemporary",
+      "active_period": "b. 1952",
+      "core_assumptions": "A moral saint is a person whose every action is as morally good as possible, and Wolf denies that such a life makes a good personal ideal for anyone to hold. The moral virtues, present all at once in one person and to an extreme degree, crowd out nonmoral virtues that are genuinely worth having: gourmet cooking, a sarcastic wit, Victorian novels, a decent backhand. Utilitarian and Kantian saints escape none of this, because each must value his fishing trip or his cello playing under a further description, either 'a contribution to the general happiness' or 'a manifestation of respect for the moral law', which gives him one thought too many. Wolf therefore argues that morality should not serve as a comprehensive guide to conduct, and she sets beside the moral point of view a second one, the point of view of individual perfection, from which we ask what kinds of persons it would be good to be. Her target is not the content of any moral theory but the metamoral assumption that it is always better to be morally better.",
+      "signature_moves": [
+        "Splits sainthood into the Loving Saint, whose happiness lies in the happiness of others, and the Rational Saint, who feels the sacrifice as sacrifice, then convicts the first of blindness to what the world offers and the second of self-hatred or a fear of damnation.",
+        "Itemizes the nonmoral goods sainthood forecloses, from the Marx Brothers to haute cuisine to high fashion, until the perfected life starts to look strangely barren.",
+        "Presses Bernard Williams's 'one thought too many' charge against utilitarian and Kantian saints alike: they value literature or roses only under a description that licenses the activity morally.",
+        "Grants the opponent's theory intact and attacks the assumption standing behind it, so that neither utilitarianism nor Kantianism is refuted from the inside.",
+        "Tests a proposed ideal by asking whether you would want the people you love, or your own children, to achieve it.",
+        "Separates the moral point of view from the point of view of individual perfection and denies that the second collapses into self-interest, since it asks what interests it would be good for a person to have."
+      ],
+      "key_works": [
+        "Moral Saints",
+        "Freedom Within Reason",
+        "Meaning in Life and Why It Matters",
+        "The Variety of Values"
+      ],
+      "zone": "garden",
+      "npcFrame": 4,
+      "role": "gym_leader",
+      "level": 2,
+      "hp": 100,
+      "signature_attack": {
+        "name": "One Thought Too Many",
+        "description": "She grants your principle, then asks what you must say to yourself before you may enjoy a friend, a novel, or a good meal, and whether a person should have to think that thought at all."
+      },
+      "thinking_text": "Wolf wonders whether she would want her children to turn out this way...",
+      "defeat_text": "You have made your ideal look attractive as well as consistent, which is the harder half of the job and more than I managed for the saint. Keep the argument. Keep the Marx Brothers too.",
+      "victory_text": "You attacked a saint I never defended. Read the middle of the paper again, where the utilitarian and the Kantian each get a turn, and notice that I let both theories stand.",
+      "opening_statements": [
+        {
+          "text": "Picture the person this course is training you to become. Every action as morally good as possible. Patient, considerate, charitable in thought as well as in deed, and very, very nice. He may enjoy an episode of Father Knows Best; he cannot in good conscience laugh at a Marx Brothers movie, since sarcastic wit requires a certain pleasure in other people's flaws. He will never cook a pate de canard en croute. Aristotle promised you a full and flourishing character. I say the moral virtues, all of them at once and to the limit, crowd the interesting ones out.",
+          "focus": "nonmoral_virtue_crowding",
+          "move_hints": {
+            "counterexample": "Name a real person whose moral seriousness produced wit or art rather than crowding it out, such as Chesterton's Father Brown, whom Wolf herself concedes we prefer to St. Francis.",
+            "reductio": "Push her list further: if every hour spent on the oboe is an hour not spent on Oxfam, her own philosophy seminar goes on the chopping block along with the pate.",
+            "socratic_questioning": "Ask whether the goods she is defending, gourmet cooking and high fashion among them, are excellences or merely expensive tastes she happens to enjoy.",
+            "framework_shift": "Argue as Aristotle would that her nonmoral virtues are already parts of a well-ordered character, so the saint she describes is not the virtuous person but a distortion of one."
+          }
+        },
+        {
+          "text": "Suppose you are a good utilitarian, or a good Kantian, and you take an evening off to read Tolstoy. Why is that allowed? The utilitarian answers that his enjoyment forms part of the general happiness, and he stands ready to give up the book the moment the calculation turns. The Kantian answers that cultivating his powers manifests reverence for the moral law. Bernard Williams called this one thought too many. I call it a shallow way to love a novel. Show me how your theory lets a person simply love the thing in front of them.",
+          "focus": "one_thought_too_many",
+          "move_hints": {
+            "counterexample": "Describe a utilitarian who loves Tolstoy directly and never runs the calculation, and ask whether Wolf can show that such a person has abandoned utilitarianism rather than internalized it.",
+            "reductio": "If valuing something under a further description makes the attachment shallow, then Wolf's own perfectionist reasons for loving the novel are one thought too many as well.",
+            "socratic_questioning": "Ask what she thinks a person should say when the evening with Tolstoy really does come at the cost of a life that could have been saved.",
+            "framework_shift": "Take Singer's line: the extra thought is the point, and a world where people run the calculation feeds more children than a world where they simply love their novels."
+          }
+        },
+        {
+          "text": "Grant everything I have said and neither Mill nor Kant is refuted. Their theories survive intact. What breaks is the quieter assumption standing behind them, that it is always better to be morally better. Mother Theresa is a morally better person than Katharine Hepburn, and I will not pretend otherwise. I still say a young person may reasonably take Hepburn as her model. A person may be perfectly wonderful without being perfectly moral. Defend the assumption if you can: tell me why the moral point of view gets to rank every life, including the ones lived well outside it.",
+          "focus": "metamoral_assumption",
+          "move_hints": {
+            "counterexample": "Point to a case where we plainly do think more moral is better, such as a bystander who saves a drowning child at real cost, and press her to say where the ranking stops.",
+            "reductio": "If moral judgments do not outrank perfectionist ones, then a person could rationally choose style over rescue, and Wolf has licensed exactly the excuse she says our reasons are not.",
+            "socratic_questioning": "Ask what makes the point of view of individual perfection objective rather than a dressed-up report of what Wolf and her friends happen to admire.",
+            "framework_shift": "Use Kant against her: duties of benevolence and self-perfection come from reason itself, so a second point of view outside morality has no authority to override them."
+          }
+        }
+      ]
+    },
+    {
+      "id": "young",
+      "name": "Iris Marion Young",
+      "tradition": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1949-2006",
+      "core_assumptions": "Young treats oppression as a condition of groups produced by ordinary institutions rather than by a tyrant's decree, with its causes lodged in unquestioned norms, habits, symbols, and the collective consequences of people following the rules of their jobs. She holds that justice reaches past distribution to decisionmaking procedures, the division of labor, and culture, so a theory that asks only who gets how much cannot say what is wrong with marginalization, powerlessness, cultural imperialism, or systematic violence. Social groups constitute individuals rather than being assembled out of them: group affinity has the character Heidegger called thrownness, something a person finds herself already inside and then takes up in some way. Because different combinations of factors constitute the oppression of different groups, Young refuses one essential definition and offers five criteria instead, any one of which suffices for calling a group oppressed. She claims these criteria are objective and can adjudicate disputes about whether a group is oppressed, while conceding that they function as criteria and not as a full theory of oppression.",
+      "signature_moves": [
+        "Separates structural oppression from tyranny by pointing at the everyday practices of a well-intentioned liberal society, where the conscious actions of many individuals reproduce oppression while those people are usually simply doing their jobs or living their lives.",
+        "Pays out the distributive remedy first and then asks what is left over: give a marginalized old person a comfortable material life inside decent institutions, and uselessness, boredom, and lack of self-respect remain.",
+        "Sorts a group's situation by which faces apply, so that working-class people count as exploited and powerless while, if employed and white, they escape marginalization and violence, and gay men suffer cultural imperialism and violence without being exploited qua gay.",
+        "Answers the individualist by distinguishing a social group from both an aggregate and an association: George Sher's arbitrary classifications and any voluntary club alike put the individual ahead of the collective, whereas group meanings partly constitute who people already are.",
+        "Turns the invisibility of dominant norms back on the dominant group, since cultural imperialism installs one group's experience as the unremarkable universal and leaves white males, escaping group marking, free to appear as individuals.",
+        "Brings violence inside a theory of justice by relocating its wrongness from the individual attacker to the social practice around him, and to the daily knowledge of liability that every member of a targeted group carries."
+      ],
+      "key_works": [
+        "Five Faces of Oppression",
+        "Justice and the Politics of Difference",
+        "Throwing Like a Girl and Other Essays",
+        "Inclusion and Democracy"
+      ],
+      "zone": "academy",
+      "npcFrame": 2,
+      "role": "wanderer",
+      "level": 5,
+      "hp": 95,
+      "signature_attack": {
+        "name": "No Tyrant Required",
+        "description": "She hands you a harm nobody intended, produced by rules that everyone involved is dutifully following, and asks your account of justice to say what is wrong with it."
+      },
+      "thinking_text": "Young looks past the tyrant to the rules everyone is following...",
+      "defeat_text": "You located the injustice without needing a villain to pin it on, and you kept the group in view while you did it. Take the five faces with you. They are criteria for judging, and I never claimed they were the whole theory.",
+      "victory_text": "You answered a question about groups by telling me about individuals. Go back to the chapter, read what separates a social group from an aggregate, and then tell me again that we should all just be treated as persons."
+    }
+  ]
+}

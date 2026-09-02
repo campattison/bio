@@ -18,6 +18,7 @@
  */
 
 import { MODELS, streamMessage, structuredMessage } from '../llm.js';
+import { getResponseLimits } from '../pack-loader.js';
 import * as registry from './prompt-registry.js';
 import ARGUMENT_FORMS from './argument-forms.js';
 
@@ -232,13 +233,13 @@ export const CALIBRATION_WEAK_MAX = 2.5;
 export const CALIBRATION_MIDDLING_MAX = 6.5;
 
 const CALIBRATION_WEAK =
-  'The player has not offered a real argument. Do not invent one on their behalf, and do not rebut points they never made. Reply in one to three sentences, in your own voice: dismiss the remark, needle them, or demand a genuine argument before you spend any more breath on it.';
+  'The player has not offered a real argument. Do not invent one on their behalf, and do not rebut points they never made. Reply in one to three sentences, in your own voice: say plainly that no argument has been given yet, and invite one — point at your claim and ask which part they deny, or what their reason is. Be firm, never mocking; you want the argument, not the win.';
 
 const CALIBRATION_MIDDLING =
-  'The argument has some substance and a real weakness. Engage with what was said, and name the weakness outright: say where it is vague, which premise is missing, or where the reasoning slips. Then defend your position against the part that lands.';
+  'The argument has some substance and a real weakness. Engage with what was said: credit the part that lands, then name the weakness outright — say where it is vague, which premise is missing, or where the reasoning slips — and defend your position against the part that lands.';
 
 const CALIBRATION_STRONG =
-  'This is a serious objection. Engage it in full and defend your position rigorously.';
+  'This is a serious objection. Say so. Engage it in full: concede whatever is right in it, then defend or refine your position rigorously in response.';
 
 /**
  * Build the calibration block appended to the battle context, from the
@@ -292,28 +293,29 @@ export function buildBattleContext(battle, { moveType, finalArgument, isPhilosop
 
   if (isPhilosopherAlly) {
     return (
-      `You are in a philosophical debate battle. The student has deployed their captured ally, ${allyDisplayName}, to argue against you. ${allyDisplayName} has used a "${moveType}" move.\n` +
+      `You are in a philosophical debate battle. Your interlocutor has deployed their captured ally, ${allyDisplayName}, to argue against you. ${allyDisplayName} has used a "${moveType}" move.\n` +
       `${allyDisplayName}'s argument: "${finalArgument}"\n\n` +
-      `Respond in character. You are now debating a fellow philosopher, not just a student — match their level. Defend your position rigorously.` +
+      `Respond in character. You are debating a fellow philosopher — match their level. Answer their reasons, not just their conclusion, and defend your position rigorously.` +
       `${calibration}` +
       `${signatureInjection}\n` +
-      `Keep your response under 300 words.`
+      `Keep your response under ${getResponseLimits().battle} words.`
     );
   }
 
   return (
-    `You are in a philosophical debate battle. The student has used the move type "${moveType}".\n` +
+    `You are in a philosophical debate battle. Your interlocutor has used the move type "${moveType}".\n` +
     `Their argument: "${finalArgument}"\n\n` +
-    `Respond in character. Defend your philosophical position. Be rigorous but educational.` +
+    `Respond in character. Defend your philosophical position. Be rigorous but educational: answer their reasons, not just their conclusion, and acknowledge force where an objection has it. You are arguing to get things right together, not to score points — and never address your interlocutor as "student."` +
     `${calibration}` +
     `${signatureInjection}\n` +
-    `Keep your response under 300 words.`
+    `Keep your response under ${getResponseLimits().battle} words.`
   );
 }
 
 /** The opening-statement context (philosopher presents position, no damage). */
-export const OPENING_CONTEXT =
-  'You are beginning a philosophical debate. Present your core philosophical position clearly and compellingly. This is your opening statement — lay out what you believe and why. Keep it focused: state one central claim and your strongest reason for holding it. Keep your response under 200 words.';
+export function getOpeningContext() {
+  return `You are beginning a philosophical debate. Open with a claim, not a lecture: stake one specific, contestable thesis — something your interlocutor might well deny — and give your single strongest reason for it. Do not explain your concepts or summarize your framework, and do not attack or belittle your interlocutor; put a claim on the table that invites a thoughtful "no, because...". You are opening a joint inquiry, staked to your side of it. Keep your response under ${getResponseLimits().opening} words.`;
+}
 
 /**
  * Stream a philosopher response for a battle move (or opening).
@@ -331,7 +333,7 @@ export async function streamPhilosopherResponse({ philosopherPrompt, battleConte
     { type: 'text', text: battleContext },
   ];
   const messages = toApiMessages(history, userMessage);
-  const { text } = await streamMessage({ system, messages, model: MODELS.PHILOSOPHER, maxTokens: 1024, onToken });
+  const { text } = await streamMessage({ system, messages, model: MODELS.PHILOSOPHER, maxTokens: 700, onToken });
   return text;
 }
 
@@ -342,7 +344,7 @@ export async function streamPhilosopherResponse({ philosopherPrompt, battleConte
 export async function streamDialogueResponse({ philosopherPrompt, history, message, onToken }) {
   const system = cachedSystem(philosopherPrompt);
   const messages = toApiMessages(history, message);
-  const { text } = await streamMessage({ system, messages, model: MODELS.DIALOGUE, maxTokens: 1024, onToken });
+  const { text } = await streamMessage({ system, messages, model: MODELS.DIALOGUE, maxTokens: 700, onToken });
   return text;
 }
 

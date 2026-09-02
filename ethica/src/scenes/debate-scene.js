@@ -890,6 +890,14 @@ export class DebateScene extends BaseScene {
         this.#battleMenu.setAttackNames(this.#currentMoveOptions.map((m) => m.name));
 
         this.#battleMenu.showMainBattleMenu();
+        // standing reminder while an ally is deployed — the deploy mechanic
+        // is two-step (deploy, then ARGUE) and players lose the thread
+        if (this.#activeAllyPhilosopher) {
+          this.#battleMenu.setInfoPaneLines(
+            `${this.#activeAllyPhilosopher.name} stands ready.`,
+            'Choose ARGUE — they will make the argument.',
+          );
+        }
         this.#exchangeCounter.setText(`${this.#exchanges}/${this.#maxExchanges}`);
       },
     });
@@ -1533,10 +1541,13 @@ export class DebateScene extends BaseScene {
           this.#activePlayerMonster.switchMonster(philMonster);
           this.#activePlayerMonster._phaserGameObject.setScale(4);
 
+          // Input is not routed to the menu in this state, so the message
+          // must auto-advance; the persistent "stands ready" reminder shown
+          // at PLAYER_INPUT carries the instruction from here.
           this.#battleMenu.updateInfoPaneMessageNoInputRequired(
-            `Go, ${switchTarget.name}! Choose ARGUE and a move — they will make the argument.`,
+            `Go, ${switchTarget.name}!`,
             () => {
-              this.time.delayedCall(1500, () => {
+              this.time.delayedCall(1200, () => {
                 this.#stateMachine.setState(DEBATE_STATES.PLAYER_INPUT);
               });
             },

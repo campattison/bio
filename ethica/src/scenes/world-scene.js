@@ -22,6 +22,7 @@ import { Item } from '../world/item.js';
 import { BATTLE_FLAG, ENCOUNTER_TILE_TYPE, GAME_EVENT_TYPE, ITEM_CATEGORY, NPC_EVENT_TYPE } from '../types/typedef.js';
 import { exhaustiveGuard } from '../utils/guard.js';
 import { sleep } from '../utils/time-utils.js';
+import { getEncounterRate, getZones } from '../pack-loader.js';
 import { CutsceneScene } from './cutscene-scene.js';
 import { DialogScene } from './dialog-scene.js';
 import * as TiledUtils from '../utils/tiled-utils.js';
@@ -648,7 +649,7 @@ export class WorldScene extends BaseScene {
     }
     console.log(`[${WorldScene.name}:handlePlayerMovementInEncounterZone] player is in an encounter zone`);
 
-    this.#wildMonsterEncountered = Math.random() < 0.2;
+    this.#wildMonsterEncountered = Math.random() < getEncounterRate();
     if (this.#wildMonsterEncountered) {
       const encounterAreaId = /** @type {import('../types/typedef.js').TiledObjectProperty[]} */ (
         this.#encounterZonePlayerIsEntering.layer.properties
@@ -830,6 +831,20 @@ export class WorldScene extends BaseScene {
    * @returns {void}
    */
   #handleEntranceEnteredCallback(entranceName, entranceId, isBuildingEntrance) {
+    // realm gating: a pack zone may declare requiredGymLeaders to lock its
+    // entrance until enough bosses are defeated (syllabus-order progression)
+    const targetZone = getZones().find((zone) => zone.id === entranceName);
+    const requiredGymLeaders = targetZone?.requiredGymLeaders || 0;
+    const defeatedCount = dataManager.getDefeatedGymLeaders().length;
+    if (requiredGymLeaders > defeatedCount) {
+      const remaining = requiredGymLeaders - defeatedCount;
+      this.#dialogUi.showDialogModal([
+        `${targetZone.name || 'This area'} is locked.`,
+        `Defeat ${remaining} more realm boss${remaining === 1 ? '' : 'es'} to enter.`,
+      ]);
+      return;
+    }
+
     this._controls.lockInput = true;
 
     // update player position to match the new entrance data
