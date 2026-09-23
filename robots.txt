@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /blind-refusal/dashboard_v4.html
+Disallow: /blind-refusal/poster/

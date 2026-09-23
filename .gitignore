@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.*
+.vscode/
+node_modules/
+*.log
+LOG.md
+TODO.md
+Scratchpads/
+* 2.*
+* 3.*

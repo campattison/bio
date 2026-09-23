@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Analysis Tools</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            padding: 1rem 0;
+        }
+
+        .intro {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .analysis-container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .api-key-section {
+            margin-bottom: 20px;
+        }
+
+        #api-key-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .api-note {
+            color: #666;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        #situation-input {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        #analyze-button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        #analyze-button:hover {
+            background-color: #34495e;
+        }
+
+        .loading {
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+            color: #666;
+            font-style: italic;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            display: none;
+            line-height: 1.6;
+            color: #444;
+            white-space: pre-line;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #2c3e50;
+            margin: 15px 0;
+        }
+
+        .tools-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-section {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tool-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .tool-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tool-header h2 {
+            color: #2c3e50;
+            font-family: 'Georgia', serif;
+            margin-bottom: 1rem;
+        }
+
+        .tool-header ul {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .tool-divider {
+            text-align: center;
+            margin: 3rem 0;
+            color: #666;
+            font-style: italic;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .tool-divider:before,
+        .tool-divider:after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 30%;
+            background: #ddd;
+            top: 50%;
+        }
+
+        .tool-divider:before {
+            left: 0;
+        }
+
+        .tool-divider:after {
+            right: 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 500;
+        }
+
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+                <a href="ai-tools.html">AI Tools</a>
+                <a href="newsletter.html">Newsletter</a>
+            </nav>
+        </header>
+
+        <h1><a href="kant-analysis.html" style="text-decoration: none; color: inherit;">Ethical Analysis Tools</a></h1>
+        
+        <div class="intro">
+            <p>These tools help analyze ethical situations using different ethical frameworks. Choose a framework and enter your situation for analysis.</p>
+        </div>
+
+        <div class="tools-container">
+            <div class="api-key-section">
+                <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key" />
+                <small class="api-note">Your API key is used only in your browser and never stored. You can get an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI</a>.</small>
+            </div>
+
+            <div class="tool-section">
+                <div class="tool-header">
+                    <h2>Kantian Analysis</h2>
+                    <ul>
+                        <li>Extract the underlying maxim of your action</li>
+                        <li>Test for contradictions in conception</li>
+                        <li>Test for contradictions in will</li>
+                        <li>Evaluate the universalizability of the maxim</li>
+                    </ul>
+                </div>
+                <textarea id="kantian-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
+                <button id="kantian-button">Analyze Using Kantian Ethics</button>
+                <div class="loading kantian-loading">Analyzing your situation...</div>
+                <div id="kantian-result" class="result"></div>
+            </div>
+
+            <div class="tool-divider">
+                <p>Want a different perspective? Try a consequentialist analysis below.</p>
+            </div>
+
+            <div class="tool-section consequentialist">
+                <div class="tool-header">
+                    <h2>Consequentialist Analysis</h2>
+                    <ul>
+                        <li>Identify stakeholders and impacts</li>
+                        <li>Analyze immediate consequences</li>
+                        <li>Evaluate long-term effects</li>
+                        <li>Assess aggregate welfare impact</li>
+                    </ul>
+                </div>
+                <textarea id="consequentialist-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
+                <button id="consequentialist-button">Analyze Using Consequentialism</button>
+                <div class="loading consequentialist-loading">Analyzing your situation...</div>
+                <div id="consequentialist-result" class="result"></div>
+            </div>
+
+            <div class="tool-divider">
+                <p>Or consider what a virtue ethicist would say...</p>
+            </div>
+
+            <div class="tool-section virtue">
+                <div class="tool-header">
+                    <h2>Virtue Ethics Analysis</h2>
+                    <ul>
+                        <li>Identify relevant virtues and vices</li>
+                        <li>Evaluate character development</li>
+                        <li>Consider practical wisdom (phronesis)</li>
+                        <li>Assess flourishing (eudaimonia)</li>
+                    </ul>
+                </div>
+                <textarea id="virtue-input" placeholder="Describe the ethical situation or action you want to analyze..."></textarea>
+                <button id="virtue-button">Analyze Using Virtue Ethics</button>
+                <div class="loading virtue-loading">Analyzing your situation...</div>
+                <div id="virtue-result" class="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('embedded') === 'true') {
+                document.querySelector('header').style.display = 'none';
+                document.querySelector('main').style.marginTop = '0';
+            }
+        }
+
+        async function analyze(type) {
+            const apiKey = document.getElementById('api-key-input').value;
+            const situation = document.getElementById(`${type}-input`).value;
+            const loading = document.querySelector(`.${type}-loading`);
+            const result = document.getElementById(`${type}-result`);
+            
+            if (!apiKey.trim()) {
+                alert('Please enter your OpenAI API key.');
+                return;
+            }
+
+            if (!situation.trim()) {
+                alert('Please enter a situation to analyze.');
+                return;
+            }
+
+            loading.style.display = 'block';
+            result.style.display = 'none';
+
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "chatgpt-4o-latest",
+                        messages: [{
+                            role: "user",
+                            content: type === 'kantian' ? 
+                                `You are a Kantian ethics expert. Please analyze the following situation using Kantian ethical principles and format your response using HTML tags for headers, lists, emphasis, and bold text. 
+                                Follow this structured approach, as shown in these examples:
+                                
+                                <strong>Example 1:</strong>
+                                <em>Situation:</em> Lying on a job application to get hired
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Maxim:</strong> "When seeking employment, I will deceive others about my qualifications to achieve my goals"</li>
+                                    <li><strong>Universalization Test:</strong> Fails - If everyone lied on job applications, the entire system of hiring would break down as trust would be impossible</li>
+                                    <li><strong>Humanity Formula:</strong> Fails - Treats both employer and other candidates as mere means, denying their rational autonomy</li>
+                                    <li><strong>Conclusion:</strong> This action is not morally permissible under Kantian ethics</li>
+                                </ol>
+                                
+                                <strong>Example 2:</strong>
+                                <em>Situation:</em> Donating to charity anonymously
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Maxim:</strong> "I will give resources to help others in need without seeking recognition"</li>
+                                    <li><strong>Universalization Test:</strong> Passes - A world where everyone helps others in need would be coherent and desirable</li>
+                                    <li><strong>Humanity Formula:</strong> Passes - Treats recipients as ends in themselves, respecting their dignity and autonomy</li>
+                                    <li><strong>Conclusion:</strong> This action is morally permissible and arguably dutiful under Kantian ethics</li>
+                                </ol>
+                                
+                                Now, please analyze the following situation:
+                                ${situation}
+                                
+                                Please provide a detailed analysis following the same structure using HTML tags:
+                                <ol>
+                                    <li><strong>Clearly state the maxim</strong> (the underlying principle of action)</li>
+                                    <li><strong>Apply the Universalization Test</strong> (Formula of Universal Law)
+                                       - Can this maxim be universalized without contradiction?
+                                       - What would a world look like where everyone acted on this maxim?</li>
+                                    <li><strong>Apply the Humanity Formula</strong>
+                                       - Does this action treat humanity as an end in itself?
+                                       - Does it respect the rational autonomy of all involved?</li>
+                                    <li><strong>Provide a clear conclusion</strong> about the moral permissibility of the action</li>
+                                    <li><strong>Optional:</strong> Suggest any relevant modifications that would make the action more aligned with Kantian ethics</li>
+                                </ol>
+                                
+                                Please be thorough in your reasoning and specific in your conclusions.` :
+                                type === 'consequentialist' ?
+                                `You are a consequentialist ethics expert. Please analyze the following situation using consequentialist ethical principles and format your response using HTML tags for headers, lists, emphasis, and bold text.
+                                
+                                Follow this structured approach, as shown in these examples:
+                                
+                                <strong>Example 1:</strong>
+                                <em>Situation:</em> Lying on a job application to get hired
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Stakeholders:</strong> Job applicant, employer, other candidates, workplace community</li>
+                                    <li><strong>Immediate Consequences:</strong>
+                                        <ul>
+                                            <li>Personal gain for the applicant</li>
+                                            <li>Potential harm to employer (incompetent hire)</li>
+                                            <li>Unfair disadvantage to honest candidates</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Long-term Consequences:</strong>
+                                        <ul>
+                                            <li>Decreased workplace efficiency</li>
+                                            <li>Erosion of trust in hiring systems</li>
+                                            <li>Potential cascading effects of dishonesty</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Aggregate Welfare Analysis:</strong>
+                                        <ul>
+                                            <li>Net negative impact on overall welfare</li>
+                                            <li>Creates systemic inefficiencies</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action not justified under consequentialist ethics</li>
+                                </ol>
+                                
+                                <strong>Example 2:</strong>
+                                <em>Situation:</em> Donating to charity anonymously
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Stakeholders:</strong> Donor, charity recipients, charity organization</li>
+                                    <li><strong>Immediate Consequences:</strong>
+                                        <ul>
+                                            <li>Direct aid to beneficiaries</li>
+                                            <li>Resource transfer to effective causes</li>
+                                            <li>No social recognition benefits</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Long-term Consequences:</strong>
+                                        <ul>
+                                            <li>Sustained improvement in recipients' lives</li>
+                                            <li>Potential inspiration for others</li>
+                                            <li>Enhanced charitable efficiency</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Aggregate Welfare Analysis:</strong>
+                                        <ul>
+                                            <li>Significant positive impact on overall welfare</li>
+                                            <li>Efficient allocation of resources</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action strongly justified under consequentialist ethics</li>
+                                </ol>
+                                
+                                Now, please analyze the following situation:
+                                ${situation}
+                                
+                                Please provide a detailed analysis following the same structure using HTML tags:
+                                <ol>
+                                    <li><strong>Identify all relevant stakeholders</strong></li>
+                                    <li><strong>Analyze immediate consequences</strong> for each stakeholder</li>
+                                    <li><strong>Consider long-term and systemic consequences</strong></li>
+                                    <li><strong>Evaluate aggregate welfare impact</strong>
+                                        <ul>
+                                            <li>Consider both quantitative and qualitative factors</li>
+                                            <li>Assess distribution of benefits and harms</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Provide a clear conclusion</strong> about the ethical justifiability of the action</li>
+                                    <li><strong>Optional:</strong> Suggest modifications to maximize positive consequences</li>
+                                </ol>
+                                
+                                Please be thorough in your reasoning and specific in your conclusions.` :
+                                `You are a virtue ethics expert. Please analyze the following situation using virtue ethics principles and format your response using HTML tags for headers, lists, emphasis, and bold text.
+                                
+                                Follow this structured approach, as shown in these examples:
+                                
+                                <strong>Example 1:</strong>
+                                <em>Situation:</em> Lying on a job application to get hired
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Relevant Virtues/Vices:</strong>
+                                        <ul>
+                                            <li>Honesty vs Deception</li>
+                                            <li>Integrity vs Opportunism</li>
+                                            <li>Justice vs Unfairness</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Character Assessment:</strong>
+                                        <ul>
+                                            <li>Action stems from and reinforces dishonesty</li>
+                                            <li>Demonstrates lack of integrity</li>
+                                            <li>Shows disregard for fairness</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Practical Wisdom (Phronesis):</strong>
+                                        <ul>
+                                            <li>Fails to balance competing goods</li>
+                                            <li>Short-term gain vs long-term character development</li>
+                                            <li>Ignores alternative virtuous approaches</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Impact on Flourishing (Eudaimonia):</strong>
+                                        <ul>
+                                            <li>Undermines personal excellence</li>
+                                            <li>Damages professional character</li>
+                                            <li>Hinders genuine achievement</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action fails to align with virtuous character development</li>
+                                </ol>
+                                
+                                <strong>Example 2:</strong>
+                                <em>Situation:</em> Donating to charity anonymously
+                                <em>Analysis:</em>
+                                <ol>
+                                    <li><strong>Relevant Virtues/Vices:</strong>
+                                        <ul>
+                                            <li>Generosity vs Greed</li>
+                                            <li>Humility vs Vanity</li>
+                                            <li>Compassion vs Indifference</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Character Assessment:</strong>
+                                        <ul>
+                                            <li>Demonstrates genuine generosity</li>
+                                            <li>Shows authentic humility</li>
+                                            <li>Expresses true compassion</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Practical Wisdom (Phronesis):</strong>
+                                        <ul>
+                                            <li>Balances helping others with personal resources</li>
+                                            <li>Avoids pride while doing good</li>
+                                            <li>Shows good judgment in method of giving</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Impact on Flourishing (Eudaimonia):</strong>
+                                        <ul>
+                                            <li>Develops virtuous character</li>
+                                            <li>Contributes to community good</li>
+                                            <li>Cultivates excellence in giving</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Conclusion:</strong> Action exemplifies virtuous character and promotes flourishing</li>
+                                </ol>
+                                
+                                Now, please analyze the following situation:
+                                ${situation}
+                                
+                                Please provide a detailed analysis following the same structure using HTML tags:
+                                <ol>
+                                    <li><strong>Identify relevant virtues and vices at play</strong></li>
+                                    <li><strong>Assess how the action reflects and impacts character</strong></li>
+                                    <li><strong>Evaluate the role of practical wisdom</strong>
+                                        <ul>
+                                            <li>Consider balance of competing goods</li>
+                                            <li>Assess judgment in specific context</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Analyze impact on personal and community flourishing</strong></li>
+                                    <li><strong>Provide a clear conclusion</strong> about virtue alignment</li>
+                                    <li><strong>Optional:</strong> Suggest how the action might better express virtue</li>
+                                </ol>
+                                
+                                Please be thorough in your reasoning and specific in your conclusions.`
+                        }],
+                        temperature: 0.7
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error.message || 'API Error');
+                }
+                
+                if (data.choices && data.choices[0]) {
+                    result.innerHTML = data.choices[0].message.content;
+                    result.style.display = 'block';
+                } else {
+                    throw new Error('Invalid API response');
+                }
+            } catch (error) {
+                result.innerHTML = `Error: ${error.message || 'Unable to perform analysis. Please check your API key and try again.'}`;
+                result.style.display = 'block';
+                console.error('Error:', error);
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        document.getElementById('kantian-button').addEventListener('click', () => analyze('kantian'));
+        document.getElementById('consequentialist-button').addEventListener('click', () => analyze('consequentialist'));
+        document.getElementById('virtue-button').addEventListener('click', () => analyze('virtue'));
+    </script>
+</body>
+</html> 

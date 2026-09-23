@@ -1,0 +1,2630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elenchus</title>
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0D0D1A;
+  --surface: #1A1A2E;
+  --surface-elevated: #25253F;
+  --accent: #C792EA;
+  --accent-secondary: #89DDFF;
+  --correct: #C3E88D;
+  --incorrect: #FF5370;
+  --text-primary: #EEFFFF;
+  --text-secondary: #676E95;
+  --text-tertiary: #4A4E6A;
+  --card-radius: 16px;
+  --btn-radius: 12px;
+  --card-padding: 24px;
+  --spacing: 16px;
+  --section-spacing: 32px;
+
+  /* Tradition colors */
+  --virtue-ethics: #C3E88D;
+  --deontology: #89DDFF;
+  --consequentialism: #FFCB6B;
+  --social-contract: #C792EA;
+  --metaethics: #FF5370;
+  --moral-psychology: #F78C6C;
+  --applied-ethics: #82AAFF;
+
+  /* Mode accent (dynamically set) */
+  --mode-accent: #C792EA;
+}
+
+html { font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== LAYOUT ===== */
+#app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+  position: relative;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.title-serif {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+.quote-text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.mono { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; }
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-slow {
+  animation: fadeIn 1s ease forwards;
+}
+.stagger-1 { animation-delay: 0s; }
+.stagger-2 { animation-delay: 0.4s; opacity: 0; }
+.stagger-3 { animation-delay: 0.8s; opacity: 0; }
+.stagger-4 { animation-delay: 1.2s; opacity: 0; }
+.stagger-5 { animation-delay: 1.6s; opacity: 0; }
+
+.slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  border: 1px solid var(--surface-elevated);
+  transition: all 0.3s ease;
+}
+
+.card-elevated {
+  background: var(--surface-elevated);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: var(--btn-radius);
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--mode-accent);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(199, 146, 234, 0.3);
+}
+
+.btn-secondary {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--text-tertiary);
+}
+.btn-secondary:hover {
+  border-color: var(--mode-accent);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== HOME SCREEN ===== */
+.home-header {
+  text-align: center;
+  padding: 40px 0 var(--section-spacing);
+}
+.home-header .subtitle {
+  color: var(--text-secondary);
+  font-size: 16px;
+  margin-top: 8px;
+  font-style: italic;
+  font-family: Georgia, serif;
+}
+
+/* Stats Row */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: var(--section-spacing);
+  flex-wrap: wrap;
+}
+.stat-badge {
+  text-align: center;
+  min-width: 80px;
+}
+.stat-badge .stat-value {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.stat-badge .stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* Section headers */
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing);
+}
+
+/* Mode Cards */
+.modes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing);
+  margin-bottom: var(--section-spacing);
+}
+
+.mode-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  border: 1px solid var(--surface-elevated);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.mode-card.active {
+  border-color: var(--accent);
+}
+.mode-card.active:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(199, 146, 234, 0.15);
+  transform: translateY(-2px);
+}
+.mode-card.locked {
+  opacity: 0.5;
+  cursor: default;
+}
+.mode-card .mode-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+.mode-card .mode-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.mode-card .mode-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+.mode-card .mode-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--surface-elevated);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.mode-card .lock-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+.mode-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+/* Thinkers list */
+.thinkers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.thinker-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.thinker-row:hover {
+  border-color: var(--surface-elevated);
+}
+.thinker-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.thinker-info {
+  flex: 1;
+  min-width: 0;
+}
+.thinker-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+.thinker-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.thinker-badge {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* ===== GAME HEADER ===== */
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 0 4px;
+}
+.game-progress {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.phase-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.phase-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  transition: all 0.3s ease;
+}
+.phase-dot.active {
+  background: var(--mode-accent);
+  box-shadow: 0 0 6px rgba(199, 146, 234, 0.5);
+}
+.phase-dot.completed {
+  background: var(--correct);
+}
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.close-btn:hover {
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+}
+
+/* ===== QUOTE CARD ===== */
+.quote-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  padding-left: calc(var(--card-padding) + 16px);
+  position: relative;
+  border: 1px solid var(--surface-elevated);
+}
+.quote-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: var(--card-radius) 0 0 var(--card-radius);
+}
+
+/* ===== OPTION CARDS ===== */
+.options-grid {
+  display: grid;
+  gap: 12px;
+  margin: var(--spacing) 0;
+}
+.options-grid.traditions {
+  grid-template-columns: 1fr 1fr;
+}
+.options-grid.philosophers {
+  grid-template-columns: 1fr;
+}
+.options-grid.argument-types {
+  grid-template-columns: 1fr;
+}
+.options-grid.relationships {
+  grid-template-columns: 1fr;
+}
+.options-grid.sorting-grid {
+  grid-template-columns: 1fr;
+}
+
+.option-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: 16px 20px;
+  border: 2px solid var(--surface-elevated);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+.option-card:hover:not(.disabled) {
+  border-color: var(--text-tertiary);
+  transform: translateY(-1px);
+}
+
+.option-card.selected {
+  border-color: var(--mode-accent);
+  box-shadow: 0 0 20px rgba(199, 146, 234, 0.2);
+}
+.option-card.correct {
+  border-color: var(--correct);
+  background: rgba(195, 232, 141, 0.1);
+}
+.option-card.incorrect {
+  border-color: var(--incorrect);
+  background: rgba(255, 83, 112, 0.1);
+}
+.option-card.dimmed {
+  opacity: 0.35;
+  pointer-events: none;
+}
+.option-card.disabled {
+  cursor: default;
+}
+
+.option-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.option-content {
+  flex: 1;
+  min-width: 0;
+}
+.option-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+.option-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.option-indicator {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* ===== DIALOGUE DUAL QUOTE LAYOUT ===== */
+.dual-quotes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+.dual-quotes .passage-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-tertiary);
+  margin-bottom: 8px;
+}
+.dual-quotes .quote-card {
+  font-size: 15px;
+}
+.dual-quotes .quote-card .quote-text {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ===== TRADITION MODE: SORTING CARDS ===== */
+.sorting-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: 16px 20px;
+  border: 2px solid var(--surface-elevated);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.sorting-card:hover:not(.disabled) {
+  border-color: var(--text-tertiary);
+  transform: translateY(-1px);
+}
+.sorting-card.selected {
+  border-color: var(--mode-accent);
+  box-shadow: 0 0 20px rgba(195, 232, 141, 0.2);
+}
+.sorting-card.disabled {
+  cursor: default;
+}
+.sorting-card .sorting-quote-text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+.sorting-card .sorting-selection-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--mode-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Tradition info card */
+.tradition-info-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  border: 1px solid var(--surface-elevated);
+  margin-bottom: var(--spacing);
+  text-align: center;
+}
+.tradition-info-card .tradition-name {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.tradition-info-card .tradition-description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.tradition-info-card .tradition-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.tradition-info-card .method-tag {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--surface-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--text-tertiary);
+}
+
+/* Result cards for Tradition mode */
+.sorting-result-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: 14px 18px;
+  border: 1px solid var(--surface-elevated);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.sorting-result-card .result-indicator {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.sorting-result-card .result-details {
+  flex: 1;
+  min-width: 0;
+}
+.sorting-result-card .result-details .quote-snippet {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.sorting-result-card .result-details .result-meta {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.sorting-result-card .result-details .result-meta span {
+  font-weight: 600;
+}
+
+/* Score display for tradition mode */
+.score-display {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.score-display .score-big {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+/* ===== CONFIDENCE SLIDER ===== */
+.confidence-section {
+  padding: 20px 0;
+}
+.confidence-value {
+  text-align: center;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--mode-accent);
+  margin-bottom: 4px;
+}
+.confidence-label {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  min-height: 20px;
+}
+
+.slider-container {
+  padding: 0 8px;
+  margin-bottom: 32px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--surface-elevated);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mode-accent);
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(199, 146, 234, 0.4);
+  transition: transform 0.2s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mode-accent);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 12px rgba(199, 146, 234, 0.4);
+}
+
+/* ===== RESULT PHASE ===== */
+.result-icon {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+.result-philosopher {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.result-source {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.calibration-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  border: 1px solid var(--surface-elevated);
+  margin-bottom: var(--spacing);
+}
+.calibration-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.calibration-row .label {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+.calibration-row .value {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-weight: 600;
+}
+.calibration-narrative {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--surface-elevated);
+  font-style: italic;
+}
+
+/* Expandable sections */
+.expandable {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--surface-elevated);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.expandable-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.expandable-header:hover {
+  background: rgba(255,255,255, 0.02);
+}
+.expandable-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.expandable-chevron {
+  color: var(--text-tertiary);
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+.expandable.open .expandable-chevron {
+  transform: rotate(180deg);
+}
+.expandable-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.expandable.open .expandable-body {
+  max-height: 600px;
+}
+.expandable-content {
+  padding: 0 20px 16px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ===== SESSION COMPLETE ===== */
+.session-complete {
+  text-align: center;
+  padding: 40px 0;
+}
+.session-score {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--mode-accent);
+}
+.session-score-label {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+.session-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* ===== FEEDBACK BANNER ===== */
+.feedback-banner {
+  padding: 16px 20px;
+  border-radius: var(--card-radius);
+  margin-bottom: var(--spacing);
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+}
+.feedback-banner.correct-banner {
+  background: rgba(195, 232, 141, 0.12);
+  color: var(--correct);
+  border: 1px solid rgba(195, 232, 141, 0.3);
+}
+.feedback-banner.incorrect-banner {
+  background: rgba(255, 83, 112, 0.12);
+  color: var(--incorrect);
+  border: 1px solid rgba(255, 83, 112, 0.3);
+}
+
+.hint-card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  border: 1px solid var(--surface-elevated);
+  margin-top: var(--spacing);
+}
+.hint-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-tertiary);
+  margin-bottom: 8px;
+}
+.hint-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.hint-tradition-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ===== LOADING ===== */
+.loading-screen {
+  text-align: center;
+  padding: 80px 20px;
+}
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--surface-elevated);
+  border-top: 3px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 20px;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.error-msg {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.error-msg code {
+  display: inline-block;
+  background: var(--surface);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .modes-grid { grid-template-columns: 1fr; }
+  .options-grid.traditions { grid-template-columns: 1fr; }
+  .dual-quotes { grid-template-columns: 1fr; }
+  .title-serif { font-size: 32px; }
+  .confidence-value { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+// ===== CONTENT DATA =====
+window.CONTENT_DATA = null;
+
+// ===== CONSTANTS =====
+const SESSION_SIZE = 5;
+const STORAGE_KEY = 'elenchus_state';
+
+const TRADITION_COLORS = {
+  virtue_ethics: '#C3E88D',
+  deontology: '#89DDFF',
+  consequentialism: '#FFCB6B',
+  social_contract: '#C792EA',
+  metaethics: '#FF5370',
+  moral_psychology: '#F78C6C',
+  applied_ethics: '#82AAFF'
+};
+
+const MODE_CONFIG = [
+  { id: 'voice', title: 'Voice', subtitle: 'Identify the thinker', icon: '\u{1F399}', color: '#C792EA', active: true },
+  { id: 'argument', title: 'Argument', subtitle: 'Name the argument type', icon: '\u{1F4A1}', color: '#89DDFF', active: true },
+  { id: 'dialogue', title: 'Dialogue', subtitle: 'Compare two passages', icon: '\u{1F4AC}', color: '#FFCB6B', active: true },
+  { id: 'tradition', title: 'Tradition', subtitle: 'Sort by tradition', icon: '\u{1F3DB}', color: '#C3E88D', active: true }
+];
+
+// ===== STATE =====
+let contentData = null;
+let currentMode = 'voice'; // 'voice', 'argument', 'dialogue', 'tradition'
+let gameState = null; // loaded after init
+let currentScreen = 'home';
+
+// Voice mode state
+let sessionQuotes = [];
+let sessionIndex = 0;
+let currentPhase = 0;
+let selectedTradition = null;
+let selectedPhilosopher = null;
+let confidenceValue = 50;
+let sessionResults = [];
+
+// Argument mode state
+let argSelectedType = null;
+let argOptions = [];
+
+// Dialogue mode state
+let dialogueQuoteA = null;
+let dialogueQuoteB = null;
+let dialogueCorrectRelationship = null;
+let dialogueSelectedRelationship = null;
+
+// Tradition mode state
+let traditionTarget = null;
+let traditionSortQuotes = [];
+let traditionSelectedIds = new Set();
+let traditionCorrectIds = new Set();
+
+function defaultState() {
+  return {
+    // Voice mode
+    voiceResults: [],
+    calibrationPoints: [],
+    streak: 0,
+    bestStreak: 0,
+    totalRounds: 0,
+    seenQuoteIds: [],
+    // Argument mode
+    argumentResults: [],
+    argumentCalibration: [],
+    argumentStreak: 0,
+    argumentBestStreak: 0,
+    argumentTotalRounds: 0,
+    argumentSeenQuoteIds: [],
+    // Dialogue mode
+    dialogueResults: [],
+    dialogueCalibration: [],
+    dialogueStreak: 0,
+    dialogueBestStreak: 0,
+    dialogueTotalRounds: 0,
+    dialogueSeenQuoteIds: [],
+    // Tradition mode
+    traditionResults: [],
+    traditionCalibration: [],
+    traditionStreak: 0,
+    traditionBestStreak: 0,
+    traditionTotalRounds: 0,
+    traditionSeenQuoteIds: [],
+    traditionPartialScores: []
+  };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return { ...defaultState(), ...JSON.parse(raw) };
+  } catch(e) {}
+  return defaultState();
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
+}
+
+// ===== HELPERS =====
+function getTraditionColor(traditionId) {
+  return TRADITION_COLORS[traditionId] || '#C792EA';
+}
+
+function getTradition(traditionId) {
+  return contentData.traditions.find(t => t.id === traditionId);
+}
+
+function getPhilosopher(philosopherId) {
+  return contentData.philosophers.find(p => p.id === philosopherId);
+}
+
+function getPhilosophersForTradition(traditionId) {
+  return contentData.philosophers.filter(p => p.tradition_id === traditionId);
+}
+
+function getQuotesForPhilosopher(philosopherId) {
+  return contentData.quotes.filter(q => q.philosopher_id === philosopherId);
+}
+
+function getQuoteCountForMode() {
+  return contentData.quotes.length;
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function snakeToTitle(str) {
+  if (!str) return '';
+  return str.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function selectSessionQuotes(seenKey) {
+  const seenIds = seenKey ? gameState[seenKey] : gameState.seenQuoteIds;
+  const allIds = contentData.quotes.map(q => q.id);
+  const seen = new Set(seenIds);
+  const unseen = allIds.filter(id => !seen.has(id));
+  const seenList = allIds.filter(id => seen.has(id));
+
+  let pool = [];
+  if (unseen.length >= SESSION_SIZE) {
+    pool = shuffle(unseen).slice(0, SESSION_SIZE);
+  } else {
+    pool = [...shuffle(unseen), ...shuffle(seenList).slice(0, SESSION_SIZE - unseen.length)];
+  }
+  return pool.map(id => contentData.quotes.find(q => q.id === id));
+}
+
+function getConfidenceLabel(val) {
+  if (val < 25) return 'Guessing';
+  if (val < 45) return 'Leaning';
+  if (val < 65) return 'Fairly sure';
+  if (val < 85) return 'Confident';
+  return 'Certain';
+}
+
+function getCalibrationNarrative(correct, confidence) {
+  const conf = confidence / 100;
+  if (correct && conf > 0.7) return 'Well calibrated -- you were confident and correct.';
+  if (correct && conf < 0.4) return 'You got it right but weren\'t confident -- trust your instincts more.';
+  if (!correct && conf > 0.7) return 'Overconfident on a wrong answer -- this is where calibration suffers most.';
+  if (!correct && conf < 0.4) return 'Wrong, but you knew you were guessing -- honest uncertainty.';
+  return 'Moderate confidence, moderate outcome -- the middle ground of calibration.';
+}
+
+function computeBrier(confidence, correct) {
+  const conf = confidence / 100;
+  const outcome = correct ? 1.0 : 0.0;
+  return Math.pow(conf - outcome, 2);
+}
+
+function getCalibrationQuality(brier) {
+  if (brier < 0.1) return 'Excellent';
+  if (brier < 0.2) return 'Good';
+  if (brier < 0.3) return 'Fair';
+  return 'Needs work';
+}
+
+function getOverallBrier() {
+  // Aggregate Brier across all modes
+  const allPoints = [
+    ...gameState.calibrationPoints,
+    ...gameState.argumentCalibration,
+    ...gameState.dialogueCalibration,
+    ...gameState.traditionCalibration
+  ];
+  if (allPoints.length === 0) return null;
+  const sum = allPoints.reduce((a, b) => a + b, 0);
+  return sum / allPoints.length;
+}
+
+function getTotalRoundsAllModes() {
+  return gameState.totalRounds
+    + gameState.argumentTotalRounds
+    + gameState.dialogueTotalRounds
+    + gameState.traditionTotalRounds;
+}
+
+function getAllResults() {
+  return [
+    ...gameState.voiceResults,
+    ...gameState.argumentResults,
+    ...gameState.dialogueResults,
+    ...gameState.traditionResults
+  ];
+}
+
+function getBestStreakAllModes() {
+  return Math.max(
+    gameState.bestStreak,
+    gameState.argumentBestStreak,
+    gameState.dialogueBestStreak,
+    gameState.traditionBestStreak
+  );
+}
+
+function getCurrentStreakAllModes() {
+  // Show the streak of the most recently played mode, but we'll just show the max active streak
+  return Math.max(
+    gameState.streak,
+    gameState.argumentStreak,
+    gameState.dialogueStreak,
+    gameState.traditionStreak
+  );
+}
+
+function setModeAccent(color) {
+  document.documentElement.style.setProperty('--mode-accent', color);
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ===== RENDER ENGINE =====
+const app = document.getElementById('app');
+
+function render() {
+  switch (currentScreen) {
+    case 'home': setModeAccent('#C792EA'); renderHome(); break;
+    case 'game':
+      if (currentMode === 'voice') renderVoiceGame();
+      else if (currentMode === 'argument') renderArgumentGame();
+      else if (currentMode === 'dialogue') renderDialogueGame();
+      else if (currentMode === 'tradition') renderTraditionGame();
+      break;
+    case 'complete': renderComplete(); break;
+  }
+}
+
+// ===== HOME SCREEN =====
+function renderHome() {
+  const totalRounds = getTotalRoundsAllModes();
+  const allRes = getAllResults();
+  const accuracy = totalRounds > 0
+    ? Math.round((allRes.filter(r => r).length / totalRounds) * 100)
+    : 0;
+  const brier = getOverallBrier();
+  const streak = getCurrentStreakAllModes();
+  const quoteCount = getQuoteCountForMode();
+
+  let statsHtml = '';
+  if (totalRounds > 0) {
+    statsHtml = `
+      <div class="stats-row fade-in">
+        <div class="stat-badge">
+          <div class="stat-value mono">${totalRounds}</div>
+          <div class="stat-label">Rounds</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-value mono">${accuracy}%</div>
+          <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-value mono">${streak}</div>
+          <div class="stat-label">Streak</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-value mono">${brier !== null ? brier.toFixed(2) : '--'}</div>
+          <div class="stat-label">Brier</div>
+        </div>
+      </div>`;
+  }
+
+  const modesHtml = MODE_CONFIG.map(m => {
+    const isActive = m.active;
+    let badgeText = '';
+    if (m.id === 'voice') {
+      badgeText = `${quoteCount} quotes`;
+    } else if (m.id === 'argument') {
+      const rounds = gameState.argumentTotalRounds;
+      badgeText = rounds > 0 ? `${rounds} rounds` : `${quoteCount} quotes`;
+    } else if (m.id === 'dialogue') {
+      const rounds = gameState.dialogueTotalRounds;
+      badgeText = rounds > 0 ? `${rounds} rounds` : `${quoteCount} quotes`;
+    } else if (m.id === 'tradition') {
+      const rounds = gameState.traditionTotalRounds;
+      badgeText = rounds > 0 ? `${rounds} rounds` : `${contentData.traditions.length} traditions`;
+    }
+    const badgeHtml = `<div class="mode-badge">${badgeText}</div>`;
+    return `
+      <div class="mode-card active" onclick="startMode('${m.id}')" style="border-color: ${m.color}30;">
+        <div class="mode-accent" style="background: ${m.color}"></div>
+        <div class="mode-icon">${m.icon}</div>
+        <div class="mode-title">${m.title}</div>
+        <div class="mode-subtitle">${m.subtitle}</div>
+        ${badgeHtml}
+      </div>`;
+  }).join('');
+
+  const thinkersHtml = contentData.philosophers.map(p => {
+    const tradition = getTradition(p.tradition_id);
+    const color = getTraditionColor(p.tradition_id);
+    const qCount = getQuotesForPhilosopher(p.id).length;
+    return `
+      <div class="thinker-row">
+        <div class="thinker-dot" style="background: ${color}"></div>
+        <div class="thinker-info">
+          <div class="thinker-name">${escapeHtml(p.name)}</div>
+          <div class="thinker-meta">${escapeHtml(p.era)} &middot; ${escapeHtml(tradition ? tradition.name : '')}</div>
+        </div>
+        <div class="thinker-badge">${qCount}</div>
+      </div>`;
+  }).join('');
+
+  app.innerHTML = `
+    <div class="home-header fade-in">
+      <div class="title-serif">Elenchus</div>
+      <div class="subtitle">Train your philosophical ear</div>
+    </div>
+    ${statsHtml}
+    <div class="section-label fade-in">Modes</div>
+    <div class="modes-grid fade-in">
+      ${modesHtml}
+    </div>
+    <div class="section-label fade-in">Thinkers</div>
+    <div class="thinkers-list fade-in">
+      ${thinkersHtml}
+    </div>`;
+}
+
+// ===== START MODE =====
+function startMode(mode) {
+  currentMode = mode;
+  const modeConf = MODE_CONFIG.find(m => m.id === mode);
+  setModeAccent(modeConf.color);
+
+  sessionIndex = 0;
+  sessionResults = [];
+  currentPhase = 0;
+  confidenceValue = 50;
+
+  if (mode === 'voice') {
+    sessionQuotes = selectSessionQuotes('seenQuoteIds');
+    selectedTradition = null;
+    selectedPhilosopher = null;
+  } else if (mode === 'argument') {
+    sessionQuotes = selectSessionQuotes('argumentSeenQuoteIds');
+    argSelectedType = null;
+    argOptions = [];
+  } else if (mode === 'dialogue') {
+    sessionQuotes = []; // dialogue generates pairs per round
+    dialogueQuoteA = null;
+    dialogueQuoteB = null;
+    dialogueCorrectRelationship = null;
+    dialogueSelectedRelationship = null;
+    generateDialoguePair();
+  } else if (mode === 'tradition') {
+    sessionQuotes = [];
+    traditionTarget = null;
+    traditionSortQuotes = [];
+    traditionSelectedIds = new Set();
+    traditionCorrectIds = new Set();
+    generateTraditionRound();
+  }
+
+  currentScreen = 'game';
+  render();
+}
+
+// Keep backward compatibility
+function startGame() {
+  startMode('voice');
+}
+
+function goHome() {
+  currentScreen = 'home';
+  setModeAccent('#C792EA');
+  render();
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// ===== VOICE MODE (existing, unchanged logic) =====
+// ============================================================
+function renderVoiceGame() {
+  const quote = sessionQuotes[sessionIndex];
+  if (!quote) { currentScreen = 'complete'; render(); return; }
+
+  const dotPhases = [0, 1, 3, 5];
+  let phaseDots = '';
+  for (let i = 0; i < dotPhases.length; i++) {
+    const dp = dotPhases[i];
+    let cls = 'phase-dot';
+    if (currentPhase > dp) cls += ' completed';
+    else if (currentPhase >= dp) cls += ' active';
+    phaseDots += `<div class="${cls}"></div>`;
+  }
+
+  const headerHtml = `
+    <div class="game-header">
+      <div class="game-progress mono">${sessionIndex + 1} / ${SESSION_SIZE}</div>
+      <div class="phase-dots">${phaseDots}</div>
+      <button class="close-btn" onclick="goHome()" title="Go home">&times;</button>
+    </div>`;
+
+  let bodyHtml = '';
+  switch (currentPhase) {
+    case 0: bodyHtml = renderReadingPhase(quote); break;
+    case 1: bodyHtml = renderTraditionPhase(quote); break;
+    case 2: bodyHtml = renderTraditionFeedbackPhase(quote); break;
+    case 3: bodyHtml = renderPhilosopherPhase(quote); break;
+    case 4: bodyHtml = renderVoiceConfidencePhase(quote); break;
+    case 5: bodyHtml = renderVoiceResultPhase(quote); break;
+  }
+
+  app.innerHTML = headerHtml + bodyHtml;
+
+  if (currentPhase === 0) {
+    setTimeout(() => {
+      const btn = document.getElementById('read-btn');
+      if (btn) {
+        btn.disabled = false;
+        btn.classList.add('fade-in');
+      }
+    }, 2000);
+  }
+  if (currentPhase === 4) {
+    setupConfidenceSlider();
+  }
+}
+
+function renderReadingPhase(quote) {
+  const color = getTraditionColor(quote.tradition_id);
+  return `
+    <div class="quote-card fade-in-slow" style="--accent-bar: ${color}">
+      <style>.quote-card::before { background: ${color}; }</style>
+      <div class="quote-text">${escapeHtml(quote.text)}</div>
+    </div>
+    <div style="margin-top: 24px; text-align: center;">
+      <button id="read-btn" class="btn btn-primary btn-full" disabled onclick="advancePhase()">
+        I've read this
+      </button>
+    </div>`;
+}
+
+function renderTraditionPhase(quote) {
+  const traditionsHtml = contentData.traditions.map(t => {
+    const color = '#' + t.color_hex;
+    const selected = selectedTradition === t.id;
+    return `
+      <div class="option-card ${selected ? 'selected' : ''}" onclick="selectTradition('${t.id}')">
+        <div class="option-dot" style="background: ${color}"></div>
+        <div class="option-content">
+          <div class="option-title">${escapeHtml(t.name)}</div>
+        </div>
+        ${selected ? '<div class="option-indicator" style="color: var(--mode-accent)">\u2713</div>' : ''}
+      </div>`;
+  }).join('');
+
+  return `
+    <div style="margin-bottom: var(--spacing);">
+      <div class="section-label">Which tradition?</div>
+    </div>
+    <div class="options-grid traditions fade-in">
+      ${traditionsHtml}
+    </div>
+    <div style="margin-top: 24px;">
+      <button class="btn btn-primary btn-full" ${!selectedTradition ? 'disabled' : ''} onclick="confirmTradition()">
+        Confirm
+      </button>
+    </div>`;
+}
+
+function selectTradition(id) {
+  selectedTradition = id;
+  renderVoiceGame();
+}
+
+function confirmTradition() {
+  if (!selectedTradition) return;
+  currentPhase = 2;
+  render();
+}
+
+function renderTraditionFeedbackPhase(quote) {
+  const correct = selectedTradition === quote.tradition_id;
+  const chosenTradition = getTradition(selectedTradition);
+  const actualTradition = getTradition(quote.tradition_id);
+
+  let feedbackHtml = '';
+  if (correct) {
+    feedbackHtml = `
+      <div class="feedback-banner correct-banner fade-in">
+        \u2713 Correct tradition!
+      </div>`;
+  } else {
+    feedbackHtml = `
+      <div class="feedback-banner incorrect-banner fade-in">
+        \u2717 Not quite
+      </div>
+      <div class="hint-card fade-in" style="animation-delay: 0.3s; opacity: 0;">
+        <div class="hint-label">Hint</div>
+        <div class="hint-text">
+          <p style="margin-bottom: 12px;">
+            You chose <span class="hint-tradition-name" style="color: #${chosenTradition.color_hex}">${escapeHtml(chosenTradition.name)}</span>,
+            which emphasizes: ${escapeHtml(chosenTradition.key_methods.join(', '))}.
+          </p>
+          <p>
+            This quote belongs to <span class="hint-tradition-name" style="color: #${actualTradition.color_hex}">${escapeHtml(actualTradition.name)}</span>,
+            which emphasizes: ${escapeHtml(actualTradition.key_methods.join(', '))}.
+          </p>
+        </div>
+      </div>`;
+  }
+
+  return `
+    ${feedbackHtml}
+    <div style="margin-top: 24px; animation-delay: 0.5s; opacity: 0;" class="fade-in">
+      <button class="btn btn-primary btn-full" onclick="advanceToPhilosopher()">
+        Pick the philosopher
+      </button>
+    </div>`;
+}
+
+function advanceToPhilosopher() {
+  currentPhase = 3;
+  selectedPhilosopher = null;
+  render();
+}
+
+function renderPhilosopherPhase(quote) {
+  const correctTradition = quote.tradition_id;
+  const philosophers = getPhilosophersForTradition(correctTradition);
+  const tradition = getTradition(correctTradition);
+  const color = '#' + tradition.color_hex;
+
+  const philHtml = philosophers.map(p => {
+    const selected = selectedPhilosopher === p.id;
+    return `
+      <div class="option-card ${selected ? 'selected' : ''}" onclick="selectPhilosopher('${p.id}')">
+        <div class="option-dot" style="background: ${color}"></div>
+        <div class="option-content">
+          <div class="option-title">${escapeHtml(p.name)}</div>
+          <div class="option-subtitle">${escapeHtml(p.era)} &middot; ${escapeHtml(p.active_period)}</div>
+        </div>
+        ${selected ? '<div class="option-indicator" style="color: var(--mode-accent)">\u2713</div>' : ''}
+      </div>`;
+  }).join('');
+
+  return `
+    <div style="margin-bottom: 4px;">
+      <div class="section-label">Who wrote this?</div>
+      <div style="font-size: 13px; color: var(--text-tertiary); margin-bottom: var(--spacing);">
+        Showing philosophers from <span style="color: ${color}; font-weight: 600;">${escapeHtml(tradition.name)}</span>
+      </div>
+    </div>
+    <div class="options-grid philosophers fade-in">
+      ${philHtml}
+    </div>
+    <div style="margin-top: 24px;">
+      <button class="btn btn-primary btn-full" ${!selectedPhilosopher ? 'disabled' : ''} onclick="confirmPhilosopher()">
+        Confirm
+      </button>
+    </div>`;
+}
+
+function selectPhilosopher(id) {
+  selectedPhilosopher = id;
+  renderVoiceGame();
+}
+
+function confirmPhilosopher() {
+  if (!selectedPhilosopher) return;
+  currentPhase = 4;
+  confidenceValue = 50;
+  render();
+}
+
+function renderVoiceConfidencePhase(quote) {
+  return renderConfidenceSliderHtml('voiceLockIn()');
+}
+
+function voiceLockIn() {
+  const quote = sessionQuotes[sessionIndex];
+  const correct = selectedPhilosopher === quote.philosopher_id;
+  const brier = computeBrier(confidenceValue, correct);
+
+  gameState.voiceResults.push(correct);
+  gameState.calibrationPoints.push(brier);
+  gameState.totalRounds++;
+  if (!gameState.seenQuoteIds.includes(quote.id)) {
+    gameState.seenQuoteIds.push(quote.id);
+  }
+  if (correct) {
+    gameState.streak++;
+    if (gameState.streak > gameState.bestStreak) gameState.bestStreak = gameState.streak;
+  } else {
+    gameState.streak = 0;
+  }
+  saveState();
+
+  sessionResults.push({
+    quoteId: quote.id,
+    correct,
+    confidence: confidenceValue,
+    brier,
+    selectedPhilosopher,
+    selectedTradition
+  });
+
+  currentPhase = 5;
+  render();
+  window.scrollTo(0, 0);
+}
+
+function renderVoiceResultPhase(quote) {
+  const result = sessionResults[sessionResults.length - 1];
+  const philosopher = getPhilosopher(quote.philosopher_id);
+  const correct = result.correct;
+  const conf = result.confidence;
+  const brier = result.brier;
+  const narrative = getCalibrationNarrative(correct, conf);
+
+  const icon = correct ? '\u2713' : '\u2717';
+  const iconColor = correct ? 'var(--correct)' : 'var(--incorrect)';
+  const outcomeText = correct ? 'Correct' : 'Incorrect';
+
+  return `
+    <div class="fade-in stagger-1">
+      <div class="result-icon" style="color: ${iconColor}">${icon}</div>
+      <div class="result-philosopher">${escapeHtml(philosopher.name)}</div>
+      <div class="result-source">${escapeHtml(quote.source_title)}</div>
+    </div>
+
+    <div class="calibration-card fade-in stagger-2">
+      <div class="calibration-row">
+        <span class="label">Your confidence</span>
+        <span class="value mono" style="color: var(--mode-accent)">${conf}%</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Outcome</span>
+        <span class="value" style="color: ${iconColor}">${outcomeText}</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Brier contribution</span>
+        <span class="value mono">${brier.toFixed(3)}</span>
+      </div>
+      <div class="calibration-narrative">${escapeHtml(narrative)}</div>
+    </div>
+
+    <div class="fade-in stagger-3">
+      ${renderExpandable('The Argument', quote.key_move)}
+      ${renderExpandable('Why This Thinker', quote.why_characteristic)}
+      ${renderExpandable('Core Assumption', quote.core_assumption)}
+    </div>
+
+    <div style="margin-top: 24px;" class="fade-in stagger-4">
+      <button class="btn btn-primary btn-full" onclick="nextVoiceQuote()">
+        ${sessionIndex < SESSION_SIZE - 1 ? 'Next Quote' : 'View Results'}
+      </button>
+    </div>`;
+}
+
+function nextVoiceQuote() {
+  sessionIndex++;
+  if (sessionIndex >= SESSION_SIZE) {
+    currentScreen = 'complete';
+    render();
+    window.scrollTo(0, 0);
+    return;
+  }
+  currentPhase = 0;
+  selectedTradition = null;
+  selectedPhilosopher = null;
+  confidenceValue = 50;
+  render();
+  window.scrollTo(0, 0);
+}
+
+// Keep backward compat for old Voice mode functions
+function lockIn() { voiceLockIn(); }
+function nextQuote() { nextVoiceQuote(); }
+
+function advancePhase() {
+  currentPhase++;
+  render();
+}
+
+// ============================================================
+// ===== ARGUMENT MODE =====
+// ============================================================
+function renderArgumentGame() {
+  const quote = sessionQuotes[sessionIndex];
+  if (!quote) { currentScreen = 'complete'; render(); return; }
+
+  // Phase: 0=reading, 1=argument-type, 2=confidence, 3=result
+  const dotPhases = [0, 1, 2]; // 3 dots: read, type, confidence+result
+  let phaseDots = '';
+  for (let i = 0; i < dotPhases.length; i++) {
+    const dp = dotPhases[i];
+    let cls = 'phase-dot';
+    if (currentPhase > dp) cls += ' completed';
+    else if (currentPhase >= dp) cls += ' active';
+    phaseDots += `<div class="${cls}"></div>`;
+  }
+
+  const headerHtml = `
+    <div class="game-header">
+      <div class="game-progress mono">${sessionIndex + 1} / ${SESSION_SIZE}</div>
+      <div class="phase-dots">${phaseDots}</div>
+      <button class="close-btn" onclick="goHome()" title="Go home">&times;</button>
+    </div>`;
+
+  let bodyHtml = '';
+  switch (currentPhase) {
+    case 0: bodyHtml = renderArgReadingPhase(quote); break;
+    case 1: bodyHtml = renderArgTypePhase(quote); break;
+    case 2: bodyHtml = renderArgConfidencePhase(quote); break;
+    case 3: bodyHtml = renderArgResultPhase(quote); break;
+  }
+
+  app.innerHTML = headerHtml + bodyHtml;
+
+  if (currentPhase === 0) {
+    setTimeout(() => {
+      const btn = document.getElementById('read-btn');
+      if (btn) {
+        btn.disabled = false;
+        btn.classList.add('fade-in');
+      }
+    }, 2000);
+  }
+  if (currentPhase === 2) {
+    setupConfidenceSlider();
+  }
+}
+
+function renderArgReadingPhase(quote) {
+  const color = getTraditionColor(quote.tradition_id);
+  return `
+    <div class="quote-card fade-in-slow" style="--accent-bar: ${color}">
+      <style>.quote-card::before { background: ${color}; }</style>
+      <div class="quote-text">${escapeHtml(quote.text)}</div>
+    </div>
+    <div style="margin-top: 24px; text-align: center;">
+      <button id="read-btn" class="btn btn-primary btn-full" disabled onclick="argAdvanceToType()">
+        I've read this
+      </button>
+    </div>`;
+}
+
+function argAdvanceToType() {
+  // Generate 4 options: 1 correct + 3 distractors
+  const quote = sessionQuotes[sessionIndex];
+  const correctType = quote.argument_type;
+  const correctDifficulty = quote.difficulty;
+  const correctTradition = quote.tradition_id;
+
+  // Get all distinct argument types
+  const allTypes = [...new Set(contentData.quotes.map(q => q.argument_type))];
+  const otherTypes = allTypes.filter(t => t !== correctType);
+
+  // Try to pick distractors from same difficulty or tradition first
+  const sameDiffTypes = [...new Set(
+    contentData.quotes
+      .filter(q => q.argument_type !== correctType && q.difficulty === correctDifficulty)
+      .map(q => q.argument_type)
+  )];
+  const sameTradTypes = [...new Set(
+    contentData.quotes
+      .filter(q => q.argument_type !== correctType && q.tradition_id === correctTradition)
+      .map(q => q.argument_type)
+  )];
+
+  // Build distractor pool: prefer same difficulty/tradition, then any
+  let distractorPool = shuffle([...new Set([...sameDiffTypes, ...sameTradTypes])]);
+  if (distractorPool.length < 3) {
+    const extras = shuffle(otherTypes.filter(t => !distractorPool.includes(t)));
+    distractorPool = [...distractorPool, ...extras];
+  }
+  const distractors = distractorPool.slice(0, 3);
+
+  argOptions = shuffle([correctType, ...distractors]);
+  argSelectedType = null;
+  currentPhase = 1;
+  render();
+}
+
+function renderArgTypePhase(quote) {
+  const optionsHtml = argOptions.map(type => {
+    const selected = argSelectedType === type;
+    return `
+      <div class="option-card ${selected ? 'selected' : ''}" onclick="argSelectType('${type}')">
+        <div class="option-dot" style="background: var(--mode-accent)"></div>
+        <div class="option-content">
+          <div class="option-title">${escapeHtml(snakeToTitle(type))}</div>
+        </div>
+        ${selected ? '<div class="option-indicator" style="color: var(--mode-accent)">\u2713</div>' : ''}
+      </div>`;
+  }).join('');
+
+  return `
+    <div style="margin-bottom: var(--spacing);">
+      <div class="section-label">What type of argument is this?</div>
+    </div>
+    <div class="options-grid argument-types fade-in">
+      ${optionsHtml}
+    </div>
+    <div style="margin-top: 24px;">
+      <button class="btn btn-primary btn-full" ${!argSelectedType ? 'disabled' : ''} onclick="argConfirmType()">
+        Confirm
+      </button>
+    </div>`;
+}
+
+function argSelectType(type) {
+  argSelectedType = type;
+  renderArgumentGame();
+}
+
+function argConfirmType() {
+  if (!argSelectedType) return;
+  currentPhase = 2;
+  confidenceValue = 50;
+  render();
+}
+
+function renderArgConfidencePhase(quote) {
+  return renderConfidenceSliderHtml('argLockIn()');
+}
+
+function argLockIn() {
+  const quote = sessionQuotes[sessionIndex];
+  const correct = argSelectedType === quote.argument_type;
+  const brier = computeBrier(confidenceValue, correct);
+
+  gameState.argumentResults.push(correct);
+  gameState.argumentCalibration.push(brier);
+  gameState.argumentTotalRounds++;
+  if (!gameState.argumentSeenQuoteIds.includes(quote.id)) {
+    gameState.argumentSeenQuoteIds.push(quote.id);
+  }
+  if (correct) {
+    gameState.argumentStreak++;
+    if (gameState.argumentStreak > gameState.argumentBestStreak) gameState.argumentBestStreak = gameState.argumentStreak;
+  } else {
+    gameState.argumentStreak = 0;
+  }
+  saveState();
+
+  sessionResults.push({
+    quoteId: quote.id,
+    correct,
+    confidence: confidenceValue,
+    brier,
+    selectedType: argSelectedType
+  });
+
+  currentPhase = 3;
+  render();
+  window.scrollTo(0, 0);
+}
+
+function renderArgResultPhase(quote) {
+  const result = sessionResults[sessionResults.length - 1];
+  const philosopher = getPhilosopher(quote.philosopher_id);
+  const correct = result.correct;
+  const conf = result.confidence;
+  const brier = result.brier;
+  const narrative = getCalibrationNarrative(correct, conf);
+
+  const icon = correct ? '\u2713' : '\u2717';
+  const iconColor = correct ? 'var(--correct)' : 'var(--incorrect)';
+  const outcomeText = correct ? 'Correct' : 'Incorrect';
+
+  return `
+    <div class="fade-in stagger-1">
+      <div class="result-icon" style="color: ${iconColor}">${icon}</div>
+      <div class="result-philosopher">${escapeHtml(snakeToTitle(quote.argument_type))}</div>
+      <div class="result-source">${escapeHtml(philosopher.name)} &mdash; ${escapeHtml(quote.source_title)}</div>
+    </div>
+
+    <div class="calibration-card fade-in stagger-2">
+      <div class="calibration-row">
+        <span class="label">Your confidence</span>
+        <span class="value mono" style="color: var(--mode-accent)">${conf}%</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Outcome</span>
+        <span class="value" style="color: ${iconColor}">${outcomeText}</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Brier contribution</span>
+        <span class="value mono">${brier.toFixed(3)}</span>
+      </div>
+      <div class="calibration-narrative">${escapeHtml(narrative)}</div>
+    </div>
+
+    <div class="fade-in stagger-3">
+      ${renderExpandable('The Argument', quote.key_move)}
+      ${renderExpandable('Core Assumption', quote.core_assumption)}
+    </div>
+
+    <div style="margin-top: 24px;" class="fade-in stagger-4">
+      <button class="btn btn-primary btn-full" onclick="nextArgQuote()">
+        ${sessionIndex < SESSION_SIZE - 1 ? 'Next Quote' : 'View Results'}
+      </button>
+    </div>`;
+}
+
+function nextArgQuote() {
+  sessionIndex++;
+  if (sessionIndex >= SESSION_SIZE) {
+    currentScreen = 'complete';
+    render();
+    window.scrollTo(0, 0);
+    return;
+  }
+  currentPhase = 0;
+  argSelectedType = null;
+  argOptions = [];
+  confidenceValue = 50;
+  render();
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// ===== DIALOGUE MODE =====
+// ============================================================
+function generateDialoguePair() {
+  // Randomly decide relationship type
+  const relationships = ['same_philosopher', 'same_tradition', 'different_traditions'];
+  const relType = relationships[Math.floor(Math.random() * relationships.length)];
+  dialogueCorrectRelationship = relType;
+
+  const quotes = contentData.quotes;
+  const seenSet = new Set(gameState.dialogueSeenQuoteIds);
+
+  if (relType === 'same_philosopher') {
+    // Pick a philosopher with >=2 quotes
+    const philsWithMultiple = [...new Set(quotes.map(q => q.philosopher_id))].filter(pid => {
+      return quotes.filter(q => q.philosopher_id === pid).length >= 2;
+    });
+    if (philsWithMultiple.length === 0) {
+      dialogueCorrectRelationship = 'different_traditions';
+      const fallbackTrads = shuffle(contentData.traditions.map(t => t.id));
+      const ft1 = shuffle(quotes.filter(q => q.tradition_id === fallbackTrads[0]));
+      const ft2 = shuffle(quotes.filter(q => q.tradition_id === fallbackTrads[1]));
+      dialogueQuoteA = ft1[0];
+      dialogueQuoteB = ft2[0];
+      dialogueSelectedRelationship = null;
+      return;
+    }
+    const chosenPhil = philsWithMultiple[Math.floor(Math.random() * philsWithMultiple.length)];
+    const philQuotes = shuffle(quotes.filter(q => q.philosopher_id === chosenPhil));
+    // Prefer unseen quotes
+    const unseen = philQuotes.filter(q => !seenSet.has(q.id));
+    const pool = unseen.length >= 2 ? unseen : philQuotes;
+    dialogueQuoteA = pool[0];
+    dialogueQuoteB = pool[1] || philQuotes.find(q => q.id !== pool[0].id);
+  } else if (relType === 'same_tradition') {
+    // Pick a tradition with >=2 philosophers
+    const trads = contentData.traditions.map(t => t.id);
+    const tradsWithMultiPhils = trads.filter(tid => {
+      const phils = new Set(quotes.filter(q => q.tradition_id === tid).map(q => q.philosopher_id));
+      return phils.size >= 2;
+    });
+    if (tradsWithMultiPhils.length === 0) {
+      dialogueCorrectRelationship = 'different_traditions';
+      const fallbackTrads = shuffle(contentData.traditions.map(t => t.id));
+      const ft1 = shuffle(quotes.filter(q => q.tradition_id === fallbackTrads[0]));
+      const ft2 = shuffle(quotes.filter(q => q.tradition_id === fallbackTrads[1]));
+      dialogueQuoteA = ft1[0];
+      dialogueQuoteB = ft2[0];
+      dialogueSelectedRelationship = null;
+      return;
+    }
+    const chosenTrad = tradsWithMultiPhils[Math.floor(Math.random() * tradsWithMultiPhils.length)];
+    const tradQuotes = quotes.filter(q => q.tradition_id === chosenTrad);
+    const phils = [...new Set(tradQuotes.map(q => q.philosopher_id))];
+    const shuffledPhils = shuffle(phils);
+    const phil1Quotes = shuffle(tradQuotes.filter(q => q.philosopher_id === shuffledPhils[0]));
+    const phil2Quotes = shuffle(tradQuotes.filter(q => q.philosopher_id === shuffledPhils[1]));
+    dialogueQuoteA = phil1Quotes[0];
+    dialogueQuoteB = phil2Quotes[0];
+  } else {
+    // Different traditions
+    const trads = shuffle(contentData.traditions.map(t => t.id));
+    const trad1Quotes = shuffle(quotes.filter(q => q.tradition_id === trads[0]));
+    const trad2Quotes = shuffle(quotes.filter(q => q.tradition_id === trads[1]));
+    dialogueQuoteA = trad1Quotes[0];
+    dialogueQuoteB = trad2Quotes[0];
+  }
+
+  dialogueSelectedRelationship = null;
+}
+
+function renderDialogueGame() {
+  if (sessionIndex >= SESSION_SIZE) { currentScreen = 'complete'; render(); return; }
+
+  // Phase: 0=reading, 1=relationship, 2=confidence, 3=result
+  const dotPhases = [0, 1, 2];
+  let phaseDots = '';
+  for (let i = 0; i < dotPhases.length; i++) {
+    const dp = dotPhases[i];
+    let cls = 'phase-dot';
+    if (currentPhase > dp) cls += ' completed';
+    else if (currentPhase >= dp) cls += ' active';
+    phaseDots += `<div class="${cls}"></div>`;
+  }
+
+  const headerHtml = `
+    <div class="game-header">
+      <div class="game-progress mono">${sessionIndex + 1} / ${SESSION_SIZE}</div>
+      <div class="phase-dots">${phaseDots}</div>
+      <button class="close-btn" onclick="goHome()" title="Go home">&times;</button>
+    </div>`;
+
+  let bodyHtml = '';
+  switch (currentPhase) {
+    case 0: bodyHtml = renderDialogueReadingPhase(); break;
+    case 1: bodyHtml = renderDialogueRelationshipPhase(); break;
+    case 2: bodyHtml = renderDialogueConfidencePhase(); break;
+    case 3: bodyHtml = renderDialogueResultPhase(); break;
+  }
+
+  app.innerHTML = headerHtml + bodyHtml;
+
+  if (currentPhase === 0) {
+    setTimeout(() => {
+      const btn = document.getElementById('read-btn');
+      if (btn) {
+        btn.disabled = false;
+        btn.classList.add('fade-in');
+      }
+    }, 3000); // 3 seconds for two passages
+  }
+  if (currentPhase === 2) {
+    setupConfidenceSlider();
+  }
+}
+
+function renderDialogueReadingPhase() {
+  const colorA = getTraditionColor(dialogueQuoteA.tradition_id);
+  const colorB = getTraditionColor(dialogueQuoteB.tradition_id);
+
+  return `
+    <div class="dual-quotes fade-in-slow">
+      <div>
+        <div class="passage-label">Passage A</div>
+        <div class="quote-card" id="quote-card-a">
+          <style>#quote-card-a::before { background: ${colorA}; }</style>
+          <div class="quote-text">${escapeHtml(dialogueQuoteA.text)}</div>
+        </div>
+      </div>
+      <div>
+        <div class="passage-label">Passage B</div>
+        <div class="quote-card" id="quote-card-b">
+          <style>#quote-card-b::before { background: ${colorB}; }</style>
+          <div class="quote-text">${escapeHtml(dialogueQuoteB.text)}</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 24px; text-align: center;">
+      <button id="read-btn" class="btn btn-primary btn-full" disabled onclick="dialogueAdvanceToRelationship()">
+        I've read both
+      </button>
+    </div>`;
+}
+
+function dialogueAdvanceToRelationship() {
+  currentPhase = 1;
+  render();
+}
+
+function renderDialogueRelationshipPhase() {
+  const options = [
+    { id: 'same_philosopher', title: 'Same Philosopher', subtitle: 'Both passages are by the same thinker' },
+    { id: 'same_tradition', title: 'Same Tradition', subtitle: 'Same tradition, different philosophers' },
+    { id: 'different_traditions', title: 'Different Traditions', subtitle: 'Different traditions entirely' }
+  ];
+
+  const optionsHtml = options.map(opt => {
+    const selected = dialogueSelectedRelationship === opt.id;
+    return `
+      <div class="option-card ${selected ? 'selected' : ''}" onclick="dialogueSelectRelationship('${opt.id}')">
+        <div class="option-dot" style="background: var(--mode-accent)"></div>
+        <div class="option-content">
+          <div class="option-title">${escapeHtml(opt.title)}</div>
+          <div class="option-subtitle">${escapeHtml(opt.subtitle)}</div>
+        </div>
+        ${selected ? '<div class="option-indicator" style="color: var(--mode-accent)">\u2713</div>' : ''}
+      </div>`;
+  }).join('');
+
+  return `
+    <div style="margin-bottom: var(--spacing);">
+      <div class="section-label">What is their relationship?</div>
+    </div>
+    <div class="options-grid relationships fade-in">
+      ${optionsHtml}
+    </div>
+    <div style="margin-top: 24px;">
+      <button class="btn btn-primary btn-full" ${!dialogueSelectedRelationship ? 'disabled' : ''} onclick="dialogueConfirmRelationship()">
+        Confirm
+      </button>
+    </div>`;
+}
+
+function dialogueSelectRelationship(id) {
+  dialogueSelectedRelationship = id;
+  renderDialogueGame();
+}
+
+function dialogueConfirmRelationship() {
+  if (!dialogueSelectedRelationship) return;
+  currentPhase = 2;
+  confidenceValue = 50;
+  render();
+}
+
+function renderDialogueConfidencePhase() {
+  return renderConfidenceSliderHtml('dialogueLockIn()');
+}
+
+function dialogueLockIn() {
+  const correct = dialogueSelectedRelationship === dialogueCorrectRelationship;
+  const brier = computeBrier(confidenceValue, correct);
+
+  gameState.dialogueResults.push(correct);
+  gameState.dialogueCalibration.push(brier);
+  gameState.dialogueTotalRounds++;
+  if (!gameState.dialogueSeenQuoteIds.includes(dialogueQuoteA.id)) {
+    gameState.dialogueSeenQuoteIds.push(dialogueQuoteA.id);
+  }
+  if (!gameState.dialogueSeenQuoteIds.includes(dialogueQuoteB.id)) {
+    gameState.dialogueSeenQuoteIds.push(dialogueQuoteB.id);
+  }
+  if (correct) {
+    gameState.dialogueStreak++;
+    if (gameState.dialogueStreak > gameState.dialogueBestStreak) gameState.dialogueBestStreak = gameState.dialogueStreak;
+  } else {
+    gameState.dialogueStreak = 0;
+  }
+  saveState();
+
+  sessionResults.push({
+    correct,
+    confidence: confidenceValue,
+    brier,
+    selectedRelationship: dialogueSelectedRelationship,
+    correctRelationship: dialogueCorrectRelationship,
+    quoteA: dialogueQuoteA,
+    quoteB: dialogueQuoteB
+  });
+
+  currentPhase = 3;
+  render();
+  window.scrollTo(0, 0);
+}
+
+function renderDialogueResultPhase() {
+  const result = sessionResults[sessionResults.length - 1];
+  const correct = result.correct;
+  const conf = result.confidence;
+  const brier = result.brier;
+  const narrative = getCalibrationNarrative(correct, conf);
+
+  const icon = correct ? '\u2713' : '\u2717';
+  const iconColor = correct ? 'var(--correct)' : 'var(--incorrect)';
+  const outcomeText = correct ? 'Correct' : 'Incorrect';
+
+  const relationshipLabels = {
+    same_philosopher: 'Same Philosopher',
+    same_tradition: 'Same Tradition',
+    different_traditions: 'Different Traditions'
+  };
+
+  const philA = getPhilosopher(result.quoteA.philosopher_id);
+  const philB = getPhilosopher(result.quoteB.philosopher_id);
+  const tradA = getTradition(result.quoteA.tradition_id);
+  const tradB = getTradition(result.quoteB.tradition_id);
+  const colorA = getTraditionColor(result.quoteA.tradition_id);
+  const colorB = getTraditionColor(result.quoteB.tradition_id);
+
+  // Generate "Why These Two" explanation
+  let whyExplanation = '';
+  if (result.correctRelationship === 'same_philosopher') {
+    whyExplanation = `Both passages are by ${philA.name}, showing different facets of their work within the ${tradA.name} tradition. The first is from "${result.quoteA.source_title}" and the second from "${result.quoteB.source_title}".`;
+  } else if (result.correctRelationship === 'same_tradition') {
+    whyExplanation = `Both ${philA.name} and ${philB.name} work within ${tradA.name}, but bring different perspectives and methods. Notice how the tradition's characteristic concerns -- ${tradA.key_methods.slice(0, 2).join(', ')} -- appear in both passages.`;
+  } else {
+    whyExplanation = `${philA.name} works within ${tradA.name} (emphasizing ${tradA.key_methods[0]}), while ${philB.name} belongs to ${tradB.name} (emphasizing ${tradB.key_methods[0]}). Their different starting points lead to characteristically different argumentative strategies.`;
+  }
+
+  return `
+    <div class="fade-in stagger-1">
+      <div class="result-icon" style="color: ${iconColor}">${icon}</div>
+      <div class="result-philosopher">${escapeHtml(relationshipLabels[result.correctRelationship])}</div>
+      <div class="result-source" style="margin-bottom: 16px;">&nbsp;</div>
+      <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 200px; background: var(--surface); border-radius: var(--card-radius); padding: 14px 18px; border-left: 3px solid ${colorA};">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-tertiary); margin-bottom: 4px;">Passage A</div>
+          <div style="font-weight: 600; font-size: 15px;">${escapeHtml(philA.name)}</div>
+          <div style="font-size: 13px; color: var(--text-secondary);">${escapeHtml(result.quoteA.source_title)}</div>
+          <div style="font-size: 12px; color: ${colorA}; margin-top: 4px;">${escapeHtml(tradA.name)}</div>
+        </div>
+        <div style="flex: 1; min-width: 200px; background: var(--surface); border-radius: var(--card-radius); padding: 14px 18px; border-left: 3px solid ${colorB};">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-tertiary); margin-bottom: 4px;">Passage B</div>
+          <div style="font-weight: 600; font-size: 15px;">${escapeHtml(philB.name)}</div>
+          <div style="font-size: 13px; color: var(--text-secondary);">${escapeHtml(result.quoteB.source_title)}</div>
+          <div style="font-size: 12px; color: ${colorB}; margin-top: 4px;">${escapeHtml(tradB.name)}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calibration-card fade-in stagger-2">
+      <div class="calibration-row">
+        <span class="label">Your confidence</span>
+        <span class="value mono" style="color: var(--mode-accent)">${conf}%</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Outcome</span>
+        <span class="value" style="color: ${iconColor}">${outcomeText}</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Brier contribution</span>
+        <span class="value mono">${brier.toFixed(3)}</span>
+      </div>
+      <div class="calibration-narrative">${escapeHtml(narrative)}</div>
+    </div>
+
+    <div class="fade-in stagger-3">
+      ${renderExpandable('Why These Two', whyExplanation)}
+    </div>
+
+    <div style="margin-top: 24px;" class="fade-in stagger-4">
+      <button class="btn btn-primary btn-full" onclick="nextDialoguePair()">
+        ${sessionIndex < SESSION_SIZE - 1 ? 'Next Pair' : 'View Results'}
+      </button>
+    </div>`;
+}
+
+function nextDialoguePair() {
+  sessionIndex++;
+  if (sessionIndex >= SESSION_SIZE) {
+    currentScreen = 'complete';
+    render();
+    window.scrollTo(0, 0);
+    return;
+  }
+  currentPhase = 0;
+  generateDialoguePair();
+  confidenceValue = 50;
+  render();
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// ===== TRADITION MODE =====
+// ============================================================
+function generateTraditionRound() {
+  const allTraditions = contentData.traditions;
+  const quotes = contentData.quotes;
+
+  // Pick a random tradition that has at least 3 quotes
+  const validTraditions = allTraditions.filter(t => {
+    return quotes.filter(q => q.tradition_id === t.id).length >= 3;
+  });
+  if (validTraditions.length === 0) {
+    const counts = allTraditions.map(t => ({
+      t, c: quotes.filter(q => q.tradition_id === t.id).length
+    })).sort((a, b) => b.c - a.c);
+    traditionTarget = counts[0].t;
+  } else {
+    traditionTarget = validTraditions[Math.floor(Math.random() * validTraditions.length)];
+  }
+
+  // Select 3 quotes from the target tradition
+  const targetQuotes = shuffle(quotes.filter(q => q.tradition_id === traditionTarget.id)).slice(0, 3);
+
+  // Select 3 quotes from OTHER traditions (ideally 1 each from 3 different traditions)
+  const otherTraditions = shuffle(allTraditions.filter(t => t.id !== traditionTarget.id));
+  let otherQuotes = [];
+  for (const ot of otherTraditions) {
+    if (otherQuotes.length >= 3) break;
+    const oq = shuffle(quotes.filter(q => q.tradition_id === ot.id));
+    if (oq.length > 0) otherQuotes.push(oq[0]);
+  }
+  // If we didn't get 3, fill from any remaining
+  if (otherQuotes.length < 3) {
+    const remaining = shuffle(quotes.filter(q => q.tradition_id !== traditionTarget.id && !otherQuotes.find(oq => oq.id === q.id)));
+    otherQuotes = [...otherQuotes, ...remaining.slice(0, 3 - otherQuotes.length)];
+  }
+
+  traditionSortQuotes = shuffle([...targetQuotes, ...otherQuotes]);
+  traditionCorrectIds = new Set(targetQuotes.map(q => q.id));
+  traditionSelectedIds = new Set();
+}
+
+function renderTraditionGame() {
+  if (sessionIndex >= SESSION_SIZE) { currentScreen = 'complete'; render(); return; }
+
+  // Phase: 0=tradition-reveal, 1=sorting, 2=confidence, 3=result
+  const dotPhases = [0, 1, 2];
+  let phaseDots = '';
+  for (let i = 0; i < dotPhases.length; i++) {
+    const dp = dotPhases[i];
+    let cls = 'phase-dot';
+    if (currentPhase > dp) cls += ' completed';
+    else if (currentPhase >= dp) cls += ' active';
+    phaseDots += `<div class="${cls}"></div>`;
+  }
+
+  const headerHtml = `
+    <div class="game-header">
+      <div class="game-progress mono">${sessionIndex + 1} / ${SESSION_SIZE}</div>
+      <div class="phase-dots">${phaseDots}</div>
+      <button class="close-btn" onclick="goHome()" title="Go home">&times;</button>
+    </div>`;
+
+  let bodyHtml = '';
+  switch (currentPhase) {
+    case 0: bodyHtml = renderTraditionRevealPhase(); break;
+    case 1: bodyHtml = renderTraditionSortingPhase(); break;
+    case 2: bodyHtml = renderTraditionConfidencePhase(); break;
+    case 3: bodyHtml = renderTraditionResultPhase(); break;
+  }
+
+  app.innerHTML = headerHtml + bodyHtml;
+
+  if (currentPhase === 2) {
+    setupConfidenceSlider();
+  }
+}
+
+function renderTraditionRevealPhase() {
+  const t = traditionTarget;
+  const color = '#' + t.color_hex;
+
+  const methodsHtml = t.key_methods.map(m =>
+    `<span class="method-tag">${escapeHtml(m)}</span>`
+  ).join('');
+
+  return `
+    <div class="tradition-info-card fade-in">
+      <div class="tradition-name" style="color: ${color}">${escapeHtml(t.name)}</div>
+      <div class="tradition-description">${escapeHtml(t.description)}</div>
+      <div class="tradition-methods">
+        ${methodsHtml}
+      </div>
+    </div>
+    <div style="margin-top: 24px; text-align: center;">
+      <button class="btn btn-primary btn-full" onclick="traditionAdvanceToSorting()">
+        Start Sorting
+      </button>
+    </div>`;
+}
+
+function traditionAdvanceToSorting() {
+  currentPhase = 1;
+  render();
+}
+
+function renderTraditionSortingPhase() {
+  const t = traditionTarget;
+  const color = '#' + t.color_hex;
+  const selectedCount = traditionSelectedIds.size;
+
+  const cardsHtml = traditionSortQuotes.map(q => {
+    const isSelected = traditionSelectedIds.has(q.id);
+    const truncText = q.text.length > 200 ? q.text.substring(0, 200) + '...' : q.text;
+    return `
+      <div class="sorting-card ${isSelected ? 'selected' : ''}" onclick="traditionToggleQuote('${q.id}')">
+        <div class="sorting-quote-text">${escapeHtml(truncText)}</div>
+        ${isSelected ? `<div class="sorting-selection-indicator"><span style="color: var(--mode-accent)">\u2713</span> Selected</div>` : ''}
+      </div>`;
+  }).join('');
+
+  return `
+    <div style="margin-bottom: var(--spacing);">
+      <div class="section-label">Select 3 quotes from <span style="color: ${color}">${escapeHtml(t.name)}</span></div>
+      <div style="font-size: 13px; color: var(--text-tertiary); margin-bottom: 8px;">
+        ${selectedCount}/3 selected
+      </div>
+    </div>
+    <div class="options-grid sorting-grid fade-in" style="gap: 12px;">
+      ${cardsHtml}
+    </div>
+    <div style="margin-top: 24px;">
+      <button class="btn btn-primary btn-full" ${selectedCount !== 3 ? 'disabled' : ''} onclick="traditionConfirmSelection()">
+        Confirm Selection
+      </button>
+    </div>`;
+}
+
+function traditionToggleQuote(id) {
+  if (traditionSelectedIds.has(id)) {
+    traditionSelectedIds.delete(id);
+  } else {
+    if (traditionSelectedIds.size < 3) {
+      traditionSelectedIds.add(id);
+    }
+  }
+  renderTraditionGame();
+}
+
+function traditionConfirmSelection() {
+  if (traditionSelectedIds.size !== 3) return;
+  currentPhase = 2;
+  confidenceValue = 50;
+  render();
+}
+
+function renderTraditionConfidencePhase() {
+  return renderConfidenceSliderHtml('traditionLockIn()');
+}
+
+function traditionLockIn() {
+  // Calculate how many of the 3 selections are correct
+  let correctCount = 0;
+  for (const id of traditionSelectedIds) {
+    if (traditionCorrectIds.has(id)) correctCount++;
+  }
+  const allCorrect = correctCount === 3;
+  const brier = computeBrier(confidenceValue, allCorrect);
+
+  gameState.traditionResults.push(allCorrect);
+  gameState.traditionCalibration.push(brier);
+  gameState.traditionTotalRounds++;
+  gameState.traditionPartialScores.push(correctCount);
+
+  // Track seen quotes
+  for (const q of traditionSortQuotes) {
+    if (!gameState.traditionSeenQuoteIds.includes(q.id)) {
+      gameState.traditionSeenQuoteIds.push(q.id);
+    }
+  }
+
+  if (allCorrect) {
+    gameState.traditionStreak++;
+    if (gameState.traditionStreak > gameState.traditionBestStreak) gameState.traditionBestStreak = gameState.traditionStreak;
+  } else {
+    gameState.traditionStreak = 0;
+  }
+  saveState();
+
+  sessionResults.push({
+    correct: allCorrect,
+    correctCount,
+    confidence: confidenceValue,
+    brier,
+    selectedIds: new Set(traditionSelectedIds),
+    correctIds: new Set(traditionCorrectIds),
+    quotes: [...traditionSortQuotes],
+    tradition: traditionTarget
+  });
+
+  currentPhase = 3;
+  render();
+  window.scrollTo(0, 0);
+}
+
+function renderTraditionResultPhase() {
+  const result = sessionResults[sessionResults.length - 1];
+  const correctCount = result.correctCount;
+  const allCorrect = result.correct;
+  const conf = result.confidence;
+  const brier = result.brier;
+  const narrative = getCalibrationNarrative(allCorrect, conf);
+  const t = result.tradition;
+  const color = '#' + t.color_hex;
+
+  const scoreColor = correctCount === 3 ? 'var(--correct)' : correctCount >= 2 ? 'var(--mode-accent)' : 'var(--incorrect)';
+
+  // Build per-quote result cards
+  const quoteResultsHtml = result.quotes.map(q => {
+    const belongsToTradition = result.correctIds.has(q.id);
+    const wasSelected = result.selectedIds.has(q.id);
+    const phil = getPhilosopher(q.philosopher_id);
+    const trad = getTradition(q.tradition_id);
+    const tradColor = getTraditionColor(q.tradition_id);
+
+    // Correct if: selected AND belongs, OR not selected AND doesn't belong
+    const isCorrectAction = (wasSelected && belongsToTradition) || (!wasSelected && !belongsToTradition);
+    const indicator = isCorrectAction ? '\u2713' : '\u2717';
+    const indicatorColor = isCorrectAction ? 'var(--correct)' : 'var(--incorrect)';
+
+    const truncText = q.text.length > 120 ? q.text.substring(0, 120) + '...' : q.text;
+
+    return `
+      <div class="sorting-result-card">
+        <div class="result-indicator" style="color: ${indicatorColor}">${indicator}</div>
+        <div class="result-details">
+          <div class="quote-snippet">${escapeHtml(truncText)}</div>
+          <div class="result-meta">
+            <span style="color: ${tradColor}">${escapeHtml(trad.name)}</span> &middot; ${escapeHtml(phil.name)}
+            ${wasSelected ? ' &middot; <span style="color: var(--mode-accent)">Selected</span>' : ''}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const outcomeText = allCorrect ? 'Correct' : 'Incorrect';
+  const iconColor = allCorrect ? 'var(--correct)' : 'var(--incorrect)';
+
+  return `
+    <div class="fade-in stagger-1">
+      <div class="score-display">
+        <div class="score-big" style="color: ${scoreColor}">${correctCount}/3</div>
+        <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">
+          correct selections for <span style="color: ${color}; font-weight: 600;">${escapeHtml(t.name)}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in stagger-2" style="margin-bottom: var(--spacing);">
+      ${quoteResultsHtml}
+    </div>
+
+    <div class="calibration-card fade-in stagger-3">
+      <div class="calibration-row">
+        <span class="label">Your confidence</span>
+        <span class="value mono" style="color: var(--mode-accent)">${conf}%</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Perfect round?</span>
+        <span class="value" style="color: ${iconColor}">${outcomeText}</span>
+      </div>
+      <div class="calibration-row">
+        <span class="label">Brier contribution</span>
+        <span class="value mono">${brier.toFixed(3)}</span>
+      </div>
+      <div class="calibration-narrative">${escapeHtml(narrative)}</div>
+    </div>
+
+    <div style="margin-top: 24px;" class="fade-in stagger-4">
+      <button class="btn btn-primary btn-full" onclick="nextTraditionRound()">
+        ${sessionIndex < SESSION_SIZE - 1 ? 'Next Tradition' : 'View Results'}
+      </button>
+    </div>`;
+}
+
+function nextTraditionRound() {
+  sessionIndex++;
+  if (sessionIndex >= SESSION_SIZE) {
+    currentScreen = 'complete';
+    render();
+    window.scrollTo(0, 0);
+    return;
+  }
+  currentPhase = 0;
+  generateTraditionRound();
+  confidenceValue = 50;
+  render();
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// ===== SHARED COMPONENTS =====
+// ============================================================
+function renderConfidenceSliderHtml(lockInFn) {
+  const label = getConfidenceLabel(confidenceValue);
+  return `
+    <div class="confidence-section fade-in">
+      <div class="confidence-value" id="conf-val">${confidenceValue}%</div>
+      <div class="confidence-label" id="conf-label">${label}</div>
+      <div class="slider-container">
+        <input type="range" id="confidence-slider" min="10" max="99" value="${confidenceValue}" step="1">
+      </div>
+      <button class="btn btn-primary btn-full" onclick="${lockInFn}">
+        Lock it in
+      </button>
+    </div>`;
+}
+
+function setupConfidenceSlider() {
+  const slider = document.getElementById('confidence-slider');
+  if (slider) {
+    slider.addEventListener('input', (e) => {
+      confidenceValue = parseInt(e.target.value);
+      document.getElementById('conf-val').textContent = confidenceValue + '%';
+      document.getElementById('conf-label').textContent = getConfidenceLabel(confidenceValue);
+    });
+  }
+}
+
+function renderExpandable(title, content) {
+  const id = 'exp-' + title.replace(/\s/g, '-').toLowerCase();
+  return `
+    <div class="expandable" id="${id}">
+      <div class="expandable-header" onclick="toggleExpandable('${id}')">
+        <span class="expandable-title">${escapeHtml(title)}</span>
+        <span class="expandable-chevron">\u25BC</span>
+      </div>
+      <div class="expandable-body">
+        <div class="expandable-content">${escapeHtml(content)}</div>
+      </div>
+    </div>`;
+}
+
+function toggleExpandable(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+
+// ============================================================
+// ===== SESSION COMPLETE (all modes) =====
+// ============================================================
+function renderComplete() {
+  const correctCount = sessionResults.filter(r => r.correct).length;
+  const total = sessionResults.length;
+  const avgBrier = total > 0
+    ? sessionResults.reduce((a, r) => a + r.brier, 0) / total
+    : 0;
+  const calLabel = getCalibrationQuality(avgBrier);
+
+  // Get mode-specific streak
+  let modeStreak = 0;
+  if (currentMode === 'voice') modeStreak = gameState.streak;
+  else if (currentMode === 'argument') modeStreak = gameState.argumentStreak;
+  else if (currentMode === 'dialogue') modeStreak = gameState.dialogueStreak;
+  else if (currentMode === 'tradition') modeStreak = gameState.traditionStreak;
+
+  const modeConf = MODE_CONFIG.find(m => m.id === currentMode);
+
+  // For tradition mode, also show partial scores summary
+  let extraStats = '';
+  if (currentMode === 'tradition') {
+    const partialSum = sessionResults.reduce((a, r) => a + r.correctCount, 0);
+    const partialTotal = sessionResults.length * 3;
+    extraStats = `
+      <div class="stat-badge">
+        <div class="stat-value mono" style="font-size: 20px;">${partialSum}/${partialTotal}</div>
+        <div class="stat-label">Selections</div>
+      </div>`;
+  }
+
+  app.innerHTML = `
+    <div class="session-complete fade-in">
+      <div style="margin-bottom: 48px;">
+        <div class="title-serif" style="font-size: 28px; margin-bottom: 8px;">Session Complete</div>
+        <div style="font-size: 14px; color: var(--text-secondary);">${escapeHtml(modeConf.title)} Mode</div>
+      </div>
+
+      <div class="session-score">${correctCount}/${total}</div>
+      <div class="session-score-label">${currentMode === 'tradition' ? 'perfect rounds' : 'correct answers'}</div>
+
+      <div class="session-stats">
+        <div class="stat-badge">
+          <div class="stat-value mono">${modeStreak}</div>
+          <div class="stat-label">Streak</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-value mono">${avgBrier.toFixed(2)}</div>
+          <div class="stat-label">Brier</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-value mono" style="font-size: 20px;">${calLabel}</div>
+          <div class="stat-label">Calibration</div>
+        </div>
+        ${extraStats}
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 0 auto;">
+        <button class="btn btn-primary btn-full" onclick="startMode('${currentMode}')">Play Again</button>
+        <button class="btn btn-secondary btn-full" onclick="goHome()">Home</button>
+      </div>
+    </div>`;
+}
+
+// ===== LOADING & INIT =====
+function showLoading() {
+  app.innerHTML = `
+    <div class="loading-screen">
+      <div class="loading-spinner"></div>
+      <div style="color: var(--text-secondary);">Loading philosophical wisdom...</div>
+    </div>`;
+}
+
+function showError() {
+  app.innerHTML = `
+    <div class="loading-screen">
+      <div class="title-serif" style="font-size: 28px; margin-bottom: 24px;">Elenchus</div>
+      <div class="error-msg">
+        <p style="margin-bottom: 16px;">Could not load content.json via fetch.</p>
+        <p style="margin-bottom: 8px;">Start a local server from the <strong>web/</strong> directory:</p>
+        <code>python3 -m http.server 8000</code>
+        <p style="margin-top: 16px;">Then open <a href="http://localhost:8000" style="color: var(--accent)">http://localhost:8000</a></p>
+      </div>
+    </div>`;
+}
+
+async function init() {
+  showLoading();
+  try {
+    const resp = await fetch('content.json');
+    if (!resp.ok) throw new Error('fetch failed');
+    contentData = await resp.json();
+    gameState = loadState();
+    render();
+  } catch(e) {
+    console.error('Failed to load content.json:', e);
+    showError();
+  }
+}
+
+init();
+</script>
+</body>
+</html>

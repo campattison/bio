@@ -1,0 +1,256 @@
+{
+  "id": "intro-phil-2026",
+  "title": "Ethica: Introduction to Philosophy",
+  "description": "PHIL 1002W companion pack. Five realms tracking the Fall 2026 syllabus — Ethics, Free Will, Political Philosophy, Epistemology, Applied Ethics — with 21 philosopher personas built from the assigned readings and six realm bosses.",
+  "version": "0.1.0",
+  "traditions": [
+    "consequentialism",
+    "deontology",
+    "virtue_ethics",
+    "existentialism",
+    "political_philosophy",
+    "analytic_method"
+  ],
+  "typeChart": {
+    "consequentialism": {
+      "strong": "virtue_ethics",
+      "weak": "deontology"
+    },
+    "virtue_ethics": {
+      "strong": "deontology",
+      "weak": "consequentialism"
+    },
+    "deontology": {
+      "strong": "consequentialism",
+      "weak": "virtue_ethics"
+    },
+    "existentialism": {
+      "strong": "political_philosophy",
+      "weak": "analytic_method"
+    },
+    "political_philosophy": {
+      "strong": "analytic_method",
+      "weak": "existentialism"
+    },
+    "analytic_method": {
+      "strong": "existentialism",
+      "weak": "political_philosophy"
+    }
+  },
+  "scoreWeights": {
+    "logical_validity": 0.25,
+    "engagement": 0.25,
+    "philosophical_precision": 0.2,
+    "rhetorical_clarity": 0.15,
+    "originality": 0.1,
+    "dialectical_awareness": 0.05
+  },
+  "moveBonuses": {
+    "counterexample": {
+      "bonus_dim": "engagement",
+      "bonus": 2,
+      "risk_dim": "logical_validity",
+      "risk": -2
+    },
+    "reductio": {
+      "bonus_dim": "logical_validity",
+      "bonus": 2,
+      "risk_dim": "engagement",
+      "risk": -3
+    },
+    "socratic_questioning": {
+      "bonus_dim": "dialectical_awareness",
+      "bonus": 2,
+      "damage_mult": 0.7,
+      "debuff": true
+    },
+    "framework_shift": {
+      "bonus_dim": "originality",
+      "bonus": 2,
+      "risk_dim": "engagement",
+      "risk": -2,
+      "type_check": true
+    },
+    "free_form": {
+      "bonus_dim": null,
+      "bonus": 0,
+      "risk_dim": null,
+      "risk": 0
+    }
+  },
+  "progression": {
+    "gymLeaderCount": 6,
+    "keyItemCount": 4
+  },
+  "responseLimits": {
+    "battle": 150,
+    "dialogue": 120,
+    "opening": 100
+  },
+  "encounterRate": 0.06,
+  "files": {
+    "philosophers": "packs/intro-phil-2026/philosophers.json",
+    "npcs": "packs/intro-phil-2026/npcs.json",
+    "quiz": "packs/intro-phil-2026/quiz-content.json",
+    "encounters": "packs/intro-phil-2026/encounters.json",
+    "promptsDir": "packs/intro-phil-2026/prompts"
+  },
+  "zones": [
+    {
+      "id": "main_1",
+      "name": "Philosophy Town",
+      "type": "world",
+      "assetKeys": {
+        "background": "MAIN_1_BACKGROUND",
+        "foreground": "MAIN_1_FOREGROUND",
+        "level": "MAIN_1_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/main_1_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/main_1_level_foreground.png",
+        "level": "assets/data/intro2_main_1.json"
+      }
+    },
+    {
+      "id": "forest_1",
+      "name": "Forest",
+      "type": "world",
+      "assetKeys": {
+        "background": "FOREST_1_BACKGROUND",
+        "foreground": "FOREST_1_FOREGROUND",
+        "level": "FOREST_1_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/forest_1_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/forest_1_level_foreground.png",
+        "level": "assets/data/intro2_forest_1.json"
+      },
+      "requiredGymLeaders": 0
+    },
+    {
+      "id": "cave",
+      "name": "The Cave",
+      "type": "world",
+      "assetKeys": {
+        "background": "CAVE_BACKGROUND",
+        "foreground": "CAVE_FOREGROUND",
+        "level": "CAVE_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/cave_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/cave_level_foreground.png",
+        "level": "assets/data/intro2_cave.json"
+      },
+      "requiredGymLeaders": 3
+    },
+    {
+      "id": "garden",
+      "name": "Ethics Garden",
+      "type": "world",
+      "assetKeys": {
+        "background": "GARDEN_BACKGROUND",
+        "foreground": "GARDEN_FOREGROUND",
+        "level": "GARDEN_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/garden_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/garden_level_foreground.png",
+        "level": "assets/data/intro2_garden.json"
+      },
+      "requiredGymLeaders": 0
+    },
+    {
+      "id": "emotive_fields",
+      "name": "Free Will Fields",
+      "type": "world",
+      "assetKeys": {
+        "background": "EMOTIVE_FIELDS_BACKGROUND",
+        "foreground": "EMOTIVE_FIELDS_FOREGROUND",
+        "level": "EMOTIVE_FIELDS_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/emotive_fields_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/emotive_fields_level_foreground.png",
+        "level": "assets/data/intro2_emotive_fields.json"
+      },
+      "requiredGymLeaders": 1
+    },
+    {
+      "id": "building_1",
+      "name": "Building 1 Interior",
+      "type": "building",
+      "assetKeys": {
+        "background": "BUILDING_1_BACKGROUND",
+        "foreground": "BUILDING_1_FOREGROUND",
+        "level": "BUILDING_1_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/buildings/building_1_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/buildings/building_1_level_foreground.png",
+        "level": "assets/data/building_1.json"
+      }
+    },
+    {
+      "id": "building_2",
+      "name": "Building 2 Interior",
+      "type": "building",
+      "assetKeys": {
+        "background": "BUILDING_2_BACKGROUND",
+        "foreground": "BUILDING_2_FOREGROUND",
+        "level": "BUILDING_2_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/buildings/building_2_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/buildings/building_2_level_foreground.png",
+        "level": "assets/data/building_2.json"
+      }
+    },
+    {
+      "id": "building_3",
+      "name": "Building 3 Interior",
+      "type": "building",
+      "assetKeys": {
+        "background": "BUILDING_3_BACKGROUND",
+        "foreground": "BUILDING_3_FOREGROUND",
+        "level": "BUILDING_3_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/buildings/building_3_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/buildings/building_3_level_foreground.png",
+        "level": "assets/data/building_3.json"
+      }
+    },
+    {
+      "id": "academy",
+      "name": "The Academy",
+      "type": "world",
+      "assetKeys": {
+        "background": "ACADEMY_BACKGROUND",
+        "foreground": "ACADEMY_FOREGROUND",
+        "level": "ACADEMY_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/academy_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/academy_level_foreground.png",
+        "level": "assets/data/intro2_academy.json"
+      },
+      "requiredGymLeaders": 2
+    },
+    {
+      "id": "cove",
+      "name": "The Cove",
+      "type": "world",
+      "assetKeys": {
+        "background": "COVE_BACKGROUND",
+        "foreground": "COVE_FOREGROUND",
+        "level": "COVE_LEVEL"
+      },
+      "files": {
+        "background": "assets/images/monster-tamer/map/cove_level_background.png",
+        "foreground": "assets/images/monster-tamer/map/cove_level_foreground.png",
+        "level": "assets/data/intro2_cove.json"
+      },
+      "requiredGymLeaders": 4
+    }
+  ]
+}

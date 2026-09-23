@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NeurIPS + ICML Topic Map — Affiliation Explorer</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root {
+  --bg:#0e0e0e; --surface:#1a1a1a; --surface2:#242424; --border:#333; --border-hi:#555;
+  --text:#e6e6e6; --text-dim:#8a8a8a; --text-hi:#fff; --accent:#56B4E9;
+  /* Okabe-Ito (CVD-safe) */
+  --c-acad:#0072B2; --c-corp:#D55E00; --c-mix:#CC79A7; --c-gov:#009E73;
+  --c-non:#F0E442; --c-unk:#999;
+}
+body.light {
+  --bg:#f7f7f8; --surface:#fff; --surface2:#f0f1f3; --border:#d8dade; --border-hi:#b0b3b8;
+  --text:#1a1d21; --text-dim:#5b6068; --text-hi:#000; --accent:#0072B2;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg); color:var(--text); font-size:13px; line-height:1.45;
+}
+header {
+  background:var(--surface); border-bottom:1px solid var(--border);
+  padding:10px 16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+}
+h1 { font-size:15px; font-weight:600; }
+.lead { color:var(--text-dim); font-size:12px; }
+#filter-status {
+  background:var(--surface2); padding:4px 10px; border-radius:14px;
+  font-size:12px;
+}
+#filter-status.active { background:var(--accent); color:#fff; }
+button {
+  background:var(--surface2); color:var(--text); border:1px solid var(--border);
+  padding:4px 10px; border-radius:6px; cursor:pointer; font-size:12px;
+}
+button:hover { border-color:var(--border-hi); }
+button:disabled { opacity:0.4; cursor:not-allowed; }
+main {
+  display:grid;
+  grid-template-columns:240px 1fr 320px;
+  height:calc(100vh - 50px);
+  transition: grid-template-columns 0.18s ease;
+}
+main.collapsed-left { grid-template-columns: 28px 1fr 320px; }
+main.collapsed-right { grid-template-columns: 240px 1fr 28px; }
+main.collapsed-left.collapsed-right { grid-template-columns: 28px 1fr 28px; }
+
+aside {
+  background:var(--surface); border-right:1px solid var(--border);
+  padding:12px; overflow-y:auto; position:relative;
+}
+aside.right { border-right:none; border-left:1px solid var(--border); }
+aside .collapse-btn {
+  position:absolute; top:8px; cursor:pointer;
+  background:var(--surface2); border:1px solid var(--border); border-radius:4px;
+  width:20px; height:24px; display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:var(--text-dim); padding:0;
+}
+aside .collapse-btn:hover { border-color:var(--border-hi); color:var(--text); }
+aside.left .collapse-btn { right:6px; }
+aside.right .collapse-btn { left:6px; }
+main.collapsed-left aside.left > *:not(.collapse-btn) { display:none; }
+main.collapsed-right aside.right > *:not(.collapse-btn) { display:none; }
+main.collapsed-left aside.left { padding:8px 4px; }
+main.collapsed-right aside.right { padding:8px 4px; }
+main.collapsed-left aside.left .collapse-btn,
+main.collapsed-right aside.right .collapse-btn { position:static; margin:0 auto; }
+.fset { margin-bottom:14px; }
+.fset h3 { font-size:11px; text-transform:uppercase; color:var(--text-dim);
+            letter-spacing:0.5px; margin-bottom:6px; }
+.opt {
+  display:flex; align-items:center; gap:6px; padding:3px 4px;
+  border-radius:4px; cursor:pointer;
+}
+.opt:hover { background:var(--surface2); }
+.opt input { accent-color:var(--accent); }
+.opt .swatch { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.opt .lbl { flex:1; font-size:12px; }
+.opt .cnt { color:var(--text-dim); font-size:11px; font-variant-numeric:tabular-nums; }
+#plot { height:100%; }
+#detail { font-size:12px; line-height:1.55; }
+#detail h2 { font-size:13px; margin-bottom:6px; line-height:1.35; }
+#detail .kv { color:var(--text-dim); font-size:11px; margin-top:4px; }
+#detail .auth { font-style:italic; color:var(--text-dim); font-size:11px;
+                  margin-top:4px; }
+#detail .abstract {
+  margin-top:10px; padding:8px 10px;
+  background:var(--surface2); border-left:2px solid var(--border-hi);
+  border-radius:3px; font-size:12px; line-height:1.55;
+  max-height:50vh; overflow-y:auto;
+}
+#detail .abstract.loading { color:var(--text-dim); font-style:italic; }
+#detail .or { display:inline-block; padding:3px 10px; background:var(--surface2);
+                border-radius:4px; margin-top:10px; font-size:11px;
+                text-decoration:none; color:var(--accent);
+                border:1px solid var(--border); }
+#detail .or:hover { border-color:var(--accent); }
+#cluster-search {
+  width:100%; padding:5px 8px; border-radius:4px;
+  background:var(--surface2); color:var(--text); border:1px solid var(--border);
+  font-size:12px; margin-bottom:6px;
+}
+#stats { font-size:11px; color:var(--text-dim); }
+#stats b { color:var(--text); }
+.vbtn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.color-acad { background:var(--c-acad); }
+.color-corp { background:var(--c-corp); }
+.color-mix  { background:var(--c-mix); }
+.color-gov  { background:var(--c-gov); }
+.color-non  { background:var(--c-non); }
+.color-unk  { background:var(--c-unk); }
+</style>
+</head>
+<body>
+<header>
+  <h1>NeurIPS + ICML 2023-2025 Topic Map</h1>
+  <span class="lead">20,237 papers · 60 clusters · bge-large + UMAP</span>
+  <span id="filter-status">Showing all <b>20,237</b></span>
+  <button id="reset" disabled>Reset filters</button>
+  <span style="margin-left:auto; display:flex; gap:6px;">
+    <button id="view-2d" class="vbtn active">2D</button>
+    <button id="view-3d" class="vbtn">3D</button>
+    <button id="toggle-labels">Hide labels</button>
+    <button id="theme">Light</button>
+  </span>
+</header>
+<main>
+  <aside class="left">
+    <button class="collapse-btn" id="collapse-left" title="Collapse">‹</button>
+    <div class="fset">
+      <h3>Affiliation</h3>
+      <div id="aff-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Venue</h3>
+      <div id="ven-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Year</h3>
+      <div id="yr-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Title / Author search</h3>
+      <input type="text" id="search" placeholder="filter by text…"
+             style="width:100%; padding:5px 8px; border-radius:4px;
+                    background:var(--surface2); color:var(--text);
+                    border:1px solid var(--border); font-size:12px;">
+    </div>
+    <div class="fset" id="stats"></div>
+  </aside>
+  <div id="plot"></div>
+  <aside class="right">
+    <button class="collapse-btn" id="collapse-right" title="Collapse">›</button>
+    <div class="fset">
+      <h3>Clusters</h3>
+      <input type="text" id="cluster-search" placeholder="search cluster labels…">
+      <div id="cluster-opts"></div>
+    </div>
+    <div class="fset">
+      <h3>Selected paper</h3>
+      <div id="detail" style="color:var(--text-dim);">
+        Click a point to see paper details.
+      </div>
+    </div>
+  </aside>
+</main>
+
+<script>
+// Okabe-Ito colorblind-safe palette
+const AFF_COLORS = {
+  academic:"#0072B2", corporate:"#D55E00", mixed:"#CC79A7",
+  government:"#009E73", nonprofit:"#F0E442", unknown:"#999"
+};
+// Marker symbols too — redundant encoding helps for the most affected CVD types
+const AFF_SYMBOLS = {
+  academic:"circle", corporate:"diamond", mixed:"square",
+  government:"triangle-up", nonprofit:"cross", unknown:"x"
+};
+const AFF_SYMBOLS_3D = {
+  academic:"circle", corporate:"diamond", mixed:"square",
+  government:"diamond-open", nonprofit:"cross", unknown:"x"
+};
+const AFF_LABELS = ["academic","mixed","corporate","government","nonprofit","unknown"];
+
+let DATA = null;
+let ABSTRACTS = null;        // populated lazily on first click
+let ABSTRACTS_LOADING = null; // promise while in flight
+const STATE = {
+  aff: new Set(AFF_LABELS),
+  ven: new Set(["icml","neurips"]),
+  yr:  new Set([2023,2024,2025]),
+  clusters: null,    // null = all; Set of ints when filtered
+  search: "",
+  view: "2d",        // "2d" | "3d"
+  showClusterLabels: true,
+};
+
+function loadAbstracts() {
+  if (ABSTRACTS) return Promise.resolve(ABSTRACTS);
+  if (ABSTRACTS_LOADING) return ABSTRACTS_LOADING;
+  ABSTRACTS_LOADING = fetch("abstracts.json")
+    .then(r => r.json())
+    .then(d => { ABSTRACTS = d; return d; })
+    .catch(err => {
+      console.error("Failed to load abstracts:", err);
+      ABSTRACTS_LOADING = null;
+      return null;
+    });
+  return ABSTRACTS_LOADING;
+}
+
+async function load() {
+  const r = await fetch("dashboard_data.json");
+  DATA = await r.json();
+  initUI();
+  redraw();
+}
+
+function initUI() {
+  // Affiliation
+  const aCnts = {};
+  for (const r of DATA.rows) aCnts[r.a] = (aCnts[r.a] || 0) + 1;
+  const aBox = document.getElementById("aff-opts");
+  for (const lbl of AFF_LABELS) {
+    const sw = `color-${ {academic:"acad",corporate:"corp",mixed:"mix",government:"gov",nonprofit:"non",unknown:"unk"}[lbl] }`;
+    aBox.innerHTML += `<label class="opt">
+      <input type="checkbox" data-aff="${lbl}" checked>
+      <span class="swatch ${sw}"></span>
+      <span class="lbl">${lbl}</span>
+      <span class="cnt">${(aCnts[lbl]||0).toLocaleString()}</span></label>`;
+  }
+  // Venue
+  const vCnts = {};
+  for (const r of DATA.rows) vCnts[r.v] = (vCnts[r.v] || 0) + 1;
+  const vBox = document.getElementById("ven-opts");
+  for (const v of ["icml","neurips"]) {
+    vBox.innerHTML += `<label class="opt">
+      <input type="checkbox" data-ven="${v}" checked>
+      <span class="lbl">${v.toUpperCase()}</span>
+      <span class="cnt">${(vCnts[v]||0).toLocaleString()}</span></label>`;
+  }
+  // Year
+  const yCnts = {};
+  for (const r of DATA.rows) yCnts[r.y] = (yCnts[r.y] || 0) + 1;
+  const yBox = document.getElementById("yr-opts");
+  for (const y of [2023,2024,2025]) {
+    yBox.innerHTML += `<label class="opt">
+      <input type="checkbox" data-yr="${y}" checked>
+      <span class="lbl">${y}</span>
+      <span class="cnt">${(yCnts[y]||0).toLocaleString()}</span></label>`;
+  }
+  // Cluster list
+  renderClusters("");
+
+  // Wire up filter inputs
+  document.querySelectorAll('input[data-aff]').forEach(el => {
+    el.addEventListener('change', () => {
+      if (el.checked) STATE.aff.add(el.dataset.aff);
+      else STATE.aff.delete(el.dataset.aff);
+      redraw();
+    });
+  });
+  document.querySelectorAll('input[data-ven]').forEach(el => {
+    el.addEventListener('change', () => {
+      if (el.checked) STATE.ven.add(el.dataset.ven);
+      else STATE.ven.delete(el.dataset.ven);
+      redraw();
+    });
+  });
+  document.querySelectorAll('input[data-yr]').forEach(el => {
+    el.addEventListener('change', () => {
+      const y = parseInt(el.dataset.yr);
+      if (el.checked) STATE.yr.add(y);
+      else STATE.yr.delete(y);
+      redraw();
+    });
+  });
+  document.getElementById("search").addEventListener("input", e => {
+    STATE.search = e.target.value.toLowerCase();
+    redraw();
+  });
+  document.getElementById("cluster-search").addEventListener("input", e => {
+    renderClusters(e.target.value.toLowerCase());
+  });
+  document.getElementById("reset").addEventListener("click", reset);
+  document.getElementById("theme").addEventListener("click", toggleTheme);
+  document.getElementById("view-2d").addEventListener("click", () => setView("2d"));
+  document.getElementById("view-3d").addEventListener("click", () => setView("3d"));
+  document.getElementById("toggle-labels").addEventListener("click", toggleLabels);
+  document.getElementById("collapse-left").addEventListener("click", () => toggleSidebar("left"));
+  document.getElementById("collapse-right").addEventListener("click", () => toggleSidebar("right"));
+}
+
+function toggleSidebar(side) {
+  const main = document.querySelector("main");
+  const cls = side === "left" ? "collapsed-left" : "collapsed-right";
+  main.classList.toggle(cls);
+  const btn = document.getElementById("collapse-" + side);
+  if (side === "left") {
+    btn.textContent = main.classList.contains(cls) ? "›" : "‹";
+    btn.title = main.classList.contains(cls) ? "Expand" : "Collapse";
+  } else {
+    btn.textContent = main.classList.contains(cls) ? "‹" : "›";
+    btn.title = main.classList.contains(cls) ? "Expand" : "Collapse";
+  }
+  // Wait for the CSS transition before resizing the plot
+  setTimeout(() => Plotly.Plots.resize("plot"), 200);
+}
+
+function setView(v) {
+  if (v === "3d" && !DATA.has_3d) {
+    alert("3D coordinates not available — run scripts/build_umap_3d.py first.");
+    return;
+  }
+  STATE.view = v;
+  document.getElementById("view-2d").classList.toggle("active", v === "2d");
+  document.getElementById("view-3d").classList.toggle("active", v === "3d");
+  // Force re-init by purging plot
+  Plotly.purge("plot");
+  redraw();
+}
+
+function toggleLabels() {
+  STATE.showClusterLabels = !STATE.showClusterLabels;
+  document.getElementById("toggle-labels").textContent =
+    STATE.showClusterLabels ? "Hide labels" : "Show labels";
+  redraw();
+}
+
+function renderClusters(query) {
+  const box = document.getElementById("cluster-opts");
+  box.innerHTML = "";
+  const clusters = DATA.clusters
+    .filter(c => !query || c.label.toLowerCase().includes(query) ||
+                 (c.top_terms || []).some(t => t.toLowerCase().includes(query)))
+    .sort((a,b) => b.n - a.n);
+
+  // Top "all" toggle
+  box.innerHTML += `<label class="opt" style="border-bottom:1px solid var(--border); margin-bottom:6px;">
+    <input type="checkbox" id="all-clusters" ${STATE.clusters === null ? "checked" : ""}>
+    <span class="lbl"><b>All clusters</b></span>
+    <span class="cnt">${DATA.clusters.length}</span></label>`;
+
+  for (const c of clusters) {
+    const checked = STATE.clusters === null || STATE.clusters.has(c.id);
+    box.innerHTML += `<label class="opt" data-cid="${c.id}">
+      <input type="checkbox" data-cluster="${c.id}" ${checked ? "checked" : ""}>
+      <span class="lbl" title="${c.top_terms.join(', ')}">[${c.id}] ${c.label}</span>
+      <span class="cnt">${c.n.toLocaleString()}</span></label>`;
+  }
+  document.querySelectorAll('input[data-cluster]').forEach(el => {
+    el.addEventListener('change', () => {
+      if (STATE.clusters === null) STATE.clusters = new Set(DATA.clusters.map(c=>c.id));
+      const id = parseInt(el.dataset.cluster);
+      if (el.checked) STATE.clusters.add(id);
+      else STATE.clusters.delete(id);
+      // If matches default (all), set null
+      if (STATE.clusters.size === DATA.clusters.length) STATE.clusters = null;
+      document.getElementById("all-clusters").checked = (STATE.clusters === null);
+      redraw();
+    });
+  });
+  document.getElementById("all-clusters").addEventListener('change', el => {
+    STATE.clusters = el.target.checked ? null : new Set();
+    renderClusters(query);
+    redraw();
+  });
+}
+
+function isDefault() {
+  return STATE.aff.size === AFF_LABELS.length &&
+         STATE.ven.size === 2 &&
+         STATE.yr.size === 3 &&
+         STATE.clusters === null &&
+         !STATE.search;
+}
+
+function rowMatches(r) {
+  if (!STATE.aff.has(r.a)) return false;
+  if (!STATE.ven.has(r.v)) return false;
+  if (!STATE.yr.has(r.y)) return false;
+  if (STATE.clusters !== null && !STATE.clusters.has(r.c)) return false;
+  if (STATE.search) {
+    const t = r.t.toLowerCase();
+    const auths = (r.auth || []).join(" ").toLowerCase();
+    if (!t.includes(STATE.search) && !auths.includes(STATE.search)) return false;
+  }
+  return true;
+}
+
+function redraw() {
+  const filtered = DATA.rows.filter(rowMatches);
+  const is3d = STATE.view === "3d";
+  const traces = [];
+
+  // Per-affiliation point traces
+  for (const aff of AFF_LABELS) {
+    const sub = filtered.filter(r => r.a === aff);
+    if (sub.length === 0) continue;
+    const trace = {
+      name: `${aff} (${sub.length.toLocaleString()})`,
+      mode: "markers",
+      text: sub.map(r => `<b>${escapeHtml(r.t)}</b><br>${r.v.toUpperCase()} ${r.y} · ${r.a}<br>cluster ${r.c}`),
+      customdata: sub.map(r => r.id),
+      hovertemplate: "%{text}<extra></extra>",
+    };
+    if (is3d) {
+      trace.type = "scatter3d";
+      trace.x = sub.map(r => r.x3);
+      trace.y = sub.map(r => r.y3);
+      trace.z = sub.map(r => r.z3);
+      trace.marker = {
+        color: AFF_COLORS[aff],
+        symbol: AFF_SYMBOLS_3D[aff],
+        size: 2.0,
+        opacity: aff === "unknown" ? 0.15 : 0.6,
+        line: { width: 0 },
+      };
+    } else {
+      trace.type = "scattergl";
+      trace.x = sub.map(r => r.x);
+      trace.y = sub.map(r => r.yc);
+      trace.marker = {
+        color: AFF_COLORS[aff],
+        symbol: AFF_SYMBOLS[aff],
+        size: 2.5,
+        opacity: aff === "unknown" ? 0.2 : 0.6,
+        line: { width: 0 },
+      };
+    }
+    traces.push(trace);
+  }
+
+  // Cluster labels — 3D uses inline text traces, 2D uses peripheral annotations
+  // with leader lines to centroids.
+  let annotations = [];
+  if (STATE.showClusterLabels) {
+    const visibleClusterIds = new Set(filtered.map(r => r.c).filter(c => c >= 0));
+    const labelClusters = DATA.clusters.filter(c => visibleClusterIds.has(c.id));
+    if (is3d && labelClusters.length > 0) {
+      // 3D: inline text at centroids (no good way to do peripheral in 3D)
+      traces.push({
+        type: "scatter3d", mode: "text",
+        x: labelClusters.map(c => c.centroid3d ? c.centroid3d[0] : 0),
+        y: labelClusters.map(c => c.centroid3d ? c.centroid3d[1] : 0),
+        z: labelClusters.map(c => c.centroid3d ? c.centroid3d[2] : 0),
+        text: labelClusters.map(c => `[${c.id}] ${c.label}`),
+        textfont: { size: 10, color: getCSS('--text-hi') },
+        hoverinfo: "skip", showlegend: false,
+      });
+    } else if (!is3d && labelClusters.length > 0) {
+      // 2D peripheral labels: place around all four edges of the data range.
+      // Each cluster's label goes to its NEAREST edge (by centroid position),
+      // distributed along that edge so leader lines fan out naturally.
+      const xs = filtered.map(r => r.x);
+      const ys = filtered.map(r => r.yc);
+      const xmin = Math.min(...xs), xmax = Math.max(...xs);
+      const ymin = Math.min(...ys), ymax = Math.max(...ys);
+      const xrange = xmax - xmin, yrange = ymax - ymin;
+      // Extended bounds — labels live in this extended region (data coords).
+      const xpad = xrange * 0.40, ypad = yrange * 0.18;
+      const labelXLeft  = xmin - xpad * 0.55;
+      const labelXRight = xmax + xpad * 0.55;
+      const labelYTop    = ymax + ypad * 0.55;
+      const labelYBottom = ymin - ypad * 0.55;
+      // Stash for layout.xaxis.range etc.
+      window.__labelExtent = {
+        x0: xmin - xpad, x1: xmax + xpad,
+        y0: ymin - ypad, y1: ymax + ypad,
+      };
+      const colorOf = c => AFF_COLORS[
+        Object.entries(c.aff_share || {})
+          .reduce((best, [k, v]) => (v > best[1] ? [k, v] : best), ["unknown", -1])[0]
+      ];
+      // Score: which edge is closest (in normalized units)?
+      function pickEdge(c) {
+        const cx = c.centroid[0], cy = c.centroid[1];
+        const dLeft   = (cx - xmin) / xrange;
+        const dRight  = (xmax - cx) / xrange;
+        const dTop    = (ymax - cy) / yrange;
+        const dBottom = (cy - ymin) / yrange;
+        const best = Math.min(dLeft, dRight, dTop, dBottom);
+        if (best === dLeft)   return "L";
+        if (best === dRight)  return "R";
+        if (best === dTop)    return "T";
+        return "B";
+      }
+      const buckets = { L: [], R: [], T: [], B: [] };
+      for (const c of labelClusters) buckets[pickEdge(c)].push(c);
+      // Sort along the edge by perpendicular axis
+      buckets.L.sort((a, b) => b.centroid[1] - a.centroid[1]);   // top→bottom
+      buckets.R.sort((a, b) => b.centroid[1] - a.centroid[1]);
+      buckets.T.sort((a, b) => a.centroid[0] - b.centroid[0]);   // left→right
+      buckets.B.sort((a, b) => a.centroid[0] - b.centroid[0]);
+
+      function pushLabels(list, side) {
+        const n = list.length;
+        if (n === 0) return;
+        for (let i = 0; i < n; i++) {
+          const c = list[i];
+          const labelText = `[${c.id}] ${c.label}`;
+          let ax, ay, xanchor, yanchor;
+          if (side === "L") {
+            ax = labelXLeft;
+            ay = ymax - (i + 0.5) * yrange / n;
+            xanchor = "right"; yanchor = "middle";
+          } else if (side === "R") {
+            ax = labelXRight;
+            ay = ymax - (i + 0.5) * yrange / n;
+            xanchor = "left"; yanchor = "middle";
+          } else if (side === "T") {
+            ax = xmin + (i + 0.5) * xrange / n;
+            ay = labelYTop;
+            xanchor = "center"; yanchor = "bottom";
+          } else {
+            ax = xmin + (i + 0.5) * xrange / n;
+            ay = labelYBottom;
+            xanchor = "center"; yanchor = "top";
+          }
+          const truncated = labelText.length > 32;
+          // Full hover text: label + n + top terms + dominant affiliation
+          const aff = Object.entries(c.aff_share || {})
+            .sort((a,b)=>b[1]-a[1]).slice(0,3)
+            .map(([k,v]) => `${k} ${(v*100).toFixed(0)}%`).join(' · ');
+          const fullHover = `[${c.id}] ${c.label}<br>` +
+            `n=${c.n.toLocaleString()} · ${aff}<br>` +
+            `terms: ${(c.top_terms||[]).slice(0,5).join(', ')}`;
+          annotations.push({
+            x: c.centroid[0], y: c.centroid[1], xref: "x", yref: "y",
+            ax: ax, ay: ay, axref: "x", ayref: "y",
+            text: truncated ? labelText.slice(0, 30) + "…" : labelText,
+            hovertext: fullHover,
+            showarrow: true,
+            arrowhead: 0, arrowsize: 1, arrowwidth: 0.6,
+            arrowcolor: colorOf(c),
+            font: { size: 9, color: getCSS('--text') },
+            bgcolor: getCSS('--surface'),
+            bordercolor: colorOf(c), borderwidth: 1, borderpad: 3,
+            xanchor: xanchor, yanchor: yanchor,
+            opacity: 0.95,
+            captureevents: true,
+          });
+        }
+      }
+      pushLabels(buckets.L, "L");
+      pushLabels(buckets.R, "R");
+      pushLabels(buckets.T, "T");
+      pushLabels(buckets.B, "B");
+    }
+  }
+
+  const layout = {
+    showlegend: true,
+    margin: { l:0, r:0, t:0, b:0 },
+    plot_bgcolor: getCSS('--bg'),
+    paper_bgcolor: getCSS('--bg'),
+    font: { color: getCSS('--text'), size: 11 },
+    hovermode: "closest",
+    legend: {
+      orientation: "v", x: 1, y: 1, xanchor: "right",
+      bgcolor: getCSS('--surface'), bordercolor: getCSS('--border'), borderwidth: 1,
+    },
+  };
+  if (is3d) {
+    layout.scene = {
+      xaxis: { title: "UMAP-1", showgrid: true, gridcolor: getCSS('--border'),
+               color: getCSS('--text-dim'), backgroundcolor: getCSS('--bg') },
+      yaxis: { title: "UMAP-2", showgrid: true, gridcolor: getCSS('--border'),
+               color: getCSS('--text-dim'), backgroundcolor: getCSS('--bg') },
+      zaxis: { title: "UMAP-3", showgrid: true, gridcolor: getCSS('--border'),
+               color: getCSS('--text-dim'), backgroundcolor: getCSS('--bg') },
+      bgcolor: getCSS('--bg'),
+    };
+  } else {
+    // Tight margins; labels live INSIDE the data extent (extended xaxis/yaxis range).
+    layout.margin = { l: 30, r: 30, t: 10, b: 10 };
+    const ex = window.__labelExtent;
+    layout.xaxis = { visible: false, range: ex ? [ex.x0, ex.x1] : undefined };
+    // Lock aspect ratio so UMAP geometry isn't squished
+    layout.yaxis = { visible: false, range: ex ? [ex.y0, ex.y1] : undefined,
+                     scaleanchor: "x", scaleratio: 1 };
+    layout.annotations = annotations;
+    // Move legend to upper-left corner so it doesn't fight with right-edge labels
+    layout.legend.x = 0.01;
+    layout.legend.y = 0.99;
+    layout.legend.xanchor = "left";
+    layout.legend.yanchor = "top";
+  }
+  // 2D: disable Plotly drag — we provide our own scroll-zoom + right-click pan.
+  if (!is3d) layout.dragmode = false;
+  const config = {
+    responsive: true,
+    scrollZoom: is3d,            // 3D uses Plotly's native scroll zoom; 2D is custom
+    doubleClick: "reset",
+    displaylogo: false,
+    modeBarButtonsToRemove: ['lasso2d','select2d','autoScale2d'],
+  };
+  Plotly.react("plot", traces, layout, config).then(() => {
+    if (!is3d) attachLabelHoverFront();
+  });
+
+  const plot = document.getElementById("plot");
+  plot.removeAllListeners?.("plotly_click");
+  plot.on("plotly_click", evt => {
+    if (evt.points && evt.points[0] && evt.points[0].customdata) {
+      showDetail(evt.points[0].customdata);
+    }
+  });
+
+  if (!is3d) {
+    attachRightClickPan(plot);
+    attachWheelZoom(plot);
+  }
+
+  // Filter status
+  const total = DATA.rows.length;
+  const status = document.getElementById("filter-status");
+  const reset = document.getElementById("reset");
+  if (isDefault()) {
+    status.classList.remove("active");
+    status.innerHTML = `Showing all <b>${total.toLocaleString()}</b>`;
+    reset.disabled = true;
+  } else {
+    status.classList.add("active");
+    const pct = ((100 * filtered.length / total).toFixed(1));
+    status.innerHTML = `<b>${filtered.length.toLocaleString()}</b> shown (${pct}%)`;
+    reset.disabled = false;
+  }
+  // Stats panel
+  computeStats(filtered);
+}
+
+function computeStats(filtered) {
+  const n = filtered.length;
+  if (n === 0) {
+    document.getElementById("stats").innerHTML = "<i>No papers match.</i>";
+    return;
+  }
+  const counts = {};
+  for (const r of filtered) counts[r.a] = (counts[r.a] || 0) + 1;
+  const lines = [`<b>n = ${n.toLocaleString()}</b>`];
+  for (const aff of AFF_LABELS) {
+    if (!counts[aff]) continue;
+    const pct = (100 * counts[aff] / n).toFixed(1);
+    lines.push(`${aff}: <b>${counts[aff].toLocaleString()}</b> (${pct}%)`);
+  }
+  document.getElementById("stats").innerHTML = lines.join("<br>");
+}
+
+function showDetail(pid) {
+  const r = DATA.rows.find(x => x.id === pid);
+  if (!r) return;
+  const c = DATA.clusters.find(c => c.id === r.c);
+  const orUrl = `https://openreview.net/forum?id=${r.id}`;
+  const abstractHtml = ABSTRACTS && ABSTRACTS[pid]
+    ? `<div class="abstract">${escapeHtml(ABSTRACTS[pid])}</div>`
+    : `<div class="abstract loading">Loading abstract…</div>`;
+  document.getElementById("detail").innerHTML = `
+    <h2>${escapeHtml(r.t)}</h2>
+    <div class="auth">${escapeHtml((r.auth||[]).join(", "))}</div>
+    <div class="kv"><b>${r.v.toUpperCase()} ${r.y}</b> · affiliation: <b>${r.a}</b>
+      · cluster: <b>${c ? '['+r.c+'] '+c.label : 'none'}</b></div>
+    ${c ? `<div class="kv">cluster top terms: ${c.top_terms.slice(0,6).join(', ')}</div>` : ''}
+    ${abstractHtml}
+    <a class="or" href="${orUrl}" target="_blank">Open in OpenReview ↗</a>
+  `;
+  // Lazy-load abstracts on first click
+  if (!ABSTRACTS) {
+    loadAbstracts().then(() => {
+      // Only update if still showing this paper
+      const stillThis = document.querySelector("#detail h2");
+      if (stillThis && stillThis.textContent === r.t) showDetail(pid);
+    });
+  }
+}
+
+function reset() {
+  STATE.aff = new Set(AFF_LABELS);
+  STATE.ven = new Set(["icml","neurips"]);
+  STATE.yr  = new Set([2023,2024,2025]);
+  STATE.clusters = null;
+  STATE.search = "";
+  document.getElementById("search").value = "";
+  document.getElementById("cluster-search").value = "";
+  document.querySelectorAll('input[data-aff],input[data-ven],input[data-yr]')
+    .forEach(el => el.checked = true);
+  renderClusters("");
+  redraw();
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  document.getElementById("theme").textContent =
+    document.body.classList.contains("light") ? "Dark" : "Light";
+  redraw();
+}
+
+function getCSS(varName) {
+  return getComputedStyle(document.body).getPropertyValue(varName).trim();
+}
+
+// Right-click-and-drag pan for the 2D scatter. Left-click stays free for
+// clicking points; scroll-wheel zoom is handled by Plotly's scrollZoom.
+let _rcAttached = false;
+function attachRightClickPan(plot) {
+  if (_rcAttached) return;
+  _rcAttached = true;
+  const STATE_DRAG = { active: false, startX: 0, startY: 0,
+                        x0: 0, x1: 0, y0: 0, y1: 0, w: 0, h: 0 };
+
+  // Suppress browser context menu on the plot
+  plot.addEventListener("contextmenu", e => e.preventDefault());
+
+  plot.addEventListener("mousedown", e => {
+    if (e.button !== 2) return;          // only right button
+    const layout = plot._fullLayout;
+    if (!layout || !layout.xaxis || !layout.yaxis) return;
+    const xa = layout.xaxis, ya = layout.yaxis;
+    const rect = plot.getBoundingClientRect();
+    STATE_DRAG.active = true;
+    STATE_DRAG.startX = e.clientX;
+    STATE_DRAG.startY = e.clientY;
+    STATE_DRAG.x0 = xa.range[0];
+    STATE_DRAG.x1 = xa.range[1];
+    STATE_DRAG.y0 = ya.range[0];
+    STATE_DRAG.y1 = ya.range[1];
+    // Pixel size of the plot area (approximate; uses full plot rect)
+    STATE_DRAG.w = rect.width;
+    STATE_DRAG.h = rect.height;
+    plot.style.cursor = "grabbing";
+    e.preventDefault();
+  });
+  window.addEventListener("mousemove", e => {
+    if (!STATE_DRAG.active) return;
+    const dx = e.clientX - STATE_DRAG.startX;
+    const dy = e.clientY - STATE_DRAG.startY;
+    const xspan = STATE_DRAG.x1 - STATE_DRAG.x0;
+    const yspan = STATE_DRAG.y1 - STATE_DRAG.y0;
+    const xshift = -(dx / STATE_DRAG.w) * xspan;
+    const yshift =  (dy / STATE_DRAG.h) * yspan;
+    Plotly.relayout(plot, {
+      "xaxis.range": [STATE_DRAG.x0 + xshift, STATE_DRAG.x1 + xshift],
+      "yaxis.range": [STATE_DRAG.y0 + yshift, STATE_DRAG.y1 + yshift],
+    });
+  });
+  window.addEventListener("mouseup", e => {
+    if (e.button === 2 && STATE_DRAG.active) {
+      STATE_DRAG.active = false;
+      plot.style.cursor = "";
+    }
+  });
+}
+
+// Custom scroll-to-zoom for the 2D plot. Zooms toward the cursor.
+let _wheelAttached = false;
+function attachWheelZoom(plot) {
+  if (_wheelAttached) return;
+  _wheelAttached = true;
+  plot.addEventListener("wheel", e => {
+    const layout = plot._fullLayout;
+    if (!layout || !layout.xaxis || !layout.yaxis) return;
+    e.preventDefault();
+    const xa = layout.xaxis, ya = layout.yaxis;
+    const rect = plot.getBoundingClientRect();
+    // Mouse position relative to the plotting area
+    const xPxStart = xa._offset || 0;
+    const xPxLen = xa._length || rect.width;
+    const yPxStart = ya._offset || 0;
+    const yPxLen = ya._length || rect.height;
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    const xfrac = Math.max(0, Math.min(1, (px - xPxStart) / xPxLen));
+    const yfrac = Math.max(0, Math.min(1, 1 - (py - yPxStart) / yPxLen));  // invert y
+    const xspan = xa.range[1] - xa.range[0];
+    const yspan = ya.range[1] - ya.range[0];
+    const xData = xa.range[0] + xfrac * xspan;
+    const yData = ya.range[0] + yfrac * yspan;
+    const factor = e.deltaY > 0 ? 1.12 : 1 / 1.12;
+    const newX = xspan * factor, newY = yspan * factor;
+    Plotly.relayout(plot, {
+      "xaxis.range": [xData - xfrac * newX, xData + (1 - xfrac) * newX],
+      "yaxis.range": [yData - yfrac * newY, yData + (1 - yfrac) * newY],
+    });
+  }, { passive: false });
+}
+
+// On hover, move the annotation's SVG node to the end of its parent — this
+// puts it on top in SVG painting order, so overlapping labels become readable.
+function attachLabelHoverFront() {
+  const annots = document.querySelectorAll("#plot g.annotation");
+  annots.forEach(a => {
+    if (a._hoverWired) return;
+    a._hoverWired = true;
+    a.style.pointerEvents = "auto";
+    a.style.cursor = "default";
+    a.addEventListener("mouseenter", () => {
+      a.parentNode.appendChild(a);  // SVG: last child paints on top
+      const texts = a.querySelectorAll("text");
+      texts.forEach(t => {
+        if (!t.dataset.origSize) t.dataset.origSize = t.getAttribute("font-size") || "9";
+        t.setAttribute("font-size", "11");
+        t.setAttribute("font-weight", "bold");
+      });
+      const rects = a.querySelectorAll("rect");
+      rects.forEach(r => {
+        r.setAttribute("stroke-width", "1.8");
+      });
+    });
+    a.addEventListener("mouseleave", () => {
+      a.querySelectorAll("text").forEach(t => {
+        if (t.dataset.origSize) t.setAttribute("font-size", t.dataset.origSize);
+        t.removeAttribute("font-weight");
+      });
+      a.querySelectorAll("rect").forEach(r => {
+        r.setAttribute("stroke-width", "1");
+      });
+    });
+  });
+}
+
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;",
+    ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+}
+
+load();
+</script>
+</body>
+</html>

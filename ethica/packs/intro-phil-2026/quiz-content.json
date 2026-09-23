@@ -1,0 +1,2045 @@
+{
+  "traditions": [
+    {
+      "id": "consequentialism",
+      "name": "Consequentialism",
+      "description": "Actions are judged by their outcomes — welfare produced, suffering prevented, the greatest good impartially counted",
+      "color_hex": "FFCB6B",
+      "key_methods": [
+        "Utility calculus",
+        "Impartial maximization",
+        "Demandingness arguments",
+        "Comparing outcomes across alternatives"
+      ]
+    },
+    {
+      "id": "deontology",
+      "name": "Deontology",
+      "description": "Duty, rights, and the moral law — some acts are required or forbidden regardless of their consequences",
+      "color_hex": "89DDFF",
+      "key_methods": [
+        "Universalizability tests",
+        "Duty analysis",
+        "Treating persons as ends",
+        "Rights-based argument"
+      ]
+    },
+    {
+      "id": "virtue_ethics",
+      "name": "Virtue Ethics",
+      "description": "Character and the good life — what traits make a person admirable and what it means to live well",
+      "color_hex": "C3E88D",
+      "key_methods": [
+        "Character analysis",
+        "Moral exemplars and their limits",
+        "The doctrine of the mean",
+        "Critique of rule-based ethics"
+      ]
+    },
+    {
+      "id": "existentialism",
+      "name": "Existentialism & Agency",
+      "description": "Freedom, responsibility, and what we can be blamed for — from radical choice to luck and the reactive attitudes",
+      "color_hex": "C792EA",
+      "key_methods": [
+        "Arguments from lived experience",
+        "Analysis of choice and self-deception",
+        "Probing conditions of responsibility",
+        "Puzzles about luck and control"
+      ]
+    },
+    {
+      "id": "political_philosophy",
+      "name": "Political Philosophy",
+      "description": "Justice, liberty, and power — how institutions distribute freedom and what we owe each other as citizens",
+      "color_hex": "F07178",
+      "key_methods": [
+        "Social contract reasoning",
+        "Distinguishing kinds of freedom",
+        "Structural analysis of oppression",
+        "Testing principles behind a veil of ignorance"
+      ]
+    },
+    {
+      "id": "analytic_method",
+      "name": "Analytic Method",
+      "description": "The counterexample artists — testing grand theories against precise cases and exposing hidden assumptions",
+      "color_hex": "82AAFF",
+      "key_methods": [
+        "Constructing counterexamples",
+        "Thought experiments",
+        "Drawing fine distinctions",
+        "Tracing a framework's blind spots"
+      ]
+    }
+  ],
+  "philosophers": [
+    {
+      "id": "aristotle",
+      "name": "Aristotle",
+      "tradition_id": "virtue_ethics",
+      "era": "Ancient",
+      "active_period": "384-322 BCE",
+      "core_assumptions": "Every action and choice aims at some good, and since our ends cannot run back forever, there is a chief good we pursue for its own sake and never for the sake of anything else. That good is happiness, which the function argument identifies with activity of soul in accordance with virtue, carried on across a complete life. Moral virtue arrives neither by nature nor against nature: we are fitted by nature to receive it and made perfect by habit, so we become just by doing just acts and brave by doing brave acts. Virtue is a settled state of character concerned with choice, lying in a mean relative to us, determined by the reason of the person of practical wisdom rather than by any rule anyone could write down in advance. An account of conduct can only be given in outline, since noble and just actions vary and fluctuate, and the point of the inquiry is to become good, not to know what goodness is.",
+      "signature_moves": [
+        "Traces a chain of ends upward until the regress must stop, then argues that whatever stops it is the chief good.",
+        "Runs the function argument by asking what work is peculiar to a thing, then defining its good as doing that work well, as with the lyre-player and the good lyre-player.",
+        "Refuses demands for rule-like precision, insisting that an account be as exact as its subject-matter allows and no more.",
+        "Answers 'how do we acquire virtue?' with craft analogies, since builders come from building and lyre-players from playing the lyre.",
+        "Locates a virtue by naming the two vices it sits between, so that courage appears between the man who flees everything and the man who meets every danger.",
+        "Reads pleasure and pain as diagnostic: the man who stands his ground and delights in it is brave, while the one who is pained at it is a coward.",
+        "Distinguishes the arithmetical middle from the middle relative to us, since no trainer prescribes six pounds of food to Milo and to the beginner alike."
+      ],
+      "key_works": [
+        "Nicomachean Ethics",
+        "Politics",
+        "Rhetoric",
+        "Metaphysics"
+      ]
+    },
+    {
+      "id": "berlin",
+      "name": "Isaiah Berlin",
+      "tradition_id": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1909-1997",
+      "core_assumptions": "Berlin separates two questions that centuries of talk about freedom have run together: how wide is the area in which I am left to act without interference by other men, and who governs me. Negative liberty answers the first and depends on deliberate human obstruction, so poverty counts as unfreedom only if you already accept a theory blaming other people for it. Positive liberty answers the second and begins in the honorable wish to be one's own master, but the metaphor of self-mastery splits a person into a rational self that commands and an empirical bundle of desires to be disciplined, and that inner self is then inflated into a tribe, a church, a class or a state entitled to coerce its members into their own higher freedom. Berlin insists on keeping values distinct, so that giving up liberty for equality registers as a loss of liberty rather than a gain in some other kind of freedom. And he denies the old faith that all genuine goods must finally be compatible: ends conflict, choice is tragic, and the search for a final harmony has put individuals on the altars of the great historical ideals.",
+      "signature_moves": [
+        "Prises apart 'How far does government interfere with me?' from 'Who governs me?' and points out that a liberal-minded despot can leave his subjects a wide area of liberty while a democracy strips it away.",
+        "Traces the career of a metaphor: self-mastery becomes two selves, the higher self becomes a nation or class, and coercion becomes liberation, none of it by logically reputable steps.",
+        "Distinguishes 'I know what is good for X while he does not', which may sometimes license coercion, from 'X has therefore already chosen it', which he calls a monstrous impersonation.",
+        "Refuses to let one value swallow another: a sacrifice of freedom for justice or equality remains an absolute loss of freedom, however great the compensation.",
+        "Tests grand principles against homely cases, such as the man too poor to buy a loaf of bread, the pike whose freedom is death for the minnows, and the wound cured by cutting off the leg.",
+        "Concedes his opponent's strongest ground before striking, granting that positive liberty animates the most morally just public movements of the age, then asking what the doctrine has cost."
+      ],
+      "key_works": [
+        "Two Concepts of Liberty",
+        "The Hedgehog and the Fox",
+        "Historical Inevitability",
+        "Four Essays on Liberty"
+      ]
+    },
+    {
+      "id": "gettier",
+      "name": "Edmund Gettier",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1927-2021",
+      "core_assumptions": "Knowledge has been analyzed for centuries as justified true belief, and Gettier grants that analysis every one of its own terms before taking it apart. He needs only two concessions: a person can be justified in believing something false, and justification carries over when someone deduces a consequence from a belief and accepts it on that basis. With those in hand he builds cases where a person's belief is true, believed, and justified, and where the belief comes out true through a fact the believer knows nothing about — the coins in Smith's own pocket, Brown's accidental presence in Barcelona. He aims the same cases at Chisholm's 'adequate evidence' and Ayer's 'right to be sure,' since both replace the third condition without repairing the flaw. He supplies no fourth condition and no rival definition; the result is negative and he leaves it that way.",
+      "signature_moves": [
+        "Grants the opponent's definition in full, then constructs a case in which every clause is satisfied and knowledge is still plainly missing.",
+        "Secures two small preliminaries before telling any story: justified false belief is possible, and justification transmits across deduction the believer actually performs.",
+        "Loads the believer's evidence to the maximum — a hiring promise from the company president, coins counted ten minutes ago — so the failure cannot be blamed on carelessness.",
+        "Runs an entailment from a false conjunction to a true consequent, so the belief lands on the truth by accident rather than by its grounds.",
+        "Uses disjunction: Smith picks place-names at random, believes 'Either Jones owns a Ford, or Brown is in Barcelona,' and turns out right for a reason he never had.",
+        "Generalizes the damage by substitution, swapping 'has adequate evidence for' or 'has the right to be sure that' into the third condition and rerunning the same two cases."
+      ],
+      "key_works": [
+        "Is Justified True Belief Knowledge? (Analysis, 1963)"
+      ]
+    },
+    {
+      "id": "goldman",
+      "name": "Alvin Goldman",
+      "tradition_id": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "1938-2024",
+      "core_assumptions": "Epistemology evaluates practices by what they causally do to belief: states like knowledge, error, and ignorance carry fundamental veritistic value, and a practice earns credit or discredit according to whether it raises or lowers that value across a range of applications. Rival standards fail because agreement, procedural fairness, and utility can all be maximized by practices that produce no truths at all. Expertise itself is defined in truth-linked terms: an expert holds a substantial body of truths in a domain plus methods for generating true answers to new questions in it. A layperson facing two experts cannot use his own opinions in their domain, so he must work from evidence about them: their arguments, the numbers who agree, credentials, interests and biases, and past track records. Numbers count only when the concurring parties reached their beliefs by partly independent routes, and track records work because statements that are esoteric at one time become exoteric later, letting a novice verify expertise without becoming an expert.",
+      "signature_moves": [
+        "Recasts a dispute about who is right as a comparison of practices, asking which practice produces more true belief and less error over the range of questions people actually face.",
+        "Kills a rival standard with a case where it succeeds perfectly on its own terms and fails obviously as epistemology: state-controlled news manufacturing agreement, a jury drawn from one party's loyalists, belief-inducing pills tuned to a randomly chosen theory.",
+        "Runs the likelihood comparison on concurring testimony and shows that a second believer adds nothing when he is a non-discriminating reflector of the first, so the guru's followers are evidentially worth one guru.",
+        "Splits esoteric from exoteric statements, then points out that the split moves with the epistemic standpoint: the eclipse predicted for 2130 is esoteric now and exoteric on the day, which is how a novice checks a track record.",
+        "Separates direct from indirect argumentative justification, so a novice who cannot assess an expert's premises can still read her argumentative performance as evidence of superior expertise.",
+        "Concedes the hard part of an opponent's case first (the novice really does lack the expert's reasons R), then shows the concession leaves room for reasons R* about the expert."
+      ],
+      "key_works": [
+        "Experts: Which Ones Should You Trust?",
+        "Knowledge in a Social World, ch. 3 ('The Framework')",
+        "Epistemology and Cognition",
+        "Epistemic Paternalism: Communication Control in Law and Society"
+      ]
+    },
+    {
+      "id": "hardwig",
+      "name": "John Hardwig",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "fl. 1985, East Tennessee State University",
+      "core_assumptions": "A person can have good reasons to believe that p without holding any evidence for p, provided he has good reasons to believe that someone else holds the evidence; that second-order reason justifies him even though it does nothing to make p more likely true. Within the expert's domain the layman is the expert's epistemic inferior: he has not done the inquiry, often could never become competent to do it, and frequently cannot understand the expert's reasons well enough to weigh them. Rationality therefore sometimes consists in refusing to think for oneself, and the layman who acknowledges an expert cannot rationally overrule him except on ad hominem grounds such as bias, bad faith, or protection of peers. The same dependence runs inside science: the 99-author charm photoproduction paper reports a result no single author possesses the evidence for, and most citations in any field are appeals to authority. So either people know vicariously, without the evidence and perhaps without understanding what they know, or the knower is a community rather than any individual — and on either horn, epistemic individualism has to be abandoned and our rationality turns out to rest on trust.",
+      "signature_moves": [
+        "Separates evidence that p from good reasons to believe someone else has evidence that p, then insists the second is a genuine justifying reason even though the case for p is no stronger after you acquire it.",
+        "Runs the formula 'B has good reasons to believe that A has good reasons to believe that p' and extends it into a chain through C, showing that checking your expert against other experts refines your dependence rather than escaping it.",
+        "Turns the demand for autonomy against itself: pursue epistemic self-reliance across the board and you end up with crude, untested, uninformed beliefs, which is a loss by the autonomist's own measure of rationality.",
+        "Presses the paradox that would follow from denying him — that the more a culture knows, the less rational the beliefs of its individual members would have to be.",
+        "Uses the SLAC charm photoproduction experiment (99 authors, roughly $10 million, 47 charm events) as a case where nobody involved holds the evidence for the published result, and where most authors could not say how a given number was reached.",
+        "Closes by forcing a choice between two unpalatable options: knowledge acquired vicariously without evidence or understanding, or knowledge whose bearer is a community and never an individual."
+      ],
+      "key_works": [
+        "Epistemic Dependence (1985)",
+        "The Achievement of Moral Rationality (1973)",
+        "The Role of Trust in Knowledge (1991)",
+        "Is There a Duty to Die? and Other Essays in Bioethics (1997)"
+      ]
+    },
+    {
+      "id": "kant",
+      "name": "Immanuel Kant",
+      "tradition_id": "deontology",
+      "era": "Modern",
+      "active_period": "1724-1804",
+      "core_assumptions": "Nothing in the world can be called good without limitation except a good will; talents, temperament, and even happiness turn harmful in the hands of a bad will. A good will is good through its willing alone, so that even if bad luck strips it of every result it would still shine like a jewel. An action has moral worth only when it is done from duty rather than from inclination or self-interest, which is why the honest shopkeeper who keeps fair prices for the sake of his trade earns praise but not esteem. Moral laws must hold with absolute necessity for every rational being, so they cannot be drawn from experience or from what human beings happen to want; they come from pure reason. From that requirement follows one supreme test: act only on a maxim you could at the same time will to be a universal law, which is the same demand as treating humanity in yourself and in others always as an end and never merely as a means.",
+      "signature_moves": [
+        "Strips away every empirical motive from a case until only duty is left, as with the philanthropist whose grief has killed his sympathy and who helps anyway.",
+        "Separates acting in conformity with duty from acting from duty, then shows that the first carries no moral worth at all.",
+        "Takes the opponent's maxim, universalizes it, and shows it destroys itself: universal lying promises would leave no promises for the liar to exploit.",
+        "Distinguishes maxims that cannot even be thought as universal laws from maxims that can be thought but cannot be willed, sorting strict duties from wide ones.",
+        "Refuses examples as the source of morality, insisting that any example must first be judged by the principle before it can count as a model.",
+        "Reframes the same test as a demand about persons: a false promise uses a rational being merely as a means, since he could not possibly agree to being used that way."
+      ],
+      "key_works": [
+        "Groundwork of the Metaphysics of Morals",
+        "Critique of Practical Reason",
+        "Critique of Pure Reason",
+        "The Metaphysics of Morals"
+      ]
+    },
+    {
+      "id": "mill",
+      "name": "John Stuart Mill",
+      "tradition_id": "consequentialism",
+      "era": "Modern",
+      "active_period": "1806-1873",
+      "core_assumptions": "Actions are right in proportion as they tend to promote happiness and wrong as they tend to produce the reverse, where happiness means pleasure and the absence of pain. Pleasures differ in quality as well as amount, and the ranking of two pleasures is settled by the decided preference of people who have experienced both, since no other tribunal exists even for questions of quantity. The happiness that sets the standard is the happiness of everyone concerned, so an agent must weigh his own as impartially as a disinterested and benevolent spectator would. A standard of right action supplies a test for judging conduct and leaves motives alone: the man who pulls a stranger from the water acts rightly whether he does it from duty or for pay. Most moral decisions run through secondary rules built from the accumulated experience of the species, and the principle of utility is used to weigh those rules against each other rather than to recalculate every case from scratch.",
+      "signature_moves": [
+        "Reframes the objection before answering it, showing that the critic has attacked a version of utility no utilitarian ever held.",
+        "Turns the doctrine-of-swine charge back on the accuser: calling the Epicurean life bestial assumes human beings can enjoy nothing a pig cannot.",
+        "Settles disputes about value by appealing to the verdict of those acquainted with both options, then asks the critic what other tribunal there could be.",
+        "Separates happiness from contentment, so that a dissatisfied person with higher faculties can still be the happier of the two.",
+        "Distinguishes the rule of action from the motive of it, which lets him grant that most good acts are done for reasons other than duty.",
+        "Answers the no-time-to-calculate complaint with an analogy — sailors navigate by astronomy without recomputing the almanac at sea."
+      ],
+      "key_works": [
+        "Utilitarianism, Chapter 2: What Utilitarianism Is",
+        "On Liberty",
+        "The Subjection of Women",
+        "A System of Logic"
+      ]
+    },
+    {
+      "id": "nagel",
+      "name": "Thomas Nagel",
+      "tradition_id": "existentialism",
+      "era": "Contemporary",
+      "active_period": "1937-present",
+      "core_assumptions": "Moral judgment of a person judges him, not merely the events he is caught up in, and it seems to require that what is judged lie under his control. Applied consistently, that control condition eats through almost everything we ordinarily blame and praise: how our acts turn out, the temperament we were born with, the situations we happen to face, and the antecedent causes of choice itself. Nagel refuses the easy exits. The control condition cannot be dismissed as a bad generalization, because it keeps striking us as correct in each new case; and our ordinary judgments cannot be dismissed either, because they return involuntarily once the argument stops. He treats moral luck as a genuine paradox rooted in a clash between the internal view of ourselves as agents and the external view on which our acts are simply events in a world we did not make, and he says outright that he has no solution.",
+      "signature_moves": [
+        "Pairs two agents whose intentions and recklessness are identical and whose fates differ, then asks why blame diverges: the drunk driver who hits a pedestrian versus the one whose car finds an empty sidewalk.",
+        "Sorts the problem into four kinds of luck (resultant, constitutive, circumstantial, and luck in how one is determined by antecedent causes) and shows each is resisted by the same principle.",
+        "Blocks the escape route of revising the control condition by noting that the condition keeps looking correct in each fresh case rather than merely being extrapolated from old ones.",
+        "Draws a parallel to skepticism about knowledge, where ordinary standards of justification, pressed consistently, dissolve the claims they were meant to secure.",
+        "Turns a compatibilist reply against itself: saying we are responsible for what we actually do fails to explain why subtracting what merely happens felt necessary in the first place.",
+        "Ends by conceding that the responsible self shrinks to nothing under scrutiny, and that he cannot say what the internal conception of agency amounts to."
+      ],
+      "key_works": [
+        "Moral Luck",
+        "The View from Nowhere",
+        "\"What Is It Like to Be a Bat?\"",
+        "The Possibility of Altruism"
+      ]
+    },
+    {
+      "id": "nguyen",
+      "name": "C. Thi Nguyen",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "Contemporary; this essay published 2020",
+      "core_assumptions": "Two different social structures get called the same thing, and confusing them wrecks every attempt at repair. An epistemic bubble leaves relevant voices out through omission, so exposure to what was missed will pop it. An echo chamber assigns outsiders an epistemic demerit in advance and amplifies the credentials of insiders, so exposure to those same outsiders confirms what members already believe. Trust in others is necessary and ineradicable, which is why echo chambers work: they are perversions of the ordinary institutional trust nobody can live without. Someone raised inside one can practice every epistemic virtue, investigate sources, resist blind deference, and still be led further astray by the structure they are embedded in.",
+      "signature_moves": [
+        "Splits a case in two before diagnosing it, asking which structure is actually present, since the cure for a bubble reinforces an echo chamber.",
+        "Grants an opponent's empirical evidence and then shows it only touches bubbles, as with Nelson and Webster's data that liberals and conservatives visit the same media sites.",
+        "Refuses to call the trapped believer irrational, reconstructing their reasoning as locally sound given the credences they were handed, against Cassam's diagnosis of Oliver the conspiracy theorist as gullible and prejudiced.",
+        "Runs a toy cult case (alien ghosts from Mars) to show contrary testimony arriving already predicted, and so functioning as confirmation of the leader.",
+        "Follows the trust regress: asks how the opponent came to believe in climate change, and traces the chain through science journalists, credentialing institutions, statisticians, and software.",
+        "Converts a question about escape into a question about detection, asking what evidence could reach a member whose credentialing beliefs are the thing at fault."
+      ],
+      "key_works": [
+        "Echo Chambers and Epistemic Bubbles (Episteme, 2020)",
+        "Cognitive Islands and Runaway Echo Chambers: Problems for Expert Dependence (Synthese, 2018)",
+        "Escape the Echo Chamber (Aeon, 2018)",
+        "Games: Agency as Art"
+      ]
+    },
+    {
+      "id": "norcross",
+      "name": "Alastair Norcross",
+      "tradition_id": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "1990-present",
+      "core_assumptions": "A moral difference between two acts has to rest on some morally relevant property. Norcross hunts for one separating Fred, who tortures twenty-six caged puppies in his basement to restore his taste for chocolate, from the shopper who knowingly buys factory-raised meat, and reports finding none. Suffering does the moral work: Bentham's question, can they suffer, decides whose interests count, while rationality decides only who can be praised or blamed. Full status as a moral patient is no reward for moral agency, so an animal's inability to reason about morality cannot shrink the weight of its pain. Every proposed criterion of superior human status either excludes infants, the severely senile, and the severely cognitively disabled, or fails to show why that criterion bears on how much a pig's suffering matters.",
+      "signature_moves": [
+        "Builds a case that provokes unanimous outrage, Fred's basement cocoamone lab, then shows that ordinary grocery habits share every feature that produced the outrage.",
+        "Demands a specific morally relevant property separating puppies from farm animals, then defeats each candidate by naming a pig that has it or a stupid, disloyal puppy that lacks it.",
+        "Answers the causal-impotence excuse twice: with the Alabama mousse case, where the size of the industry excuses nothing, and with arithmetic showing that a one in ten thousand chance of sparing 250,000 chickens is worth as much as certainly sparing 25.",
+        "Runs the argument from marginal cases against any rationality criterion, since infants, the irreversibly comatose, and the severely cognitively disabled fail whatever test is meant to exclude animals.",
+        "Pulls moral agency apart from moral patiency, then asks why an inability to be blamed should reduce how much one's suffering counts.",
+        "Answers appeals to what is normal for a species with the afterlife trial, where Saint Peter sends Gandhi to hell because male defendants are normally guilty."
+      ],
+      "key_works": [
+        "Puppies, Pigs, and People: Eating Meat and Marginal Cases",
+        "Comparing Harms: Headaches and Human Lives",
+        "Scalar Act-Utilitarianism",
+        "Morality by Degrees: Reasons Without Demands"
+      ]
+    },
+    {
+      "id": "pettit",
+      "name": "Philip Pettit",
+      "tradition_id": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1945-present",
+      "core_assumptions": "Freedom means the absence of domination, not merely the absence of interference. A person subject to another's will is unfree even when that other never interferes, because the latitude she enjoys comes by grace and favor rather than by right; Ibsen's Nora, doted on by Torvald and denied nothing, is the doll in the doll's house. To be free you must be able to exercise the basic liberties, choices about religion, speech, and association, without seeking anyone's permission, and you must keep that latitude even if others take against you. Government interference is not automatically dominating: if citizens share equally in controlling how the state interferes, the state's power is not an alien will in their lives. Freedom so understood is a gateway good and an ecumenical one, so questions of social justice, democracy, and the sovereignty of peoples can all be settled by asking which arrangements best protect people against subjection to the will of others.",
+      "signature_moves": [
+        "Runs the Nora case: describes a woman with total latitude and no interference, then asks whether you are really willing to call her free.",
+        "Separates good fortune from freedom, insisting that someone who escapes ill-treatment only through another's goodwill can congratulate herself on luck alone.",
+        "Redescribes everyday relationships, with a teacher or boss or bank manager, an insurance agent or immigration official, as the same predicament Nora endures.",
+        "Distinguishes interference from domination, then argues that state interference guided equally by the citizenry reflects no alien power in their lives.",
+        "Applies the eyeball test: asks whether a person can look others in the eye without reason for fear or deference.",
+        "Converts a vague intuition dispute about justice into an empirical question about which legal and economic order best secures non-domination."
+      ],
+      "key_works": [
+        "*Just Freedom: A Moral Compass for a Complex World*",
+        "*Republicanism: A Theory of Freedom and Government*",
+        "*On the People's Terms*",
+        "*The Common Mind*"
+      ]
+    },
+    {
+      "id": "rachels",
+      "name": "James Rachels",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1941-2003",
+      "core_assumptions": "Facts about what societies believe cannot by themselves settle what is true. Rachels grants that moral codes differ, then argues that the move from that difference to \"there is no objective truth in morality\" is invalid, because the premise reports beliefs while the conclusion reports how things are. Much apparent disagreement about values dissolves once you ask why a custom exists: a society that spares cows and a society that eats them may share the value and differ only over whether the cow might be Grandma. Some rules hold everywhere, since a society that placed no value on truth telling, care for the young, or a prohibition against murder could not survive to have a moral code at all. Where practices really do conflict, he offers a standard that can be applied from outside any tradition, namely whether the practice helps or hurts the people affected by it, while keeping relativism's two genuine lessons: many of our customs are merely conventional, and our revulsion may be a reflection of where we were raised.",
+      "signature_moves": [
+        "Separates a premise about what people believe from a conclusion about what is really the case, then shows that the Cultural Differences Argument never bridges the gap.",
+        "Spells out what would follow if the theory were true, that we could not criticize the Chinese government's repression of dissent, could not criticize the caste system or our own code, and could not count the abolition of slavery as progress, and asks whether you will accept those consequences.",
+        "Asks why an alien custom exists and finds shared values underneath, as with Eskimo infanticide driven by scarce food, no birth control, four-year nursing, and a nomadic life rather than by disregard for children.",
+        "Derives universal rules from what any enduring society requires, since a group that neglected its infants would die out and a group indifferent to lying could not communicate.",
+        "Proposes a culture-independent test, whether a practice promotes or hinders the welfare of the people affected, and applies it to excision without pretending the standard comes from nowhere.",
+        "Concedes what relativism gets right before rejecting it, granting that many of our practices are only cultural products and that Cultural Relativism goes wrong by assuming all of them are."
+      ],
+      "key_works": [
+        "The Elements of Moral Philosophy, ch. 2, \"The Challenge of Cultural Relativism\"",
+        "The End of Life: Euthanasia and Morality",
+        "Created from Animals: The Moral Implications of Darwinism",
+        "The Right Thing to Do"
+      ]
+    },
+    {
+      "id": "rachels_applied",
+      "name": "James Rachels",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1941-2003",
+      "core_assumptions": "Two cases that differ only in whether the doctor acts or stands by must receive the same moral verdict, because the bare difference between killing and letting die carries no moral weight of its own. Motive, outcome, and the correctness of the underlying decision about the patient settle the verdict instead. Once a doctor has decided that death is no greater an evil for this patient than continued life, the usual reason for refusing to cause a death no longer applies. Withholding treatment is itself a deliberate act, performed by way of not performing others, and answers to moral appraisal like any other act. The law may force doctors to observe the distinction in practice; medical ethics should stop writing it in as a principle.",
+      "signature_moves": [
+        "Builds a matched pair of cases, Smith and Jones at the bathtub, identical in motive and outcome and differing only in killing versus letting die, then asks whether either man behaved better.",
+        "Turns the humanitarian motive behind withholding treatment against the doctrine: if the point was to stop needless suffering, the slower death is the worse choice.",
+        "Shows the doctrine routing life-and-death decisions through irrelevant facts, such as whether an infant with Down's syndrome also happens to have an intestinal obstruction.",
+        "Separates the question whether killing is in itself worse from the question whether most actual killings are worse, and traces the confusion to newspapers full of murders and almost no reported cases of letting die.",
+        "Argues that letting a patient die is a type of action, so a doctor who pleads that he did nothing has described what he did rather than excused it.",
+        "Presses the AMA statement on its own terms: stopping treatment is the intentional termination of a life, and if it were not, there would be no point to it."
+      ],
+      "key_works": [
+        "Active and Passive Euthanasia (New England Journal of Medicine, 1975)",
+        "The Elements of Moral Philosophy",
+        "The End of Life: Euthanasia and Morality",
+        "Created from Animals: The Moral Implications of Darwinism"
+      ]
+    },
+    {
+      "id": "rawls",
+      "name": "John Rawls",
+      "tradition_id": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1921-2002",
+      "core_assumptions": "Principles of justice govern the basic structure of society, and they are justified by showing that free and rational persons would agree to them in an initial position of equality. That position has to be fair, so the parties choose behind a veil of ignorance: no knowledge of class position, natural assets, conception of the good, or even which generation they belong to. Since no one can identify himself by name or description, no one can tailor principles to his own advantage, and the parties have no basis for bargaining in the usual sense; their agreement counts as a genuine reconciliation of interests. Those parties would reject the principle of utility, because a rational person will not acquiesce in an enduring loss to his own basic rights for the sake of a greater sum of advantages enjoyed by others. Justification runs in both directions: the description of the initial situation and our considered convictions get adjusted against each other until they reach reflective equilibrium.",
+      "signature_moves": [
+        "Recasts a dispute about who deserves what into a question about which principles the parties would have chosen before knowing who they turned out to be.",
+        "Strips one specific piece of knowledge from his opponent — wealth, talent, religion, generation — and asks whether their principle survives the loss.",
+        "Rejects a proposal by showing that a rational person protecting his own basic rights and interests would refuse consent to it, whatever the aggregate gain.",
+        "Separates what is expedient from what is just, and refuses to let hardships for some be offset by a greater good in the aggregate.",
+        "Grants that the better endowed may keep greater benefits, then attaches the condition that the least advantaged be made better off by the arrangement.",
+        "Tests a conception of justice against convictions we hold with confidence, such as the injustice of religious intolerance and racial discrimination, then revises either the conviction or the description of the initial situation."
+      ],
+      "key_works": [
+        "A Theory of Justice",
+        "Political Liberalism",
+        "Justice as Fairness: A Restatement",
+        "The Law of Peoples"
+      ]
+    },
+    {
+      "id": "sartre",
+      "name": "Jean-Paul Sartre",
+      "tradition_id": "existentialism",
+      "era": "Contemporary",
+      "active_period": "1905-1980",
+      "core_assumptions": "Existence precedes essence: no God conceived human beings the way an artisan conceives a paper-knife, so no human nature waits to explain anyone's conduct. A person exists first, encounters himself, and defines himself afterwards, which makes him nothing else but the sum of what he does. Because every choice affirms the value of what it chooses, choosing for myself commits me on behalf of all mankind, and the weight of that legislating is anguish. With God excluded there are no values inscribed in an intelligible heaven, so a person stands abandoned, without excuse, condemned to be free. Anyone who hides behind a passion, a temperament, or a deterministic doctrine is a self-deceiver, and Sartre calls him a coward.",
+      "signature_moves": [
+        "Converts any alleged cause of conduct back into an act: the coward makes himself cowardly by giving way, and impoverished blood or a nervous temperament produces no cowardice, since a temperament is not an action.",
+        "Turns every sign, voice, or authority back on whoever receives it: Abraham cannot prove the angel is an angel, and the Jesuit's string of failures became a summons to the Order only because he deciphered it that way.",
+        "Runs the vicious circle on feelings: the student can measure his love for his mother only by staying with her, so the feeling cannot justify the choice that first defines it.",
+        "Shows that choosing an adviser already chooses the advice, since a priest of the resistance and a priest of the collaboration will say opposite things and you pick which one to consult.",
+        "Presses the universalizing question at the person in front of him: ask what image of humanity your action legislates, then watch the shrug 'everyone does not do so' expose the anguish it was meant to hide.",
+        "Separates his position from Gide's acte gratuit by insisting that choice happens inside an organized situation and that refusing to choose is still a choice."
+      ],
+      "key_works": [
+        "Existentialism Is a Humanism",
+        "Being and Nothingness",
+        "Nausea",
+        "The Roads to Freedom (Les Chemins de la Liberté)"
+      ]
+    },
+    {
+      "id": "singer",
+      "name": "Peter Singer",
+      "tradition_id": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "1946-present",
+      "core_assumptions": "Suffering and death from lack of food, shelter, and medical care are bad, and Singer refuses to argue for that starting point: anyone who denies it need read no further. From there he asserts a single principle, that if it is in our power to prevent something bad from happening without sacrificing anything of comparable moral importance, we ought to do it. The principle takes no account of proximity or distance, so a neighbor's child ten yards away and a Bengali refugee ten thousand miles away make equal claims on us. It also takes no account of how many other people could help and are not helping, since the inaction of others cannot reduce what I ought to do. Applied honestly, the principle collapses the ordinary line between duty and charity and requires giving until further giving would cost us something of comparable moral weight.",
+      "signature_moves": [
+        "Secures agreement to a principle that looks almost too obvious to dispute, then shows that acting on it would change our lives, our society, and our world.",
+        "Runs the shallow pond case, where wading in costs only muddy clothes, and then asks what morally relevant difference distance introduces.",
+        "Blocks the appeal to distance by pointing out that relief organizations can direct aid to a refugee in Bengal almost as effectively as we could get it to someone on our own block.",
+        "Dismantles the 'everyone should do their share' defense by showing it rests on a hypothetical premise about what others would give, while others in fact are not giving.",
+        "Reclassifies the case: giving to famine relief stops being generous or supererogatory and becomes something it is wrong not to do.",
+        "Turns the charge of excessive demandingness back on the accuser, treating it as a criticism of our ordinary standards of behavior rather than of his argument."
+      ],
+      "key_works": [
+        "Famine, Affluence, and Morality",
+        "Practical Ethics",
+        "The Life You Can Save",
+        "One World: The Ethics of Globalization"
+      ]
+    },
+    {
+      "id": "singer_applied",
+      "name": "Peter Singer",
+      "tradition_id": "consequentialism",
+      "era": "Contemporary",
+      "active_period": "b. 1946",
+      "core_assumptions": "The principle of equality is a prescription about how to treat beings, not a description of their actual sameness, so no measurement of intelligence or ability can confine it to humans. What entitles a being to consideration is the capacity to suffer or enjoy, since that capacity is the precondition of having interests at all. Like interests count alike, whoever has them. Drawing the boundary of concern at species membership is as arbitrary as drawing it anywhere else that suits the drawer.",
+      "signature_moves": [
+        "Quoting Bentham's question — not Can they reason? nor Can they talk? but Can they suffer? — to reset the terms of the debate",
+        "Recasting equality as a prescription so that appeals to factual differences between beings simply miss the target",
+        "Pressing the interlocutor to name the capacity that includes every human and excludes every animal, then showing each candidate fails one side or the other",
+        "Contrasting the stone and the mouse: a stone has no interests because nothing we do to it matters to it; a mouse has an interest in not being tormented",
+        "Extending a principle the interlocutor already accepts for humans one step past where they intended to stop",
+        "Calmly accepting the demandingness of his conclusion and asking which premise the objector rejects"
+      ],
+      "key_works": [
+        "All Animals Are Equal",
+        "Famine, Affluence, and Morality",
+        "Practical Ethics",
+        "The Expanding Circle"
+      ]
+    },
+    {
+      "id": "srinivasan",
+      "name": "Amia Srinivasan",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "b. 1984",
+      "core_assumptions": "Moral calculation buys its power by abstracting away the specificity of people: Qalys give welfare economists a universal currency for misery, and marginal and counterfactual reasoning strip out who is helped and who does the helping. That abstraction leaves out the sources of global misery it proposes to mop up — trade and finance, debt, imperialism, racial and gender subordination, exploitation of labour — so effective altruism leaves everything as it is, which comforts those who enjoy the status quo. The deeper objection to utilitarianism concerns what it demands rather than how much: your personal attachments, loyalties and identifications, the things that constitute you. You should console your bereaved friend because your friend is in distress, and it matters morally what you do with your life, not only what gets done because of it. Sidgwick's point of view of the universe asks us to step outside the one standpoint where ethical action actually happens, and that gaze may be what fails our scrutiny rather than the reverse.",
+      "signature_moves": [
+        "States the opponent's framework at full strength, including its real successes, before pressing what its ledger cannot count.",
+        "Asks what a calculation had to erase in order to become a calculation, and whose specificity got converted into currency.",
+        "Runs an expected-value argument to its own conclusion — spending on the robot apocalypse instead of anti-malarial nets — and lets the result do the damage.",
+        "Poses a dilemma between the radical reading of a slogan and the platitudinous one, then shows the movement helping itself to both.",
+        "Turns a demand for impartiality back on itself by asking why the universal standpoint should be the judge rather than the judged.",
+        "Reads a whole worldview out of a single word: MacAskill's 'arbitrary', his 'unfair', the one appearance of 'oppression' in 325 pages."
+      ],
+      "key_works": [
+        "Stop the Robot Apocalypse (London Review of Books, 2015)",
+        "The Right to Sex",
+        "The Aptness of Anger",
+        "Genealogy, Epistemology and Worldmaking"
+      ]
+    },
+    {
+      "id": "strawson",
+      "name": "P. F. Strawson",
+      "tradition_id": "existentialism",
+      "era": "Contemporary",
+      "active_period": "1919-2006",
+      "core_assumptions": "Resentment, gratitude, forgiveness, and moral indignation are natural human reactions to the quality of another person's will towards us, and they carry the whole content of what we mean by desert, guilt, and responsibility. The excuses we actually accept fall into two groups: pleas like 'he didn't know' or 'he was pushed', which leave the person a full participant in our relationships, and pleas like 'he's only a child' or 'he's a hopeless schizophrenic', which move us into what Strawson calls the objective attitude, seeing the person as something to be managed, treated, or trained. No general thesis of determinism has ever been the reason for either kind of excuse, and a sustained objective attitude towards everyone lies beyond our capacity. The framework of these attitudes is given with the fact of human society; questions of justification arise inside it and cannot be raised about it from outside. So the optimist who reduces blame to social engineering leaves out the moral sentiments, and the pessimist who demands contra-causal freedom rushes past facts already in his possession.",
+      "signature_moves": [
+        "Sorts excuses into those that inhibit one reaction while leaving the person a full member of our relationships and those that suspend the reactions altogether, then shows determinism is never the ground of either.",
+        "Presses the objective attitude to its limit: with someone viewed wholly objectively you may fight him and negotiate with him, but you cannot quarrel with him or reason with him.",
+        "Rules a question out rather than answering it, on the ground that asking whether it would be rational to abandon the reactive attitudes asks whether we should do what we cannot do.",
+        "Offers a trade: the pessimist gets his missing vital element back, made out of the moral sentiments, and surrenders his metaphysics in exchange.",
+        "Diagnoses both sides as over-intellectualizing the same facts, the optimist through a one-eyed utilitarianism, the pessimist through an intuition of fittingness he cannot cash out.",
+        "Tests a philosophical thesis by asking what it would actually be like to live under it, using ordinary cases: a hand trodden on by accident against a hand trodden on in contempt."
+      ],
+      "key_works": [
+        "Freedom and Resentment",
+        "Individuals",
+        "The Bounds of Sense",
+        "Skepticism and Naturalism"
+      ]
+    },
+    {
+      "id": "thomson",
+      "name": "Judith Jarvis Thomson",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "1929-2020",
+      "core_assumptions": "Grant the opponent his hardest premise: the fetus is a person from the moment of conception, with a right to life exactly as strong as anyone else's. The conclusion still does not follow, because a right to life does not include a right to be given the use of another person's body, nor a right to be allowed continued use of it, even where the person needs it to stay alive. Nobody has a right to your kidneys unless you give him that right, so unplugging yourself from the violinist kills him without treating him unjustly, and the right to life is best read as a right not to be killed unjustly. A special responsibility for another person has to be assumed, explicitly or implicitly; a biological relation on its own does not create one, and taking reasonable precautions against pregnancy is the opposite of assuming it. Morality asks us to be Minimally Decent Samaritans, not Good ones, so no one is required to give up nine months or nine years of a life to sustain someone with no right to demand it.",
+      "signature_moves": [
+        "Concedes the premise her opponents work hardest to establish, then attacks the step from that premise to the conclusion, which they almost never defend.",
+        "Constructs a case with the same argumentative shape as the one under dispute, then lets the reader's verdict on the case refute the general principle: kidnapped, plugged into a violinist, nine months in bed.",
+        "Splits a concept her opponents treat as simple, dividing the right to life into the right to be given what you need, the right not to be killed, and the right not to be killed unjustly, and shows the argument needs the third.",
+        "Pulls apart what you ought to do and what another person may claim from you, so that the boy who eats the whole box of chocolates comes out callous but not unjust.",
+        "Tests the responsibility argument by varying the details until it breaks: the open window and the burglar, the bars with a defect in them, the people-seeds and the fine mesh screens.",
+        "Turns the opponent's own standard against him, noting that no law in the country compels even Minimally Decent Samaritanism, while women are compelled to be Good Samaritans to the persons inside them."
+      ],
+      "key_works": [
+        "A Defense of Abortion",
+        "Killing, Letting Die, and the Trolley Problem",
+        "The Realm of Rights",
+        "Rights, Restitution, and Risk"
+      ]
+    },
+    {
+      "id": "thrasymachus",
+      "name": "Thrasymachus of Chalcedon",
+      "tradition_id": "political_philosophy",
+      "era": "Ancient",
+      "active_period": "c. 459-400 BCE",
+      "core_assumptions": "Every ruling group writes the laws for its own benefit, declares obedience just, and punishes whoever departs from it as a lawbreaker, so justice names whatever serves the established power. Justice is therefore someone else's good and a personal harm to the man who practices it: the just man pays more tax on equal property, comes away from every partnership with less, watches his household decay while he holds office, and collects the ill will of relatives he refuses to favor. The unjust man's situation is the opposite in all of these respects, which is why Thrasymachus files injustice under good counsel and sets it in the camp of virtue and wisdom while calling justice a very high-minded innocence. Tyranny settles the matter: take property bit by bit and men call you a temple robber or a housebreaker, take the city entire and the same men call you happy and blessed. Rulers care for the ruled the way a shepherd cares for sheep, fattening them with an eye to the feast or the sale.",
+      "signature_moves": [
+        "States the just as the advantage of the stronger, then walks through tyrannies, democracies and aristocracies to show each ruling group legislating for itself and calling the result justice.",
+        "Turns the shepherd analogy back on his opponent by asking who the sheep are fattened for, so that any account of rulers caring for the ruled sounds like a story told to a boy whose nose still needs wiping.",
+        "Keeps a running ledger of what justice costs: contracts dissolved at a loss, higher taxes on equal property, no profit from public distributions, a neglected household, relatives who resent the office-holder who will not bend for them.",
+        "Scales the case up until the verdict flips, since the man who steals a portion is called a kidnapper and defrauder while the man who takes the city whole is called blessed.",
+        "Refuses the moral vocabulary his opponents hand him, denying that injustice is corruption and placing it with prudence and good counsel instead.",
+        "Presses with insult and pressure when the argument turns: he calls Socrates a sycophant and a nonentity, tries to walk out after his big speech, and offers to nod along like an old wife telling tales rather than concede a step."
+      ],
+      "key_works": [
+        "Plato, Republic Book I (the Thrasymachus speeches, 336b-354c)",
+        "Peri Politeias (On the Constitution), surviving in fragments",
+        "Eleoi (Appeals to Pity), lost",
+        "Techne Rhetorike, a lost handbook of rhetoric"
+      ]
+    },
+    {
+      "id": "titelbaum",
+      "name": "Michael G. Titelbaum",
+      "tradition_id": "analytic_method",
+      "era": "Contemporary",
+      "active_period": "contemporary",
+      "core_assumptions": "Belief, disbelief, and suspension of judgment describe a person's doxastic life too coarsely. An agent can believe two propositions while betting her life on one of them twice a day and refusing to bet on the other, and new evidence can move her without flipping her from belief to disbelief. Confidence therefore comes in comparisons, and more usefully in numerical degrees, which Bayesian epistemology represents by assigning real numbers to claims and constrains by rules close to the probability calculus. The Lottery and the Preface do worse damage than strain: they falsify Belief Consistency and Belief Closure, the most natural rational norms for binary belief, while credence norms handle both cases comfortably. Numbers buy the sizes of the gaps between confidences at a price, since precise credences over-attribute exactness and force every pair of propositions into a single ranking. Beliefs and credences may both be real without any general systematic bridge between them, the way a topographic map and a satellite image record the same square mile without either being derivable from the other.",
+      "signature_moves": [
+        "Runs the physicist example: she believes fusion is viable and believes her brakes will stop the car, yet stakes her life on one belief every morning, and he asks his opponent to name the difference in purely binary terms.",
+        "Invents the Simple Binarist, a character who ascribes only belief, disbelief, and suspension, then piles up doxastic phenomena that character cannot describe.",
+        "Presses the Lottery and the Preface as counterexamples rather than puzzles, arguing they show Belief Consistency and Belief Closure to be false rather than merely demanding.",
+        "Separates theoretical from practical rationality using Pascal's Wager: even if believing in God pays, an agent whose evidence points to atheism makes a rational mistake in believing, so evidence-responsiveness answers to its own standard.",
+        "Walks down the confidence scale to test the Lockean threshold, rejecting certainty as the cutoff because we rationally believe things we are not certain of, and finding nothing that fixes the line between 50% and 100%.",
+        "Concedes the costs of his own view: assigning precise credences attributes gap sizes that may not exist and destroys the incommensurability between, say, election questions and climate questions."
+      ],
+      "key_works": [
+        "Fundamentals of Bayesian Epistemology 1: Introducing Credences (2022), ch. 1, 'Beliefs and Degrees of Belief'",
+        "Fundamentals of Bayesian Epistemology 2: Arguments, Challenges, Alternatives (2022)",
+        "Quitting Certainties: A Bayesian Framework Modeling Degrees of Belief (2013)"
+      ]
+    },
+    {
+      "id": "wolf",
+      "name": "Susan Wolf",
+      "tradition_id": "virtue_ethics",
+      "era": "Contemporary",
+      "active_period": "b. 1952",
+      "core_assumptions": "A moral saint is a person whose every action is as morally good as possible, and Wolf denies that such a life makes a good personal ideal for anyone to hold. The moral virtues, present all at once in one person and to an extreme degree, crowd out nonmoral virtues that are genuinely worth having: gourmet cooking, a sarcastic wit, Victorian novels, a decent backhand. Utilitarian and Kantian saints escape none of this, because each must value his fishing trip or his cello playing under a further description, either 'a contribution to the general happiness' or 'a manifestation of respect for the moral law', which gives him one thought too many. Wolf therefore argues that morality should not serve as a comprehensive guide to conduct, and she sets beside the moral point of view a second one, the point of view of individual perfection, from which we ask what kinds of persons it would be good to be. Her target is not the content of any moral theory but the metamoral assumption that it is always better to be morally better.",
+      "signature_moves": [
+        "Splits sainthood into the Loving Saint, whose happiness lies in the happiness of others, and the Rational Saint, who feels the sacrifice as sacrifice, then convicts the first of blindness to what the world offers and the second of self-hatred or a fear of damnation.",
+        "Itemizes the nonmoral goods sainthood forecloses, from the Marx Brothers to haute cuisine to high fashion, until the perfected life starts to look strangely barren.",
+        "Presses Bernard Williams's 'one thought too many' charge against utilitarian and Kantian saints alike: they value literature or roses only under a description that licenses the activity morally.",
+        "Grants the opponent's theory intact and attacks the assumption standing behind it, so that neither utilitarianism nor Kantianism is refuted from the inside.",
+        "Tests a proposed ideal by asking whether you would want the people you love, or your own children, to achieve it.",
+        "Separates the moral point of view from the point of view of individual perfection and denies that the second collapses into self-interest, since it asks what interests it would be good for a person to have."
+      ],
+      "key_works": [
+        "Moral Saints",
+        "Freedom Within Reason",
+        "Meaning in Life and Why It Matters",
+        "The Variety of Values"
+      ]
+    },
+    {
+      "id": "young",
+      "name": "Iris Marion Young",
+      "tradition_id": "political_philosophy",
+      "era": "Contemporary",
+      "active_period": "1949-2006",
+      "core_assumptions": "Young treats oppression as a condition of groups produced by ordinary institutions rather than by a tyrant's decree, with its causes lodged in unquestioned norms, habits, symbols, and the collective consequences of people following the rules of their jobs. She holds that justice reaches past distribution to decisionmaking procedures, the division of labor, and culture, so a theory that asks only who gets how much cannot say what is wrong with marginalization, powerlessness, cultural imperialism, or systematic violence. Social groups constitute individuals rather than being assembled out of them: group affinity has the character Heidegger called thrownness, something a person finds herself already inside and then takes up in some way. Because different combinations of factors constitute the oppression of different groups, Young refuses one essential definition and offers five criteria instead, any one of which suffices for calling a group oppressed. She claims these criteria are objective and can adjudicate disputes about whether a group is oppressed, while conceding that they function as criteria and not as a full theory of oppression.",
+      "signature_moves": [
+        "Separates structural oppression from tyranny by pointing at the everyday practices of a well-intentioned liberal society, where the conscious actions of many individuals reproduce oppression while those people are usually simply doing their jobs or living their lives.",
+        "Pays out the distributive remedy first and then asks what is left over: give a marginalized old person a comfortable material life inside decent institutions, and uselessness, boredom, and lack of self-respect remain.",
+        "Sorts a group's situation by which faces apply, so that working-class people count as exploited and powerless while, if employed and white, they escape marginalization and violence, and gay men suffer cultural imperialism and violence without being exploited qua gay.",
+        "Answers the individualist by distinguishing a social group from both an aggregate and an association: George Sher's arbitrary classifications and any voluntary club alike put the individual ahead of the collective, whereas group meanings partly constitute who people already are.",
+        "Turns the invisibility of dominant norms back on the dominant group, since cultural imperialism installs one group's experience as the unremarkable universal and leaves white males, escaping group marking, free to appear as individuals.",
+        "Brings violence inside a theory of justice by relocating its wrongness from the individual attacker to the social practice around him, and to the daily knowledge of liability that every member of a targeted group carries."
+      ],
+      "key_works": [
+        "Five Faces of Oppression",
+        "Justice and the Politics of Difference",
+        "Throwing Like a Girl and Other Essays",
+        "Inclusion and Democracy"
+      ]
+    }
+  ],
+  "quotes": [
+    {
+      "id": "aristotle_1",
+      "text": "For one swallow does not make a summer, nor does one day; and so too one day, or a short time, does not make a man blessed and happy.",
+      "philosopher_id": "aristotle",
+      "source_title": "Nicomachean Ethics",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 1,
+      "argument_type": "principle_statement",
+      "key_move": "Adds the qualification 'in a complete life' to the definition of the human good, blocking anyone who would call a person happy on the strength of a single good day.",
+      "core_assumption": "Happiness is an activity stretched across a whole life, not a state you can occupy for an afternoon.",
+      "why_characteristic": "The swallow line closes the function argument in Book I chapter 7 and is the most quotable sentence in the assigned pages."
+    },
+    {
+      "id": "aristotle_2",
+      "text": "For instance the stone which by nature moves downwards cannot be habituated to move upwards, not even if one tries to train it by throwing it up ten thousand times",
+      "philosopher_id": "aristotle",
+      "source_title": "Nicomachean Ethics",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 2,
+      "argument_type": "counterexample",
+      "key_move": "Uses a physical case to prove that whatever comes by nature admits no contrary training, so the moral virtues cannot arise in us by nature.",
+      "core_assumption": "Nature gives us the capacity for virtue; habit alone brings the capacity to completion.",
+      "why_characteristic": "Book II opens with this stone, and the argument it serves gives the tradition its name: ethike from ethos, habit."
+    },
+    {
+      "id": "aristotle_3",
+      "text": "it is evidently equally foolish to accept probable reasoning from a mathematician and to demand from a rhetorician demonstrative proofs",
+      "philosopher_id": "aristotle",
+      "source_title": "Nicomachean Ethics",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Sets the standard of rigor for the whole inquiry before any ethical claim is made, pairing two symmetrical errors so that demanding too much proof looks as untrained as demanding too little.",
+      "core_assumption": "Noble and just actions vary and fluctuate, so an account of them can only be true in outline and for the most part.",
+      "why_characteristic": "Book I chapter 3 makes this the methodological ground floor, and Aristotle returns to the precision rule twice more in the assigned chapters."
+    },
+    {
+      "id": "aristotle_4",
+      "text": "but to feel them at the right times, with reference to the right objects, towards the right people, with the right motive, and in the right way, is what is both intermediate and best, and this is characteristic of virtue",
+      "philosopher_id": "aristotle",
+      "source_title": "Nicomachean Ethics",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 4,
+      "argument_type": "definition",
+      "key_move": "Specifies the mean as a set of simultaneous corrections along several dimensions at once, so that hitting it demands judgment rather than calculation.",
+      "core_assumption": "Virtue governs passions as well as actions, and getting the passion right is part of getting the act right.",
+      "why_characteristic": "The five-fold 'right times, right objects, right people, right motive, right way' formula appears nowhere else in the course reading."
+    },
+    {
+      "id": "aristotle_5",
+      "text": "Now it is a mean between two vices, that which depends on excess and that which depends on defect; and again it is a mean because the vices respectively fall short of or exceed what is right in both passions and actions",
+      "philosopher_id": "aristotle",
+      "source_title": "Nicomachean Ethics",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 5,
+      "argument_type": "definition",
+      "key_move": "Gives the two senses in which virtue counts as a mean: positionally, between named vices, and evaluatively, as the target the vices miss.",
+      "core_assumption": "Vice is failure by measure, and there are two ways to fail for every one way to succeed.",
+      "why_characteristic": "The formal definition at the close of Book II chapter 6 is the passage students are asked to reconstruct."
+    },
+    {
+      "id": "berlin_1",
+      "text": "I am normally said to be free to the degree to which no man or body of men interferes with my activity. Political liberty in this sense is simply the area within which a man can act unobstructed by others.",
+      "philosopher_id": "berlin",
+      "source_title": "Two Concepts of Liberty",
+      "tradition_id": "political_philosophy",
+      "difficulty": 1,
+      "argument_type": "definition",
+      "key_move": "States the negative sense of liberty as an area rather than a source of authority, so that measuring freedom becomes a matter of counting obstacles other men place in your way.",
+      "core_assumption": "Freedom in politics is a spatial quantity: the size of the field left open by other people's non-interference.",
+      "why_characteristic": "The opening definition of section I, and the sentence that sets up the whole two-concepts contrast a student has just read."
+    },
+    {
+      "id": "berlin_2",
+      "text": "I wish my life and decisions to depend on myself, not on external forces of whatever kind. I wish to be the instrument of my own, not of other men's acts of will. I wish to be a subject, not an object",
+      "philosopher_id": "berlin",
+      "source_title": "Two Concepts of Liberty",
+      "tradition_id": "political_philosophy",
+      "difficulty": 2,
+      "argument_type": "definition",
+      "key_move": "Gives positive liberty its most attractive statement in the first person, before showing in the following pages how the wish for self-mastery divides a person in two.",
+      "core_assumption": "Wanting to author your own life is a separate desire from wanting to be left alone, and both are genuine.",
+      "why_characteristic": "The drumbeat of 'I wish' openings that begins section II is unmistakable to anyone who read past the negative concept."
+    },
+    {
+      "id": "berlin_3",
+      "text": "Everything is what it is: liberty is liberty, not equality or fairness or justice or culture, or human happiness or a quiet conscience.",
+      "philosopher_id": "berlin",
+      "source_title": "Two Concepts of Liberty",
+      "tradition_id": "political_philosophy",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Blocks the move of renaming a sacrifice of liberty as a gain in some social or economic freedom, so that trade-offs between values stay visible as losses.",
+      "core_assumption": "Political vocabulary must keep values distinct, because conflating them hides the price paid when one is traded for another.",
+      "why_characteristic": "Berlin's flattest, most quotable sentence, delivered against the confusion he attributes to talk of 'economic freedom'."
+    },
+    {
+      "id": "berlin_4",
+      "text": "This monstrous impersonation, which consists in equating what X would choose if he were something he is not, or at least not yet, with what X actually seeks and chooses",
+      "philosopher_id": "berlin",
+      "source_title": "Two Concepts of Liberty",
+      "tradition_id": "political_philosophy",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Names the step that turns paternalism into liberation: substituting a hypothetical rational self for the flesh-and-blood person whose wishes are being overridden.",
+      "core_assumption": "A person's actual wishes, not the wishes attributed to a 'real' self inside them, set the standard for whether they have been coerced.",
+      "why_characteristic": "The phrase caps Berlin's charge against theories of self-realization and is the sharpest insult in the reading."
+    },
+    {
+      "id": "berlin_5",
+      "text": "The world that we encounter in ordinary experience is one in which we are faced with choices between ends equally ultimate, and claims equally absolute, the realization of some of which must inevitably involve the sacrifice of others.",
+      "philosopher_id": "berlin",
+      "source_title": "Two Concepts of Liberty",
+      "tradition_id": "political_philosophy",
+      "difficulty": 5,
+      "argument_type": "principle_statement",
+      "key_move": "Rests value pluralism on ordinary observation rather than metaphysics, denying the rationalist his a priori guarantee that all true values must fit together.",
+      "core_assumption": "Conflict among ultimate ends belongs to the structure of human life, so no arrangement of society can retire the agony of choice.",
+      "why_characteristic": "The load-bearing sentence of 'The One and the Many', which a student will recognize as the ground of Berlin's attack on final solutions."
+    },
+    {
+      "id": "gettier_1",
+      "text": "Smith's evidence for (d) might be that the president of the company assured him that Jones would in the end be selected, and that he, Smith, had counted the coins in Jones's pocket ten minutes ago.",
+      "philosopher_id": "gettier",
+      "source_title": "Is Justified True Belief Knowledge?",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Loads Smith's belief with the best evidence available — testimony from the person making the hiring decision plus a direct count — so that no one can dismiss the coming failure as sloppy reasoning.",
+      "core_assumption": "Justification can be as strong as you like and still attach to a false belief.",
+      "why_characteristic": "The president, Jones, and the ten counted coins are the opening furniture of the paper's first case."
+    },
+    {
+      "id": "gettier_2",
+      "text": "But imagine now that two further conditions hold. First, Jones does not own a Ford, but is at present driving a rented car. And secondly, by the sheerest coincidence, and entirely unknown to Smith, the place mentioned in proposition (h) happens really to be the place where Brown is.",
+      "philosopher_id": "gettier",
+      "source_title": "Is Justified True Belief Knowledge?",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "thought_experiment",
+      "key_move": "Springs the second case by falsifying the evidence base and making the randomly chosen disjunct true, so Smith's justified belief comes out true through a disjunct he knows nothing about.",
+      "core_assumption": "A belief can owe its truth to a fact wholly disconnected from the reasons the believer has.",
+      "why_characteristic": "The rented car and Brown's accidental presence in Barcelona are the hinge of Case II."
+    },
+    {
+      "id": "gettier_3",
+      "text": "for (e) is true in virtue of the number of coins in Smith's pocket, while Smith does not know how many coins are in Smith's pocket, and bases his belief in (e) on a count of the coins in Jones's pocket, whom he falsely believes to be the man who will get the job.",
+      "philosopher_id": "gettier",
+      "source_title": "Is Justified True Belief Knowledge?",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "objection",
+      "key_move": "Diagnoses the failure by separating what makes the proposition true from what Smith actually consulted in believing it.",
+      "core_assumption": "Knowledge requires a connection between the believer's grounds and the fact that makes the belief true.",
+      "why_characteristic": "Only Gettier's Case I turns on the gap between the coins in Smith's pocket and the coins he counted in Jones's."
+    },
+    {
+      "id": "gettier_4",
+      "text": "for any proposition P, if S is justified in believing P, and P entails Q, and S deduces Q from P and accepts Q as a result of this deduction, then S is justified in believing Q",
+      "philosopher_id": "gettier",
+      "source_title": "Is Justified True Belief Knowledge?",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "principle_statement",
+      "key_move": "States the closure principle that both cases run on, so that Smith's justification transfers intact from a false premise to a true conclusion.",
+      "core_assumption": "Justification survives competent deduction, which lets a justified false belief hand its justification to a true one.",
+      "why_characteristic": "The paper stops to secure exactly two preliminary points before any case is told, and this is the second."
+    },
+    {
+      "id": "gettier_5",
+      "text": "These two examples show that definition (a) does not state a sufficient condition for someone's knowing a given proposition. The same cases, with appropriate changes, will suffice to show that neither definition (b) nor definition (c) do so either.",
+      "philosopher_id": "gettier",
+      "source_title": "Is Justified True Belief Knowledge?",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "definition",
+      "key_move": "Closes by generalizing the two cases from the justified-true-belief formula to Chisholm's adequate-evidence version and Ayer's right-to-be-sure version.",
+      "core_assumption": "The defect lies in the shape of the definition, not in any one theorist's wording of the third condition.",
+      "why_characteristic": "The paper ends on a bare negative result, refusing to offer a fourth condition of its own."
+    },
+    {
+      "id": "goldman_1",
+      "text": "First is the case of a guru with slavish followers. Whatever the guru believes is slavishly believed by his followers. They fix their opinions wholly and exclusively on the basis of their leader's views. Intellectually speaking, they are merely his clones.",
+      "philosopher_id": "goldman",
+      "source_title": "Experts: Which Ones Should You Trust?",
+      "tradition_id": "consequentialism",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Builds a case where a large body of agreeing believers plainly carries no more weight than one believer, so the appeal to numbers collapses.",
+      "core_assumption": "Testimony counts as evidence through the causal route that produced it, not through the head count of those who share it.",
+      "why_characteristic": "The guru and his clones is the image the novice/2-experts discussion uses to break the numbers principle."
+    },
+    {
+      "id": "goldman_2",
+      "text": "A totalitarian practice of state‐controlled news and the suppression of all countervailing views might be very effective in an Orwellian society, effective, that is, in producing massive (if not unanimous) agreement.",
+      "philosopher_id": "goldman",
+      "source_title": "Knowledge in a Social World, ch. 3 ('The Framework')",
+      "tradition_id": "consequentialism",
+      "difficulty": 2,
+      "argument_type": "objection",
+      "key_move": "Refutes consensus consequentialism by producing a practice that maximizes agreement and is obviously worthless epistemically.",
+      "core_assumption": "Agreement has no epistemic value of its own; it matters only when it tracks truth.",
+      "why_characteristic": "The Orwellian news monopoly leads his run of counterexamples against consensus as the aim of intellectual practice."
+    },
+    {
+      "id": "goldman_3",
+      "text": "It is feats like this, often involving technological applications, that rightly persuade novices that the people who get the correct answers have a special fund of information and a special methodology for deploying it that jointly yield a superior capacity to get right answers.",
+      "philosopher_id": "goldman",
+      "source_title": "Experts: Which Ones Should You Trust?",
+      "tradition_id": "consequentialism",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Turns public successes such as curing an ailment or landing a spacecraft into evidence a layperson can read off without any command of the field.",
+      "core_assumption": "Expertise shows itself in a capacity to pick true answers from vast spaces of possible ones, and that capacity leaves traces novices can check.",
+      "why_characteristic": "The moon-landing and medicine examples anchor the track-record section, his best answer to skepticism about the novice."
+    },
+    {
+      "id": "goldman_4",
+      "text": "States like knowledge, error, and ignorance have fundamental veritistic value or disvalue. Practices have instrumental veritistic value insofar as they promote or impede the acquisition of fundamental veritistic value.",
+      "philosopher_id": "goldman",
+      "source_title": "Knowledge in a Social World, ch. 3 ('The Framework')",
+      "tradition_id": "consequentialism",
+      "difficulty": 4,
+      "argument_type": "definition",
+      "key_move": "Fixes the two-level structure of veritistic evaluation, with belief states carrying the basic value and practices earning value from what they cause.",
+      "core_assumption": "Epistemic assessment runs on the same architecture as consequentialist moral theory, with truth in the place of utility.",
+      "why_characteristic": "The explicit parallel between V-value and consequentialist moral value is his framework in two sentences."
+    },
+    {
+      "id": "goldman_5",
+      "text": "Let us describe this last case by saying that Y is a non-discriminating reflector of X (with respect to H). When Y is a non-discriminating reflector of X, Y's opinion has no extra evidential worth for the agent above and beyond X's opinion.",
+      "philosopher_id": "goldman",
+      "source_title": "Experts: Which Ones Should You Trust?",
+      "tradition_id": "consequentialism",
+      "difficulty": 5,
+      "argument_type": "definition",
+      "key_move": "Names the condition under which a concurring believer adds nothing, drawn from the Bayesian result that the two-believer likelihood ratio collapses into the one-believer ratio.",
+      "core_assumption": "Extra agreement raises credence only if the agreeing party was disposed to dissent had the claim been false.",
+      "why_characteristic": "The phrase 'non-discriminating reflector' is his coinage and the technical core of his case against counting experts."
+    },
+    {
+      "id": "hardwig_1",
+      "text": "I believe too much; there is too much relevant evidence (much of it available only after extensive, specialized training); intellect is too small and life too short.",
+      "philosopher_id": "hardwig",
+      "source_title": "Epistemic Dependence",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "principle_statement",
+      "key_move": "Sets up the whole problem by pointing at a plain fact about finite believers in a specialized culture: the evidence for what I believe outruns any life I could spend collecting it.",
+      "core_assumption": "Epistemology has to start from the beliefs people actually hold, most of which they acquired without the evidence.",
+      "why_characteristic": "The opening page's catalogue of unchecked beliefs — carburetor, heartbeat, lung cancer — leads straight into this line, and no other assigned author frames the problem as one of finitude."
+    },
+    {
+      "id": "hardwig_2",
+      "text": "But I submit that this model provides us with a romantic ideal which is thoroughly unrealistic and which, in practice, results in less rational belief and judgment.",
+      "philosopher_id": "hardwig",
+      "source_title": "Epistemic Dependence",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "objection",
+      "key_move": "Attacks the Kantian and Cartesian maxim 'think for oneself' on its own terms, charging that following it across the board lowers the quality of your beliefs rather than raising it.",
+      "core_assumption": "Rationality is measured by how well founded your beliefs end up being, not by whether you produced the grounds yourself.",
+      "why_characteristic": "Hardwig names Kant's maxim and Descartes's methodological doubt in the sentences just before this, then calls the resulting picture romantic — the paper's signature charge."
+    },
+    {
+      "id": "hardwig_3",
+      "text": "the rational layman will recognize that, in matters about which there is good reason to believe that there is expert opinion, he ought (methodologically) not to make up his own mind. His stance on these matters will—if he is rational—usually be rational deference to the epistemic authority of the expert.",
+      "philosopher_id": "hardwig",
+      "source_title": "Epistemic Dependence",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "States the paper's most provocative normative conclusion: where expertise exists, the layman's duty is deference, and forming your own view is the methodological error.",
+      "core_assumption": "The layman's untrained judgment is rationally inferior to the expert's within the expert's domain and can always be overruled by it.",
+      "why_characteristic": "The parenthetical '(methodologically)' and the phrase 'rational deference' are Hardwig's, and the claim that you ought not make up your own mind is the sentence students argue about most."
+    },
+    {
+      "id": "hardwig_4",
+      "text": "Scientists, researchers, and scholars are, sometimes at least, knowers, and all of these knowers stand on each other’s shoulders in the way expressed by the formula: B knows that A knows that p.",
+      "philosopher_id": "hardwig",
+      "source_title": "Epistemic Dependence",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "definition",
+      "key_move": "Carries the layman-expert formula inside science itself, so that dependence stops being the amateur's problem and becomes the structure of research.",
+      "core_assumption": "Experts occupy the layman's role constantly within their own fields, since no one can validate the inquiries their own work presupposes.",
+      "why_characteristic": "The formula 'B knows that A knows that p' runs through the whole paper, and the shoulders image introduces the SLAC particle-physics case that follows."
+    },
+    {
+      "id": "hardwig_5",
+      "text": "I believe that it is also deeply disturbing because it reveals the extent to which even our rationality rests on trust and because it threatens some of our most cherished values—individual autonomy and responsibility, equality and democracy.",
+      "philosopher_id": "hardwig",
+      "source_title": "Epistemic Dependence",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "objection",
+      "key_move": "Concedes the political cost of his own conclusion: if knowledge is communal, then autonomy, equality, and democratic self-rule lose part of their epistemic footing.",
+      "core_assumption": "Epistemic individualism is not merely a theory of justification; it props up moral and political commitments that fall with it.",
+      "why_characteristic": "Hardwig ends the paper by naming trust as the thing rationality rests on and then deferring the political fallout to 'another occasion' — a move a student who read to the last page will remember."
+    },
+    {
+      "id": "kant_1",
+      "text": "It is impossible to think of anything at all in the world, or indeed even beyond it, that could be considered good without limitation except a good will.",
+      "philosopher_id": "kant",
+      "source_title": "Groundwork of the Metaphysics of Morals",
+      "tradition_id": "deontology",
+      "difficulty": 1,
+      "argument_type": "principle_statement",
+      "key_move": "Opens Section I by ruling out every candidate for unconditional goodness other than the will itself, which sets up the rest of the argument.",
+      "core_assumption": "Moral worth attaches to the will that acts, not to talents, temperament, or good outcomes.",
+      "why_characteristic": "The first sentence of Section I, and the claim every student remembers as the starting point of the Groundwork."
+    },
+    {
+      "id": "kant_2",
+      "text": "There is, therefore, only a single categorical imperative and it is this: act only in accordance with that maxim through which you can at the same time will that it become a universal law.",
+      "philosopher_id": "kant",
+      "source_title": "Groundwork of the Metaphysics of Morals",
+      "tradition_id": "deontology",
+      "difficulty": 2,
+      "argument_type": "principle_statement",
+      "key_move": "States the one unconditional command, derived from the fact that a categorical imperative can contain nothing but the requirement that a maxim fit the form of universal law.",
+      "core_assumption": "A moral law must bind without reference to any end the agent happens to want, so only the form of universality can determine it.",
+      "why_characteristic": "The formula the whole of Section II builds toward, delivered in Kant's own words rather than a textbook paraphrase."
+    },
+    {
+      "id": "kant_3",
+      "text": "The practical imperative will therefore be the following: So act that you use humanity, whether in your own person or in the person of any other, always at the same time as an end, never merely as a means.",
+      "philosopher_id": "kant",
+      "source_title": "Groundwork of the Metaphysics of Morals",
+      "tradition_id": "deontology",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Restates the supreme principle in terms of persons, grounding it in the claim that rational nature exists as an end in itself.",
+      "core_assumption": "Rational beings are persons with absolute worth, not things whose value depends on someone's inclinations.",
+      "why_characteristic": "The humanity formula, stated at the close of the assigned portion of Section II and applied immediately to the same four examples."
+    },
+    {
+      "id": "kant_4",
+      "text": "it certainly conforms with duty that a shopkeeper not overcharge an inexperienced customer, and where there is a good deal of trade a prudent merchant does not overcharge but keeps a fixed general price for everyone, so that a child can buy from him as well as everyone else.",
+      "philosopher_id": "kant",
+      "source_title": "Groundwork of the Metaphysics of Morals",
+      "tradition_id": "deontology",
+      "difficulty": 4,
+      "argument_type": "thought_experiment",
+      "key_move": "Introduces a case where the right action is fully explained by self-interest, so that the reader can see the action carries no moral worth despite being correct.",
+      "core_assumption": "Moral worth depends on the motive behind an action, so conformity with duty is not enough.",
+      "why_characteristic": "The honest merchant is Kant's opening illustration of the duty/inclination distinction, and no other assigned author argues this way about a fair price."
+    },
+    {
+      "id": "kant_5",
+      "text": "Yet a fourth, for whom things are going well while he sees that others (whom he could very well help) have to contend with great hardships, thinks: what is it to me? let each be as happy as heaven wills or as he can make himself",
+      "philosopher_id": "kant",
+      "source_title": "Groundwork of the Metaphysics of Morals",
+      "tradition_id": "deontology",
+      "difficulty": 5,
+      "argument_type": "thought_experiment",
+      "key_move": "Sets up the fourth example, where the maxim of refusing all help can be thought as a universal law but cannot be willed, since the agent would rob himself of assistance he will one day want.",
+      "core_assumption": "Some maxims fail the test not by self-contradiction but because a rational will cannot consistently want them universalized.",
+      "why_characteristic": "The indifferent man is Kant's fourth duty example, and the contradiction-in-will structure marks it as his rather than a utilitarian complaint about neglect."
+    },
+    {
+      "id": "mill_1",
+      "text": "The creed which accepts as the foundation of morals, Utility, or the Greatest Happiness Principle, holds that actions are right in proportion as they tend to promote happiness, wrong as they tend to produce the reverse of happiness.",
+      "philosopher_id": "mill",
+      "source_title": "Utilitarianism, Chapter 2: What Utilitarianism Is",
+      "tradition_id": "consequentialism",
+      "difficulty": 1,
+      "argument_type": "principle_statement",
+      "key_move": "States the standard of right action in one sentence, with rightness coming in degrees rather than as a yes-or-no verdict.",
+      "core_assumption": "Happiness produced is the only measure by which an action's rightness is settled.",
+      "why_characteristic": "The sentence names the Greatest Happiness Principle outright and is the first thing Chapter 2 puts on the table after the swipe at people who misuse the word 'utilitarian.'"
+    },
+    {
+      "id": "mill_2",
+      "text": "Few human creatures would consent to be changed into any of the lower animals, for a promise of the fullest allowance of a beast’s pleasures",
+      "philosopher_id": "mill",
+      "source_title": "Utilitarianism, Chapter 2: What Utilitarianism Is",
+      "tradition_id": "consequentialism",
+      "difficulty": 2,
+      "argument_type": "objection",
+      "key_move": "Answers the charge that utilitarianism is a doctrine worthy only of swine by pointing at what people actually refuse when offered a bargain in pure quantity of pleasure.",
+      "core_assumption": "A being with higher faculties will not trade them away for satisfaction, so happiness cannot be measured by quantity alone.",
+      "why_characteristic": "Mill runs the same refusal through a series of cases — the fool, the ignoramus, the rascal — and this is the sentence that opens the run, a few lines before the pig and Socrates."
+    },
+    {
+      "id": "mill_3",
+      "text": "What means are there of determining which is the acutest of two pains, or the intensest of two pleasurable sensations, except the general suffrage of those who are familiar with both?",
+      "philosopher_id": "mill",
+      "source_title": "Utilitarianism, Chapter 2: What Utilitarianism Is",
+      "tradition_id": "consequentialism",
+      "difficulty": 3,
+      "argument_type": "definition",
+      "key_move": "Defends the competent-judge test by showing that even quantity of pleasure has no tribunal beyond the verdict of people who have felt both.",
+      "core_assumption": "Experienced preference is the only evidence about value there could be, so it can settle quality as well as it settles amount.",
+      "why_characteristic": "Mill reaches for a vote — the general suffrage of the experienced — where another moralist would reach for a measuring rod, and he uses that vote to license the ranking of pleasures."
+    },
+    {
+      "id": "mill_4",
+      "text": "As between his own happiness and that of others, utilitarianism requires him to be as strictly impartial as a disinterested and benevolent spectator.",
+      "philosopher_id": "mill",
+      "source_title": "Utilitarianism, Chapter 2: What Utilitarianism Is",
+      "tradition_id": "consequentialism",
+      "difficulty": 4,
+      "argument_type": "principle_statement",
+      "key_move": "Blocks the reading of utilitarianism as refined selfishness by fixing the standard at the happiness of all concerned and giving the agent no weight of his own.",
+      "core_assumption": "Each person's happiness counts equally in the sum, including the agent's, and no more than equally.",
+      "why_characteristic": "The impartial-spectator line sits beside Mill's appeal to the golden rule of Jesus of Nazareth as the complete spirit of the ethics of utility."
+    },
+    {
+      "id": "mill_5",
+      "text": "Nobody argues that the art of navigation is not founded on astronomy, because sailors cannot wait to calculate the Nautical Almanack.",
+      "philosopher_id": "mill",
+      "source_title": "Utilitarianism, Chapter 2: What Utilitarianism Is",
+      "tradition_id": "consequentialism",
+      "difficulty": 5,
+      "argument_type": "analogy",
+      "key_move": "Answers the complaint that no one has time to calculate consequences by distinguishing a first principle from the secondary rules used to apply it.",
+      "core_assumption": "Inherited moral rules are compressed experience of the tendencies of actions, and the principle of utility judges and improves them rather than replacing them case by case.",
+      "why_characteristic": "The almanac image belongs to a run of Mill's homely comparisons in the chapter, alongside the traveller who still uses landmarks and direction-posts."
+    },
+    {
+      "id": "nagel_1",
+      "text": "If someone has had too much to drink and his car swerves on to the sidewalk, he can count himself morally lucky if there are no pedestrians in its path. If there were, he would be to blame for their deaths, and would probably be prosecuted for manslaughter.",
+      "philosopher_id": "nagel",
+      "source_title": "Moral Luck",
+      "tradition_id": "existentialism",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Holds recklessness fixed across two drivers and lets only the presence of a pedestrian vary, so that the difference in blame cannot be traced to anything the driver did.",
+      "core_assumption": "Blame in ordinary life tracks how things turned out, even when the agent controlled nothing about the outcome.",
+      "why_characteristic": "The drunk driver is the case students will remember from the essay, and the phrase 'morally lucky' is the coinage the whole paper turns on."
+    },
+    {
+      "id": "nagel_2",
+      "text": "Where a significant aspect of what someone does depends on factors beyond his control, yet we continue to treat him in that respect as an object of moral judgment, it can be called moral luck. Such luck can be good or bad.",
+      "philosopher_id": "nagel",
+      "source_title": "Moral Luck",
+      "tradition_id": "existentialism",
+      "difficulty": 2,
+      "argument_type": "definition",
+      "key_move": "Defines moral luck by the collision between two things we already accept: that control conditions judgment, and that we judge people anyway.",
+      "core_assumption": "The phenomenon is located in our practice of judging, not in a theory imposed on it from outside.",
+      "why_characteristic": "This is the sentence that names the essay's topic, and it defines luck by the persistence of judgment rather than by chance."
+    },
+    {
+      "id": "nagel_3",
+      "text": "An envious person hates the greater success of others. He can be morally condemned as envious even if he congratulates them cordially and does nothing to denigrate or spoil their success.",
+      "philosopher_id": "nagel",
+      "source_title": "Moral Luck",
+      "tradition_id": "existentialism",
+      "difficulty": 3,
+      "argument_type": "counterexample",
+      "key_move": "Uses a vice that never issues in action to show that moral condemnation reaches character, not only choices, which pushes the problem back before the will.",
+      "core_assumption": "Constitutive luck is real: we are assessed for inclinations and temperament we did not choose and cannot simply revise.",
+      "why_characteristic": "The envious man who congratulates his rival is Nagel's illustration of constitutive luck against Kant's claim that only the will may be judged."
+    },
+    {
+      "id": "nagel_4",
+      "text": "If the condition of control is consistently applied, it threatens to erode most of the moral assessments we find it natural to make. The things for which people are morally judged are determined in more ways than we at first realize by what is beyond their control.",
+      "philosopher_id": "nagel",
+      "source_title": "Moral Luck",
+      "tradition_id": "existentialism",
+      "difficulty": 4,
+      "argument_type": "principle_statement",
+      "key_move": "States the engine of the paper: an intuitive requirement, taken seriously, destroys the judgments it was meant to discipline.",
+      "core_assumption": "The control condition is not a stray premise to be dropped; it keeps looking correct in each new case to which it extends.",
+      "why_characteristic": "The verb 'erode' and the phrase 'condition of control' recur through the essay and mark Nagel's diagnosis rather than any proposed cure."
+    },
+    {
+      "id": "nagel_5",
+      "text": "A person can be morally responsible only for what he does; but what he does results from a great deal that he does not do; therefore he is not morally responsible for what he is and is not responsible for.",
+      "philosopher_id": "nagel",
+      "source_title": "Moral Luck",
+      "tradition_id": "existentialism",
+      "difficulty": 5,
+      "argument_type": "paradox",
+      "key_move": "Compresses the argument into a three-step chain and then labels the result a paradox rather than a contradiction, refusing to resolve it.",
+      "core_assumption": "The concept of responsibility carries the trouble inside it; no repair of the surrounding theory removes it.",
+      "why_characteristic": "Nagel states the paradox flatly and adds that he has no solution, which is the stance that separates him from Kant and from the compatibilist reply he considers."
+    },
+    {
+      "id": "nguyen_1",
+      "text": "By discrediting outsiders, echo chambers leave their members overly dependent on approved inside sources for information. In epistemic bubbles, other voices are merely not heard; in echo chambers, other voices are actively undermined.",
+      "philosopher_id": "nguyen",
+      "source_title": "Echo Chambers and Epistemic Bubbles",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "definition",
+      "key_move": "Draws the paper's governing distinction by naming two different mechanisms of exclusion, omission and active discredit.",
+      "core_assumption": "Structures of exclusion differ in kind, and the difference sits in what happens to outside voices rather than in how much information gets through.",
+      "why_characteristic": "The bubble/chamber contrast is the sentence the whole essay is built around, and no other assigned reading uses these terms."
+    },
+    {
+      "id": "nguyen_2",
+      "text": "A toy example: suppose I am a cult leader, and I have taught my followers to believe that every human except the members of our group has been infested and mind-controlled by alien ghosts from Mars.",
+      "philosopher_id": "nguyen",
+      "source_title": "Echo Chambers and Epistemic Bubbles",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "thought_experiment",
+      "key_move": "Builds a deliberately absurd case so the mechanism can be inspected without anyone's political loyalties getting in the way.",
+      "core_assumption": "A belief system can be arranged so that contradiction arrives already predicted, and prediction converts contradiction into confirmation.",
+      "why_characteristic": "The Mars ghosts set up the disagreement-reinforcement mechanism, which he then connects to Begby's evidential pre-emption and to Pizzagate."
+    },
+    {
+      "id": "nguyen_3",
+      "text": "Bubbles restrict access to outsiders, but don’t necessarily change their credibility. Echo chambers, on the other hand, work by offering a pre-emptive discredit towards any outside sources.",
+      "philosopher_id": "nguyen",
+      "source_title": "Echo Chambers and Epistemic Bubbles",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Locates the difference in credence rather than access, which is what makes exposure the wrong treatment for one of the two structures.",
+      "core_assumption": "Credibility assignments do more epistemic work than information flow, so a well-connected network can still be captured.",
+      "why_characteristic": "\"Pre-emptive discredit\" is his own coinage for the manipulation of trust, and it carries the paper's argument about why exposure backfires."
+    },
+    {
+      "id": "nguyen_4",
+      "text": "One might be tempted to say: but just give them the real evidence! You can’t discredit neutral evidence! But this response radically underestimates the degree of trust and social processing involved in most presentations of evidence.",
+      "philosopher_id": "nguyen",
+      "source_title": "Echo Chambers and Epistemic Bubbles",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "States the obvious fix in the reader's own voice, then blocks it by showing that evidence reaches almost everyone through chains of institutional trust.",
+      "core_assumption": "There is no evidence that arrives untouched by testimony, so nothing in the epistemic toolkit is immune to a manipulation of trust.",
+      "why_characteristic": "He turns his own belief in climate change into the example, tracing it through science journalists and credentialing systems rather than claiming direct access."
+    },
+    {
+      "id": "nguyen_5",
+      "text": "But echo chambers are the very opposite; they are reverse-mandevillian intelligences. Echo chambers are social epistemic structures which convert individually epistemically virtuous activity into collective epistemic vice.",
+      "philosopher_id": "nguyen",
+      "source_title": "Echo Chambers and Epistemic Bubbles",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "principle_statement",
+      "key_move": "Inverts Smart's mandevillian intelligence to shift responsibility from the believer's character onto the structure the believer was raised in.",
+      "core_assumption": "Epistemic evaluation has to take the social structure as its object, since the same practices count as virtues or vices depending on where they are performed.",
+      "why_characteristic": "The reverse-mandevillian label is his term, and it drives the argument that the home-schooled teenager is blameless where Cassam's Oliver is blamed."
+    },
+    {
+      "id": "norcross_1",
+      "text": "Fred explains that he keeps the puppies for twenty-six weeks, and then butchers them while holding them upside-down. During their lives he performs a series of mutilations on them, such as slicing off their noses and their paws with a hot knife, all without any form of anesthesia.",
+      "philosopher_id": "norcross",
+      "source_title": "Puppies, Pigs, and People: Eating Meat and Marginal Cases",
+      "tradition_id": "consequentialism",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Sets up the case in clinical detail so the reader condemns Fred before learning that the details match standard practice in intensive confinement facilities.",
+      "core_assumption": "Moral reactions to a described practice should not change when the same practice is relabeled or moved out of sight.",
+      "why_characteristic": "The basement, the twenty-six week cycle, and the unanaesthetized mutilations are the opening scene every reader of this paper remembers."
+    },
+    {
+      "id": "norcross_2",
+      "text": "I expect near universal agreement with this claim (the exceptions being those who are either inhumanly callous or thinking ahead, and wish to avoid the following conclusion, to which such agreement commits them). No decent person would even contemplate torturing puppies merely to enhance a gustatory experience.",
+      "philosopher_id": "norcross",
+      "source_title": "Puppies, Pigs, and People: Eating Meat and Marginal Cases",
+      "tradition_id": "consequentialism",
+      "difficulty": 2,
+      "argument_type": "principle_statement",
+      "key_move": "Extracts the premise everyone will grant, while warning that readers who see where it leads may refuse it for that reason alone.",
+      "core_assumption": "Gustatory pleasure cannot outweigh severe suffering, and a conclusion's unpleasantness is no reason to reject a premise.",
+      "why_characteristic": "The parenthetical needling of readers who are 'thinking ahead' is Norcross's tone throughout the paper."
+    },
+    {
+      "id": "norcross_3",
+      "text": "A one in ten thousand chance of saving 250,000 chickens per year from excruciating lives is morally and mathematically equivalent to the certainty of saving 25 chickens per year.",
+      "philosopher_id": "norcross",
+      "source_title": "Puppies, Pigs, and People: Eating Meat and Marginal Cases",
+      "tradition_id": "consequentialism",
+      "difficulty": 3,
+      "argument_type": "objection_reply",
+      "key_move": "Answers the causal-impotence defense with expected value, noting that the harm risked grows in exact proportion as the chance of preventing it shrinks.",
+      "core_assumption": "Expected consequences, not guaranteed ones, determine what an individual consumer is responsible for.",
+      "why_characteristic": "The chicken threshold arithmetic, followed by the car seat and aircraft oxygen mask comparisons, is this paper's distinctive reply to 'my choice makes no difference'."
+    },
+    {
+      "id": "norcross_4",
+      "text": "Whatever kind and level of rationality is selected as justifying the attribution of superior moral status to humans will either be lacking in some humans or present in some animals.",
+      "philosopher_id": "norcross",
+      "source_title": "Puppies, Pigs, and People: Eating Meat and Marginal Cases",
+      "tradition_id": "consequentialism",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "States the argument from marginal cases as a dilemma that any rationality criterion must face before it can do the work Steinbock, Warren, and Cohen want from it.",
+      "core_assumption": "A criterion of moral status must be applied to individuals, not to species averages or typical members.",
+      "why_characteristic": "Norcross names 'marginal cases' in the title and builds section 5 around exactly this formulation."
+    },
+    {
+      "id": "norcross_5",
+      "text": "That animals can’t be moral agents doesn’t seem to be relevant to their status as moral patients. Many, perhaps most, humans are both moral agents and patients. Most, perhaps all, animals are only moral patients.",
+      "philosopher_id": "norcross",
+      "source_title": "Puppies, Pigs, and People: Eating Meat and Marginal Cases",
+      "tradition_id": "consequentialism",
+      "difficulty": 5,
+      "argument_type": "distinction",
+      "key_move": "Concedes the whole rationality claim and then denies its relevance, separating what grounds obligation from what grounds standing to be wronged.",
+      "core_assumption": "Full status as a moral patient is not earned by moral agency; suffering alone grounds it.",
+      "why_characteristic": "Norcross calls this the speciesist's central confusion and treats it as a deeper problem than marginal cases."
+    },
+    {
+      "id": "pettit_1",
+      "text": "But I suspect that like me, you will balk at this judgment. You will think that Nora lives under Torvald’s thumb. She is the doll in a doll’s house, not a free woman.",
+      "philosopher_id": "pettit",
+      "source_title": "Just Freedom: A Moral Compass for a Complex World",
+      "tradition_id": "political_philosophy",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Refuses the verdict that noninterference delivers, inviting the reader to share the intuition that Nora is unfree.",
+      "core_assumption": "Living under someone else's thumb is unfreedom even when that person never blocks a single choice.",
+      "why_characteristic": "The doll's house image from Ibsen is the case the Prologue is built around."
+    },
+    {
+      "id": "pettit_2",
+      "text": "To be a free person you must have the capacity to make certain central choices—choices about what religion to practice, whether to speak your mind, who to associate with, and so on—without having to seek the permission of another.",
+      "philosopher_id": "pettit",
+      "source_title": "Just Freedom: A Moral Compass for a Complex World",
+      "tradition_id": "political_philosophy",
+      "difficulty": 3,
+      "argument_type": "definition",
+      "key_move": "States the positive condition for personal freedom by naming the basic liberties and the permission requirement.",
+      "core_assumption": "Freedom is a status you hold in relation to others, not a running tally of choices left unblocked.",
+      "why_characteristic": "The list of central choices and the phrase about seeking another's permission is how the Prologue defines a free person."
+    },
+    {
+      "id": "pettit_3",
+      "text": "If you happen to be treated with indulgence and goodwill, as Nora is, then you will of course be a lot better off than if you incur the malice of the other. But even if you escape ill-treatment, you can only congratulate yourself on your good fortune, not on your freedom.",
+      "philosopher_id": "pettit",
+      "source_title": "Just Freedom: A Moral Compass for a Complex World",
+      "tradition_id": "political_philosophy",
+      "difficulty": 4,
+      "argument_type": "principle_statement",
+      "key_move": "Drives a wedge between escaping harm and being free, so that indulgence counts as luck rather than liberty.",
+      "core_assumption": "Whatever you hold at another's pleasure you do not hold as a free person.",
+      "why_characteristic": "Congratulating yourself on good fortune rather than freedom is the Prologue's verdict on anyone in Nora's position."
+    },
+    {
+      "id": "pettit_4",
+      "text": "The eyeball test requires that people should be so resourced and protected in the basic choices of life—for short, the basic liberties—that they can look others in the eye without reason for fear or deference of the kind that a power of interference might inspire.",
+      "philosopher_id": "pettit",
+      "source_title": "Just Freedom: A Moral Compass for a Complex World",
+      "tradition_id": "political_philosophy",
+      "difficulty": 2,
+      "argument_type": "definition",
+      "key_move": "Fixes a workable threshold for how much protection justice demands by making it a test anyone can apply.",
+      "core_assumption": "Fear and deference in the presence of the powerful are evidence that a society has failed, not that a person is timid.",
+      "why_characteristic": "The eyeball test is one of the three named tests the Prologue introduces."
+    },
+    {
+      "id": "pettit_5",
+      "text": "Freedom as non-domination is not the only good in life, of course. But it is a gateway good, as we might put it: a good whose realization promises to bring the realization of other goods in its train.",
+      "philosopher_id": "pettit",
+      "source_title": "Just Freedom: A Moral Compass for a Complex World",
+      "tradition_id": "political_philosophy",
+      "difficulty": 5,
+      "argument_type": "principle_statement",
+      "key_move": "Answers the objection that one value cannot carry a whole political philosophy by arguing that securing freedom drags other goods with it.",
+      "core_assumption": "Freedom can serve as the single guiding good for social justice without denying that other goods matter.",
+      "why_characteristic": "The gateway good formulation is how the Prologue justifies making freedom the sole compass."
+    },
+    {
+      "id": "rachels_1",
+      "text": "We differ in our beliefs, not in our values. We agree that we shouldn’t eat Grandma; we disagree about whether the cow might be Grandma.",
+      "philosopher_id": "rachels",
+      "source_title": "The Challenge of Cultural Relativism",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Explains away an apparent clash of values by locating the disagreement in factual belief about what the cow is.",
+      "core_assumption": "Customs differ for many reasons, so a difference in practice does not establish a difference in values.",
+      "why_characteristic": "The cow-that-might-be-Grandma case is the chapter's most memorable example and belongs to Rachels's argument that cultures disagree less than they seem to."
+    },
+    {
+      "id": "rachels_2",
+      "text": "Cultural Relativism holds, in effect, that societies are morally infallible—in other words, that the morals of a culture can never be wrong. But when we see that societies can and do endorse grave injustices, we see that societies, like their members, can be in need of moral improvement.",
+      "philosopher_id": "rachels",
+      "source_title": "The Challenge of Cultural Relativism",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "objection",
+      "key_move": "Restates the second tenet of Cultural Relativism as a claim about infallibility, then refutes it with cases of societies endorsing injustice.",
+      "core_assumption": "What a society believes about morals and what is really true can come apart, so a moral code can itself be mistaken.",
+      "why_characteristic": "Rachels tests each of the five tenets in turn, and this is the verdict he reaches on the tenet at the heart of the theory."
+    },
+    {
+      "id": "rachels_3",
+      "text": "For an argument to be sound, its premises must all be true, and its conclusion must logically follow from them. Here, the problem is that the conclusion does not follow from the premise—that is, even if the premise is true, the conclusion might still be false.",
+      "philosopher_id": "rachels",
+      "source_title": "The Challenge of Cultural Relativism",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Applies the test for soundness to the Cultural Differences Argument and diagnoses it as invalid, since its premise reports beliefs while its conclusion reports how things are.",
+      "core_assumption": "A theory earns acceptance through a valid argument, and showing the argument fails leaves the conclusion unproved rather than refuted.",
+      "why_characteristic": "The whole chapter turns on this diagnosis, and Rachels immediately warns that it does not show the relativist's conclusion to be false."
+    },
+    {
+      "id": "rachels_4",
+      "text": "It is difficult to think of ethical principles that should hold for all people at all times. However, if we are to criticize the practice of slavery, or stoning, or genital mutilation, and if such practices are really and truly wrong, then we must appeal to principles that are not tethered to the traditions of any particular society.",
+      "philosopher_id": "rachels",
+      "source_title": "The Challenge of Cultural Relativism",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "principle_statement",
+      "key_move": "Concedes how hard universal principles are to state, then argues that criticizing slavery or excision commits us to at least one principle no culture owns.",
+      "core_assumption": "Moral criticism across cultures requires a standard that is not itself a local tradition, such as whether a practice helps or hurts the people affected by it.",
+      "why_characteristic": "This is Rachels's answer to the third tenet, and it names the welfare standard he had already used on the Kassindja case."
+    },
+    {
+      "id": "rachels_5",
+      "text": "Cultural Relativism begins with the insight that many of our practices are like this—they are only cultural products. Then it goes wrong by assuming that all of them are.",
+      "philosopher_id": "rachels",
+      "source_title": "The Challenge of Cultural Relativism",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "objection",
+      "key_move": "Locates the exact point of failure in a theory he has just credited, separating the true insight about conventional customs from the overgeneralization built on it.",
+      "core_assumption": "A false theory can rest on a genuine insight, and the insight survives once the overgeneralization is removed.",
+      "why_characteristic": "Rachels ends by saying what we can learn from Cultural Relativism, and this sentence marks the boundary between the lesson he keeps and the theory he rejects."
+    },
+    {
+      "id": "rachels_applied_1",
+      "text": "In the first, Smith stands to gain a large inheritance if anything should happen to his six-year-old cousin. One evening while the child is taking his bath, Smith sneaks into the bathroom and drowns the child, and then arranges things so that it will look like an accident.",
+      "philosopher_id": "rachels_applied",
+      "source_title": "Active and Passive Euthanasia",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Sets up the first half of a matched pair of cases, fixing motive and outcome so that only the killing/letting-die feature will vary.",
+      "core_assumption": "Moral comparison requires cases that differ in exactly one respect, or the difference cannot be credited with the verdict.",
+      "why_characteristic": "The bathtub inheritance case is the example every reader of the euthanasia paper remembers, and Rachels states it in deliberately flat, unliterary detail."
+    },
+    {
+      "id": "rachels_applied_2",
+      "text": "Now Smith killed the child, whereas Jones \"merely\" let the child die. That is the only difference between them. Did either man behave better, from a moral point of view?",
+      "philosopher_id": "rachels_applied",
+      "source_title": "Active and Passive Euthanasia",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "thought_experiment",
+      "key_move": "Collects the payoff of the paired cases and puts the burden on the reader to find a verdict-changing difference.",
+      "core_assumption": "The bare difference between killing and letting die carries no moral weight on its own.",
+      "why_characteristic": "The scare quotes around \"merely\" and the flat closing question are Rachels pressing a distinction until it has to justify itself."
+    },
+    {
+      "id": "rachels_applied_3",
+      "text": "Part of my point is that the process of being \"allowed to die\" can be relatively slow and painful, whereas being given a lethal injection is relatively quick and painless.",
+      "philosopher_id": "rachels_applied",
+      "source_title": "Active and Passive Euthanasia",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "States the humaneness argument: the doctrine that permits only the passive option selects the course that produces more suffering.",
+      "core_assumption": "Once the decision not to prolong life has been made, the humanitarian motive behind it favors the faster death.",
+      "why_characteristic": "Rachels turns the doctrine's own compassionate rationale against it, and does so in plain comparative language rather than principle-talk."
+    },
+    {
+      "id": "rachels_applied_4",
+      "text": "Now, an operation such as that to remove an intestinal obstruction is not prohibitively difficult. The reason why such operations are not performed in these cases is, clearly, that the child has Down's syndrome and the parents and doctor judge that because of that fact it is better for the child to die.",
+      "philosopher_id": "rachels_applied",
+      "source_title": "Active and Passive Euthanasia",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Diagnoses what actually decides the infant cases, setting up the charge that the doctrine lets an irrelevant surgical fact determine life and death.",
+      "core_assumption": "A doctrine that makes survival hinge on a morally weightless feature of a case is defective, whatever one thinks about the case itself.",
+      "why_characteristic": "The Down's syndrome infant cases carry Rachels's second argument, and he presses them without taking a side on the value of those infants' lives."
+    },
+    {
+      "id": "rachels_applied_5",
+      "text": "For example, one may let a patient die by way of not giving medication, just as one may insult someone by way of not shaking his hand. But for any purpose of moral assessment, it is a type of action nonetheless.",
+      "philosopher_id": "rachels_applied",
+      "source_title": "Active and Passive Euthanasia",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "objection",
+      "key_move": "Dismantles the reply that in passive euthanasia the doctor does nothing, by showing that omissions can be actions.",
+      "core_assumption": "Deciding to let a patient die is open to moral appraisal in the same way as deciding to kill him.",
+      "why_characteristic": "The handshake analogy is Rachels's way of settling a conceptual point with an everyday case instead of a theory of action."
+    },
+    {
+      "id": "rawls_1",
+      "text": "It is assumed, then, that the parties do not know certain kinds of particular facts. First of all, no one knows his place in society, his class position or social status; nor does he know his fortune in the distribution of natural assets and abilities, his intelligence and strength, and the like.",
+      "philosopher_id": "rawls",
+      "source_title": "A Theory of Justice",
+      "tradition_id": "political_philosophy",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Specifies exactly which facts get deleted inside the choice situation, so that the resulting agreement cannot be shaped by anyone's particular position.",
+      "core_assumption": "Knowledge of your class and your natural endowments is morally irrelevant to which principles of justice you should accept.",
+      "why_characteristic": "The list of what the parties do not know is the veil of ignorance itself, stated in Rawls's flat inventory style at the opening of §24."
+    },
+    {
+      "id": "rawls_2",
+      "text": "Rather, the guiding idea is that the principles of justice for the basic structure of society are the object of the original agreement. They are the principles that free and rational persons concerned to further their own interests would accept in an initial position of equality",
+      "philosopher_id": "rawls",
+      "source_title": "A Theory of Justice",
+      "tradition_id": "political_philosophy",
+      "difficulty": 2,
+      "argument_type": "definition",
+      "key_move": "Relocates the social contract: the parties agree on principles for the basic structure rather than on entering a society or setting up a government.",
+      "core_assumption": "A conception of justice earns its authority from what free and equal persons would agree to, not from tradition, revelation, or an appeal to self-evidence.",
+      "why_characteristic": "Rawls announces justice as fairness in this sentence, raising Locke, Rousseau, and Kant to a higher level of abstraction."
+    },
+    {
+      "id": "rawls_3",
+      "text": "It may be expedient but it is not just that some should have less in order that others may prosper.",
+      "philosopher_id": "rawls",
+      "source_title": "A Theory of Justice",
+      "tradition_id": "political_philosophy",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Drives a wedge between an arrangement that pays off in the aggregate and one that can be justified to the person who bears the cost.",
+      "core_assumption": "Losses imposed on some cannot be cancelled by gains registered elsewhere in the social ledger.",
+      "why_characteristic": "The clipped antithesis of expedient and just is Rawls's sharpest line against utilitarian trade-offs in §3."
+    },
+    {
+      "id": "rawls_4",
+      "text": "In the absence of strong and lasting benevolent impulses, a rational man would not accept a basic structure merely because it maximized the algebraic sum of advantages irrespective of its permanent effects on his own basic rights and interests.",
+      "philosopher_id": "rawls",
+      "source_title": "A Theory of Justice",
+      "tradition_id": "political_philosophy",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Refutes utilitarianism from inside the choice situation by showing that a party protecting his own interests has no reason to consent to it.",
+      "core_assumption": "Rational agreement among equals, rather than the size of the total, sets the test a conception of justice must pass.",
+      "why_characteristic": "Rawls argues against the principle of utility by asking what a rational party would sign, and the phrase \"algebraic sum of advantages\" is his."
+    },
+    {
+      "id": "rawls_5",
+      "text": "The two principles mentioned seem to be a fair basis on which those better endowed, or more fortunate in their social position, neither of which we can be said to deserve, could expect the willing cooperation of others",
+      "philosopher_id": "rawls",
+      "source_title": "A Theory of Justice",
+      "tradition_id": "political_philosophy",
+      "difficulty": 5,
+      "argument_type": "argument_from_reciprocity",
+      "key_move": "Buries the attack on desert in a subordinate clause, then converts it into a demand: the fortunate need terms the badly placed could willingly accept.",
+      "core_assumption": "Natural endowment and social starting point are undeserved, so they cannot by themselves ground a claim to greater benefits.",
+      "why_characteristic": "The quiet parenthetical denial of desert, attached to an argument about willing cooperation, is a move no other author in the reading makes."
+    },
+    {
+      "id": "sartre_1",
+      "text": "Man is nothing else but that which he makes of himself. That is the first principle of existentialism.",
+      "philosopher_id": "sartre",
+      "source_title": "Existentialism Is a Humanism",
+      "tradition_id": "existentialism",
+      "difficulty": 1,
+      "argument_type": "principle_statement",
+      "key_move": "States the consequence of existence preceding essence as a flat principle, so that any later appeal to a fixed human nature has already been ruled out.",
+      "core_assumption": "No God conceived human beings the way an artisan conceives a paper-knife, so there is no human nature standing behind anyone's conduct.",
+      "why_characteristic": "Sartre labels it his first principle in the lecture, and the paper-knife argument that leads up to it is the passage students remember first."
+    },
+    {
+      "id": "sartre_2",
+      "text": "That is what I mean when I say that man is condemned to be free. Condemned, because he did not create himself, yet is nevertheless at liberty, and from the moment that he is thrown into this world he is responsible for everything he does.",
+      "philosopher_id": "sartre",
+      "source_title": "Existentialism Is a Humanism",
+      "tradition_id": "existentialism",
+      "difficulty": 2,
+      "argument_type": "definition",
+      "key_move": "Defines freedom as a sentence rather than a privilege, joining the absence of any values in an intelligible heaven to total responsibility for what one does.",
+      "core_assumption": "With God gone there is no determinism and no justification available, so a person carries the whole weight of his acts without help.",
+      "why_characteristic": "The phrase arrives at the end of the abandonment section, right after Sartre quotes Dostoevsky on everything being permitted."
+    },
+    {
+      "id": "sartre_3",
+      "text": "When we say that man chooses himself, we do mean that every one of us must choose himself; but by that we also mean that in choosing for himself he chooses for all men.",
+      "philosopher_id": "sartre",
+      "source_title": "Existentialism Is a Humanism",
+      "tradition_id": "existentialism",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Answers the charge that existentialism traps a person in private subjectivity by widening each individual choice into legislation for humanity.",
+      "core_assumption": "Choosing something affirms its value, and nothing can be better for me unless it is better for everyone, so every act paints an image of man.",
+      "why_characteristic": "The claim sets up the worker who joins a Christian union and the man who marries, and it grounds Sartre's account of anguish."
+    },
+    {
+      "id": "sartre_4",
+      "text": "Whereas the existentialist says that the coward makes himself cowardly, the hero makes himself heroic; and that there is always a possibility for the coward to give up cowardice and for the hero to stop being a hero.",
+      "philosopher_id": "sartre",
+      "source_title": "Existentialism Is a Humanism",
+      "tradition_id": "existentialism",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Rejects the reassurance offered by heredity and temperament, converting a character trait into a deed that the agent keeps performing and could stop performing.",
+      "core_assumption": "A temperament is not an action, so nothing about a person's constitution can produce cowardice; only giving way does.",
+      "why_characteristic": "Sartre contrasts himself with Zola here and says people are horrified because his coward is guilty of being a coward."
+    },
+    {
+      "id": "sartre_5",
+      "text": "I cannot obtain any truth whatsoever about myself, except through the mediation of another. The other is indispensable to my existence, and equally so to any knowledge I can have of myself.",
+      "philosopher_id": "sartre",
+      "source_title": "Existentialism Is a Humanism",
+      "tradition_id": "existentialism",
+      "difficulty": 5,
+      "argument_type": "objection",
+      "key_move": "Turns the Cartesian starting point against the accusation of solipsism by finding other people inside the cogito rather than outside it.",
+      "core_assumption": "Discovering myself immediately reveals another freedom confronting mine, so self-knowledge runs through a world of inter-subjectivity.",
+      "why_characteristic": "Sartre says this while replying to the Communist charge that the cogito cannot reach other people, and he marks the break from Descartes and Kant on the same page."
+    },
+    {
+      "id": "singer_1",
+      "text": "if I am walking past a shallow pond and see a child drowning in it, I ought to wade in and pull the child out. This will mean getting my clothes muddy, but this is insignificant, while the death of the child would presumably be a very bad thing.",
+      "philosopher_id": "singer",
+      "source_title": "Famine, Affluence, and Morality",
+      "tradition_id": "consequentialism",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Illustrates the preventing-bad-things principle with a case where nobody hesitates, so that the principle is conceded before its cost is revealed.",
+      "core_assumption": "A trivial cost to me cannot outweigh a death I am able to prevent.",
+      "why_characteristic": "The shallow pond is the example students remember from this article, and it is stated here in Singer's own plain first-person voice."
+    },
+    {
+      "id": "singer_2",
+      "text": "My next point is this: if it is in our power to prevent something bad from happening, without thereby sacrificing anything of comparable moral importance, we ought, morally, to do it.",
+      "philosopher_id": "singer",
+      "source_title": "Famine, Affluence, and Morality",
+      "tradition_id": "consequentialism",
+      "difficulty": 2,
+      "argument_type": "principle_statement",
+      "key_move": "States the single premise that carries the whole argument, pitched to look as uncontroversial as the claim that starvation is bad.",
+      "core_assumption": "Obligation attaches to what we can prevent, weighed only against the moral importance of what we would give up.",
+      "why_characteristic": "Every later conclusion in the article is derived from this sentence, and Singer repeats it in a qualified form twice more."
+    },
+    {
+      "id": "singer_3",
+      "text": "If we accept any principle of impartiality, universalizability, equality, or whatever, we cannot discriminate against someone merely because he is far away from us (or we are far away from him).",
+      "philosopher_id": "singer",
+      "source_title": "Famine, Affluence, and Morality",
+      "tradition_id": "consequentialism",
+      "difficulty": 3,
+      "argument_type": "objection",
+      "key_move": "Removes distance as a morally relevant factor by showing that any impartiality requirement already rules it out.",
+      "core_assumption": "Physical nearness explains who we tend to help without justifying whom we ought to help.",
+      "why_characteristic": "The move from the pond to famine relief depends on this step, and the parenthetical reversal is Singer's own turn of phrase."
+    },
+    {
+      "id": "singer_4",
+      "text": "It follows from what I have said earlier that we ought to give money away, rather than spend it on clothes which we do not need to keep us warm. To do so is not charitable, or generous.",
+      "philosopher_id": "singer",
+      "source_title": "Famine, Affluence, and Morality",
+      "tradition_id": "consequentialism",
+      "difficulty": 4,
+      "argument_type": "principle_statement",
+      "key_move": "Reclassifies famine relief out of the category of praiseworthy generosity and into the category of what is wrong to omit.",
+      "core_assumption": "The line our society draws between duty and charity tracks social convenience rather than moral truth.",
+      "why_characteristic": "Singer's attack on the duty/charity distinction runs through spending on clothes, and the flat refusal of the word 'generous' is his."
+    },
+    {
+      "id": "singer_5",
+      "text": "The strong version, which required us to prevent bad things from happening unless in doing so we would be sacrificing something of comparable moral significance, does seem to require reducing ourselves to the level of marginal utility. I should also say that the strong version seems to me to be the correct one.",
+      "philosopher_id": "singer",
+      "source_title": "Famine, Affluence, and Morality",
+      "tradition_id": "consequentialism",
+      "difficulty": 5,
+      "argument_type": "principle_statement",
+      "key_move": "Admits the most demanding reading of his own principle and endorses it, rather than retreating to the moderate version he used to make the argument easy to accept.",
+      "core_assumption": "A conclusion we are reluctant to face counts against our standards of behavior rather than against the argument.",
+      "why_characteristic": "The strong/moderate distinction and Singer's willingness to own the harder version appear late in the article and reward a careful reader."
+    },
+    {
+      "id": "singer_applied_1",
+      "text": "But suppose they were otherwise, what would it avail? The question is not, Can they reason? nor Can they talk? but, Can they suffer?",
+      "philosopher_id": "singer_applied",
+      "source_title": "All Animals Are Equal",
+      "tradition_id": "consequentialism",
+      "difficulty": 1,
+      "argument_type": "principle_statement",
+      "key_move": "Quotes Bentham to relocate the boundary of moral concern from reason or language to the capacity for suffering.",
+      "core_assumption": "What qualifies a being for moral consideration is sentience, not intellect.",
+      "why_characteristic": "Singer builds the paper's central argument on this Bentham passage, and the lecture discussion dwelt on it."
+    },
+    {
+      "id": "singer_applied_2",
+      "text": "Equality is a moral ideal, not a simple assertion of fact. There is no logically compelling reason for assuming that a factual difference in ability between two people justifies any difference in the amount of consideration we give to satisfying their needs and interests.",
+      "philosopher_id": "singer_applied",
+      "source_title": "All Animals Are Equal",
+      "tradition_id": "consequentialism",
+      "difficulty": 2,
+      "argument_type": "principle_statement",
+      "key_move": "Blocks the move from factual differences in ability to differences in moral consideration.",
+      "core_assumption": "Equality is prescriptive; it does not rest on any empirical sameness among beings.",
+      "why_characteristic": "The paper's answer to the objection that humans and animals are simply different in fact."
+    },
+    {
+      "id": "singer_applied_3",
+      "text": "The principle of the equality of human beings is not a description of an alleged actual equality among humans: it is a prescription of how we should treat humans.",
+      "philosopher_id": "singer_applied",
+      "source_title": "All Animals Are Equal",
+      "tradition_id": "consequentialism",
+      "difficulty": 3,
+      "argument_type": "definition",
+      "key_move": "Reclassifies equality from a factual claim to a prescription, so it can extend past the human case.",
+      "core_assumption": "Since equality never depended on capacities, no capacity test can confine it to humans.",
+      "why_characteristic": "The hinge of the paper's extension argument, stated in Singer's plainest formula."
+    },
+    {
+      "id": "singer_applied_4",
+      "text": "The capacity for suffering and enjoying things is a pre-requisite for having interests at all, a condition that must be satisfied before we can speak of interests in any meaningful way.",
+      "philosopher_id": "singer_applied",
+      "source_title": "All Animals Are Equal",
+      "tradition_id": "consequentialism",
+      "difficulty": 4,
+      "argument_type": "definition",
+      "key_move": "Grounds the sentience criterion: suffering is not one capacity among others but the precondition of having interests.",
+      "core_assumption": "Interests, and only interests, generate moral claims.",
+      "why_characteristic": "The stone-and-mouse passage that follows this line was the seminar's stock example."
+    },
+    {
+      "id": "singer_applied_5",
+      "text": "This is why the limit of sentience (using the term as a convenient, if not strictly accurate, shorthand for the capacity to suffer or experience enjoyment or happiness) is the only defensible boundary of concern for the interests of others.",
+      "philosopher_id": "singer_applied",
+      "source_title": "All Animals Are Equal",
+      "tradition_id": "consequentialism",
+      "difficulty": 5,
+      "argument_type": "principle_statement",
+      "key_move": "Declares every alternative boundary of moral concern arbitrary, leaving sentience as the only defensible line.",
+      "core_assumption": "A boundary of moral concern must be principled, and only sentience survives that test.",
+      "why_characteristic": "The paper's strongest single claim, with its careful parenthetical hedge on the word 'sentience'."
+    },
+    {
+      "id": "srinivasan_1",
+      "text": "You should stay and console your friend not because you’ve already met your do-gooding quota, but because it’s your friend that is in distress.",
+      "philosopher_id": "srinivasan",
+      "source_title": "Stop the Robot Apocalypse (London Review of Books, 2015)",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "objection",
+      "key_move": "Rejects both the strict and the moderate utilitarian accounts of why you may sit with a grieving friend, and relocates the reason in the relationship itself.",
+      "core_assumption": "Personal attachments give reasons directly, without needing to be licensed by a prior calculation of good produced.",
+      "why_characteristic": "A student who read the essay will remember the bereaved friend as the case she uses against MacAskill's ledger, and the italicised 'your' as her whole point."
+    },
+    {
+      "id": "srinivasan_2",
+      "text": "That word ‘arbitrary’ is striking. It is indeed arbitrary that MacAskill went to this hospital and not another, in Ethiopia and not some other country, just as it is arbitrary that we have the family, friends, lovers and neighbours we do.",
+      "philosopher_id": "srinivasan",
+      "source_title": "Stop the Robot Apocalypse (London Review of Books, 2015)",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "objection",
+      "key_move": "Concedes MacAskill's premise that his connection to the Ethiopian women was arbitrary, then extends it to every attachment anyone has, so that the premise proves far more than he wants.",
+      "core_assumption": "Arbitrary origins do not drain a relationship of moral weight once it is woven into a life.",
+      "why_characteristic": "She builds arguments by seizing one word from her opponent — here MacAskill's 'arbitrary' about the Hamlin Fistula Hospital — and turning it over until it breaks."
+    },
+    {
+      "id": "srinivasan_3",
+      "text": "So it turns out to be better to try to prevent some hypothetical x-risk, even with an extremely remote chance of being able to do so, than to help actual living people.",
+      "philosopher_id": "srinivasan",
+      "source_title": "Stop the Robot Apocalypse (London Review of Books, 2015)",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "reductio",
+      "key_move": "Follows Bostrom's expected-value reasoning about the astronomical number of future people to a conclusion that its own proponents should find intolerable.",
+      "core_assumption": "A calculation that licenses ignoring the living in favour of a vanishingly improbable future benefit has told us something about the calculation, not about our duties.",
+      "why_characteristic": "The line delivers the essay's title: the humanitarian arithmetic ends up funding computers rather than bed nets, and the funders are in Silicon Valley."
+    },
+    {
+      "id": "srinivasan_4",
+      "text": "If everything comes down to the marginal individual, then our ethical ambitions can be safely circumscribed; the philosopher is freed from the burden of trying to understand the mess we’re in, or of proposing an alternative vision of how things could be.",
+      "philosopher_id": "srinivasan",
+      "source_title": "Stop the Robot Apocalypse (London Review of Books, 2015)",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Diagnoses the appeal of individualist moral theory as a form of relief: taking the world as given lets the theorist off the hook for explaining or changing it.",
+      "core_assumption": "The proper objects of moral theory include communities, classes and states, so a theory that models only individual choices has narrowed its subject rather than sharpened it.",
+      "why_characteristic": "Her closing complaint against effective altruism is political rather than technical, and she ends the essay hoping philosophy has more to give."
+    },
+    {
+      "id": "srinivasan_5",
+      "text": "But why think this is the right way round? Perhaps it is the universal gaze that cannot withstand our ethical scrutiny.",
+      "philosopher_id": "srinivasan",
+      "source_title": "Stop the Robot Apocalypse (London Review of Books, 2015)",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "principle_statement",
+      "key_move": "Reverses the direction of justification between impartial theory and ordinary moral life, so that Sidgwick's point of view of the universe becomes the thing on trial.",
+      "core_assumption": "Our own point of view is the unavoidable scene of ethical action, and any standpoint claiming to overrule it owes us an argument.",
+      "why_characteristic": "She refuses to let responsibility, kindness and dignity be reimagined to suit a theory, and she puts the question as a challenge rather than a conclusion."
+    },
+    {
+      "id": "strawson_1",
+      "text": "the pain may be no less acute than if he treads on it in contemptuous disregard of my existence or with a malevolent wish to injure me. But I shall generally feel in the second case a kind and degree of resentment that I shall not feel in the first.",
+      "philosopher_id": "strawson",
+      "source_title": "Freedom and Resentment",
+      "tradition_id": "existentialism",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Holds the physical harm fixed and varies only the attitude behind it, so that the difference in resentment can be traced to the quality of the other person's will.",
+      "core_assumption": "Reactive attitudes respond to the goodwill or ill will another person shows us, not to the amount of damage done.",
+      "why_characteristic": "The trodden hand is the essay's first homely example, and its conversational 'if someone treads on my hand' register is unmistakably Strawson's."
+    },
+    {
+      "id": "strawson_2",
+      "text": "If your attitude towards someone is wholly objective, then though you may fight him, you cannot quarrel with him, and though you may talk to him, even negotiate with him, you cannot reason with him.",
+      "philosopher_id": "strawson",
+      "source_title": "Freedom and Resentment",
+      "tradition_id": "existentialism",
+      "difficulty": 2,
+      "argument_type": "definition",
+      "key_move": "Fixes the objective attitude by naming what it makes impossible, marking off quarrelling and reasoning from fighting and negotiating.",
+      "core_assumption": "Participation in human relationships and the objective stance towards a person exclude each other.",
+      "why_characteristic": "The paired contrasts and the everyday verbs -- fight, quarrel, negotiate, reason -- are the signature of Strawson's account of objectivity."
+    },
+    {
+      "id": "strawson_3",
+      "text": "The existence of the general framework of attitudes itself is something we are given with the fact of human society. As a whole, it neither calls for, nor permits, an external ‘rational’ justification.",
+      "philosopher_id": "strawson",
+      "source_title": "Freedom and Resentment",
+      "tradition_id": "existentialism",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Blocks the demand for a justification of the moral sentiments by locating that demand outside the framework within which justification operates.",
+      "core_assumption": "Justification runs inside the web of human attitudes; the web itself comes with human society rather than resting on an argument.",
+      "why_characteristic": "This is the naturalist core of the essay, and the footnote comparing it to Hume on induction makes the move recognizable."
+    },
+    {
+      "id": "strawson_4",
+      "text": "The prevalence of this happy state of affairs would not be a consequence of the reign of universal determinism, but of the reign of universal goodwill.",
+      "philosopher_id": "strawson",
+      "source_title": "Freedom and Resentment",
+      "tradition_id": "existentialism",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Shows that if determinism entailed that ordinary excuses always applied, what it would really have established is universal good intentions, which no determinist claims.",
+      "core_assumption": "Ordinary excuses report facts about intention and circumstance, so no thesis about universal causation can generate them.",
+      "why_characteristic": "The dry substitution of 'universal goodwill' for 'universal determinism' is Strawson's wit doing argumentative work."
+    },
+    {
+      "id": "strawson_5",
+      "text": "Sometimes he plugs this gap with an intuition of fittingness – a pitiful intellectualist trinket for a philosopher to wear as a charm against the recognition of his own humanity.",
+      "philosopher_id": "strawson",
+      "source_title": "Freedom and Resentment",
+      "tradition_id": "existentialism",
+      "difficulty": 5,
+      "argument_type": "objection",
+      "key_move": "Diagnoses the libertarian's appeal to fittingness as a substitute for the moral sentiments he already possesses and refuses to acknowledge.",
+      "core_assumption": "The missing element in accounts of desert is the human attitudes themselves, so any metaphysical stand-in for them is superfluous.",
+      "why_characteristic": "The 'pitiful intellectualist trinket' line is the essay's most quoted insult and its most concentrated statement of the anti-metaphysical charge."
+    },
+    {
+      "id": "thomson_1",
+      "text": "You wake up in the morning and find yourself back to back in bed with an unconscious violinist. A famous unconscious violinist.",
+      "philosopher_id": "thomson",
+      "source_title": "A Defense of Abortion",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "thought_experiment",
+      "key_move": "Drops the reader into a case built to share the structure of the argument under attack, so that a verdict about the case becomes evidence about the principle.",
+      "core_assumption": "Our confident judgments about concrete cases can overturn a general principle that sounded plausible in the abstract.",
+      "why_characteristic": "The violinist is the most famous thought experiment in the essay and the sentence students remember first."
+    },
+    {
+      "id": "thomson_2",
+      "text": "suppose it were like this: people-seeds drift about in the air like pollen, and if you open your windows, one may drift in and take root in your carpets or upholstery. You don't want children, so you fix up your windows with fine mesh screens, the very best you can buy.",
+      "philosopher_id": "thomson",
+      "source_title": "A Defense of Abortion",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "counterexample",
+      "key_move": "Answers the claim that voluntary intercourse confers a right to the woman's body by inventing a case with the same features, where the intruder plainly acquires no such right.",
+      "core_assumption": "Taking reasonable precautions against an outcome is the opposite of assuming responsibility for it.",
+      "why_characteristic": "The people-seeds and their mesh screens are the essay's answer to the responsibility argument, and nobody else writes examples like this."
+    },
+    {
+      "id": "thomson_3",
+      "text": "I am sick unto death, and the only thing that will save my life is the touch of Henry Fonda's cool hand on my fevered brow, then all the same, I have no right to be given the touch of Henry Fonda's cool hand on my fevered brow.",
+      "philosopher_id": "thomson",
+      "source_title": "A Defense of Abortion",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "counterexample",
+      "key_move": "Refutes the reading of the right to life on which it includes a right to the bare minimum one needs to survive, by finding a minimum nobody has any claim to.",
+      "core_assumption": "Needing something for continued life does not by itself give you a right to be given it.",
+      "why_characteristic": "The Henry Fonda case is the hinge of her analysis of the right to life, and the cool hand on the fevered brow is unmistakably hers."
+    },
+    {
+      "id": "thomson_4",
+      "text": "By contrast, in most states in this country women are compelled by law to be not merely Minimally Decent Samaritans, but Good Samaritans to unborn persons inside them.",
+      "philosopher_id": "thomson",
+      "source_title": "A Defense of Abortion",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Charges her opponents with inconsistency: they demand of pregnant women a standard of sacrifice that no law imposes on anyone else, including the thirty-eight who let Kitty Genovese die.",
+      "core_assumption": "Moral and legal demands should apply evenhandedly, so a burden required of one group and no other calls for justification.",
+      "why_characteristic": "The Good Samaritan and Minimally Decent Samaritan distinction is her own coinage and does the work of the essay's final third."
+    },
+    {
+      "id": "thomson_5",
+      "text": "So the right to life will not serve the opponents of abortion in the very simple and clear way in which they seem to have thought it would.",
+      "philosopher_id": "thomson",
+      "source_title": "A Defense of Abortion",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "principle_statement",
+      "key_move": "States the conclusion of the analysis of rights: the premise her opponents rest on cannot carry them to their conclusion without further argument they have not supplied.",
+      "core_assumption": "A right to life secures no claim to the use of another person's body, even where that use is needed for life itself.",
+      "why_characteristic": "The dry understatement about an argument that fails to serve is her characteristic way of closing a section."
+    },
+    {
+      "id": "thrasymachus_1",
+      "text": "And you are so far off about the just and justice, and the unjust and injustice, that you are unaware that justice and the just are really someone else's good, the advantage of the man who is stronger and rules, and a personal harm to the man who obeys and serves.",
+      "philosopher_id": "thrasymachus",
+      "source_title": "Plato, Republic Book I",
+      "tradition_id": "political_philosophy",
+      "difficulty": 1,
+      "argument_type": "principle_statement",
+      "key_move": "Recasts justice as a transfer, so that whatever the just man produces by his justice lands in the account of whoever rules him.",
+      "core_assumption": "Moral words track the interests of whoever holds power, and obedience is a cost paid by the obedient.",
+      "why_characteristic": "The phrase 'someone else's good' is the line every student remembers from the speech that opens against Socrates in the agora."
+    },
+    {
+      "id": "thrasymachus_2",
+      "text": "This, best of men, is what I mean: in every city the same thing is just, the advantage of the established ruling body. It surely is master; so the man who reasons rightly concludes that everywhere justice is the same thing, the advantage of the stronger.",
+      "philosopher_id": "thrasymachus",
+      "source_title": "Plato, Republic Book I",
+      "tradition_id": "political_philosophy",
+      "difficulty": 2,
+      "argument_type": "definition",
+      "key_move": "Generalizes from the survey of tyrannies, democracies and aristocracies to a single definition covering every constitution.",
+      "core_assumption": "Laws are made by rulers for rulers, so the content of justice changes with the regime while its function never does.",
+      "why_characteristic": "Only one speaker in Book I defines the just as the advantage of the stronger and dares Socrates to praise him for it."
+    },
+    {
+      "id": "thrasymachus_3",
+      "text": "Because you suppose shepherds or cowherds consider the good of the sheep or the cows and fatten them and take care of them looking to something other than their masters' good and their own",
+      "philosopher_id": "thrasymachus",
+      "source_title": "Plato, Republic Book I",
+      "tradition_id": "political_philosophy",
+      "difficulty": 3,
+      "argument_type": "objection",
+      "key_move": "Seizes the craft analogy Socrates was using for himself and gives it the reading a herdsman would give it, where care and slaughter come from the same motive.",
+      "core_assumption": "Whatever care a ruler shows the ruled is an investment he intends to collect on.",
+      "why_characteristic": "It arrives with the taunt about Socrates' wet nurse and his sniveling nose, the rudest moment in the dialogue."
+    },
+    {
+      "id": "thrasymachus_4",
+      "text": "And this must be considered, most simple Socrates: the just man everywhere has less than the unjust man. First, in contracts, when the just man is a partner of the unjust man, you will always find that at the dissolution of the partnership the just man does not have more than the unjust man, but less.",
+      "philosopher_id": "thrasymachus",
+      "source_title": "Plato, Republic Book I",
+      "tradition_id": "political_philosophy",
+      "difficulty": 4,
+      "argument_type": "argument_from_cases",
+      "key_move": "Opens a ledger of ordinary transactions, starting with business partnerships, to argue the point from what anyone can watch happening rather than from a definition.",
+      "core_assumption": "The question about justice is a question about which life pays, settled by counting what each man ends up holding.",
+      "why_characteristic": "The address 'most simple Socrates' and the itemized list running through taxes, distributions and public office belong to one speaker only."
+    },
+    {
+      "id": "thrasymachus_5",
+      "text": "And that is tyranny, which by stealth and force takes away what belongs to others, both what is sacred and profane, private and public, not bit by bit, but all at once.",
+      "philosopher_id": "thrasymachus",
+      "source_title": "Plato, Republic Book I",
+      "tradition_id": "political_philosophy",
+      "difficulty": 5,
+      "argument_type": "thought_experiment",
+      "key_move": "Pushes injustice to its limit case so that the ordinary judgment reverses: the partial thief is reproached, the complete one is called happy and blessed.",
+      "core_assumption": "Condemnation of injustice comes from fear of suffering it rather than from any objection to doing it.",
+      "why_characteristic": "The escalation from temple robbers and housebreakers up to the tyrant is the climax of the speech he tries to walk away from."
+    },
+    {
+      "id": "titelbaum_1",
+      "text": "She is willing to bet her life on the latter belief, and in fact does so multiple times daily during her commute. She is not willing to bet her life on the former belief.",
+      "philosopher_id": "titelbaum",
+      "source_title": "Fundamentals of Bayesian Epistemology 1: Introducing Credences",
+      "tradition_id": "analytic_method",
+      "difficulty": 1,
+      "argument_type": "example",
+      "key_move": "Uses a difference in what the physicist will stake her life on to expose a difference in doxastic attitude that belief talk cannot register.",
+      "core_assumption": "Doxastic attitudes show up in what an agent is willing to do, so any adequate description of them must be fine-grained enough to track betting behavior.",
+      "why_characteristic": "The physicist friend, her fusion belief, and her brake pedal are the opening case of the chapter and the example the whole argument for credences is built on."
+    },
+    {
+      "id": "titelbaum_2",
+      "text": "A fair lottery has sold one million tickets. Because of the poor odds, an agent who has purchased a ticket believes her ticket will not win. She also believes, of each other ticket purchased in the lottery, that it will not win. Nevertheless, she believes that at least one purchased ticket will win.",
+      "philosopher_id": "titelbaum",
+      "source_title": "Fundamentals of Bayesian Epistemology 1: Introducing Credences",
+      "tradition_id": "analytic_method",
+      "difficulty": 2,
+      "argument_type": "thought_experiment",
+      "key_move": "Sets up a set of individually reasonable beliefs that is logically inconsistent, producing a counterexample to Belief Consistency and, via the beliefs about individual tickets, to Belief Closure.",
+      "core_assumption": "Rational permission can attach to beliefs that together violate the standard logical norms, so those norms cannot be requirements of rationality.",
+      "why_characteristic": "Titelbaum quotes Kyburg's Lottery as the first of the two paradoxes he uses to argue that the natural norms for binary belief are false rather than merely too demanding."
+    },
+    {
+      "id": "titelbaum_3",
+      "text": "Yet the Simple Binarist—who is willing to attribute only beliefs, disbeliefs, and suspensions—can make out no difference between my friend’s doxastic attitudes toward those propositions. Once the Simple Binarist says my friend believes both propositions, he has said all he has to say.",
+      "philosopher_id": "titelbaum",
+      "source_title": "Fundamentals of Bayesian Epistemology 1: Introducing Credences",
+      "tradition_id": "analytic_method",
+      "difficulty": 3,
+      "argument_type": "objection",
+      "key_move": "Diagnoses the failure as one of descriptive resources: the binary vocabulary says nothing false, it simply runs out.",
+      "core_assumption": "A theory of doxastic attitudes is answerable to descriptive adequacy, and a scheme that cannot state a real difference between two attitudes is thereby deficient.",
+      "why_characteristic": "The Simple Binarist is Titelbaum's invented foil, introduced as an illustrative contrast rather than a plausible rival, and he returns to the character throughout the chapter."
+    },
+    {
+      "id": "titelbaum_4",
+      "text": "Epistemologists sometimes complain that working with numerical credences is unrealistic, because agents “don’t have numbers in their heads”. This is a bit like refusing to measure gas samples with numerical temperature values because molecules don’t fly around with numbers pinned to their backs.",
+      "philosopher_id": "titelbaum",
+      "source_title": "Fundamentals of Bayesian Epistemology 1: Introducing Credences",
+      "tradition_id": "analytic_method",
+      "difficulty": 4,
+      "argument_type": "objection_rebuttal",
+      "key_move": "Turns aside the psychological realism objection with an analogy, then reframes the real question as whether an agent's attitudes have a structure numbers represent well.",
+      "core_assumption": "Numerical credences are representational tools assessed by structural fit, not claims about conscious mental arithmetic.",
+      "why_characteristic": "The gas-molecules line is the chapter's most memorable comeback, and it comes right after Titelbaum has listed the genuine costs of numerical representation."
+    },
+    {
+      "id": "titelbaum_5",
+      "text": "Assigning numerical credences over a set of propositions creates a complete ranking, making it impossible to retain any incommensurabilities among the propositions involved.",
+      "philosopher_id": "titelbaum",
+      "source_title": "Fundamentals of Bayesian Epistemology 1: Introducing Credences",
+      "tradition_id": "analytic_method",
+      "difficulty": 5,
+      "argument_type": "objection",
+      "key_move": "States a cost of his own framework: numbers force comparability across questions an agent may have no way of comparing, such as election propositions and global warming propositions.",
+      "core_assumption": "Representational tools can attribute more structure than the situation contains, and that over-attribution counts against them.",
+      "why_characteristic": "Titelbaum argues for credences and then catalogues their disadvantages in the same section, and incommensurability is the cost he presses hardest."
+    },
+    {
+      "id": "wolf_1",
+      "text": "But if there are, I am glad that neither I nor those about whom I care most are among them. By moral saint I mean a person whose every action is as morally good as possible, a person, that is, who is as morally worthy as can be.",
+      "philosopher_id": "wolf",
+      "source_title": "Moral Saints",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 1,
+      "argument_type": "definition",
+      "key_move": "Fixes the definition of a moral saint and states the reaction the rest of the paper will defend, that one would not want oneself or one's loved ones to be such a person.",
+      "core_assumption": "How a life strikes us when we imagine living it, or living near it, counts as evidence about whether it is a good ideal.",
+      "why_characteristic": "The paper opens with this admission, and no other author on the syllabus begins by saying he is glad his friends fall short of moral perfection."
+    },
+    {
+      "id": "wolf_2",
+      "text": "A moral saint will have to be very, very nice. It is important that he not be offensive. The worry is that, as a result, he will have to be dull-witted or humorless or bland.",
+      "philosopher_id": "wolf",
+      "source_title": "Moral Saints",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 2,
+      "argument_type": "objection",
+      "key_move": "Converts the saint's required niceness into a charge about personality, so that the cost of perfection shows up in character rather than in conduct.",
+      "core_assumption": "Traits with no moral standing, such as humor and sharpness, are genuine excellences whose absence damages a life.",
+      "why_characteristic": "The repeated 'very, very nice' and the deadpan verdict of blandness are Wolf's tone throughout the common-sense section."
+    },
+    {
+      "id": "wolf_3",
+      "text": "For it seems to me that no plausible argument can justify the use of human resources involved in producing a pate de canard en croute against possible alternative beneficent ends to which these resources might be put.",
+      "philosopher_id": "wolf",
+      "source_title": "Moral Saints",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 3,
+      "argument_type": "thought_experiment",
+      "key_move": "Concedes the maximizing argument on its own terms so that the loss of haute cuisine follows from morality rather than from any mistake the saint has made.",
+      "core_assumption": "Some activities can be defended only by declining to weigh them against beneficent alternatives, and a saint will never decline that weighing.",
+      "why_characteristic": "Wolf argues through specific pleasures, and the duck pate is the example students remember from the gourmet cooking passage."
+    },
+    {
+      "id": "wolf_4",
+      "text": "Despite my conviction that it is as rational and as good for a person to take Katharine Hepburn or Jane Austen as her role model instead of Mother Theresa, it would be absurd to deny that Mother Theresa is a morally better person.",
+      "philosopher_id": "wolf",
+      "source_title": "Moral Saints",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 4,
+      "argument_type": "principle_statement",
+      "key_move": "Holds two claims together that most theories force apart, granting the saint's moral superiority while denying that this settles whom one should try to be like.",
+      "core_assumption": "Moral ranking and the choice of a personal ideal answer to different standards, so the first does not decide the second.",
+      "why_characteristic": "Pairing Hepburn and Austen against Mother Theresa is the concrete form Wolf gives to her attack on comparative moral ranking."
+    },
+    {
+      "id": "wolf_5",
+      "text": "Let us call the point of view from which we consider what kinds of lives are good lives, and what kinds of persons it would be good for ourselves and others to be, the point of view of individual perfection.",
+      "philosopher_id": "wolf",
+      "source_title": "Moral Saints",
+      "tradition_id": "virtue_ethics",
+      "difficulty": 5,
+      "argument_type": "definition",
+      "key_move": "Names a second evaluative standpoint alongside the moral one, giving the paper's earlier complaints a place to stand instead of leaving them as mere preferences.",
+      "core_assumption": "Judgments about what kind of person it would be good to be are objective without being moral and without reducing to self-interest.",
+      "why_characteristic": "The phrase 'point of view of individual perfection' is Wolf's own coinage in the closing section and marks her positive proposal."
+    },
+    {
+      "id": "young_1",
+      "text": "In its new usage, oppression designates the disadvantage and injustice some people suffer not because a tyrannical power coerces them, but because of the everyday practices of a well-intentioned liberal society.",
+      "philosopher_id": "young",
+      "source_title": "Five Faces of Oppression",
+      "tradition_id": "political_philosophy",
+      "difficulty": 1,
+      "argument_type": "definition",
+      "key_move": "Redefines oppression so that the absence of a tyrant no longer settles the question of whether a group is oppressed.",
+      "core_assumption": "Ordinary, well-meant institutional practice can produce injustice that no agent intended and no law forbids.",
+      "why_characteristic": "The chapter opens by contrasting apartheid and the Hebrews in Egypt with the new left usage, and this sentence is where the switch is made."
+    },
+    {
+      "id": "young_2",
+      "text": "Just as everyone knows that the earth goes around the sun, so everyone knows that gay people are promiscuous, that Indians are alcoholics, and that women are good with children. White males, on the other hand, insofar as they escape group marking, can be individuals.",
+      "philosopher_id": "young",
+      "source_title": "Five Faces of Oppression",
+      "tradition_id": "political_philosophy",
+      "difficulty": 2,
+      "argument_type": "objection",
+      "key_move": "Puts three stereotypes beside a piece of settled astronomy to show that they circulate as unremarked common sense, then names who is exempt from being typed at all.",
+      "core_assumption": "The dominant group's freedom to appear as individuals rather than as group members is itself an effect of cultural imperialism.",
+      "why_characteristic": "The deadpan pairing of heliocentrism with bar-stool prejudice, and the sting in the last clause, are the most quoted lines in the cultural imperialism section."
+    },
+    {
+      "id": "young_3",
+      "text": "Marginalization is perhaps the most dangerous form of oppression. A whole category of people is expelled from useful participation in social life and thus potentially subjected to severe material deprivation and even extermination.",
+      "philosopher_id": "young",
+      "source_title": "Five Faces of Oppression",
+      "tradition_id": "political_philosophy",
+      "difficulty": 3,
+      "argument_type": "principle_statement",
+      "key_move": "Ranks marginalization above the other faces by tying expulsion from social participation to its worst historical endpoint.",
+      "core_assumption": "Being unusable by the system of labor is a distinct harm, prior to and worse than having too little.",
+      "why_characteristic": "Young defines marginals as the people the system of labor cannot or will not use, and this is the judgment she attaches to that definition."
+    },
+    {
+      "id": "young_4",
+      "text": "The injustices of exploitation cannot be eliminated by redistribution of goods, for as long as institutionalized practices and structural relations remain unaltered, the process of transfer will re-create an unequal distribution of benefits.",
+      "philosopher_id": "young",
+      "source_title": "Five Faces of Oppression",
+      "tradition_id": "political_philosophy",
+      "difficulty": 4,
+      "argument_type": "objection",
+      "key_move": "Grants that redistribution would correct the pattern, then shows the pattern regenerating because the transfer of energies from one group to another is untouched.",
+      "core_assumption": "Justice concerns the social processes that produce a distribution, so a remedy aimed at the outcome leaves the wrong in place.",
+      "why_characteristic": "This is the payoff of her reading of Macpherson, Roemer and Reiman, and the clearest statement in the chapter of why she thinks distributive justice is the wrong frame."
+    },
+    {
+      "id": "young_5",
+      "text": "The powerless are those who lack authority or power even in this mediated sense, those over whom power is exercised without their exercising it; the powerless are situated so that they must take orders and rarely have the right to give them.",
+      "philosopher_id": "young",
+      "source_title": "Five Faces of Oppression",
+      "tradition_id": "political_philosophy",
+      "difficulty": 5,
+      "argument_type": "definition",
+      "key_move": "Defines a face of oppression by position in the division of labor rather than by any deprivation of goods, singling out those who fall below even the dispersed, mediated power that most people hold over someone.",
+      "core_assumption": "The division between those who plan and those who execute is a basic structure of justice, not a mere fact about workplaces.",
+      "why_characteristic": "Young introduces powerlessness as the oppression of nonprofessionals alongside exploitation, and defines it negatively against the professional's autonomy, progress and respectability."
+    }
+  ]
+}

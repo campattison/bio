@@ -1,0 +1,1439 @@
+{
+  "1": {
+    "frame": 30,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Rest a moment. Even Socrates slept."
+          ]
+        }
+      },
+      {
+        "requires": [],
+        "type": "HEAL",
+        "data": {}
+      },
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your resolve has been restored."
+          ]
+        }
+      }
+    ]
+  },
+  "10": {
+    "frame": 50,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Sit down, catch your breath. The arguments will keep."
+          ]
+        }
+      },
+      {
+        "requires": [],
+        "type": "HEAL",
+        "data": {}
+      },
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your resolve has been restored."
+          ]
+        }
+      }
+    ]
+  },
+  "12": {
+    "frame": 10,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "A clear head wins debates. Let me help."
+          ]
+        }
+      },
+      {
+        "requires": [],
+        "type": "HEAL",
+        "data": {}
+      },
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Your resolve has been restored."
+          ]
+        }
+      }
+    ]
+  },
+  "13": {
+    "frame": 40,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Welcome to the Debate Arena!",
+            "Here you can rematch any philosopher you have previously debated.",
+            "Each rematch earns XP and can unlock concepts you may have missed."
+          ]
+        }
+      },
+      {
+        "requires": [],
+        "type": "DEBATE_ARENA",
+        "data": {}
+      }
+    ]
+  },
+  "213": {
+    "frame": 12,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Welcome to town. The Ethics Garden is through the southeast gate — Aristotle and Professor Wolf are in there.",
+            "Kant, Mill, and Singer hold the plaza; Rachels and Srinivasan are about too. Beat Wolf for the Ethics badge and the world opens: the far fields, the Academy northwest, the cave beyond it, and at last the cove.",
+            "The houses down south will patch you up between debates."
+          ]
+        }
+      }
+    ]
+  },
+  "205": {
+    "frame": 30,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Immanuel Kant. Tell me the maxim of your action, and I will tell you whether it could be a universal law.",
+            "Most cannot."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "kant"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You have reasoned for yourself. That, at least, the moral law demands of everyone."
+          ]
+        }
+      }
+    ]
+  },
+  "206": {
+    "frame": 20,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "John Stuart Mill. I have heard every objection to utilitarianism — the swine, the saint, the man with no time to calculate.",
+            "Bring me yours."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "mill"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "A fair hearing at last. Better Socrates dissatisfied, as I like to say."
+          ]
+        }
+      }
+    ]
+  },
+  "207": {
+    "frame": 10,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Peter Singer. Before we begin: did you spend anything this week on something you did not need?",
+            "Then we have plenty to discuss."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "singer"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You argue well. But the child is still in the pond, and we can still wade in."
+          ]
+        }
+      }
+    ]
+  },
+  "204": {
+    "frame": 0,
+    "animationKeyPrefix": "NPC_2",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "James Rachels. People say morality is just cultural custom — that no society's code can be better than another's.",
+            "Shall we see whether that argument is actually valid?"
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "rachels"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Well argued. Remember: from the mere fact of disagreement, nothing follows about the truth."
+          ]
+        }
+      }
+    ]
+  },
+  "203": {
+    "frame": 50,
+    "animationKeyPrefix": "NPC_7",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Amia Srinivasan. Everyone here wants to maximize the good. Charming.",
+            "Ask me what their calculations leave out."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "srinivasan"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Good. Now go ask the same hard questions of your own side."
+          ]
+        }
+      }
+    ]
+  },
+  "201": {
+    "frame": 100,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "My roommate read one page of Kant and now nothing I do is universalizable."
+          ]
+        }
+      }
+    ]
+  },
+  "202": {
+    "frame": 110,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "They say the woman in the cove concedes your best premise and beats you anyway. I'd stay out of the water."
+          ]
+        }
+      }
+    ]
+  },
+  "208": {
+    "frame": 160,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The forest north of here is quiet. Good for thinking — or for being ambushed by a thought."
+          ]
+        }
+      }
+    ]
+  },
+  "209": {
+    "frame": 170,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Buy something or refute me. Those are the options."
+          ]
+        }
+      }
+    ]
+  },
+  "210": {
+    "frame": 120,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Past this gate lie the Free Will Fields. They open once you hold the Ethics badge."
+          ]
+        }
+      }
+    ]
+  },
+  "211": {
+    "frame": 130,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The garden gate is just ahead. Mind the philosophers in the tall grass."
+          ]
+        }
+      }
+    ]
+  },
+  "212": {
+    "frame": 140,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The cave northwest gives me the creeps. A man in there says I don't know anything — and proves it."
+          ]
+        }
+      }
+    ]
+  },
+  "214": {
+    "frame": 180,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "We stock debate potions. Mill says higher pleasures only, but he still buys the cheap ones."
+          ]
+        }
+      }
+    ]
+  },
+  "215": {
+    "frame": 190,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I moved out here to think for myself.",
+            "Then someone told me Hardwig proved that's overrated. Now I just chop wood."
+          ]
+        }
+      }
+    ]
+  },
+  "234": {
+    "frame": 40,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Aristotle. You will not become wise by asking for a rule.",
+            "But a good argument is good practice. Come."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "aristotle"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "One swallow does not make a spring. Argue this well every day, and you may become good at it."
+          ]
+        }
+      }
+    ]
+  },
+  "233": {
+    "frame": 4,
+    "animationKeyPrefix": "NPC_8",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Susan Wolf. So you have debated the moralists and survived. One question remains.",
+            "Would you actually want to be the person their theories demand? Would you want to be friends with one?",
+            "Defend your ideal — not just its consistency, its attractiveness."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "wolf"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "A life with room for both goodness and Tolstoy. You have earned the Ethics badge — the southeast gate out of town now opens to the Free Will Fields."
+          ]
+        }
+      }
+    ]
+  },
+  "231": {
+    "frame": 150,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Professor Wolf planted this garden. She says a life needs more than moral flowers."
+          ]
+        }
+      }
+    ]
+  },
+  "232": {
+    "frame": 32,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Aristotle keeps telling me my pruning shows promise but lacks habituation."
+          ]
+        }
+      }
+    ]
+  },
+  "244": {
+    "frame": 60,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Jean-Paul Sartre. You tell yourself you had no choice in coming here.",
+            "There is always a choice. Refusing to admit that is bad faith, and I will prove yours to you."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "sartre"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You chose your argument freely, and it made you what you are. Remember that the next time you reach for an excuse."
+          ]
+        }
+      }
+    ]
+  },
+  "242": {
+    "frame": 12,
+    "animationKeyPrefix": "NPC_2",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Thomas Nagel. Two drunk drivers set out for home; a child steps in front of one of them.",
+            "You blame that one more. By your own principles, you shouldn't. Shall we sort this out?"
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "nagel"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Well argued. Though notice: whether you won this debate depended partly on which arguments happened to occur to you."
+          ]
+        }
+      }
+    ]
+  },
+  "241": {
+    "frame": 7,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "P. F. Strawson. Suppose someone proved to you tonight that determinism is true.",
+            "Would you stop resenting betrayal? Could you? I say the question answers itself — and that your whole free-will worry dissolves with it."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "strawson"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Quite so. The web of human attitudes holds us whether or not the theorists approve. The Freedom badge is yours — the Academy northwest of the town plaza will admit you now."
+          ]
+        }
+      }
+    ]
+  },
+  "243": {
+    "frame": 52,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "People come out here to resent things properly. Professor Strawson insists it's healthy."
+          ]
+        }
+      }
+    ]
+  },
+  "223": {
+    "frame": 42,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Edmund Gettier. I wrote three pages once. They were enough.",
+            "You believe something true, with good justification — and I say you still may not know it. Care to defend your definition?"
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "gettier"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Ten coins, two cases, no survivors. Do give Smith and Jones my regards."
+          ]
+        }
+      }
+    ]
+  },
+  "224": {
+    "frame": 24,
+    "animationKeyPrefix": "NPC_3",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "John Hardwig. Name one thing you know about physics, medicine, or history that you checked for yourself.",
+            "Thinking for yourself is a romantic myth — the rational move is usually deference. Prove me wrong, if you dare rely on your own arguments."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "hardwig"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Notice what just happened: you cited authorities to refute me. I rest my case — and congratulate you."
+          ]
+        }
+      }
+    ]
+  },
+  "222": {
+    "frame": 34,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "C. Thi Nguyen. You think you'd know if you were in an echo chamber.",
+            "That is exactly what someone in an echo chamber would think. The corruption runs through your trust, not your information — and from the inside, you cannot tell."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "nguyen"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Good. Now audit your trust, not just your feed. The exits are rarely where they appear to be."
+          ]
+        }
+      }
+    ]
+  },
+  "221": {
+    "frame": 70,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Alvin Goldman. My colleagues in this cave have told you that you depend on experts, that your trust may be corrupted. All true.",
+            "But I say the novice can still choose rationally between rival experts — and that in the end only truth matters. Defend another goal if you can."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "goldman"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Truly argued — in the veritistic sense. The Knowledge badge is yours; the east trail from the Academy now leads to the Cove."
+          ]
+        }
+      }
+    ]
+  },
+  "272": {
+    "frame": 17,
+    "animationKeyPrefix": "NPC_4",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Thrasymachus of Chalcedon. Spare me the pieties about justice.",
+            "Justice is the advantage of the stronger, nothing more — and the just man everywhere comes off worse. Refute me, if you can do better than Socrates."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "thrasymachus"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Hmph. You argue better than the flatterers. But look around the agora and tell me the strong are not still writing the rules."
+          ]
+        }
+      }
+    ]
+  },
+  "259": {
+    "frame": 27,
+    "animationKeyPrefix": "NPC_5",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Isaiah Berlin. Everyone who has promised to liberate your 'real self' has ended by coercing the self you actually are.",
+            "That is no accident. It follows from the idea itself. Convince me otherwise."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "berlin"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "A fair fight. Remember only this: the great goods genuinely conflict, and whoever promises their final harmony is preparing a sacrifice."
+          ]
+        }
+      }
+    ]
+  },
+  "258": {
+    "frame": 37,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Philip Pettit. Nobody interferes with Nora. Her husband indulges her completely.",
+            "I say she is unfree all the same — and if freedom is mere non-interference, you must say the contented slave of a kindly master is free. Will you?"
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "pettit"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Good. Now go look the world in the eye — without fear, without deference. That is what freedom is for."
+          ]
+        }
+      }
+    ]
+  },
+  "264": {
+    "frame": 2,
+    "animationKeyPrefix": "NPC_7",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Iris Marion Young. Show me the tyrant oppressing anyone here. You cannot — and yet the oppression is real.",
+            "Your theory of justice counts who gets what and misses all of it. Let me show you what it cannot see."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "young"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Well fought. But structures do not fall to good arguments alone — notice, next time, who cleans this agora after we leave."
+          ]
+        }
+      }
+    ]
+  },
+  "251": {
+    "frame": 22,
+    "animationKeyPrefix": "NPC_8",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "John Rawls. You are proud of what you have earned. But your talents came from a lottery you did not enter, and your discipline from a home you did not choose.",
+            "Tell me, then: what exactly did you deserve?"
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "rawls"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "That was fairly argued — a small original position, right here. The Justice badge is yours; the cave northwest of town stands open."
+          ]
+        }
+      }
+    ]
+  },
+  "252": {
+    "frame": 62,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Rawls holds court at the north end. Bring arguments, not credentials — he says you didn't earn those."
+          ]
+        }
+      }
+    ]
+  },
+  "253": {
+    "frame": 72,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I told Thrasymachus justice matters and he asked what it's paying me."
+          ]
+        }
+      }
+    ]
+  },
+  "254": {
+    "frame": 82,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Professor Berlin has two words for every freedom you think you have."
+          ]
+        }
+      }
+    ]
+  },
+  "255": {
+    "frame": 92,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I've read Republic Book One three times. Socrates wins on points but Thrasymachus wins the room."
+          ]
+        }
+      }
+    ]
+  },
+  "256": {
+    "frame": 100,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The veil of ignorance ruined my scholarship essay. I couldn't stop asking who I'd be if I weren't me."
+          ]
+        }
+      }
+    ]
+  },
+  "257": {
+    "frame": 110,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Pettit asked whether my landlord COULD evict me on a whim. Interfering isn't the point, apparently."
+          ]
+        }
+      }
+    ]
+  },
+  "260": {
+    "frame": 120,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Professor Young says I should stop looking for the villain and check the org chart."
+          ]
+        }
+      }
+    ]
+  },
+  "261": {
+    "frame": 130,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Study tip: never grant Thomson a premise. Not one. Not even a small one."
+          ]
+        }
+      }
+    ]
+  },
+  "262": {
+    "frame": 140,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The library's closed. An echo chamber, they said. Something about corrupted trust."
+          ]
+        }
+      }
+    ]
+  },
+  "263": {
+    "frame": 150,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "I asked which expert to believe and got handed a paper called 'Experts: Which Ones Should You Trust?' Very funny."
+          ]
+        }
+      }
+    ]
+  },
+  "265": {
+    "frame": 160,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Exams next week. If knowledge really is justified true belief, I'm two conditions short."
+          ]
+        }
+      }
+    ]
+  },
+  "266": {
+    "frame": 170,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The east trail leads down to the cove. Final unit territory — they don't let you through without four badges."
+          ]
+        }
+      }
+    ]
+  },
+  "267": {
+    "frame": 180,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Iris Marion Young made me count the five faces of oppression on my fingers. I keep a thumb free, just in case."
+          ]
+        }
+      }
+    ]
+  },
+  "268": {
+    "frame": 190,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Berlin says the great goods conflict. So do my Tuesday lectures."
+          ]
+        }
+      }
+    ]
+  },
+  "269": {
+    "frame": 0,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "A student went into the cave certain he knew things. He's still in there, counting coins in his pocket."
+          ]
+        }
+      }
+    ]
+  },
+  "270": {
+    "frame": 10,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The gardener claims Wolf's roses are supererogatory. Nobody corrects him; he seems happy."
+          ]
+        }
+      }
+    ]
+  },
+  "271": {
+    "frame": 20,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Nguyen's seminar was full, so I just listen to people who agree with me. Wait."
+          ]
+        }
+      }
+    ]
+  },
+  "284": {
+    "frame": 80,
+    "animationKeyPrefix": "NPC_6",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Alastair Norcross. Meet my friend Fred. He tortures puppies in his basement — for gustatory pleasure he cannot otherwise obtain.",
+            "You are appalled. Then explain to me, precisely, how your lunch differs."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "norcross"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Well argued. Fred sends his regards — he says he'll see you at dinner."
+          ]
+        }
+      }
+    ]
+  },
+  "282": {
+    "frame": 0,
+    "animationKeyPrefix": "NPC_7",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "James Rachels again. We settled cultural relativism; now medicine's dearest doctrine.",
+            "Smith drowns his cousin; Jones watches his cousin drown. If there is no moral difference there, the killing/letting-die distinction is finished — and with it, half of medical ethics."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "rachels_applied"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Just so. Sometimes letting nature take its course is the crueler act. Doctors, of all people, should not hide behind it."
+          ]
+        }
+      }
+    ]
+  },
+  "281": {
+    "frame": 10,
+    "animationKeyPrefix": "NPC_8",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Peter Singer. I told you I would ask you to draw the circle wider. Here we are.",
+            "You grant equality to every human regardless of intellect or ability. On what principle, then, do you deny it to every other creature that can suffer?"
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "singer_applied"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "The circle widens whether we bless it or not. You have argued honestly — the Equality badge is yours. One examiner remains, across the cove."
+          ]
+        }
+      }
+    ]
+  },
+  "283": {
+    "frame": 90,
+    "animationKeyPrefix": "NPC_1",
+    "events": [
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "Judith Jarvis Thomson. You wake up plugged into a famous violinist. He dies if you unplug; nine months and he is saved.",
+            "I grant, for argument's sake, everything my opponents claim — and say you may still unplug. If I am right, the standard argument on this topic collapses. Final examination. Begin."
+          ]
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_NOT_DEFEATED"
+        ],
+        "type": "DEBATE",
+        "data": {
+          "philosopherId": "thomson"
+        }
+      },
+      {
+        "requires": [
+          "TRAINER_DEFEATED"
+        ],
+        "type": "MESSAGE",
+        "data": {
+          "messages": [
+            "You may unplug — and you may argue. The final badge is yours. The Academy is proud; the semester, I believe, is won."
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,1046 @@
+{
+  "updated": "2026-02-27",
+  "conferences": [
+    {
+      "title": "From Virtual to Virtue: Ethics, Epistemology, Education",
+      "start": "2026-06-15",
+      "end": "2026-06-16",
+      "city": "Ljubljana",
+      "lat": 46.0511,
+      "lng": 14.5051,
+      "url": "https://ethics-ai.eu/2026-conference/",
+      "cfp_deadline": "2026-03-02",
+      "type": "conference"
+    },
+    {
+      "title": "Autonomy & Algorithms (11-12 June 2026, Karlsruhe)",
+      "start": "2026-06-11",
+      "end": "2026-06-12",
+      "city": "Karlsruhe",
+      "lat": 49.0047,
+      "lng": 8.38583,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Information Segregation: Mechanisms and Consequences",
+      "start": "2026-06-04",
+      "end": "2026-06-05",
+      "city": "Johannesburg",
+      "lat": -26.2023,
+      "lng": 28.0436,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Science and Technology in the Anthropocene",
+      "start": "2026-04-02",
+      "end": "2026-04-03",
+      "city": "Cincinnati",
+      "lat": 39.162,
+      "lng": -84.4569,
+      "url": "https://uchumanitiestech.org/2026-conference/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "19th Annual Suncoast Graduate Philosophy Conference",
+      "start": "2026-04-04",
+      "end": "2026-04-04",
+      "city": "Tampa",
+      "lat": 27.9475,
+      "lng": -82.4584,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Forms of Exculpation: Nature and Norms of Blamelessness",
+      "start": "2026-03-12",
+      "end": "2026-03-13",
+      "city": "Berlin",
+      "lat": 52.5244,
+      "lng": 13.4105,
+      "url": "",
+      "cfp_deadline": "2026-03-11",
+      "type": "conference"
+    },
+    {
+      "title": "Beyond Basic Bayesianism",
+      "start": "2026-05-25",
+      "end": "2026-05-26",
+      "city": "Helsinki",
+      "lat": 60.1695,
+      "lng": 24.9354,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "To Be or Not to Be Included in a Causal Model",
+      "start": "2026-02-28",
+      "end": "2026-03-01",
+      "city": "Pittsburgh",
+      "lat": 40.4406,
+      "lng": -79.9959,
+      "url": "https://www.centerphilsci.pitt.edu/event/to-be-or-not-to-be-included-in-a-causal-model/",
+      "cfp_deadline": "2026-02-23",
+      "type": "conference"
+    },
+    {
+      "title": "Technology for Good: An Early Career Research Conference",
+      "start": "2026-03-27",
+      "end": "2026-03-29",
+      "city": "Columbia",
+      "lat": 34.0007,
+      "lng": -81.0348,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Theoretical Rationality and Practical Reason",
+      "start": "2026-05-15",
+      "end": "2026-05-17",
+      "city": "Sofia",
+      "lat": 42.6975,
+      "lng": 23.3242,
+      "url": "https://www.cognitoforms.com/SofiaUniversity/RegistrationFormTRPR",
+      "cfp_deadline": "2026-04-30",
+      "type": "conference"
+    },
+    {
+      "title": "Postgenomic Intersections: Epistemology and Ethics for the Exposome and Microbiome",
+      "start": "2026-03-02",
+      "end": "2026-03-03",
+      "city": "Milano",
+      "lat": 45.4643,
+      "lng": 9.18951,
+      "url": "https://forms.cloud.microsoft/e/Xnj3th9B1J",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Technology and Well Being",
+      "start": "2026-04-07",
+      "end": "2026-04-08",
+      "city": "Greencastle",
+      "lat": 39.6445,
+      "lng": -86.8647,
+      "url": "https://www.prindleinstitute.org/community/mes/",
+      "cfp_deadline": "2026-03-31",
+      "type": "conference"
+    },
+    {
+      "title": "Climate Change and Global Justice",
+      "start": "2026-04-16",
+      "end": "2026-04-17",
+      "city": "Seattle",
+      "lat": 47.6062,
+      "lng": -122.332,
+      "url": "",
+      "cfp_deadline": "2026-04-15",
+      "type": "conference"
+    },
+    {
+      "title": "UAnalytiCon-2026: Universals and Objects",
+      "start": "2026-05-22",
+      "end": "2026-05-23",
+      "city": "Yekaterinburg",
+      "lat": 56.8575,
+      "lng": 60.6125,
+      "url": "https://uanalyticon.ru/index.en.html",
+      "cfp_deadline": "2026-03-31",
+      "type": "conference"
+    },
+    {
+      "title": "Human Ecology: dwelling as care for the environment and relationships",
+      "start": "2026-04-14",
+      "end": "2026-04-14",
+      "city": "Salamanca",
+      "lat": 40.9667,
+      "lng": -5.65,
+      "url": "",
+      "cfp_deadline": "2025-12-28",
+      "type": "conference"
+    },
+    {
+      "title": "Philosophy and Emotion at Nottingham",
+      "start": "2026-04-17",
+      "end": "2026-04-17",
+      "city": "Nottingham",
+      "lat": 52.9536,
+      "lng": -1.15047,
+      "url": "https://forms.office.com/e/W37a0mnPd0?origin=lprLink",
+      "cfp_deadline": "2026-03-17",
+      "type": "conference"
+    },
+    {
+      "title": "Theory and Practice after the Practice Turn – Where Social Theory and Empirical Philosophy meet",
+      "start": "2026-04-17",
+      "end": "2026-04-17",
+      "city": "",
+      "lat": null,
+      "lng": null,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Ethics, Epistemology, and Engineering",
+      "start": "2026-04-24",
+      "end": "2026-04-26",
+      "city": "Newark",
+      "lat": 39.6837,
+      "lng": -75.7497,
+      "url": "https://thegppc.wordpress.com/",
+      "cfp_deadline": "2026-04-13",
+      "type": "conference"
+    },
+    {
+      "title": "“Rethinking Anthropocentrism: New Technologies and More- than-Human Sensing\"",
+      "start": "2026-05-18",
+      "end": "2026-05-18",
+      "city": "Utrecht",
+      "lat": 52.0908,
+      "lng": 5.12222,
+      "url": "",
+      "cfp_deadline": "2026-03-31",
+      "type": "conference"
+    },
+    {
+      "title": "8th Scientific Understanding and Representation (SURe) annual workshop",
+      "start": "2026-05-27",
+      "end": "2026-05-29",
+      "city": "Warsaw",
+      "lat": 52.2298,
+      "lng": 21.0118,
+      "url": "https://sure-workshop.weebly.com/current-workshop.html",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "The Wisdom, and Madness, of Crowds: a workshop on group beliefs, echo chambers and collective identities",
+      "start": "2026-05-28",
+      "end": "2026-05-29",
+      "city": "Rotterdam",
+      "lat": 51.9225,
+      "lng": 4.47917,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Numerical Computations: Theory and Algorithms The 5th International Conference and Summer School",
+      "start": "2026-06-21",
+      "end": "2026-06-27",
+      "city": "Curinga",
+      "lat": 38.8262,
+      "lng": 16.3134,
+      "url": "https://www.numta.org",
+      "cfp_deadline": "2026-05-18",
+      "type": "conference"
+    },
+    {
+      "title": "Truth, Use-Conditions, Hyperintensionality: Visegrad Inspirations in Philosophy of Language",
+      "start": "2026-09-14",
+      "end": "2026-09-16",
+      "city": "Warsaw",
+      "lat": 52.2298,
+      "lng": 21.0118,
+      "url": "https://ff.osu.eu/ap-in-v4/workshop-3/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "“Humanity, Justice, and Ecological Schemes: Rethinking Ethics, Technology, and Sustainability”",
+      "start": null,
+      "end": null,
+      "city": "Surabaya",
+      "lat": -7.24917,
+      "lng": 112.751,
+      "url": "https://go.ukwms.ac.id/SymposiumRegistration",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Idiosyncracy of Thinking: On Alphonso Lingis’s Philosophical Opera",
+      "start": "2026-03-19",
+      "end": "2026-03-20",
+      "city": "Praha",
+      "lat": 50.088,
+      "lng": 14.4208,
+      "url": "",
+      "cfp_deadline": "2026-01-15",
+      "type": "conference"
+    },
+    {
+      "title": "Ethics in Chinese Philosophy",
+      "start": "2026-03-20",
+      "end": "2026-03-21",
+      "city": "Hong Kong",
+      "lat": 22.2855,
+      "lng": 114.158,
+      "url": "https://drive.google.com/file/d/1mv2xRfN3S1Qt5x0uA_odT66xpMaZsv8H/view?usp=sharing",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Science, Expertise, and Society",
+      "start": "2026-03-26",
+      "end": "2026-03-28",
+      "city": "Notre Dame",
+      "lat": 41.6834,
+      "lng": -86.25,
+      "url": "https://sites.nd.edu/hpstv-conference/home/science-expertise-and-society/",
+      "cfp_deadline": "2026-03-26",
+      "type": "conference"
+    },
+    {
+      "title": "AI and Philosophy",
+      "start": "2026-04-16",
+      "end": "2026-04-16",
+      "city": "New Orleans",
+      "lat": 29.9547,
+      "lng": -90.0751,
+      "url": "https://aiandphilosophy.org/",
+      "cfp_deadline": "2026-04-05",
+      "type": "conference"
+    },
+    {
+      "title": "8th Annual Chapel Hill Normativity Workshop: Montreal Edition!",
+      "start": "2026-04-24",
+      "end": "2026-04-25",
+      "city": "Montréal",
+      "lat": 45.5088,
+      "lng": -73.5878,
+      "url": "https://normativity.web.unc.edu/",
+      "cfp_deadline": "2026-04-01",
+      "type": "conference"
+    },
+    {
+      "title": "Rutgers Epistemology Conference 2026",
+      "start": "2026-05-01",
+      "end": "2026-05-02",
+      "city": "New Brunswick",
+      "lat": 40.4862,
+      "lng": -74.4518,
+      "url": "https://juancomesana.org/rec",
+      "cfp_deadline": "2026-04-15",
+      "type": "conference"
+    },
+    {
+      "title": "Ethnographilosophy",
+      "start": "2026-06-15",
+      "end": "2026-06-16",
+      "city": "Berlin",
+      "lat": 52.5244,
+      "lng": 13.4105,
+      "url": "http://www.criticalagency.de",
+      "cfp_deadline": "2026-05-31",
+      "type": "conference"
+    },
+    {
+      "title": "Valencia Philosophy Lab Summer School: Mind and Rationality",
+      "start": "2026-06-15",
+      "end": "2026-06-19",
+      "city": "Valencia",
+      "lat": 39.4697,
+      "lng": -0.37739,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Petrus Hispanus' Tractatus: Logic and Philosophy from the Middle Ages to Modernity",
+      "start": "2026-06-15",
+      "end": "2026-06-19",
+      "city": "Porto",
+      "lat": 41.15,
+      "lng": -8.61667,
+      "url": "https://ifilosofia.up.pt/activities/3rd-porto-mempss",
+      "cfp_deadline": "2026-03-30",
+      "type": "conference"
+    },
+    {
+      "title": "Formal Epistemology Workshop 2026",
+      "start": "2026-06-19",
+      "end": "2026-06-21",
+      "city": "Boulder",
+      "lat": 40.015,
+      "lng": -105.271,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Formal Epistemology Workshop",
+      "start": "2026-06-19",
+      "end": "2026-06-21",
+      "city": "Boulder",
+      "lat": 40.015,
+      "lng": -105.271,
+      "url": "https://sites.google.com/view/few-2026/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Applied Epistemology in Times of Political Crisis",
+      "start": "2026-03-06",
+      "end": "2026-03-07",
+      "city": "Chapel Hill",
+      "lat": 35.9132,
+      "lng": -79.0558,
+      "url": "https://aep.unc.edu/applied-epistemology-in-times-of-political-crisis/",
+      "cfp_deadline": "2026-02-06",
+      "type": "conference"
+    },
+    {
+      "title": "AI and Data Ethics: Philosophy and Pedagogy",
+      "start": "2026-03-06",
+      "end": "2026-03-07",
+      "city": "Los Angeles",
+      "lat": 34.0522,
+      "lng": -118.244,
+      "url": "",
+      "cfp_deadline": "2026-03-02",
+      "type": "conference"
+    },
+    {
+      "title": "Fichte: Determination, Intersubjectivity and the State",
+      "start": "2026-03-11",
+      "end": "2026-03-13",
+      "city": "Ljubljana",
+      "lat": 46.0511,
+      "lng": 14.5051,
+      "url": "https://www.speculativethought.com/novica/cfa-fichte-determination-intersubjectivity-and-the-state-41",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Responsible Trusting Without Prejudice First Workshop",
+      "start": "2026-03-20",
+      "end": "2026-03-21",
+      "city": "",
+      "lat": null,
+      "lng": null,
+      "url": "https://crispinjwright.com/rtwp_workshop/",
+      "cfp_deadline": "2026-03-19",
+      "type": "conference"
+    },
+    {
+      "title": "Weatherford College 8th Annual Conference: Philosophy of Religion and Ethics",
+      "start": "2026-04-10",
+      "end": "2026-04-11",
+      "city": "Weatherford",
+      "lat": 32.7593,
+      "lng": -97.7972,
+      "url": "https://new.express.adobe.com/webpage/APIi2Jjhfdl7E",
+      "cfp_deadline": "2026-04-10",
+      "type": "conference"
+    },
+    {
+      "title": "NEW PERSPECTIVES ON THE PHILOSOPHY OF THE ORIGIN AND EVOLUTION OF LIFE",
+      "start": "2026-05-14",
+      "end": "2026-05-14",
+      "city": "Warsaw",
+      "lat": 52.2298,
+      "lng": 21.0118,
+      "url": "https://sites.google.com/view/ph-sc-c-wv/",
+      "cfp_deadline": "2026-03-31",
+      "type": "conference"
+    },
+    {
+      "title": "Mathematical Rigour and Physics",
+      "start": "2026-06-15",
+      "end": "2026-06-17",
+      "city": "Bristol",
+      "lat": 51.4552,
+      "lng": -2.59665,
+      "url": "https://philosophyofphysicsbristol.org/mathematical-rigour-and-physics/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Metaphysics of Logic",
+      "start": "2026-08-07",
+      "end": "2026-08-08",
+      "city": "Bonn",
+      "lat": 50.7333,
+      "lng": 7.1,
+      "url": "https://sites.google.com/view/logic-and-metaphysics/logic-of-metaphysics-bonn?authuser=0",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Phenomenology and Psychoanalysis",
+      "start": "2026-03-05",
+      "end": "2026-03-06",
+      "city": "Jyväskylä",
+      "lat": 62.0,
+      "lng": 25.0,
+      "url": "https://asymmetricencounters.wordpress.com/",
+      "cfp_deadline": "2026-03-04",
+      "type": "conference"
+    },
+    {
+      "title": "4th Annual Penn-Georgetown Digital Ethics Workshop",
+      "start": "2026-04-03",
+      "end": "2026-04-04",
+      "city": "Philadelphia",
+      "lat": 39.9526,
+      "lng": -75.1872,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Ethics Medicine Innovation (EMI)",
+      "start": "2026-04-16",
+      "end": "2026-04-17",
+      "city": "Houston",
+      "lat": 29.7633,
+      "lng": -95.3633,
+      "url": "http://ethicsmedicineinnovation.org",
+      "cfp_deadline": "2026-04-10",
+      "type": "conference"
+    },
+    {
+      "title": "Souls and psychological phenomena in Greek antiquity",
+      "start": "2026-04-23",
+      "end": "2026-04-25",
+      "city": "Tampa",
+      "lat": 27.9475,
+      "lng": -82.4584,
+      "url": "https://www.usf.edu/arts-sciences/centers/ichs/events/annual-conference/index.aspx",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "York University Graduate Philosophy Conference: Trust, Distrust, and Technology",
+      "start": "2026-05-07",
+      "end": "2026-05-08",
+      "city": "Toronto",
+      "lat": 43.7001,
+      "lng": -79.4163,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Hyperintensionality and (Meta)-Metaphysics",
+      "start": "2026-05-12",
+      "end": "2026-05-13",
+      "city": "Uppsala",
+      "lat": 59.8585,
+      "lng": 17.6454,
+      "url": "",
+      "cfp_deadline": "2026-05-01",
+      "type": "conference"
+    },
+    {
+      "title": "Logic of Metaphysics",
+      "start": "2026-09-25",
+      "end": "2026-09-26",
+      "city": "Potsdam",
+      "lat": 52.3989,
+      "lng": 13.0657,
+      "url": "https://sites.google.com/view/logic-and-metaphysics/logic-of-metaphysics-potsdam",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Global Philosophy of Education Field Launching Conference",
+      "start": "2026-03-19",
+      "end": "2026-03-20",
+      "city": "Amsterdam",
+      "lat": 52.374,
+      "lng": 4.88969,
+      "url": "",
+      "cfp_deadline": "2025-12-08",
+      "type": "conference"
+    },
+    {
+      "title": "17th Annual Notre Dame/Northwestern Graduate Epistemology Conference",
+      "start": "2026-04-30",
+      "end": "2026-05-02",
+      "city": "Notre Dame",
+      "lat": 41.6834,
+      "lng": -86.25,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "EMW XIV: Aesthetic Attention",
+      "start": "2026-05-18",
+      "end": "2026-05-19",
+      "city": "Praha",
+      "lat": 50.088,
+      "lng": 14.4208,
+      "url": "http://emw.flu.cas.cz",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Scholastic Roots, Modern Perspectives: Logic and Mathematics from the Middle Ages to Today",
+      "start": "2026-05-19",
+      "end": "2026-05-19",
+      "city": "Leuven",
+      "lat": 50.8798,
+      "lng": 4.70052,
+      "url": "https://hiw.kuleuven.be/clps/events/agenda/scholastic-roots-modern-perspectives-logic-and-mathematics-from-the-middle-ages-to-today",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "XXI Simposio latinoamericano de lógica matemática SLALM",
+      "start": "2026-06-01",
+      "end": "2026-06-05",
+      "city": "Bogotá",
+      "lat": 4.60971,
+      "lng": -74.0817,
+      "url": "https://slalm21.uniandes.edu.co/es/#registration",
+      "cfp_deadline": "2026-04-15",
+      "type": "conference"
+    },
+    {
+      "title": "II Workshop on Substructural Logics",
+      "start": "2026-06-09",
+      "end": "2026-06-10",
+      "city": "Tübingen",
+      "lat": 48.5227,
+      "lng": 9.05222,
+      "url": "https://sites.google.com/view/iiworkshopsubstructuraltue/home",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "23rd Annual Steven Humphrey Undergraduate Philosophy Colloquium",
+      "start": "2026-02-27",
+      "end": "2026-02-27",
+      "city": "Louisville",
+      "lat": 38.2542,
+      "lng": -85.7594,
+      "url": "http://uoflhumphreycolloquium.wordpress.com/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Christian Ethics and Peacebuilding in the Age of AI & Autonomous Weapons Systems",
+      "start": "2026-03-03",
+      "end": "2026-03-03",
+      "city": "Belfast",
+      "lat": 54.5833,
+      "lng": -5.93333,
+      "url": "https://www.qub.ac.uk/Research/GRI/mitchell-institute/news/0303206-ChristianEthicsConference-CallforPapers.html",
+      "cfp_deadline": "2026-02-07",
+      "type": "conference"
+    },
+    {
+      "title": "Eurasian Memory Meeting, 2026 Tokyo Edition",
+      "start": "2026-03-05",
+      "end": "2026-03-07",
+      "city": "Tokyo",
+      "lat": 35.6149,
+      "lng": 139.581,
+      "url": "https://www.eurasianmemory.com/eurasian-memory-meeting-2026-tokyo",
+      "cfp_deadline": "2026-02-28",
+      "type": "conference"
+    },
+    {
+      "title": "Workshop on Friendship, and Friendship with the Morally Bad",
+      "start": "2026-03-05",
+      "end": "2026-03-06",
+      "city": "",
+      "lat": null,
+      "lng": null,
+      "url": "",
+      "cfp_deadline": "2026-03-05",
+      "type": "conference"
+    },
+    {
+      "title": "Historical and Philosophical Foundations of Artificial Intelligence",
+      "start": "2026-03-09",
+      "end": "2026-03-10",
+      "city": "Vienna",
+      "lat": 48.2085,
+      "lng": 16.3721,
+      "url": "https://events.ceu.edu/2026-03-09/historical-and-philosophical-foundations-artificial-intelligence",
+      "cfp_deadline": "2026-03-06",
+      "type": "conference"
+    },
+    {
+      "title": "University of Nebraska–Lincoln Graduate Philosophy Conference",
+      "start": "2026-03-14",
+      "end": "2026-03-15",
+      "city": "Lincoln",
+      "lat": 40.8,
+      "lng": -96.667,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Japan Philosophy of Medicine Workshop 2026",
+      "start": "2026-03-31",
+      "end": "2026-03-31",
+      "city": "Sapporo-shi",
+      "lat": 43.0642,
+      "lng": 141.347,
+      "url": "https://sites.google.com/view/phil-sci-med/workshop/2026-english",
+      "cfp_deadline": "2026-03-24",
+      "type": "conference"
+    },
+    {
+      "title": "Peace in the Age of Forever Wars",
+      "start": "2026-04-03",
+      "end": "2026-04-04",
+      "city": "Philadelphia",
+      "lat": 39.9526,
+      "lng": -75.1872,
+      "url": "https://challengingwar.com/spring-2025/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "9th Annual Regional Student Ethics Conference",
+      "start": "2026-04-10",
+      "end": "2026-04-10",
+      "city": "Glassboro",
+      "lat": 39.7029,
+      "lng": -75.1118,
+      "url": "https://www.rowan.edu/ric-edelman-college/departments/phwr/philosophy/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "THE CRITICISM CULTURE AND MORALITY OF TOLERANCE IN ISLAMIC THOUGHT -5 INTERNATIONAL SYMPOSIUM",
+      "start": "2026-05-11",
+      "end": "2026-05-13",
+      "city": "Muş",
+      "lat": 38.7453,
+      "lng": 41.5069,
+      "url": "https://elestirivetahammul.alparslan.edu.tr/en/page/6086",
+      "cfp_deadline": "2026-03-15",
+      "type": "conference"
+    },
+    {
+      "title": "Existential Threats and Other Disasters: Novel (Bio)ethical Solutions for Novel Challenges",
+      "start": "2026-06-11",
+      "end": "2026-06-12",
+      "city": "Paris",
+      "lat": 48.8534,
+      "lng": 2.3488,
+      "url": "https://www.csb.eu.com/conference/",
+      "cfp_deadline": "2025-10-15",
+      "type": "conference"
+    },
+    {
+      "title": "Do Humans Also Dream of Electric Sheeps? Technoscientific, Cultural, and Cognitive Challenges of AI",
+      "start": "2026-02-27",
+      "end": "2026-02-28",
+      "city": "Roma",
+      "lat": 41.8947,
+      "lng": 12.4839,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "23rd Annual South Asia Graduate Student Conference at the University of Chicago",
+      "start": "2026-03-05",
+      "end": "2026-03-06",
+      "city": "Chicago",
+      "lat": 41.85,
+      "lng": -87.65,
+      "url": "https://voices.uchicago.edu/sagsc/2025/11/11/sagsc-xxiii/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Wittgenstein on Epistemic Practice: Ignorance, Hinges and Skepticism",
+      "start": "2026-03-09",
+      "end": "2026-03-10",
+      "city": "Delmenhorst",
+      "lat": 53.05,
+      "lng": 8.61667,
+      "url": "https://hanse-ias.de/veranstaltungen/veranstaltung-detail-uebersicht/event/623",
+      "cfp_deadline": "2026-01-09",
+      "type": "conference"
+    },
+    {
+      "title": "Interventionism and Non-Causal Dependence",
+      "start": "2026-03-12",
+      "end": "2026-03-13",
+      "city": "Paris",
+      "lat": 48.8534,
+      "lng": 2.3488,
+      "url": "",
+      "cfp_deadline": "2026-03-12",
+      "type": "conference"
+    },
+    {
+      "title": "National Doctoral Colloquium “Inter homines esse” (“To Be Among Men”): Reflections on Living Together in the Age of Plurality",
+      "start": "2026-03-13",
+      "end": "2026-03-14",
+      "city": "Bucharest",
+      "lat": 44.4377,
+      "lng": 26.0974,
+      "url": "https://filosofie.unibuc.ro/colocviul-national-al-doctoranzilor-inter-homines-esse-a-fi-printre-oameni-reflectii-asupra-convietuirii-in-epoca-pluralitatii-13-14-martie-2026/",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "2026 Graduate Conference AI  and Emotions",
+      "start": "2026-04-11",
+      "end": "2026-04-11",
+      "city": "Albany",
+      "lat": 42.6526,
+      "lng": -73.7562,
+      "url": "",
+      "cfp_deadline": "2026-04-01",
+      "type": "conference"
+    },
+    {
+      "title": "Debating Dynamic Semantics",
+      "start": "2026-04-22",
+      "end": "2026-04-23",
+      "city": "New York",
+      "lat": 40.7144,
+      "lng": -74.006,
+      "url": "",
+      "cfp_deadline": "2026-04-16",
+      "type": "conference"
+    },
+    {
+      "title": "Reason in Perception",
+      "start": "2026-05-07",
+      "end": "2026-05-08",
+      "city": "Graz",
+      "lat": 47.0667,
+      "lng": 15.45,
+      "url": "",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "SLACRR 2026",
+      "start": "2026-05-17",
+      "end": "2026-05-19",
+      "city": "Saint Louis",
+      "lat": 38.6273,
+      "lng": -90.1979,
+      "url": "https://www.umsl.edu/~slacrr/index.html",
+      "cfp_deadline": null,
+      "type": "conference"
+    },
+    {
+      "title": "Inaugural symposium of the Global Research Alliance of Jesuit Universities (GRAJU)",
+      "start": null,
+      "end": null,
+      "city": "Quezon City",
+      "lat": 14.6488,
+      "lng": 121.051,
+      "url": "https://graju2026.ateneo.edu/home",
+      "cfp_deadline": null,
+      "type": "conference"
+    }
+  ],
+  "cfps": [
+    {
+      "title": "Eurasian Memory Meeting, 2026 Tokyo Edition (CFP)",
+      "deadline": "2026-02-28",
+      "url": "https://www.eurasianmemory.com/eurasian-memory-meeting-2026-tokyo",
+      "conference": "Eurasian Memory Meeting, 2026 Tokyo Edition"
+    },
+    {
+      "title": "From Virtual to Virtue: Ethics, Epistemology, Education (CFP)",
+      "deadline": "2026-03-02",
+      "url": "https://ethics-ai.eu/2026-conference/",
+      "conference": "From Virtual to Virtue: Ethics, Epistemology, Education"
+    },
+    {
+      "title": "AI and Data Ethics: Philosophy and Pedagogy (CFP)",
+      "deadline": "2026-03-02",
+      "url": "",
+      "conference": "AI and Data Ethics: Philosophy and Pedagogy"
+    },
+    {
+      "title": "Phenomenology and Psychoanalysis (CFP)",
+      "deadline": "2026-03-04",
+      "url": "https://asymmetricencounters.wordpress.com/",
+      "conference": "Phenomenology and Psychoanalysis"
+    },
+    {
+      "title": "Workshop on Friendship, and Friendship with the Morally Bad (CFP)",
+      "deadline": "2026-03-05",
+      "url": "",
+      "conference": "Workshop on Friendship, and Friendship with the Morally Bad"
+    },
+    {
+      "title": "Historical and Philosophical Foundations of Artificial Intelligence (CFP)",
+      "deadline": "2026-03-06",
+      "url": "https://events.ceu.edu/2026-03-09/historical-and-philosophical-foundations-artificial-intelligence",
+      "conference": "Historical and Philosophical Foundations of Artificial Intelligence"
+    },
+    {
+      "title": "Forms of Exculpation: Nature and Norms of Blamelessness (CFP)",
+      "deadline": "2026-03-11",
+      "url": "",
+      "conference": "Forms of Exculpation: Nature and Norms of Blamelessness"
+    },
+    {
+      "title": "Interventionism and Non-Causal Dependence (CFP)",
+      "deadline": "2026-03-12",
+      "url": "",
+      "conference": "Interventionism and Non-Causal Dependence"
+    },
+    {
+      "title": "THE CRITICISM CULTURE AND MORALITY OF TOLERANCE IN ISLAMIC THOUGHT -5 INTERNATIONAL SYMPOSIUM (CFP)",
+      "deadline": "2026-03-15",
+      "url": "https://elestirivetahammul.alparslan.edu.tr/en/page/6086",
+      "conference": "THE CRITICISM CULTURE AND MORALITY OF TOLERANCE IN ISLAMIC THOUGHT -5 INTERNATIONAL SYMPOSIUM"
+    },
+    {
+      "title": "Philosophy and Emotion at Nottingham (CFP)",
+      "deadline": "2026-03-17",
+      "url": "https://forms.office.com/e/W37a0mnPd0?origin=lprLink",
+      "conference": "Philosophy and Emotion at Nottingham"
+    },
+    {
+      "title": "Responsible Trusting Without Prejudice First Workshop (CFP)",
+      "deadline": "2026-03-19",
+      "url": "https://crispinjwright.com/rtwp_workshop/",
+      "conference": "Responsible Trusting Without Prejudice First Workshop"
+    },
+    {
+      "title": "Japan Philosophy of Medicine Workshop 2026 (CFP)",
+      "deadline": "2026-03-24",
+      "url": "https://sites.google.com/view/phil-sci-med/workshop/2026-english",
+      "conference": "Japan Philosophy of Medicine Workshop 2026"
+    },
+    {
+      "title": "Science, Expertise, and Society (CFP)",
+      "deadline": "2026-03-26",
+      "url": "https://sites.nd.edu/hpstv-conference/home/science-expertise-and-society/",
+      "conference": "Science, Expertise, and Society"
+    },
+    {
+      "title": "Petrus Hispanus' Tractatus: Logic and Philosophy from the Middle Ages to Modernity (CFP)",
+      "deadline": "2026-03-30",
+      "url": "https://ifilosofia.up.pt/activities/3rd-porto-mempss",
+      "conference": "Petrus Hispanus' Tractatus: Logic and Philosophy from the Middle Ages to Modernity"
+    },
+    {
+      "title": "Technology and Well Being (CFP)",
+      "deadline": "2026-03-31",
+      "url": "https://www.prindleinstitute.org/community/mes/",
+      "conference": "Technology and Well Being"
+    },
+    {
+      "title": "UAnalytiCon-2026: Universals and Objects (CFP)",
+      "deadline": "2026-03-31",
+      "url": "https://uanalyticon.ru/index.en.html",
+      "conference": "UAnalytiCon-2026: Universals and Objects"
+    },
+    {
+      "title": "“Rethinking Anthropocentrism: New Technologies and More- than-Human Sensing\" (CFP)",
+      "deadline": "2026-03-31",
+      "url": "",
+      "conference": "“Rethinking Anthropocentrism: New Technologies and More- than-Human Sensing\""
+    },
+    {
+      "title": "NEW PERSPECTIVES ON THE PHILOSOPHY OF THE ORIGIN AND EVOLUTION OF LIFE (CFP)",
+      "deadline": "2026-03-31",
+      "url": "https://sites.google.com/view/ph-sc-c-wv/",
+      "conference": "NEW PERSPECTIVES ON THE PHILOSOPHY OF THE ORIGIN AND EVOLUTION OF LIFE"
+    },
+    {
+      "title": "8th Annual Chapel Hill Normativity Workshop: Montreal Edition! (CFP)",
+      "deadline": "2026-04-01",
+      "url": "https://normativity.web.unc.edu/",
+      "conference": "8th Annual Chapel Hill Normativity Workshop: Montreal Edition!"
+    },
+    {
+      "title": "2026 Graduate Conference AI  and Emotions (CFP)",
+      "deadline": "2026-04-01",
+      "url": "",
+      "conference": "2026 Graduate Conference AI  and Emotions"
+    },
+    {
+      "title": "AI and Philosophy (CFP)",
+      "deadline": "2026-04-05",
+      "url": "https://aiandphilosophy.org/",
+      "conference": "AI and Philosophy"
+    },
+    {
+      "title": "Weatherford College 8th Annual Conference: Philosophy of Religion and Ethics (CFP)",
+      "deadline": "2026-04-10",
+      "url": "https://new.express.adobe.com/webpage/APIi2Jjhfdl7E",
+      "conference": "Weatherford College 8th Annual Conference: Philosophy of Religion and Ethics"
+    },
+    {
+      "title": "Ethics Medicine Innovation (EMI) (CFP)",
+      "deadline": "2026-04-10",
+      "url": "http://ethicsmedicineinnovation.org",
+      "conference": "Ethics Medicine Innovation (EMI)"
+    },
+    {
+      "title": "Ethics, Epistemology, and Engineering (CFP)",
+      "deadline": "2026-04-13",
+      "url": "https://thegppc.wordpress.com/",
+      "conference": "Ethics, Epistemology, and Engineering"
+    },
+    {
+      "title": "Climate Change and Global Justice (CFP)",
+      "deadline": "2026-04-15",
+      "url": "",
+      "conference": "Climate Change and Global Justice"
+    },
+    {
+      "title": "Rutgers Epistemology Conference 2026 (CFP)",
+      "deadline": "2026-04-15",
+      "url": "https://juancomesana.org/rec",
+      "conference": "Rutgers Epistemology Conference 2026"
+    },
+    {
+      "title": "XXI Simposio latinoamericano de lógica matemática SLALM (CFP)",
+      "deadline": "2026-04-15",
+      "url": "https://slalm21.uniandes.edu.co/es/#registration",
+      "conference": "XXI Simposio latinoamericano de lógica matemática SLALM"
+    },
+    {
+      "title": "Debating Dynamic Semantics (CFP)",
+      "deadline": "2026-04-16",
+      "url": "",
+      "conference": "Debating Dynamic Semantics"
+    },
+    {
+      "title": "Theoretical Rationality and Practical Reason (CFP)",
+      "deadline": "2026-04-30",
+      "url": "https://www.cognitoforms.com/SofiaUniversity/RegistrationFormTRPR",
+      "conference": "Theoretical Rationality and Practical Reason"
+    },
+    {
+      "title": "Hyperintensionality and (Meta)-Metaphysics (CFP)",
+      "deadline": "2026-05-01",
+      "url": "",
+      "conference": "Hyperintensionality and (Meta)-Metaphysics"
+    },
+    {
+      "title": "Numerical Computations: Theory and Algorithms The 5th International Conference and Summer School (CFP)",
+      "deadline": "2026-05-18",
+      "url": "https://www.numta.org",
+      "conference": "Numerical Computations: Theory and Algorithms The 5th International Conference and Summer School"
+    },
+    {
+      "title": "Ethnographilosophy (CFP)",
+      "deadline": "2026-05-31",
+      "url": "http://www.criticalagency.de",
+      "conference": "Ethnographilosophy"
+    }
+  ]
+}
